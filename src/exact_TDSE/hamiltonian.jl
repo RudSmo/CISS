@@ -38,7 +38,7 @@ function VSVec(num_elec,a_helix,c_helix,site,num_laps)
     return VDot(vj)    
 end
 function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t0::Float64,tPh::Float64,
-                  λ0::Float64,λPh::Float64,r_helix::Float64,c_helix::Float64)::Array
+                  λ0::Float64,λPh::Float64,wPh::Float64,r_helix::Float64,c_helix::Float64)::Array
     """
     Fransson's Hamiltonian, that is a fermionic Hubbard chain with L electronic sites. Each site is coupled to a harmonic oscillator
     with vibState levels. In the electronic chain, electrons can hop between neighboring sites, a hopping induces vibrational transitions and 
@@ -101,7 +101,7 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
     bd = b'
     bdb = bd*b
     for i in 1:num_sites
-        HB += nkron([IdS,Idkron(i-1,vibStates),bdb,Idkron(num_sites-i,vibStates)]) 
+        HB += wPh*nkron([IdS,Idkron(i-1,vibStates),bdb,Idkron(num_sites-i,vibStates)]) 
     end
     # Electron-Phonon (NN)
     for i in 1:num_sites-1
