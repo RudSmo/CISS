@@ -1,5 +1,4 @@
 module Hamiltonian
-#this is a tiny change
 
 include("helper.jl")
 
