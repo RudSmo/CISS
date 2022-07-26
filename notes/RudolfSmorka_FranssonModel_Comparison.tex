@@ -1,0 +1,168 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+
+\bibliography{bib.bib}
+
+\begin{document}
+\title{Comparison of Quantum-Classical Approaches}
+\author{Rudolf Smorka}
+\maketitle
+\section{Model}
+The model considered for a chiral, single-stranded molecule, as proposed in Refs.~\cite{fransson2019chirality,fransson2020vibrational,Fransson_2021,fransson2021charge}, reads
+\begin{align}
+	\hat{H} &= \hat{H}_\mathrm{mol} + \hat{H}_\mathrm{env} + \hat{H}_\mathrm{sys-env}.
+\end{align} 
+The molecular Hamiltonian reads
+\begin{align}
+	\hat{H}_\mathrm{mol} &= \hat{H}_\mathrm{el} + \hat{H}_\mathrm{el-ph} + \hat{H}_\mathrm{ph},\\
+	\begin{split}
+		\hat{H}_\mathrm{el} &= \sum_{j,\sigma} \varepsilon_{j\sigma}^\pdagger d_{j\sigma}^\dagger d_{j\sigma}^\pdagger - t_0 \sum_{j\sigma} (d_{j\sigma}^\dagger d_{j+1,\sigma}^\pdagger + \mathrm{h.c.}) +\\& \lambda_\mathrm{so}^\pdagger\sum_{j\sigma\sigma'} (id_{j\sigma}^\dagger (\vec{v}_j^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger d_{j+2,\sigma'}^\pdagger + \mathrm{h.c.}),
+	\end{split}\\
+	\hat{H}_\mathrm{el-ph} &= - \sum_{j,\sigma} t_{j\sigma}^\pdagger d_{j\sigma}^\dagger d_{j+1\sigma}^\pdagger (a_{j}^\dagger + a_{j}^\pdagger) \\ & + \sum_{j\sigma} (i\lambda_{j\sigma}^\pdagger d_{j\sigma}^\dagger (\vec{v}_j^{(+)} \cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger d_{j+2\sigma'}^\pdagger +\mathrm{h.c.})(a_{j}^\dagger + a_{j}^\pdagger),\label{eq:HelPh}\\
+	\hat{H}_\mathrm{ph} &= \sum_{j} \omega_{j}^\pdagger a_{j}^\dagger a_{j}^\pdagger.
+	 \label{eq:Hamiltonian_el_Fransson} 
+\end{align}
+Fransson incorporates an spin other orbit-like coupling \cite{zoellner2020influence} between the spins and the orbitals of electrons of next-nearest-neighbor monomers, described by the third term.  
+The vector $\vec{v}_j^{(s)} = \vec{d}_{j+s}\times \vec{d}_{j+2s}$ ($s=\pm 1$) defines the chirality of the molecule in terms of unit vectors 
+\begin{equation}
+	\vec{d}_{j+s} = \frac{\vec{r}_j-\vec{r}_{j+s}}{\vert\vec{r}_j-\vec{r}_{j+s} \vert}
+\end{equation}
+For a chiral polymer the monomer positions are written in cylindrical coordinates, parameterized by
+\begin{equation}
+	\vec{r}_m = (a\cos \phi_m, a\sin\phi_m,c_m).
+\end{equation}
+which is the position vector of monomer $m$ in the helix. Here, $a$ gives the radius of the helix, $\phi_m$ the corresponding polar angle and $c_m$ the axial length. The helix consists of $\mathbb{M}=MN$ monomers, where $M$ denotes the number of laps and $N$ the number of monomers per lap.
+Here, $\phi_m$ and $c_m$ read
+\begin{align}
+	\phi_m &=  \frac{2\pi(m-1)M}{\mathbb{M}-1}\\
+	c_m &= \frac{(m-1)c}{\mathbb{M}-1}
+\end{align}
+following the definition given in Ref.~\cite{fransson2020vibrational}.
+As this model aims at describing the CISS effect in organic molecules, and organic molecules are mechanically flexible, the molecular Hamiltonian includes vibrational degrees of freedom. 
+For a molecule with $\mathbb{M}$ monomers, one assumes $\mathbb{M}$ vibrational modes. In the particular model, the electron-phonon interaction is predominantly carried by two mechanisms: Hopping between spin-molecular states at monomers $j$ and $j+1$ induce excitations (or de-excitations) of the vibrational mode $j$ (fifth term), and the next-nearest-neighbor spin-orbit coupling also induces vibrational excitations of mode $j$ (last term).
+
+The environment is described by the Hamiltonian
+\begin{equation}
+	H_\mathrm{env} = \sum_{\ell k\sigma} \varepsilon_{\ell k\sigma}^\pdagger c_{\ell k\sigma}^\dagger c_{\ell k\sigma}^\pdagger \label{eq:LeadHamiltonian}
+\end{equation}
+and the system-environment coupling is simply
+\begin{align}
+	H_\mathrm{sys-env} &= \sum_{\sigma}(\nu_{L\sigma}^\pdagger c_{N_L\sigma}^\dagger d_{1\sigma}^\pdagger + \nu_{R\sigma}^\pdagger c_{1_R\sigma}^\dagger d_{\mathbb{M}\sigma}^\pdagger + \mathrm{h.c.}) \label{eq:LeadSysHamiltonian}
+\end{align}
+The parameters employed in the following convergence tests are given in \cref{tab:ParametersConvergence}.
+\begin{table}[!h]
+	\centering
+	\caption{Parameters used in the following calculations.}\label{tab:ParametersConvergence}
+\begin{tabular}{lll}
+	\toprule
+	Parameter & Symbol & Value\\\midrule
+	System size &$\mathbb{M}=N\times M$& $4\times 2$  \\
+	Hopping integral &$t_0$&$\SI{0.04}{\electronvolt}$ \\ 
+	On-site constant &$\varepsilon_{j\sigma}$& $\SI{0.65}{\electronvolt} \ \forall j,\sigma$  \\
+	Vibrational mode &$\omega_{j\mu}$&$1.4t_0 \  \forall j,\mu$  \\
+	Helix parameters &$r/c$& 1.0  \\
+	Spin-orbit-coupling (SOC) &$\lambda_\mathrm{so}$& $t_0/40$  \\
+	Phonon-assisted hopping &$t_{j\sigma\mu}$& $0.1t_0 \ \forall j,\sigma,\mu$  \\
+	Phonon-assisted SOC&$\lambda_{j\sigma\mu}$& $0.1\lambda_\mathrm{so} \ \forall j,\sigma,\mu$  \\
+	Lead temperature&$T$& $\SI{0.1}{\electronvolt}$  \\
+	Bias voltage &$V$& $\SI{2}{\electronvolt}$ \\
+	Sys-Env coupling &$\nu_{L,R\sigma}$ & $t_0/4 \ \forall \sigma$\\
+	\bottomrule
+\end{tabular}
+\end{table}\\
+\section{Numerically Exact Schemes}
+\subsection{Exact Diagonalization}
+\subsection{Hierarchical Equation of Motion}
+\section{Mean-Field Trajectory Based Methods}
+\subsection{Quantum-Classical Approximation}
+Following a standard quantum-classical approximation, the above Hamiltonian can be simplified. Using the harmonic oscillator representation of the annihilation operator $\hat{a}_n$ in terms of position $\hat{q}_n$ and momentum operators $\hat{p}_n$
+\begin{equation}
+	\hat{a}_n= \sqrt{\frac{\omega_n}{2}} \left(\hat{q}_n + i\frac{\hat{p}_n}{\omega_n}\right).
+\end{equation}
+the phonons are approximated to be described by classical harmonic oscillators
+\begin{align}
+	\hat{q}_n& \rightarrow q_n,\\
+	\hat{p}_n &\rightarrow p_n
+\end{align}
+The classical approximation therefore invokes the classical phonon Hamiltonian  $\hat{H}_\mathrm{ph}\rightarrow H_\mathrm{ph}$. The electron-phonon Hamiltonian within this approximation depends parametrically on the phonon coordinates $\hat{H}_\mathrm{el-ph} = \hat{H}_\mathrm{el-ph}(\{q_n\})$. The electronic system, on the other hand, influences the classical phonons via a ``quantum force'' (Hellmann-Feynman theorem) \cite{krotz2021reciprocal}
+\begin{equation}
+	F_n = -\tr{\rho \nabla_{q_n} \hat{H}_\mathrm{el-ph}}
+\end{equation}
+where $\rho$ is the electronic superposition state, which is propagated by the Liouville-von Neumann equation
+\begin{equation}
+	\frac{\mathrm{d}\rho}{\mathrm{d}t} = -i[\hat{H}_\mathrm{el}+\hat{H}_\mathrm{el-ph},\rho].\label{eq:LVNEq}
+\end{equation}
+Due to the choice of the state determining the force $F_n$, this approach belongs to the class of mean-field mixed quantum-classical dynamics, as it invokes the Ehrenfest theorem (classical analog of a quantum state behaves as the quantum expectation value with respect to this state).
+
+\subsection{Mixed Quantum-Classical Equations of Motion}
+Within mixed quantum-classical dynamics, the electronic system is propagated quantum-mechanically (e.g. using \cref{eq:LVNEq}) under the influence of the electronic and the electron-phonon Hamiltonian.
+Since the electronic Hamiltonian is quadratic in creation and annihilation operators, we can adopt a single-particle description. In this case the equation of motion for the molecule-environment complex can be derived within the time-dependent nonequilibrium Green's function formalism or by solving the HEOM \cite{zheng2007time}. 
+We employ a Pad\'{e} decomposition of the Fermi-function in the leads $\ell$ \cite{zheng2007time,hu2010communication}, under which the equations of motion for the electronic density matrix $\rho$ and the current-matrices $\Pi_{\ell,p}$ take the following form
+\begin{align}
+	\frac{\dif}{\dif t}\rho &= -i[\hat{H}_\mathrm{el}+\hat{H}_\mathrm{el-ph},\rho] + \sum_\ell (\Pi_\ell^\dagger + \Pi_\ell^{\phantom{\dagger}}) \label{eq:NI_HEOM_1}\\
+	\Pi_\ell(t) &= \frac{1}{4}(\mathds{1}-2\rho)\Gamma_\ell-\sum_{p=1}^{N_p} \Pi_{\ell,p}(t)\label{eq:NI_HEOM_2}\\
+	\frac{\dif}{\dif t} \Pi_{\ell,p}(t) &= -\frac{i\eta_p}{\beta_\ell}\Gamma_\ell - i\left(\hat{H}_\mathrm{el}+\hat{H}_\mathrm{el-ph}-\frac{i}{2}\Gamma-\chi_p^+\mathds{1}\right)\Pi_{\ell,p}(t).\label{eq:NI_HEOM_3}	
+\end{align}
+The classical coordinates $q_n$ and momenta $p_n$ follow Hamilton's equation of motion
+\begin{align}
+	\dot{p}_n &= -\frac{\partial (H_\mathrm{ph}+H_\mathrm{el-ph})}{\partial q_n} = \omega^2_n q_n - \tr{\rho \nabla_{q_n}\hat{H}_\mathrm{el-ph}},\label{eq:Hamilton_EOM_1} \\
+	\dot{q}_n &= \frac{\partial (H_\mathrm{ph}+H_\mathrm{el-ph})}{\partial p_n} = p_n + \tr{\rho \nabla_{p_n}\hat{H}_\mathrm{el-ph}} = p_n.\label{eq:Hamilton_EOM_2}
+\end{align}
+Under the assumption of $\hat{H}_\mathrm{el-ph}$ as given in \cref{eq:HelPh}, the derivative with respect to momenta vanishes as the Hamiltonian is independent of $\{p_n\}$. The analytical expression for $\nabla_{q_n}\hat{H}_\mathrm{el-ph}$ takes the form
+\begin{align}
+	\nabla_{q_n}\hat{H}_\mathrm{el-ph} = \sqrt{2\omega_n}\sum_{\sigma\sigma'} (-t_{n\sigma}^\pdagger d_{n\sigma}^\dagger d_{n+1\sigma}^\pdagger \delta_{\sigma\sigma'}^\pdagger + i\lambda_{n\sigma}^\pdagger d_{n\sigma}^\dagger (\vec{v}^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger d_{n+2,\sigma'}^\pdagger + \mathrm{h.c}).
+\end{align}
+If only a single trajectory with starting point $\{q_n(t_0),p_n(t_0)\}$ is considered, the approach above is known as the \emph{time-dependent self-consistent field} (TD-SCF) method \cite{stock2005classical}. 
+The classical limit of quantum dynamics is represented by an ensemble of classical orbits. An approach which incorporates this idea is the \emph{mean-field trajectory} (MFT) method \cite{stock2005classical}. In this method, the initial phase space point $\{q_n(t_0),p_n(t_0)\}$ is sampled from a quantum-mechanical quasiprobability distribution. In the case studied here, this distribution is the Wigner-function for a harmonic oscillator in ground state 
+\begin{equation}
+	\{q_n(t_0),p_n(t_0)\}\sim W = \prod_n \exp\left(-\frac{\beta}{2}(p_n^2+\omega^2_n q_n^2)\right),
+\end{equation}
+In practice, a large number of trajectories, corresponding to sampled initial phase-space points, is propagated under the quantum-classical equations of motion \cref{eq:NI_HEOM_1,eq:NI_HEOM_2,eq:NI_HEOM_3,eq:Hamilton_EOM_1,eq:Hamilton_EOM_2}. One then computes observables using the usual quantum-classical expectation value
+\begin{equation}
+	\langle A(t)\rangle = \sum_{k=1}^{N_\mathrm{traj}}\frac{1}{Z}\int \dif x_n \dif p_n \rho_\mathrm{C}^{(k)}(t) A_\mathrm{C}\tr{\rho^{(k)}_\mathrm{Q}(t)\hat{A}_\mathrm{Q}},
+\end{equation}
+but now averaged over $N_\mathrm{traj}$ trajectories.
+Here, $Z=\int \dif x_n \dif p_n \rho_\mathrm{C}$ is the classical partition function. While the TDSCF method neglects all correlations between electrons and vibrational modes, the MFT method takes into account static correlations since the initial distribution is described correctly. 
+%which is identical to the Boltzmann distribution (with inverse temperature $\beta=T^{-1}$, which we set here to be the same as the leads inverse temperature).
+
+%Nuclear dynamics is constrained to a single (parabolic) potential energy surface within Fransson's Hamiltonian (\cref{eq:Hamiltonian_el_Fransson}). It would be interesting to consider two PES per site (unoccupied, occupied molecule). How to extend the model?  
+\section{Mapping-Based Approaches}
+From a theoretical point of view, the approaches shown in the previous section seem unsatisfying as the description of the dynamics is not treated on an equal footing. An alternative quantum-classical method is based on mapping quantum-mechanical operators to their corresponding operators in phase space and employing a classical approximation in these phase-space variables later. The main benefit of formulating the dynamics in terms of phase-space operators is that both electrons and vibrational modes are treated on an equal footing, even after performing the quantum-classical approximation. 
+\section{Results}
+\subsection{Exact Dynamics in an Isolated Molecule}
+In this section we present results of the exact quantum dynamics in an isolated molecule. Due to the exponentially scaling complexity, only small system sizes can be computed. In practice, the number of vibrational levels for each mode is truncated. 
+\subsection{Non-Interacting Anderson-Holstein Impurity Model}
+We start with comparing the mixed quantum-classical Ehrenfest approach with the numerically exact HEOM for a single dot with two electronic levels electron-phonon coupling to a single phonon mode, also known as the non-interacting Anderson-Holstein impurity model. The Hamiltonian for this system reads
+\begin{align}
+	\hat{H}_\mathrm{mol} = \sum_\sigma \varepsilon_\sigma^\pdagger \hat{d}_\sigma^\dagger \hat{d}_\sigma^\pdagger + g \sum_\sigma \hat{d}^\dagger_\sigma \hat{d}^\pdagger_\sigma (\hat{a}^\dagger + \hat{a}) + \omega \hat{a}^\dagger \hat{a} 
+\end{align}
+and the same lead and molecule-lead coupling Hamiltonians as in \cref{eq:LeadHamiltonian,eq:LeadSysHamiltonian}. 
+
+% Replace this text and plot with the data, which should be finished by tomorrow (8.2.) for Rvar, dt=0.1.
+\printbibliography
+\end{document}
+
+
+
+
