@@ -78,30 +78,22 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
     # On-site
     for i in 1:num_sites
         hu = eu * nfop(i,1,num_sites,d)*nfop(i,1,num_sites,d)'
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),cd * c,id,Idkron(num_sites-i,d),Idkron(num_sites-i,d)])
         hd = ed * nfop(i,2,num_sites,d)*nfop(i,2,num_sites,d)' 
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),id,cd * c,Idkron(num_sites-i,d),Idkron(num_sites-i,d)])
         HS += kron(hu + hd,IdB)
     end
     # Hopping
     for i in 1:num_sites-1
         hu = -t0* nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),cd,id,c,id,Idkron(num_sites-1-i,d),Idkron(num_sites-1-i,d)]) 
         hd = -t0* nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),id,cd,id,c,Idkron(num_sites-1-i,d),Idkron(num_sites-1-i,d)]) 
         HS += kron(hu+hu'+hd+hd',IdB)
     end
     # SOC
     for i in 1:num_sites-2
         vs  = VSVec(num_sites,r_helix,c_helix,i,num_laps) 
         huu = -1im*λ0*vs[1,1]*nfop(i,1,num_sites,d)*nfop(i+2,1,num_sites,d)'
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),cd,id, id,id, c,id, Idkron(num_sites-2-i,d),Idkron(num_sites-2-i,d)]) 
         hud = -1im*λ0*vs[1,2]*nfop(i,1,num_sites,d)*nfop(i+2,2,num_sites,d)'
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),cd,id, id,id, id,c, Idkron(num_sites-2-i,d),Idkron(num_sites-2-i,d)]) 
         hdu = -1im*λ0*vs[2,1]*nfop(i,2,num_sites,d)*nfop(i+2,1,num_sites,d)'
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),id,cd, id,id, c,id, Idkron(num_sites-2-i,d),Idkron(num_sites-2-i,d)]) 
         hdd = -1im*λ0*vs[2,2]*nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d)'
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),id,cd, id,id, id,c, Idkron(num_sites-2-i,d),Idkron(num_sites-2-i,d)]) 
         HS += kron(huu + hud + hdu + hdd + huu' + hud' + hdu' + hdd',IdB)
     end
     # Harmonic oscillators
@@ -115,22 +107,16 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
     for i in 1:num_sites-1
         qv   = nkron([Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
         HSB -= tPh*kron(nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'+nfop(i+1,1,num_sites,d)*nfop(i,1,num_sites,d)',qv)
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),cd,id,c,id,Idkron(num_sites-i-1,d),Idkron(num_sites-i-1,d),Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
         HSB -= tPh*kron(nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'+nfop(i+1,2,num_sites,d)*nfop(i,2,num_sites,d)',qv)
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),id,cd,id,c,Idkron(num_sites-i-1,d),Idkron(num_sites-i-1,d),Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])       
     end
     # Electron-Phonon (SOC)
     for i in 1:num_sites-2
         vs  = VSVec(num_sites,r_helix,c_helix,i,num_laps) 
         qv  = nkron([Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
         huu = -1im*λPh*vs[1,1]*(nfop(i,1,num_sites,d)*nfop(i+2,1,num_sites,d))
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),cd,id, id,id, c,id,Idkron(num_sites-i-2,d),Idkron(num_sites-i-2,d),Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
         hud = -1im*λPh*vs[1,2]*(nfop(i,1,num_sites,d)*nfop(i+2,2,num_sites,d))
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),cd,id, id,id, id,c,Idkron(num_sites-i-2,d),Idkron(num_sites-i-2,d),Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])     
         hdu = -1im*λPh*vs[2,1]*(nfop(i,2,num_sites,d)*nfop(i+2,1,num_sites,d))
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),id,cd, id,id, c,id,Idkron(num_sites-i-2,d),Idkron(num_sites-i-2,d),Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
         hdd = -1im*λPh*vs[2,2]*(nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d))
-        #nkron([Idkron(i-1,d),Idkron(i-1,d),id,cd, id,id, id,c,Idkron(num_sites-i-2,d),Idkron(num_sites-i-2,d),Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])    
         HSB += kron(huu + hud + hdu + hdd + huu' + hud' + hdu' + hdd',qv) 
     end
     return HS+HB+HSB
