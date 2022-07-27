@@ -1,6 +1,6 @@
 module Helper
 using LinearAlgebra
-export nkron, Idkron, fop, bop, HOBasis, ElNopUp, ElNopDw, PhNop
+export nkron, Idkron, fop, nfop, bop, HOBasis, ElNopUp, ElNopDw, PhNop
 
 function nkron(A::Array)::Any
     """
@@ -39,6 +39,23 @@ function fop()::Array
     """
     return [0 1; 0 0.]
 end
+function nfop(i,s,L,b)
+    sz = [1 0; 0 -1.]
+    id = Matrix(I,b,b)
+    if i == 1 
+        if s == 1
+            return nkron([fop(),id,Idkron(2*(L-1),b)])
+        else
+            return nkron([sz,fop(),Idkron(2*(L-1),b)])
+        end 
+    else
+        if s == 1
+            return nkron([nkron([sz for j in 1:2*(i-1)]),fop(),id,Idkron(2*(L-i),b)])
+        else
+            return nkron([nkron([sz for j in 1:2*(i-1)]),sz,fop(),Idkron(2*(L-i),b)])
+        end
+    end
+end
 function bop(M::Int64)::Array
     """
     Bosonic annihilation operator with M levels.
@@ -62,7 +79,6 @@ function HOBasis(k::Int64,M::Int64)::Array
     st[k+1] = 1.0
     return st
 end
-
 function ElNopUp(i::Int64,L::Int64)::Array
     """
     Constructs spin-resolved number operator of site i
@@ -79,10 +95,6 @@ function ElNopDw(i::Int64,L::Int64)::Array
     id = Matrix(I,2,2)
     return nkron([Idkron(i-1,2),Idkron(i-1,2),id,nd,Idkron(L-i,2),Idkron(L-i,2)])
 end
-
-
-
-
 function PhNop(M::Int64,L::Int64,i::Int64)::Array
     """
     Bosonic number operator of boson with M levels, on site i with L sites.
