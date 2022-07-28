@@ -3,11 +3,24 @@ include("hamiltonian.jl")
 using LinearAlgebra
 
 using .Hamiltonian
-export SampleWignerA,SymplecticEulerStep
+export InitialPh,SampleWignerA,SymplecticEulerStep
 
-function SampleWignerA(beta,w)
-    A= randn(2)*w*beta
-    return [A[1]/w,A[2]]
+function InitialPh(popPh,ws,phase)
+    return [sqrt(2*popPh[i]/ws[i])*cos(phase[i]) for i in 1:length(popPh)],
+           [-sqrt(2*popPh[i]*ws[i])*sin(phase[i]) for i in 1:length(popPh)]
+end
+function SampleWignerA(beta,w,version)
+    """
+    version == "v1": Distribution as given in eq. 51 of J. Chem. Phys. 152, 084110
+    version == "v2": Distribution as given in eq. 14 of J. Chem. Phys. 156, 024108
+    """
+    aj = tanh(0.5*beta*w)
+    if version == "v2"
+        A  = randn(2)*aj/pi
+    elseif version == "v1"
+        A = randn(2)*2*aj
+    end
+    return [A[1]/sqrt(w*aj),A[2]*sqrt(w/a)]
 end
 
 function dHelph(N,a,c,num_laps,tph,tsoph,w,n)
