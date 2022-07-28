@@ -23,7 +23,7 @@ function SampleWignerA(beta,w,version)
     elseif version == "v1"
         A = randn(2)*2*aj
     end
-    return [A[1]/sqrt(w*aj),A[2]*sqrt(w/a)]
+    return [A[1]/sqrt(w*aj),A[2]*sqrt(w/aj)]
 end
 
 function dHelph(N,a,c,num_laps,tph,tsoph,w,n)
