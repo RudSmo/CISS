@@ -30,7 +30,7 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1
 
 	if i == 1
 		curfile = open("$(path)_currents.dat","w")
-		popfile = open("$(path)_populations.dat","w")
+		popfile = open("$(path)_electrons.dat","w")
 		phfile  = open("$(path)_phonons.dat","w")
 		write(curfile,"#(1)t (2)IL (3)IR (4)sILx (5)sILy (6)sILz (7)sIRx (8)sIRy (9)sIRz\n")	
 		write(popfile,"#(1)t ")
@@ -64,7 +64,7 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1
 
 	if i % GlobalConstants.SaveData == 0
 		curfile = open("$(path)_currents.dat","a")
-		popfile = open("$(path)_populations.dat","a")
+		popfile = open("$(path)_electrons.dat","a")
 		phfile  = open("$(path)_phonons.dat","a")
 			
 		for j in 1:length(pop_l)
@@ -100,7 +100,7 @@ end
 
 function Average(ind,path,num_avg)
 	pathr = "$(path)_$(ind)"
-	observables = ["currents","populations","phonons"]
+	observables = ["currents","electrons","phonons"]
 	if ind == 1
 		for obs in observables
 			file_avg = readdlm("$(pathr)_$(obs).dat")

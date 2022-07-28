@@ -20,6 +20,8 @@
 \newcommand{\pdagger}{{\phantom{\dagger}}}
 \newcommand{\state}[1]{\vert #1\rangle}
 \newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
 \usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
 
 \bibliography{bib.bib}
@@ -91,9 +93,6 @@ The parameters employed in the following convergence tests are given in \cref{ta
 	\bottomrule
 \end{tabular}
 \end{table}\\
-\section{Numerically Exact Schemes}
-\subsection{Exact Diagonalization}
-\subsection{Hierarchical Equation of Motion}
 \section{Mean-Field Trajectory Based Methods}
 \subsection{Quantum-Classical Approximation}
 Following a standard quantum-classical approximation, the above Hamiltonian can be simplified. Using the harmonic oscillator representation of the annihilation operator $\hat{a}_n$ in terms of position $\hat{q}_n$ and momentum operators $\hat{p}_n$
@@ -149,9 +148,22 @@ Here, $Z=\int \dif x_n \dif p_n \rho_\mathrm{C}$ is the classical partition func
 %Nuclear dynamics is constrained to a single (parabolic) potential energy surface within Fransson's Hamiltonian (\cref{eq:Hamiltonian_el_Fransson}). It would be interesting to consider two PES per site (unoccupied, occupied molecule). How to extend the model?  
 \section{Mapping-Based Approaches}
 From a theoretical point of view, the approaches shown in the previous section seem unsatisfying as the description of the dynamics is not treated on an equal footing. An alternative quantum-classical method is based on mapping quantum-mechanical operators to their corresponding operators in phase space and employing a classical approximation in these phase-space variables later. The main benefit of formulating the dynamics in terms of phase-space operators is that both electrons and vibrational modes are treated on an equal footing, even after performing the quantum-classical approximation. 
+
 \section{Results}
 \subsection{Exact Dynamics in an Isolated Molecule}
 In this section we present results of the exact quantum dynamics in an isolated molecule. Due to the exponentially scaling complexity, only small system sizes can be computed. In practice, the number of vibrational levels for each mode is truncated. 
+Therefore, the system size is set to $\mathbb{M}=3$ with $N=3$ and $M=1$.
+Here, we use the same parameters as given in \cref{tab:ParametersConvergence} except for the lead-related parameters $T,V,\nu_{L,R\sigma}$, which are not defined in the model investigated here. 
+We focus on electronic and vibrational populations in real-space. 
+In the exact method, these are the expectation values of their corresponding number operators
+\begin{align}
+	n^\mathrm{el}_{i\sigma}(t) &= \tr{\rho(t) \, \hat{d}^\dagger_{i\sigma}\hat{d}^\pdagger_{i\sigma}} = \expc{\psi(t)}{\hat{d}^\dagger_{i\sigma}\hat{d}^\pdagger_{i\sigma}}{\psi(t)}\\
+	n^\mathrm{vib}_{i\alpha}(t) &= \tr{\rho(t)\hat{a}_{i\alpha}^\dagger\hat{a}_{i\alpha}^\pdagger}= \expc{\psi(t)}{\hat{a}^\dagger_{i\alpha}\hat{a}^\pdagger_{i\alpha}}{\psi(t)} 
+\end{align}
+where $i\alpha$ denotes the level of vibrational mode coupled to site $i$. In practice, the vibrational occupation of levels on site $i$ is by taking the partial trace of the total density matrix with respect all Hilbert-space except the vibrational sub-space corresponding to site $i$. Herefore, we adopt the following convention for ordering the Hilbert space
+\begin{equation}
+	\mathcal{H} = \bigotimes_{i=1}^{\mathds{M}} \left(\bigotimes_{\sigma = \uparrow,\downarrow} \mathcal{H}^\mathrm{el}_{i\sigma}\right) \otimes \bigotimes_{i=1}^\mathds{M}\mathcal{H}^\mathrm{vib}_i
+\end{equation}
 \subsection{Non-Interacting Anderson-Holstein Impurity Model}
 We start with comparing the mixed quantum-classical Ehrenfest approach with the numerically exact HEOM for a single dot with two electronic levels electron-phonon coupling to a single phonon mode, also known as the non-interacting Anderson-Holstein impurity model. The Hamiltonian for this system reads
 \begin{align}

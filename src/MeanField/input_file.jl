@@ -19,7 +19,7 @@ using .ClassicalPhonons
 
 # Simulation Parameters
 dt = 0.001
-tend = 200
+tend = 1000
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 
@@ -38,11 +38,14 @@ l = Int(num_laps * ions)
 tph = 0.1*t0
 tsoph = 0.1*tso
 ws = ones(l)*1.4*t0
+
 rhoIn = "pure"
 # rhoIn = "equilibrium"
+
 phIn = "TDSCF"
 # phIn = "Wigner"
-popElIn = [1,1,0,0,0,0]
+
+popElIn = [1,0,0,0,0,0]
 popPhIn = [0,0,0]
 vSampl = "v1"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
@@ -79,7 +82,7 @@ for ka in 1:num_avg
     IOsave.SaveParams(params,parampath,purpose)
 
     @timev Propagate(l,E,t0,tso,a,c,num_laps,tph,tsoph,ws,dt,numstep,tL,tR,beta,nPoles,V,dataname2,resampling,rhoIn,phIn,vSampl,popElIn,qnIn,pnIn)
-    Average(ka,dataname1,num_avg)
+    #Average(ka,dataname1,num_avg)
 end
 
 end

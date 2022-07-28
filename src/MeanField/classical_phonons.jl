@@ -3,11 +3,14 @@ include("hamiltonian.jl")
 using LinearAlgebra
 
 using .Hamiltonian
-export InitialPh,SampleWignerA,SymplecticEulerStep
+export InitialPh,PhononPopulation,SampleWignerA,SymplecticEulerStep
 
 function InitialPh(popPh,ws,phase)
     return [sqrt(2*popPh[i]/ws[i])*cos(phase[i]) for i in 1:length(popPh)],
            [-sqrt(2*popPh[i]*ws[i])*sin(phase[i]) for i in 1:length(popPh)]
+end
+function PhononPopulation(qn,pn,ws)
+    return [qn[i]^2*ws[i]/2 + pn[i]^2/(2*ws[i]) for i in 1:length(qn)]
 end
 function SampleWignerA(beta,w,version)
     """
