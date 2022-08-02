@@ -10,6 +10,7 @@
 \usepackage{bm}
 \usepackage{booktabs}
 \usepackage{siunitx}
+\usepackage{xcolor}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \newtheorem{definition}{Definition}
@@ -19,6 +20,7 @@
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \newcommand{\pdagger}{{\phantom{\dagger}}}
 \newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
 \newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
 \newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
 \newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
@@ -39,10 +41,10 @@ The molecular Hamiltonian reads
 \begin{align}
 	\hat{H}_\mathrm{mol} &= \hat{H}_\mathrm{el} + \hat{H}_\mathrm{el-ph} + \hat{H}_\mathrm{ph},\\
 	\begin{split}
-		\hat{H}_\mathrm{el} &= \sum_{j,\sigma} \varepsilon_{j\sigma}^\pdagger d_{j\sigma}^\dagger d_{j\sigma}^\pdagger - t_0 \sum_{j\sigma} (d_{j\sigma}^\dagger d_{j+1,\sigma}^\pdagger + \mathrm{h.c.}) +\\& \lambda_\mathrm{so}^\pdagger\sum_{j\sigma\sigma'} (id_{j\sigma}^\dagger (\vec{v}_j^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger d_{j+2,\sigma'}^\pdagger + \mathrm{h.c.}),
+		\hat{H}_\mathrm{el} &= \sum_{j,\sigma} \varepsilon_{j\sigma}^\pdagger \hat{d}_{j\sigma}^\dagger \hat{d}_{j\sigma}^\pdagger - t_0 \sum_{j\sigma} (\hat{d}_{j\sigma}^\dagger \hat{d}_{j+1,\sigma}^\pdagger + \mathrm{h.c.}) +\\& \lambda_\mathrm{so}^\pdagger\sum_{j\sigma\sigma'} (i\hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2,\sigma'}^\pdagger + \mathrm{h.c.}),
 	\end{split}\\
-	\hat{H}_\mathrm{el-ph} &= - \sum_{j,\sigma} t_{j\sigma}^\pdagger d_{j\sigma}^\dagger d_{j+1\sigma}^\pdagger (a_{j}^\dagger + a_{j}^\pdagger) \\ & + \sum_{j\sigma} (i\lambda_{j\sigma}^\pdagger d_{j\sigma}^\dagger (\vec{v}_j^{(+)} \cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger d_{j+2\sigma'}^\pdagger +\mathrm{h.c.})(a_{j}^\dagger + a_{j}^\pdagger),\label{eq:HelPh}\\
-	\hat{H}_\mathrm{ph} &= \sum_{j} \omega_{j}^\pdagger a_{j}^\dagger a_{j}^\pdagger.
+	\hat{H}_\mathrm{el-ph} &= - \sum_{j,\sigma} t_{j\sigma}^\pdagger \hat{d}_{j\sigma}^\dagger \hat{d}_{j+1\sigma}^\pdagger (\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger) \\ & + \sum_{j\sigma} (i\lambda_{j\sigma}^\pdagger \hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)} \cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2\sigma'}^\pdagger +\mathrm{h.c.})(\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger),\label{eq:HelPh}\\
+	\hat{H}_\mathrm{ph} &= \sum_{j} \omega_{j}^\pdagger \hat{a}_{j}^\dagger \hat{a}_{j}^\pdagger.
 	 \label{eq:Hamiltonian_el_Fransson} 
 \end{align}
 Fransson incorporates an spin other orbit-like coupling \cite{zoellner2020influence} between the spins and the orbitals of electrons of next-nearest-neighbor monomers, described by the third term.  
@@ -94,12 +96,50 @@ The parameters employed in the following convergence tests are given in \cref{ta
 \end{tabular}
 \end{table}\\
 \section{Mean-Field Trajectory Based Methods}
-\subsection{Quantum-Classical Approximation}
-Following a standard quantum-classical approximation, the above Hamiltonian can be simplified. Using the harmonic oscillator representation of the annihilation operator $\hat{a}_n$ in terms of position $\hat{q}_n$ and momentum operators $\hat{p}_n$
+Within this section, we summarize some mixed quantum-classical, quasiclassical, approaches based on mean-field trajectories.
+The most well-known are the Ehrenfest approach (also known as \emph{time-dependent self-consistent field} (TD-SCF)), in which single classical trajectories on a mean potential energy surface are propagated. We also discuss the ensemble version of this approach, in which, instead of a single trajectory, an ensemble of trajectories sampled from a suitable initial distribution of vibrational positions and momenta are propagated. 
+Traditionally, these methods have been developed for electron-vibrational or spin-boson like problems, meaning the electronic DoF are treated quantum-mechanically while the vibrational DoF are treated classically. 
+In this section, we will follow loosely this conventional approach, and discuss the fermionic environmental DoF in a separate chapter below.
+\subsection{Alternative Form for Molecular Hamiltonian}
+Traditionally, the starting point is a Hamiltonian already given in terms of vibrational canonical positions and momenta
 \begin{equation}
-	\hat{a}_n= \sqrt{\frac{\omega_n}{2}} \left(\hat{q}_n + i\frac{\hat{p}_n}{\omega_n}\right).
+	\hat{H} = \sum_j \frac{\hat{p}_j^2}{2m_j} + U(\hat{x}) + \sum_{n,\sigma,m,\sigma'} V_{n\sigma,m\sigma'}(\hat{x})\state{n\sigma}\cstate{m\sigma'}.\label{eq:MappingHamiltonian0}
 \end{equation}
-the phonons are approximated to be described by classical harmonic oscillators
+To obtain this form one uses the harmonic oscillator representation of the annihilation operator $\hat{a}_n$ in terms of position $\hat{q}_n$ and momentum operators $\hat{p}_n$
+\begin{equation}
+	\begin{split}
+		\hat{a}_n&= \sqrt{\frac{m_n \omega_n}{2}} \left(\hat{q}_n + i\frac{\hat{p}_n}{m_n \omega_n}\right).\\
+		\Bigg(\omega_n \hat{a}_n^\dagger \hat{a}_n &= \frac{m_n \omega_n^2}{2} \left(q_n^2 + \frac{p_n^2}{m_n^2 \omega_n^2}\right) = \frac{m_n \omega_n^2 q_n^2 }{2} + \frac{p_n^2}{2m_n}\Bigg).
+	\end{split}
+\end{equation}
+The Hamiltonian given in \cref{eq:Hamiltonian_el_Fransson} can be recast in this form, as one recognizes that the potential energy operator $\hat{V}_{n\sigma, m\sigma'}(\hat{x})$ (introducing spin indices $\sigma,\sigma'$ appropriate for the problem) can be split into a purely electronic contribution, meaning independent of $\hat{x}$, obtained from $\hat{H}_\mathrm{el}$ and a contribution from the electron-vibrational interaction $\hat{H}_\mathrm{el-ph}$
+\begin{equation}
+	\begin{split}
+		\hat{V}_{n\sigma,m\sigma'}(\hat{x}) &= \hat{V}_{n\sigma,m\sigma'}^\mathrm{el} +  \hat{V}_{n\sigma,m\sigma'}^\mathrm{el-ph}(\hat{x})\\
+		\hat{V}_\mathrm{n\sigma,m\sigma'}^\mathrm{el}&= \varepsilon_{n\sigma}\delta_{nm}\delta_{\sigma\sigma'} - t_0 \delta_{\sigma\sigma'}(\delta_{m,n+1} + \delta_{n,m+1}) +\\
+		& \lambda_\mathrm{so}i(\delta_{m,n+2}+\delta_{n,m+2})(\delta_{\sigma\sigma'}\delta_{\sigma\uparrow} v_{n,z}^{(+)} +  \delta_{\sigma\downarrow}\delta_{\sigma'\uparrow}[v_{n,x }^{(+)} + iv_{n,y }^{(+)}]+ \\
+		& \qquad\qquad\qquad\qquad\qquad \delta_{\sigma\uparrow}\delta_{\sigma'\downarrow}[v_{n,x }^{(+)} - iv_{n,y }^{(+)}] - \delta_{\sigma\sigma'}\delta_{\sigma\downarrow}v_{n,z}^{(+)})\\
+		\hat{V}^\mathrm{el-ph}_{n\sigma,m\sigma'}(\hat{x}) &= \sqrt{\frac{m_n \omega_n}{2}}\hat{x}_n\big( -t_\mathrm{ph} \delta_{m,n+1}\delta_{\sigma\sigma'} 
+		+ i\lambda_\mathrm{ph}\hat{x}_n (\delta_{\sigma\sigma'}\delta_{\sigma\uparrow} v_{n,z}^{(+)} +\\   
+		& \qquad\qquad\qquad \delta_{\sigma\downarrow}\delta_{\sigma'\uparrow}[v_{n,x }^{(+)} + iv_{n,y }^{(+)}]+\delta_{\sigma\uparrow}\delta_{\sigma'\downarrow}[v_{n,x }^{(+)} - \\
+		& \qquad\qquad\qquad  iv_{n,y }^{(+)}] - \delta_{\sigma\sigma'}\delta_{\sigma\downarrow}v_{n,z}^{(+)})\big).
+	\end{split}
+\end{equation} 
+The vibrational Hamiltonian takes the form  
+\begin{equation}
+	\begin{split}
+		\hat{H}_\mathrm{ph} &= \sum_j \omega_j \hat{a}_j^\dagger \hat{a}^\pdagger_j \\
+		&= \sum_j \frac{m_j \omega_j^2\hat{q}_j^2}{2} + \frac{\hat{p}_j^2}{2m_j}\\
+		&\equiv \sum_j \frac{\hat{p}_j^2}{2m_j} + U(\hat{x})
+	\end{split}
+\end{equation}
+with the usual harmonic oscillator potential $U(\hat{x})$.
+Hence, the Hamiltonian of the molecule takes the more conventional form given in \cref{eq:MappingHamiltonian0} with the single-particle fermionic operators 
+\begin{equation}
+	\hat{d}^\dagger_{n\sigma}\hat{d}^\pdagger_{m\sigma'} = \state{n\sigma}\cstate{m\sigma'}.
+\end{equation}
+\subsection{Quantum-Classical Approximation and Ehrenfest Dynamics}
+Due to the separation of time scales of electronic dynamics and vibrational dynamics, within the quantum-classical approximation the phonons are approximated to be described by classical harmonic oscillators. This is a mapping between position and momentum operators and their corresponding classical (continuous) functions
 \begin{align}
 	\hat{q}_n& \rightarrow q_n,\\
 	\hat{p}_n &\rightarrow p_n
@@ -148,7 +188,46 @@ Here, $Z=\int \dif x_n \dif p_n \rho_\mathrm{C}$ is the classical partition func
 %Nuclear dynamics is constrained to a single (parabolic) potential energy surface within Fransson's Hamiltonian (\cref{eq:Hamiltonian_el_Fransson}). It would be interesting to consider two PES per site (unoccupied, occupied molecule). How to extend the model?  
 \section{Mapping-Based Approaches}
 From a theoretical point of view, the approaches shown in the previous section seem unsatisfying as the description of the dynamics is not treated on an equal footing. An alternative quantum-classical method is based on mapping quantum-mechanical operators to their corresponding operators in phase space and employing a classical approximation in these phase-space variables later. The main benefit of formulating the dynamics in terms of phase-space operators is that both electrons and vibrational modes are treated on an equal footing, even after performing the quantum-classical approximation. 
-
+As the vibrational DoF are already represented by the continuous operators $\hat{x},\hat{p}$, the challenge is to find a representation of the discrete electronic DoF in terms of continous operators. The first approach we will discuss is the Mayer-Miller-Stock-Thoss (MMST) mapping, which expands the representation of a $N$-level system and $N$ singly excited harmonic oscillators.
+\subsection{MMST-Mapping}
+There exists an equivalence between the equation of motion for $X_n$ and $P_n$ of a an electronic $N$-level system and the equations of motion of a set of $N$ harmonic oscillators. 
+The MMST mapping is a one-to-one correspondence between an electronic $N$-level system and a set of $N$ harmonic oscillators. Among all harmonic oscillator basis states $\state{n_1,\dots,n_N}=\state{n_1}_1\dots \state{n_N}_N$, only those which are elements of the single-excitation subspace 
+\begin{equation}
+	\state{n}\mapsto \state{n}_\mathrm{SEO} = \state{0}_1\dots \state{1}_n\dots \state{0}_N
+\end{equation}
+corresponds to a physical state in the electronic space.
+Similarly to Schwingers theory of angular momentum, operators can be expressed in terms of creation and annihilation operators in the harmonic oscillator space
+\begin{equation}
+	\state{n}\cstate{m} \mapsto \hat{b}_n^\dagger \hat{b}_m^\pdagger.
+\end{equation}
+The harmonic oscillator operators can be represented in terms of position and momentum operators
+\begin{equation}
+	\hat{b}_n = \frac{1}{\sqrt{2\hbar}}(\hat{X}_n+i\hat{P}_n).
+\end{equation}
+The positions and momenta of the mapping oscillators fulfill the usual commutation relationship
+\begin{equation}
+	[\hat{X}_n,\hat{P}_m]=i\hbar\delta_{nm}
+\end{equation}
+Hence, the diagonal and off-diagonal fermionic operators are given by
+\begin{align}
+	\state{n}\cstate{n} &\mapsto \frac{1}{2\hbar} (\hat{X}_n^2+\hat{P}_n^2 -\hbar)\\
+	 \state{n}\cstate{m} & \mapsto \frac{1}{2\hbar} (\hat{X}_n \hat{X}_m +\hat{P}_n \hat{P}_m) \qquad n\neq m
+\end{align}
+in the mapping-space.
+Hence, the molecular Hamiltonian in MMST-mapping space is (again introducing spin-indices as above)
+\begin{equation}
+	\hat{H}^\mathrm{MMST}_\mathrm{mol} = \sum_j \frac{\hat{p}_j^2}{2m_j} + U(\hat{x}) + \sum_{n\sigma, m\sigma'} V_{n\sigma,m\sigma'}(\hat{x}) (\hat{X}_{n\sigma}\hat{X}_{m\sigma'}+\hat{P}_{n\sigma}\hat{P}_{m\sigma'}-\hbar\delta_{nm,\sigma\sigma'}).
+\end{equation}
+As recognized by Stock and Thoss, this Hamiltonian is not an approximation in itself of the original electron-vibrational problem, but rather an exact representation of it. The dynamics generated by Hamilton's equation of motion turn out to be equivalent to the time-dependent Schrödinger equation for the amplitudes of the wavefunction. 
+The main approximation is hence to solve the quantum problem using quasiclassical methodology, e.g. propagating the mapping-variables $\hat{x},\hat{p},\hat{X}_n,\hat{P}_n$ using quasiclassical methodolgy. 
+The classical sequations of motion herefore read
+\begin{align}
+	\dot{X}_{n\sigma}& = \frac{\partial H}{\partial P_{n\sigma}}= \sum_{m\sigma'} V_{n\sigma,m\sigma'}P_{m\sigma'}\\
+	\dot{P}_{n\sigma}& = -\frac{\partial H}{\partial X_{n\sigma}}= -\sum_{m\sigma'} V_{n\sigma,m\sigma'}X_{m\sigma'}\\
+	\dot{x}_n &= \frac{\partial H}{\partial x_n}= \frac{p_n}{m_n}\\
+	\dot{p}_n &= -\frac{\partial H}{\partial x_n}= -m_n\omega_n^2 x_n - \sum_{m\sigma'}\frac{\partial V_{n\sigma,m\sigma'}}{\partial x_n }(X_{n\sigma}X_{m\sigma'}+P_{n\sigma}P_{m\sigma'}-\hbar\delta_{nm,\sigma\sigma'})
+\end{align}
+\subsection{Spin-Mapping}
 \section{Results}
 \subsection{Exact Dynamics in an Isolated Molecule}
 In this section we present results of the exact quantum dynamics in an isolated molecule. Due to the exponentially scaling complexity, only small system sizes can be computed. In practice, the number of vibrational levels for each mode is truncated. 
