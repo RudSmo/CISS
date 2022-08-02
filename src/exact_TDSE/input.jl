@@ -5,14 +5,14 @@ include("hamiltonian.jl")
 using .RK4
 using .Hamiltonian
 
-el_state = [1,0,0,0,0,0]
-ph_state = [0,0,0]
+el_state = [1,0,0,0]
+ph_state = [0,0]
 vibStates = 3
 num_sites = Int(length(el_state)/2)
 num_laps = 1
 sites_lap = num_sites
-eps = -6*t0 * ones(2)
 t0 = 0.04
+eps = -6*t0 * ones(2)
 tPh = 0.1*t0
 lambda0 = t0/40
 lambdaPh = 0.1*lambda0
@@ -30,10 +30,10 @@ end
 filname = "$(path)test_1site.dat"
 imagfilname = "$(path)test_1site_im.dat"
 
-nsteps = Int(200/dt)
-insteps = Int(10/dt)
-nsave = 20
-nflush= 400
+nsteps = Int(3000/dt)
+insteps = Int(100/dt)
+nsave = 200
+nflush= 1000
 
 Propagate(psi0,num_sites,vibStates,H,dt,filname,nsteps,nsave,nflush)
 #PropagateImag(num_sites,vibStates,H,dt,filname,imagfilname,nsteps,insteps,nsave,nflush)

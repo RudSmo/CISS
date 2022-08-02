@@ -151,7 +151,7 @@ function PhOccLevels(state::Array,L::Int64,M::Int64)::Array
     Rho = state*state'
     occ = []
     idims = collect(Iterators.flatten([[2 for j in 1:2*L],[M for j in 1:L]]))
-    sp_sites = Array(1:L)
+    sp_sites = Array(1:2*L)
     for i in 2*L+1:3*L
         trout = collect(Iterators.flatten([sp_sites,[j for j in 2*L+1:3*L if j!=i]])) 
         rho = QuantumInformation.ptrace(Rho,idims,trout)
@@ -172,13 +172,15 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush)
     
     fil = open(filname,"w")
     write(fil,"#(1)t ")
-    for i in 1:2:L
-        write(fil,"($(i+1))ElN$(i)_up ($(i+2))ElN$(i)_dw ")
+    k = 1
+    for i in 1:L
+        write(fil,"($(k+1))ElN$(i)_up ($(k+2))ElN$(i)_dw ")
+        k += 2
     end
     k = 1
     for i in 1:L
-        for j in 1:M
-            write(fil,"($(L+2+k))PhN$(i)_$(j) ")
+        for j in 0:M-1
+            write(fil,"($(L+3+k))PhN$(i)_$(j) ")
             k += 1
         end
     end
@@ -237,16 +239,17 @@ function PropagateImag(L,M,H,dt,filname,imagfilname,nsteps,imagsteps,nsave,nflus
      
     write(fil,"#(1)t ")
     write(ifil,"#(1)t ")
-    
-    for i in 1:2:L
-        write(fil,"($(i+1))ElN$(i)_up ($(i+2))ElN$(i)_dw ")
-        write(ifil,"($(i+1))ElN$(i)_up ($(i+2))ElN$(i)_dw ")
+    k = 1
+    for i in 1:L
+        write(fil,"($(k+1))ElN$(i)_up ($(k+2))ElN$(i)_dw ")
+        write(ifil,"($(k+1))ElN$(i)_up ($(k+2))ElN$(i)_dw ")
+        k += 2
     end
     k = 1
     for i in 1:L
-        for j in 1:M
-            write(fil,"($(L+1+k))PhN$(i)_$(j) ")
-            write(ifil,"($(L+1+k))PhN$(i)_$(j) ")
+        for j in 0:M-1
+            write(fil,"($(L+3+k))PhN$(i)_$(j) ")
+            write(ifil,"($(L+3+k))PhN$(i)_$(j) ")
             k += 1
         end
     end
@@ -289,12 +292,15 @@ function PropagateImag(L,M,H,dt,filname,imagfilname,nsteps,imagsteps,nsave,nflus
             ti = []
         end    
     end
+    psi0 = psi_p
+    ti = [0.0]
+    nd = [ElOccLattice(psi0,L,M)]
+    bl = [PhOccLevels(psi0,L,M)]
     for i in 1:nsteps
         psi_n = RK4Step(H,psi_p,dt)
         psi_p = psi_n#/norm(psi_n)
         if i % nsave == 0
             push!(nd,ElOccLattice(psi_p,L,M))
-            #push!(bo,OccLattice(psi_p,L,M))
             push!(bl,PhOccLevels(psi_p,L,M))
             push!(ti,i*dt)
         end
@@ -305,9 +311,6 @@ function PropagateImag(L,M,H,dt,filname,imagfilname,nsteps,imagsteps,nsave,nflus
                 for k in 1:length(nd[j])
                     write(fil,"$(nd[j][k][1]) $(nd[j][k][2]) ")
                 end
-               # for k in 1:length(bo[j])
-               #     write(fil,"$(bo[j][k]) ")
-               # end 
                 for ki in 1:length(bl[j])
                     for li in 1:length(bl[j][ki])
                         write(fil,"$(bl[j][ki][li]) ")
