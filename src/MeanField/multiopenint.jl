@@ -141,9 +141,9 @@ function PropagateSingle(E   		::Array,
 		q0 			= qnIn
 		p0 			= pnIn
 	elseif phIn == "Wigner"
-		A           = [SampleWignerA(beta,ws[i],vSampl) for i in 1:N]
-		q0 			= [A[i][1] for i in 1:N]
-		p0 			= [A[i][2] for i in 1:N]
+		A           = SampleWignerA(beta,ws,vSampl)
+		q0 			= A[1]
+		p0 			= A[2]
 	end
 	
 	qin         = q0
@@ -152,7 +152,7 @@ function PropagateSingle(E   		::Array,
 	p_l 		= [p0]
 	
 	hcen_i      = SingleLevel(E,ws,gph,q0)
-	Gamma1,Gamma2 = GammaMatrices1d(N,tL,tR)
+	Gamma1,Gamma2 = GammaMatrices1d(1,tL,tR)
 	GammaT		= Gamma1+Gamma2
 	tim   		= [0.0]
 	kappa,xi	= PadeFermi(nPoles)
@@ -162,7 +162,7 @@ function PropagateSingle(E   		::Array,
 	if rhoIn == "pure"
 		rho0    = Diagonal(float(popIn))
 	elseif rhoIn == "equilibrium"
-		rho0	    = DensityFExOpen(N,1,hcen_i,kappa,chiLP,GammaT,beta)*(1+0*1im)
+		rho0	    = DensityFExOpen(1,1,hcen_i,kappa,chiLP,GammaT,beta)*(1+0*1im)
 	end
 	pop_l       = [Populations(rho0)]
 	rho_i       = rho0
@@ -184,9 +184,9 @@ function PropagateSingle(E   		::Array,
 	for i in 1:numstep
 		if resampling 
 			if i % rsmpl_stp == 0
-				A           = [SampleWignerA(beta,ws[i],vSampl) for i in 1:N]
-				qin 		= [A[i][1] for i in 1:N]
-				pin 		= [A[i][2] for i in 1:N]
+				A           = SampleWignerA(beta,ws,vSampl) 
+				qin 		= A[1]
+				pin 		= A[2]
 			end
 		end
 		hcen_i  = SingleLevel(E,ws,gph,qin)	
@@ -195,7 +195,7 @@ function PropagateSingle(E   		::Array,
 	
 		curp1_c, curp2_c, cur1_c, cur2_c, cur_c = RK_Currents(beta,hcen_i,Gamma1,Gamma2,GammaT,kappa,chi1,chi2,curp1_i,curp2_i,rho_i,dt)
 		rho_c	= RK_VneumannL(rho_i,hcen_i,cur_c,dt)
-		qn,pn   = SymplecticEulerStep(N,a,c,num_laps,tph,tsoph,ws,rho_c,qin,pin,dt) 
+		qn,pn   = SymplecticEulerStepSingle(ws,gph,rho_c,qin,pin,dt) 
 		# BUFFER
 		rho_i   = copy(rho_c)
 		curp1_i = copy(curp1_c)
