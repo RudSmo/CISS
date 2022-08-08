@@ -1,8 +1,8 @@
-# Parameters of run on 2022-08-08T16:51:59.326 
+# Parameters of run on 2022-08-08T17:42:43.928 
 # The purpose of this run is the following: Test of Fransson model.
 # --------------------PARAMS----------------------------
-dt = 0.001
-Nstep = 1000000
+dt = 0.0001
+Nstep = 2000000
 N = 1
 ws = 1.4
 gph = 0.0

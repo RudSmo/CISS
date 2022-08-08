@@ -13,8 +13,8 @@ using .ClassicalPhonons
 # -------------- Parameters --------------------------
 
 # Simulation Parameters
-dt = 0.001
-tend = 1000
+dt = 0.0001
+tend = 200
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 
@@ -24,7 +24,8 @@ eu  = 1.0
 ed  = -eu
 E   = [eu,ed]
 ws  = 1.4*eu
-gph = 0 * 0.1
+gph = 1 * 0.1
+
 
 #rhoIn = "pure"
 rhoIn = "equilibrium"

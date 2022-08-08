@@ -60,14 +60,14 @@ end
 
 function SymplecticEulerStep(N,a,c,num_laps,tph,tsoph,ws,rho,q0,p0,dt)
    # println(tr(rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[1],1)))
-    pn = real.([p0[i] - dt*(ws[i]^2 * q0[i] - tr(rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[i],i))) for i in 1:N])
+    pn = real.([p0[i] - dt*(ws[i]^2 * q0[i] + tr(rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[i],i))) for i in 1:N])
     qn = real.([q0[i] + dt*pn[i] for i in 1:N])
     return qn,pn
 end
 
 function SymplecticEulerStepSingle(ws,gph,rho,q0,p0,dt)
     # println(tr(rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[1],1)))
-     pn = real(p0 - dt*(ws^2 * q0 - tr(rho * sqrt(2*ws)*gph*Matrix(I,2,2))))
+     pn = real(p0 - dt*(ws^2 * q0 + tr(rho * sqrt(2*ws)*gph*Matrix(I,2,2))))
      qn = real(q0 + dt*pn)
      return qn,pn
  end
