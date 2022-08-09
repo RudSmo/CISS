@@ -35,11 +35,14 @@ function Idkron(n::Int64,b::Int64)::Any
 end
 function fop()::Array
     """
-    Fermionic annihilation operator on site i on a lattice with L sites.
+    Single fermionic annihilation operator.
     """
     return [0 1; 0 0.]
 end
 function nfop(i,s,L,b)
+    """
+    Fermionic annihilation operator on site i and spin s on a lattice with L sites and dimension b.
+    """
     sz = [1 0; 0 -1.]
     id = Matrix(I,b,b)
     if i == 1 
