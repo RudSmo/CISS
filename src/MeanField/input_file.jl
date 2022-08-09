@@ -19,10 +19,12 @@ using .ClassicalPhonons
 
 # Simulation Parameters
 dt = 0.001
-tend = 1000
+tend = 20.0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
-
+initProp  = false
+# true = propagate as usuals
+# false = use initial density matrix from previous computation
 
 # Geometry Parameters
 t0 = 0.04
@@ -39,11 +41,17 @@ tph = 0.1*t0
 tsoph = 0.1*tso
 ws = ones(l)*1.4*t0
 
-rhoIn = "pure"
-# rhoIn = "equilibrium"
-
-phIn = "TDSCF"
-# phIn = "Wigner"
+if initProp
+    rhoIn = "pure"
+    # rhoIn = "equilibrium"
+    phIn = "TDSCF"
+    # phIn = "Wigner"
+    pathIn = ""
+else
+    rhoIn = "fromFile"
+    phIn = rhoIn
+    pathIn = "data/L3_dt0.001_1_final_Quantities"
+end
 
 popElIn = [1,0,0,0,0,0]
 popPhIn = [0,0,0]
@@ -58,10 +66,6 @@ V  = zeros(numstep)#[1.2 for i in 1:numstep]
 nPoles = 1
 beta = 1/0.025
 
-## Central
-
-#hcen0 = [eu 0; 0. ed] #FranssonHamiltonian(l,[eu,ed],t,tso,a,c,num_laps)
-
 
 path = "data"
 if !isdir(path)
@@ -72,7 +76,7 @@ num_avg = 1
 resampling = false
 rsmpl_stp = 15
 for ka in 1:num_avg
-    dataname1 = "$(path)/L$(l)_dt$(abs(dt))"
+    dataname1 = "$(path)/L$(l)_dt$(abs(dt))_2"
     dataname2 = "$(dataname1)_$(ka)"
 
     params = [("dt",dt),("Nstep",numstep),("N",l),("t0",t0),("tso",tso),("tph",tph),("tsoph",tsoph),("ws",ws),("tL",tL),("tR",tR),("V",V[1]),("nPoles",nPoles),("beta",beta)]
@@ -81,7 +85,7 @@ for ka in 1:num_avg
     purpose = "Test of Fransson model."
     IOsave.SaveParams(params,parampath,purpose)
 
-    @timev Propagate(l,E,t0,tso,a,c,num_laps,tph,tsoph,ws,dt,numstep,tL,tR,beta,nPoles,V,dataname2,resampling,rhoIn,phIn,vSampl,popElIn,qnIn,pnIn)
+    @timev Propagate(l,E,t0,tso,a,c,num_laps,tph,tsoph,ws,dt,numstep,tL,tR,beta,nPoles,V,dataname2,resampling,rhoIn,phIn,vSampl,pathIn,popElIn,qnIn,pnIn)
     #Average(ka,dataname1,num_avg)
 end
 

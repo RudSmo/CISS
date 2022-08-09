@@ -14,10 +14,12 @@ using .ClassicalPhonons
 
 # Simulation Parameters
 dt = 0.0001
-tend = 200
+tend = 10
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
-
+initProp  = false
+# true = propagate as usuals
+# false = use initial density matrix from previous computation
 
 # Geometry Parameters
 eu  = 1.0
@@ -26,13 +28,17 @@ E   = [eu,ed]
 ws  = 1.4*eu
 gph = 1 * 0.1
 
-
-#rhoIn = "pure"
-rhoIn = "equilibrium"
-
-# phIn = "TDSCF"
-phIn = "Wigner"
-
+if initProp
+    #rhoIn = "pure"
+    rhoIn = "equilibrium"
+    # phIn = "TDSCF"
+    phIn = "Wigner"
+    pathIn = ""
+else
+    rhoIn = "fromFile"
+    phIn = rhoIn
+    pathIn = "data_gph$(gph)_ws$(ws)/L1_gph$(gph)_ws$(ws)_dt$(abs(dt))_1_final_Quantities"
+end
 #popElIn = [1,1,0,0,0,0]
 #popPhIn = [0,0,0]
 vSampl = "v1"
@@ -55,7 +61,7 @@ num_avg = 1
 resampling = false
 rsmpl_stp = 15
 for ka in 1:num_avg
-    dataname1 = "$(path)/L1_gph$(gph)_ws$(ws)_dt$(abs(dt))"
+    dataname1 = "$(path)/L1_gph$(gph)_ws$(ws)_dt$(abs(dt))_1"
     dataname2 = "$(dataname1)_$(ka)"
 
     params = [("dt",dt),("Nstep",numstep),("N",1),("ws",ws),("gph",gph),("tL",tL),("tR",tR),("V",V[1]),("nPoles",nPoles),("beta",beta)]
@@ -64,7 +70,7 @@ for ka in 1:num_avg
     purpose = "Test of Fransson model."
     IOsave.SaveParams(params,parampath,purpose)
 
-    @timev PropagateSingle(E,ws,gph,dt,numstep,tL,tR,beta,nPoles,V,dataname2,resampling,rhoIn,phIn,vSampl)
+    @timev PropagateSingle(E,ws,gph,dt,numstep,tL,tR,beta,nPoles,V,dataname2,resampling,rhoIn,phIn,vSampl,pathIn)
 end
 
 end

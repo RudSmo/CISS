@@ -12,6 +12,7 @@ using .Electrons
 using .RungeKutta
 using .ClassicalPhonons
 using LinearAlgebra
+using HDF5
 
 export Propagate,PropagateSingle
 
@@ -38,20 +39,24 @@ function Propagate(N::Int,
 		  rhoIn     ::String,
 		  phIn	    ::String,
 		  vSampl    ::String,
+		  pathIn    = "",
 		  popIn 	= zeros(1),
 		  qnIn  	= zeros(1),
 		  pnIn  	= zeros(1),
 		  rsmpl_stp	= 0)
 
 
-	
 	if phIn == "TDSCF"
-		q0 			= qnIn
-		p0 			= pnIn
+		q0 		= qnIn
+		p0 		= pnIn
 	elseif phIn == "Wigner"
-		A           = [SampleWignerA(beta,ws[i],vSampl) for i in 1:N]
-		q0 			= [A[i][1] for i in 1:N]
-		p0 			= [A[i][2] for i in 1:N]
+		A       = [SampleWignerA(beta,ws[i],vSampl) for i in 1:N]
+		q0 	    = [A[i][1] for i in 1:N]
+		p0 		= [A[i][2] for i in 1:N]
+	elseif phIn == "fromFile"
+		fid     = h5open(pathIn,"r")
+		q0      = read(fid["q"])
+		p0      = read(fid["p"])
 	end
 
 	qin         = q0
@@ -70,16 +75,24 @@ function Propagate(N::Int,
 	if rhoIn == "pure"
 		rho0    = Diagonal(float(popIn))
 	elseif rhoIn == "equilibrium"
-		rho0	    = DensityFExOpen(N,1,hcen_i,kappa,chiLP,GammaT,beta)*(1+0*1im)
+		rho0	= DensityFExOpen(N,1,hcen_i,kappa,chiLP,GammaT,beta)*(1+0*1im)
+	elseif rhoIn == "fromFile"
+		rho0    = read(fid["Rho"])
 	end
+
 	pop_l       = [Populations(rho0)]
     rho_i       = rho0
     
 	hcen0 		= hcen_i
 
-	
-	curp1_i 	= [CurrentInit_PFree(hcen0,GammaT,chi1[i],kappa[i],beta,Gamma1) for i in 1:length(chi1)]
-	curp2_i 	= [CurrentInit_PFree(hcen0,GammaT,chi2[i],kappa[i],beta,Gamma2) for i in 1:length(chi2)]
+	if rhoIn == "fromFile"
+		curp1_i = [read(fid["Curp1$(j)"]) for j in 1:nPoles]
+		curp2_i = [read(fid["Curp2$(j)"]) for j in 1:nPoles]
+		close(fid)
+	else
+		curp1_i = [CurrentInit_PFree(hcen0,GammaT,chi1[i],kappa[i],beta,Gamma1) for i in 1:length(chi1)]
+		curp2_i = [CurrentInit_PFree(hcen0,GammaT,chi2[i],kappa[i],beta,Gamma2) for i in 1:length(chi2)]
+	end
 
 	curM1		= CurrentMatrix(rho0,Gamma1,curp1_i)
 	curM2		= CurrentMatrix(rho0,Gamma2,curp2_i)
@@ -111,7 +124,17 @@ function Propagate(N::Int,
 		qin     = qn
 		pin     = pn
 		pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l = SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,path)
-	
+		if i == numstep 
+			fil = h5open("$(path)_final_Quantities","w")
+			fil["Rho"] = rho_i
+			for j in 1:nPoles
+				fil["Curp1$(j)"] = curp1_i[j]
+				fil["Curp2$(j)"] = curp2_i[j]
+			end
+			fil["q"] = qin
+			fil["p"] = pin
+			close(fil)	 
+		end
 	end
 end
 
@@ -130,6 +153,7 @@ function PropagateSingle(E   		::Array,
 						 rhoIn      ::String,
 						 phIn	    ::String,
 						 vSampl     ::String,
+						 pathIn     = "",
 						 popIn 		= zeros(1),
 						 qnIn  		= zeros(1),
 						 pnIn  		= zeros(1),
@@ -144,7 +168,12 @@ function PropagateSingle(E   		::Array,
 		A           = SampleWignerA(beta,ws,vSampl)
 		q0 			= A[1]
 		p0 			= A[2]
+	elseif phIn == "fromFile"
+		fid     = h5open(pathIn,"r")
+		q0      = read(fid["q"])
+		p0      = read(fid["p"])
 	end
+
 	
 	qin         = q0
 	pin         = p0
@@ -159,20 +188,29 @@ function PropagateSingle(E   		::Array,
 	chi1		= V[1]/2 .+ 1im .* xi ./beta    		# At t<t_0, voltage drop is zero.
 	chi2		= -V[1]/2 .+ 1im .* xi ./beta
 	chiLP 	    = [chi1,chi2]
+
 	if rhoIn == "pure"
 		rho0    = Diagonal(float(popIn))
 	elseif rhoIn == "equilibrium"
 		rho0	    = DensityFExOpen(1,1,hcen_i,kappa,chiLP,GammaT,beta)*(1+0*1im)
+	elseif rhoIn == "fromFile"
+		rho0    = read(fid["Rho"])
 	end
+	
 	pop_l       = [Populations(rho0)]
 	rho_i       = rho0
 	
 	hcen0 		= hcen_i
 	
-	
-	curp1_i 	= [CurrentInit_PFree(hcen0,GammaT,chi1[i],kappa[i],beta,Gamma1) for i in 1:length(chi1)]
-	curp2_i 	= [CurrentInit_PFree(hcen0,GammaT,chi2[i],kappa[i],beta,Gamma2) for i in 1:length(chi2)]
-	
+	if rhoIn == "fromFile"
+		curp1_i = [read(fid["Curp1$(j)"]) for j in 1:nPoles]
+		curp2_i = [read(fid["Curp2$(j)"]) for j in 1:nPoles]
+		close(fid)
+	else
+		curp1_i = [CurrentInit_PFree(hcen0,GammaT,chi1[i],kappa[i],beta,Gamma1) for i in 1:length(chi1)]
+		curp2_i = [CurrentInit_PFree(hcen0,GammaT,chi2[i],kappa[i],beta,Gamma2) for i in 1:length(chi2)]
+	end
+
 	curM1		= CurrentMatrix(rho0,Gamma1,curp1_i)
 	curM2		= CurrentMatrix(rho0,Gamma2,curp2_i)
 	cur1_l		= [Current(curM1)]
@@ -203,7 +241,17 @@ function PropagateSingle(E   		::Array,
 		qin     = qn
 		pin     = pn
 		pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l = SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,path)
-	
+		if i == numstep 
+			fil = h5open("$(path)_final_Quantities","w")
+			fil["Rho"] = rho_i
+			for j in 1:nPoles
+				fil["Curp1$(j)"] = curp1_i[j]
+				fil["Curp2$(j)"] = curp2_i[j]
+			end
+			fil["q"] = qin
+			fil["p"] = pin
+			close(fil)	 
+		end
 	end
 
 end
