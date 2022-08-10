@@ -6,6 +6,8 @@ using LinearAlgebra
 using .Helper
 using .Hamiltonian
 using QuantumInformation
+using HDF5
+
 export Propagate, PropagateImag, InitialState
 
 function SchEq(psi0::Array,H::Array)::Array
@@ -161,10 +163,16 @@ function PhOccLevels(state::Array,L::Int64,M::Int64)::Array
     return occ
 end
 
-function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush)
+function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
     """
     Main RK4 propagation. Solves Schrödinger equation, computes expectation values, saves them to a file.
     """
+    if pathIn != ""
+        fid = h5open(pathIn,"r")
+        psi0 = read(fid["psi"])
+        close(fid)
+    end
+
     nd = [ElOccLattice(psi0,L,M)]
     bl = [PhOccLevels(psi0,L,M)]
     ti = [0.0]
@@ -218,6 +226,10 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush)
             nd = []
             bl = []
             ti = []
+        end
+        if i == nsteps
+            fil = h5open("$(filname)_final_Quantities","w")
+            fil["psi"] = psi_p
         end
     end
 end
