@@ -101,13 +101,13 @@ end
 function Average(ind,path,num_avg)
 	pathr = "$(path)_$(ind)"
 	observables = ["currents","electrons","phonons"]
+	rm("$(pathr)_final_Quantities")
 	if ind == 1
 		for obs in observables
 			file_avg = readdlm("$(pathr)_$(obs).dat")
 			file_avg[2:end,2:end] = file_avg[2:end,2:end] ./ num_avg
 			writedlm("$(path)_$(obs)_avg.dat",file_avg) 
 			rm("$(pathr)_$(obs).dat")
-			rm("$(pathr)_final_Quantities")
 		end
 	else
 		for obs in observables
@@ -119,7 +119,6 @@ function Average(ind,path,num_avg)
 			rm("$(path)_$(obs)_avg.dat")
 			writedlm("$(path)_$(obs)_avg.dat",F_avg) 
 			rm("$(pathr)_$(obs).dat")
-			rm("$(pathr)_final_Quantities")
 		end
 	end
 
