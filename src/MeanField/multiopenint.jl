@@ -147,7 +147,7 @@ function PropagateSingle(E   		::Array,
 						 tR			::Array,
 						 beta		::Float64,
 						 nPoles		::Int,
-						 V          ::Array,
+						 V          ::Number,
 						 path		::String,
 						 resampling ::Bool,
 						 rhoIn      ::String,
@@ -185,8 +185,8 @@ function PropagateSingle(E   		::Array,
 	GammaT		= Gamma1+Gamma2
 	tim   		= [0.0]
 	kappa,xi	= PadeFermi(nPoles)
-	chi1		= V[1]/2 .+ 1im .* xi ./beta    		# At t<t_0, voltage drop is zero.
-	chi2		= -V[1]/2 .+ 1im .* xi ./beta
+	chi1		= V/2 .+ 1im .* xi ./beta    		# At t<t_0, voltage drop is zero.
+	chi2		= -V/2 .+ 1im .* xi ./beta
 	chiLP 	    = [chi1,chi2]
 
 	if rhoIn == "pure"
@@ -228,8 +228,8 @@ function PropagateSingle(E   		::Array,
 			end
 		end
 		hcen_i  = SingleLevel(E,ws,gph,qin)	
-		chi1	= V[i]/2 .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
-		chi2	= -V[i]/2 .+ 1im .* xi ./beta
+		chi1	= V/2 .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
+		chi2	= -V/2 .+ 1im .* xi ./beta
 	
 		curp1_c, curp2_c, cur1_c, cur2_c, cur_c = RK_Currents(beta,hcen_i,Gamma1,Gamma2,GammaT,kappa,chi1,chi2,curp1_i,curp2_i,rho_i,dt)
 		rho_c	= RK_VneumannL(rho_i,hcen_i,cur_c,dt)

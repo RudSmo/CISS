@@ -27,15 +27,16 @@ dt = 0.001
 #if !isdir(path)
 #    mkdir(path)
 #end
-filname = "pops_vib.dat"
-imagfilname = "pop_vib_im.dat"
+filname = "pops_vib_2.dat"
+imagfilname = "pop_vib_im_2.dat"
+pathIn = "pops_vib.dat_final_Quantities"
 
-nsteps = Int(0.02/dt)#Int(200/dt)
+nsteps = Int(950/dt)#Int(200/dt)
 insteps = Int(10/dt)
-nsave = 1#00
-nflush= 5#600
+nsave = 100
+nflush= 600
 
-@timev Propagate(psi0,num_sites,vibStates,H,dt,filname,nsteps,nsave,nflush)
+@timev Propagate(psi0,num_sites,vibStates,H,dt,filname,nsteps,nsave,nflush,pathIn)
 #PropagateImag(num_sites,vibStates,H,dt,filname,imagfilname,nsteps,insteps,nsave,nflush)
 
 
