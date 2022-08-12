@@ -1,12 +1,6 @@
 struct HamiltonianParameters
     """
-    ES = System energies
-    EB = Bath energies
-    gamma = Couplings
-
-    Ordering (Example): Three-level system
-    E = [ES1,ES2,EB1]
-    gamma = [[gS1S2,gS1B1],[gS2S1,gS2B1],[gB1S1,gB1S2]]
+    Electronic Hamiltonian
     """
     Hamiltonian ::Array{Float64}
 end
