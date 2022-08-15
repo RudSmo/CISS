@@ -1,46 +1,10 @@
-include("hamiltonian.jl")
-using .HamiltonianLib
-struct HamiltonianParameters
-    """
-    Hamiltonian = Electronic Hamiltonian
-    gamma       = Electron-phonon couplings
-    omega       = Phonon energies
-    Electron-phonon coupling to be assumed as local Holstein
-    """
-    Hamiltonian ::Array{Float64}
-    gamma       ::Array{Float64}
-    omega       ::Array{Float64}
-    beta        ::Float64
-end
+module MappingNLSPhonons
 
-mutable struct PhaseSpaceVariables
-    """
-    Ordering (Example): Three-level system
-    X = Mapping coordinate (electrons)
-    P = Mapping momentum (electrons)
-    x = Phonon coordinates 
-    p = Phonon momenta
-    """
-    X       ::Array{ComplexF64}
-    P       ::Array{ComplexF64}
-    x       ::Array{ComplexF64}
-    p       ::Array{ComplexF64}
-    gs      ::Float64
-end
+using LinearAlgebra
+using ..Structures: PhaseSpaceVariables
+export NSimulate,FocusedInitialCondition
 
-struct SimulationParameters
-    Nlvl    ::Int64
-    sphere  ::String
-    ntraj   ::Int64
-    dt      ::Float64
-    Nstp    ::Int64
-    Nsave   ::Int64 
-    Nflush  ::Int64
-    fnE     ::String
-    fnP     ::String
-end
-
-function EOMX(PSVar,HamPar,ip)
+function EOMX(PSVar,HamPar,SimPar,ip)
     if ip % 2 == 0
         n = Int(ip/2)
     else
@@ -49,7 +13,7 @@ function EOMX(PSVar,HamPar,ip)
     return sum([2 * HamPar.Hamiltonian[ip,j] * PSVar.P[j] for j in 1:SimPar.Nlvl]) + sqrt(2) * HamPar.gamma[n]*PSVar.P[ip] * PSVar.x[n]
 end
 
-function EOMP(PSVar,HamPar,ip)
+function EOMP(PSVar,HamPar,SimPar,ip)
     if ip % 2 == 0
         n = Int(ip/2)
     else
@@ -74,27 +38,27 @@ function EOMp(PSVar,HamPar,ip)
 end
 
 
-function Populations(PSVar)
+function Populations(PSVar,SimPar)
     return real.([0.5*(conj(PSVar.X[i])*PSVar.X[i] + conj(PSVar.P[i])*PSVar.P[i] - PSVar.gs) for i in 1:SimPar.Nlvl])
 end
 
 function SingleSimulate(PSVar,HamPar,SimPar)
-    pops = [Populations(PSVar)]    
+    pops = [Populations(PSVar,SimPar)]    
     xl   = [PSVar.x]
     pl   = [PSVar.p]
     ti   = [0.0]
     for i in 1:SimPar.Nstp
         for j in 1:SimPar.Nlvl
-            PSVar.X[j] = PSVar.X[j] + EOMX(PSVar,HamPar,j)*dt   
-            PSVar.P[j] = PSVar.P[j] + EOMP(PSVar,HamPar,j)*dt
+            PSVar.X[j] = PSVar.X[j] + EOMX(PSVar,HamPar,SimPar,j)*SimPar.dt   
+            PSVar.P[j] = PSVar.P[j] + EOMP(PSVar,HamPar,SimPar,j)*SimPar.dt
             if j % 2 != 0
                 n = Int((j+1)/2)
-                PSVar.x[n] = PSVar.x[n] + EOMx(PSVar,HamPar,n)*dt   
-                PSVar.p[n] = PSVar.p[n] + EOMp(PSVar,HamPar,j)*dt
+                PSVar.x[n] = PSVar.x[n] + EOMx(PSVar,HamPar,n)*SimPar.dt   
+                PSVar.p[n] = PSVar.p[n] + EOMp(PSVar,HamPar,j)*SimPar.dt
             end
         end
         if i % SimPar.Nsave == 0
-            push!(pops,Populations(PSVar))
+            push!(pops,Populations(PSVar,SimPar))
             push!(xl,real(PSVar.x))
             push!(pl,real(PSVar.p))
             push!(ti, i*SimPar.dt)
@@ -175,7 +139,7 @@ function FocusedInitialCondition(SimPar,HamPar,state)
     P = [-sqrt(2*state[j]+gs)*sin(phis[j]) for j in 1:SimPar.Nlvl]
     x = []
     p = []
-    for n in 1:Int(Nlvl/2)    
+    for n in 1:Int(SimPar.Nlvl/2)    
         w  = HamPar.omega[n]
         aj = tanh(0.5*HamPar.beta*w)
         A  = randn(2)*aj/pi
@@ -185,47 +149,4 @@ function FocusedInitialCondition(SimPar,HamPar,state)
     return PhaseSpaceVariables(X,P,x,p,gs)
 end
 
-L      = 4
-Nlvl   = 2*L
-t0     = 1.0
-ES1    = 0.0
-ES2    = 0.0
-E      = [ES1,ES2]
-tso    = 0.0
-a      = 1.0
-c      = 1.0
-num_laps = 1
-tph    = 0.0
-tsoph  = 0.0
-gamma  = 0.5*ones(L)
-omega  = ones(L)
-
-
-H      = FranssonHamiltonian(L,E,t0,tso,a,c,num_laps,tph,tsoph,omega,omega)
-beta   = 100
-sphere = "W"
-state  = [1,1,0,0,0,0,0,0]
-
-ntraj  = 10000
-dt     = 0.001
-tend   = 500
-Nstp   = Int(tend/dt)
-Nsave  = 10
-Nflush = 20
-fn = "data_Holstein_L$(L)"
-
-if !isdir(fn)
-    mkdir(fn)
 end
-
-
-fn = "$(fn)/$(sphere)_S1$(ES1)_S2$(ES2)_ntraj$(ntraj)_dt$(dt)"
-fnE = "$(fn)_electrons.dat"
-fnP = "$(fn)_phonons.dat"
-
-SimPar = SimulationParameters(Nlvl,sphere,ntraj,dt,Nstp,Nsave,Nflush,fnE,fnP)
-HamPar = HamiltonianParameters(H,gamma,omega,beta)
-PSVar  = FocusedInitialCondition(SimPar,HamPar,state)
-
-NSimulate(HamPar,SimPar,state)
-

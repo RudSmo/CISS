@@ -5,7 +5,7 @@ include("helper.jl")
 using .Helper
 
 using LinearAlgebra
-export Fransson
+export Fransson,Holstein
 
 
 function VDot(a)
@@ -121,4 +121,56 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
     end
     return HS+HB+HSB
 end
+
+
+function Holstein(num_sites::Int64,vibStates::Int64,eps::Array,t0::Float64,gPh::Float64,wPh::Float64)::Array
+    """
+    Input:
+        num_sites:: Int64, lattice sites
+        vibStates:: Int64, bosonic levels
+        eps      :: Array, on-site energies
+        t0       :: Float64, nearest-neighbor hopping
+        gph      :: Electron-phonon coupling
+        wPh      :: Harmonic oscillator frequency
+    """
+    d = 2
+    eu,ed = eps
+    dim = d^(2*num_sites)*vibStates^num_sites
+    IdS = Matrix(I,d^(2*num_sites),d^(2*num_sites))
+    IdB = Matrix(I,vibStates^num_sites,vibStates^num_sites)
+    id = Matrix(I,2,2) 
+    HS = zeros(dim,dim)*1im
+    HB = zeros(dim,dim)   
+    HSB = zeros(dim,dim)
+    c = fop()'
+    cd = c'
+    nd = cd*c
+    # On-site
+    for i in 1:num_sites
+        hu = eu * nfop(i,1,num_sites,d)*nfop(i,1,num_sites,d)'
+        hd = ed * nfop(i,2,num_sites,d)*nfop(i,2,num_sites,d)' 
+        HS += kron(hu + hd,IdB)
+    end
+    # Hopping
+    for i in 1:num_sites-1
+        hu = -t0* nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
+        hd = -t0* nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
+        HS += kron(hu+hu'+hd+hd',IdB)
+    end
+    # Harmonic oscillators
+    b = bop(vibStates)
+    bd = b'
+    bdb = bd*b
+    for i in 1:num_sites
+        HB += wPh*nkron([IdS,Idkron(i-1,vibStates),bdb,Idkron(num_sites-i,vibStates)]) 
+    end
+    # Electron-Phonon (NN)
+    for i in 1:num_sites-1
+        qv   = nkron([Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
+        HSB += gPh*kron(nfop(i,1,num_sites,d)*nfop(i,1,num_sites,d)'+nfop(i+1,1,num_sites,d)*nfop(i,1,num_sites,d)',qv)
+        HSB += gPh*kron(nfop(i,2,num_sites,d)*nfop(i,2,num_sites,d)'+nfop(i+1,2,num_sites,d)*nfop(i,2,num_sites,d)',qv)
+    end
+    return HS+HB+HSB
+end
+
 end
