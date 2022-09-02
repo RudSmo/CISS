@@ -1,0 +1,143 @@
+using LinearAlgebra
+using PyPlot
+
+function vdot(S)
+	sx = [0 1; 1 0.]
+	sy = [0 -1im; 1im 0]
+	sz = [1 0; 0 -1.]
+	return S[1] * sx + S[2] * sy + S[3] * sz
+end
+
+L = 500;
+Ls = 2*L
+H = zeros(Ls,Ls);
+l = 491
+ls = 2*l
+sS = 496
+gLR = 12.0
+gL = 10.0
+gR = 1.0
+eL = 0.0
+eR = 0.0 
+
+S = [0.0,0.0,1.0]
+Jsd = 4.5
+for i in 1:L-1
+	if i == l
+		k = gLR
+	elseif i<l
+		k = gL
+	else
+		k = gR
+	end
+	j = 2*i-1
+	if i>l
+		eps = eR
+	else
+		eps = eL
+	end
+
+	H[j,j] = eps
+	H[j+1,j+1] = eps
+        H[j,j+2] = k
+        H[j+2,j] = k
+	H[j+1,j+3] = k
+	H[j+3,j+1] = k
+	if i == sS
+		vs = Jsd * vdot(S)	
+		H[j,j] = vs[1,1]
+		H[j,j+1] = vs[1,2]
+		H[j+1,j] = vs[2,1]
+		H[j+1,j+1] = vs[2,2]		
+	end
+end	
+
+#display(H)
+#ev = eigvecs(H)
+#display(ev)
+
+HL = H[1:ls,1:ls]
+HR = H[ls+1:Ls,ls+1:Ls]
+
+#print(size(HL))
+#print(size(HR))
+
+el,vl = eigen(HL)
+er,vr = eigen(HR)
+
+TH = zeros(Ls,Ls)
+for i in 1:ls
+	TH[i,i] = el[i]
+end
+for i in ls+1:Ls
+	TH[i,i] = er[i-ls]
+end
+#display(TH)
+
+Cl = H[1:ls,ls+1:Ls]
+Cr = H[ls+1:Ls,1:ls]
+
+#display(Cl)
+#display(Cr)
+#display(HR)
+print(eigvals(HR))
+
+Tl = vl*Cl*vr'
+Tr = vr*Cr*vl'
+
+for i in 1:ls
+	for j in ls+1:Ls
+		TH[i,j] = Tl[i,j-ls]
+		TH[j,i] = Tr[j-ls,i]
+	end
+end
+
+#display(TH)
+#print("\n")
+# Test if spectra of blocked Hamiltonian and full one are the same
+
+eH = eigvals(H)
+eTH = eigvals(TH)
+
+plt.plot(eH,label="exact")
+plt.plot(eTH,label="block")
+plt.legend()
+
+#println(eH)
+#println(eTH)
+
+#print(eigvals(TH)≈eigvals(H))
+#print(sum(abs.(abs.(eH).-abs.(eTH)))/length(eH))
+
+# Plot block Hamiltonian
+
+#display(TH)
+#plt.imshow(TH)
+
+
+# Plot spectrum of left and right parts
+
+#plt.scatter(ones(length(el)),el,s=3)
+#plt.scatter(1.1*ones(length(er)),er,s=3)
+
+
+# Plot coupling of left mode k to all right modes # Modes are stored in ascending format
+
+#k = Int(floor(ls/2))
+#plt.plot(er,TH[k,ls+1:Ls])
+
+
+# Plot coupling of right mode k to all left modes # Modes are stored in ascending format
+
+#k = 9
+#plt.plot(TH[Ls-k,2:2:ls])
+#print(er)
+
+# Plot coupling of all left modes to all right modes
+#print(er)
+#plt.imshow(TH[ls+1:Ls,1:ls],aspect="auto",extent=[el[1],el[end],er[1],er[end]],interpolation="none")
+#plt.matshow(TH[ls+1:Ls,1:ls],aspect="auto")
+
+plt.show()
+
+
