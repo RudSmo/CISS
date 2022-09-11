@@ -5,15 +5,16 @@ include("$(src_path)hamiltonian.jl")
 using .RK4
 using .Hamiltonian
 
-el_state = [1,1,0,0,0,0,0,0]
-ph_state = [0,0,0,0]
-vibStates = 2
+el_state = [1,1,0,0,0,0]
+ph_state = [0,0,0]
+vibStates = 3
 num_sites = Int(length(el_state)/2)
 num_laps = 1
 sites_lap = num_sites
 t0 = 1.0
 eps = zeros(2)
-gPh = 0.5
+gPh = 0.1*t0
+gPh2 = 0.01*t0
 tPh = 0.0
 lambda0 = 0.0
 lambdaPh = 0.0
@@ -22,13 +23,13 @@ r_hel = 1.0
 c_hel = 1.0
 psi0 = InitialState(el_state,ph_state,vibStates,num_sites)
 
-H = Hamiltonian.Holstein(num_sites,vibStates,eps,t0,gPh,wPh)
+H = Hamiltonian.HolsteinQuadratic(num_sites,vibStates,eps,t0,gPh,gPh2,wPh)
 dt = 0.001
-#path = ""
-#if !isdir(path)
-#    mkdir(path)
-#end
-filname = "pops_vib.dat"
+path = "data"
+if !isdir(path)
+    mkdir(path)
+end
+filname = "pops_vib_gPh2.dat"
 imagfilname = "pop_vib_im.dat"
 pathIn = ""
 

@@ -26,7 +26,7 @@
 \newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
 \usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
 \bibliography{bib.bib}
-\geq
+
 \begin{document}
 \title{Comparison of Quantum-Classical Approaches}
 \author{Rudolf Smorka}
@@ -231,19 +231,42 @@ The classical sequations of motion herefore read
 \subsection{Spin-Mapping}
 \section{Results}
 \subsection{Exact Dynamics in an Isolated Molecule}
-In this section we present results of the exact quantum dynamics in an isolated molecule. Due to the exponentially scaling complexity, only small system sizes can be computed. In practice, the number of vibrational levels for each mode is truncated. 
-Therefore, the system size is set to $\mathbb{M}=3$ with $N=3$ and $M=1$.
-Here, we use the same parameters as given in \cref{tab:ParametersConvergence} except for the lead-related parameters $T,V,\nu_{L,R\sigma}$, which are not defined in the model investigated here. 
-We focus on electronic and vibrational populations in real-space. 
+The aim of this section is to make sure that the Hamiltonian is correctly implemented in the TT-HEOM code. As it is not straight-forward to compare Hamiltonians directly\footnote{that is because the Hamiltonian in the TT-HEOM is stored as a matrix product operator in twin-space. To get the full Hamiltonian matrix, one has to contract or site-MPOs and pay particular attention to a consistent choice of twin-basis.}, we instead focus on the electron and phonon dynamics in an isolated molecule, and compare results term by term of the Hamiltonian. 
+Apart from showing that the Hamiltonian is implemented correctly, we also use the following tests for determining the required maximal ranks of the core tensors and the necessary number of vibrational states in order to obtain converged results. 
+
+We start with comparing dynamics from both approaches, TT-HEOM and exact diagonalization (ED), for a molecule with three electronic sites and only electronic terms, starting with including only nearest-neighbor hopping, then adding on-site and the SOC term. We then investigate the full Fransson model including vibrational modes in the molecule. There, we first discuss dynamics in a two-site system, and then move to a three-site molecule. In all test cases, we set $t_0=1$, which defines the unit of energy, and with $e=\hbar=1$, consequently the unit of time is $t_0^{-1}$. All other parameters given in the table above are expressed, either explicitly or implicitly, in terms of $t_0$. 
+
+We focus on electronic and vibrational populations. 
 In the exact method, these are the expectation values of their corresponding number operators
 \begin{align}
 	n^\mathrm{el}_{i\sigma}(t) &= \tr{\rho(t) \, \hat{d}^\dagger_{i\sigma}\hat{d}^\pdagger_{i\sigma}} = \expc{\psi(t)}{\hat{d}^\dagger_{i\sigma}\hat{d}^\pdagger_{i\sigma}}{\psi(t)}\\
 	n^\mathrm{vib}_{i\alpha}(t) &= \tr{\rho(t)\hat{a}_{i\alpha}^\dagger\hat{a}_{i\alpha}^\pdagger}= \expc{\psi(t)}{\hat{a}^\dagger_{i\alpha}\hat{a}^\pdagger_{i\alpha}}{\psi(t)} 
 \end{align}
-where $i\alpha$ denotes the level of vibrational mode coupled to site $i$. In practice, the vibrational occupation of levels on site $i$ is by taking the partial trace of the total density matrix with respect all Hilbert-space except the vibrational sub-space corresponding to site $i$. Herefore, we adopt the following convention for ordering the Hilbert space
+where $i\alpha$ denotes the level of vibrational mode coupled to site $i$. In practice, the vibrational occupation of levels $\alpha$ on site $i$ are obtained by taking the partial trace of the total density matrix with respect to the total electronic Hilbert-space and the vibrational Hilbert-space except the one corresponding to site $i$. Herefore, we adopt the following convention for ordering the Hilbert space
 \begin{equation}
 	\mathcal{H} = \bigotimes_{i=1}^{\mathds{M}} \left(\bigotimes_{\sigma = \uparrow,\downarrow} \mathcal{H}^\mathrm{el}_{i\sigma}\right) \otimes \bigotimes_{i=1}^\mathds{M}\mathcal{H}^\mathrm{vib}_i
 \end{equation}
+\subsubsection{Purely electronic terms}
+Here we compare TT-HEOM with ED calculations for $\hat{H}_\mathrm{mol} = \hat{H}_\mathrm{el}$. We consider three sites and use parameters as given in \cref{tab:Parameters_Res1}.
+\begin{table}
+	\centering
+	\caption{Parameters used in \cref{sec:Res_ElectronicOnly}.}
+\begin{tabular}{lll}
+	\toprule
+	Parameter & Symbol & Value\\\midrule
+	System size &$\mathbb{M}=N\times M$& $3$  \\
+	Hopping integral &$t_0$&$1$ \\ 
+	On-site constant &$\varepsilon_{j\sigma}$& $1$ $(-1)$ for $\sigma =\uparrow(\downarrow)$  \\
+	Vibrational mode &$\omega_{j\mu}$&$1.4t_0 \  \forall j,\mu$  \\
+	Helix parameters &$r/c$& 1.0  \\
+	Spin-orbit-coupling (SOC) &$\lambda_\mathrm{so}$& $t_0/40$  \\
+	Sys-Env coupling &$\nu_{L,R\sigma}$ & $0 \ \forall \sigma$\\
+	\bottomrule
+\end{tabular}\label{tab:Parameters_Res1}
+\end{table}
+We first consider only the nearest-neighbor hopping and the on-site term, and set all other parameters to zero. 
+\subsubsection{Full Fransson model}\label{sec:Res_ElectronicOnly}
+In both cases, the parameters are chosen similar to the ones given in \cref{tab:ParametersConvergence}, except for $\nu_{L,R} = 0$, and hence all other lead-related quantities as $T_{L,R},V$ are not relevant. 
 
 \subsection{Non-Interacting Anderson-Holstein Impurity Model}
 We start with comparing the mixed quantum-classical Ehrenfest approach with the numerically exact HEOM for a single dot with two electronic levels electron-phonon coupling to a single phonon mode, also known as the non-interacting Anderson-Holstein impurity model. The Hamiltonian for this system reads

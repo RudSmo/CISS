@@ -76,6 +76,8 @@ function Propagate(N::Int,
 		rho0    = Diagonal(float(popIn))
 	elseif rhoIn == "equilibrium"
 		rho0	= DensityFExOpen(N,1,hcen_i,kappa,chiLP,GammaT,beta)*(1+0*1im)
+	elseif rhoIn == "closedEquilibrium"
+		rho0    = DensityFEx(N,1,hcen_i,N,0)
 	elseif rhoIn == "fromFile"
 		rho0    = read(fid["Rho"])
 	end
