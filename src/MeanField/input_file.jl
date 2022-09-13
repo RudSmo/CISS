@@ -19,10 +19,10 @@ using .ClassicalPhonons
 
 # Simulation Parameters
 dt = 0.001
-tend = 20.0
+tend = 500.0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
-initProp  = false
+initProp  = true
 # true = propagate as usuals
 # false = use initial density matrix from previous computation
 
@@ -35,17 +35,17 @@ a = 1.0
 c = 1.0
 tso = t0/40
 num_laps = 1
-ions = 3
+ions = 2
 l = Int(num_laps * ions)
-tph = 0.1*t0
-tsoph = 0.1*tso
+tph = 0.0#0.1*t0
+tsoph = 0.0#0.1*tso
 ws = ones(l)*1.4*t0
 
 if initProp
     rhoIn = "pure"
-    # rhoIn = "equilibrium"
-    phIn = "TDSCF"
-    # phIn = "Wigner"
+    #rhoIn = "equilibrium"
+    #phIn = "TDSCF"
+    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -53,17 +53,17 @@ else
     pathIn = "data/L3_dt0.001_1_final_Quantities"
 end
 
-popElIn = [1,0,0,0,0,0]
-popPhIn = [0,0,0]
+popElIn = [1,0,0,0]
+popPhIn = [0,0]
 vSampl = "v1"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 qnIn,pnIn = InitialPh(popPhIn,ws,phases)
 
 ## Leads
-tL = zeros(2) #[t/4,t/4] 
+tL = [1.0,0.0] 
 tR = tL #[t/4,t/4] 
-V  = zeros(numstep)#[1.2 for i in 1:numstep]
-nPoles = 1
+V  = ones(numstep)#[1.2 for i in 1:numstep]
+nPoles = 30
 beta = 1/0.025
 
 
