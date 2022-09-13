@@ -122,15 +122,23 @@ function Propagate(N::Int,
 	curM2u		= CurrentMatrix(rho0,Gamma2u,curp2u_i)
 	curM2d		= CurrentMatrix(rho0,Gamma2d,curp2d_i)
 
-	cur1u_l		= [Current(curM1u)]
-	cur1d_l		= [Current(curM1d)]
-	cur2u_l		= [Current(curM2u)]
- 	cur2d_l		= [Current(curM2d)]
+	cur1_l      = [Current(curM1u+curM1d)]
+	cur2_l      = [Current(curM1u+curM1d)]
 
-	scur1u_l 	= [SpinCurrent(curM1u)]
-	scur1d_l 	= [SpinCurrent(curM1d)]
-	scur2u_l 	= [SpinCurrent(curM2u)]
-	scur2d_l 	= [SpinCurrent(curM2d)]
+	scur1_l     = [SpinCurrent(curM1u+curM1d)]
+	scur2_l     = [SpinCurrent(curM1u+curM1d)]
+	
+		
+
+#	cur1u_l		= [Current(curM1u)]
+#	cur1d_l		= [Current(curM1d)]
+#	cur2u_l		= [Current(curM2u)]
+# 	cur2d_l		= [Current(curM2d)]
+#
+#	scur1u_l 	= [SpinCurrent(curM1u)]
+#	scur1d_l 	= [SpinCurrent(curM1d)]
+#	scur2u_l 	= [SpinCurrent(curM2u)]
+#	scur2d_l 	= [SpinCurrent(curM2d)]
 		
 
 	
@@ -162,8 +170,8 @@ function Propagate(N::Int,
 			
 		qin     = qn
 		pin     = pn
-		pop_l,tim,cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1u_l,scur1d_l,scur2u_l,scur2d_l,q_l,p_l = SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,qn,pn,tim,i,dt,
-																								cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1u_l,scur1d_l,scur2u_l,scur2d_l,q_l,p_l,path)
+		pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l = SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,qn,pn,tim,i,dt,
+																		  cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,path)
 		if i == numstep 
 			fil = h5open("$(path)_final_Quantities","w")
 			fil["Rho"] = rho_i

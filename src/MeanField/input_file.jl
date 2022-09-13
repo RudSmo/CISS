@@ -19,7 +19,7 @@ using .ClassicalPhonons
 
 # Simulation Parameters
 dt = 0.001
-tend = 500.0
+tend = 200
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -35,7 +35,7 @@ a = 1.0
 c = 1.0
 tso = t0/40
 num_laps = 1
-ions = 2
+ions = 1
 l = Int(num_laps * ions)
 tph = 0.0#0.1*t0
 tsoph = 0.0#0.1*tso
@@ -53,17 +53,17 @@ else
     pathIn = "data/L3_dt0.001_1_final_Quantities"
 end
 
-popElIn = [1,0,0,0]
-popPhIn = [0,0]
+popElIn = [1,0]
+popPhIn = [0]
 vSampl = "v1"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 qnIn,pnIn = InitialPh(popPhIn,ws,phases)
 
 ## Leads
-tL = [1.0,0.0] 
+tL = t0/4 * [1.0,1.0] 
 tR = tL #[t/4,t/4] 
-V  = ones(numstep)#[1.2 for i in 1:numstep]
-nPoles = 30
+V  = 0.5*ones(numstep)
+nPoles = 50
 beta = 1/0.025
 
 

@@ -19,7 +19,7 @@ using .ClassicalPhonons
 
 # Simulation Parameters
 dt = 0.001
-tend = 500.0
+tend = 200
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -35,7 +35,7 @@ a = 1.0
 c = 1.0
 tso = t0/40
 num_laps = 1
-ions = 2
+ions = 1
 l = Int(num_laps * ions)
 tph = 0.0#0.1*t0
 tsoph = 0.0#0.1*tso
@@ -53,26 +53,26 @@ else
     pathIn = "data/L3_dt0.001_1_final_Quantities"
 end
 
-popElIn = [1,0,0,0]
-popPhIn = [0,0]
+popElIn = [1,0]
+popPhIn = [0]
 vSampl = "v1"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 qnIn,pnIn = InitialPh(popPhIn,ws,phases)
 
 ## Leads
-tL = [1.0 0;0. 0.0] #only up-up and down-down processes allowed
+tL = [t0/4 0;0. t0/4] #only up-up and down-down processes allowed
 tR = tL #[t/4,t/4] 
 
 spL = 0.0
 spR = 0.0
-V = 1.0
+V = 0.5
 muLd = 0.5*(V-spL)
 muLu = muLd+spL
 muRd = -0.5*(V+spR)
 muRu = muRd+spR
 
 mu = [muLu,muLd,muRu,muRd]
-nPoles = 30
+nPoles = 50
 
 betaPh = 1/0.025
 beta = betaPh*ones(4)
@@ -88,7 +88,7 @@ num_avg = 1
 resampling = false
 rsmpl_stp = 15
 for ka in 1:num_avg
-    dataname1 = "$(path)/L$(l)_dt$(abs(dt))_2"
+    dataname1 = "$(path)/L$(l)_dt$(abs(dt))_1"
     dataname2 = "$(dataname1)_$(ka)"
 
     params = [("dt",dt),("Nstep",numstep),("N",l),("t0",t0),("tso",tso),("tph",tph),("tsoph",tsoph),("ws",ws),("tL",tL),("tR",tR),("V",V[1]),("nPoles",nPoles),("beta",beta)]
