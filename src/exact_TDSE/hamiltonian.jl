@@ -232,5 +232,41 @@ function HolsteinQuadratic(num_sites::Int64,vibStates::Int64,eps::Array,t0::Floa
     return HS+HB+HSB
 end
 
+function NNNTest(num_sites,eps,t1,t2,vibStates)
+    eu,ed = eps
+    t2uu,t2ud,t2dd = t2
+    dim = d^(2*num_sites)*vibStates^num_sites
+    IdS = Matrix(I,d^(2*num_sites),d^(2*num_sites))
+    IdB = Matrix(I,vibStates^num_sites,vibStates^num_sites)
+    id = Matrix(I,2,2) 
+    HS = zeros(dim,dim)*1im
+    c = fop()'
+    cd = c'
+    nd = cd*c
+    # On-site
+    for i in 1:num_sites
+        hu = eu * nfop(i,1,num_sites,d)*nfop(i,1,num_sites,d)'
+        hd = ed * nfop(i,2,num_sites,d)*nfop(i,2,num_sites,d)' 
+        HS += kron(hu + hd,IdB)
+    end
+    # Hopping
+    for i in 1:num_sites-1
+        hu = -t1* nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
+        hd = -t1* nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
+        HS += kron(hu+hu'+hd+hd',IdB)
+    end
+    # NNN hopping
+    for i in 1:num_sites-2
+        huu = -t2uu* nfop(i,1,num_sites,d)*nfop(i+2,1,num_sites,d)'
+        hud = -t2ud* nfop(i,1,num_sites,d)*nfop(i+2,2,num_sites,d)'
+        hdu = -conj(t2ud)* nfop(i,2,num_sites,d)*nfop(i+2,1,num_sites,d)'
+        hdd = -t2dd* nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d)'
+         
+
+        HS += kron(huu+huu'+hud+hud'+hdu+hdu'+hdd+hdd',IdB)
+    end
+    
+    return HS
+end
 
 end
