@@ -19,7 +19,7 @@ using .ClassicalPhonons
 
 # Simulation Parameters
 dt = 0.001
-tend = 200
+tend = 50
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -27,25 +27,25 @@ initProp  = true
 # false = use initial density matrix from previous computation
 
 # Geometry Parameters
-t0 = 0.04
-eu = 0.65
-ed = 0.65
+t0 = 1.0
+eu = 1.0
+ed = -1.0
 E = [eu,ed]
 a = 1.0
 c = 1.0
-tso = t0/40
+tso = 0.8
 num_laps = 1
-ions = 1
+ions = 3
 l = Int(num_laps * ions)
-tph = 0.0#0.1*t0
-tsoph = 0.0#0.1*tso
+tph = 0.0 
+tsoph = 0.0
 ws = ones(l)*1.4*t0
 
 if initProp
     rhoIn = "pure"
     #rhoIn = "equilibrium"
-    #phIn = "TDSCF"
-    phIn = "Wigner"
+    phIn = "TDSCF"
+    #phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -53,21 +53,21 @@ else
     pathIn = "data/L3_dt0.001_1_final_Quantities"
 end
 
-popElIn = [1,0]
-popPhIn = [0]
+popElIn = [1,1,0,0,0,0]
+popPhIn = [0,0,0]
 vSampl = "v1"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 qnIn,pnIn = InitialPh(popPhIn,ws,phases)
 
 ## Leads
-tL = t0/4 * [1.0,1.0] 
+tL = 0.0 * [1.0,1.0] 
 tR = tL #[t/4,t/4] 
-V  = 0.5*ones(numstep)
+V  = 0.0*ones(numstep)
 nPoles = 50
 beta = 1/0.025
 
 
-path = "data"
+path = "test"
 if !isdir(path)
 	mkdir(path)
 end
@@ -76,7 +76,7 @@ num_avg = 1
 resampling = false
 rsmpl_stp = 15
 for ka in 1:num_avg
-    dataname1 = "$(path)/L$(l)_dt$(abs(dt))_2"
+    dataname1 = "$(path)/L$(l)_Hop+Onsite+SOC_dt$(abs(dt))"
     dataname2 = "$(dataname1)_$(ka)"
 
     params = [("dt",dt),("Nstep",numstep),("N",l),("t0",t0),("tso",tso),("tph",tph),("tsoph",tsoph),("ws",ws),("tL",tL),("tR",tR),("V",V[1]),("nPoles",nPoles),("beta",beta)]

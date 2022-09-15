@@ -1,0 +1,93 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+
+\begin{document}
+\title{To do}
+\author{Rudolf Smorka}
+\maketitle
+\section{Study dynamics isolated Fransson molecule}
+\begin{itemize}
+	\item Motivation: Fransson's model consists of a Peierls term, a Kane-Mele term, and a hybridization between those terms in which SOC-induced electronic transfer leads to lattice distortions. Both, Peierls and Kane-Mele models, have been recently gaining interest due to very different phenomena predicted in these models. 
+	Among others, the Peierls model has been investigated to elucidate the nature of charge transport in organic semiconductors, hosting a variety of transport regimes like phonon-assisted, band-like and transient localization regimes. 
+	The Kane-Mele model, and its related models, the Su-Schrieffer-Heeger and Haldane model, on the other hand, have been subject of interest due to their exotic band structure, hosting both a bulk gap and topological edge states. However, the combined effect has not been investigated in detail yet.
+	\item Study band structure of Fransson model: 
+	\begin{itemize}
+		\item Fixed nuclei approximation
+		\item "Dynamical" band structure from a mean-field treatment
+	\end{itemize}
+	\item Study transport regimes in the Fransson model
+	\begin{itemize}
+		\item Compute mobilities using Kubo-formula
+		\item Different from investigations in the Holstein model, carrier transport is in general spin-dependent in Franssons model. Hence, the Kubo forumula has to be extended to spin-full electrons, and account for spin-non-conserving currents.
+	\end{itemize}
+\end{itemize}
+\section{Compare dynamics in isolated Fransson molecule among different methods}
+\begin{itemize}
+	\item Motivation: It is important to check that the Hamiltonian in TT-HEOM is implemented correctly. Due to the twin-space formulation and the MPO-structure, it is however not straight-forward to compare the Hamiltonians directly. An alternative to this comparison is to check if the dynamics of observables agrees with other methods. Using exact diagonalization and MPS-TDVP (iTensor), this comparison can be done.
+	\item[$\checkmark$] No el-ph coupling: Purely electronic dynamics, comparison versus exact diagonalization and MF. 
+	\item[(partially done)] Compare TT-HEOM with ED and iTensor for finite el-ph coupling. {\color{red} TT-HEOM has severe problems here, and a very large bond dimension of $\sim 2000$ is necessary for obtaining converged results.}
+	\item[(partially done)] Implement Fransson model in iTensor, and make comparisons. Onsite and hopping ($\checkmark$). Onsite, hopping and SOC. Onsite, hopping, SOC and tPh. Onsite, hopping, SOC, tPh and SOCPh.
+\end{itemize}
+\section{Study dynamics coupled to leads, purely electronic}
+\begin{itemize}
+	\item Motivation: I don't know if the TT-HEOM is implemented correctly. However, I know that my MF-HEOM is implemented correctly, and checked it multiply times against analytical results. Hence, the aim here is to check TT-HEOM against MF-HEOM for very simple tight-binding systems.
+	\item Calculation for $L=1$, $E_\uparrow = 1.0, E_\downarrow = -1.0$, $\Gamma = 0.2$, $\beta = 40$
+	\item Same parameters, but for $L=3$ and $t=1.0$.
+\end{itemize}
+\section{Implement different MPS topology in TT-HEOM}
+\begin{itemize}
+	\item Motivation: The efficiency of tensor network algorithms depends strongly, among others, on the topology of the underlying network. Currently, a MPS is used to represent the density matrix and auxiliary density matrices in twin-space. For the molecular part of the MPS, the ordering used is electronic indices first and phonon indices last. This approach, however, fails to converge to the exact result as soon as the electron-phonon coupling is not vanishingly small. An alternative MPS topology is to order the electronic core tensors next to the phonon core tensors in an alternating order. The basis state corresponding to the original topology is 
+	\begin{equation}
+		\vert \Phi_k \rangle = \vert \sigma_1^F,\tilde{\sigma}_1^F,\sigma_2^F,\tilde{\sigma}_2^F,\dots,\sigma_L^F,\tilde{\sigma}_L^F,\sigma_1^B,\tilde{\sigma}_1^B,\dots,\sigma_L^B,\tilde{\sigma}_L^B\rangle
+	\end{equation}
+	where $\vert \sigma_i^F\rangle$ are fermionic single-site basis states and $\vert \sigma_i^B\rangle$ the bosonic ones. The proposed alternative ordering has the following basis states
+	\begin{equation}
+		\vert \Phi_k \rangle = \vert \sigma_1^F,\tilde{\sigma}_1^F,\sigma_1^B,\tilde{\sigma}_1^B,\dots,\sigma_L^F,\tilde{\sigma}_L^F,\sigma_L^B,\tilde{\sigma}_L^B\rangle
+	\end{equation}
+	
+\end{itemize}
+\section{Make comparison to Fransson's data}
+\begin{itemize}
+	\item FM leads, parameters?
+	\item Observables?
+\end{itemize}
+\section{Study of effect of SOC at sys-lead interface (MF)}
+\begin{itemize}
+	\item Motivation: In some CISS studies, the chiral molecule is coupled to an environment, which has non-negligible SOC (e.g. Au). However, most theoretical studies assume the lead to be metallic without SOC. In this case, the molecule-environment coupling has only diagonal elements (i.e. spin-flip processes at the interface are not allowed). In the case of a lead with large SOC (of the order of $t_\mathrm{SOC} \sim \SI{1}{\electronvolt}$), it is plausible that the molecule-lead coupling acquires imaginary off-diagonal components. However, these components are typically neglected. This could possibly explain why theoretical investigations with a spin-conserving coupling to a simple metallic environment underestimates experimental data. 
+	\item[$\checkmark$] Extend MF-HEOM to ferromagnetic leads. How? Treat spin up and spin down as individual leads, transforming the two-terminal HEOM to four-terminal HEOM
+	\item Show how SOC at sys-lead interface affects spin polarization for Fransson's model. With and without phonons (MF).
+	\item Show that SOC at sys-lead interface alone, without SOC in the molecule, can lead to CISS
+\end{itemize}
+\section{TT-HEOM: Can open system be represented faithfully by MPS?}
+\printbibliography
+\end{document}
+
+
+
+
