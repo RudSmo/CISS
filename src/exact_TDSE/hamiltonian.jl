@@ -5,7 +5,7 @@ include("helper.jl")
 using .Helper
 
 using LinearAlgebra
-export Fransson,Holstein,HolsteinQuadratic
+export Fransson,Holstein,HolsteinQuadratic,NNNTest
 
 
 function VDot(a)
