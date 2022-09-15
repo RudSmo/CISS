@@ -235,6 +235,7 @@ end
 function NNNTest(num_sites,eps,t1,t2,vibStates)
     eu,ed = eps
     t2uu,t2ud,t2dd = t2
+    d = 2
     dim = d^(2*num_sites)*vibStates^num_sites
     IdS = Matrix(I,d^(2*num_sites),d^(2*num_sites))
     IdB = Matrix(I,vibStates^num_sites,vibStates^num_sites)
