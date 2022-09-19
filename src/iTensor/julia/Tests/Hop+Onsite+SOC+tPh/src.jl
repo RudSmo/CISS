@@ -3,6 +3,8 @@ using LinearAlgebra
 using TimeEvoMPS
 using PyPlot
 
+ITensors.op(on::OpName"F", st::SiteType"Qudit", ds::Int...) = op(OpName"Id"(), st, ds...)
+
 
 function VDot(a)
     sx = [0 1; 1 0.]
@@ -44,14 +46,12 @@ function HamiltonianMPO(sites,N,Eu,Ed,t0,tso,a,c,num_laps,tPh,wPh)
 		add!(ampo,Eu,"Cdagup",i,"Cup",i)
 		add!(ampo,Ed,"Cdagdn",i,"Cdn",i)
 	end
-	println("ok1")
 	for i in 1:2:N-2
 		add!(ampo,-t0,"Cdagup",i,"Cup",i+2)
 		add!(ampo,-t0,"Cdagup",i+2,"Cup",i)
 		add!(ampo,-t0,"Cdagdn",i,"Cdn",i+2)
                 add!(ampo,-t0,"Cdagdn",i+2,"Cdn",i)
 	end
-	println("ok2")
 	k = 1
 	for i in 1:2:N-4
 		Vj = SOC_A_nn(N,tso,a,c,num_laps,k)		
@@ -65,7 +65,6 @@ function HamiltonianMPO(sites,N,Eu,Ed,t0,tso,a,c,num_laps,tPh,wPh)
                 add!(ampo,conj(Vj[2,2]),"Cdagdn",i+4,"Cdn",i)
 		k += 1
 	end
-	println("ok3")
 	for i in 2:2:N
 		add!(ampo,wPh,"Adag",i,"A",i)
         end
@@ -104,7 +103,7 @@ Eu = 1.0
 Ed = -1.0
 indEE = 2
 maxdim = 100
-sites = siteinds(n->isodd(n) ? "Electron" : "Qudit",N)#;conserve_qns = false,dim=2)
+sites = siteinds(n->isodd(n) ? "Electron" : "Qudit",N,conserve_qns = false,dim=2)
 
 state = []
 for i in 1:fS
@@ -125,8 +124,8 @@ tdvp!(psi,H,dt,tend,maxdim=maxdim,callback=cb)
 ts = measurement_ts(cb)
 fil = open("pops.dat","w")
 
-Nu = [getindex.(measurements(cb)["Nup"],j) for j in 1:2:N-1]
-Nd = [getindex.(measurements(cb)["Ndn"],j) for j in 1:2:N-1]
+Nu = [getindex.(measurements(cb)["Nup"],j) for j in 1:fS]
+Nd = [getindex.(measurements(cb)["Ndn"],j) for j in 1:fS]
 
 for i in 1:length(ts)
 	

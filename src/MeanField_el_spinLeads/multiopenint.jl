@@ -65,6 +65,7 @@ function Propagate(N::Int,
 	elseif rhoIn == "closedEquilibrium"
 		rho0    = DensityFEx(N,1,hcen_i,N,0)
 	elseif rhoIn == "fromFile"
+		fid      = h5open(pathIn,"r")
 		rho0    = read(fid["Rho"])
 	end
 	

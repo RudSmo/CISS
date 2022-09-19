@@ -19,14 +19,16 @@ function Propagate(N 		::Int,
 		  hcen   	::Array,
 		  dt		::Number,
 		  numstep	::Int,
-		  tL		::Float64,
-		  tR		::Float64,
+		  tL		::Array,
+		  tR		::Array,
 		  beta		::Float64,
 		  nPoles	::Int,
-		  V             ::Float64,
+		  muL           ::Float64,
+		  muR           ::Float64,
 		  path		::String,
 	          rhoIn         ::String,
-		  popIn 	= zeros(1))
+		  popIn 	= zeros(1),
+		  pathIn        = "")
 
 	Gamma1,Gamma2   = GammaMatrices1d(N,tL,tR)
 	GammaT		= Gamma1+Gamma2
@@ -44,6 +46,7 @@ function Propagate(N 		::Int,
 	elseif rhoIn == "equilibriumClosed"
 		rho_i    = DensityFEx(N,1,hcen,N,0) 
 	elseif rhoIn == "fromFile"
+		fid      = h5open(pathIn,"r")
 		rho_i    = read(fid["Rho"])
 	end
 
@@ -65,8 +68,8 @@ function Propagate(N 		::Int,
 
 	
 	for i in 1:numstep
-		chi1	= V/2 .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
-		chi2	= -V/2 .+ 1im .* xi ./beta
+		chi1	= muL .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
+		chi2	= muR .+ 1im .* xi ./beta
 	
 		curp1_c, curp2_c, cur1_c, cur2_c, cur_c = RK_Currents(beta,hcen,Gamma1,Gamma2,GammaT,kappa,chi1,chi2,curp1_i,curp2_i,rho_i,dt)
 		rho_c	= RK_VneumannL(rho_i,hcen,cur_c,dt)

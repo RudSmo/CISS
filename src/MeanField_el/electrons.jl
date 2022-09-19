@@ -72,10 +72,13 @@ end
 
 
 function GammaMatrices1d(l,tL,tR)
-	G1 = zeros(l,l)
-	G2 = zeros(l,l)
-	G1[1,1] = tL
-	G2[l,l] = tR
+	G1 = zeros(2*l,2*l)
+	G2 = zeros(2*l,2*l)
+	G1[1,1] = tL[1]
+	G1[2,2] = tL[2]
+	G2[2*l-1,2*l-1] = tR[1]
+	G2[2*l,2*l] = tR[2]
+
 	return G1,G2
 end
 

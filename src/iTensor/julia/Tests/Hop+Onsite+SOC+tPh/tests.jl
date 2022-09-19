@@ -3,6 +3,7 @@ using LinearAlgebra
 using TimeEvoMPS
 using PyPlot
 
+ITensors.op(on::OpName"F", st::SiteType"Qudit", ds::Int...) = op(OpName"Id"(), st, ds...)
 
 function HamiltonianMPO(sites,N,Eon,t0,gPh)
 	ampo = OpSum()

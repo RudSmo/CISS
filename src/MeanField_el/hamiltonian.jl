@@ -1,7 +1,7 @@
 module Hamiltonian
 using LinearAlgebra
 
-export VDot,absv,UnitVector,FranssonHamiltonian,SingleLevel,HatanoNelson,HatanoNelson2D
+export VDot,absv,UnitVector,FranssonHamiltonian,SingleLevel,HatanoNelson,HatanoNelson2D,NNN
 
 
 function VDot(a)
@@ -160,5 +160,20 @@ end
 function SingleLevel(E,ws,gph,q)
     return [E[1] + sqrt(2*ws)*gph*q 0.0; 0.0 E[2] + sqrt(2*ws)*gph*q]
 end
+
+function NNN(N,tns)
+	H = zeros((2*N,2*N))
+	for j in 1:length(tns)	
+		for i in 1:2:2*N-2*j
+			H[i,i+2*j] = -tns[j]
+			H[i+1,i+2*j+1] = -tns[j]
+			H[i+2*j,i] = -tns[j]
+			H[i+2*j+1,i+1] = -tns[j]
+		end
+	end
+	return H
+end
+
+
 
 end
