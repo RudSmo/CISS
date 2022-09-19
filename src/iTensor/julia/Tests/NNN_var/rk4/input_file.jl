@@ -37,8 +37,11 @@ else
     phIn = rhoIn
     pathIn = "data/L3_dt0.001_1_final_Quantities"
 end
-
-popElIn = [1,1,0,0,0,0,0,0]
+popElIn = zeros(2*l)
+for i in 1:2
+	popElIn[i] = 1
+end
+#popElIn = [1,1,0,0,0,0,0,0]
 
 ## Leads
 tL = zeros(2) 
