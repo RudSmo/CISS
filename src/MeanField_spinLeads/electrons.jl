@@ -81,10 +81,10 @@ function GammaMatrices1d(l,tL,tR)
 	return G1,G2
 end
 function GammaMatrices1dSpin(l,tL,tR)
-	G1u = zeros(2*l,2*l)
-	G1d = zeros(2*l,2*l)
-	G2u = zeros(2*l,2*l)
-	G2d = zeros(2*l,2*l)
+	G1u = zeros(2*l,2*l)*(1+0.0*1im)
+	G1d = G1u
+	G2u = G1u
+	G2d = G1u
 		
 	G1u[1,1] = tL[1,1]
 	G1u[1,2] = tL[1,2]

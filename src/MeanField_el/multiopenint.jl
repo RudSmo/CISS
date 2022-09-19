@@ -27,7 +27,7 @@ function Propagate(N 		::Int,
 		  muR           ::Float64,
 		  path		::String,
 	          rhoIn         ::String,
-		  popIn 	= zeros(1),
+		  popIn         ::Array,
 		  pathIn        = "")
 
 	Gamma1,Gamma2   = GammaMatrices1d(N,tL,tR)
