@@ -43,7 +43,7 @@ The model considered for a chiral, single-stranded molecule, as proposed in Refs
 \begin{align}
 	\hat{H} &= \hat{H}_\mathrm{mol} + \hat{H}_\mathrm{env} + \hat{H}_\mathrm{sys-env}.
 \end{align} 
-The molecular Hamiltonian consists of a electronic on-site, nearest-neighbor hopping, and next-to-nearest neighbor spin-orbit coupling (SOC), a Peierls electron-phonon coupling and vibrational contribution to SOC, and the harmonic phonon potential energy 
+The molecular Hamiltonian is modeled by a combination of the  Peierls and the Kane-Mele models. It consists of an electronic on-site, nearest-neighbor hopping, and next-to-nearest neighbor spin-orbit coupling (SOC), a Peierls electron-phonon coupling and vibrational contribution to SOC, and the harmonic phonon potential energy 
 \begin{align}
 	\hat{H}_\mathrm{mol} &= \hat{H}_\mathrm{el} + \hat{H}_\mathrm{el-ph} + \hat{H}_\mathrm{ph},\\
 	\begin{split}
@@ -71,32 +71,46 @@ In the following, we compare the dynamics in the model defined above using a var
 \end{itemize}
 \newpage
 \section{Comparison of Dynamics in Isolated Molecule}
-\subsection{Static Molecule}
-\subsubsection{On-site and Hopping}
-Parameters: $L=3$, $t_0 = 1$, $\varepsilon_\uparrow = 1= -\varepsilon_\downarrow$. 
+\subsection{On-site and Hopping}
+Parameters: $L=3$, $t_0 = 1$, $\varepsilon_\uparrow = 1= -\varepsilon_\downarrow$. All methods agree nearly perfectly with each other. Within the TT-HEOM approach (here the bond dimension is $r=100$), it has been checked that the deviation of the norm of the state from unity $1-\vert \vert\rho\rangle\vert $ remains below $10^{-8}$ for the entire time interval considered here.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.74\textwidth]{figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite.pdf}
+	\includegraphics[width=0.72\textwidth]{figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite.pdf}
 \end{figure}
-\subsubsection{On-site, Hopping, and SOC}
-Parameters: $L=3$, $t_0 = 1$, $\varepsilon_\uparrow = 1= -\varepsilon_\downarrow$, $\lambda = 0.8$. 
+\subsection{On-site, Hopping, and SOC}
+Parameters: $L=3$, $t_0 = 1$, $\varepsilon_\uparrow = 1= -\varepsilon_\downarrow$, $\lambda = 0.8$. Similar as above, the deviation of the norm from unity is the same.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.74\textwidth]{figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.pdf}
+	\includegraphics[width=0.72\textwidth]{figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.pdf}
 \end{figure}
-\subsection{Vibrating molecule}
-\subsubsection{Hopping and Peierls distortion}
-Parameters: $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$. 
+\subsection{Hopping and Peierls distortion}
+Parameters: $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$. The ED has been checked to be converged; for the time interval considered here, 5 number of states per vibrational mode are sufficient for convergence. The TT-HEOM method agrees with ED and TDVP only for very short times; for $t\geq 5$, the TT-HEOM results deviate dramatically and the norm drops down significantly. Increasing the rank from $r=100$ to $r=200$ does not resolve this issue, as can be seen from the norm (orange dashed line). Also, increasing the number of vibrational states (not shown here, tested up to ) does not lead to an improved convergence of the results.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.705\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf}
+\end{figure}
+\subsection{Hopping, SOC, and Peierls distortion}
+Parameters: $L=3$, $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$. As $t_1$ dominates the dynamics, the results remains essentially unchanged in comparison to the case above. Hence, convergence issues in the TT-HEOM remain.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.705\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+soc+tph.pdf}
+\end{figure}
+\subsection{Hopping, SOC, Peierls distortion, and Peierls-SOC}
+Parameters: $L=3$, $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$. This parameter set has been used by Fransson in \cite{fransson2020vibrational}. As it is evident from the comparison of the previous and last-to-previous parameter sets, it is expected that including $\lambda_1$ will not lead to significant changes in the dynamics. Therefore, a comparison here is omitted.
+\subsection{Problem statement and possible solution}
+The TT-HEOM method converges for purely electronic dynamics when electron-vibrational coupling is omitted. This is even for a finite SOC strength, which is not assumed in the original parameter set considered by Fransson.
 
+In the TT-HEOM method, as implemented currently, a finite electron-vibrational coupling leads to not converged results, when using bond dimensions which are sufficient in simulations with purely electronic couplings. This is apparent from following indicators
+\begin{itemize}
+	\item rapidly decreasing norm of state MPS
+	\item negative populations and norms
+	\item no significant improvement of results upon significant increase of rank of vibrational states
+\end{itemize} 
+All of these points can be seen in the following smaller system with parameters $L=2$, $t_0=1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, shown below.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf}
-\end{figure}
-\subsubsection{Hopping, SOC, and Peierls distortion}
-Parameters: $L=3$, $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$. 
-
-\subsubsection{Hopping, SOC, Peierls distortion, and Peierls-SOC}
-Parameters: $L=3$, $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$. 
+	\includegraphics[width=0.8\textwidth]{figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.pdf}
+\end{figure}  
 
 \section{Comparison of Dynamics in Open Molecule}
 \subsection{No vibrations}
