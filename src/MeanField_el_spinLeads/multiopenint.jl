@@ -41,12 +41,12 @@ function Propagate(N::Int,
 	betaLu,betaLd,betaRu,betaRd = beta
 	tph = 0.0
         tsoph = 0.0	
-	hcen_i      = FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,1.0,zeros(N))
+	hcen_i      = FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,zeros(N),zeros(N))
 	Gamma1u,Gamma1d,Gamma2u,Gamma2d = GammaMatrices1dSpin(N,tL,tR)
 	
 	GammaT		= Gamma1u+Gamma2u+Gamma1d+Gamma2d
-	GammaTu     = Gamma1u+Gamma2u
-	GammaTd     = Gamma1d+Gamma2d
+	GammaTu     	= Gamma1u+Gamma2u
+	GammaTd     	= Gamma1d+Gamma2d
 
 	tim   		= [0.0]
 	kappa,xi	= PadeFermi(nPoles)
@@ -57,7 +57,7 @@ function Propagate(N::Int,
 	chi2u		= muRu .+ 1im .* xi ./betaRu
 	chi2d		= muRd .+ 1im .* xi ./betaRd
 
-	chiLP 	    = [chi1u,chi1d,chi2u,chi2d]
+	chiLP 	    	= [chi1u,chi1d,chi2u,chi2d]
 	if rhoIn == "pure"
 		rho0    = Diagonal(float(popIn))
 	elseif rhoIn == "equilibrium"
@@ -70,7 +70,7 @@ function Propagate(N::Int,
 	end
 	
 	pop_l       = [Populations(rho0)]
-    rho_i       = rho0
+	rho_i       = rho0
     
 	hcen0 		= hcen_i
 
@@ -83,11 +83,11 @@ function Propagate(N::Int,
 			
 		close(fid)
 	else
-		curp1u_i = [CurrentInit_PFree(hcen0,GammaTu,chi1u[i],kappa[i],betaLu,Gamma1u) for i in 1:length(chi1u)]
-		curp1d_i = [CurrentInit_PFree(hcen0,GammaTd,chi1d[i],kappa[i],betaLd,Gamma1d) for i in 1:length(chi1d)]
+		curp1u_i = [CurrentInit_PFree(hcen0,GammaT,chi1u[i],kappa[i],betaLu,Gamma1u) for i in 1:length(chi1u)]
+		curp1d_i = [CurrentInit_PFree(hcen0,GammaT,chi1d[i],kappa[i],betaLd,Gamma1d) for i in 1:length(chi1d)]
 			
-		curp2u_i = [CurrentInit_PFree(hcen0,GammaTu,chi2u[i],kappa[i],betaRu,Gamma2u) for i in 1:length(chi2u)]
-		curp2d_i = [CurrentInit_PFree(hcen0,GammaTd,chi2d[i],kappa[i],betaRd,Gamma2d) for i in 1:length(chi2d)]
+		curp2u_i = [CurrentInit_PFree(hcen0,GammaT,chi2u[i],kappa[i],betaRu,Gamma2u) for i in 1:length(chi2u)]
+		curp2d_i = [CurrentInit_PFree(hcen0,GammaT,chi2d[i],kappa[i],betaRd,Gamma2d) for i in 1:length(chi2d)]
 	end
 	curM1u		= CurrentMatrix(rho0,Gamma1u,curp1u_i)
 	curM1d		= CurrentMatrix(rho0,Gamma1d,curp1d_i)
@@ -95,28 +95,19 @@ function Propagate(N::Int,
 	curM2u		= CurrentMatrix(rho0,Gamma2u,curp2u_i)
 	curM2d		= CurrentMatrix(rho0,Gamma2d,curp2d_i)
 
-	cur1_l      = [Current(curM1u+curM1d)]
-	cur2_l      = [Current(curM1u+curM1d)]
+	cur1u_l      = [Current(curM1u)]
+	cur1d_l      = [Current(curM1d)]
+	cur2u_l      = [Current(curM1u)]
+	cur2d_l      = [Current(curM1d)]
 
-	scur1_l     = [SpinCurrent(curM1u+curM1d)]
-	scur2_l     = [SpinCurrent(curM1u+curM1d)]
-	
-		
+	scur1u_l     = [SpinCurrent(curM1u)]
+	scur1d_l     = [SpinCurrent(curM1d)]
 
-#	cur1u_l		= [Current(curM1u)]
-#	cur1d_l		= [Current(curM1d)]
-#	cur2u_l		= [Current(curM2u)]
-# 	cur2d_l		= [Current(curM2d)]
-#
-#	scur1u_l 	= [SpinCurrent(curM1u)]
-#	scur1d_l 	= [SpinCurrent(curM1d)]
-#	scur2u_l 	= [SpinCurrent(curM2u)]
-#	scur2d_l 	= [SpinCurrent(curM2d)]
-		
-
+	scur2u_l     = [SpinCurrent(curM1u)]
+	scur2d_l     = [SpinCurrent(curM1d)]
 	
 	for i in 1:numstep
-		hcen_i  = FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,1.0,zeros(N))	
+		hcen_i  = FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,zeros(N),zeros(N))	
 		chi1u	= muLu .+ 1im .* xi ./betaLu 						# Overwrite previous chis by the new one WITH voltage drop
 		chi1d	= muRd .+ 1im .* xi ./betaLd
 		
@@ -133,7 +124,7 @@ function Propagate(N::Int,
 		curp2u_i = copy(curp2u_c)
 		curp2d_i = copy(curp2d_c)
 			
-		pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l = SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,path)
+		pop_l,tim,cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1u_l,scur1d_l,scur2u_l,scur2d_l = SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,tim,i,dt,cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1u_l,scur1d_l,scur2u_l,scur2d_l,path)
 		if i == numstep 
 			fil = h5open("$(path)_final_Quantities","w")
 			fil["Rho"] = rho_i

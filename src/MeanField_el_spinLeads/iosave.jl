@@ -79,31 +79,34 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scu
 end
 
 #function SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1u_l,scur1d_l,scur2u_l,scur2d_l,q_l,p_l,path)
-function SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,path)
+function SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,tim,i,dt,cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1u_l,scur1d_l,scur2u_l,scur2d_l,path)
 
 	pop = Populations(rho_i)
 
-	cur1 = Current(cur1u_c+cur1d_c)
-#	cur1u = Current(cur1u_c) 
-#	cur1d = Current(cur1d_c)	
+	#cur1 = Current(0.5*(cur1u_c+cur1d_c))
+	cur1u = Current(cur1u_c) 
+	cur1d = Current(cur1d_c)	
 
-	cur2 = Current(cur2u_c+cur2d_c)
-#	cur2d = Current(cur2u_c)
-#	cur2d = Current(cur2d_c)
+#	cur2 = Current(0.5*(cur2u_c+cur2d_c))
+	cur2u = Current(cur2u_c)
+	cur2d = Current(cur2d_c)
 	
-	scur1 = SpinCurrent(cur1u_c+cur1d_c)
-	#scur1d = SpinCurrent(cur1d_c)
-		
-	scur2 = SpinCurrent(cur2u_c+cur2d_c)
+#	scur1 = SpinCurrent(0.5*(cur1u_c+cur1d_c))
 
-	#scur2d = SpinCurrent(cur2d_c)
+	scur1u = SpinCurrent(cur1u_c)
+	scur1d = SpinCurrent(cur1d_c)
+		
+#	scur2 = SpinCurrent(0.5*(cur2u_c+cur2d_c))
+
+	scur2u = SpinCurrent(cur2u_c)
+	scur2d = SpinCurrent(cur2d_c)
 		
 
 	if i == 1
 		curfile = open("$(path)_currents.dat","w")
 		popfile = open("$(path)_electrons.dat","w")
-		#write(curfile,"#(1)t (2)ILu (3)ILd (4)IRu (5)IRd (6)sILux (7)sILuy (8)sILuz (9)sILdx (10)sILdy (11)sILdz (12)sIRux (13)sIRuy (14)sIRuz (15)sIRdx (16)sIRdy (17)sIRdz\n")	
-		write(curfile,"#(1)t (2)IL (3)IR (4)sILx (5)sILy (6)sILz (7)sIRx (8)sIRy (9)sIRz\n")	
+		write(curfile,"#(1)t (2)ILu (3)ILd (4)IRu (5)IRd (6)sILux (7)sILuy (8)sILuz (9)sILdx (10)sILdy (11)sILdz (12)sIRux (13)sIRuy (14)sIRuz (15)sIRdx (16)sIRdy (17)sIRdz\n")	
+		#write(curfile,"#(1)t (2)IL (3)IR (4)sILx (5)sILy (6)sILz (7)sIRx (8)sIRy (9)sIRz\n")	
 		write(popfile,"#(1)t ")
 		for k in 1:length(pop)
 			write(popfile,"($(k+1))p$(k)u ($(k+1))p$(k)d ")
@@ -116,21 +119,21 @@ function SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,tim,i,dt,cur
 	
 	if i % GlobalConstants.AppendData == 0
 		push!(pop_l,pop)
-		push!(cur1_l,cur1)
-		#push!(cur1u_l,cur1u)
-		#push!(cur1d_l,cur1d)
+	#	push!(cur1_l,cur1)
+		push!(cur1u_l,cur1u)
+		push!(cur1d_l,cur1d)
 		
-		push!(cur2_l,cur2)
-	#	push!(cur2u_l,cur2u)
-	#	push!(cur2d_l,cur2d)
+	#	push!(cur2_l,cur2)
+		push!(cur2u_l,cur2u)
+		push!(cur2d_l,cur2d)
 		
-		push!(scur1_l,scur1)	
-#		push!(scur1u_l,scur1u)
-#		push!(scur1d_l,scur1d)
+	#	push!(scur1_l,scur1)	
+		push!(scur1u_l,scur1u)
+		push!(scur1d_l,scur1d)
 	
-		push!(scur2_l,scur2)
-	#	push!(scur2u_l,scur2u)
-	#	push!(scur2d_l,scur2d)
+#		push!(scur2_l,scur2)
+		push!(scur2u_l,scur2u)
+		push!(scur2d_l,scur2d)
 			
 		push!(tim,abs(i*dt))
 	end
@@ -141,8 +144,8 @@ function SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,tim,i,dt,cur
 			
 		for j in 1:length(pop_l)
 			write(popfile,"$(tim[j]) ")
-			#write(curfile,"$(tim[j]) $(cur1u_l[j]) $(cur1d_l[j]) $(cur2u_l[j]) $(cur2d_l[j]) $(scur1u_l[j][1]) $(scur1u_l[j][2]) $(scur1u_l[j][3]) $(scur1d_l[j][1]) $(scur1d_l[j][2]) $(scur1d_l[j][3]) $(scur2u_l[j][1]) $(scur2u_l[j][2]) $(scur2u_l[j][3]) $(scur2d_l[j][1]) $(scur2d_l[j][2]) $(scur2d_l[j][3])\n")
-			write(curfile,"$(tim[j]) $(cur1_l[j]) $(cur2_l[j]) $(scur1_l[j][1]) $(scur1_l[j][2]) $(scur1_l[j][3]) $(scur2_l[j][1]) $(scur2_l[j][2]) $(scur2_l[j][3]) \n")
+			write(curfile,"$(tim[j]) $(cur1u_l[j]) $(cur1d_l[j]) $(cur2u_l[j]) $(cur2d_l[j]) $(scur1u_l[j][1]) $(scur1u_l[j][2]) $(scur1u_l[j][3]) $(scur1d_l[j][1]) $(scur1d_l[j][2]) $(scur1d_l[j][3]) $(scur2u_l[j][1]) $(scur2u_l[j][2]) $(scur2u_l[j][3]) $(scur2d_l[j][1]) $(scur2d_l[j][2]) $(scur2d_l[j][3])\n")
+			#write(curfile,"$(tim[j]) $(cur1_l[j]) $(cur2_l[j]) $(scur1_l[j][1]) $(scur1_l[j][2]) $(scur1_l[j][3]) $(scur2_l[j][1]) $(scur2_l[j][2]) $(scur2_l[j][3]) \n")
 				
 			for k in 1:length(pop_l[j])
 				write(popfile,"$(pop_l[j][k]) ")
@@ -154,29 +157,29 @@ function SaveOutputSpin(cur1u_c,cur1d_c,cur2u_c,cur2d_c,pop_l,rho_i,tim,i,dt,cur
 
 		pop_l = []
 		
-		cur1_l = []
-		#cur1u_l = []
-		#cur1d_l = []
+		#cur1_l = []
+		cur1u_l = []
+		cur1d_l = []
 	
-		cur2_l = []
-	#	cur2u_l = []
-	#	cur2d_l = []
+		#cur2_l = []
+		cur2u_l = []
+		cur2d_l = []
 		
-		scur1_l = []
-	#	scur1u_l = []
-	#	scur1d_l = []
-	#		
-		scur2_l = []
-	#	scur2u_l = []
-	#	scur2d_l = []
+	#	scur1_l = []
+		scur1u_l = []
+		scur1d_l = []
+			
+	#	scur2_l = []
+		scur2u_l = []
+		scur2d_l = []
 			
 		tim = []
 
 	end
 
 
-	#return pop_l,tim,cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1u_l,scur1d_l,scur2u_l,scur2d_l,q_l,p_l
-	return pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l
+	return pop_l,tim,cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1u_l,scur1d_l,scur2u_l,scur2d_l
+	#return pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l
 
 end
 

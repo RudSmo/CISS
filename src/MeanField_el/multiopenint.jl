@@ -63,9 +63,17 @@ function Propagate(N 		::Int,
 
 	curM1		= CurrentMatrix(rho_i,Gamma1,curp1_i)
 	curM2		= CurrentMatrix(rho_i,Gamma2,curp2_i)
+	
 	cur1_l		= [Current(curM1)]
- 	cur2_l		= [Current(curM2)]
+	cur1u_l         = [CurrentSP(curM1)[1]]
+	cur1d_l         = [CurrentSP(curM1)[2]]
 
+ 	cur2_l		= [Current(curM2)]
+	cur2u_l         = [CurrentSP(curM2)[1]]
+        cur2d_l         = [CurrentSP(curM2)[2]]
+
+	scur1_l         = [SpinCurrent(curM1)]
+	scur2_l         = [SpinCurrent(curM2)]
 	
 	for i in 1:numstep
 		chi1	= muL .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
@@ -77,7 +85,8 @@ function Propagate(N 		::Int,
 		rho_i   = copy(rho_c)
 		curp1_i = copy(curp1_c)
 		curp2_i = copy(curp2_c)
-		pop_l,tim,cur1_l,cur2_l = SaveOutput(cur1_c,cur2_c,pop_l,rho_i,tim,i,dt,cur1_l,cur2_l,path)
+#		pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l = SaveOutput(cur1_c,cur2_c,pop_l,rho_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,path)
+		pop_l,tim,cur1_l,cur2_l,cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1_l,scur2_l = SaveOutput(cur1_c,cur2_c,pop_l,rho_i,tim,i,dt,cur1_l,cur2_l,cur1u_l,cur1d_l,cur2u_l,cur2d_l,scur1_l,scur2_l,path)
 		if i == numstep 
 			fil = h5open("$(path)_final_Quantities","w")
 			fil["Rho"] = rho_i
