@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  19 SEP 2022 11:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  20 SEP 2022 11:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -576,58 +576,67 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/biblatex/biblatex.cfg
 File: biblatex.cfg 
 ))
+(/usr/local/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/local/texlive/2021/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count421
+\Gm@cntv=\count422
+\c@Gm@tempcnt=\count423
+\Gm@bindingoffset=\dimen178
+\Gm@wd@mp=\dimen179
+\Gm@odd@mp=\dimen180
+\Gm@even@mp=\dimen181
+\Gm@layoutwidth=\dimen182
+\Gm@layoutheight=\dimen183
+\Gm@layouthoffset=\dimen184
+\Gm@layoutvoffset=\dimen185
+\Gm@dimlist=\toks30
+)
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 (biblatex)                Loading 'csquotes' recommended.
 
-\@quotelevel=\count421
-\@quotereset=\count422
+\@quotelevel=\count424
+\@quotereset=\count425
 (./RudolfSmorka_FranssonModel_Comparison.aux)
 \openout1 = `RudolfSmorka_FranssonModel_Comparison.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count423
-\scratchdimen=\dimen178
+\scratchcounter=\count426
+\scratchdimen=\dimen186
 \scratchbox=\box59
-\nofMPsegments=\count424
-\nofMParguments=\count425
-\everyMPshowfont=\toks30
-\MPscratchCnt=\count426
-\MPscratchDim=\dimen179
-\MPnumerator=\count427
-\makeMPintoPDFobject=\count428
-\everyMPtoPDFconversion=\toks31
+\nofMPsegments=\count427
+\nofMParguments=\count428
+\everyMPshowfont=\toks31
+\MPscratchCnt=\count429
+\MPscratchDim=\dimen187
+\MPnumerator=\count430
+\makeMPintoPDFobject=\count431
+\everyMPtoPDFconversion=\toks32
 ) (/usr/local/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/grfext/grfext.sty
-Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
-
-(/usr/local/texlive/2021/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
-Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-))
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 504.
+
 (/usr/local/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
@@ -673,68 +682,104 @@ Package biblatex Warning: BibTeX reported the following issues
 (biblatex)                - Invalid format of field 'month'.
 
 )
-Package biblatex Info: Reference section=0 on input line 30.
-Package biblatex Info: Reference segment=0 on input line 30.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
+Package biblatex Info: Reference section=0 on input line 36.
+Package biblatex Info: Reference segment=0 on input line 36.
 
- (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 483.69684pt, 56.90553pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23582pt, 56.90552pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69684pt
+* \textheight=731.23582pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
+
+(/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+bbold on input line 5
-6.
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 6
+3.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/bbold/Ubbold.fd) [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite.pdf, id=21, 722.7pt x 578.16p
+<figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite.pdf, id=22, 722.7pt x 578.16p
 t>
 File: figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite.pdf Graphic file (type p
 df)
 <use figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite.pdf  
-used on input line 70.
-(pdftex.def)             Requested size: 310.4979pt x 248.40105pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.pdf, id=22, 722.7pt x 578
+used on input line 79.
+(pdftex.def)             Requested size: 357.93831pt x 286.35329pt.
+<figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.pdf, id=23, 722.7pt x 578
 .16pt>
 File: figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.pdf Graphic file (ty
 pe pdf)
 <use figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.p
-df  used on input line 75.
-(pdftex.def)             Requested size: 310.4979pt x 248.40105pt.
+df  used on input line 85.
+(pdftex.def)             Requested size: 357.93831pt x 286.35329pt.
+<figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf, id=24, 722.7pt x 578.16pt>
+File: figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf Graphic file (type pdf)
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2] [3 <./figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite.pdf> <./figs/Compari
-son_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.pdf
+<use figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf  use
+d on input line 93.
+(pdftex.def)             Requested size: 435.32419pt x 348.25726pt.
+ [2 <./figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite.pdf> <./figs/Comparison
+_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Comparison_TTHEOM_MFH
 EOM_TDVP_ED_hop+onsite+soc.pdf): PDF inclusion: multiple pdfs with page group i
 ncluded in a single page
->] [4] (./RudolfSmorka_FranssonModel_Comparison.aux)
+>] [3 <./figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf>] [4]
+(./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
 \openout1 = `RudolfSmorka_FranssonModel_Comparison.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 15906 strings out of 478994
- 315198 string characters out of 5858184
- 824384 words of memory out of 5000000
- 33177 multiletter control sequences out of 15000+600000
+ 16316 strings out of 478994
+ 320557 string characters out of 5858184
+ 837680 words of memory out of 5000000
+ 33589 multiletter control sequences out of 15000+600000
  420267 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,18n,78p,1873b,1644s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,18n,75p,1873b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
@@ -755,11 +800,11 @@ e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
 1/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/
 texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (4 pages, 342507 by
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (4 pages, 386846 by
 tes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
+ 153 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
