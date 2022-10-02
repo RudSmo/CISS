@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  20 SEP 2022 13:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  2 OCT 2022 09:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -789,7 +789,23 @@ ype pdf)
 Package pdftex.def Info: figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.
 pdf  used on input line 112.
 (pdftex.def)             Requested size: 386.95894pt x 309.56396pt.
- [4 <./figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.pdf>] [5]
+ [4 <./figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.pdf>]
+<figs/MPS_topology_old.png, id=141, 313.17pt x 254.9525pt>
+File: figs/MPS_topology_old.png Graphic file (type png)
+<use figs/MPS_topology_old.png>
+Package pdftex.def Info: figs/MPS_topology_old.png  used on input line 122.
+(pdftex.def)             Requested size: 145.11052pt x 118.13931pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 119--124
+
+ []
+
+<figs/MPS_topology_new.png, id=143, 335.2525pt x 96.36pt>
+File: figs/MPS_topology_new.png Graphic file (type png)
+<use figs/MPS_topology_new.png>
+Package pdftex.def Info: figs/MPS_topology_new.png  used on input line 128.
+(pdftex.def)             Requested size: 145.11052pt x 41.70746pt.
+[5 <./figs/MPS_topology_old.png> <./figs/MPS_topology_new.png>]
 (./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
@@ -797,10 +813,10 @@ Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 
  ) 
 Here is how much of TeX's memory you used:
- 16328 strings out of 478994
- 321293 string characters out of 5858184
+ 16341 strings out of 478994
+ 321625 string characters out of 5858184
  837680 words of memory out of 5000000
- 33599 multiletter control sequences out of 15000+600000
+ 33609 multiletter control sequences out of 15000+600000
  420267 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,18n,75p,1873b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -824,11 +840,11 @@ e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
 1/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/
 texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (5 pages, 493085 by
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (5 pages, 557467 by
 tes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 163 compressed objects within 2 object streams
+ 204 PDF objects out of 1000 (max. 8388607)
+ 164 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -135,7 +135,7 @@ function DensityFExOpen(lx  ::Int,
 		    chiLP::Array,
 		    GammaT::Array,
 		    beta ::Float64)
-	id = Matrix{Float64}(I,Int(lx*ly),Int(lx*ly))
+	id = Matrix{Float64}(I,Int(2*lx*ly),Int(2*lx*ly))
 	function DensMatInv(chilp,hcen,GammaT,etalp,beta)
 		inV = inv(chilp*id-hcen+0.5*1im*GammaT)
 		sum = real(etalp/beta * inV)

@@ -49,7 +49,6 @@ function Propagate(N 		::Int,
 		fid      = h5open(pathIn,"r")
 		rho_i    = read(fid["Rho"])
 	end
-
 	pop_l       	= [Populations(rho_i)]
 
 	if rhoIn == "fromFile"

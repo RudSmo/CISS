@@ -106,12 +106,28 @@ In the TT-HEOM method, as implemented currently, a finite electron-vibrational c
 	\item negative populations and norms
 	\item no significant improvement of results upon significant increase of rank of vibrational states
 \end{itemize} 
-All of these points can be seen in the following smaller system with parameters $L=2$, $t_0=1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, shown below.
+All of these points can be seen in the following smaller system with parameters $L=2$, $t_0=1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, shown below. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.pdf}
-\end{figure}  
+\end{figure}  \\
+It is evident, that the electron-vibrational coupling leads to issues in the TT-HEOM. Currently, an MPS topology is used, in which the state is written as a product over environmental, electronic, and then vibrational core tensors. 
+The electronic core tensors are an alternating product of spin up and spin down core tensors. Overall, each site core tensor $i$ is paired with its ancially core tensor $i'$, respectively for the spins $i\uparrow,i'\uparrow,i\downarrow,i'\downarrow$. 
+The open source package iTensor (used for obtaining the TDVP results), on the other hand, employs a different MPS topology where the electronic and vibrational core tensors are arranged in an alternating order and the physical dimension of the electronic core tensors is 4 thus including spin. 
+None of the above issues were observed in this implementation. Therefore, a change of the MPS topology in the TT-HEOM implementation is promising to yield results which converge with lower bond dimensions.  
+\newpage
+More precisely, the proposed MPS topology is inspired by the one employed by state-of-the-art MPS-based packages. The current topology is shown below, where $i$ correspond to electronic indices and $j$ to vibrational ones: The physical dimension of the $i$ indices is 2, each core tensor thus describes either up or down spin electrons, while the physical dimension of the $j$ tensors is $M$. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.3\textwidth]{figs/MPS_topology_old.png}
+\end{figure} \\
 
+For solving the convergence issue in an isolated electronic-vibrationally coupled molecule, the proposed topology is shown below. Now, the electronic core tensors $i$ have a physical dimension of 4 instead of 2, the basis is therefore spanned by the states $\vert 00\rangle, \vert 01 \rangle, \vert 10 \rangle$, and $\vert 11\rangle$ where the first state corresponds to electrons with projection $m_s=+1/2$ and second one to electrons with $m_s = -1/2$.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.3\textwidth]{figs/MPS_topology_new.png}
+\end{figure} \\
+However, one has to keep in mind that due to the formulation of the TT-HEOM in twin-space and hence addition of auxiliary core tensors, one cannot expect the same efficiency as in the implementation used by iTensor, in which the wavefunction is represented as a MPS. 
 \section{Comparison of Dynamics in Open Molecule}
 \subsection{No vibrations}
 \subsubsection{Hopping}
