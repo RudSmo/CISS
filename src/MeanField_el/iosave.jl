@@ -41,7 +41,7 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,tim,i,dt,cur1_l,cur2_l,cur1u_l,cur
 		write(curfile,"#(1)t (2)IL (3)ILu (4)ILd (5)IR (6)IRu (7)IRd (8)sILx (9)sILy (10)sILz (11)sIRx (12)sIRy (13)sIRz\n")
 		write(popfile,"#(1)t ")
 		k = 2
-		for m in 1:length(pop)
+		for m in 1:Int(length(pop)/2)
 			write(popfile,"($(k))p$(m)u ($(k+1))p$(m)d ")
 			k += 2
 		end

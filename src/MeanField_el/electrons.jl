@@ -15,9 +15,9 @@ function DensityFEx(lx  ::Int,
                     ex  :: Int)
         eigvec = eigvecs(hcen)
         teigvc = conj(transpose(eigvec))
-        rho = zeros(lx*ly,lx*ly)*(1+1im*0)
-        for i in 1:Int(lx*ly)
-                for j in 1:Int(lx*ly)
+        rho = zeros(2*lx*ly,2*lx*ly)*(1+1im*0)
+        for i in 1:Int(2*lx*ly)
+                for j in 1:Int(2*lx*ly)
                         rho[i,j] = sum([eigvec[i,a]*teigvc[a,j] for a in 1:(fil)])#+eigvec[i,fil+ex]*teigvc[fil+ex,j]
                 end
         end

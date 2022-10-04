@@ -31,8 +31,8 @@ ed = 0.0
 E = [eu,ed]
 a = 1.0
 c = 1.0
-tso = t0/4
-num_laps = 1
+tso = 0.001
+num_laps = 3
 ions = 4
 l = Int(num_laps * ions)
 tph = 0.0
@@ -61,7 +61,7 @@ V  = 0.0  #[1.2 for i in 1:numstep]
 muL = V/2 #+ 6*t0
 muR = -V/2 #+ 6*t0
 nPoles = 50
-beta = 1/0.025
+beta = 1/0.1
 
 
 path = "data/EqCurrents"
@@ -73,7 +73,7 @@ num_avg = 1
 resampling = false
 rsmpl_stp = 15
 for ka in 1:num_avg
-    dataname1 = "$(path)/L$(l)_laps$(num_laps)_ions$(ions)_V$(V)_tso$(tso)_dt$(abs(dt))_2"
+    dataname1 = "$(path)/L$(l)_laps$(num_laps)_ions$(ions)_V$(V)_tso$(tso)_beta$(beta)_dt$(abs(dt))_2"
     dataname2 = "$(dataname1)_$(ka)"
 
     params = [("dt",dt),("Nstep",numstep),("N",l),("t0",t0),("tso",tso),("tph",tph),("tsoph",tsoph),("ws",ws),("tL",tL),("tR",tR),("V",V[1]),("nPoles",nPoles),("beta",beta)]

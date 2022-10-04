@@ -19,7 +19,7 @@ using .ClassicalPhonons
 
 # Simulation Parameters
 dt = 0.001
-tend = 50
+tend = 500
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -28,24 +28,24 @@ initProp  = true
 
 # Geometry Parameters
 t0 = 1.0
-eu = 1.0
-ed = -1.0
+eu = 0.0
+ed = 0.0
 E = [eu,ed]
 a = 1.0
 c = 1.0
-tso = 0.8
-num_laps = 1
-ions = 3
+tso = t0/4
+num_laps = 3
+ions = 4
 l = Int(num_laps * ions)
-tph = 0.0 
-tsoph = 0.0
+tph = 0.1*t0
+tsoph = 0.0*tso
 ws = ones(l)*1.4*t0
 
 if initProp
-    rhoIn = "pure"
-    #rhoIn = "equilibrium"
-    phIn = "TDSCF"
-    #phIn = "Wigner"
+    #rhoIn = "pure"
+    rhoIn = "equilibrium"
+    #phIn = "TDSCF"
+    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -60,23 +60,24 @@ phases = [rand()*2*pi for i in 1:length(popPhIn)]
 qnIn,pnIn = InitialPh(popPhIn,ws,phases)
 
 ## Leads
-tL = 0.0 * [1.0,1.0] 
+tL = t0/4 * [1.0,1.0] 
 tR = tL #[t/4,t/4] 
 V  = 0.0*ones(numstep)
-nPoles = 50
+nPoles = 30
 beta = 1/0.025
 
 
-path = "test"
+path = "FranssonParams_EqSpinCurrents/tso$(tso)_tph$(tph)_tsoph$(tsoph)"
 if !isdir(path)
 	mkdir(path)
 end
 
-num_avg = 1
+num_avg = 20
 resampling = false
 rsmpl_stp = 15
+
 for ka in 1:num_avg
-    dataname1 = "$(path)/L$(l)_Hop+Onsite+SOC_dt$(abs(dt))"
+    dataname1 = "$(path)/L$(l)_laps$(num_laps)_ions$(ions)_V$(V[1])_tso$(tso)_tph$(tph)_tsoph$(tsoph)_dt$(abs(dt))"
     dataname2 = "$(dataname1)_$(ka)"
 
     params = [("dt",dt),("Nstep",numstep),("N",l),("t0",t0),("tso",tso),("tph",tph),("tsoph",tsoph),("ws",ws),("tL",tL),("tR",tR),("V",V[1]),("nPoles",nPoles),("beta",beta)]

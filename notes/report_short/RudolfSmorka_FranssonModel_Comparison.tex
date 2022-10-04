@@ -84,7 +84,7 @@ Parameters: $L=3$, $t_0 = 1$, $\varepsilon_\uparrow = 1= -\varepsilon_\downarrow
 	\includegraphics[width=0.72\textwidth]{figs/Comparison_TTHEOM_MFHEOM_TDVP_ED_hop+onsite+soc.pdf}
 \end{figure}
 \subsection{Hopping and Peierls distortion}
-Parameters: $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$. The ED has been checked to be converged; for the time interval considered here, 5 number of states per vibrational mode are sufficient for convergence. The TT-HEOM method agrees with ED and TDVP only for very short times; for $t\geq 5$, the TT-HEOM results deviate dramatically and the norm drops down significantly. Increasing the rank from $r=100$ to $r=200$ does not resolve this issue, as can be seen from the norm (orange dashed line). Also, increasing the number of vibrational states (not shown here, tested up to ) does not lead to an improved convergence of the results.
+Parameters: $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$. The ED has been checked to be converged; for the time interval considered here, 5 number of states per vibrational mode are sufficient for convergence. The TT-HEOM method agrees with ED and TDVP only for very short times; for $t\geq 8$, the TT-HEOM results deviate the norm drops down significantly. Increasing the rank from $r=100$ to $r=150$ leads to slightly better behavior of the norm. The overall population dynamics, however, changes only slightly. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.705\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf}

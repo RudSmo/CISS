@@ -29,7 +29,7 @@ function Propagate(N 		::Int,
 	          rhoIn         ::String,
 		  popIn         ::Array,
 		  pathIn        = "")
-
+	
 	Gamma1,Gamma2   = GammaMatrices1d(N,tL,tR)
 	GammaT		= Gamma1+Gamma2
 	tim   		= [0.0]

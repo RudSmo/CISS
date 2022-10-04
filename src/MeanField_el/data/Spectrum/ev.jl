@@ -32,20 +32,23 @@ ed = 0.0
 E = [eu,ed]
 a = 1.0
 c = 1.0
-num_laps = 20
-ions = 8
+num_laps = 4#20
+ions = 4#8
 l = Int(num_laps * ions)
 tph = 0.0
 tsoph = 0.0
-ws = ones(l)*1.4*t0
+ws = zeros(l)
 qs = zeros(l)
-Tsos = Array(0.0:0.005:3.0)
+Tsos = Array(0.0:0.001:4.0)
 Nd = zeros(length(Tsos),l)
-ev_ind = Int(l)
+ev_inds = [Int(l)]#Array(1:Int(l))
+sz = [1 0; 0 -1.]
+id = [1 0; 0 1.]
+op = id
 for (ind,tso) in enumerate(Tsos)
 	H = Hamiltonian.FranssonHamiltonian(l,E,t0,tso,a,c,num_laps,tph,tsoph,ws,qs)
 	ew,ev = eigen(H)
-	ds = [ev[i:i+1,ev_ind]'*ev[i:i+1,ev_ind] for i in 1:2:length(ew)]
+	ds = [sum([ev[i:i+1,ev_ind]'*op*ev[i:i+1,ev_ind] for ev_ind in ev_inds]) for i in 1:2:length(ew)]
 	Nd[ind,:] = ds[:]
 #	plt.plot(ds .- 0.5*ind,label=L"$\lambda = $"*"$(tso)")
 end

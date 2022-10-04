@@ -1,7 +1,7 @@
 module Hamiltonian
 using LinearAlgebra
 
-export VDot,absv,UnitVector,FranssonHamiltonian,SingleLevel,HatanoNelson,HatanoNelson2D,NNN
+export VDot,absv,UnitVector,FranssonHamiltonian,SingleLevel,HatanoNelson,HatanoNelson2D,NNN,FranssonHamiltonianExtended
 
 
 function VDot(a)
@@ -117,6 +117,57 @@ function FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,ws,qs)
     Heph = Holstein_NN(N,tph,ws,qs)
     Hsoph = Holstein_SOC(N,tsoph,a,c,num_laps,ws,qs)
 	return Ho+Hh+HSo+Heph+Hsoph
+end
+
+
+function FranssonHamiltonianExtended(N,E,t,gSL,tso,a,c,num_laps,tph,tsoph,ws,qs)
+	N1,NS,N2 = N
+	Ntot = N1+NS+N2
+	E1,ES,E2 = E
+	t1,tS,t2 = t
+	gS1,gS2 = gSL
+	tso1,tsoS,tso2 = tso
+	a1,aS,a2 = a
+	c1,cS,c2 = c
+	nL1,nLS,nL2 = num_laps
+	tph1,tphS,tph2 = tph
+	tsoph1,tsophS,tsoph2 = tsoph
+	ws1,wsS,ws2 = ws
+	qs1,qsS,qs2 = qs
+	H1 = FranssonHamiltonian(N1,E1,t1,tso1,a1,c1,nL1,tph1,tsoph1,ws1,qs1)
+	HS = FranssonHamiltonian(NS,ES,tS,tsoS,aS,cS,nLS,tphS,tsophS,wsS,qsS)
+	H2 = FranssonHamiltonian(N2,E2,t2,tso2,a2,c2,nL2,tph2,tsoph2,ws2,qs2) 
+	H = zeros(2*Ntot,2*Ntot)*(1+0*1im)
+	H[1:2*N1,1:2*N1] += H1
+
+	H[2*N1-1,2*N1+1] += gS1[1,1]
+	H[2*N1+1,2*N1-1] += gS1[1,1]
+
+	H[2*N1-1,2*N1+2] += gS1[1,2]
+	H[2*N1+2,2*N1-1] += gS1[1,2]
+
+	H[2*N1,2*N1+2] += gS1[2,2]	
+	H[2*N1+2,2*N1] += gS1[2,2]
+
+	H[2*N1,2*N1+1] += gS1[2,1]
+	H[2*N1+1,2*N1] += gS1[2,1]
+
+	H[2*N1+1:2*N1+2*NS,2*N1+1:2*N1+2*NS] += HS
+
+	H[2*N1+2*NS-1,2*N1+2*NS+1] += gS2[1,1]
+	H[2*N1+2*NS+1,2*N1+2*NS-1] += gS2[1,1]
+
+	H[2*N1+2*NS,2*N1+2*NS+2] += gS2[2,2]
+	H[2*N1+2*NS+2,2*N1+2*NS] += gS2[2,2]
+	
+	H[2*N1+2*NS,2*N1+2*NS+1] += gS2[2,1]
+	H[2*N1+2*NS+1,2*N1+2*NS] += gS2[2,1]
+
+	H[2*N1+2*NS-1,2*N1+2*NS+2] += gS2[1,2]
+	H[2*N1+2*NS+2,2*N1+2*NS-1] += gS2[1,2]
+
+	H[2*(N1+NS)+1:end,2*(N1+NS)+1:end] += H2
+	return H
 end
 
 function HatanoNelson(N,tA,tB)

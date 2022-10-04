@@ -41,10 +41,11 @@ ws = ones(l)*1.4*t0
 qs = zeros(l)
 
 
-Tso = Array(0.0:0.01:20.0)
+Tso = [1.0]#Array(0.0:0.01:20.0)
 fil = open("eigvals_laps$(num_laps)_ions$(ions)_eu$(eu)_ed$(ed)_a$(a)_c$(c)_tsoVar.dat","w")
 for tso in Tso
 	H = Hamiltonian.FranssonHamiltonian(l,E,t0,tso,a,c,num_laps,tph,tsoph,ws,qs)
+	print(H == H')
 	ew = eigvals(H)
 	write(fil,"$(tso) ")
 	for j in 1:length(ew)
