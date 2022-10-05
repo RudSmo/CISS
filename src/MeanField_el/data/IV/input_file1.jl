@@ -17,7 +17,7 @@ using .MultiOpenIntegrator
 
 # Simulation Parameters
 dt = 0.001
-tend = 100.0
+tend = 400.0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -58,7 +58,7 @@ popElIn = [1,1,0,0,0,0,0,0,0,0]
 tL = [t0/4,t0/4] 
 tR = tL #[t/4,t/4] 
   #[1.2 for i in 1:numstep]
-Vs = Array(-5.0:0.03:5.0)
+Vs = Array(-4.9:0.1:-2.5)
 for V in Vs
 	muL = V/2 #+ 6*t0
 	muR = -V/2 #+ 6*t0
