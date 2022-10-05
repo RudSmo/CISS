@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  2 OCT 2022 09:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  5 OCT 2022 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -787,36 +787,44 @@ File: figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.pdf Graphic file (t
 ype pdf)
 <use figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.pdf>
 Package pdftex.def Info: figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.
-pdf  used on input line 112.
+pdf  used on input line 106.
 (pdftex.def)             Requested size: 386.95894pt x 309.56396pt.
  [4 <./figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.pdf>]
 <figs/MPS_topology_old.png, id=141, 313.17pt x 254.9525pt>
 File: figs/MPS_topology_old.png Graphic file (type png)
 <use figs/MPS_topology_old.png>
-Package pdftex.def Info: figs/MPS_topology_old.png  used on input line 122.
+Package pdftex.def Info: figs/MPS_topology_old.png  used on input line 116.
 (pdftex.def)             Requested size: 145.11052pt x 118.13931pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--124
+Underfull \hbox (badness 10000) in paragraph at lines 113--118
 
  []
 
 <figs/MPS_topology_new.png, id=143, 335.2525pt x 96.36pt>
 File: figs/MPS_topology_new.png Graphic file (type png)
 <use figs/MPS_topology_new.png>
-Package pdftex.def Info: figs/MPS_topology_new.png  used on input line 128.
+Package pdftex.def Info: figs/MPS_topology_new.png  used on input line 122.
 (pdftex.def)             Requested size: 145.11052pt x 41.70746pt.
-[5 <./figs/MPS_topology_old.png> <./figs/MPS_topology_new.png>]
-(./RudolfSmorka_FranssonModel_Comparison.aux)
+<figs/L8_eqCurrents.pdf, id=144, 642.4pt x 481.8pt>
+File: figs/L8_eqCurrents.pdf Graphic file (type pdf)
+<use figs/L8_eqCurrents.pdf>
+Package pdftex.def Info: figs/L8_eqCurrents.pdf  used on input line 132.
+(pdftex.def)             Requested size: 483.69684pt x 362.78268pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5 <./figs/MPS_topology_old.png> <./figs/MPS_topology_new.png>] [6 <./figs/L8_e
+qCurrents.pdf>] (./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
 \openout1 = `RudolfSmorka_FranssonModel_Comparison.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16341 strings out of 478994
- 321625 string characters out of 5858184
- 837680 words of memory out of 5000000
- 33609 multiletter control sequences out of 15000+600000
+ 16350 strings out of 478994
+ 321926 string characters out of 5858184
+ 837738 words of memory out of 5000000
+ 33617 multiletter control sequences out of 15000+600000
  420267 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,18n,75p,1873b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -840,11 +848,11 @@ e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
 1/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/
 texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist
 /fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (5 pages, 560509 by
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (6 pages, 602187 by
 tes).
 PDF statistics:
- 204 PDF objects out of 1000 (max. 8388607)
- 164 compressed objects within 2 object streams
+ 218 PDF objects out of 1000 (max. 8388607)
+ 173 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

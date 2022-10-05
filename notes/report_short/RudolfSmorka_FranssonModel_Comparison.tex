@@ -98,15 +98,9 @@ Parameters: $L=3$, $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$. As $t_1$ dom
 \subsection{Hopping, SOC, Peierls distortion, and Peierls-SOC}
 Parameters: $L=3$, $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$. This parameter set has been used by Fransson in \cite{fransson2020vibrational}. As it is evident from the comparison of the previous and last-to-previous parameter sets, it is expected that including $\lambda_1$ will not lead to significant changes in the dynamics. Therefore, a comparison here is omitted.
 \subsection{Problem statement and possible solution}
-The TT-HEOM method converges for purely electronic dynamics when electron-vibrational coupling is omitted. This is even for a finite SOC strength, which is not assumed in the original parameter set considered by Fransson.
+The TT-HEOM method converges for purely electronic dynamics when electron-vibrational coupling is omitted. 
 
-In the TT-HEOM method, as implemented currently, a finite electron-vibrational coupling leads to not converged results, when using bond dimensions which are sufficient in simulations with purely electronic couplings. This is apparent from following indicators
-\begin{itemize}
-	\item rapidly decreasing norm of state MPS
-	\item negative populations and norms
-	\item no significant improvement of results upon significant increase of rank of vibrational states
-\end{itemize} 
-All of these points can be seen in the following smaller system with parameters $L=2$, $t_0=1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, shown below. 
+In the TT-HEOM method, as implemented currently, a finite electron-vibrational coupling requires a large bond dimension for results to converge as can be seen in the following smaller system with parameters $L=2$, $t_0=1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, shown below. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/Comparison_L2_TTHEOM_ED_hop+onsite+soc+tph+socph.pdf}
@@ -128,14 +122,23 @@ For solving the convergence issue in an isolated electronic-vibrationally couple
 	\includegraphics[width=0.3\textwidth]{figs/MPS_topology_new.png}
 \end{figure} \\
 However, one has to keep in mind that due to the formulation of the TT-HEOM in twin-space and hence addition of auxiliary core tensors, one cannot expect the same efficiency as in the implementation used by iTensor, in which the wavefunction is represented as a MPS. 
-\section{Comparison of Dynamics in Open Molecule}
-\subsection{No vibrations}
-\subsubsection{Hopping}
-Parameters: $L=3$, $t_0 = 1$, $\Gamma = 0.5t_0$, $V=1$, $\beta = 1/0.026$. 
-\subsubsection{Hopping and SOC}
-\subsection{With vibrations}
-\subsubsection{Hopping, SOC and Peierls distortion}
-\subsubsection{Hopping, SOC, Peierls distortion and Peierls SOC}
+\section{Problems in the Dynamics in Open Fransson Model}
+\begin{itemize}
+	\item Currents at equilibrium using HEOM for non-interacting electrons, even in the absence of vibrations
+	\item Spin-current definition as employed before is not applicable anymore, because spin is not conserved due to spin-orbit coupling, see further in Ref. \cite{shi2006proper}
+\end{itemize}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/L8_eqCurrents.pdf}
+\end{figure}
+%\section{Comparison of Dynamics in Open Molecule}
+%\subsection{No vibrations}
+%\subsubsection{Hopping}
+%Parameters: $L=3$, $t_0 = 1$, $\Gamma = 0.5t_0$, $V=1$, $\beta = 1/0.026$. 
+%\subsubsection{Hopping and SOC}
+%\subsection{With vibrations}
+%\subsubsection{Hopping, SOC and Peierls distortion}
+%\subsubsection{Hopping, SOC, Peierls distortion and Peierls SOC}
 
 
 
