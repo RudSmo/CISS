@@ -1,8 +1,8 @@
-# Parameters of run on 2022-10-05T12:29:02.140 
+# Parameters of run on 2022-10-07T11:44:49.878 
 # The purpose of this run is the following: Test of Fransson model.
 # --------------------PARAMS----------------------------
 dt = 0.001
-Nstep = 400000
+Nstep = 1500000
 N = 12
 t0 = 1.0
 tso = 0.25

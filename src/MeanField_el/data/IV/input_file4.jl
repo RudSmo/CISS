@@ -17,7 +17,7 @@ using .MultiOpenIntegrator
 
 # Simulation Parameters
 dt = 0.001
-tend = 400.0
+tend = 1500.0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
