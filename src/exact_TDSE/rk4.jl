@@ -163,6 +163,25 @@ function PhOccLevels(state::Array,L::Int64,M::Int64)::Array
     return occ
 end
 
+function PhPosition(psi0::Array,L::Int64,M::Int64)::Array
+    ql = []
+    for i in 1:L
+        bopL = nkron([Idkron(2*L,2),Idkron(i-1,M),bop(M),Idkron(L-i-1,M),M])
+    	qop = 1/sqrt(2) * (bop(M) + bop(M)')
+	push!(psi0' * qop * psi0)
+    end
+    return real.(ql)
+end
+function PhMomentum(psi0::Array,L::Int64,M::Int64)
+    ql = []
+    for i in 1:L
+        bopL = nkron([Idkron(2*L,2),Idkron(i-1,M),bop(M),Idkron(L-i-1,M),M])
+        qop = -1/(sqrt(2)*1im) * (bop(M) - bop(M)')
+        push!(psi0' * qop * psi0)
+    end
+    return real.(ql)
+end
+
 function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
     """
     Main RK4 propagation. Solves Schrödinger equation, computes expectation values, saves them to a file.
@@ -175,6 +194,8 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
 
     nd = [ElOccLattice(psi0,L,M)]
     bl = [PhOccLevels(psi0,L,M)]
+    ql = [PhPosition(psi0,L,M)]
+    pl = [PhMomentum(psi0,L,M)]
     ti = [0.0]
     psi_p = psi0
     
@@ -192,21 +213,32 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
             k += 1
         end
     end
+    for i in 1:L
+	write(fil,"($(L+3+k))PhNQ$(i) ($(L+3+k+1))PhNP$(i)")
+	k += 2
+    end
     write(fil,"\n")
     close(fil)
-
+    modeN = "w"
+    normPsi = [norm(psi_p)]
     for i in 1:nsteps
         psi_n = RK4Step(H,psi_p,dt)
-        psi_p = psi_n#/norm(psi_n)
+        psi_p = psi_n/norm(psi_n)
         if i % nsave == 0
             push!(nd,ElOccLattice(psi_p,L,M))
             #push!(bo,OccLattice(psi_p,L,M))
             push!(bl,PhOccLevels(psi_p,L,M))
+	    push!(ql,PhPosition(psi_p,L,M))
+	    push!(pl,PhMomentum(psi_p,L,M))
+	    push!(normPsi,norm(psi_p))
             push!(ti,i*dt)
         end
         if i % nflush == 0
+	    filN = open("norm.dat",modeN)
+	    modeN = "a"
             fil = open(filname,"a")
             for j in 1:length(ti)
+	    	write(filN,"$(ti[j]) $(normPsi[j])")
                 write(fil,"$(ti[j]) ")
                 for k in 1:length(nd[j])
                     write(fil,"$(nd[j][k][1]) $(nd[j][k][2]) ")
@@ -219,12 +251,19 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
                         write(fil,"$(bl[j][ki][li]) ")
                     end
                 end
+		for ki in 1:length(ql[j])
+		    write(fil,"$(ql[j][ki]) $(pl[j][ki]) ")
+		end
                 write(fil,"\n")
+		write(filN,"\n")
             end
             close(fil)
-            
+            close(filN)
             nd = []
             bl = []
+	    ql = []
+	    pl = []
+	    normPsi = []
             ti = []
         end
         if i == nsteps

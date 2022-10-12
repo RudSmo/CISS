@@ -8,7 +8,7 @@ using .Hamiltonian
 
 el_state = [1,0,0,0]
 ph_state = [0,0]
-vibStates = 2
+vibStates = 3
 num_sites = Int(length(el_state)/2)
 num_laps = 1
 sites_lap = num_sites

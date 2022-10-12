@@ -5,7 +5,7 @@ include("helper.jl")
 using .Helper
 
 using LinearAlgebra
-export Fransson,Holstein,HolsteinQuadratic,NNNTest
+export Fransson,Holstein,HolsteinQuadratic,NNNTest,Hopping_t0t1
 
 
 function VDot(a)
@@ -267,6 +267,35 @@ function NNNTest(num_sites,eps,t1,t2,vibStates)
         HS += kron(huu+huu'+hud+hud'+hdu+hdu'+hdd+hdd',IdB)
     end
     
+    return HS
+end
+function Hopping_t0t1(num_sites,eps,t0,t1,vibStates)
+    eu,ed = eps
+    d = 2
+    dim = d^(2*num_sites)*vibStates^num_sites
+    IdS = Matrix(I,d^(2*num_sites),d^(2*num_sites))
+    IdB = Matrix(I,vibStates^num_sites,vibStates^num_sites)
+    id = Matrix(I,2,2)
+    HS = zeros(dim,dim)*1im
+    c = fop()'
+    cd = c'
+    nd = cd*c
+    # On-site
+    for i in 1:num_sites
+        hu = eu * nfop(i,1,num_sites,d)*nfop(i,1,num_sites,d)'
+        hd = ed * nfop(i,2,num_sites,d)*nfop(i,2,num_sites,d)'
+        HS += kron(hu + hd,IdB)
+    end
+    # Hopping
+    for i in 1:num_sites-1
+        hu = -t0* nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
+        hd = -t0* nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
+
+	hud = -t1 * nfop(i,1,num_sites,d)*nfop(i+1,2,num_sites,d)'
+	hdu = -t1 * nfop(i,2,num_sites,d)*nfop(i+1,1,num_sites,d)'
+        HS += kron(hu+hu'+hd+hd'+hud+hud'+hdu+hdu',IdB)
+    end
+
     return HS
 end
 
