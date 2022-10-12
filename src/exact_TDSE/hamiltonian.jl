@@ -108,8 +108,12 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
     # Electron-Phonon (NN)
     for i in 1:num_sites-1
         qv   = nkron([Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
-        HSB -= tPh*kron(nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'+nfop(i+1,1,num_sites,d)*nfop(i,1,num_sites,d)',qv)
-        HSB -= tPh*kron(nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'+nfop(i+1,2,num_sites,d)*nfop(i,2,num_sites,d)',qv)
+	el_hop = nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
+	el_hop += el_hop'
+        HSB -= tPh*kron(el_hop,qv)
+	el_hop = nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
+	el_hop += el_hop'
+        HSB -= tPh*kron(el_hop,qv)
     end
     # Electron-Phonon (SOC)
     for i in 1:num_sites-2
@@ -121,7 +125,9 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
         hdd = -1im*λPh*vs[2,2]*(nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d))
         HSB += kron(huu + hud + hdu + hdd + huu' + hud' + hdu' + hdd',qv) 
     end
-    return HS+HB+HSB
+    H = HS+HB+HSB
+    print(H==H')
+    return H
 end
 
 

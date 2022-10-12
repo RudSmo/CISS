@@ -8,7 +8,7 @@ using .Hamiltonian
 using QuantumInformation
 using HDF5
 
-export Propagate, PropagateImag, InitialState
+export Propagate, PropagateImag, InitialState, PhPosition, PhMomentum
 
 function SchEq(psi0::Array,H::Array)::Array
     """
@@ -166,20 +166,26 @@ end
 function PhPosition(psi0::Array,L::Int64,M::Int64)::Array
     ql = []
     for i in 1:L
-        bopL = nkron([Idkron(2*L,2),Idkron(i-1,M),bop(M),Idkron(L-i-1,M),M])
-    	qop = 1/sqrt(2) * (bop(M) + bop(M)')
-	push!(psi0' * qop * psi0)
+#        bopL = nkron([Idkron(2*L,2),Idkron(i-1,M),bop(M),Idkron(L-i,M)])
+#    	qop = 1/sqrt(2) * (bopL + bopL')
+	bopL = 1/sqrt(2)*nkron([Idkron(2*L,2),Idkron(i-1,M),bop(M)+bop(M)',Idkron(L-i,M)])
+#	push!(ql,Measure(qop,psi0))
+	push!(ql,Measure(bopL,psi0))
     end
     return real.(ql)
 end
 function PhMomentum(psi0::Array,L::Int64,M::Int64)
-    ql = []
+    pl = []
     for i in 1:L
-        bopL = nkron([Idkron(2*L,2),Idkron(i-1,M),bop(M),Idkron(L-i-1,M),M])
-        qop = -1/(sqrt(2)*1im) * (bop(M) - bop(M)')
-        push!(psi0' * qop * psi0)
+#        bopL = nkron([Idkron(2*L,2),Idkron(i-1,M),bop(M),Idkron(L-i,M)])
+	bopL = -1/(sqrt(2)*1im) * nkron([Idkron(2*L,2),Idkron(i-1,M),bop(M)-bop(M)',Idkron(L-i,M)])
+
+#        Pop = -1/(sqrt(2)*1im) * (bopL - bopL')
+#	push!(pl,Measure(Pop,psi0))
+	push!(pl,Measure(bopL,psi0))
+
     end
-    return real.(ql)
+    return real.(pl)
 end
 
 function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
@@ -191,7 +197,7 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
         psi0 = read(fid["psi"])
         close(fid)
     end
-
+    print(size(psi0))
     nd = [ElOccLattice(psi0,L,M)]
     bl = [PhOccLevels(psi0,L,M)]
     ql = [PhPosition(psi0,L,M)]
@@ -214,7 +220,7 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
         end
     end
     for i in 1:L
-	write(fil,"($(L+3+k))PhNQ$(i) ($(L+3+k+1))PhNP$(i)")
+	write(fil,"($(L+3+k))PhNQ$(i) ($(L+3+k+1))PhNP$(i) ")
 	k += 2
     end
     write(fil,"\n")
