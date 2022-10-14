@@ -3,7 +3,7 @@ include("hamiltonian.jl")
 using LinearAlgebra
 
 using .Hamiltonian
-export InitialPh,PhononPopulation,SampleWignerA,SymplecticEulerStep,SymplecticEulerStepSingle
+export InitialPh,PhononPopulation,SampleWignerA,SymplecticEulerStep,SymplecticEulerStepOld,SymplecticEulerStepSingle
 
 function InitialPh(popPh,ws,phase)
     return [sqrt(2*popPh[i]/ws[i])*cos(phase[i]) for i in 1:length(popPh)],
@@ -54,16 +54,32 @@ function dHelph(N,a,c,num_laps,tph,tsoph,w,n)
         dH[k+1,k+3] = -tph*sqrt(2*w)
         dH[k+3,k+1] = -tph*sqrt(2*w)
     end
-     
     return dH
 end
 
-function SymplecticEulerStep(N,a,c,num_laps,tph,tsoph,ws,rho,q0,p0,dt)
-   # println(tr(rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[1],1)))
+function SymplecticEulerStepOld(N,a,c,num_laps,tph,tsoph,ws,rho,q0,p0,dt)
+    #A = rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[1],1)
+    #println(tr(A[1:2,1:2]))
     pn = real.([p0[i] - dt*(ws[i]^2 * q0[i] + tr(rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[i],i))) for i in 1:N])
     qn = real.([q0[i] + dt*pn[i] for i in 1:N])
     return qn,pn
 end
+function SymplecticEulerStep(N,a,c,num_laps,tph,tsoph,ws,rho,q0,p0,dt)
+    pn = []
+    qn = []
+    for i in 1:N
+        A = rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[i],i)
+	if i == 1
+		print(tr(A[2*i-1:2*i,2*i-1:2*i]))
+	end
+	pn_c = p0[i] - dt*(ws[i]^2 * q0[i] + tr(A[2*i-1:2*i,2*i-1:2*i]))
+	qn_c = q0[i] + dt*pn_c
+	push!(pn,real(pn_c))
+	push!(qn,real(qn_c))
+    end
+    return qn,pn
+end
+
 
 function SymplecticEulerStepSingle(ws,gph,rho,q0,p0,dt)
     # println(tr(rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[1],1)))

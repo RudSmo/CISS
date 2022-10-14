@@ -133,6 +133,8 @@ function Propagate(N::Int,
 				fil["Curp1$(j)"] = curp1_i[j]
 				fil["Curp2$(j)"] = curp2_i[j]
 			end
+			qin = float.(qin)
+			pin = float.(pin)
 			fil["q"] = qin
 			fil["p"] = pin
 			close(fil)	 
