@@ -215,12 +215,12 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
     k = 1
     for i in 1:L
         for j in 0:M-1
-            write(fil,"($(L+3+k))PhN$(i)_$(j) ")
+            write(fil,"($(L+4+k))PhN$(i)_$(j) ")
             k += 1
         end
     end
     for i in 1:L
-	write(fil,"($(L+3+k))PhNQ$(i) ($(L+3+k+1))PhNP$(i) ")
+	write(fil,"($(L+4+k))PhNQ$(i) ($(L+4+k+1))PhNP$(i) ")
 	k += 2
     end
     write(fil,"\n")

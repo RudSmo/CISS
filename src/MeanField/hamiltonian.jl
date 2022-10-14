@@ -69,7 +69,7 @@ end
 
 
 #-------------------------- Electron-Phonon Hamiltonian-------------------------------------
-function Holstein_NN(N,tph,ws,qs)
+function Holstein_NNOld(N,tph,ws,qs)
     H = zeros(2*N,2*N)
     k = 1
     for i in 1:2*N-2
@@ -81,6 +81,22 @@ function Holstein_NN(N,tph,ws,qs)
     end
     return H
 end
+function Holstein_NN(N,tph,ws,qs)
+    H = zeros(2*N,2*N)
+    k = 1
+    for i in 1:2*N-2
+        H[i,i+2] = -tph * sqrt(2*ws[k])*qs[k]  
+        H[i+2,i] = -tph * sqrt(2*ws[k])*qs[k]  
+        if i % 2 == 0
+            k += 1
+        end
+    end
+    H[2*N,2*N-2] = -tph * sqrt(2*ws[N])*qs[N]
+    H[2*N-2,2*N] = -tph * sqrt(2*ws[N])*qs[N]
+    return H
+end
+
+
 
 function Holstein_SOC(N,tsoph,a,c,num_laps,ws,qs)
     Hs = zeros(2*N,2*N)*(1+0.0*1im)
@@ -110,12 +126,16 @@ end
 
 
 
-function FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,ws,qs)
+function FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,ws,qs,ver)
 	Ho = Onsite_A(N,E)
 	Hh = Hopping_A_nn(N,t)
 	HSo = SOC_A_nn(N,tso,a,c,num_laps)
-    Heph = Holstein_NN(N,tph,ws,qs)
-    Hsoph = Holstein_SOC(N,tsoph,a,c,num_laps,ws,qs)
+	if ver == "0"
+    		Heph = Holstein_NNOld(N,tph,ws,qs)
+	else
+		Heph = Holstein_NN(N,tph,ws,qs)
+	end
+    	Hsoph = Holstein_SOC(N,tsoph,a,c,num_laps,ws,qs)
 	return Ho+Hh+HSo+Heph+Hsoph
 end
 

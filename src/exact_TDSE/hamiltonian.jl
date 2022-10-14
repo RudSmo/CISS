@@ -5,7 +5,7 @@ include("helper.jl")
 using .Helper
 
 using LinearAlgebra
-export Fransson,Holstein,HolsteinQuadratic,NNNTest,Hopping_t0t1
+export Fransson,FranssonSymmetric,Holstein,HolsteinQuadratic,NNNTest,Hopping_t0t1
 
 
 function VDot(a)
@@ -115,6 +115,105 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
 	el_hop += el_hop'
         HSB -= tPh*kron(el_hop,qv)
     end
+    # Electron-Phonon (SOC)
+    for i in 1:num_sites-2
+        vs  = VSVec(num_sites,r_helix,c_helix,i,num_laps) 
+        qv  = nkron([Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
+        huu = -1im*λPh*vs[1,1]*(nfop(i,1,num_sites,d)*nfop(i+2,1,num_sites,d))
+        hud = -1im*λPh*vs[1,2]*(nfop(i,1,num_sites,d)*nfop(i+2,2,num_sites,d))
+        hdu = -1im*λPh*vs[2,1]*(nfop(i,2,num_sites,d)*nfop(i+2,1,num_sites,d))
+        hdd = -1im*λPh*vs[2,2]*(nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d))
+        HSB += kron(huu + hud + hdu + hdd + huu' + hud' + hdu' + hdd',qv) 
+    end
+    H = HS+HB+HSB
+    print(H==H')
+    return H
+end
+function FranssonSymmetric(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t0::Float64,tPh::Float64,
+                  λ0::Float64,λPh::Float64,wPh::Float64,r_helix::Float64,c_helix::Float64)::Array
+    """
+    Fransson's Hamiltonian, that is a fermionic Hubbard chain with L electronic sites. Each site is coupled to a harmonic oscillator
+    with vibState levels. In the electronic chain, electrons can hop between neighboring sites, a hopping induces vibrational transitions and 
+    there is a SOC between next-nearest-neighboring sites, aus well as a spin-dependent electron-phonon contribution.
+    The electron-phonon (g) is for now a scalar, but can be made energy-dependent at some later 
+    time. Also, it is not possible to specify the number of bosonic levels lattice-site dependently. Each mode has the same number of 
+    levels. The coupling is nearest-neighbor sites only. I'm generating the Hamiltonian literally, meaning all tensor products are performed explicitly. This gives the Hamiltonian in 
+    the full Hilbert space. Certainly, both the construction of the Hamiltonian and not restricting oneself to a subspace is not the 
+    most optimal way to do things, but it works. 
+    
+    Input:
+        L        :: Int64, lattice sites
+        num_laps :: Int64, number of laps in chiral molecule
+        M        :: Int64, bosonic levels
+        eps      :: Array, on-site energies
+        t0       :: Float64, nearest-neighbor hopping
+        t        :: Float64, nearest-neighbor hopping with electron-phonon interaction
+        λ0       :: Float64, SOC between next-nearest neighbors
+        λ        :: Float64, SOC between next-nearest neighbors with electron-phonon interaction
+        r_hel    :: Float64, radius of helix
+        c_hel    :: Float64, size of helix
+    Output:
+        H ::Array, the Heisenberg-Holstein Hamiltonian.
+    """
+    d = 2
+    eu,ed = eps
+    dim = d^(2*num_sites)*vibStates^num_sites
+    IdS = Matrix(I,d^(2*num_sites),d^(2*num_sites))
+    IdB = Matrix(I,vibStates^num_sites,vibStates^num_sites)
+    id = Matrix(I,2,2) 
+    HS = zeros(dim,dim)*1im
+    HB = zeros(dim,dim)   
+    HSB = zeros(dim,dim)
+    c = fop()'
+    cd = c'
+    nd = cd*c
+    # On-site
+    for i in 1:num_sites
+        hu = eu * nfop(i,1,num_sites,d)*nfop(i,1,num_sites,d)'
+        hd = ed * nfop(i,2,num_sites,d)*nfop(i,2,num_sites,d)' 
+        HS += kron(hu + hd,IdB)
+    end
+    # Hopping
+    for i in 1:num_sites-1
+        hu = -t0* nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
+        hd = -t0* nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
+        HS += kron(hu+hu'+hd+hd',IdB)
+    end
+    # SOC
+    for i in 1:num_sites-2
+        vs  = VSVec(num_sites,r_helix,c_helix,i,num_laps) 
+        huu = -1im*λ0*vs[1,1]*nfop(i,1,num_sites,d)*nfop(i+2,1,num_sites,d)'
+        hud = -1im*λ0*vs[1,2]*nfop(i,1,num_sites,d)*nfop(i+2,2,num_sites,d)'
+        hdu = -1im*λ0*vs[2,1]*nfop(i,2,num_sites,d)*nfop(i+2,1,num_sites,d)'
+        hdd = -1im*λ0*vs[2,2]*nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d)'
+        HS += kron(huu + hud + hdu + hdd + huu' + hud' + hdu' + hdd',IdB)
+    end
+    # Harmonic oscillators
+    b = bop(vibStates)
+    bd = b'
+    bdb = bd*b
+    for i in 1:num_sites
+        HB += wPh*nkron([IdS,Idkron(i-1,vibStates),bdb,Idkron(num_sites-i,vibStates)]) 
+    end
+    # Electron-Phonon (NN)
+    for i in 1:num_sites-1
+        qv   = nkron([Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
+	el_hop = nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
+	el_hop += el_hop'
+        HSB -= tPh*kron(el_hop,qv)
+	el_hop = nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
+	el_hop += el_hop'
+        HSB -= tPh*kron(el_hop,qv)
+    end
+    qv   = nkron([Idkron(num_sites-1,vibStates),bd+b])
+    el_hop = nfop(num_sites,1,num_sites,d) * nfop(num_sites-1,1,num_sites,d)'
+    el_hop += el_hop'
+    HSB = -tPh*kron(el_hop,qv)
+    el_hop = nfop(num_sites,2,num_sites,d) * nfop(num_sites-1,2,num_sites,d)'
+    el_hop += el_hop'
+    HSB = -tPh*kron(el_hop,qv)
+
+
     # Electron-Phonon (SOC)
     for i in 1:num_sites-2
         vs  = VSVec(num_sites,r_helix,c_helix,i,num_laps) 

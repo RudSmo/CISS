@@ -19,7 +19,7 @@ using .ClassicalPhonons
 
 # Simulation Parameters
 dt = 0.001
-tend = 10
+tend = 100
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -67,7 +67,7 @@ nPoles = 1
 beta = 1/0.025
 
 
-path = "test_data_phonons"#"FranssonParams_EqSpinCurrents/tso$(tso)_tph$(tph)_tsoph$(tsoph)"
+path = "test_data_phonons2"#"FranssonParams_EqSpinCurrents/tso$(tso)_tph$(tph)_tsoph$(tsoph)"
 if !isdir(path)
 	mkdir(path)
 end
