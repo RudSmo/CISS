@@ -69,9 +69,6 @@ function SymplecticEulerStep(N,a,c,num_laps,tph,tsoph,ws,rho,q0,p0,dt)
     qn = []
     for i in 1:N
         A = rho * dHelph(N,a,c,num_laps,tph,tsoph,ws[i],i)
-	if i == 1
-		print(tr(A[2*i-1:2*i,2*i-1:2*i]))
-	end
 	pn_c = p0[i] - dt*(ws[i]^2 * q0[i] + tr(A[2*i-1:2*i,2*i-1:2*i]))
 	qn_c = q0[i] + dt*pn_c
 	push!(pn,real(pn_c))
