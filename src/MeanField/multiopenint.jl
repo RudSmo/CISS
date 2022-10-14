@@ -43,7 +43,8 @@ function Propagate(N::Int,
 		  popIn 	= zeros(1),
 		  qnIn  	= zeros(1),
 		  pnIn  	= zeros(1),
-		  rsmpl_stp	= 0)
+		  rsmpl_stp	= 0,
+		  ver  		= "0")
 
 
 	if phIn == "TDSCF"
@@ -64,7 +65,7 @@ function Propagate(N::Int,
 	q_l 		= [q0]
 	p_l 		= [p0]
 
-	hcen_i      = FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,ws,q0)
+	hcen_i      = FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,ws,q0,ver)
 	Gamma1,Gamma2 = GammaMatrices1d(N,tL,tR)
 	GammaT		= Gamma1+Gamma2
 	tim   		= [0.0]
@@ -112,7 +113,7 @@ function Propagate(N::Int,
 				pin 		= [A[i][2] for i in 1:N]
 			end
 		end
-		hcen_i  = FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,ws,qin)	
+		hcen_i  = FranssonHamiltonian(N,E,t,tso,a,c,num_laps,tph,tsoph,ws,qin,ver)	
 		chi1	= V[i]/2 .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
 		chi2	= -V[i]/2 .+ 1im .* xi ./beta
 	
