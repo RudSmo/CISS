@@ -118,6 +118,31 @@
     \field{year}{2022}
   \endentry
 
+  \entry{rashba2003spin}{article}{}
+    \name{author}{1}{}{%
+      {{hash=REI}{%
+         family={Rashba},
+         familyi={R\bibinitperiod},
+         given={Emmanuel\bibnamedelima I},
+         giveni={E\bibinitperiod\bibinitdelim I\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {APS}%
+    }
+    \strng{namehash}{REI1}
+    \strng{fullhash}{REI1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{24}
+    \field{pages}{241315}
+    \field{title}{Spin currents in thermodynamic equilibrium: The challenge of
+  discerning transport currents}
+    \field{volume}{68}
+    \field{journaltitle}{Physical Review B}
+    \field{year}{2003}
+  \endentry
+
   \entry{shi2006proper}{article}{}
     \name{author}{4}{}{%
       {{hash=SJ}{%
