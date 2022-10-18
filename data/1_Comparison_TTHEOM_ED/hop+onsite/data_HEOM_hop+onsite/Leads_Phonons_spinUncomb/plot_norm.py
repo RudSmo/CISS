@@ -30,7 +30,7 @@ plt.yscale("log")
 plt.ylim(2*1e-5,0.81e-4)
 plt.yticks([i*1e-5 for i in range(2,9)],labels=[str(i) for i in range(2,9)])
 plt.xlabel(r"$t \, [t_0^{-1}]$")
-plt.ylabel(r"$\vert 1-\langle\!\langle I\vert \rho\rangle\!\rangle\vert \ [\times 10^{-5}]$")
+plt.ylabel(r"$\vert 1-\langle\!\langle I\vert \rho\rangle\!\rangle\vert \ [\times 10^{-5}]$",labelpad=20)
 
 plt.legend()
 plt.savefig("Norm_leads_phonons_spinUncomb_hop+onsite.png")

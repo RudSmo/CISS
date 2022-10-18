@@ -23,8 +23,8 @@ dat_MF = np.genfromtxt("data_MFHEOM/L3_Hop+Onsite+SOC_dt0.001_1_electrons.dat")
 dat_MP = np.genfromtxt("tdvp/N3_t01.00_tso0.800_dt0.0100.dat")
 
 plt.plot(dat_ED[:,0],dat_ED[:,1],color="k",linewidth=7,label="ED")
-plt.plot(dat_MP[:,0],dat_MP[:,1],color="red",linewidth=4,linestyle="dashed",dashes=(7,5),label="TDVP")
-plt.plot(dat_HE[:,0],dat_HE[:,1],color="gray",linewidth=4,linestyle="dashed",dashes=(6,7),label="TT-HEOM ($r=25$)")
+plt.plot(dat_MP[:,0],dat_MP[:,1],color="red",linewidth=4,linestyle="dashed",dashes=(7,5),label="GSE-TDVP (iTensor)")
+plt.plot(dat_HE[:,0],dat_HE[:,1],color="gray",linewidth=4,linestyle="dashed",dashes=(6,7),label="TT-HEOM, 1TDVP ($r=25$)")
 plt.plot(dat_MF[:,0],dat_MF[:,1],color="turquoise",linewidth=4,linestyle="dashed",dashes=(5,10),label="MF-HEOM")
 
 plt.xlim(0,25)
