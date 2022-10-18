@@ -8,13 +8,13 @@ using .Hamiltonian
 
 el_state = [1,1,0,0,0,0]
 ph_state = [0,0,0]
-vibStates = 1
+vibStates = 5
 num_sites = Int(length(el_state)/2)
 num_laps = 1
 sites_lap = num_sites
 t0 = 1.0
 eps = [1.0,-1.0]
-tPh = 0.0
+tPh = 0.1
 lambda0 = 0.0
 lambdaPh = 0.0*lambda0
 wPh = 1.4*t0
@@ -29,7 +29,7 @@ path = "test_data/"
 if !isdir(path)
     mkdir(path)
 end
-filname = "$(path)pops"
+filname = "$(path)L$(num_sites)_SOC$(lambda0)_tPh$(tPh)_SOCPh$(lambdaPh)_vibStates$(vibStates)"
 imagfilname = "$(path)test_1site_im"
 pathIn = "$(path)final_Quantities"
 

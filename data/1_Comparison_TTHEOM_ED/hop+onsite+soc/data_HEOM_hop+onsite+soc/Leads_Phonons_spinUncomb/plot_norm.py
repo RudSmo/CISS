@@ -33,4 +33,4 @@ plt.xlabel(r"$t \, [t_0^{-1}]$")
 plt.ylabel(r"$\vert 1-\langle\!\langle I\vert \rho\rangle\!\rangle\vert$")
 
 plt.legend(loc="upper left")
-plt.savefig("Norm_leads_phonons_spinUncomb_hop+onsite+soc.pdf")
+plt.savefig("Norm_leads_phonons_spinUncomb_hop+onsite+soc.png")

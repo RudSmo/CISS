@@ -190,6 +190,25 @@ end
 function Loschmidt(psi0,psit)
 	return psi0' * psit
 end
+function VonNeumannEntropy(psi::Array,L::Int64,M::Int64)
+        rho = psi * psi' .+ 1e-15
+        inds =[4 for i in 1:L]
+        for i in 1:L
+                push!(inds,M)
+        end
+	EE = []
+	for bond in 1:2*L
+		trinds = []
+		for k in 1:2*L
+			if k != bond
+				push!(trinds,k)
+			end
+		end
+        	rhoAB = ptrace(rho,inds,Int.(trinds))
+        	push!(EE, real(-tr(rhoAB * log.(rhoAB))))
+	end
+	return EE
+end
 
 
 function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
@@ -206,6 +225,7 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
     ql = [PhPosition(psi0,L,M)]
     pl = [PhMomentum(psi0,L,M)]
     le = [Loschmidt(psi0,psi0)*(1+0.0*1im)]
+    ee = [VonNeumannEntropy(psi0,L,M)]
     ti = [0.0]
     psi_p = psi0
     
@@ -241,15 +261,23 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
 	    push!(ql,PhPosition(psi_p,L,M))
 	    push!(pl,PhMomentum(psi_p,L,M))
 	    push!(le,Loschmidt(psi0,psi_p))
+            push!(ee,VonNeumannEntropy(psi_p,L,M))
 	    push!(normPsi,norm(psi_p))
             push!(ti,i*dt)
         end
         if i % nflush == 0
 	    filN = open("$(filname)_norm_le.dat",modeN)
+	    filEE = open("$(filname)_vonNeumann.dat",modeN)
 	    modeN = "a"
 	    fil = open("$(filname).dat","a")
             for j in 1:length(ti)
 		write(filN,"$(ti[j]) $(normPsi[j]) $(real(le[j])) $(imag(le[j]))")
+		write(filEE,"$(ti[j]) ")
+		for k in 1:length(ee[j])
+			write(filEE,"$(ee[j][k]) ")
+		end
+		write(filEE,"\n")
+
                 write(fil,"$(ti[j]) ")
                 for k in 1:length(nd[j])
                     write(fil,"$(nd[j][k][1]) $(nd[j][k][2]) ")
@@ -270,11 +298,13 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
             end
             close(fil)
             close(filN)
+	    close(filEE)
             nd = []
             bl = []
 	    ql = []
 	    pl = []
 	    le = []
+	    ee = []
 	    normPsi = []
             ti = []
         end
