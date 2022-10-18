@@ -126,7 +126,6 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
         HSB += kron(huu + hud + hdu + hdd + huu' + hud' + hdu' + hdd',qv) 
     end
     H = HS+HB+HSB
-    print(H==H')
     return H
 end
 function FranssonSymmetric(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t0::Float64,tPh::Float64,
@@ -225,7 +224,6 @@ function FranssonSymmetric(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps
         HSB += kron(huu + hud + hdu + hdd + huu' + hud' + hdu' + hdd',qv) 
     end
     H = HS+HB+HSB
-    print(H==H')
     return H
 end
 

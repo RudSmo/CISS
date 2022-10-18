@@ -187,6 +187,10 @@ function PhMomentum(psi0::Array,L::Int64,M::Int64)
     end
     return real.(pl)
 end
+function Loschmidt(psi0,psit)
+	return psi0' * psit
+end
+
 
 function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
     """
@@ -197,15 +201,15 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
         psi0 = read(fid["psi"])
         close(fid)
     end
-    print(size(psi0))
     nd = [ElOccLattice(psi0,L,M)]
     bl = [PhOccLevels(psi0,L,M)]
     ql = [PhPosition(psi0,L,M)]
     pl = [PhMomentum(psi0,L,M)]
+    le = [Loschmidt(psi0,psi0)*(1+0.0*1im)]
     ti = [0.0]
     psi_p = psi0
     
-    fil = open(filname,"w")
+    fil = open("$(filname).dat","w")
     write(fil,"#(1)t ")
     k = 1
     for i in 1:L
@@ -236,15 +240,16 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
             push!(bl,PhOccLevels(psi_p,L,M))
 	    push!(ql,PhPosition(psi_p,L,M))
 	    push!(pl,PhMomentum(psi_p,L,M))
+	    push!(le,Loschmidt(psi0,psi_p))
 	    push!(normPsi,norm(psi_p))
             push!(ti,i*dt)
         end
         if i % nflush == 0
-	    filN = open("norm.dat",modeN)
+	    filN = open("$(filname)_norm_le.dat",modeN)
 	    modeN = "a"
-            fil = open(filname,"a")
+	    fil = open("$(filname).dat","a")
             for j in 1:length(ti)
-	    	write(filN,"$(ti[j]) $(normPsi[j])")
+		write(filN,"$(ti[j]) $(normPsi[j]) $(real(le[j])) $(imag(le[j]))")
                 write(fil,"$(ti[j]) ")
                 for k in 1:length(nd[j])
                     write(fil,"$(nd[j][k][1]) $(nd[j][k][2]) ")
@@ -269,6 +274,7 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
             bl = []
 	    ql = []
 	    pl = []
+	    le = []
 	    normPsi = []
             ti = []
         end
