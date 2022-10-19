@@ -17,9 +17,9 @@ rc("legend",fontsize=ls)
 
 fig = plt.figure(figsize=(10,4))
 
-dat_r25 = np.genfromtxt("r60/n_site_realtime_Hop+Onsite+tPh_bias_0.0_dt_0.01_rank_60.txt")[1::,:]
-dat_r35 = np.genfromtxt("r90/n_site_realtime_Hop+Onsite+tPh_bias_0.0_dt_0.01_rank_90.txt")[1::,:]
-dat_r50 = np.genfromtxt("r120/n_site_realtime_Hop+Onsite+tPh_bias_0.0_dt_0.01_rank_120.txt")[1::,:]
+dat_r25 = np.genfromtxt("r60/n_site_realtime_Hop+Onsite+Holstein_bias_0.0_dt_0.01_rank_60.txt")[1::,:]
+dat_r35 = np.genfromtxt("r90/n_site_realtime_Hop+Onsite+Holstein_bias_0.0_dt_0.01_rank_90.txt")[1::,:]
+dat_r50 = np.genfromtxt("r120/n_site_realtime_Hop+Onsite+Holstein_bias_0.0_dt_0.01_rank_120.txt")[1::,:]
 dat_iT  = np.genfromtxt("../../tdvp/N3_t01.00_tso0.000_tPh0.100_dt0.00500.dat")[1::2,1]
 
 
@@ -43,4 +43,4 @@ plt.xlabel(r"$t \, [t_0^{-1}]$")
 plt.ylabel(r"$\vert n_{1\uparrow}^{\mathrm{GSE-TDVP}}-n_{1\uparrow}^{\mathrm{1TDVP}}\vert$")
 
 #plt.legend(loc="upper left")
-plt.savefig("Compare_leads_phonons_spinUncomb_hop+onsite+tPh.pdf")
+plt.savefig("Compare_leads_phonons_spinUncomb_hop+onsite+holstein.pdf")

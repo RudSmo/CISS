@@ -23,11 +23,11 @@ dat_HE2 = np.genfromtxt("HEOM/Leads_Phonons_spinUncomb/r80/n_site_realtime_Hop+O
 dat_HE3 = np.genfromtxt("HEOM/Leads_Phonons_spinUncomb/r120/n_site_realtime_Hop+Onsite+tPh_bias_0.0_dt_0.01_rank_120.txt")
 dat_MP = np.genfromtxt("tdvp/N3_t01.00_tso0.000_tPh0.100_dt0.00500.dat")
 
-plt.plot(dat_ED[:,0],dat_ED[:,1],color="k",linewidth=7,label=r"ED $(M=6)$")
-plt.plot(dat_MP[:,0],dat_MP[:,1],color="red",linewidth=5,linestyle="dashed",dashes=(7,5),label=r"GSE-TDVP (iTensor) $[M=5, r_\mathrm{max}=47]$")
-plt.plot(dat_HE1[:,0],dat_HE1[:,1],color="blue",linewidth=5,linestyle="dashed",dashes=(6,7),label=r"TT-HEOM, 1TDVP $[M=5, r=25]$")
-plt.plot(dat_HE2[:,0],dat_HE2[:,1],color="green",linewidth=5,linestyle="dashed",dashes=(5,10),label=r"TT-HEOM, 1TDVP $[M=5, r=80]$")
-plt.plot(dat_HE3[:,0],dat_HE3[:,1],color="orange",linewidth=5,linestyle="dashed",dashes=(6,7),label=r"TT-HEOM, 1TDVP $[M=5, r=120]$")
+plt.plot(dat_ED[:,0],dat_ED[:,1],color="purple",linewidth=7,label=r"ED $(M=6)$")
+plt.plot(dat_MP[:,0],dat_MP[:,1],color="orange",linewidth=5,linestyle="dashed",dashes=(7,5),label=r"GSE-TDVP (iTensor) $[M=5, r_\mathrm{max}=47]$")
+plt.plot(dat_HE1[:,0],dat_HE1[:,1],color="k",linewidth=5,linestyle="dashed",dashes=(6,7),label=r"TT-HEOM, 1TDVP $[M=5, r=25]$")
+plt.plot(dat_HE2[:,0],dat_HE2[:,1],color="red",linewidth=5,linestyle="dashed",dashes=(5,10),label=r"TT-HEOM, 1TDVP $[M=5, r=80]$")
+plt.plot(dat_HE3[:,0],dat_HE3[:,1],color="blue",linewidth=5,linestyle="dashed",dashes=(6,7),label=r"TT-HEOM, 1TDVP $[M=5, r=120]$")
 #plt.plot(dat_MF[:,0],dat_MF[:,1],color="turquoise",linewidth=4,linestyle="dashed",dashes=(5,10),label="MF-HEOM")
 
 plt.xlim(0,25)

@@ -21,8 +21,8 @@ dat_r25 = np.genfromtxt("r60/norm_realtime_Hop+Onsite+Holstein_bias_0.0_dt_0.01_
 dat_r35 = np.genfromtxt("r90/norm_realtime_Hop+Onsite+Holstein_bias_0.0_dt_0.01_rank_90.txt")
 dat_r50 = np.genfromtxt("r120/norm_realtime_Hop+Onsite+Holstein_bias_0.0_dt_0.01_rank_120.txt")
 
-plt.plot(dat_r25[1::,0],np.abs(1-dat_r25[1::,1]),color="k",linewidth=7,label=r"$r=25$")
-plt.plot(dat_r35[1::,0],np.abs(1-dat_r35[1::,1]),color="red",linewidth=4,label=r"$r=80$")
+plt.plot(dat_r25[1::,0],np.abs(1-dat_r25[1::,1]),color="k",linewidth=7,label=r"$r=60$")
+plt.plot(dat_r35[1::,0],np.abs(1-dat_r35[1::,1]),color="red",linewidth=4,label=r"$r=90$")
 plt.plot(dat_r50[1::,0],np.abs(1-dat_r50[1::,1]),color="blue",linewidth=4,label=r"$r=120$")
 
 #plt.xlim()
