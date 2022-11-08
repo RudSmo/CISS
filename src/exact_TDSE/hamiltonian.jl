@@ -5,7 +5,7 @@ include("helper.jl")
 using .Helper
 
 using LinearAlgebra
-export Fransson,FranssonSymmetric,Holstein,HolsteinQuadratic,NNNTest,Hopping_t0t1
+export Fransson,FranssonSymmetric,Holstein,HolsteinQuadratic,NNNTest,Hopping_t0t1,KondoImpurity,KondoImpurityNI
 
 
 function VDot(a)
@@ -401,5 +401,78 @@ function Hopping_t0t1(num_sites,eps,t0,t1,vibStates)
 
     return HS
 end
+
+function KondoImpurity(L::Int64,t0::Float64,U::Float64,JK::Float64)
+    dim = 4^L
+    d = 2
+    HS = zeros(dim,dim) * (1+0.0*1im)
+    IS = Matrix(I,dim,dim)
+    IB = Matrix(I,4,4)
+    # Hopping in the chain
+    for i in 1:L-1
+        He = -t0 * nfop(i,1,L,d) * nfop(i+1,1,L,d)' 
+        He += -t0 * nfop(i,2,L,d) * nfop(i+1,2,L,d)' 
+        HS += He + He' 
+    end
+    HT = kron(IB,HS)
+    # Coulomb on-site in the chain
+    for i in 1:L
+        HS += U*nfop(i,1,L,d)*nfop(i,1,L,d)' * nfop(i,2,L,d)*nfop(i,2,L,d)' 
+    end
+    HT += kron(IB,HS)
+
+
+    Ddag_up = nfop(1,1,1,d)
+    Ddag_dn = nfop(1,2,1,d)
+    D_up = Ddag_up'
+    D_dn = Ddag_dn' 
+    Cdag_up = nfop(1,1,L,d)
+    Cdag_dn = nfop(1,2,L,d)
+    C_up = Cdag_up'
+    C_dn = Cdag_dn'
+     
+    HT += JK * (1/2 * ( kron( Ddag_dn*D_up , Cdag_up*C_dn ) + kron( Ddag_up*D_dn , Cdag_dn*C_up ) )
+               +1/4 * ( kron( Ddag_up*D_up - Ddag_dn*D_dn , Cdag_up*C_up - Cdag_dn*C_dn ) ) )
+
+
+end
+
+function KondoImpurityNI(L::Int64,t0::Float64,JK::Float64)
+    dim = 2*L
+    d = 2
+    HS = zeros(dim,dim) * (1+0.0*1im)
+    IS = Matrix(I,dim,dim)
+    IB = Matrix(I,4,4)
+    # Hopping in the chain
+    for i in 1:2*(L-1)
+        HS[i,i+2] = -t0
+        HS[i+2,i] = -t0
+    end
+    HT = kron(IB,HS)
+    
+
+    Ddag_up = nfop(1,1,1,d)
+    Ddag_dn = nfop(1,2,1,d)
+    D_up = Ddag_up'
+    D_dn = Ddag_dn'
+    
+    Htmp = zeros(dim,dim)
+    Hud = Htmp
+    Hdu = Htmp
+    Huu = Htmp
+    Hdd = Htmp
+    
+    Hud[1,2] = 1.0
+    Hdu[2,1] = 1.0
+    Huu[1,1] = 1.0
+    Hdd[2,2] = 1.0
+     
+    HT += JK * (1/2 * ( kron( Ddag_dn*D_up , Hdu ) + kron( Ddag_up*D_dn , Hud ) )
+               +1/4 * ( kron( Ddag_up*D_up - Ddag_dn*D_dn , Huu - Hdd ) ) )
+
+
+end
+
+
 
 end

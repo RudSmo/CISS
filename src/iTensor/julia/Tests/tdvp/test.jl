@@ -40,7 +40,7 @@ time_step = 0.1
 time_stop = 1.0
 
 # nsite-update TDVP
-nsite = 2
+nsite = 1
 
 # Starting state bond/link dimension.
 # A product state starting state can

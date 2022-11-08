@@ -8,7 +8,7 @@ using .Hamiltonian
 using QuantumInformation
 using HDF5
 
-export Propagate, PropagateImag, InitialState, PhPosition, PhMomentum
+export Propagate, PropagateImag, PropagateKondo, PropagateKondoNI, InitialState, ElectronicStateNI, PhPosition, PhMomentum
 
 function SchEq(psi0::Array,H::Array)::Array
     """
@@ -92,6 +92,28 @@ function ElectronicState(s_state::Array,L::Int64)::Array
     return st
 end
 
+function ElectronicStateNI(s_state::Array)::Array
+    """
+    Creates an initial spin state |σ1,σ2,...,σL>, provided bit-array. 1 means up, 0 means down.
+    Input:
+        s_state ::Array, bit array (e.g. [0,1,1] for |↓↑↑>)
+        L ::Array, lattice sites        
+    """
+    psi_k = s_state[1:2]
+    psi_e = s_state[3:end]
+    up = [1,0]
+    dw = [0,1]
+    st = 1
+    for i in 1:2
+        if psi_k[i] == 1
+            st = kron(st,up)
+        else
+            st = kron(st,dw)
+        end
+    end
+    st = kron(st,psi_e)
+    return st
+end
 
 function PhononState(ph_state::Array,M::Int64)::Array
     """
@@ -128,6 +150,21 @@ function ElOccLattice(state::Array,L::Int64,M::Int64)::Array
     return [[Measure(kron(ElNopUp(i,L),IdPh),state),Measure(kron(ElNopDw(i,L),IdPh),state)] for i in 1:L]
 end
 
+function ElOccLatticeKondo(state::Array,L::Int64)::Array
+    """
+    Computes local spin-resolved fermionic occupation number.
+    """
+    IdK = Matrix(I,4,4)
+    return [[Measure(kron(IdK,ElNopUp(i,L)),state),Measure(kron(IdK,ElNopDw(i,L)),state)] for i in 1:L]
+end
+
+function ElOccLatticeKondoNI(state::Array,L::Int64)::Array
+    rho = state * state' .+ 1e-15
+    inds = [2,2,2*L]
+    trinds = [1,2]
+    rho_e = ptrace(rho,inds,trinds)
+    return [real.([rho_e[i,i],rho_e[i+1,i+1]]) for i in 1:2:2*L-1]
+end
 
 function PhOccLattice(state::Array,L::Int64,M::Int64)::Array
     """
@@ -314,6 +351,165 @@ function Propagate(psi0,L,M,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
         end
     end
 end
+
+
+
+function KondoSpin(psi,L)
+    rho = psi * psi' .+ 1e-15
+    inds = Int.(2 * ones(2*(L+1)))
+    trinds = Int.(Array(3:2*(L+1)))
+    rho_spin = ptrace(rho,inds,Int.(trinds)) 
+    c = fop()
+    cd = c'
+    id = Matrix(I,2,2)
+    sx = 0.5 * [0 1; 1 0]
+    sy = 0.5 * [0 -1im; 1im 0]
+    sz = 0.5 * [1 0; 0 -1.]
+    F = 2*sz
+
+    Sx = tr(rho_spin * (sx[1,1] * kron(cd*c,id) + sx[1,2]*kron(cd*F,c) + sx[2,1]*kron(c*F,cd) + sx[2,2]*kron(id,cd*c)))
+    Sy = tr(rho_spin * (sy[1,1] * kron(cd*c,id) + sy[1,2]*kron(cd*F,c) + sy[2,1]*kron(c*F,cd) + sy[2,2]*kron(id,cd*c)))
+    Sz = tr(rho_spin * (sz[1,1] * kron(cd*c,id) + sz[1,2]*kron(cd*F,c) + sz[2,1]*kron(c*F,cd) + sz[2,2]*kron(id,cd*c)))  
+   # Sx = tr(rho_spin * sx)
+   # Sy = tr(rho_spin * sy)
+   # Sz = tr(rho_spin * sz)
+    return real.([Sx,Sy,Sz])
+end
+
+function KondoSpinNI(psi,L)
+    rho = psi * psi' .+ 1e-15
+    inds = [2,2,2*L]
+    trinds = [3]
+    rho_spin = ptrace(rho,inds,Int.(trinds)) 
+    sx = 0.5 * [0 1; 1 0]
+    sy = 0.5 * [0 -1im; 1im 0]
+    sz = 0.5 * [1 0; 0 -1.]
+    c = [0 1; 0 0.]
+    cd = c' 
+    id = Matrix(I,2,2)
+    F = 2*sz
+    Sx = tr(rho_spin * (sx[1,1] * kron(cd*c,id) + sx[1,2]*kron(cd*F,c) + sx[2,1]*kron(c*F,cd) + sx[2,2]*kron(id,cd*c)))
+    Sy = tr(rho_spin * (sy[1,1] * kron(cd*c,id) + sy[1,2]*kron(cd*F,c) + sy[2,1]*kron(c*F,cd) + sy[2,2]*kron(id,cd*c)))
+    Sz = tr(rho_spin * (sz[1,1] * kron(cd*c,id) + sz[1,2]*kron(cd*F,c) + sz[2,1]*kron(c*F,cd) + sz[2,2]*kron(id,cd*c)))   
+    #Sx = tr(rho_spin * sx)
+    #Sy = tr(rho_spin * sy)
+    #Sz = tr(rho_spin * sz)
+    return real.([Sx,Sy,Sz])
+end
+
+function PropagateKondo(psi0,L,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
+    """
+    Main RK4 propagation. Solves Schrödinger equation, computes expectation values, saves them to a file.
+    """
+    if pathIn != ""
+        fid = h5open(pathIn,"r")
+        psi0 = read(fid["psi"])
+        close(fid)
+    end
+    nd = [ElOccLatticeKondo(psi0,L)]
+    sk = [KondoSpin(psi0,L)]
+    ti = [0.0]
+    psi_p = psi0
+    
+    fil = open("$(filname).dat","w")
+    write(fil,"#(1)t ")
+    k = 1
+    for i in 1:L
+        write(fil,"($(k+1))ElN$(i)_up ($(k+2))ElN$(i)_dw ")
+        k += 2
+    end
+    write(fil,"($(k+1))Sx ($(k+2))Sy ($(k+3))Sz \n")
+    close(fil)
+    modeN = "w"
+    for i in 1:nsteps
+        psi_n = RK4Step(H,psi_p,dt)
+        psi_p = psi_n # /norm(psi_n)
+        if i % nsave == 0
+            push!(nd,ElOccLatticeKondo(psi_p,L))
+            push!(sk,KondoSpin(psi_p,L))
+            push!(ti,i*dt)
+        end
+        if i % nflush == 0
+	        fil = open("$(filname).dat","a")
+            for j in 1:length(ti)
+		        write(fil,"$(ti[j]) ")
+                for k in 1:length(nd[j])
+                    write(fil,"$(nd[j][k][1]) $(nd[j][k][2]) ")
+                end
+                for k in 1:3
+                    write(fil,"$(sk[j][k]) ")
+                end
+
+                write(fil,"\n")
+            end
+            close(fil)
+            nd = []
+            sk = []
+	        ti = []
+        end
+        if i == nsteps
+            fil = h5open("$(filname)_final_Quantities","w")
+            fil["psi"] = psi_p
+        end
+    end
+end
+function PropagateKondoNI(psi0,L,H,dt,filname,nsteps,nsave,nflush,pathIn = "")
+    """
+    Main RK4 propagation. Solves Schrödinger equation, computes expectation values, saves them to a file.
+    """
+    if pathIn != ""
+        fid = h5open(pathIn,"r")
+        psi0 = read(fid["psi"])
+        close(fid)
+    end
+    nd = [ElOccLatticeKondoNI(psi0,L)]*1.0
+    sk = [KondoSpinNI(psi0,L)]*1.0
+    ti = [0.0]
+    psi_p = psi0
+    
+    fil = open("$(filname).dat","w")
+    write(fil,"#(1)t ")
+    k = 1
+    for i in 1:L
+        write(fil,"($(k+1))ElN$(i)_up ($(k+2))ElN$(i)_dw ")
+        k += 2
+    end
+    write(fil,"($(k+1))Sx ($(k+2))Sy ($(k+3))Sz \n")
+    close(fil)
+    modeN = "w"
+    for i in 1:nsteps
+        psi_n = RK4Step(H,psi_p,dt)
+        psi_p = psi_n # /norm(psi_n)
+        if i % nsave == 0
+            push!(nd,ElOccLatticeKondoNI(psi_p,L))
+            push!(sk,KondoSpinNI(psi_p,L))
+            push!(ti,i*dt)
+        end
+        if i % nflush == 0
+	        fil = open("$(filname).dat","a")
+            for j in 1:length(ti)
+		        write(fil,"$(ti[j]) ")
+                for k in 1:length(nd[j])
+                    write(fil,"$(nd[j][k][1]) $(nd[j][k][2]) ")
+                end
+                for k in 1:3
+                    write(fil,"$(sk[j][k]) ")
+                end
+
+                write(fil,"\n")
+            end
+            close(fil)
+            nd = []
+            sk = []
+	        ti = []
+        end
+        if i == nsteps
+            fil = h5open("$(filname)_final_Quantities","w")
+            fil["psi"] = psi_p
+        end
+    end
+end
+
 
 function PropagateImag(L,M,H,dt,filname,imagfilname,nsteps,imagsteps,nsave,nflush)
     """
