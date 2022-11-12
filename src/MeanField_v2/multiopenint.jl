@@ -105,6 +105,8 @@ function Propagate(
 				A           = [SampleWigner(beta,HamPar.ws[i],vSampl) for i in 1:HamPar.N]
 				Xin 		= [A[i][1] for i in 1:HamPar.N]
 				Pin 		= [A[i][2] for i in 1:HamPar.N]
+				HamPar.X = Xin
+				HamPar.P = Pin
 			end
 		end
 		hcen_i  = HamPar.Hamiltonian(HamPar)	
