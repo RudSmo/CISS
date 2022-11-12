@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+\begin{document}
+	
+\title{Fransson's model: Tests of implementation}
+\author{Rudolf Smorka}
+\maketitle
+\section{Model}
+The model considered for a chiral, single-stranded molecule, as proposed in Refs.~\cite{fransson2019chirality,fransson2020vibrational,Fransson_2021,fransson2021charge}, reads
+\begin{align}
+	\hat{H} &= \hat{H}_\mathrm{mol} + \hat{H}_\mathrm{env} + \hat{H}_\mathrm{sys-env}.
+\end{align} 
+The molecular Hamiltonian is modeled by a combination of the  Peierls and the Kane-Mele models. It consists of an electronic on-site, nearest-neighbor hopping, and next-to-nearest neighbor spin-orbit coupling (SOC), a Peierls electron-phonon coupling and vibrational contribution to SOC, and the harmonic phonon potential energy 
+\begin{align}
+	\hat{H}_\mathrm{mol} &= \hat{H}_\mathrm{el} + \hat{H}_\mathrm{el-ph} + \hat{H}_\mathrm{ph},\\
+	\begin{split}
+		\hat{H}_\mathrm{el} &= \sum_{j,\sigma} \varepsilon_{j\sigma}^\pdagger \hat{d}_{j\sigma}^\dagger \hat{d}_{j\sigma}^\pdagger - t_0 \sum_{j\sigma} (\hat{d}_{j\sigma}^\dagger \hat{d}_{j+1,\sigma}^\pdagger + \mathrm{h.c.}) +\\& \lambda_0^\pdagger\sum_{j\sigma\sigma'} (i\hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2,\sigma'}^\pdagger + \mathrm{h.c.}),
+	\end{split}\\
+	\hat{H}_\mathrm{el-ph} &= - t_1^\pdagger \sum_{j,\sigma}  \hat{d}_{j\sigma}^\dagger \hat{d}_{j+1\sigma}^\pdagger (\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger) \\ & + \lambda_1^\pdagger\sum_{j\sigma} (i \hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)} \cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2\sigma'}^\pdagger +\mathrm{h.c.})(\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger),\label{eq:HelPh}\\
+	\hat{H}_\mathrm{ph} &= \sum_{j} \omega_{j}^\pdagger \hat{a}_{j}^\dagger \hat{a}_{j}^\pdagger.
+	 \label{eq:Hamiltonian_el_Fransson} 
+\end{align}
+This molecule is coupled to an environment of spin-full, noninteracting electrons
+\begin{equation}
+	H_\mathrm{env} = \sum_{\ell k\sigma} \varepsilon_{\ell k\sigma}^\pdagger c_{\ell k\sigma}^\dagger c_{\ell k\sigma}^\pdagger \label{eq:LeadHamiltonian}
+\end{equation}
+and the system-environment coupling is linear in the molecular and environmental operators (only at the first and last site of the molecule)
+\begin{align}
+	H_\mathrm{sys-env} &= \sum_{\sigma\sigma'}(\nu_{L\sigma\sigma'}^\pdagger c_{N_L\sigma}^\dagger d_{1\sigma'}^\pdagger + \nu_{R\sigma\sigma'}^\pdagger c_{1_R\sigma}^\dagger d_{\mathbb{M}\sigma'}^\pdagger + \mathrm{h.c.}). \label{eq:LeadSysHamiltonian}
+\end{align} 
+\section{Methods}
+In the following, we compare the dynamics in the model defined above using a variety of methods. 
+\begin{itemize}
+	\item Exact diagonalization (ED): Valid for isolated molecule, phonons treated quantum-mechanically.
+	\item Time-dependent variational principle based on a matrix-product state Ansatz (TDVP): Valid for isolated molecule, phonons treated quantum-mechanically.
+	\item Hierarchical equations of motion in matrix product state representation (TT-HEOM): Valid for both isolated molecule and molecule coupled to leads, phonons treated quantum-mechanically.
+	\item Hierarchical equations of motion in combination with Ehrenfest dynamics (MF-HEOM): Valid for purely electronic dynamics in both isolated molecule and molecule coupled to leads. Phonons approximated to be classical.
+\end{itemize}
+\newpage
+\section{Comparison of Dynamics in Isolated Molecule}
+\subsection{Hopping and Peierls distortion}
+Parameters: $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$. The ED has been checked to be converged; for the time interval considered here, 5 number of states per vibrational mode are sufficient for convergence. The TT-HEOM method agrees with ED and TDVP only for very short times; for $t\geq 8$, the TT-HEOM results deviate the norm drops down significantly. Increasing the rank from $r=100$ to $r=150$ leads to slightly better behavior of the norm. The overall population dynamics, however, changes only slightly. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.705\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf}
+\end{figure}
+\subsection{Hopping, SOC, and Peierls distortion}
+Parameters: $L=3$, $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$. As $t_1$ dominates the dynamics, the results remains essentially unchanged in comparison to the case above. Hence, convergence issues in the TT-HEOM remain.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.705\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+soc+tph.pdf}
+\end{figure}
+\section{Comparison of Dynamics in Coupled Molecule}
+First, we consider a non-interacting model to determine the minimal convergence parameters, for which the results are converged. These determined parameters are then used as a starting point for the full interacting Fransson model.
+\subsection{Hopping and Onsite}
+\subsection{Fransson Model}
+
+
+\printbibliography
+\end{document}
+
+
+
+
