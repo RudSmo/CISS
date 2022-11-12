@@ -43,8 +43,8 @@ function Propagate(
 		P0 		= HamPar.P
 	elseif phIn == "Wigner"
 		A       = [SampleWigner(beta,HamPar.ws[i],vSampl) for i in 1:HamPar.N]
-		Q0 	    = [A[i][1] for i in 1:N]
-		P0 		= [A[i][2] for i in 1:N]
+		X0 	    = [A[i][1] for i in 1:HamPar.N]
+		P0 		= [A[i][2] for i in 1:HamPar.N]
 	elseif phIn == "fromFile"
 		fid     = h5open(pathIn,"r")
 		X0      = read(fid["q"])
@@ -103,8 +103,8 @@ function Propagate(
 		if resampling 
 			if i % rsmpl_stp == 0
 				A           = [SampleWigner(beta,HamPar.ws[i],vSampl) for i in 1:HamPar.N]
-				Xin 		= [A[i][1] for i in 1:N]
-				Pin 		= [A[i][2] for i in 1:N]
+				Xin 		= [A[i][1] for i in 1:HamPar.N]
+				Pin 		= [A[i][2] for i in 1:HamPar.N]
 			end
 		end
 		hcen_i  = HamPar.Hamiltonian(HamPar)	

@@ -2,7 +2,6 @@ module NEGF
 include("auxiliary.jl")
 using .Auxiliary
 using LinearAlgebra
-using PyPlot
 export CurSingle_A,LB_Transmission_A_single,GammaMatrix, G_R
 
 function GammaMatrix(sys_par,lead_par,lead)
