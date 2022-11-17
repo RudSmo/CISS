@@ -72,21 +72,25 @@ In the following, we compare the dynamics in the model defined above using a var
 \newpage
 \section{Comparison of Dynamics in Isolated Molecule}
 \subsection{Hopping and Peierls distortion}
-Parameters: $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$. The ED has been checked to be converged; for the time interval considered here, 5 number of states per vibrational mode are sufficient for convergence. The TT-HEOM method agrees with ED and TDVP only for very short times; for $t\geq 8$, the TT-HEOM results deviate the norm drops down significantly. Increasing the rank from $r=100$ to $r=150$ leads to slightly better behavior of the norm. The overall population dynamics, however, changes only slightly. 
+Parameters: $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$.  GSE-TDVP data is not converged with respect to number of vibrational modes.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.705\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph.pdf}
+	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf}
 \end{figure}
-\subsection{Hopping, SOC, and Peierls distortion}
-Parameters: $L=3$, $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$. As $t_1$ dominates the dynamics, the results remains essentially unchanged in comparison to the case above. Hence, convergence issues in the TT-HEOM remain.
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.705\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+soc+tph.pdf}
-\end{figure}
+
 \section{Comparison of Dynamics in Coupled Molecule}
-First, we consider a non-interacting model to determine the minimal convergence parameters, for which the results are converged. These determined parameters are then used as a starting point for the full interacting Fransson model.
+
 \subsection{Hopping and Onsite}
-\subsection{Fransson Model}
+Parameters: $L=3$, $t_0 = 1.0$, $T=\SI{0.1}{\electronvolt}\approx \SI{1160}{\kelvin}$, $\Gamma = \vert \nu\vert^2 = t_0/4$, $V=t_0$.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf}
+\end{figure}
+
+
+\section{Ehrenfest Dynamics in the Isolated Molecule}
+\section{Ehrenfest Dynamics in the Coupled molecule}
+
 
 
 \printbibliography
