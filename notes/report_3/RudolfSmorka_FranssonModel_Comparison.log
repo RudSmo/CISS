@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  16 NOV 2022 17:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  21 NOV 2022 16:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -743,37 +743,62 @@ df)
 <use figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf  
 used on input line 78.
-(pdftex.def)             Requested size: 435.32419pt x 304.7251pt.
+(pdftex.def)             Requested size: 386.95894pt x 270.86847pt.
 <figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf, id=23, 722.7pt x 505.89
 pt>
 File: figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf Graphic file (type 
 pdf)
 <use figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf 
- used on input line 87.
-(pdftex.def)             Requested size: 435.32419pt x 304.7251pt.
+ used on input line 85.
+(pdftex.def)             Requested size: 386.95894pt x 270.86847pt.
+ [2 <./figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf> <./figs/Comparison
+_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Comparison_TTHEOM_TDV
+P_ED_hop+onsite+SOC_V10.pdf): PDF inclusion: multiple pdfs with page group incl
+uded in a single page
+>]
+<figs/LB_1x3.pdf, id=70, 722.7pt x 361.35pt>
+File: figs/LB_1x3.pdf Graphic file (type pdf)
+<use figs/LB_1x3.pdf>
+Package pdftex.def Info: figs/LB_1x3.pdf  used on input line 95.
+(pdftex.def)             Requested size: 435.32419pt x 217.66078pt.
+<figs/LB_4x3.pdf, id=71, 722.7pt x 361.35pt>
+File: figs/LB_4x3.pdf Graphic file (type pdf)
+<use figs/LB_4x3.pdf>
+Package pdftex.def Info: figs/LB_4x3.pdf  used on input line 100.
+(pdftex.def)             Requested size: 435.32419pt x 217.66078pt.
+<figs/LB_8x4.pdf, id=72, 722.7pt x 361.35pt>
+File: figs/LB_8x4.pdf Graphic file (type pdf)
+<use figs/LB_8x4.pdf>
+Package pdftex.def Info: figs/LB_8x4.pdf  used on input line 105.
+(pdftex.def)             Requested size: 435.32419pt x 217.66078pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2 <./figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf>] [3 <./figs/Compari
-son_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf>]
-(./RudolfSmorka_FranssonModel_Comparison.aux)
+[3 <./figs/LB_1x3.pdf> <./figs/LB_4x3.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/LB_4x3.pdf): PDF incl
+usion: multiple pdfs with page group included in a single page
+>] [4 <./figs/LB_8x4.pdf>] (./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
 \openout1 = `RudolfSmorka_FranssonModel_Comparison.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16313 strings out of 478994
- 320238 string characters out of 5858184
+ 16331 strings out of 478994
+ 320622 string characters out of 5858184
  837680 words of memory out of 5000000
- 33587 multiletter control sequences out of 15000+600000
+ 33602 multiletter control sequences out of 15000+600000
  420267 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,18n,75p,1873b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb>
+}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb
+></usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
 /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
 usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></u
@@ -790,13 +815,14 @@ e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
 2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/20
 21/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/202
 1/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/
-texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist
-/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (3 pages, 354682 by
+texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
+1/urw/times/utmri8a.pfb>
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (4 pages, 401953 by
 tes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
+ 200 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

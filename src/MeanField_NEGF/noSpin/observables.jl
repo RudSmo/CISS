@@ -3,8 +3,22 @@ include("negf.jl")
 include("auxiliary.jl")
 using .NEGF
 using .Auxiliary
-export DOS, LB_CurrentV, LB_TransmissionE, LB_LocalCurrent, LB_LocalCurrentV
+using LinearAlgebra
+export SampleWigner,DOS, LB_CurrentV, LB_TransmissionE, LB_LocalCurrent, LB_LocalCurrentV
 
+function SampleWigner(beta,w,version)
+    """
+    version == "v1": Distribution as given in eq. 51 of J. Chem. Phys. 152, 084110
+    version == "v2": Distribution as given in eq. 14 of J. Chem. Phys. 156, 024108
+    """
+    aj = tanh(0.5*beta*w)
+    if version == "v2"
+        A  = randn(2)*aj/pi
+    elseif version == "v1"
+        A = randn(2)*2*aj
+    end
+    return [A[1]/sqrt(w*aj),A[2]*sqrt(w/aj)]
+end
 function DOS(En,HS,sigma)
     en = eigvals(HS)
     dos = []
@@ -15,19 +29,17 @@ function DOS(En,HS,sigma)
     return dos
 end
 
-function LB_TransmissionE(sys_par,lead_par)
-    Tu = []
-    Td = []
-    Tud = []
-    Tdu = []
+function LB_TransmissionE(sys_par,lead_par,eta=1e-12)
+    T = []
+    GammaL = GammaMatrix(sys_par,lead_par,"L")
+    GammaR = GammaMatrix(sys_par,lead_par,"R") 
+    SigmaR = -1im/2 .* (GammaL+GammaR) 
     for E in sys_par.En
-        tu,td,tud,tdu = LB_Transmission_A_single(E,sys_par,lead_par,1e-9)
-        push!(Tu,tu)
-        push!(Td,td)
-        push!(Tud,tud)
-        push!(Tdu,tdu)
+	GR = G_R(sys_par.HS,E,eta,SigmaR)
+        t = LB_Transmission(GR,GammaL,GammaR)
+        push!(T,t)
     end
-    return Tu,Td,Tud,Tdu
+    return T
 end
 function SPT(sys_par,lead_par)
     Tu,Td,Tud,Tdu = LB_TransmissionE(sys_par,lead_par) 

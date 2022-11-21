@@ -1,4 +1,4 @@
-p = expanduser("~/Libraries/CISS/src/MeanField_NEGF/noSpin/") 
+p = expanduser("~/Uni/PhD/projects/2022/SOC-Holstein_ComparisonMethods/src/MeanField_NEGF/noSpin/") 
 include("$(p)hamiltonian.jl")
 include("$(p)observables.jl")
 include("$(p)structures.jl")
@@ -7,14 +7,14 @@ using .Observables
 using .CustomStructs
 
 t0 = 1.0
-eu = 0.0
-ed = 0.0
+eu = -6*t0
+ed = -6*t0
 E = [eu,ed]
 a = 1.0
 c = 1.0
 tso = t0/40
-num_laps = 8
-ions = 4
+num_laps = 4
+ions = 3
 N = Int(num_laps * ions)
 tph = 0.0
 tsoph = 0.0
@@ -24,11 +24,11 @@ qs = zeros(N)
 HS = Hamiltonian.FranssonHamiltonian(N,E,t0,tso,a,c,num_laps,tph,tsoph,ws,qs)
 
 
-En = Array(-3.0:0.01:3.0)
+En = Array(-20.0:0.01:20.0)
 sys_par = SystemParams(N,HS,En)
 
 P = -0.5
-Gamma = 0.5
+Gamma = t0/4
 gLu = Gamma*(1 + P)
 gLd = Gamma*(1 - P) 
 gLud = 0.0
@@ -39,7 +39,7 @@ gRd = Gamma
 gRud = 0.0
 gRdu = gRud
 
-Temp = 0.01
+Temp = 0.025
 muL = 0.0
 muR = 0.0
 tL  = Temp
@@ -48,7 +48,7 @@ tR  = Temp
 lead_par = LeadParamsSF(muL,muR,gLu,gLd,gLud,gLdu,gRu,gRd,gRud,gRdu,tL,tR)
 
 
-Vn = Array(0.0:0.03:4.5)
+Vn = Array(0.0:0.1:21.0)
 
 
 filname = "fS$(ions)_nL$(num_laps)_tso$(tso)_P$(P)_currents.dat"

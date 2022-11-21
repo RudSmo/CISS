@@ -70,26 +70,48 @@ In the following, we compare the dynamics in the model defined above using a var
 	\item Hierarchical equations of motion in combination with Ehrenfest dynamics (MF-HEOM): Valid for purely electronic dynamics in both isolated molecule and molecule coupled to leads. Phonons approximated to be classical.
 \end{itemize}
 \newpage
-\section{Comparison of Dynamics in Isolated Molecule}
-\subsection{Hopping and Peierls distortion}
-Parameters: $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$.  GSE-TDVP data is not converged with respect to number of vibrational modes.
+\section{Comparison of Dynamics}
+\subsection{Isolated: Hopping and Peierls distortion}
+As in the previous report, the parameters are $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$.  GSE-TDVP data is not converged with respect to number of vibrational modes.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf}
+	\includegraphics[width=0.8\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf}
 \end{figure}
-
-\section{Comparison of Dynamics in Coupled Molecule}
-
-\subsection{Hopping and Onsite}
+The issue was in a factor $1/\sqrt{2}$ in the definition of the vibrational creation and annihilation operators in the code, which was overseen. 
+\subsection{Coupled: Hopping and Onsite}
 Parameters: $L=3$, $t_0 = 1.0$, $T=\SI{0.1}{\electronvolt}\approx \SI{1160}{\kelvin}$, $\Gamma = \vert \nu\vert^2 = t_0/4$, $V=t_0$.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf}
+	\includegraphics[width=0.8\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf}
 \end{figure}
 
+\section{IV-characteristics in non-vibrating molecule}
+Parameters: $t_0 = 1, \varepsilon_\uparrow = \varepsilon_\downarrow = -6t_0, \lambda_0 = t_0/40, \Gamma_0 = t_0/4, \beta = t_0/40$. 
+\subsection{Landauer-Büttiker approach}
+Due to absence of electronic interactions, the steady-state current can be obtained within the Landauer-Büttiker formalism.
+The left lead is assumed to be ferromagnetic with polarization $P=0.5,-0.5$. This is modeled by a spin-dependent level-width function $\Gamma = \Gamma_0 (1+P\sigma^z)$ in Franssons work. However, a ferromagnetic metal also has a spin-gap between majority and minority spins $\mu_\mathrm{maj}-\mu_\mathrm{min} = \Delta_s$ (Stoner model), the influence of which we investigate separately.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/LB_1x3.pdf}
+	\caption{$\mathbb{M}=1\times 3$}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/LB_4x3.pdf}
+	\caption{$\mathbb{M}=4\times 3$}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/LB_8x4.pdf}
+	\caption{$\mathbb{M}=8\times 4$}
+\end{figure}
+ 
+\subsection{Time-dependent NEGF approach}
+The IV-characteristics from the time-dependent NEGF approach should agree with the IV-characteristic from the Landauer-Büttiker approach. This is shown below for one set of parameters.
 
-\section{Ehrenfest Dynamics in the Isolated Molecule}
 \section{Ehrenfest Dynamics in the Coupled molecule}
+
+\subsection{Full Fransson Model}
 
 
 
