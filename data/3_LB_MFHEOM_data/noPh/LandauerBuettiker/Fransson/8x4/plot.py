@@ -34,7 +34,7 @@ ax1.legend(loc="lower right")
 
 
 ax1.set_xlim(-0.1,20)
-ax1.set_ylabel(r"$I\, [\Gamma_0 t_0]$")
+ax1.set_ylabel(r"$I\, [\Gamma_0]$")
 #ax1.tick_params(bottom=False)
 ax1.set_xlabel(r"$V \, [t_0]$")
 

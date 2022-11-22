@@ -15,7 +15,7 @@ using .CustomStructures
 
 # Simulation Parameters
 dt = 0.001
-tend = 5000
+tend = 100
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -27,16 +27,16 @@ num_laps = 1
 num_ions = 3
 N = num_laps * num_ions
 t0  = 1.0 
-eu  = -6*t0
-ed  = -6*t0
+eu  = 0.0
+ed  = 0.0
 E   = [eu,ed]
 ws  = 0.01*ones(N)
 gPh = [0.0,0.0]
 a   = 1.0
 c   = 1.0
 tso = t0/40
-tPh = 0.1*t0
-tsoPh = 0.1*tso
+tPh = 0.0
+tsoPh = 0.0*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
@@ -79,19 +79,19 @@ HamPar = HamiltonianParams( num_laps,
 
 
 ## Leads
-P = 0.5
+P = 0.0
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
-V  = 10.0
-nPoles = 15
+V  = 0.0
+nPoles = 30
 beta = 1/0.025
 
-path = "1x3_longTime"
+path = "1x3_Electronic"
 if !isdir(path)
 	mkdir(path)
 end
 
-num_avg = 10
+num_avg = 1
 resampling = false
 rsmpl_stp = 15
 for ka in 1:num_avg
