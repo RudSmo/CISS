@@ -15,7 +15,7 @@ using .CustomStructures
 
 # Simulation Parameters
 dt = 0.001
-tend = 100
+tend = 500
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -24,7 +24,7 @@ initProp  = true
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 3
+num_ions = 1
 N = num_laps * num_ions
 t0  = 1.0 
 eu  = 0.0
@@ -37,16 +37,16 @@ c   = 1.0
 tso = t0/40
 tPh = 0.0
 tsoPh = 0.0
-#model = HolsteinHopping
-#modelStr = "Holstein"
-model = FranssonHamiltonian
-modelStr = "Fransson"
+model = HolsteinHopping
+modelStr = "Holstein"
+#model = FranssonHamiltonian
+#modelStr = "Fransson"
 
 if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
-    #phIn = "TDSCF"
-    phIn = "Wigner"
+    phIn = "TDSCF"
+    #phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -80,13 +80,13 @@ HamPar = HamiltonianParams( num_laps,
 
 ## Leads
 P = 0.0
-tL = t0/4 * (ones(2) .+ P * [1,-1])  
-tR = t0/4 * ones(2)
+tL = 0.0 * (ones(2) .+ P * [1,-1])  
+tR = 0.0 * ones(2)
 V  = 0.0
-nPoles = 30
+nPoles = 1
 beta = 1/0.025
 
-path = "1x3_Electronic"
+path = "PhononDynamics_uncoupled"
 if !isdir(path)
 	mkdir(path)
 end

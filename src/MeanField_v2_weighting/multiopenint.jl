@@ -39,6 +39,7 @@ function Propagate(
 	if phIn == "TDSCF"
 		X0 		= HamPar.X
 		P0 		= HamPar.P
+		weight  = prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
 	elseif phIn == "Wigner"
 		A       = [SampleWigner(beta,HamPar.ws[i],vSampl) for i in 1:HamPar.N]
 		X0 		= [A[i][1] for i in 1:HamPar.N]
@@ -49,6 +50,7 @@ function Propagate(
 		fid     = h5open(pathIn,"r")
 		X0      = read(fid["q"])
 		P0      = read(fid["p"])
+		weight  = prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
 	end
 
 	Xin         = X0

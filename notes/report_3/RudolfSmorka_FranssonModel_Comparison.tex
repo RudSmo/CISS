@@ -72,7 +72,7 @@ In the following, we compare the dynamics in the model defined above using a var
 \newpage
 \section{Comparison of Dynamics}
 \subsection{Isolated: Hopping and Peierls distortion}
-As in the previous report, the parameters are $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$.  GSE-TDVP data is not converged with respect to number of vibrational modes.
+As in the previous report, the parameters are $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$, $\omega_0 = 0.01t_0$.  GSE-TDVP data is not converged with respect to number of vibrational modes.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf}
@@ -105,11 +105,29 @@ The left lead is assumed to be ferromagnetic with polarization $P=0.5,-0.5$. Thi
 	\includegraphics[width=0.9\textwidth]{figs/LB_8x4.pdf}
 	\caption{$\mathbb{M}=8\times 4$}
 \end{figure}
+\subsection{Time-dependent currents}
 
 \subsection{Stationary electronic lattice occupation}
 From the steady-state reduced density matrix obtained within the MF-HEOM, one can obtain local observables, as the electron population and local spin polarization.  
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/MF-HEOM_2x4_Sz_steady_PVar.pdf}
+\end{figure}
+Steady state electronic spin polarization in real-space increases (decrases) step-wise with increasing voltage if $P=0.5$ ($P=-0.5$). This is explained in the resonant transport model, because the eigenstates of the central Hamiltonian are not localized on single sites, but are extended over the full system. But when a voltage is applied, these eigenstates can be occupied. The voltage at which the steps occur correspond to a resonance condition.
+\subsection{Time-dependent electronic lattice occupation}
 
 \section{Ehrenfest Dynamics in the Coupled molecule}
+\subsection{Test of nuclear dynamics}
+Put here a plot of the comparison between analytic and numerical result for the nuclear dynamics for the case of $g=0$.
+\subsection{Time-dependent Currents}
+Show that in the Ehrenfest approach, currents are not reaching a steady state for sufficiently high bias.
+
+\subsection{Time-dependent Populations}
+Show that populations are also not stationary for long times, but switch depending on the positions of the phonons.
+
+\subsection{Time-dependent vibrational phase space density}
+Show that the phase space density for the nuclear DoF deviates from the initial probability density, and that it still can be well described by a Gaussian/coherent state. Therefore, resampling techniques cannot and should not be applied, because otherwise the deviation of the vibrational phase space density from the initial one is not accounted for correctly.
+Explain why currents and populations never reach steady state (because a current is associated with electron hopping, but electron hopping is depending on the positions of the phonons, and hopping induces vibrational dynamics). 
 
 \subsection{Full Fransson Model}
 
