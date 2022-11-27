@@ -39,7 +39,6 @@ cp = plt.cm.RdBu_r
 norm = colors.SymLogNorm(linthresh=0.002, linscale=1.0,vmin=vmin,vmax=vmax, base=10)
 cmap = cm.ScalarMappable(norm=norm, cmap=cp)
 
-
 for P,ax in zip(Ps,axes):
 	Pf = f"P{P}/"
 	datE = np.genfromtxt(Pf+"Electrons_steadyState.dat")
@@ -51,7 +50,7 @@ for P,ax in zip(Ps,axes):
 		ax.set_xticklabels([])
 	ax.set_ylabel(r"$V\, [t_0]$")
 	
-cbar = fig.colorbar(cmap, ax=ax1, cax = axc, aspect=90,pad=.001)
+cbar = fig.colorbar(cmap, ax=ax1, cax = axc, aspect=90, pad=.001)
 cbar.set_label(r"$n_{i\uparrow}-n_{i\downarrow}$")
 cbar.ax.tick_params(labelsize=17)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  23 NOV 2022 15:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  24 NOV 2022 20:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -791,22 +791,37 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/LB_4x3.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
->] [4 <./figs/LB_8x4.pdf> <./figs/MF-HEOM_2x4_Sz_steady_PVar.pdf
+>]
+
+LaTeX Warning: Text page 4 contains only floats.
+
+[4 <./figs/LB_8x4.pdf> <./figs/MF-HEOM_2x4_Sz_steady_PVar.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/MF-HEOM_2x4_Sz_steady
 _PVar.pdf): PDF inclusion: multiple pdfs with page group included in a single p
 age
->] [5] (./RudolfSmorka_FranssonModel_Comparison.aux)
+>]
+<figs/1x3_PDist_Evo_site0.pdf, id=167, 867.24pt x 578.16pt>
+File: figs/1x3_PDist_Evo_site0.pdf Graphic file (type pdf)
+<use figs/1x3_PDist_Evo_site0.pdf>
+Package pdftex.def Info: figs/1x3_PDist_Evo_site0.pdf  used on input line 145.
+(pdftex.def)             Requested size: 483.69684pt x 322.47055pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5] [6 <./figs/1x3_PDist_Evo_site0.pdf>]
+(./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
 \openout1 = `RudolfSmorka_FranssonModel_Comparison.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16337 strings out of 478994
- 320870 string characters out of 5858184
+ 16343 strings out of 478994
+ 321076 string characters out of 5858184
  837680 words of memory out of 5000000
- 33607 multiletter control sequences out of 15000+600000
+ 33612 multiletter control sequences out of 15000+600000
  420267 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,18n,75p,1873b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -832,11 +847,11 @@ e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
 texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (5 pages, 478645 by
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (6 pages, 525951 by
 tes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 188 compressed objects within 2 object streams
+ 264 PDF objects out of 1000 (max. 8388607)
+ 214 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

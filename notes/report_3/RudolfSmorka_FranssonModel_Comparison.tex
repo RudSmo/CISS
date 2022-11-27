@@ -112,6 +112,7 @@ From the steady-state reduced density matrix obtained within the MF-HEOM, one ca
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/MF-HEOM_2x4_Sz_steady_PVar.pdf}
+	\caption{$\mathbb{M}=2\times 4$}
 \end{figure}
 Steady state electronic spin polarization in real-space increases (decrases) step-wise with increasing voltage if $P=0.5$ ($P=-0.5$). This is explained in the resonant transport model, because the eigenstates of the central Hamiltonian are not localized on single sites, but are extended over the full system. But when a voltage is applied, these eigenstates can be occupied. The voltage at which the steps occur correspond to a resonance condition.
 \subsection{Time-dependent electronic lattice occupation}
@@ -119,18 +120,33 @@ Steady state electronic spin polarization in real-space increases (decrases) ste
 \section{Ehrenfest Dynamics in the Coupled molecule}
 \subsection{Test of nuclear dynamics}
 Put here a plot of the comparison between analytic and numerical result for the nuclear dynamics for the case of $g=0$.
+Put here numerical comparison between quantum Ehrenfest Force calculated by hand and the one obtained in the code.
+\subsection{Existence of NESS}
+Can we make a ``phase diagram'' when a NESS exists? From the data, its easy. Everytime $\mu_L,\mu_R  \gg \varepsilon_n$, or $\mu_L\gg \varepsilon_n$ and $\mu_R \ll \varepsilon_0$, there exists a unique NESS. However, for voltages in the middle of the band, there is no NESS. 
+Analytically, I don't know.
+In a sense, there is never a NESS in the model I'm investigating. If there is a current, then the current-operator is non-zero. But if the current operator is non-zero, there is coupling between the electrons and the phonons. 
 \subsection{Time-dependent Currents}
 Show that in the Ehrenfest approach, currents are not reaching a steady state for sufficiently high bias.
-
+Show $(t,V)$ imshow of current.
 \subsection{Time-dependent Populations}
 Show that populations are also not stationary for long times, but switch depending on the positions of the phonons.
-
+Show $(t,V)$ imshow of population on a single site.
+Show $(t,\mathrm{site})$ imshow of all populations on all sites for different times.
+Can be explained with spectrum which is now time-dependent under the influence of phonons.
+Quantization of vibrational motion. Show FFT of population dynamics. Relation to phonon-frequencies. If matching, then there are quanta of vibration exchanged between electrons and vibrations.
+\subsection{Time-dependence of spectrum}
+Berry phase effects? 
 \subsection{Time-dependent vibrational phase space density}
 Show that the phase space density for the nuclear DoF deviates from the initial probability density, and that it still can be well described by a Gaussian/coherent state. Therefore, resampling techniques cannot and should not be applied, because otherwise the deviation of the vibrational phase space density from the initial one is not accounted for correctly.
 Explain why currents and populations never reach steady state (because a current is associated with electron hopping, but electron hopping is depending on the positions of the phonons, and hopping induces vibrational dynamics). 
-
-\subsection{Full Fransson Model}
-
+Parameters: $w_0=0.05$, $N_\mathrm{traj} = 900$.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/1x3_PDist_Evo_site0.pdf}
+	\caption{Time-evolution of vibrational phase-space probability density at the bond between sites 1 and 2 for $\mathbb{M}=1\times 3$. Parameters are: $t_0 = 1, t_1 = 0.1t_0, \lambda_0 = t_0/40, \lambda_1 = 0.1\lambda_0, \omega_0 = 0.05t_0, P = 0.5$, and $V=10t_0$.}
+\end{figure}
+Same figure with $P=-0.5,P=0.0$, and $\lambda_1 = 0$ and maybe different voltage.
+\subsection{Magnetoresistance}
 
 
 \printbibliography
