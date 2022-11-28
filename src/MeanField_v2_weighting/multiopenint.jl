@@ -97,15 +97,16 @@ function Propagate(
  	cur2_l		= [Current(curM2)]
 	scur1_l 	= [SpinCurrent(curM1)]
 	scur2_l 	= [SpinCurrent(curM2)]
+	mom_el      = [MomentumElectrons(rho0)]
 
 	chi1	= V/2 .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
 	chi2	= -V/2 .+ 1im .* xi ./beta
 	
 	for i in 1:numstep
 		hcen_i  = HamPar.Hamiltonian(HamPar)	
-		
 		curp1_c, curp2_c, cur1_c, cur2_c, cur_c = RK_Currents(beta,hcen_i,Gamma1,Gamma2,GammaT,kappa,chi1,chi2,curp1_i,curp2_i,rho_i,dt)
 		rho_c	= RK_VneumannL(rho_i,hcen_i,cur_c,dt)
+
 		Xn,Pn   = SymplecticEulerStep(HamPar,rho_c,dt) 
 		# BUFFER
 		rho_i   = copy(rho_c)
@@ -115,7 +116,7 @@ function Propagate(
 		Pin     = Pn
 		HamPar.X = Xn
 		HamPar.P = Pn
-		pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l = SaveOutput(cur1_c,cur2_c,pop_l,rho_i,Xn,Pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,weight,path)
+		pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el = SaveOutput(cur1_c,cur2_c,pop_l,rho_i,Xn,Pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,weight,path)
 		if i == numstep 
 			fil = h5open("$(path)_final_Quantities","w")
 			fil["Rho"] = rho_i

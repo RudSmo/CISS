@@ -15,7 +15,7 @@ using .CustomStructures
 
 # Simulation Parameters
 dt = 0.001
-tend = 5000
+tend = 100
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -34,9 +34,9 @@ ws  = 0.1*ones(N)
 gPh = [0.0,0.0]
 a   = 1.0
 c   = 1.0
-tso = t0/40
-tPh = 0.1*t0
-tsoPh = 0.1*tso
+tso = 0.0# t0/40
+tPh = 0.0*t0
+tsoPh = 0.0*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
@@ -80,13 +80,13 @@ HamPar = HamiltonianParams( num_laps,
 
 ## Leads
 P = 0.0
-tL = t0/4 * (ones(2) .+ P * [1,-1])  
-tR = t0/4 * ones(2)
+tL = 0.0 * (ones(2) .+ P * [1,-1])  
+tR = 0.0 * ones(2)
 V  = 10.0
-nPoles = 15
+nPoles = 1
 beta = 1/0.025
 
-path = "1x3_longTime"
+path = "Momentum_test"
 if !isdir(path)
 	mkdir(path)
 end

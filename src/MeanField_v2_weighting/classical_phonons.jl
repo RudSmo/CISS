@@ -24,6 +24,8 @@ function SampleWigner(beta,w,version)
         A  = randn(2)*aj/pi
     elseif version == "v1"
         A = randn(2)*2*aj
+    elseif version == "new"
+        A = randn(2)
     end
     return [A[1]/sqrt(w*aj),A[2]*sqrt(w/aj)]
 end

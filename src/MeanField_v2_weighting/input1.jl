@@ -15,7 +15,7 @@ using .CustomStructures
 
 # Simulation Parameters
 dt = 0.001
-tend = 500
+tend = 400
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -24,9 +24,9 @@ initProp  = true
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 1
+num_ions = 2
 N = num_laps * num_ions
-t0  = 1.0 
+t0  = 1.0
 eu  = 0.0
 ed  = 0.0
 E   = [eu,ed]
@@ -34,17 +34,17 @@ ws  = 0.1*ones(N)
 gPh = [0.0,0.0]
 a   = 1.0
 c   = 1.0
-tso = t0/40
+tso = 0.0
 tPh = 0.0
 tsoPh = 0.0
-model = HolsteinHopping
-modelStr = "Holstein"
-#model = FranssonHamiltonian
-#modelStr = "Fransson"
+#model = HolsteinHopping
+#modelStr = "Holstein"
+model = FranssonHamiltonian
+modelStr = "Fransson"
 
 if initProp
-    #rhoIn = "pure"
-    rhoIn = "equilibrium"
+    rhoIn = "pure"
+    #rhoIn = "equilibrium"
     phIn = "TDSCF"
     #phIn = "Wigner"
     pathIn = ""
@@ -53,11 +53,11 @@ else
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = [0,0,1,0,0,0]
-popPhIn = [0,0,0]
+popElIn = [1.0,0,0.0,0]
+popPhIn = [0,0]
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-xnIn,pnIn = [1.0,0.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
+xnIn,pnIn = [1.0,0],[0.0,0]#InitialPh(popPhIn,ws,phases)
 
 
 HamPar = HamiltonianParams( num_laps,
@@ -86,7 +86,7 @@ V  = 0.0
 nPoles = 1
 beta = 1/0.025
 
-path = "PhononDynamics_uncoupled"
+path = "TwoSite_Comp"
 if !isdir(path)
 	mkdir(path)
 end

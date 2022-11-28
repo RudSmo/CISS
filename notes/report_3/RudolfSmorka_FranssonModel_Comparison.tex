@@ -121,6 +121,39 @@ Steady state electronic spin polarization in real-space increases (decrases) ste
 \subsection{Test of nuclear dynamics}
 Put here a plot of the comparison between analytic and numerical result for the nuclear dynamics for the case of $g=0$.
 Put here numerical comparison between quantum Ehrenfest Force calculated by hand and the one obtained in the code.
+\subsubsection{Reduction to molecular dynamics for zero electron-phonon coupling}
+For vanishing electron-phonon coupling, the nuclear dynamics reduces to a purely molecular dynamics integration. 
+Then, the Hamiltonian reduces to 
+\begin{equation}
+	H = \sum_i \frac{\omega_i}{2}\left(\omega_i X_i^2 + P_i^2\right) + H_\mathrm{el}
+\end{equation}
+where $H_\mathrm{el}$ is the purely electronic part of the total Hamiltonian.
+Since the vibrational modes are not coupled among each other, a single mode is considered.
+Then the Hamilton's equation of motion for vibrational coordinates and momenta then read
+\begin{align}
+	\frac{\dif X}{\dif t} &= \frac{\partial H}{\partial P} = \omega P\\
+	\frac{\dif P}{\dif t} &= -\frac{\partial H}{\partial X} = -\omega^2 X\\
+	X(t_0) &= 1, P(t_0) = 0
+\end{align}
+the solution of which can be found analytically as
+\begin{align}
+	X(t) &= \cos(\omega^{3/2}t),\label{eq:AnalyticalVib1}\\
+	P(t) &= -\sqrt{\omega} \sin(\omega^{3/2}t).\label{eq:AnalyticalVib2}
+\end{align}
+The numerical integration agrees with the analytical results, as shown in \cref{fig:Comparison_Vib_Analytical}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/Decoupled_vibrational_dynamics.pdf}
+	\caption{Numerical $X$, $P$ (black, blue line) and analytical functions (\cref{eq:AnalyticalVib1,eq:AnalyticalVib2}, dashed lines) for $\omega = 0.1$.}\label{fig:Comparison_Vib_Analytical}
+\end{figure}
+\subsubsection{Initial distribution of vibrational phase space coordinates}
+As in the usual multi-trajectory Ehrenfest methodology, the initial vibrational phase space coordinates are sampled from the Boltzmann distribution for a harmonic oscillator in its ground state
+\begin{equation}
+	\rho(\{X\},\{P\}) = \prod_j \frac{\alpha_j}{\pi} \exp\left[-\frac{\alpha_j}{\omega_j} \left(P_j^2+\omega_j^2X_j^2\right)\right],
+\end{equation} 
+with $\alpha_j = \tanh(\frac{1}{2}\beta \omega_j)$.
+
+Put here averages for varying number of trajectories for finite bias for 3x1 (e.g. average only over data 1-5, data 1-10, data 1-15 and show that averages do not change). 
 \subsection{Existence of NESS}
 Can we make a ``phase diagram'' when a NESS exists? From the data, its easy. Everytime $\mu_L,\mu_R  \gg \varepsilon_n$, or $\mu_L\gg \varepsilon_n$ and $\mu_R \ll \varepsilon_0$, there exists a unique NESS. However, for voltages in the middle of the band, there is no NESS. 
 Analytically, I don't know.

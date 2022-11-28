@@ -2,7 +2,7 @@ module Electrons
 include("global_constants.jl")
 using .GlobalConstants
 using LinearAlgebra
-export Populations,DensityFEx, VNeumann, VNeumannL, PadeFermi, GammaMatrices1d, GammaMatrices2d, CurrentMatrix, CurrentEOM, CurrentInit_PFree, Current, DensityFExOpen, SpinCurrent
+export Populations,DensityFEx, VNeumann, VNeumannL, MomentumElectrons, PadeFermi, GammaMatrices1d, GammaMatrices2d, CurrentMatrix, CurrentEOM, CurrentInit_PFree, Current, DensityFExOpen, SpinCurrent
 
 function Populations(rho)
 	return [real(rho[i,i]) for i in 1:size(rho)[1]]
@@ -32,6 +32,18 @@ end
 function VNeumannL(rho,H,PiL)
 	return -1*1im*(H*rho-rho*H) + PiL + conj(transpose(PiL))
 end
+
+function MomentumElectrons(rho)
+	Q = zeros(size(rho))*(1+0*1im)
+	N = size(rho)[1]
+	for i in 1:N-2
+		for j in 1:N
+			Q[i,j] = -1im * (rho[i+2,j]-rho[i,j])
+		end
+	end
+	return [real(abs(Q[k,k])) for k in 1:N-2] 
+end
+	
 
 function B(m)
         return 2.0*m-1
