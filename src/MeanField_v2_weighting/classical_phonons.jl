@@ -31,7 +31,7 @@ function SampleWigner(beta,w,version)
 end
 
 function Wignerweights(X,P,beta,ws,version)
-    if version == "v2"
+    if version == "v2" || version == "new"
         return [1/pi * tanh(0.5*beta*ws[i]) * exp(-tanh(0.5*beta*ws[i]) * (ws[i]* X[i]^2 + P[i]^2/ws[i])) for i in 1:length(X)]
     elseif version == "v1"
         return [2*tanh(0.5*beta*ws[i]) * exp(-tanh(0.5*beta*ws[i]) * (ws[i]* X[i]^2 + P[i]^2/ws[i])) for i in 1:length(X)]
