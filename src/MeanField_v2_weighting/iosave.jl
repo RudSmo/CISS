@@ -20,7 +20,7 @@ function SaveParams(params,path,purpose)
 	close(file)
 end
 
-function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,mom_el,weight,path)
+function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,q_l,p_l,mom_el,weight,path)
 
 	pop = Populations(rho_i)
 	mom = MomentumElectrons(rho_i)
@@ -28,13 +28,14 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1
 	cur2 = Current(cur2_c)
 	scur1 = SpinCurrent(cur1_c)
 	scur2 = SpinCurrent(cur2_c)
-
+	loccur = LocalCurrent(rho_i,hcen_i)
 	if i == 1
 		curfile = open("$(path)_currents.dat","w")
 		popfile = open("$(path)_electrons.dat","w")
 		phfile  = open("$(path)_phonons.dat","w")
 		weightf = open("$(path)_weight.dat","w")
 		momentumf= open("$(path)_momentum_el.dat","w")
+		loccurf = open("$(path)_loc_cur.dat","w")
 
 		write(curfile,"#(1)t (2)IL (3)IR (4)sILx (5)sILy (6)sILz (7)sIRx (8)sIRy (9)sIRz\n")	
 		write(popfile,"#(1)t ")
@@ -53,16 +54,24 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1
 		write(weightf,"$(weight)\n")
 
 		write(momentumf,"(1)t ")
+		k = 2
 		for i in 1:length(qn)-1
-			write(momentumf,"($(k+1))p$(k)u ($(k+1))p$(k)d ")
+			write(momentumf,"($(k))p$(i)u ($(k+1))p$(i)d ")
+			k += 2
 		end	
 		write(momentumf,"\n")
+
+		write(loccurf,"#(1)t")
+		for i in 1:length(qn)-1
+			write(loccurf,"($(i+1))cur($(i),$(i+1)) ")
+		end
 
 		close(curfile)
 		close(popfile)
 		close(phfile)
 		close(weightf)
 		close(momentumf)
+		close(loccurf)
 	end
 	
 	if i % GlobalConstants.AppendData == 0
@@ -74,6 +83,7 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1
 		push!(q_l, qn)
 		push!(p_l, pn)
 		push!(mom_el, mom)
+		push!(loc_cur_l,loccur)
 		push!(tim,abs(i*dt))
 	end
 
@@ -82,30 +92,38 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1
 		popfile = open("$(path)_electrons.dat","a")
 		phfile  = open("$(path)_phonons.dat","a")
 		momfile = open("$(path)_momentum_el.dat","a")
-			
+		loccurf = open("$(path)_loc_cur.dat","a")
 		for j in 1:length(pop_l)
 			write(popfile,"$(tim[j]) ")
 			write(curfile,"$(tim[j]) $(cur1_l[j]) $(cur2_l[j]) $(scur1_l[j][1]) $(scur1_l[j][2]) $(scur1_l[j][3]) $(scur2_l[j][1]) $(scur2_l[j][2]) $(scur2_l[j][3]) \n")
 			write(phfile, "$(tim[j]) ")
 			write(momfile, "$(tim[j]) ")
+			write(loccurf, "$(tim[j]) ")
+
+				
 			for k in 1:length(pop_l[j])
 				write(popfile,"$(pop_l[j][k]) ")
 			end
-			for k in 1:length(q_l[1])
+			for k in 1:length(q_l[j])
 				write(phfile, "$(q_l[j][k]) $(p_l[j][k]) ")
 			end
 			for k in 1:length(mom_el[j])
 				write(momfile, "$(mom_el[j][k]) ")
 			end
+			for k in 1:length(loc_cur_l[j])
+				write(loccurf, "$(loc_cur_l[j][k]) ")
+			end
 
 			write(popfile, "\n")
 			write(phfile, "\n")
-			write(momfile,"\n")
+			write(momfile, "\n")
+			write(loccurf, "\n")
 		end
 		close(curfile)
 		close(popfile)			
 		close(phfile)
 		close(momfile)
+		close(loccurf)
 		pop_l = []
 		cur1_l = []
 		cur2_l = []
@@ -114,17 +132,18 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1
 		q_l = []
 		p_l = []
 		mom_el = []
+		loc_cur_l = []
 		tim = []
 
 	end
 
 
-	return pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,mom_el
+	return pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,mom_el,loc_cur_l
 end
 
 function Average(ind,path,num_avg)
 	pathr = "$(path)_$(ind)"
-	observables = ["currents","electrons","phonons","momentum_el"]
+	observables = ["currents","electrons","phonons","momentum_el","loc_cur"]
 	rm("$(pathr)_final_Quantities")
 	if ind == 1
 		weight  = readdlm("$(pathr)_weight.dat")[1]	

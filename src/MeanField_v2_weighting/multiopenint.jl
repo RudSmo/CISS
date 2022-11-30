@@ -41,9 +41,11 @@ function Propagate(
 		P0 		= HamPar.P
 		weight  = prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
 	elseif phIn == "Wigner"
-		A       = [SampleWigner(beta,HamPar.ws[i],vSampl) for i in 1:HamPar.N]
-		X0 		= [A[i][1] for i in 1:HamPar.N]
-		P0 		= [A[i][2] for i in 1:HamPar.N]
+		#A       = [SampleWigner(beta,HamPar.ws[i],vSampl) for i in 1:HamPar.N]
+		#X0 		= [A[i][1] for i in 1:HamPar.N]
+		#P0 		= [A[i][2] for i in 1:HamPar.N]
+
+		X0,P0   = SampleWigner_Multi(beta,HamPar.ws,HamPar.N)
 		weight  = prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
 		
 	elseif phIn == "fromFile"
@@ -98,12 +100,12 @@ function Propagate(
 	scur1_l 	= [SpinCurrent(curM1)]
 	scur2_l 	= [SpinCurrent(curM2)]
 	mom_el      = [MomentumElectrons(rho0)]
+	loc_cur_l   = [LocalCurrent(rho0,hcen_i)]
 
 	chi1	= V/2 .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
 	chi2	= -V/2 .+ 1im .* xi ./beta
 	
 	for i in 1:numstep
-		hcen_i  = HamPar.Hamiltonian(HamPar)	
 		curp1_c, curp2_c, cur1_c, cur2_c, cur_c = RK_Currents(beta,hcen_i,Gamma1,Gamma2,GammaT,kappa,chi1,chi2,curp1_i,curp2_i,rho_i,dt)
 		rho_c	= RK_VneumannL(rho_i,hcen_i,cur_c,dt)
 
@@ -116,7 +118,8 @@ function Propagate(
 		Pin     = Pn
 		HamPar.X = Xn
 		HamPar.P = Pn
-		pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el = SaveOutput(cur1_c,cur2_c,pop_l,rho_i,Xn,Pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,weight,path)
+		hcen_i  = HamPar.Hamiltonian(HamPar)	
+		pop_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,loc_cur_l = SaveOutput(cur1_c,cur2_c,pop_l,rho_i,hcen_i,Xn,Pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,X_l,P_l,mom_el,weight,path)
 		if i == numstep 
 			fil = h5open("$(path)_final_Quantities","w")
 			fil["Rho"] = rho_i

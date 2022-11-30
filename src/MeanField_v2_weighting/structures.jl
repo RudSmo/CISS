@@ -17,7 +17,9 @@ mutable struct HamiltonianParams
     gPh         :: Array
     ws          :: Array
     X           :: Array
-    P           :: Array 
+    P           :: Array
+    GL          :: Array
+    GR          :: Array 
 end
 
 end

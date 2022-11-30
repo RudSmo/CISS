@@ -2,11 +2,9 @@ module Electrons
 include("global_constants.jl")
 using .GlobalConstants
 using LinearAlgebra
-export Populations,DensityFEx, VNeumann, VNeumannL, MomentumElectrons, PadeFermi, GammaMatrices1d, GammaMatrices2d, CurrentMatrix, CurrentEOM, CurrentInit_PFree, Current, DensityFExOpen, SpinCurrent
+export Populations,DensityFEx, VNeumann, VNeumannL, MomentumElectrons, LocalCurrent, PadeFermi, GammaMatrices1d, GammaMatrices2d, CurrentMatrix, CurrentEOM, CurrentInit_PFree, Current, DensityFExOpen, SpinCurrent
 
-function Populations(rho)
-	return [real(rho[i,i]) for i in 1:size(rho)[1]]
-end
+# Initial state
 
 function DensityFEx(lx  ::Int,
                     ly  ::Int,
@@ -24,13 +22,10 @@ function DensityFEx(lx  ::Int,
         return rho
 end
 
+# Observables
 
-function VNeumann(rho,hcen)
-	return -1im*(hcen*rho-rho*hcen)
-end
-
-function VNeumannL(rho,H,PiL)
-	return -1*1im*(H*rho-rho*H) + PiL + conj(transpose(PiL))
+function Populations(rho)
+	return [real(rho[i,i]) for i in 1:size(rho)[1]]
 end
 
 function MomentumElectrons(rho)
@@ -43,7 +38,30 @@ function MomentumElectrons(rho)
 	end
 	return [real(abs(Q[k,k])) for k in 1:N-2] 
 end
-	
+
+function LocalCurrent(rho,H)
+	N = Int(size(rho)[1]/2)
+	loccur = []
+	for i in 1:N-1
+		k1 = 2*i-1
+		k2 = 2*(i+1)-1
+		push!(loccur, 1im/2 * tr(H[k1:k1+1,k2:k2+1]*rho[k2:k2+1,k1:k1+1]-rho[k1:k1+1,k2:k2+1]*H[k2:k2+1,k1:k1+1]))		
+	end
+	return real.(loccur)
+end
+
+# Equation of motion
+
+function VNeumann(rho,hcen)
+	return -1im*(hcen*rho-rho*hcen)
+end
+
+function VNeumannL(rho,H,PiL)
+	return -1*1im*(H*rho-rho*H) + PiL + conj(transpose(PiL))
+end
+
+
+# Pade decomposition
 
 function B(m)
         return 2.0*m-1
@@ -81,6 +99,7 @@ function PadeFermi(npade)
         end
         return kappa,eig_denum
 end
+
 
 
 function GammaMatrices1d(l,tL,tR)
