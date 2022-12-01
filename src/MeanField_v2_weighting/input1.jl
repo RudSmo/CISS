@@ -14,8 +14,8 @@ using .CustomStructures
 # -------------- Parameters --------------------------
 
 # Simulation Parameters
-dt = 0.002
-tend = 200
+dt = 0.001
+tend = 20
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -94,7 +94,7 @@ if !isdir(path)
 	mkdir(path)
 end
 
-num_avg = 1
+num_avg = 2
 for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_dt$(abs(dt))"
@@ -112,7 +112,7 @@ for ka in 1:num_avg
     IOsave.SaveParams(params,parampath,purpose)
 
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,vSampl,popElIn)
-    #Average(ka,dataname1,num_avg)
+    Average(ka,dataname1,num_avg)
 end
 
 end

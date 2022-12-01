@@ -70,7 +70,7 @@ In the following, we compare the dynamics in the model defined above using a var
 	\item Hierarchical equations of motion in combination with Ehrenfest dynamics (MF-HEOM): Valid for purely electronic dynamics in both isolated molecule and molecule coupled to leads. Phonons approximated to be classical.
 \end{itemize}
 \newpage
-\section{Comparison of Dynamics}
+\section{Comparison of dynamics within the TT-HEOM}
 \subsection{Isolated: Hopping and Peierls distortion}
 As in the previous report, the parameters are $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$, $\omega_0 = 0.01t_0$.  GSE-TDVP data is not converged with respect to number of vibrational modes.
 \begin{figure}[!h]
@@ -92,27 +92,30 @@ Due to absence of electronic interactions, the steady-state current can be obtai
 The left lead is assumed to be ferromagnetic with polarization $P=0.5,-0.5$. This is modeled by a spin-dependent level-width function $\Gamma = \Gamma_0 (1+P\sigma^z)$ in Franssons work. However, a ferromagnetic metal also has a spin-gap between majority and minority spins $\mu_\mathrm{maj}-\mu_\mathrm{min} = \Delta_s$ (Stoner model), the influence of which we investigate separately.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/LB_1x3.pdf}
+	\includegraphics[width=0.6\textwidth]{figs/LB_1x3.pdf}
 	\caption{$\mathbb{M}=1\times 3$}
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/LB_4x3.pdf}
+	\includegraphics[width=0.6\textwidth]{figs/LB_4x3.pdf}
 	\caption{$\mathbb{M}=4\times 3$}
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/LB_8x4.pdf}
+	\includegraphics[width=0.6\textwidth]{figs/LB_8x4.pdf}
 	\caption{$\mathbb{M}=8\times 4$}
 \end{figure}
 \subsection{Stationary electronic lattice occupation}
 From the steady-state reduced density matrix obtained within the MF-HEOM, one can obtain local observables, as the electron population and local spin polarization.  
+For $\mu_R>-4.5$ (or equivalently $V<8$), the electron population is nearly one. This is because due to the very large on-site energy $\varepsilon_m$, the full electronic spectrum is shifted to 
+The electron population at each site changes discontinuously for each $\mu_R \approx \varepsilon_n$. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/MF-HEOM_2x4_Sz_steady_PVar.pdf}
 	\caption{$\mathbb{M}=2\times 4$}
 \end{figure}
-Steady state electronic spin polarization in real-space increases (decrases) step-wise with increasing voltage if $P=0.5$ ($P=-0.5$). This is explained in the resonant transport model, because the eigenstates of the central Hamiltonian are not localized on single sites, but are extended over the full system. But when a voltage is applied, these eigenstates can be occupied. The voltage at which the steps occur correspond to a resonance condition.
+Steady state electronic spin polarization in real-space increases (decrases) step-wise with increasing voltage if $P=0.5$ ($P=-0.5$). 
+This is explained in the resonant transport model, because the eigenstates of the central Hamiltonian are not localized on single sites, but are extended over the full system. But when a voltage is applied, these eigenstates can be occupied. The voltage at which the steps occur correspond to a resonance condition.
 
 \section{Ehrenfest Dynamics in the Coupled molecule}
 \subsection{Test of nuclear dynamics}

@@ -65,6 +65,7 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur1_l,cur2_
 		for i in 1:length(qn)-1
 			write(loccurf,"($(i+1))cur($(i),$(i+1)) ")
 		end
+		write(loccurf,"\n")
 
 		close(curfile)
 		close(popfile)
