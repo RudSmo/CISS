@@ -44,7 +44,7 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur1_l,cur2_
 		end
 		
 		write(popfile,"\n")
-		write(phfile,"(1)t ")
+		write(phfile,"#(1)t ")
 		k = 2
 		for i in 1:length(qn)
 			write(phfile,"($(k))q$(i) ($(k+1))p$(i) ")
@@ -53,7 +53,7 @@ function SaveOutput(cur1_c,cur2_c,pop_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur1_l,cur2_
 		write(phfile,"\n")
 		write(weightf,"$(weight)\n")
 
-		write(momentumf,"(1)t ")
+		write(momentumf,"#(1)t ")
 		k = 2
 		for i in 1:length(qn)-1
 			write(momentumf,"($(k))p$(i)u ($(k+1))p$(i)d ")

@@ -94,7 +94,7 @@ As in the previous report, the parameters are $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$, 
 \end{figure}\\
 The issue was an additional factor $1/\sqrt{2}$ in the definition of the vibrational creation and annihilation operators in the code, which was overseen. 
 \subsection{Coupled: Hopping and Onsite}
-Parameters: $L=3$, $t_0 = 1.0$, $T=\SI{0.1}{\electronvolt}\approx \SI{1160}{\kelvin}$, $\Gamma = \vert \nu\vert^2 = t_0/4$, $V=t_0$.
+Parameters: $L=3$, $t_0 = 1.0$, $T=\SI{0.1}{\electronvolt}\approx \SI{1160}{\kelvin}$, $\Gamma = \vert \nu\vert^2 = t_0/4$, $V=t_0$. The best agreement with the MF-HEOM data is obtained for $N_p=25$ and $r=150$ (runtime: 8d), however the steady-state has not been reached in this runtime.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf}
@@ -105,92 +105,106 @@ Parameters: $L=3$, $t_0 = 1.0$, $T=\SI{0.1}{\electronvolt}\approx \SI{1160}{\kel
 Parameters: $t_0 = 1, \varepsilon_\uparrow = \varepsilon_\downarrow = -6t_0, \lambda_0 = t_0/40, \Gamma_0 = t_0/4, \beta = t_0/40$. 
 \subsection{Current-voltage characteristics}
 Due to absence of electronic interactions, the steady-state current can be obtained within the Landauer-Büttiker formalism.
-The left lead is assumed to be ferromagnetic with polarization $P=0.5,-0.5$. This is modeled by a spin-dependent level-width function $\Gamma = \Gamma_0 (1+P\sigma^z)$ in Franssons work. 
+The left lead is assumed to be ferromagnetic with polarization $P=0.5,-0.5$. This is modeled by a spin-dependent level-width function $\Gamma = \Gamma_0 (1+P\sigma^z)$ in Franssons work. The right lead is unpolarized, hence the coupling $\Gamma$ is equal for both spins.
+The current-voltage characteristics for various system sizes and for different lead-polarizations $P$ are shown in \cref{fig:IV_1x3,fig:IV_4x3,fig:IV_8x4}.
 %However, a ferromagnetic metal also has a spin-gap between majority and minority spins $\mu_\mathrm{maj}-\mu_\mathrm{min} = \Delta_s$ (Stoner model), the influence of which we investigate separately.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figs/LB_1x3.pdf}
-	\caption{Current-voltage characteristics for $\mathbb{M}=1\times 3$ and parameters as in the main text.}
-\end{figure}
+	\caption{Current-voltage characteristics for $\mathbb{M}=1\times 3$ and parameters as in the main text.}\label{fig:IV_1x3}
+\end{figure}\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figs/LB_4x3.pdf}
-	\caption{Current-voltage characteristics for $\mathbb{M}=4\times 3$ and parameters as in the main text.}
-\end{figure}
+	\caption{Current-voltage characteristics for $\mathbb{M}=4\times 3$ and parameters as in the main text.}\label{fig:IV_4x3}
+\end{figure}\\
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figs/LB_8x4.pdf}
-	\caption{Current-voltage characteristics for $\mathbb{M}=8\times 4$ and parameters as in the main text.}
-\end{figure}
-The current-voltage characteristics for unpolarized leads ($P=0$, black dotted line) can be understood within the resonant level model. A schematic of the equilibrium problem is shown below, clarifying the relative energy differences between the leads electro-chemical potentials and the bare electronic spectrum of the central molecule.
+	\caption{Current-voltage characteristics for $\mathbb{M}=8\times 4$ and parameters as in the main text.}\label{fig:IV_8x4}
+\end{figure}\\
+The relative energies of the leads chemical potential and the bare electronic levels of the molecule are shown in \cref{fig:Schematic_Energy_levels}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figs/Spectrum_leads.pdf}
-	\caption{Schematic energy diagram of the Fransson model coupled to leads at $V=0$.}
+	\caption{Schematic energy diagram of the Fransson model coupled to leads at $V=0$.}\label{fig:Schematic_Energy_levels}
+\end{figure}\\
+In all cases, the steady-state current-voltage dependence can be understood by investigating the transmission function $T(\varepsilon)$
+\begin{align}
+	I(V) &= \int_{-\infty}^\infty \frac{\dif \varepsilon}{2\pi} T(\varepsilon) (f(\varepsilon+V/2)-f(\varepsilon-V/2))\\
+	T(\varepsilon) &= \tr{\vec{G}^r(\varepsilon)\bm{\Gamma}_L\vec{G}^a(\varepsilon)\bm{\Gamma}_R},
+\end{align}
+with $f(\varepsilon)= (1+\exP{\beta\varepsilon})^{-1}$ the Fermi function, $\vec{G}^{r,a}$ the retarded/advanced Green function
+\begin{equation}
+	\vec{G}^r(\varepsilon) = \left[\varepsilon\mathbb{1}_N - \vec{H}+ \frac{i}{2}\bm{\Gamma}\right]^{-1}, \qquad \vec{G}^a = (\vec{G}^r)^\dagger,
+\end{equation}
+and $\bm{\Gamma} =\sum_\ell \bm{\Gamma}_\ell$. 
+The reduction of the total current for $\vert P \vert>0$ is due to the term $\Gamma_0 P \sigma^z$, which acts as an additional self-energy contribution, leading to a slight broadening and a small reduction of the total transmission function. The energy-resolved difference between the transmission function for $P=0.5$ and $P=0$ is shown in \cref{fig:Difference_TFunc}. The transmission function for $P=-0.5$ is identical to the one for $P=0.5$. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.65\textwidth]{figs/Transmission_function_Difference.pdf}
+	\caption{Difference of transmission function for $P=0.5$ and $P=0 $ for $V=0$ and $\mathbb{M}=2\times 4$.}\label{fig:Difference_TFunc}
 \end{figure}
+\newpage
 \subsection{Stationary electronic lattice occupation}
-\Cref{fig:Sz_SS} shows the steady-state electronic spin polarization in the full molecule. The parameters are $\bm{M}=2\times 4$, and everything else as before. 
+\Cref{fig:Sz_SS} shows the steady-state electronic spin polarization in the full molecule. The parameters are $\mathbb{M}=2\times 4$, and everything else as before. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/MF-HEOM_2x4_Sz_steady_PVar.pdf}
-	\caption{$\mathbb{M}=2\times 4$}\label{fig:Sz_SS}
-\end{figure}
+	\caption{Stationary site-dependent spin polarization for various voltage and $P=0.5,0.0-0.5$ with system size $\mathbb{M}=2\times 4$.}\label{fig:Sz_SS}
+\end{figure}\\
 The electron population at each site changes discontinuously for each $\mu_R \approx \varepsilon_n$. 
-For $\mu_R>-4.5$ (or equivalently $V<8$), the electron population is exactly one. This is because due to the very large on-site energy $\varepsilon_m$, the full electronic spectrum is shifted such that the mean of the spectrum is located at $\varepsilon=-6t_0$, with the usual band-width of $2W$ where $W = 2t_0$. Therefore, each bare eigenstate of the molecule is fully populated. Hence, the spin polarization $n_{i\uparrow}-n_{i\downarrow}$ is strictly zero.  
+For $\mu_R>-4.5$ (or equivalently $V<8$), the electron population is exactly one. This is because due to the very large on-site energy $\varepsilon_m$, the full electronic spectrum is shifted such that the mean of the spectrum is located at $\varepsilon=-6t_0$, with the usual band-width of $2W$ where $W = 2t_0$. Therefore, each bare eigenstate of the molecule is nearly fully populated. 
+A closer inspection of the site-dependent spin polarization reveals a finite, but very small polarization even for voltages for which one would expect  all eigenstates to be fully populated. 
 
 The electronic spin-polarization can be understood by investigating the spectral function. This is because for the non-interacting model considered here, an exact expression for the steady-state electron density can be obtained \cite{fukadai2019dynamics}
 \begin{equation}
 	\rho^\mathrm{ss} = \int_{-\infty}^\infty \frac{\dif \varepsilon}{2\pi}\sum_\ell f(\varepsilon)\bm{\Lambda}_\ell (\varepsilon+\mu_\ell)\label{eq:NEGF_SS_rho}
 \end{equation}
-with the spectral function $\bm{\Lambda}_\ell(\varepsilon) = \vec{G}^r(\varepsilon)\bm{\Gamma}_\ell \vec{G}^a(\varepsilon)$ and $f(\varepsilon)= (1+\exP{\beta\varepsilon})^{-1}$ the Fermi function.
-Here, $\vec{G}^{r,a}$ denotes the retarded/advanced Green function
-\begin{equation}
-	\vec{G}^r(\varepsilon) = \left[\varepsilon\mathbb{1}_N - \vec{H}+ \frac{i}{2}\bm{\Gamma}\right]^{-1}, \qquad \vec{G}^a = (\vec{G}^r)^\dagger,
-\end{equation}
-and $\bm{\Gamma} =\sum_\ell \bm{\Gamma}_\ell$.
+with the spectral function $\bm{\Lambda}_\ell(\varepsilon) = \vec{G}^r(\varepsilon)\bm{\Gamma}_\ell \vec{G}^a(\varepsilon)$.
 \Cref{fig:SpectralFunction_PVar} shows the total spectral function (summed over all sites) in the spin-$\sigma$ subspace, and the difference in total spectral functions in different spin subspaces at zero bias and the parameters as in \cref{fig:Sz_SS}. These quantities give, when multiplied with the Fermi-function and integrated over the full energy space, the total spin-$\sigma$ occupation number and the total spin-polarization, respectively.  
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.86\textwidth]{figs/SpectralFunction_allP.pdf}
 	\caption{Trace of spectral function over spin-$\sigma$ subspace (red and blue lines) and difference in traces for different subspaces (black lines) for $P=0.5,0,-0.5$ in a system of size $\mathbb{M}=2\times 4$ at $V=0$ for $P=0.5$.}\label{fig:SpectralFunction_PVar}
 \end{figure}\\
+\newpage
 \Cref{fig:Comp_NEGF_MF-HEOM_pops} shows a comparison of the site-dependent spin-occupation probability obtained from the analytical NEGF expression \cref{eq:NEGF_SS_rho} and the numerical steady-state within the MF-HEOM for $P=0.5$ (the discussion for $P=-0.5$ is analogous and will be omitted here). Qualitatively, both approaches agree as expected. At the site closest to the lead, the electron spin polarization is finite, but relatively small and is opposite to the lead polarization $P$. This effect is reproduced by the analytical NEGF expression, and can be understood from inspecting the spectral function. For $V=0$ and $P=0.5$ the spectral function has an overall negative component, thus leading to a negative spin polarization.  
-Upon inspecting the populations more closely, deviations at the system-lead interface sites appear. Since the occupations remain the same when increasing the energy-integration interval and reducing the energy-step size, the NEGF calculation is converged. Within the MF-HEOM, we approximate the Fermi-function using the Pad\'{e} decomposition with $N_p = 40$ poles. Increasing the poles to $N_p = 120$ shows that the populations are converged only up to third digit (e.g. steady-state population on site 1 for $V=0.7$ and $\mathbb{M}=1\times 3$, $n_{1\uparrow}^{N_p = 40}= 0.9903$ whereas $n_{1\uparrow}^{N_p = 120}= 0.9904$). This error is negligibly small and does not affect the overall qualitative implications of the results because the effect of nuclear dynamics on the electrons is much larger, but has to be taken into account when comparison methods with each other quantitatively. 
+
+Upon inspecting the populations more closely, deviations at the system-lead interface sites appear. Since the occupations remain the same when increasing the energy-integration interval and reducing the energy-step size, the NEGF calculation is converged. Within the MF-HEOM, we approximate the Fermi-function using the Pad\'{e} decomposition with $N_p = 40$ poles. Increasing the poles to $N_p = 120$ shows that the populations are converged only up to third digit (e.g. steady-state population on site 1 for $V=0.7$ and $\mathbb{M}=1\times 3$, $n_{1\uparrow}^{N_p = 40}= 0.9903$ whereas $n_{1\uparrow}^{N_p = 120}= 0.9904$). This error is negligibly small and does not affect the overall qualitative implications of the results because the effect of nuclear dynamics on the electrons is much larger. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figs/Comparison_populations_V0.pdf}
 	\caption{Comparison of spin-dependent populations for $V=0$ from analytical NEGF expression (full lines) and numerically obtained steady-state (MF-HEOM, dashed lines).}\label{fig:Comp_NEGF_MF-HEOM_pops}
 \end{figure}
+\newpage
 \section{Ehrenfest Dynamics in the Coupled molecule}
-\subsection{Test of nuclear dynamics}
-Put here a plot of the comparison between analytic and numerical result for the nuclear dynamics for the case of $g=0$.
-Put here numerical comparison between quantum Ehrenfest Force calculated by hand and the one obtained in the code.
-\subsubsection{Reduction to molecular dynamics for zero electron-phonon coupling}
+\subsection{Reduction to classical MD for zero electron-phonon coupling}
 For vanishing electron-phonon coupling, the nuclear dynamics reduces to a purely molecular dynamics integration. 
 Then, the Hamiltonian reduces to 
 \begin{equation}
 	H = \sum_i \frac{\omega_i}{2}\left(\omega_i X_i^2 + P_i^2\right) + H_\mathrm{el}
 \end{equation}
 where $H_\mathrm{el}$ is the purely electronic part of the total Hamiltonian.
-Since the vibrational modes are not coupled among each other, a single mode is considered.
+Since the vibrational modes are not coupled among each other, for the following analysis a single mode only is considered.
 Then the Hamilton's equation of motion for vibrational coordinates and momenta then read
 \begin{align}
 	\frac{\dif X}{\dif t} &= \frac{\partial H}{\partial P} = \omega P\\
 	\frac{\dif P}{\dif t} &= -\frac{\partial H}{\partial X} = -\omega^2 X\\
-	X(0) &= 1, P(0) = 0
+	X(0) &= X_0, P(0) = P_0
 \end{align}
 the solution of which can be found analytically as
 \begin{align}
-	X(t) &= \cos(\omega^{3/2}t),\label{eq:AnalyticalVib1}\\
-	P(t) &= -\sqrt{\omega} \sin(\omega^{3/2}t).\label{eq:AnalyticalVib2}
+	X(t) &=  X_0 \cos(\omega^{3/2}t)+\frac{P_0}{\sqrt{\omega}} \sin(\omega^{3/2}t),\label{eq:AnalyticalVib1}\\
+	P(t) &= P_0 \cos{\omega^{3/2}t} - X_0 \sqrt{\omega}\sin(\omega^{3/2}t).\label{eq:AnalyticalVib2}
 \end{align}
-The numerical integration agrees with the analytical results, as shown in \cref{fig:Comparison_Vib_Analytical}.
+For the numerical comparison, $X_0 = 1$ and $P_0 = 0$ have been chosen. The numerical integration agrees with the analytical results, as shown in \cref{fig:Comparison_Vib_Analytical}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{figs/Decoupled_vibrational_dynamics.pdf}
 	\caption{Numerical $X$, $P$ (black, blue line) and analytical functions (\cref{eq:AnalyticalVib1,eq:AnalyticalVib2}, dashed lines) for $\omega = 0.1$.}\label{fig:Comparison_Vib_Analytical}
 \end{figure}
-\subsubsection{Initial distribution of vibrational phase space coordinates}
+\subsection{Initial distribution of vibrational phase space coordinates}
 As in the usual multi-trajectory Ehrenfest methodology, the initial vibrational phase space coordinates are sampled from the Boltzmann distribution for a harmonic oscillator in its ground state
 \begin{equation}
 	\rho(\{X\},\{P\}) = \prod_j \frac{\alpha_j}{\pi} \exp\left[-\frac{\alpha_j}{\omega_j} \left(P_j^2+\omega_j^2X_j^2\right)\right],
