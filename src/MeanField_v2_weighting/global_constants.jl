@@ -17,7 +17,7 @@ global s_x = [0. 1; 1 0]
 global s_y = [0. -1im; 1im 0]
 global s_z = [1. 0; 0 -1]
 
-global AppendData = 50
+global AppendData = 100
 global SaveData = Int(AppendData * 10)
 
 end
