@@ -1,0 +1,19 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Model}{1}{}%
+\contentsline {section}{\numberline {2}Comparison of TT-HEOM with other approaches}{2}{}%
+\contentsline {subsection}{\numberline {2.1}Isolated: Hopping and Peierls distortion}{2}{}%
+\contentsline {subsection}{\numberline {2.2}Coupled: Hopping and Onsite}{3}{}%
+\contentsline {section}{\numberline {3}Properties of the non-vibrating molecule}{3}{}%
+\contentsline {subsection}{\numberline {3.1}Current-voltage characteristics}{3}{}%
+\contentsline {subsection}{\numberline {3.2}Stationary electronic lattice occupation}{3}{}%
+\contentsline {section}{\numberline {4}Ehrenfest Dynamics in the Coupled molecule}{7}{}%
+\contentsline {subsection}{\numberline {4.1}Test of nuclear dynamics}{7}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Reduction to molecular dynamics for zero electron-phonon coupling}{7}{}%
+\contentsline {subsubsection}{\numberline {4.1.2}Initial distribution of vibrational phase space coordinates}{8}{}%
+\contentsline {subsection}{\numberline {4.2}Existence of NESS}{9}{}%
+\contentsline {subsection}{\numberline {4.3}Time-dependent Currents}{9}{}%
+\contentsline {subsection}{\numberline {4.4}Time-dependent Populations}{9}{}%
+\contentsline {subsection}{\numberline {4.5}Time-dependence of spectrum}{9}{}%
+\contentsline {subsection}{\numberline {4.6}Time-dependent vibrational phase space density}{9}{}%
+\contentsline {subsection}{\numberline {4.7}Magnetoresistance}{9}{}%

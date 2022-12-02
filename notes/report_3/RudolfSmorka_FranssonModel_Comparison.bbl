@@ -117,5 +117,66 @@
     \field{journaltitle}{The Journal of Physical Chemistry Letters}
     \field{year}{2022}
   \endentry
+
+  \entry{ke2022hierarchical}{article}{}
+    \name{author}{3}{}{%
+      {{hash=KY}{%
+         family={Ke},
+         familyi={K\bibinitperiod},
+         given={Yaling},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=BR}{%
+         family={Borrelli},
+         familyi={B\bibinitperiod},
+         given={Raffaele},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=TM}{%
+         family={Thoss},
+         familyi={T\bibinitperiod},
+         given={Michael},
+         giveni={M\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {AIP Publishing LLC}%
+    }
+    \strng{namehash}{KY+1}
+    \strng{fullhash}{KYBRTM1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{19}
+    \field{pages}{194102}
+    \field{title}{Hierarchical equations of motion approach to hybrid fermionic
+  and bosonic environments: Matrix product state formulation in twin space}
+    \field{volume}{156}
+    \field{journaltitle}{The Journal of Chemical Physics}
+    \field{year}{2022}
+  \endentry
+
+  \entry{fukadai2019dynamics}{article}{}
+    \name{author}{2}{}{%
+      {{hash=FT}{%
+         family={Fukadai},
+         familyi={F\bibinitperiod},
+         given={Takahisa},
+         giveni={T\bibinitperiod},
+      }}%
+      {{hash=ST}{%
+         family={Sasamoto},
+         familyi={S\bibinitperiod},
+         given={Tomohiro},
+         giveni={T\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{FTST1}
+    \strng{fullhash}{FTST1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Dynamics of Open Tight-binding Model}
+    \field{journaltitle}{arXiv preprint arXiv:1912.05633}
+    \field{year}{2019}
+  \endentry
 \enddatalist
 \endinput

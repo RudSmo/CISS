@@ -38,6 +38,7 @@
 \title{Fransson's model: Tests of implementation}
 \author{Rudolf Smorka}
 \maketitle
+\tableofcontents
 \section{Model}
 The model considered for a chiral, single-stranded molecule, as proposed in Refs.~\cite{fransson2019chirality,fransson2020vibrational,Fransson_2021,fransson2021charge}, reads
 \begin{align}
@@ -61,62 +62,105 @@ and the system-environment coupling is linear in the molecular and environmental
 \begin{align}
 	H_\mathrm{sys-env} &= \sum_{\sigma\sigma'}(\nu_{L\sigma\sigma'}^\pdagger c_{N_L\sigma}^\dagger d_{1\sigma'}^\pdagger + \nu_{R\sigma\sigma'}^\pdagger c_{1_R\sigma}^\dagger d_{\mathbb{M}\sigma'}^\pdagger + \mathrm{h.c.}). \label{eq:LeadSysHamiltonian}
 \end{align} 
-\section{Methods}
-In the following, we compare the dynamics in the model defined above using a variety of methods. 
-\begin{itemize}
-	\item Exact diagonalization (ED): Valid for isolated molecule, phonons treated quantum-mechanically.
-	\item Time-dependent variational principle based on a matrix-product state Ansatz (TDVP): Valid for isolated molecule, phonons treated quantum-mechanically.
-	\item Hierarchical equations of motion in matrix product state representation (TT-HEOM): Valid for both isolated molecule and molecule coupled to leads, phonons treated quantum-mechanically.
-	\item Hierarchical equations of motion in combination with Ehrenfest dynamics (MF-HEOM): Valid for purely electronic dynamics in both isolated molecule and molecule coupled to leads. Phonons approximated to be classical.
-\end{itemize}
-\newpage
-\section{Comparison of dynamics within the TT-HEOM}
+Observables of interest are the local electronic populations
+\begin{equation}
+	n_{i\sigma}(t) = \tr{\rho_S(t) \hat{n}_{i\sigma}},
+\end{equation}
+with the reduced density matrix $\rho_S(t) = \mathrm{tr}_\mathrm{env}\{\rho(t)\}$, charge currents from lead $\ell$ to the system
+\begin{equation}
+	I_\ell(t) = \tr{\rho(t) \frac{\dif}{\dif t}\sum_k c^\dagger_{k\ell}c^\pdagger_{k\ell}}.
+\end{equation}
+Within the MF-HEOM, charge currents are obtained from the trace of the current matrices 
+\begin{equation}
+	I_\ell^\mathrm{MF-HEOM}(t) = \tr{\Pi_\ell(t)}
+\end{equation}
+while within the TT-HEOM, charge currents are obtained by \cite{ke2022hierarchical}
+\begin{equation}
+	\begin{split}
+	I_\ell^\mathrm{TT-HEOM}(t) = &\sum_{i\ell} \frac{\Gamma_{i\ell}}{2}(\delta_{\ell, L}- \delta_{\ell, R}) \expc{\mathbb{I}_0}{\hat{d}_i^-\hat{d}_i^+ - \hat{d}_i^+\hat{d}_i^- }{\Psi(t)} \\ + i & \sum_{k=1}^K (-1)^{\sigma_k }\sqrt{\Gamma_{i_k\ell_k}}(\delta_{\ell_k,L}- \delta_{\ell_k,R})\expc{\mathbb{I}_{\bm{1}_k}}{\hat{d}_{i_k}^{\sigma_k}}{\Psi(t)}.
+	\end{split}
+\end{equation}
+Further, we investigate local currents between sites $j,k$ of the molecule, defined as
+\begin{equation}
+	I_{jk}(t) =\frac{i}{2} \tr{H_{jk}(t)\rho_{kj}(t)-\rho_{jk}(t)H_{kj}(t)}.
+\end{equation}
+\section{Comparison of TT-HEOM with other approaches}
 \subsection{Isolated: Hopping and Peierls distortion}
 As in the previous report, the parameters are $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$, $\omega_0 = 0.01t_0$.  GSE-TDVP data is not converged with respect to number of vibrational modes.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf}
-\end{figure}
-The issue was in a factor $1/\sqrt{2}$ in the definition of the vibrational creation and annihilation operators in the code, which was overseen. 
+	\includegraphics[width=0.7\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf}
+	\caption{Population dynamics in the isolated Peierls-model: Comparison of GSE-TDVP with TT-HEOM for various number of vibrational levels and ranks. GSE-TDVP data has been checked to be converged for $M=5$ within the time-interval considered here.}
+\end{figure}\\
+The issue was an additional factor $1/\sqrt{2}$ in the definition of the vibrational creation and annihilation operators in the code, which was overseen. 
 \subsection{Coupled: Hopping and Onsite}
 Parameters: $L=3$, $t_0 = 1.0$, $T=\SI{0.1}{\electronvolt}\approx \SI{1160}{\kelvin}$, $\Gamma = \vert \nu\vert^2 = t_0/4$, $V=t_0$.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf}
+	\includegraphics[width=0.7\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf}
+	\caption{Time-dependent current from the left lead into the system for a tight-binding model. Comparison of MF-HEOM with TT-HEOM for various number of Pad\'{e} poles $N_p$ and ranks.}
 \end{figure}
 
 \section{Properties of the non-vibrating molecule}
 Parameters: $t_0 = 1, \varepsilon_\uparrow = \varepsilon_\downarrow = -6t_0, \lambda_0 = t_0/40, \Gamma_0 = t_0/4, \beta = t_0/40$. 
 \subsection{Current-voltage characteristics}
 Due to absence of electronic interactions, the steady-state current can be obtained within the Landauer-Büttiker formalism.
-The left lead is assumed to be ferromagnetic with polarization $P=0.5,-0.5$. This is modeled by a spin-dependent level-width function $\Gamma = \Gamma_0 (1+P\sigma^z)$ in Franssons work. However, a ferromagnetic metal also has a spin-gap between majority and minority spins $\mu_\mathrm{maj}-\mu_\mathrm{min} = \Delta_s$ (Stoner model), the influence of which we investigate separately.
+The left lead is assumed to be ferromagnetic with polarization $P=0.5,-0.5$. This is modeled by a spin-dependent level-width function $\Gamma = \Gamma_0 (1+P\sigma^z)$ in Franssons work. 
+%However, a ferromagnetic metal also has a spin-gap between majority and minority spins $\mu_\mathrm{maj}-\mu_\mathrm{min} = \Delta_s$ (Stoner model), the influence of which we investigate separately.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figs/LB_1x3.pdf}
-	\caption{$\mathbb{M}=1\times 3$}
+	\caption{Current-voltage characteristics for $\mathbb{M}=1\times 3$ and parameters as in the main text.}
 \end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figs/LB_4x3.pdf}
-	\caption{$\mathbb{M}=4\times 3$}
+	\caption{Current-voltage characteristics for $\mathbb{M}=4\times 3$ and parameters as in the main text.}
 \end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{figs/LB_8x4.pdf}
-	\caption{$\mathbb{M}=8\times 4$}
+	\caption{Current-voltage characteristics for $\mathbb{M}=8\times 4$ and parameters as in the main text.}
+\end{figure}
+The current-voltage characteristics for unpolarized leads ($P=0$, black dotted line) can be understood within the resonant level model. A schematic of the equilibrium problem is shown below, clarifying the relative energy differences between the leads electro-chemical potentials and the bare electronic spectrum of the central molecule.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figs/Spectrum_leads.pdf}
+	\caption{Schematic energy diagram of the Fransson model coupled to leads at $V=0$.}
 \end{figure}
 \subsection{Stationary electronic lattice occupation}
-From the steady-state reduced density matrix obtained within the MF-HEOM, one can obtain local observables, as the electron population and local spin polarization.  
-For $\mu_R>-4.5$ (or equivalently $V<8$), the electron population is nearly one. This is because due to the very large on-site energy $\varepsilon_m$, the full electronic spectrum is shifted to 
-The electron population at each site changes discontinuously for each $\mu_R \approx \varepsilon_n$. 
+\Cref{fig:Sz_SS} shows the steady-state electronic spin polarization in the full molecule. The parameters are $\bm{M}=2\times 4$, and everything else as before. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/MF-HEOM_2x4_Sz_steady_PVar.pdf}
-	\caption{$\mathbb{M}=2\times 4$}
+	\caption{$\mathbb{M}=2\times 4$}\label{fig:Sz_SS}
 \end{figure}
-Steady state electronic spin polarization in real-space increases (decrases) step-wise with increasing voltage if $P=0.5$ ($P=-0.5$). 
-This is explained in the resonant transport model, because the eigenstates of the central Hamiltonian are not localized on single sites, but are extended over the full system. But when a voltage is applied, these eigenstates can be occupied. The voltage at which the steps occur correspond to a resonance condition.
+The electron population at each site changes discontinuously for each $\mu_R \approx \varepsilon_n$. 
+For $\mu_R>-4.5$ (or equivalently $V<8$), the electron population is exactly one. This is because due to the very large on-site energy $\varepsilon_m$, the full electronic spectrum is shifted such that the mean of the spectrum is located at $\varepsilon=-6t_0$, with the usual band-width of $2W$ where $W = 2t_0$. Therefore, each bare eigenstate of the molecule is fully populated. Hence, the spin polarization $n_{i\uparrow}-n_{i\downarrow}$ is strictly zero.  
 
+The electronic spin-polarization can be understood by investigating the spectral function. This is because for the non-interacting model considered here, an exact expression for the steady-state electron density can be obtained \cite{fukadai2019dynamics}
+\begin{equation}
+	\rho^\mathrm{ss} = \int_{-\infty}^\infty \frac{\dif \varepsilon}{2\pi}\sum_\ell f(\varepsilon)\bm{\Lambda}_\ell (\varepsilon+\mu_\ell)\label{eq:NEGF_SS_rho}
+\end{equation}
+with the spectral function $\bm{\Lambda}_\ell(\varepsilon) = \vec{G}^r(\varepsilon)\bm{\Gamma}_\ell \vec{G}^a(\varepsilon)$ and $f(\varepsilon)= (1+\exP{\beta\varepsilon})^{-1}$ the Fermi function.
+Here, $\vec{G}^{r,a}$ denotes the retarded/advanced Green function
+\begin{equation}
+	\vec{G}^r(\varepsilon) = \left[\varepsilon\mathbb{1}_N - \vec{H}+ \frac{i}{2}\bm{\Gamma}\right]^{-1}, \qquad \vec{G}^a = (\vec{G}^r)^\dagger,
+\end{equation}
+and $\bm{\Gamma} =\sum_\ell \bm{\Gamma}_\ell$.
+\Cref{fig:SpectralFunction_PVar} shows the total spectral function (summed over all sites) in the spin-$\sigma$ subspace, and the difference in total spectral functions in different spin subspaces at zero bias and the parameters as in \cref{fig:Sz_SS}. These quantities give, when multiplied with the Fermi-function and integrated over the full energy space, the total spin-$\sigma$ occupation number and the total spin-polarization, respectively.  
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.86\textwidth]{figs/SpectralFunction_allP.pdf}
+	\caption{Trace of spectral function over spin-$\sigma$ subspace (red and blue lines) and difference in traces for different subspaces (black lines) for $P=0.5,0,-0.5$ in a system of size $\mathbb{M}=2\times 4$ at $V=0$ for $P=0.5$.}\label{fig:SpectralFunction_PVar}
+\end{figure}\\
+\Cref{fig:Comp_NEGF_MF-HEOM_pops} shows a comparison of the site-dependent spin-occupation probability obtained from the analytical NEGF expression \cref{eq:NEGF_SS_rho} and the numerical steady-state within the MF-HEOM for $P=0.5$ (the discussion for $P=-0.5$ is analogous and will be omitted here). Qualitatively, both approaches agree as expected. At the site closest to the lead, the electron spin polarization is finite, but relatively small and is opposite to the lead polarization $P$. This effect is reproduced by the analytical NEGF expression, and can be understood from inspecting the spectral function. For $V=0$ and $P=0.5$ the spectral function has an overall negative component, thus leading to a negative spin polarization.  
+Upon inspecting the populations more closely, deviations at the system-lead interface sites appear. Since the occupations remain the same when increasing the energy-integration interval and reducing the energy-step size, the NEGF calculation is converged. Within the MF-HEOM, we approximate the Fermi-function using the Pad\'{e} decomposition with $N_p = 40$ poles. Increasing the poles to $N_p = 120$ shows that the populations are converged only up to third digit (e.g. steady-state population on site 1 for $V=0.7$ and $\mathbb{M}=1\times 3$, $n_{1\uparrow}^{N_p = 40}= 0.9903$ whereas $n_{1\uparrow}^{N_p = 120}= 0.9904$). This error is negligibly small and does not affect the overall qualitative implications of the results because the effect of nuclear dynamics on the electrons is much larger, but has to be taken into account when comparison methods with each other quantitatively. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figs/Comparison_populations_V0.pdf}
+	\caption{Comparison of spin-dependent populations for $V=0$ from analytical NEGF expression (full lines) and numerically obtained steady-state (MF-HEOM, dashed lines).}\label{fig:Comp_NEGF_MF-HEOM_pops}
+\end{figure}
 \section{Ehrenfest Dynamics in the Coupled molecule}
 \subsection{Test of nuclear dynamics}
 Put here a plot of the comparison between analytic and numerical result for the nuclear dynamics for the case of $g=0$.
@@ -145,29 +189,7 @@ The numerical integration agrees with the analytical results, as shown in \cref{
 	\centering
 	\includegraphics[width=0.7\textwidth]{figs/Decoupled_vibrational_dynamics.pdf}
 	\caption{Numerical $X$, $P$ (black, blue line) and analytical functions (\cref{eq:AnalyticalVib1,eq:AnalyticalVib2}, dashed lines) for $\omega = 0.1$.}\label{fig:Comparison_Vib_Analytical}
-\end{figure}\\
-The dynamics of the electronic system follows time-dependent Schrödinger equation
-\begin{align}
-	\frac{\dif}{\dif t} \vert\psi(t)\rangle &= -iH \vert\psi(t)\rangle\\
-	\vert\psi(0)\rangle &= \begin{pmatrix}
-		1\\
-		0
-	\end{pmatrix}
-\end{align}
-with the Hamiltonian
-\begin{equation}
-	H = \begin{pmatrix}
-		0 & -t_0\\
-		-t_0 & 0
-	\end{pmatrix}.
-\end{equation}
-The solution is 
-\begin{equation}
-	\vert\psi(t)\rangle = \begin{pmatrix}
-		\cos(t_0 t)\\
-		i\sin(t_0 t)
-	\end{pmatrix}
-\end{equation}
+\end{figure}
 \subsubsection{Initial distribution of vibrational phase space coordinates}
 As in the usual multi-trajectory Ehrenfest methodology, the initial vibrational phase space coordinates are sampled from the Boltzmann distribution for a harmonic oscillator in its ground state
 \begin{equation}
@@ -182,6 +204,7 @@ with $\alpha_j = \tanh(\frac{1}{2}\beta \omega_j)$. In the numerical calculation
 \subsection{Existence of NESS}
 Can we make a ``phase diagram'' when a NESS exists? From the data, its easy. Everytime $\mu_L,\mu_R  \gg \varepsilon_n$, or $\mu_L\gg \varepsilon_n$ and $\mu_R \ll \varepsilon_0$, there exists a unique NESS. However, for voltages in the middle of the band, there is no NESS. 
 Analytically, I don't know.
+Show analytically under time-scale separation assumption that phonon dynamics never decays, in contrast to Holstein model (using effective Hamiltonian). 
 In a sense, there is never a NESS in the model I'm investigating. If there is a current, then the current-operator is non-zero. But if the current operator is non-zero, there is coupling between the electrons and the phonons. 
 \subsection{Time-dependent Currents}
 Show that in the Ehrenfest approach, currents are not reaching a steady state for sufficiently high bias.
