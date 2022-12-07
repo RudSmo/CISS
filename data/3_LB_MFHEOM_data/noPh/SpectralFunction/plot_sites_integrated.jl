@@ -16,12 +16,12 @@ rc("ytick",labelsize=fs-2)
 using .Hamiltonian
 using .CustomStructures
 
-num_laps = 2
-num_ions = 4
+num_laps = 1
+num_ions = 1
 N = num_laps * num_ions
 t0  = 1.0
-eu  = -6*t0
-ed  = -6*t0
+eu  = 1.0#-6*t0
+ed  = -1.0#-6*t0
 E   = [eu,ed]
 ws  = 0.05*ones(N)
 gPh = [0.0,0.0]
@@ -37,11 +37,11 @@ modelStr = "Fransson"
 xnIn = zeros(N)
 pnIn = zeros(N)
 
-P = 0.5
+P = 0.0
 tL = t0/4 * (ones(2) .+ P * [1,-1])
 tR = t0/4 * ones(2)
 beta = 1/0.025
-mu = 0.0
+mu = 10.0
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
                             N,
@@ -102,6 +102,8 @@ for site in 1:N
 
 	push!(Nu,Integrate(specFuncTu,En[2]-En[1]))
 	push!(Nd,Integrate(specFuncTd,En[2]-En[1]))
+	println(Nu)
+	println(Nd)
 end
 
 lw = 3

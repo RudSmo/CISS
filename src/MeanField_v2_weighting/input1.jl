@@ -15,7 +15,7 @@ using .CustomStructures
 
 # Simulation Parameters
 dt = 0.001
-tend = 20
+tend = 100
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -24,13 +24,13 @@ initProp  = true
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 3
+num_ions = 1
 N = num_laps * num_ions
-t0  = 1.0 
-eu  = 0.0
-ed  = 0.0
+t0  = 0.0#1.0 
+eu  = 1.0#-6*t0
+ed  = -1.0#-6*t0
 E   = [eu,ed]
-ws  = 0.1*ones(N)
+ws  = 0.05*ones(N)
 gPh = [0.6,0.6]
 a   = 1.0
 c   = 1.0
@@ -44,8 +44,8 @@ model = FranssonHamiltonian
 modelStr = "Fransson"
 
 if initProp
-    rhoIn = "pure"
-    #rhoIn = "equilibrium"
+    #rhoIn = "pure"
+    rhoIn = "equilibrium"
     phIn = "TDSCF"
     #phIn = "Wigner"
     pathIn = ""
@@ -54,18 +54,18 @@ else
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = [1.0,0,0.0,0,0,0]
-popPhIn = [0,0,0]
+popElIn = [0.0,0.0]#[1.0,0,0.0,0,0,0]
+popPhIn = [0]
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-xnIn,pnIn = [1.0,0,0],[0.0,0,0]#InitialPh(popPhIn,ws,phases)
+xnIn,pnIn = [0.0],[0.0]#InitialPh(popPhIn,ws,phases)
 
 
 ## Leads
-P = 0.5
+P = 0.0
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
-V  = 1.5
+V  = 5.0
 nPoles = 40
 beta = 1/0.025
 HamPar = HamiltonianParams( num_laps,
@@ -89,12 +89,12 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "LocalCurrentTests"
+path = "SingleLevel"
 if !isdir(path)
 	mkdir(path)
 end
 
-num_avg = 2
+num_avg = 1
 for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_dt$(abs(dt))"

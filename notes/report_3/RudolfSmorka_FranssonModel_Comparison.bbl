@@ -118,6 +118,36 @@
     \field{year}{2022}
   \endentry
 
+  \entry{kane2005quantum}{article}{}
+    \name{author}{2}{}{%
+      {{hash=KCL}{%
+         family={Kane},
+         familyi={K\bibinitperiod},
+         given={Charles\bibnamedelima L},
+         giveni={C\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=MEJ}{%
+         family={Mele},
+         familyi={M\bibinitperiod},
+         given={Eugene\bibnamedelima J},
+         giveni={E\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {APS}%
+    }
+    \strng{namehash}{KCLMEJ1}
+    \strng{fullhash}{KCLMEJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{22}
+    \field{pages}{226801}
+    \field{title}{Quantum spin Hall effect in graphene}
+    \field{volume}{95}
+    \field{journaltitle}{Physical review letters}
+    \field{year}{2005}
+  \endentry
+
   \entry{ke2022hierarchical}{article}{}
     \name{author}{3}{}{%
       {{hash=KY}{%

@@ -101,7 +101,7 @@ end
 
 beta = 1/0.025
 mu = 0.0
-TfuncP = TransmissionFunc(En,-0.5,beta,mu,num_laps,
+TfuncP = TransmissionFunc(En,0.5,beta,mu,num_laps,
                             num_ions,
                             N,
                             model,
@@ -135,9 +135,12 @@ TfuncN = TransmissionFunc(En,0.0,beta,mu,num_laps,
                             pnIn)
 
 lw = 3
-plt.plot(En,TfuncP-TfuncN,color="k",linewidth=lw)
-plt.xlabel(L"$\varepsilon \, [t_0]$")
-plt.ylabel(L"$T(\varepsilon,P=-0.5)-T(\varepsilon,P=0)$")
+fig = plt.figure(figsize = (10,5))
+plt.plot(En,TfuncP-TfuncN,color="k",linewidth=lw-1)
+plt.fill_between(En,TfuncP-TfuncN,y2=0,color="grey",alpha=0.6)
+println(sum(TfuncP-TfuncN))
+plt.xlabel(L"$\varepsilon \, [t_0]$",labelpad=-1)
+plt.ylabel(L"$T(\varepsilon,P=0.5)-T(\varepsilon,P=0)$")
 
-plt.savefig("Transmission_function_Difference_m.pdf")
+plt.savefig("Transmission_function_Difference.pdf")
 

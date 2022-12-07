@@ -4,15 +4,15 @@
 \contentsline {section}{\numberline {2}Comparison of TT-HEOM with other approaches}{2}{}%
 \contentsline {subsection}{\numberline {2.1}Isolated: Hopping and Peierls distortion}{2}{}%
 \contentsline {subsection}{\numberline {2.2}Coupled: Hopping and Onsite}{3}{}%
-\contentsline {section}{\numberline {3}Properties of the non-vibrating molecule}{3}{}%
-\contentsline {subsection}{\numberline {3.1}Current-voltage characteristics}{3}{}%
-\contentsline {subsection}{\numberline {3.2}Stationary electronic lattice occupation}{6}{}%
-\contentsline {section}{\numberline {4}Ehrenfest Dynamics in the Coupled molecule}{9}{}%
-\contentsline {subsection}{\numberline {4.1}Reduction to classical MD for zero electron-phonon coupling}{9}{}%
-\contentsline {subsection}{\numberline {4.2}Initial distribution of vibrational phase space coordinates}{9}{}%
-\contentsline {subsection}{\numberline {4.3}Existence of NESS}{10}{}%
-\contentsline {subsection}{\numberline {4.4}Time-dependent Currents}{10}{}%
-\contentsline {subsection}{\numberline {4.5}Time-dependent Populations}{10}{}%
-\contentsline {subsection}{\numberline {4.6}Time-dependence of spectrum}{10}{}%
-\contentsline {subsection}{\numberline {4.7}Time-dependent vibrational phase space density}{10}{}%
-\contentsline {subsection}{\numberline {4.8}Magnetoresistance}{11}{}%
+\contentsline {section}{\numberline {3}Properties of the non-vibrating molecule}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Current-voltage characteristics}{4}{}%
+\contentsline {subsection}{\numberline {3.2}Stationary electronic lattice occupation}{7}{}%
+\contentsline {section}{\numberline {4}Ehrenfest Dynamics in the Coupled molecule}{10}{}%
+\contentsline {subsection}{\numberline {4.1}Reduction to classical MD for zero electron-phonon coupling}{10}{}%
+\contentsline {subsection}{\numberline {4.2}Initial distribution of vibrational phase space coordinates}{11}{}%
+\contentsline {subsection}{\numberline {4.3}Existence of NESS}{12}{}%
+\contentsline {subsection}{\numberline {4.4}Time-dependent Currents}{12}{}%
+\contentsline {subsection}{\numberline {4.5}Time-dependent Populations}{12}{}%
+\contentsline {subsection}{\numberline {4.6}Time-dependence of spectrum}{12}{}%
+\contentsline {subsection}{\numberline {4.7}Time-dependent vibrational phase space density}{12}{}%
+\contentsline {subsection}{\numberline {4.8}Magnetoresistance}{12}{}%

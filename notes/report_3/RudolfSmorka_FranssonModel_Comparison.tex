@@ -44,29 +44,39 @@ The model considered for a chiral, single-stranded molecule, as proposed in Refs
 \begin{align}
 	\hat{H} &= \hat{H}_\mathrm{mol} + \hat{H}_\mathrm{env} + \hat{H}_\mathrm{sys-env}.
 \end{align} 
-The molecular Hamiltonian is modeled by a combination of the  Peierls and the Kane-Mele models. It consists of an electronic on-site, nearest-neighbor hopping, and next-to-nearest neighbor spin-orbit coupling (SOC), a Peierls electron-phonon coupling and vibrational contribution to SOC, and the harmonic phonon potential energy 
+The molecular Hamiltonian consists of electronic, vibrational and electron-vibrational contributions 
+\begin{equation}
+	\hat{H}_\mathrm{mol} = \hat{H}_\mathrm{el}  + \hat{H}_\mathrm{vib} + \hat{H}_\mathrm{el-vib}.
+\end{equation}
+The electronic contribution captures electron and spin transfer between different monomers of the molecule
+\begin{equation}
+			\begin{split}
+			\hat{H}_\mathrm{el} &= \sum_{j,\sigma} \varepsilon_{j\sigma}^\pdagger \hat{d}_{j\sigma}^\dagger \hat{d}_{j\sigma}^\pdagger - t_0 \sum_{j\sigma} (\hat{d}_{j\sigma}^\dagger \hat{d}_{j+1,\sigma}^\pdagger + \mathrm{h.c.}) +\\& \lambda_0^\pdagger\sum_{j\sigma\sigma'} (i\hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2,\sigma'}^\pdagger + \mathrm{h.c.}).
+		\end{split}
+\end{equation}
+An electron with spin $\sigma$ has energy $\varepsilon_{j\sigma}$ on site $j$, which is captured by the first term. An electron can hop between nearest-neighboring monomers with hopping amplitude $t_0$ (typically of the order $\SI{10}{\milli\electronvolt}-\SI{1}{\electronvolt}$). Further, electrons on next-nearest-neighboring sites are spin-orbit coupled (SOC) with amplitude $\lambda_0$ ($\lambda_0 \ll t_0$, with values of $\sim \SI{0.1}{\milli\electronvolt}-\SI{1}{\milli\electronvolt}$). This SOC-term is known as the  Kane-Mele model in the literature\footnote{Kane and Mele considered only terms $\sim d_{i\uparrow}^\dagger d_{j\uparrow}^\pdagger - d_{i\downarrow}^\dagger d_{j\downarrow}^\pdagger$ for next-nearest neighbors $i,j$~\cite{kane2005quantum}, whereas the contribution considered here also takes spin-flip terms $\sim d_{i\sigma}^\dagger d_{j\sigma'}^\pdagger$ into account.}.
+Further, the electrons couple to molecular (normal) vibrational modes, and the electron-vibrational Hamiltonian reads 
 \begin{align}
-	\hat{H}_\mathrm{mol} &= \hat{H}_\mathrm{el} + \hat{H}_\mathrm{el-ph} + \hat{H}_\mathrm{ph},\\
-	\begin{split}
-		\hat{H}_\mathrm{el} &= \sum_{j,\sigma} \varepsilon_{j\sigma}^\pdagger \hat{d}_{j\sigma}^\dagger \hat{d}_{j\sigma}^\pdagger - t_0 \sum_{j\sigma} (\hat{d}_{j\sigma}^\dagger \hat{d}_{j+1,\sigma}^\pdagger + \mathrm{h.c.}) +\\& \lambda_0^\pdagger\sum_{j\sigma\sigma'} (i\hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2,\sigma'}^\pdagger + \mathrm{h.c.}),
-	\end{split}\\
-	\hat{H}_\mathrm{el-ph} &= - t_1^\pdagger \sum_{j,\sigma}  \hat{d}_{j\sigma}^\dagger \hat{d}_{j+1\sigma}^\pdagger (\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger) \\ & + \lambda_1^\pdagger\sum_{j\sigma} (i \hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)} \cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2\sigma'}^\pdagger +\mathrm{h.c.})(\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger),\label{eq:HelPh}\\
-	\hat{H}_\mathrm{ph} &= \sum_{j} \omega_{j}^\pdagger \hat{a}_{j}^\dagger \hat{a}_{j}^\pdagger.
-	 \label{eq:Hamiltonian_el_Fransson} 
+	\hat{H}_\mathrm{el-ph} &= - t_1^\pdagger \sum_{j,\sigma}  \hat{d}_{j\sigma}^\dagger \hat{d}_{j+1\sigma}^\pdagger (\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger) \\ & + \lambda_1^\pdagger\sum_{j\sigma} (i \hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)} \cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2\sigma'}^\pdagger +\mathrm{h.c.})(\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger),\label{eq:HelPh}
 \end{align}
-This molecule is coupled to an environment of spin-full, noninteracting electrons
+The first term couples electron hopping between monomers to relative displacements of the monomers between which the hopping process happens, known as the Peierls-model. The second term is a contribution to this monomer displacement due to SOC. Finally, the vibrational energy reads 
+\begin{equation}
+	\hat{H}_\mathrm{ph} = \sum_{j} \omega_{j}^\pdagger \hat{a}_{j}^\dagger \hat{a}_{j}^\pdagger.
+	 \label{eq:HPh} 
+\end{equation}
+This molecule is coupled to two leads of spin-full, noninteracting electrons
 \begin{equation}
 	H_\mathrm{env} = \sum_{\ell k\sigma} \varepsilon_{\ell k\sigma}^\pdagger c_{\ell k\sigma}^\dagger c_{\ell k\sigma}^\pdagger \label{eq:LeadHamiltonian}
 \end{equation}
-and the system-environment coupling is linear in the molecular and environmental operators (only at the first and last site of the molecule)
+and the system-environment coupling is linear in the electronic operators of the molecule and lead
 \begin{align}
 	H_\mathrm{sys-env} &= \sum_{\sigma\sigma'}(\nu_{L\sigma\sigma'}^\pdagger c_{N_L\sigma}^\dagger d_{1\sigma'}^\pdagger + \nu_{R\sigma\sigma'}^\pdagger c_{1_R\sigma}^\dagger d_{\mathbb{M}\sigma'}^\pdagger + \mathrm{h.c.}). \label{eq:LeadSysHamiltonian}
 \end{align} 
-Observables of interest are the local electronic populations
+Note, that only at the first and last site of the molecule are coupled to the respective leads. Observables of interest are the local electronic populations
 \begin{equation}
 	n_{i\sigma}(t) = \tr{\rho_S(t) \hat{n}_{i\sigma}},
 \end{equation}
-with the reduced density matrix $\rho_S(t) = \mathrm{tr}_\mathrm{env}\{\rho(t)\}$, charge currents from lead $\ell$ to the system
+with the reduced density matrix $\rho_S(t) = \mathrm{tr}_\mathrm{env}\{\rho(t)\}$, from which one obtains the local spin polarization $s^z_i = n_{i\uparrow}-n_{i\downarrow}$. Charge currents from lead $\ell$ to the system are defined as
 \begin{equation}
 	I_\ell(t) = \tr{\rho(t) \frac{\dif}{\dif t}\sum_k c^\dagger_{k\ell}c^\pdagger_{k\ell}}.
 \end{equation}
@@ -87,30 +97,31 @@ Further, we investigate local currents between sites $j,k$ of the molecule, defi
 \section{Comparison of TT-HEOM with other approaches}
 \subsection{Isolated: Hopping and Peierls distortion}
 As in the previous report, the parameters are $L=3$, $t_0 = 1$, $t_1 = 0.1t_0$, $\omega_0 = 0.01t_0$.  GSE-TDVP data is not converged with respect to number of vibrational modes.
+The issue was an additional factor $1/\sqrt{2}$ in the definition of the vibrational creation and annihilation operators in the code, which was overseen. 
+\newpage
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf}
+	\includegraphics[width=0.65\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+tph_v2.pdf}
 	\caption{Population dynamics in the isolated Peierls-model: Comparison of GSE-TDVP with TT-HEOM for various number of vibrational levels and ranks. GSE-TDVP data has been checked to be converged for $M=5$ within the time-interval considered here.}
-\end{figure}\\
-The issue was an additional factor $1/\sqrt{2}$ in the definition of the vibrational creation and annihilation operators in the code, which was overseen. 
+\end{figure}
 \subsection{Coupled: Hopping and Onsite}
 Parameters: $L=3$, $t_0 = 1.0$, $T=\SI{0.1}{\electronvolt}\approx \SI{1160}{\kelvin}$, $\Gamma = \vert \nu\vert^2 = t_0/4$, $V=t_0$. The best agreement with the MF-HEOM data is obtained for $N_p=25$ and $r=150$ (runtime: 8d), however the steady-state has not been reached in this runtime.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.7\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf}
+	\includegraphics[width=0.65\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf}
 	\caption{Time-dependent current from the left lead into the system for a tight-binding model. Comparison of MF-HEOM with TT-HEOM for various number of Pad\'{e} poles $N_p$ and ranks.}
 \end{figure}
-
+\newpage
 \section{Properties of the non-vibrating molecule}
 Parameters: $t_0 = 1, \varepsilon_\uparrow = \varepsilon_\downarrow = -6t_0, \lambda_0 = t_0/40, \Gamma_0 = t_0/4, \beta = t_0/40$. 
 \subsection{Current-voltage characteristics}
 Due to absence of electronic interactions, the steady-state current can be obtained within the Landauer-Büttiker formalism.
-The left lead is assumed to be ferromagnetic with polarization $P=0.5,-0.5$. This is modeled by a spin-dependent level-width function $\Gamma = \Gamma_0 (1+P\sigma^z)$ in Franssons work. The right lead is unpolarized, hence the coupling $\Gamma$ is equal for both spins.
+The left lead is assumed to be ferromagnetic with polarization $P=0.5,-0.5$. This is modeled by a spin-dependent level-width function $\bm{\Gamma}_L = \Gamma_L (\mathds{1}+P\bm{\sigma}^z)$ in Franssons work. The right lead is unpolarized, hence the coupling $\bm{\Gamma}_R$ is diagonal.
 The current-voltage characteristics for various system sizes and for different lead-polarizations $P$ are shown in \cref{fig:IV_1x3,fig:IV_4x3,fig:IV_8x4}.
 %However, a ferromagnetic metal also has a spin-gap between majority and minority spins $\mu_\mathrm{maj}-\mu_\mathrm{min} = \Delta_s$ (Stoner model), the influence of which we investigate separately.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{figs/LB_1x3.pdf}
+	\includegraphics[width=0.65\textwidth]{figs/LB_1x3.pdf}
 	\caption{Current-voltage characteristics for $\mathbb{M}=1\times 3$ and parameters as in the main text.}\label{fig:IV_1x3}
 \end{figure}\\
 \begin{figure}[!h]
@@ -126,7 +137,7 @@ The current-voltage characteristics for various system sizes and for different l
 The relative energies of the leads chemical potential and the bare electronic levels of the molecule are shown in \cref{fig:Schematic_Energy_levels}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{figs/Spectrum_leads.pdf}
+	\includegraphics[width=0.55\textwidth]{figs/Spectrum_leads.pdf}
 	\caption{Schematic energy diagram of the Fransson model coupled to leads at $V=0$.}\label{fig:Schematic_Energy_levels}
 \end{figure}\\
 In all cases, the steady-state current-voltage dependence can be understood by investigating the transmission function $T(\varepsilon)$
@@ -139,12 +150,78 @@ with $f(\varepsilon)= (1+\exP{\beta\varepsilon})^{-1}$ the Fermi function, $\vec
 	\vec{G}^r(\varepsilon) = \left[\varepsilon\mathbb{1}_N - \vec{H}+ \frac{i}{2}\bm{\Gamma}\right]^{-1}, \qquad \vec{G}^a = (\vec{G}^r)^\dagger,
 \end{equation}
 and $\bm{\Gamma} =\sum_\ell \bm{\Gamma}_\ell$. 
-The reduction of the total current for $\vert P \vert>0$ is due to the term $\Gamma_0 P \sigma^z$, which acts as an additional self-energy contribution, leading to a slight broadening and a small reduction of the total transmission function. The energy-resolved difference between the transmission function for $P=0.5$ and $P=0$ is shown in \cref{fig:Difference_TFunc}. The transmission function for $P=-0.5$ is identical to the one for $P=0.5$. 
+The reduction of the total current for $\vert P \vert>0$ is due to the term $\Gamma_0 P \sigma^z$, which acts as an additional self-energy contribution, leading to a slight broadening and a small reduction of the total transmission function. 
+An analytical expression for the reduction of the saturation current can be obtained from the well-known result for a single resonant level model, in which 
+\begin{equation}
+	I = \frac{\Gamma_L\Gamma_R}{\Gamma_L + \Gamma_R}
+\end{equation}
+Consider the a single dot $N=1$, that is a two-level system with Hamiltonian
+\begin{equation}
+	H = \begin{pmatrix}
+		E_1 & 0 \\
+		0 & E_2
+	\end{pmatrix}.
+\end{equation}
+in the symmetric coupling regime where $\Gamma_L= \Gamma_R=\frac{\Gamma}{2}$. 
+Because the two levels are not coupled with each other and $\bm{\Gamma}$ has no off-diagonal terms, one can consider two independent transport channels for each spin component individually. Then, the steady-state saturation currents simply add up
+\begin{align}
+	I &= \frac{\Gamma_{L\uparrow} \Gamma_{R\uparrow}}{\Gamma_{L\uparrow}+ \Gamma_{R\uparrow}} + \frac{\Gamma_{L\downarrow} \Gamma_{R\downarrow}}{\Gamma_{L\downarrow}+ \Gamma_{R\downarrow}}\\
+	&= \frac{\Gamma}{2}\left(\frac{2-P^2}{1-\left(\frac{P}{2}\right)^2}\right)
+\end{align} 
+leading a reduction $\sim -P^2$ in the saturation current with increasing $P$. 
+In this case, the transmission can be also determined analytically. The retarded Green function reads
+\begin{equation}
+	\vec{G}^r(\varepsilon) = \left[\varepsilon - H + \frac{i}{2}(\bm{\Gamma} + \Gamma_LP\bm{\sigma}^z)\right]^{-1}
+\end{equation}
+with $\bm{\Gamma} = \sum_\ell\bm{\Gamma}_\ell$, and $\bm{\Gamma}_L = \Gamma_L(\mathds{1}+P\bm{\sigma}^z)$. Then the retarded Green function is 
+\begin{align}
+	\vec{G}^r(\varepsilon) &= \begin{pmatrix}
+		\varepsilon-E_1+\frac{i\Gamma}{2}(1 + \frac{P}{2}) & 0 \\
+		0 & \varepsilon-E_2+\frac{i\Gamma}{2}(1 - \frac{P}{2}) \\
+	\end{pmatrix}^{-1}\\
+	&=\underbrace{\frac{1}{\sqrt{(\varepsilon-E_1)(\varepsilon-E_2)+\frac{i\Gamma}{2}(2\varepsilon-(E_1+E_2)+\frac{P}{2}(E_1-E_2)) -\left(\frac{\Gamma}{2}\right)^2 (1-\left(\frac{P}{2}\right)^2)}}}_{\equiv \Delta}\cdot\\
+	& \begin{pmatrix}
+		\varepsilon-E_2+\frac{i\Gamma}{2}(1 - \frac{P}{2}) & 0 \\
+		0 &\varepsilon-E_1+\frac{i\Gamma}{2}(1 + \frac{P}{2})
+	\end{pmatrix}.
+\end{align}
+To obtain the transmission function, we first evaluate the product $\vec{G}^r \bm{\Gamma}_L$
+\begin{equation}
+	\vec{G}^r \bm{\Gamma}_L = \frac{\Gamma}{2\Delta} \begin{pmatrix}
+		(1+P)(\varepsilon-E_2+\frac{i\Gamma}{2}(1 - \frac{P}{2})) & 0 \\
+		0 &(1-P)(\varepsilon-E_1+\frac{i\Gamma}{2}(1 + \frac{P}{2}))
+	\end{pmatrix} 
+\end{equation}
+then $\vec{G}^r\bm{\Gamma}_L\vec{G}^a \bm{\Gamma}_R$ is
+\begin{equation}
+	\vec{G}^r\bm{\Gamma}_L\vec{G}^a \bm{\Gamma}_R = \frac{\Gamma^2}{4\Delta\Delta^*}\begin{pmatrix}
+		(1+P)[(\varepsilon-E_2)^2+(\frac{\Gamma}{2}(1 - \frac{P}{2}))^2] & 0 \\
+		0 &(1-P)[(\varepsilon-E_1)^2+(\frac{\Gamma}{2}(1 + \frac{P}{2}))^2]
+	\end{pmatrix}.
+\end{equation}
+The transmission function then reads
+\begin{equation}
+	T(\varepsilon;P) = \frac{\Gamma^2}{4\Delta\Delta^*} \left\{(1+P)\left[(\varepsilon-E_2)^2+\left(\frac{\Gamma}{2}\left(1 - \frac{P}{2}\right)\right)^2\right] + (1-P)\left[(\varepsilon-E_1)^2+\left(\frac{\Gamma}{2}\left(1 + \frac{P}{2}\right)\right)^2\right]\right\} \label{eq:TransmissionAnalytical}
+\end{equation}
+with the squared absolute value of the discriminant
+\begin{equation}
+	\Delta\Delta^* = \sqrt{\left[(\varepsilon-E_1)(\varepsilon-E_2)-\left(\frac{\Gamma}{2} \left(1-\left(\frac{P}{2}\right)^2\right)\right)^2\right]^2+\left[\frac{\Gamma}{2}\left(2\varepsilon-(E_1+E_2)+\frac{P}{2}(E_1-E_2)\right)\right]^2}.
+\end{equation}
+This analytical result has been checked against the numerical one (obtained from numerically inverting the Green functions), shown in \cref{fig:Transmission_Analytics_Numerics} (a). 
+\Cref{fig:Transmission_Analytics_Numerics} (b) shows the difference between transmission function for $P=0.5$ and the one for $P=0$. Since the integral of $T(\varepsilon,P=0.5)-T(\varepsilon,P=0)$ over all $\varepsilon$ (corresponding to $V\rightarrow \infty$) is negative, the saturation current for $P=0.5$ is decreased compared to the case $P=0$.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.65\textwidth]{figs/Transmission_function_Difference.pdf}
-	\caption{Difference of transmission function for $P=0.5$ and $P=0 $ for $V=0$ and $\mathbb{M}=2\times 4$.}\label{fig:Difference_TFunc}
-\end{figure}
+	\includegraphics[width=0.99\textwidth]{figs/Comparison_Transmission_Analytical_Numerical.pdf}
+	\caption{(a) Comparison of transmission function for $E_1 = 1 = -E_2$, $\Gamma = 0.25$, and $P=0.5$ obtained from \cref{eq:TransmissionAnalytical} (red dashed line) and from computing the Green functions using numerical matrix inversion (black solid line). (b) Difference of transmission functions for $P=0.5$ and $P=0$. }\label{fig:Transmission_Analytics_Numerics}
+\end{figure}\\
+The energy-resolved difference between the transmission function for $P=0.5$ and $P=0$ for Franssons model without molecular vibrations and a system size of $\mathbb{M}=2\times 4$ is shown in \cref{fig:Difference_TFunc}. 
+The transmission function for $P=-0.5$ is identical to the one for $P=0.5$. Note, that the argument for the decrease of the total saturation current as $P$ is increased is analogous to the one given for the two-level system.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.99\textwidth]{figs/Transmission_function_Difference.pdf}
+	\caption{Difference of transmission function for $P=0.5$ and $P=0 $ for $\mathbb{M}=2\times 4$.}\label{fig:Difference_TFunc}
+\end{figure}\\
+\phantom{i}
 \newpage
 \subsection{Stationary electronic lattice occupation}
 \Cref{fig:Sz_SS} shows the steady-state electronic spin polarization in the full molecule. The parameters are $\mathbb{M}=2\times 4$, and everything else as before. 
@@ -152,7 +229,7 @@ The reduction of the total current for $\vert P \vert>0$ is due to the term $\Ga
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/MF-HEOM_2x4_Sz_steady_PVar.pdf}
 	\caption{Stationary site-dependent spin polarization for various voltage and $P=0.5,0.0-0.5$ with system size $\mathbb{M}=2\times 4$.}\label{fig:Sz_SS}
-\end{figure}\\
+\end{figure}
 The electron population at each site changes discontinuously for each $\mu_R \approx \varepsilon_n$. 
 For $\mu_R>-4.5$ (or equivalently $V<8$), the electron population is exactly one. This is because due to the very large on-site energy $\varepsilon_m$, the full electronic spectrum is shifted such that the mean of the spectrum is located at $\varepsilon=-6t_0$, with the usual band-width of $2W$ where $W = 2t_0$. Therefore, each bare eigenstate of the molecule is nearly fully populated. 
 A closer inspection of the site-dependent spin polarization reveals a finite, but very small polarization even for voltages for which one would expect  all eigenstates to be fully populated. 
@@ -165,9 +242,9 @@ with the spectral function $\bm{\Lambda}_\ell(\varepsilon) = \vec{G}^r(\varepsil
 \Cref{fig:SpectralFunction_PVar} shows the total spectral function (summed over all sites) in the spin-$\sigma$ subspace, and the difference in total spectral functions in different spin subspaces at zero bias and the parameters as in \cref{fig:Sz_SS}. These quantities give, when multiplied with the Fermi-function and integrated over the full energy space, the total spin-$\sigma$ occupation number and the total spin-polarization, respectively.  
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.86\textwidth]{figs/SpectralFunction_allP.pdf}
+	\includegraphics[width=0.91\textwidth]{figs/SpectralFunction_allP.pdf}
 	\caption{Trace of spectral function over spin-$\sigma$ subspace (red and blue lines) and difference in traces for different subspaces (black lines) for $P=0.5,0,-0.5$ in a system of size $\mathbb{M}=2\times 4$ at $V=0$ for $P=0.5$.}\label{fig:SpectralFunction_PVar}
-\end{figure}\\
+\end{figure}
 \newpage
 \Cref{fig:Comp_NEGF_MF-HEOM_pops} shows a comparison of the site-dependent spin-occupation probability obtained from the analytical NEGF expression \cref{eq:NEGF_SS_rho} and the numerical steady-state within the MF-HEOM for $P=0.5$ (the discussion for $P=-0.5$ is analogous and will be omitted here). Qualitatively, both approaches agree as expected. At the site closest to the lead, the electron spin polarization is finite, but relatively small and is opposite to the lead polarization $P$. This effect is reproduced by the analytical NEGF expression, and can be understood from inspecting the spectral function. For $V=0$ and $P=0.5$ the spectral function has an overall negative component, thus leading to a negative spin polarization.  
 
@@ -176,11 +253,18 @@ Upon inspecting the populations more closely, deviations at the system-lead inte
 	\centering
 	\includegraphics[width=0.75\textwidth]{figs/Comparison_populations_V0.pdf}
 	\caption{Comparison of spin-dependent populations for $V=0$ from analytical NEGF expression (full lines) and numerically obtained steady-state (MF-HEOM, dashed lines).}\label{fig:Comp_NEGF_MF-HEOM_pops}
-\end{figure}
+\end{figure}\\
+\phantom{i}
 \newpage
+
 \section{Ehrenfest Dynamics in the Coupled molecule}
 \subsection{Reduction to classical MD for zero electron-phonon coupling}
 For vanishing electron-phonon coupling, the nuclear dynamics reduces to a purely molecular dynamics integration. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/Decoupled_vibrational_dynamics.pdf}
+	\caption{Numerical $X$, $P$ (black, blue line) and analytical functions (\cref{eq:AnalyticalVib1,eq:AnalyticalVib2}, dashed lines) for $\omega = 0.1$.}\label{fig:Comparison_Vib_Analytical}
+\end{figure}\\
 Then, the Hamiltonian reduces to 
 \begin{equation}
 	H = \sum_i \frac{\omega_i}{2}\left(\omega_i X_i^2 + P_i^2\right) + H_\mathrm{el}
@@ -199,22 +283,26 @@ the solution of which can be found analytically as
 	P(t) &= P_0 \cos{\omega^{3/2}t} - X_0 \sqrt{\omega}\sin(\omega^{3/2}t).\label{eq:AnalyticalVib2}
 \end{align}
 For the numerical comparison, $X_0 = 1$ and $P_0 = 0$ have been chosen. The numerical integration agrees with the analytical results, as shown in \cref{fig:Comparison_Vib_Analytical}.
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.7\textwidth]{figs/Decoupled_vibrational_dynamics.pdf}
-	\caption{Numerical $X$, $P$ (black, blue line) and analytical functions (\cref{eq:AnalyticalVib1,eq:AnalyticalVib2}, dashed lines) for $\omega = 0.1$.}\label{fig:Comparison_Vib_Analytical}
-\end{figure}
 \subsection{Initial distribution of vibrational phase space coordinates}
 As in the usual multi-trajectory Ehrenfest methodology, the initial vibrational phase space coordinates are sampled from the Boltzmann distribution for a harmonic oscillator in its ground state
 \begin{equation}
 	\rho(\{X\},\{P\}) = \prod_j \frac{\alpha_j}{\pi} \exp\left[-\frac{\alpha_j}{\omega_j} \left(P_j^2+\omega_j^2X_j^2\right)\right],
 \end{equation} 
-with $\alpha_j = \tanh(\frac{1}{2}\beta \omega_j)$. In the numerical calculation, pseudo-random numbers are sampled from this distribution at the initial time. \Cref{fig:Comparison_Pdist_analytical_numerical} shows a comparison of the analytical probability density distribution with a histogram of numbers randomly sampled from this distribution.
+with $\alpha_j = \tanh(\frac{1}{2}\beta \omega_j)$.
+In the numerical calculation, pseudo-random numbers are sampled from this distribution at the initial time. \Cref{fig:Comparison_Pdist_analytical_numerical} shows a comparison of the analytical probability density distribution with a histogram of numbers randomly sampled from this distribution.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=1.0\textwidth]{figs/Comparison_Pdist_analytical_numerical.pdf}
+	\includegraphics[width=0.95\textwidth]{figs/Comparison_Pdist_analytical_numerical.pdf}
 	\caption{Comparison of analytical harmonic oscillator Boltzmann probability density distribution ($\omega = 0.05$, $\beta = 40$) with pseudo-random numbers sampled from the same distribution (samplesize $n=900$).}\label{fig:Comparison_Pdist_analytical_numerical}
+\end{figure}\\
+\subsection{Convergence of currents with number of trajectories}
+
+\begin{figure}[!h]
+	\includegraphics[width=0.95\textwidth]{figs/}
 \end{figure}
+
+
+
 \subsection{Existence of NESS}
 Can we make a ``phase diagram'' when a NESS exists? From the data, its easy. Everytime $\mu_L,\mu_R  \gg \varepsilon_n$, or $\mu_L\gg \varepsilon_n$ and $\mu_R \ll \varepsilon_0$, there exists a unique NESS. However, for voltages in the middle of the band, there is no NESS. 
 Analytically, I don't know.
