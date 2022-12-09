@@ -82,12 +82,12 @@ with the reduced density matrix $\rho_S(t) = \mathrm{tr}_\mathrm{env}\{\rho(t)\}
 \end{equation}
 Within the MF-HEOM, charge currents are obtained from the trace of the current matrices 
 \begin{equation}
-	I_\ell^\mathrm{MF-HEOM}(t) = \tr{\Pi_\ell(t)}
+	I_\ell(t) = \tr{\Pi_\ell(t)}
 \end{equation}
 while within the TT-HEOM, charge currents are obtained by \cite{ke2022hierarchical}
 \begin{equation}
 	\begin{split}
-	I_\ell^\mathrm{TT-HEOM}(t) = &\sum_{i\ell} \frac{\Gamma_{i\ell}}{2}(\delta_{\ell, L}- \delta_{\ell, R}) \expc{\mathbb{I}_0}{\hat{d}_i^-\hat{d}_i^+ - \hat{d}_i^+\hat{d}_i^- }{\Psi(t)} \\ + i & \sum_{k=1}^K (-1)^{\sigma_k }\sqrt{\Gamma_{i_k\ell_k}}(\delta_{\ell_k,L}- \delta_{\ell_k,R})\expc{\mathbb{I}_{\bm{1}_k}}{\hat{d}_{i_k}^{\sigma_k}}{\Psi(t)}.
+	I_\ell(t) = &\sum_{i\ell} \frac{\Gamma_{i\ell}}{2}(\delta_{\ell, L}- \delta_{\ell, R}) \expc{\mathbb{I}_0}{\hat{d}_i^-\hat{d}_i^+ - \hat{d}_i^+\hat{d}_i^- }{\Psi(t)} \\ + i & \sum_{k=1}^K (-1)^{\sigma_k }\sqrt{\Gamma_{i_k\ell_k}}(\delta_{\ell_k,L}- \delta_{\ell_k,R})\expc{\mathbb{I}_{\bm{1}_k}}{\hat{d}_{i_k}^{\sigma_k}}{\Psi(t)}.
 	\end{split}
 \end{equation}
 Further, we investigate local currents between sites $j,k$ of the molecule, defined as
@@ -166,7 +166,7 @@ in the symmetric coupling regime where $\Gamma_L= \Gamma_R=\frac{\Gamma}{2}$.
 Because the two levels are not coupled with each other and $\bm{\Gamma}$ has no off-diagonal terms, one can consider two independent transport channels for each spin component individually. Then, the steady-state saturation currents simply add up
 \begin{align}
 	I &= \frac{\Gamma_{L\uparrow} \Gamma_{R\uparrow}}{\Gamma_{L\uparrow}+ \Gamma_{R\uparrow}} + \frac{\Gamma_{L\downarrow} \Gamma_{R\downarrow}}{\Gamma_{L\downarrow}+ \Gamma_{R\downarrow}}\\
-	&= \frac{\Gamma}{2}\left(\frac{2-P^2}{1-\left(\frac{P}{2}\right)^2}\right)
+	&= \frac{\Gamma}{2}\left(\frac{2-P^2}{1-\left(\frac{P}{2}\right)^2}\right)\label{eq:Cur_Analytical_infinityBias}
 \end{align} 
 leading a reduction $\sim -P^2$ in the saturation current with increasing $P$. 
 In this case, the transmission can be also determined analytically. The retarded Green function reads
@@ -286,7 +286,7 @@ For the numerical comparison, $X_0 = 1$ and $P_0 = 0$ have been chosen. The nume
 \subsection{Initial distribution of vibrational phase space coordinates}
 As in the usual multi-trajectory Ehrenfest methodology, the initial vibrational phase space coordinates are sampled from the Boltzmann distribution for a harmonic oscillator in its ground state
 \begin{equation}
-	\rho(\{X\},\{P\}) = \prod_j \frac{\alpha_j}{\pi} \exp\left[-\frac{\alpha_j}{\omega_j} \left(P_j^2+\omega_j^2X_j^2\right)\right],
+	\rho(\{X\},\{P\}) = \prod_j \frac{\alpha_j}{\pi} \exp\left[-\frac{\alpha_j}{\omega_j} \left(P_j^2+\omega_j^2X_j^2\right)\right],\label{eq:Boltzmann_probabilityDist}
 \end{equation} 
 with $\alpha_j = \tanh(\frac{1}{2}\beta \omega_j)$.
 In the numerical calculation, pseudo-random numbers are sampled from this distribution at the initial time. \Cref{fig:Comparison_Pdist_analytical_numerical} shows a comparison of the analytical probability density distribution with a histogram of numbers randomly sampled from this distribution.
@@ -295,30 +295,48 @@ In the numerical calculation, pseudo-random numbers are sampled from this distri
 	\includegraphics[width=0.95\textwidth]{figs/Comparison_Pdist_analytical_numerical.pdf}
 	\caption{Comparison of analytical harmonic oscillator Boltzmann probability density distribution ($\omega = 0.05$, $\beta = 40$) with pseudo-random numbers sampled from the same distribution (samplesize $n=900$).}\label{fig:Comparison_Pdist_analytical_numerical}
 \end{figure}\\
-\subsection{Convergence of currents with number of trajectories}
-
+\subsection{Convergence of current with number of trajectories}
+In the following, the parameters are the same as before: $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, $\omega_0 = 0.05t_0$ $\Gamma_0 = t_0/4$ and $\beta = 40$.
+Note, that in \cite{fransson2020vibrational}, a dimensionless coupling $t_1/\omega_0 = 10$ is used, whereas here we use $t_1/\omega_0 = 2$ thus we are in a parameter regime which is much easier to converge.  
+\Cref{fig:Current_convergence} shows the time-dependent symmetrized current $I_L(t)-I_R(t)$ for $V=18$ and $P=0.5$. Therein, gray faint lines are single trajectories, the red solid line is the weighted average for $n=100$ trajectories (weighted by the probability obtained from \cref{eq:Boltzmann_probabilityDist}) and the dashed orange line averaged over $n=1000$ trajectories. 
+It has been checked, that the absolute normalized difference between averaged currents for $n=100$ and $n=1000$ is below $0.05\%$.  
 \begin{figure}[!h]
-	\includegraphics[width=0.95\textwidth]{figs/}
+	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf}
+	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=18.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_convergence}
+\end{figure}
+However, for a smaller voltage, much more trajectories are necessary to converge the results, as shown in \cref{fig:Current_V12_convergence}.
+\begin{figure}[!h]
+	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_V12.pdf}
+	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=12.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_V12_convergence}
 \end{figure}
 
+\subsection{Reduction of saturation current}
+As can be seen in \cref{fig:Current_convergence}, the average current slightly oscillates with time. To capture this oscillation, \cref{fig:IV_1x3_MF-HEOM} shows the maximum (red line), minimum (blue line) and average (black line) of the current in the time interval $[200,2000]t_0^{-1}$.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_P0.5_IV_min_max_mean.pdf}
+	\caption{}\label{fig:IV_1x3_MF-HEOM}
+\end{figure} 
 
-
-\subsection{Existence of NESS}
-Can we make a ``phase diagram'' when a NESS exists? From the data, its easy. Everytime $\mu_L,\mu_R  \gg \varepsilon_n$, or $\mu_L\gg \varepsilon_n$ and $\mu_R \ll \varepsilon_0$, there exists a unique NESS. However, for voltages in the middle of the band, there is no NESS. 
-Analytically, I don't know.
-Show analytically under time-scale separation assumption that phonon dynamics never decays, in contrast to Holstein model (using effective Hamiltonian). 
-In a sense, there is never a NESS in the model I'm investigating. If there is a current, then the current-operator is non-zero. But if the current operator is non-zero, there is coupling between the electrons and the phonons. 
-\subsection{Time-dependent Currents}
+\subsection{Origin of absence of steady-state} 
 Show that in the Ehrenfest approach, currents are not reaching a steady state for sufficiently high bias.
 Show $(t,V)$ imshow of current.
+\subsubsection{Holstein model}
+\begin{itemize}
+	\item For single phonon, e.g. on site 2 of a three-dot system, there exists a steady-state current
+	\item Already when placing two phonons, steady-state does not exist.
+\end{itemize}
 \subsection{Time-dependent Populations}
 Show that populations are also not stationary for long times, but switch depending on the positions of the phonons.
 Show $(t,V)$ imshow of population on a single site.
 Show $(t,\mathrm{site})$ imshow of all populations on all sites for different times.
 Can be explained with spectrum which is now time-dependent under the influence of phonons.
 Quantization of vibrational motion. Show FFT of population dynamics. Relation to phonon-frequencies. If matching, then there are quanta of vibration exchanged between electrons and vibrations.
-\subsection{Time-dependence of spectrum}
+\subsection{Show that steady-state density matrix is the one of the effective }
+Clear from the analytical result without the phonons.
+\subsection{Picture 1: Time-dependent spectrum}
 Berry phase effects? 
+\subsection{Picture 2: Transistions induced by el-ph coupling between stationary eigenstates}
 \subsection{Time-dependent vibrational phase space density}
 Show that the phase space density for the nuclear DoF deviates from the initial probability density, and that it still can be well described by a Gaussian/coherent state. Therefore, resampling techniques cannot and should not be applied, because otherwise the deviation of the vibrational phase space density from the initial one is not accounted for correctly.
 Explain why currents and populations never reach steady state (because a current is associated with electron hopping, but electron hopping is depending on the positions of the phonons, and hopping induces vibrational dynamics). 
@@ -330,7 +348,6 @@ Parameters: $w_0=0.05$, $N_\mathrm{traj} = 900$.
 \end{figure}
 Same figure with $P=-0.5,P=0.0$, and $\lambda_1 = 0$ and maybe different voltage.
 \subsection{Magnetoresistance}
-
 
 \printbibliography
 \end{document}
