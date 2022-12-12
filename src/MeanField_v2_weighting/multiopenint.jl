@@ -133,6 +133,9 @@ function Propagate(
 			fil["P"] = Pin
 			close(fil)	 
 		end
+		if i == numstep
+			println(rho_c[1,3]+rho_c[3,1])
+		end
 	end
 end
 

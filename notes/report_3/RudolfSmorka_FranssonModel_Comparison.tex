@@ -179,7 +179,7 @@ with $\bm{\Gamma} = \sum_\ell\bm{\Gamma}_\ell$, and $\bm{\Gamma}_L = \Gamma_L(\m
 		\varepsilon-E_1+\frac{i\Gamma}{2}(1 + \frac{P}{2}) & 0 \\
 		0 & \varepsilon-E_2+\frac{i\Gamma}{2}(1 - \frac{P}{2}) \\
 	\end{pmatrix}^{-1}\\
-	&=\underbrace{\frac{1}{\sqrt{(\varepsilon-E_1)(\varepsilon-E_2)+\frac{i\Gamma}{2}(2\varepsilon-(E_1+E_2)+\frac{P}{2}(E_1-E_2)) -\left(\frac{\Gamma}{2}\right)^2 (1-\left(\frac{P}{2}\right)^2)}}}_{\equiv \Delta}\cdot\\
+	&=\underbrace{\frac{1}{((\varepsilon-E_1) + \frac{i\Gamma}{2}(1+\frac{P}{2}))((\varepsilon-E_2) + \frac{i\Gamma}{2}(1-\frac{P}{2}))}}_{\equiv \Delta}\cdot\\
 	& \begin{pmatrix}
 		\varepsilon-E_2+\frac{i\Gamma}{2}(1 - \frac{P}{2}) & 0 \\
 		0 &\varepsilon-E_1+\frac{i\Gamma}{2}(1 + \frac{P}{2})
@@ -205,7 +205,7 @@ The transmission function then reads
 \end{equation}
 with the squared absolute value of the discriminant
 \begin{equation}
-	\Delta\Delta^* = \sqrt{\left[(\varepsilon-E_1)(\varepsilon-E_2)-\left(\frac{\Gamma}{2} \left(1-\left(\frac{P}{2}\right)^2\right)\right)^2\right]^2+\left[\frac{\Gamma}{2}\left(2\varepsilon-(E_1+E_2)+\frac{P}{2}(E_1-E_2)\right)\right]^2}.
+	\Delta\Delta^* = \left[(\varepsilon-E_1)(\varepsilon-E_2)-\left(\frac{\Gamma}{2} \left(1-\left(\frac{P}{2}\right)^2\right)\right)^2\right]^2+\left[\frac{\Gamma}{2}\left(2\varepsilon-(E_1+E_2)+\frac{P}{2}(E_1-E_2)\right)\right]^2.
 \end{equation}
 This analytical result has been checked against the numerical one (obtained from numerically inverting the Green functions), shown in \cref{fig:Transmission_Analytics_Numerics} (a). 
 \Cref{fig:Transmission_Analytics_Numerics} (b) shows the difference between transmission function for $P=0.5$ and the one for $P=0$. Since the integral of $T(\varepsilon,P=0.5)-T(\varepsilon,P=0)$ over all $\varepsilon$ (corresponding to $V\rightarrow \infty$) is negative, the saturation current for $P=0.5$ is decreased compared to the case $P=0$.
@@ -221,8 +221,17 @@ The transmission function for $P=-0.5$ is identical to the one for $P=0.5$. Note
 	\includegraphics[width=0.99\textwidth]{figs/Transmission_function_Difference.pdf}
 	\caption{Difference of transmission function for $P=0.5$ and $P=0 $ for $\mathbb{M}=2\times 4$.}\label{fig:Difference_TFunc}
 \end{figure}\\
-\phantom{i}
-\newpage
+For a multi-level system as considered at the beginning, this result is modified in the following way: The level-width matrix $\bm{\Gamma}_\ell = \bm{ \Gamma}_\ell(\varepsilon_k)$ depends on the energy levels $\varepsilon_k$, as we consider a coupling to the leads only at the outer most sites
+\begin{equation}
+	\bm{\Gamma}_\ell = \begin{cases}
+		\Gamma_L \mathds{1}_2 \oplus \mathds{1}_{2(N-1)}, & \ell = L\\
+		\mathds{1}_{2(N-1)}\oplus \Gamma_R \mathds{1}_2  , & \ell = R.
+	\end{cases}
+\end{equation}
+If $\vec{U}$ diagonalizes the Hamiltonian $\vec{H}$, then $\bm{\Gamma}_\ell(\varepsilon)=\vec{U}^\dagger \bm{\Gamma}_\ell \vec{U}$. Therefore, the steady-state current for high bias voltage is
+\begin{equation}
+	I = \sum_k \frac{\Gamma_L(\varepsilon_k)\Gamma_R(\varepsilon_k)}{\Gamma_L(\varepsilon_k)+\Gamma_R(\varepsilon_k)}
+\end{equation}
 \subsection{Stationary electronic lattice occupation}
 \Cref{fig:Sz_SS} shows the steady-state electronic spin polarization in the full molecule. The parameters are $\mathbb{M}=2\times 4$, and everything else as before. 
 \begin{figure}[!h]
@@ -236,7 +245,7 @@ A closer inspection of the site-dependent spin polarization reveals a finite, bu
 
 The electronic spin-polarization can be understood by investigating the spectral function. This is because for the non-interacting model considered here, an exact expression for the steady-state electron density can be obtained \cite{fukadai2019dynamics}
 \begin{equation}
-	\rho^\mathrm{ss} = \int_{-\infty}^\infty \frac{\dif \varepsilon}{2\pi}\sum_\ell f(\varepsilon)\bm{\Lambda}_\ell (\varepsilon+\mu_\ell)\label{eq:NEGF_SS_rho}
+	\bm{\rho}^\mathrm{ss} = \int_{-\infty}^\infty \frac{\dif \varepsilon}{2\pi}\sum_\ell f(\varepsilon)\bm{\Lambda}_\ell (\varepsilon+\mu_\ell)\label{eq:NEGF_SS_rho}
 \end{equation}
 with the spectral function $\bm{\Lambda}_\ell(\varepsilon) = \vec{G}^r(\varepsilon)\bm{\Gamma}_\ell \vec{G}^a(\varepsilon)$.
 \Cref{fig:SpectralFunction_PVar} shows the total spectral function (summed over all sites) in the spin-$\sigma$ subspace, and the difference in total spectral functions in different spin subspaces at zero bias and the parameters as in \cref{fig:Sz_SS}. These quantities give, when multiplied with the Fermi-function and integrated over the full energy space, the total spin-$\sigma$ occupation number and the total spin-polarization, respectively.  
@@ -267,7 +276,7 @@ For vanishing electron-phonon coupling, the nuclear dynamics reduces to a purely
 \end{figure}\\
 Then, the Hamiltonian reduces to 
 \begin{equation}
-	H = \sum_i \frac{\omega_i}{2}\left(\omega_i X_i^2 + P_i^2\right) + H_\mathrm{el}
+	H = \sum_i \frac{\omega_i}{2}\left(\omega_i X_i^2 + P_i^2\right) + H_\mathrm{el}\label{eq:TotalHamiltonian}
 \end{equation}
 where $H_\mathrm{el}$ is the purely electronic part of the total Hamiltonian.
 Since the vibrational modes are not coupled among each other, for the following analysis a single mode only is considered.
@@ -283,6 +292,26 @@ the solution of which can be found analytically as
 	P(t) &= P_0 \cos{\omega^{3/2}t} - X_0 \sqrt{\omega}\sin(\omega^{3/2}t).\label{eq:AnalyticalVib2}
 \end{align}
 For the numerical comparison, $X_0 = 1$ and $P_0 = 0$ have been chosen. The numerical integration agrees with the analytical results, as shown in \cref{fig:Comparison_Vib_Analytical}.
+%\subsection{Check of implementation of coupled dynamics}
+%To check if the coupled electron-vibrational dynamics is implemented correctly, we consider a double dot with only a Peierls term in the electronic Hamiltonian
+%\begin{equation}
+%	H_\mathrm{el}(t) = -\sqrt{2\omega_0}t_1 X(t) (c_1^\dagger c_2^\pdagger +\mathrm{h.c.})\label{eq:PeierlsDoubleDot}
+%\end{equation}
+%in \cref{eq:TotalHamiltonian} coupled to two leads with level-width function $\bm{\Gamma}$. For $V=0$, the purely electronic dynamics for the reduced density matrix
+%\begin{equation}
+%	\frac{\dif}{\dif t}\bm{\rho}(t) = -i[\vec{H}^\mathrm{eff},\bm{\rho}]
+%\end{equation}
+%under the effective Hamiltonian matrix
+%\begin{equation}
+%	\vec{H}^\mathrm{eff} = \vec{H}_\mathrm{el} - \frac{i}{2}\bm{\Gamma}
+%\end{equation}  
+%agrees with dynamics obtained within the MF-HEOM. \Cref{fig:Comparison_NH_MFHEOM} shows a comparison of population dynamics in the single-site tight-binding model for the parameters $\varepsilon_0 = 0$, $\Gamma_L=\Gamma_R= \frac{t_0}{4}$, $n(0)=1$ with perfect agreement.
+%\begin{figure}[!h]
+%	\centering
+%	\includegraphics[width=0.9\textwidth]{figs/Comparison_NH_HEOM_noPh.pdf}
+%	\caption{Population dynamics within the MF-HEOM (black solid line) and the Liouville-von Neumann equation under the non-hermitian effective Hamiltonian $\vec{H}^\mathrm{eff} = \vec{H}_\mathrm{el}-\frac{i}{2}\bm{\Gamma}$ (red dashed line). }\label{fig:Comparison_NH_MFHEOM}
+%\end{figure}\\
+%Now turning to the case with electron-vibrational coupling in the form of \cref{eq:PeierlsDoubleDot}. With $t_1 = 0.2$, $\omega_0 = 0.1$, and $\Gamma_L=\Gamma_R=0$  
 \subsection{Initial distribution of vibrational phase space coordinates}
 As in the usual multi-trajectory Ehrenfest methodology, the initial vibrational phase space coordinates are sampled from the Boltzmann distribution for a harmonic oscillator in its ground state
 \begin{equation}
@@ -295,21 +324,72 @@ In the numerical calculation, pseudo-random numbers are sampled from this distri
 	\includegraphics[width=0.95\textwidth]{figs/Comparison_Pdist_analytical_numerical.pdf}
 	\caption{Comparison of analytical harmonic oscillator Boltzmann probability density distribution ($\omega = 0.05$, $\beta = 40$) with pseudo-random numbers sampled from the same distribution (samplesize $n=900$).}\label{fig:Comparison_Pdist_analytical_numerical}
 \end{figure}\\
-\subsection{Convergence of current with number of trajectories}
+\subsection{Existence of steady-state} 
+In the following, we consider statements about the steady-state for the electrons and vibrations independently, beginning with a discussion of the electronic system. The main assumption is,a time-scale separation, such that the position of the vibrational mode is assumed to be time-independent. However, we will see that this assumption does not hold in the general coupled dynamics. 
+The existence of a non-equilibrium steady-state, among other properties of open quantum systems, can be inferred directly from the spectrum of the Liouvillian superoperator \cite{rivas2012open}. 
+The vectorized density matrix $\vert\rho\rangle$ follows the equation of motion under some (time-independent) Liouvillian superoperator matrix $\mathcal{L}$
+\begin{equation}
+	\frac{\dif}{\dif t}\vert\rho\rangle = -i\mathcal{L}\vert\rho\rangle.
+\end{equation}
+Then, the formal solution is given by
+\begin{equation}
+	\vert\rho(t)\rangle = \exP{-i\mathcal{L}t}\vert\rho_0\rangle
+\end{equation}
+or equivalently 
+\begin{equation}
+	\vert\rho(t)\rangle = \sum_n c_n\exP{\lambda_n t}\vert \rho_n\rangle
+\end{equation}
+with eigenvalues $\lambda_n$ and the expansion coefficients $c_n$ are given by the overlap between eigenstates $\vert\rho_n\rangle$ of $\mathcal{L}$ and the density matrix vector at time $t=0$
+\begin{equation}
+	c_n = \frac{\langle \rho_n \vert \rho(0)\rangle}{\langle \rho_n\vert \rho_n\rangle}.
+\end{equation}
+A unique non-equilibrium steady-state exists for all $\vert\rho(0)\rangle$ if there is a non-degenerate eigenvalue $\lambda_n = 0$ and  all other eigenvalues have negative real-part. The non-equilibrium steady-state is then determined by the eigenvector corresponding to $\lambda_n = 0$
+\begin{equation}
+	\vert\rho(t)\rangle = \vert\rho_\mathrm{ss}\rangle + \sum_{n\neq 0} c_n\exP{\lambda_n t}\vert\rho_n\rangle.
+\end{equation}
+The classical dynamical system can be represented by a vector $\bm{\xi} = (X_1,P_1,\dots,X_n,P_n)$ such that the classical equation of motion is 
+\begin{equation}
+	\frac{\dif }{\dif t}\bm{\xi} = \mathcal{M}\bm{\xi} + \vec{b}(\langle\rho\rangle),
+\end{equation}
+where 
+\begin{equation}
+	\mathcal{M} = \begin{pmatrix}
+		0 & \omega_0 & 0 & 0 &\dots & 0\\
+		-\omega_0^2 & 0 & 0 &  0& \dots & 0\\
+		0 & 0 & 0 & \omega_0 & \dots & 0\\
+		0 & 0 & -\omega_0^2 & 0 & \dots & 0\\
+		\vdots &   &  &\ddots  & &\vdots\\
+		0 & \dots & & &  &0
+	\end{pmatrix}
+\end{equation}
+and 
+\begin{equation}
+	\vec{b}(\langle \bm{\rho}\rangle) = \begin{pmatrix}
+		0 \\
+		-\tr{\bm{\rho} \partial_{X_1}\vec{H}_\mathrm{el-ph}}\\
+		0\\
+		\vdots\\
+	\end{pmatrix}.
+\end{equation}
+The steady-state is then given by
+\begin{equation}
+	\bm{\xi}_\mathrm{ss} = -\mathcal{M}^{-1}\vec{b}.
+\end{equation}
+\subsection{Convergence with number of trajectories}
 In the following, the parameters are the same as before: $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, $\omega_0 = 0.05t_0$ $\Gamma_0 = t_0/4$ and $\beta = 40$.
-Note, that in \cite{fransson2020vibrational}, a dimensionless coupling $t_1/\omega_0 = 10$ is used, whereas here we use $t_1/\omega_0 = 2$ thus we are in a parameter regime which is much easier to converge.  
+Note, that in \cite{fransson2020vibrational}, a dimensionless coupling $t_1/\omega_0 = 10$ is used, whereas here we use $t_1/\omega_0 = 2$. Thus we are in a parameter regime which is much easier to converge.  
 \Cref{fig:Current_convergence} shows the time-dependent symmetrized current $I_L(t)-I_R(t)$ for $V=18$ and $P=0.5$. Therein, gray faint lines are single trajectories, the red solid line is the weighted average for $n=100$ trajectories (weighted by the probability obtained from \cref{eq:Boltzmann_probabilityDist}) and the dashed orange line averaged over $n=1000$ trajectories. 
 It has been checked, that the absolute normalized difference between averaged currents for $n=100$ and $n=1000$ is below $0.05\%$.  
 \begin{figure}[!h]
 	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf}
 	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=18.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_convergence}
-\end{figure}
-However, for a smaller voltage, much more trajectories are necessary to converge the results, as shown in \cref{fig:Current_V12_convergence}.
+\end{figure}\\
+However, for a smaller voltage, much more trajectories are necessary to converge the results. \Cref{fig:Current_V12_convergence} shows the weighted average of the symmetrized current for four different number of trajectories. The difference in current for $n=100$ and $n=1500$ is much larger compared to the case $V=18$ shown in \cref{fig:Current_convergence}.
 \begin{figure}[!h]
 	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_V12.pdf}
 	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=12.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_V12_convergence}
-\end{figure}
-
+\end{figure}\\
+It is apparent, that the no steady-state is reached in the time interval considered in the calculation. 
 \subsection{Reduction of saturation current}
 As can be seen in \cref{fig:Current_convergence}, the average current slightly oscillates with time. To capture this oscillation, \cref{fig:IV_1x3_MF-HEOM} shows the maximum (red line), minimum (blue line) and average (black line) of the current in the time interval $[200,2000]t_0^{-1}$.
 \begin{figure}[!h]
@@ -317,11 +397,29 @@ As can be seen in \cref{fig:Current_convergence}, the average current slightly o
 	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_P0.5_IV_min_max_mean.pdf}
 	\caption{}\label{fig:IV_1x3_MF-HEOM}
 \end{figure} 
+\subsection{Origin of absence of steady-state}
+\Cref{fig:Current_comparison_tPh_notPh} shows the current for a single trajectory 
 
-\subsection{Origin of absence of steady-state} 
 Show that in the Ehrenfest approach, currents are not reaching a steady state for sufficiently high bias.
 Show $(t,V)$ imshow of current.
 \subsubsection{Holstein model}
+We consider now a Holstein model with the Hamiltonian
+\begin{equation}
+	H = \varepsilon_0 d^\dagger d + g d^\dagger d X(t) + \sum_{\ell,k} \nu_{\ell,k}d^\dagger d_{\ell k}c + \mathrm{h.c.} + \sum_{\ell,k} \varepsilon_{\ell k}c^\dagger_{\ell k}c^\pdagger_{\ell k}.
+\end{equation}
+Using the unoccupied and occupied dot states as the basis, 
+under the Born-Markov approximation, an equation of motion for the reduced density matrix can be derived. Neglecting further the time-dependence of the system Green functions, the Master equation reads
+\begin{equation}
+	\dot{\rho}(t) = -i[H(t),\rho] + (-\Gamma_L \rho_{00}+\Gamma_R\rho_{11})\vert 0\rangle\langle 0\vert + (\Gamma_L \rho_{00}-\Gamma_R\rho_{11})\vert 1\rangle\langle 1\vert.
+\end{equation}
+Together with the classical equation of motion, the coupled system of equations of motion read
+\begin{align}
+	\dot{\rho}_{00} &= -\Gamma_L\rho_{00}+\Gamma_R\rho_{11}\\
+	\dot{\rho}_{11} &= \Gamma_L\rho_{00}-\Gamma_R\rho_{11}\\
+	\dot{\rho}_{01} &= i\rho_{01}(\varepsilon_0 + gX(t))\\
+	\dot{X} &= \omega_0 P(t)\\
+	\dot{P} &= -g(\rho_{01}(t)+\rho_{11}(t)) - \omega_0^2 X(t).
+\end{align}
 \begin{itemize}
 	\item For single phonon, e.g. on site 2 of a three-dot system, there exists a steady-state current
 	\item Already when placing two phonons, steady-state does not exist.
