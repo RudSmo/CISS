@@ -25,12 +25,14 @@ ax = plt.axes([px,py,sx,sy])
 
 Gamma0 = 1/4
 
+I75 = readdlm("currents_avg_n75.dat")
 I50 = readdlm("currents_avg_n50.dat")
 I25 = readdlm("currents_avg_n25.dat")
 I5 = readdlm("currents_avg_n5.dat")
 
 
-ax.plot(I50[2:end,1],(I50[2:end,2]-I50[2:end,3])/Gamma0,color="red", linewidth = lw, label = L"$n=1000$")
+ax.plot(I75[2:end,1],(I75[2:end,2]-I75[2:end,3])/Gamma0,color="red", linewidth = lw, label = L"$n=1500$")
+ax.plot(I50[2:end,1],(I50[2:end,2]-I50[2:end,3])/Gamma0,color="orange", linewidth = lw, label = L"$n=1000$")
 ax.plot(I25[2:end,1],(I25[2:end,2]-I25[2:end,3])/Gamma0,color="blue", linewidth = lw, label = L"$n=500$")
 ax.plot(I5[2:end,1],(I5[2:end,2]-I5[2:end,3])/Gamma0,color="k", linewidth = lw, label = L"$n=100$")
 

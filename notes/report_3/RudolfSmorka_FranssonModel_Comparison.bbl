@@ -208,5 +208,32 @@
     \field{journaltitle}{arXiv preprint arXiv:1912.05633}
     \field{year}{2019}
   \endentry
+
+  \entry{rivas2012open}{book}{}
+    \name{author}{2}{}{%
+      {{hash=RA}{%
+         family={Rivas},
+         familyi={R\bibinitperiod},
+         given={Angel},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=HSF}{%
+         family={Huelga},
+         familyi={H\bibinitperiod},
+         given={Susana\bibnamedelima F},
+         giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Springer}%
+    }
+    \strng{namehash}{RAHSF1}
+    \strng{fullhash}{RAHSF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{title}{Open quantum systems}
+    \field{volume}{10}
+    \field{year}{2012}
+  \endentry
 \enddatalist
 \endinput
