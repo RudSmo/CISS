@@ -6,7 +6,7 @@ function Hel(t0,tph,w0,X,gL,gR)
 end
 
 function VNeumann(rho,H)
-	return -1im * (H*rho-rho*H)
+	return -1im * (H * rho - rho * H')
 end
 
 function Xfunc(w0,P)
@@ -49,16 +49,16 @@ function Simulate(rho0,x0,p0,gL,gR,w0,t0,tph,dt,numsteps)
 	return ti, p1l,p2l,xl,pl
 end
 
-rho0 = [1.0 0; 0 0.0]
+rho0 = [1.0 0.0; 0.0 0.0]
 t0 = 1.0
 X0 = 1.0
 P0 = 0.0
 gL = 0.25
 gR = 0.25
 w0 = 0.1
-tph = 0.0
-dt = 0.0001
-numsteps = Int(500/dt)
+tph = 0.0#5
+dt = 0.001
+numsteps = Int(100/dt)
 
 
 ti, p1l,p2l,xl,pl = Simulate(rho0,X0,P0,gL,gR,w0,t0,tph,dt,numsteps)

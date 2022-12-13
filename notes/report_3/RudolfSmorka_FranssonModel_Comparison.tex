@@ -35,7 +35,7 @@
 }
 \begin{document}
 	
-\title{Fransson's model: Tests of implementation}
+\title{Franssons model: Tests of implementation}
 \author{Rudolf Smorka}
 \maketitle
 \tableofcontents
@@ -269,18 +269,17 @@ Upon inspecting the populations more closely, deviations at the system-lead inte
 \section{Ehrenfest Dynamics in the Coupled molecule}
 \subsection{Reduction to classical MD for zero electron-phonon coupling}
 For vanishing electron-phonon coupling, the nuclear dynamics reduces to a purely molecular dynamics integration. 
+Then, the Hamiltonian reduces to 
+\begin{equation}
+	H = \sum_i \frac{\omega_i}{2}\left(\omega_i X_i^2 + P_i^2\right) + H_\mathrm{el}\label{eq:TotalHamiltonian}
+\end{equation}
+where $H_\mathrm{el}$ is the purely electronic part of the total Hamiltonian. Since the vibrational modes are not coupled among each other, for the following analysis a single mode only is considered.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.7\textwidth]{figs/Decoupled_vibrational_dynamics.pdf}
 	\caption{Numerical $X$, $P$ (black, blue line) and analytical functions (\cref{eq:AnalyticalVib1,eq:AnalyticalVib2}, dashed lines) for $\omega = 0.1$.}\label{fig:Comparison_Vib_Analytical}
 \end{figure}\\
-Then, the Hamiltonian reduces to 
-\begin{equation}
-	H = \sum_i \frac{\omega_i}{2}\left(\omega_i X_i^2 + P_i^2\right) + H_\mathrm{el}\label{eq:TotalHamiltonian}
-\end{equation}
-where $H_\mathrm{el}$ is the purely electronic part of the total Hamiltonian.
-Since the vibrational modes are not coupled among each other, for the following analysis a single mode only is considered.
-Then the Hamilton's equation of motion for vibrational coordinates and momenta then read
+Then the Hamilton's equation of motion for vibrational coordinates and momenta read
 \begin{align}
 	\frac{\dif X}{\dif t} &= \frac{\partial H}{\partial P} = \omega P\\
 	\frac{\dif P}{\dif t} &= -\frac{\partial H}{\partial X} = -\omega^2 X\\
@@ -324,8 +323,9 @@ In the numerical calculation, pseudo-random numbers are sampled from this distri
 	\includegraphics[width=0.95\textwidth]{figs/Comparison_Pdist_analytical_numerical.pdf}
 	\caption{Comparison of analytical harmonic oscillator Boltzmann probability density distribution ($\omega = 0.05$, $\beta = 40$) with pseudo-random numbers sampled from the same distribution (samplesize $n=900$).}\label{fig:Comparison_Pdist_analytical_numerical}
 \end{figure}\\
-\subsection{Existence of steady-state} 
-In the following, we consider statements about the steady-state for the electrons and vibrations independently, beginning with a discussion of the electronic system. The main assumption is,a time-scale separation, such that the position of the vibrational mode is assumed to be time-independent. However, we will see that this assumption does not hold in the general coupled dynamics. 
+\subsection{Existence of a unique steady-state under the static approximation} 
+In the following, we consider statements about the steady-state for the electrons and vibrations independently, beginning with a discussion of the electronic system. The main assumption is a time-scale separation, such that in one subsystem the observables related to the other subsystem are essentially time-independent. 
+ 
 The existence of a non-equilibrium steady-state, among other properties of open quantum systems, can be inferred directly from the spectrum of the Liouvillian superoperator \cite{rivas2012open}. 
 The vectorized density matrix $\vert\rho\rangle$ follows the equation of motion under some (time-independent) Liouvillian superoperator matrix $\mathcal{L}$
 \begin{equation}
@@ -343,10 +343,33 @@ with eigenvalues $\lambda_n$ and the expansion coefficients $c_n$ are given by t
 \begin{equation}
 	c_n = \frac{\langle \rho_n \vert \rho(0)\rangle}{\langle \rho_n\vert \rho_n\rangle}.
 \end{equation}
-A unique non-equilibrium steady-state exists for all $\vert\rho(0)\rangle$ if there is a non-degenerate eigenvalue $\lambda_n = 0$ and  all other eigenvalues have negative real-part. The non-equilibrium steady-state is then determined by the eigenvector corresponding to $\lambda_n = 0$
+A unique non-equilibrium steady-state exists for all $\vert\rho(0)\rangle$ if there is a non-degenerate eigenvalue $\lambda_n = 0$ and  all other eigenvalues have negative real-part (given, the dynamical map is completely positive). The non-equilibrium steady-state is then determined by the eigenvector corresponding to $\lambda_n = 0$
 \begin{equation}
 	\vert\rho(t)\rangle = \vert\rho_\mathrm{ss}\rangle + \sum_{n\neq 0} c_n\exP{\lambda_n t}\vert\rho_n\rangle.
 \end{equation}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.93\textwidth]{figs/Liouvillian_Spec_X2_0.0_X1Var.pdf}
+	\caption{Spectral properties of the effective Liouvillian: Real and imaginary part of the eigenvalues $\lambda_n$ for Franssons model with $P=0$ ((a) and (b)) and $P=0.5$ ((c) and (d)) for various vibrational positions $X_1$ of the mode at the bond between site 1 and 2. Parameters are given in the main text.}\label{fig:Liouvillian_Spec_X2_0.0_X1Var}
+\end{figure}\\
+\Cref{fig:Liouvillian_Spec_X2_0.0_X1Var} shows the real and imaginary part  of the spectrum of the effective Liouvillian
+\begin{equation}
+	\mathcal{L}_\mathrm{eff}\rho = -i[H_\mathrm{eff}\rho-\rho H_\mathrm{eff}^\dagger ]\label{eq:Liouvillian_effective}
+\end{equation}
+with non-hermitian effective Hamiltonian $H_\mathrm{eff}=H-\frac{i}{2}\sum_\ell \Gamma_\ell$ for Franssons model for $P=0$ ((a) and (b)) and $P=0.5$ ((c) and (d)) and various $X_1$. Here, the system size is $\mathbb{M}=1\times 3$ and the remaining parameters are 
+$t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, $\omega_0 = 0.05t_0$, and $\Gamma_0 = t_0/4$. Note, that we set the position of the vibrational mode at the bond between sites 2 and 3 to $X_2 = 0$. The spectral properties of the effective Liouvillian for $X_2 = 1$ are shown in \cref{fig:Liouvillian_Spec_X2_1.0_X1Var}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.93\textwidth]{figs/Liouvillian_Spec_X2_1.0_X1Var.pdf}
+	\caption{Spectral properties of $\mathcal{L}_\mathrm{eff}$ for $X_2=1$. Parameters are the same as in \cref{fig:Liouvillian_Spec_X2_0.0_X1Var}.}\label{fig:Liouvillian_Spec_X2_1.0_X1Var}
+\end{figure}\\
+Introducing $\Gamma_\ell = \gamma_\ell^\dagger \gamma_\ell$, one can recast the effective Liouvillian into Lindblad-form
+\begin{equation}
+	\mathcal{L}_\mathrm{eff}\rho = -i[H,\rho] - \frac{1}{2}\sum_\ell\{\gamma_\ell^\dagger\gamma_\ell,\rho\}
+\end{equation}
+under the assumption that the effect of the jump operators $\gamma_\ell$ is negligible \cite{minganti2019quantum}.
+For both cases of $X_2$, there exist degenerate eigenvalues $\lambda_0 = 0$, indicating the existence of several steady-states. {\color{red} Discuss above results.}
+
 The classical dynamical system can be represented by a vector $\bm{\xi} = (X_1,P_1,\dots,X_n,P_n)$ such that the classical equation of motion is 
 \begin{equation}
 	\frac{\dif }{\dif t}\bm{\xi} = \mathcal{M}\bm{\xi} + \vec{b}(\langle\rho\rangle),
@@ -369,12 +392,33 @@ and
 		-\tr{\bm{\rho} \partial_{X_1}\vec{H}_\mathrm{el-ph}}\\
 		0\\
 		\vdots\\
+		0 \\
+		-\tr{\bm{\rho} \partial_{X_{N-1}}\vec{H}_\mathrm{el-ph}}\\
 	\end{pmatrix}.
 \end{equation}
 The steady-state is then given by
 \begin{equation}
 	\bm{\xi}_\mathrm{ss} = -\mathcal{M}^{-1}\vec{b}.
 \end{equation}
+For example, for $\mathbb{M}=1\times 2$, there is a single bond only, and therefore only a single vibrational mode. 
+The steady-state can be read off directly from the equation of motion
+\begin{equation}
+	\bm{\xi}_\mathrm{ss} = \frac{1}{\omega_0}\begin{pmatrix}
+		 \tr{\bm{\rho} \partial_{X}\vec{H}_\mathrm{el-ph}}\\
+		0
+	\end{pmatrix}.
+\end{equation}
+We conclude, that both electronic and vibrational systems, when treated independently, have a unique steady-state.
+\subsection{Existence of steady-state in the coupled dynamical system}
+Put here plot of data in TripleDot. Insight: Phonons oscillate around $X=-10$ (check against steady-state analysis from above with numerical coherences) harmonically. There is no damping. The initial Wigner distribution is far away from this equilibrium point. 
+Another insight is that even for $X_0$ close to the value of the steady-state, the modes run away. Hence, the coupling is too large. 
+Proposition: Thermal Wigner distribution has to be corrected out-of equilibrium by an el-ph coupling term. This el-ph coupling essentially shifts the mean of the distribution to the proper steady-state. Question is how to obtain this expression analytically. To first approximation, one could obtain the coherences (without el-ph coupling) numerically and plug them into the Wigner distribution to get the form
+\begin{equation}
+	\rho \sim \exp\left[-\frac{\alpha_j}{\omega_j}(P_j^2 + \omega_j^2(X_j+\langle \rho_{jj+1}+\rho_{j+1j}\rangle)^2)\right]
+\end{equation}
+Thus, legitimating (?) the use of smaller coupling.
+Idea: Scan $X=0...-25$ and check if there is a trajectory which goes to equilibrium (for varying voltage).
+
 \subsection{Convergence with number of trajectories}
 In the following, the parameters are the same as before: $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, $\omega_0 = 0.05t_0$ $\Gamma_0 = t_0/4$ and $\beta = 40$.
 Note, that in \cite{fransson2020vibrational}, a dimensionless coupling $t_1/\omega_0 = 10$ is used, whereas here we use $t_1/\omega_0 = 2$. Thus we are in a parameter regime which is much easier to converge.  
@@ -397,11 +441,6 @@ As can be seen in \cref{fig:Current_convergence}, the average current slightly o
 	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_P0.5_IV_min_max_mean.pdf}
 	\caption{}\label{fig:IV_1x3_MF-HEOM}
 \end{figure} 
-\subsection{Origin of absence of steady-state}
-\Cref{fig:Current_comparison_tPh_notPh} shows the current for a single trajectory 
-
-Show that in the Ehrenfest approach, currents are not reaching a steady state for sufficiently high bias.
-Show $(t,V)$ imshow of current.
 \subsubsection{Holstein model}
 We consider now a Holstein model with the Hamiltonian
 \begin{equation}
@@ -424,14 +463,20 @@ Together with the classical equation of motion, the coupled system of equations 
 	\item For single phonon, e.g. on site 2 of a three-dot system, there exists a steady-state current
 	\item Already when placing two phonons, steady-state does not exist.
 \end{itemize}
+\subsection{Floquet-Liouvillian analysis}
+The vibrational dynamics is nearly periodic, such that
+\begin{equation}
+	\mathcal{L}(t) \approx \mathcal{L}(t+\tau)
+\end{equation}
+approximately holds. The time-dependence of the Liouvillian stems from the time-dependence of the classical vibrational modes, which is assumed to have the form given in \cref{eq:AnalyticalVib1,eq:AnalyticalVib2}.
 \subsection{Time-dependent Populations}
 Show that populations are also not stationary for long times, but switch depending on the positions of the phonons.
 Show $(t,V)$ imshow of population on a single site.
 Show $(t,\mathrm{site})$ imshow of all populations on all sites for different times.
 Can be explained with spectrum which is now time-dependent under the influence of phonons.
 Quantization of vibrational motion. Show FFT of population dynamics. Relation to phonon-frequencies. If matching, then there are quanta of vibration exchanged between electrons and vibrations.
-\subsection{Show that steady-state density matrix is the one of the effective }
-Clear from the analytical result without the phonons.
+%\subsection{Show that steady-state density matrix is the one of the effective }
+%Clear from the analytical result without the phonons.
 \subsection{Picture 1: Time-dependent spectrum}
 Berry phase effects? 
 \subsection{Picture 2: Transistions induced by el-ph coupling between stationary eigenstates}

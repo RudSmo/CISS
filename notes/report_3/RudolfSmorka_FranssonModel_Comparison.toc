@@ -9,16 +9,15 @@
 \contentsline {subsection}{\numberline {3.2}Stationary electronic lattice occupation}{7}{}%
 \contentsline {section}{\numberline {4}Ehrenfest Dynamics in the Coupled molecule}{10}{}%
 \contentsline {subsection}{\numberline {4.1}Reduction to classical MD for zero electron-phonon coupling}{10}{}%
-\contentsline {subsection}{\numberline {4.2}Check of implementation of coupled dynamics}{11}{}%
-\contentsline {subsection}{\numberline {4.3}Initial distribution of vibrational phase space coordinates}{11}{}%
-\contentsline {subsection}{\numberline {4.4}Existence of steady-state}{12}{}%
-\contentsline {subsection}{\numberline {4.5}Convergence with number of trajectories}{13}{}%
-\contentsline {subsection}{\numberline {4.6}Reduction of saturation current}{14}{}%
-\contentsline {subsection}{\numberline {4.7}Origin of absence of steady-state}{14}{}%
-\contentsline {subsubsection}{\numberline {4.7.1}Holstein model}{14}{}%
-\contentsline {subsection}{\numberline {4.8}Time-dependent Populations}{15}{}%
-\contentsline {subsection}{\numberline {4.9}Show that steady-state density matrix is the one of the effective }{15}{}%
-\contentsline {subsection}{\numberline {4.10}Picture 1: Time-dependent spectrum}{15}{}%
-\contentsline {subsection}{\numberline {4.11}Picture 2: Transistions induced by el-ph coupling between stationary eigenstates}{15}{}%
-\contentsline {subsection}{\numberline {4.12}Time-dependent vibrational phase space density}{15}{}%
-\contentsline {subsection}{\numberline {4.13}Magnetoresistance}{15}{}%
+\contentsline {subsection}{\numberline {4.2}Initial distribution of vibrational phase space coordinates}{11}{}%
+\contentsline {subsection}{\numberline {4.3}Existence of a unique steady-state under the static approximation}{12}{}%
+\contentsline {subsection}{\numberline {4.4}Existence of steady-state in the coupled dynamical system}{14}{}%
+\contentsline {subsection}{\numberline {4.5}Convergence with number of trajectories}{14}{}%
+\contentsline {subsection}{\numberline {4.6}Reduction of saturation current}{15}{}%
+\contentsline {subsubsection}{\numberline {4.6.1}Holstein model}{15}{}%
+\contentsline {subsection}{\numberline {4.7}Floquet-Liouvillian analysis}{16}{}%
+\contentsline {subsection}{\numberline {4.8}Time-dependent Populations}{16}{}%
+\contentsline {subsection}{\numberline {4.9}Picture 1: Time-dependent spectrum}{16}{}%
+\contentsline {subsection}{\numberline {4.10}Picture 2: Transistions induced by el-ph coupling between stationary eigenstates}{16}{}%
+\contentsline {subsection}{\numberline {4.11}Time-dependent vibrational phase space density}{16}{}%
+\contentsline {subsection}{\numberline {4.12}Magnetoresistance}{16}{}%

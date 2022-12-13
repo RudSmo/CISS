@@ -235,5 +235,48 @@
     \field{volume}{10}
     \field{year}{2012}
   \endentry
+
+  \entry{minganti2019quantum}{article}{}
+    \name{author}{4}{}{%
+      {{hash=MF}{%
+         family={Minganti},
+         familyi={M\bibinitperiod},
+         given={Fabrizio},
+         giveni={F\bibinitperiod},
+      }}%
+      {{hash=MA}{%
+         family={Miranowicz},
+         familyi={M\bibinitperiod},
+         given={Adam},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CRW}{%
+         family={Chhajlany},
+         familyi={C\bibinitperiod},
+         given={Ravindra\bibnamedelima W},
+         giveni={R\bibinitperiod\bibinitdelim W\bibinitperiod},
+      }}%
+      {{hash=NF}{%
+         family={Nori},
+         familyi={N\bibinitperiod},
+         given={Franco},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {APS}%
+    }
+    \strng{namehash}{MF+1}
+    \strng{fullhash}{MFMACRWNF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{6}
+    \field{pages}{062131}
+    \field{title}{Quantum exceptional points of non-Hermitian Hamiltonians and
+  Liouvillians: The effects of quantum jumps}
+    \field{volume}{100}
+    \field{journaltitle}{Physical Review A}
+    \field{year}{2019}
+  \endentry
 \enddatalist
 \endinput

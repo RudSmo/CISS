@@ -1,5 +1,13 @@
 using LinearAlgebra
 using PyPlot
+plt.style.use("classic")
+rc("text", usetex=true)
+rc("font",family="serif",serif="Times")
+fs = 17
+lw = 3
+rc("axes",labelsize=fs)
+rc("xtick",labelsize=fs-2)
+rc("ytick",labelsize=fs-2)
 
 
 function VDot(a)
@@ -20,8 +28,8 @@ end
 
 function HeffSpinless(N,t0,tph,w0,X,gL,gR)
 	H = zeros(N,N) * (1+0.0*1im)
-	H[1,1] = -1im/2 * gL
-	H[end,end] = -1im/2 * gR
+	H[1,1] = 1im/2 * gL
+	H[end,end] = 1im/2 * gR
 	for i in 1:N-1
 		H[i,i+1] = -t0-tph * sqrt(2*w0) * X[i]
 		H[i+1,i] = -t0-tph * sqrt(2*w0) * X[i]
@@ -99,36 +107,92 @@ function Liouvillian(H,rho)
 	return -1im * (H * rho - rho * H)
 end
 
-N = 2
-gL = 0.25
-gR = gL
-P = 0.5
-GL = gL * (ones(2) + P * [1,-1])
-GR = gR * ones(2)
-w0 = 0.05
-t0 = 1.0
-tso = t0/40
-tph = 0.1*t0
-tsoph = 0.1*tso
-Id = Matrix(I,N,N)
-#Id = Matrix(I,2*N,2*N)
-ew = []
 
-Xs = Array(-1.0:0.01:1.0)
-for X in Xs
-#	H = Heff(N,t0,tso,tph,tsoph,GL,GR,w0,[X])
-	H = HeffSpinless(N,t0,tph,w0,[X],gL,gR)
-	L = -1im*(kron(Id,H) - kron(conj(H),Id))
-	Lr = L[2:end,2:end]
-	if X == Xs[1]
-		println(eigvals(L))
+function LiouvillianEigsXVar(N,P,Xs,X2)
+	gL = 0.25
+	gR = 0.25
+	GL = gL * (ones(2) + P * [1,-1])
+	GR = gR * ones(2)
+	w0 = 0.05
+	t0 = 1.0
+	tso = t0/40
+	tph = 0.1*t0
+	tsoph = 0.1*tso
+	#Id = Matrix(I,N,N)
+	Id = Matrix(I,2*N,2*N)
+	ew = []
+
+	for X in Xs
+		H = Heff(N,t0,tso,tph,tsoph,GL,GR,w0,[X,X2])
+	#	H = HeffSpinless(N,t0,tph,w0,[X],gL,gR)
+		L = -1im*(kron(Id,H) - kron(transpose(H),Id))
+	#	Lr = L[1:end-1,1:end-1]
+		#if X == Xs[1]
+	#		println(eigvals(Lr))
+	#	end
+		push!(ew,eigvals(L))
 	end
-	push!(ew,eigvals(Lr))
+	return ew
 end
 
 
-#fig,ax = plt.subplots(2,1)
-plt.plot(Xs,real.(ew))
-#ax[1].plot(Xs,real.(ew))
-#ax[2].plot(Xs,imag.(ew))
-plt.show()
+fig = plt.figure(figsize = (10,6))
+px = 0.08
+py = 0.56
+sx = 0.445
+dx = 0.02
+sy = 0.43
+dy = 0.04
+
+ax11 = plt.axes([px,py,sx,sy])
+ax12 = plt.axes([px,py-sy-dy,sx,sy])
+
+ax21 = plt.axes([px+dx+sx,py,sx,sy])
+ax22 = plt.axes([px+dx+sx,py-sy-dy,sx,sy])
+
+#ax31 = plt.axes([px+2*(dx+sx),py,sx,sy])
+#ax32 = plt.axes([px+2*(dx+sx),py-sy-dy,sx,sy])
+
+ax = [[ax11,ax12],[ax21,ax22]]
+Ps = [0.0,0.5]
+Pstr = [L"$0.0$",L"$0.5$"]
+astr = [["(a)","(b)"],["(c)","(d)"]]
+lw = 2
+Xs = Array(0.0:0.0025:5.0)
+N = 3
+col = get_cmap(:brg)
+X2 = 1.0
+
+for i in 1:length(ax)
+	ew = LiouvillianEigsXVar(N,Ps[i],Xs,X2)
+	if i == 1
+		println(ew[1])
+	end
+	inds_r = [sortperm(real.(e)) for e in ew]
+	inds_i = [sortperm(imag.(e)) for e in ew]
+	ew_s_re = [real.(e[i]) for (e,i) in zip(ew,inds_r)]
+	ew_s_im = [imag.(e[i]) for (e,i) in zip(ew,inds_i)]
+	for k in 1:length(ew_s_re[1])
+		ax[i][1].plot(Xs,[ew_s_re[j][k]/0.25 for j in 1:length(ew_s_re)],linewidth=lw,color=col(k/(4*N^2)))
+		ax[i][2].plot(Xs,[ew_s_im[j][k]/0.25 for j in 1:length(ew_s_re)],linewidth=lw,color=col(k/(4*N^2)))
+	end
+	ax[i][1].set_ylim(-0.9,0.9)
+	ax[i][1].set_xticklabels([])
+	ax[i][1].annotate(L"$P=$"*Pstr[i],(0.4,0.87),xycoords="axes fraction",fontsize=fs-2)
+	ax[i][2].set_ylim(-0.8,0.8)
+	ax[i][2].set_xlabel(L"$X_1$")
+	if i > 1
+		for j in 1:2
+			ax[i][j].set_yticklabels([])
+		end
+	end
+	for j in 1:2
+                ax[i][j].annotate(astr[i][j],(0.02,0.92),xycoords="axes fraction",fontsize=fs-2)
+        end	
+end
+ax[1][1].set_ylabel(L"$\mathrm{Re}(\lambda_n) \, [\Gamma_0]$")
+ax[1][2].set_ylabel(L"$\mathrm{Im}(\lambda_n) \, [\Gamma_0]$")
+
+
+
+plt.savefig("Liouvillian_Spec_X2_$(X2)_X1Var.pdf")

@@ -14,8 +14,8 @@ using .CustomStructures
 # -------------- Parameters --------------------------
 
 # Simulation Parameters
-dt = 0.001
-tend = 200
+dt = 0.002
+tend = 5000
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -24,28 +24,28 @@ initProp  = true
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 2
+num_ions = 3
 N = num_laps * num_ions
 t0  = 1.0
-eu  = 0.0#-6*t0
-ed  = 0.0#-6*t0
+eu  = -6*t0
+ed  = -6*t0
 E   = [eu,ed]
 ws  = 0.05*ones(N)
 gPh = [0.6,0.6]
 a   = 1.0
 c   = 1.0
-tso = 0.0
+tso = t0/40
 tPh = 0.1*t0
-tsoPh = 0.0
+tsoPh = 0.1*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
-#model = FranssonHamiltonian
-model = FranssonHamiltonianNH
+model = FranssonHamiltonian
+#model = FranssonHamiltonianNH
 modelStr = "Fransson"
 
 if initProp
-    rhoIn = "pure"
-    #rhoIn = "equilibrium"
+    #rhoIn = "pure"
+    rhoIn = "equilibrium"
     phIn = "TDSCF"
     #phIn = "Wigner"
     pathIn = ""
@@ -54,19 +54,19 @@ else
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = [1.0,0.0,0.0,0.0]#[1.0,0,0.0,0,0,0]
+popElIn = [1.0,0.0,0.0,0.0,0,0.0]#,0,0,0]
 popPhIn = [0]
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-xnIn,pnIn = [12.0,0.0],[0.0,0.0]#InitialPh(popPhIn,ws,phases)
+xnIn,pnIn = [-10.0,-10.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
 
 
 ## Leads
-P = 0.0
+P = 0.5
 tL = 1/4 * (ones(2) .+ P * [1,-1])  
 tR = 1/4 * ones(2)
-V  = 0.0
-nPoles = 1#40
+V  = 12.0
+nPoles = 40
 beta = 1/0.025
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
@@ -89,7 +89,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "DoubleDot"
+path = "TripleDot"
 if !isdir(path)
 	mkdir(path)
 end
@@ -97,7 +97,7 @@ end
 num_avg = 1
 for ka in 1:num_avg
     if modelStr == "Fransson"
-        dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_NH_dt$(abs(dt))"
+        dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_X0_-10_dt$(abs(dt))"
     elseif modelStr == "Holstein"
         dataname1 = "$(path)/L$(N)_gPhU$(gPh[1])_gPhD$(gPh[2])_dt$(abs(dt))"
     end

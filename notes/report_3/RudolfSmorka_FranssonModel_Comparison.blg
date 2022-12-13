@@ -22,44 +22,44 @@ Database file #2: bib.bib
 Biblatex version: 3.16
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 9 entries,
+You've used 10 entries,
             6393 wiz_defined-function locations,
-            1256 strings with 10270 characters,
-and the built_in function-call counts, 40917 in all, are:
-= -- 2675
-> -- 862
-< -- 220
-+ -- 865
-- -- 278
-* -- 2634
-:= -- 4098
+            1263 strings with 10501 characters,
+and the built_in function-call counts, 49323 in all, are:
+= -- 3320
+> -- 988
+< -- 249
++ -- 1084
+- -- 332
+* -- 3301
+:= -- 5070
 add.period$ -- 0
-call.type$ -- 9
-change.case$ -- 126
+call.type$ -- 10
+change.case$ -- 137
 chr.to.int$ -- 43
-cite$ -- 16
-duplicate$ -- 4301
-empty$ -- 3924
-format.name$ -- 511
-if$ -- 8635
+cite$ -- 18
+duplicate$ -- 5158
+empty$ -- 4669
+format.name$ -- 611
+if$ -- 10309
 int.to.chr$ -- 0
-int.to.str$ -- 28
+int.to.str$ -- 31
 missing$ -- 0
-newline$ -- 234
-num.names$ -- 404
-pop$ -- 2786
+newline$ -- 276
+num.names$ -- 448
+pop$ -- 3171
 preamble$ -- 1
-purify$ -- 163
+purify$ -- 183
 quote$ -- 0
-skip$ -- 1546
+skip$ -- 1730
 stack$ -- 0
-substring$ -- 4210
-swap$ -- 1076
-text.length$ -- 188
+substring$ -- 5429
+swap$ -- 1250
+text.length$ -- 218
 text.prefix$ -- 1
 top$ -- 1
-type$ -- 294
+type$ -- 328
 warning$ -- 0
-while$ -- 562
+while$ -- 690
 width$ -- 0
-write$ -- 226
+write$ -- 267
