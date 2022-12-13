@@ -7,7 +7,7 @@
 \contentsline {section}{\numberline {3}Properties of the non-vibrating molecule}{4}{}%
 \contentsline {subsection}{\numberline {3.1}Current-voltage characteristics}{4}{}%
 \contentsline {subsection}{\numberline {3.2}Stationary electronic lattice occupation}{7}{}%
-\contentsline {section}{\numberline {4}Ehrenfest Dynamics in the Coupled molecule}{10}{}%
+\contentsline {section}{\numberline {4}Ehrenfest Dynamics in the coupled molecule}{10}{}%
 \contentsline {subsection}{\numberline {4.1}Reduction to classical MD for zero electron-phonon coupling}{10}{}%
 \contentsline {subsection}{\numberline {4.2}Initial distribution of vibrational phase space coordinates}{11}{}%
 \contentsline {subsection}{\numberline {4.3}Existence of a unique steady-state under the static approximation}{12}{}%

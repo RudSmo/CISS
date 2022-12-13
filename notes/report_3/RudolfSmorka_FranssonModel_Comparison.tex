@@ -266,7 +266,7 @@ Upon inspecting the populations more closely, deviations at the system-lead inte
 \phantom{i}
 \newpage
 
-\section{Ehrenfest Dynamics in the Coupled molecule}
+\section{}
 \subsection{Reduction to classical MD for zero electron-phonon coupling}
 For vanishing electron-phonon coupling, the nuclear dynamics reduces to a purely molecular dynamics integration. 
 Then, the Hamiltonian reduces to 
@@ -367,8 +367,9 @@ Introducing $\Gamma_\ell = \gamma_\ell^\dagger \gamma_\ell$, one can recast the 
 \begin{equation}
 	\mathcal{L}_\mathrm{eff}\rho = -i[H,\rho] - \frac{1}{2}\sum_\ell\{\gamma_\ell^\dagger\gamma_\ell,\rho\}
 \end{equation}
-under the assumption that the effect of the jump operators $\gamma_\ell$ is negligible \cite{minganti2019quantum}.
-For both cases of $X_2$, there exist degenerate eigenvalues $\lambda_0 = 0$, indicating the existence of several steady-states. {\color{red} Discuss above results.}
+under the assumption that the quantum-jump term $\gamma^\dagger_\ell \rho\gamma_\ell$ is negligible \cite{minganti2019quantum}.
+For both cases of $X_2$, there exist degenerate eigenvalues $\lambda_0 = 0$, indicating the existence of several steady-states. 
+{\color{red} Discuss above results.}
 
 The classical dynamical system can be represented by a vector $\bm{\xi} = (X_1,P_1,\dots,X_n,P_n)$ such that the classical equation of motion is 
 \begin{equation}
@@ -410,6 +411,12 @@ The steady-state can be read off directly from the equation of motion
 \end{equation}
 We conclude, that both electronic and vibrational systems, when treated independently, have a unique steady-state.
 \subsection{Existence of steady-state in the coupled dynamical system}
+In this section we investigate numerically if a steady-state is reached in the coupled electron-vibrational Ehrenfest-dynamics for the open Fransson model (considering the same parameters as before with $P=0.5$). 
+For this, the coupled quantum-classical HEOM equations of motion are solved where the initial vibrational coordinates are varied (and are not sampled from the distribution given in \cref{eq:Boltzmann_probabilityDist}).
+\Cref{fig:}
+
+
+ 
 Put here plot of data in TripleDot. Insight: Phonons oscillate around $X=-10$ (check against steady-state analysis from above with numerical coherences) harmonically. There is no damping. The initial Wigner distribution is far away from this equilibrium point. 
 Another insight is that even for $X_0$ close to the value of the steady-state, the modes run away. Hence, the coupling is too large. 
 Proposition: Thermal Wigner distribution has to be corrected out-of equilibrium by an el-ph coupling term. This el-ph coupling essentially shifts the mean of the distribution to the proper steady-state. Question is how to obtain this expression analytically. To first approximation, one could obtain the coherences (without el-ph coupling) numerically and plug them into the Wigner distribution to get the form

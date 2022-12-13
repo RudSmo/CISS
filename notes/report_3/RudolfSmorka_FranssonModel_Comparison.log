@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  13 DEC 2022 10:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  13 DEC 2022 17:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -896,13 +896,13 @@ line 363.
 File: figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf Graphic file (type pdf)
 <use figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf>
 Package pdftex.def Info: figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf  used on inp
-ut line 428.
+ut line 432.
 (pdftex.def)             Requested size: 459.51051pt x 206.78215pt.
 <figs/Currents_1x3_Ehrenfest_V12.pdf, id=402, 722.7pt x 325.215pt>
 File: figs/Currents_1x3_Ehrenfest_V12.pdf Graphic file (type pdf)
 <use figs/Currents_1x3_Ehrenfest_V12.pdf>
 Package pdftex.def Info: figs/Currents_1x3_Ehrenfest_V12.pdf  used on input lin
-e 433.
+e 437.
 (pdftex.def)             Requested size: 459.51051pt x 206.78215pt.
 
 
@@ -914,7 +914,7 @@ File: figs/Currents_1x3_Ehrenfest_P0.5_IV_min_max_mean.pdf Graphic file (type p
 df)
 <use figs/Currents_1x3_Ehrenfest_P0.5_IV_min_max_mean.pdf>
 Package pdftex.def Info: figs/Currents_1x3_Ehrenfest_P0.5_IV_min_max_mean.pdf  
-used on input line 441.
+used on input line 445.
 (pdftex.def)             Requested size: 459.51051pt x 206.78215pt.
 [14 <./figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf>] [15 <./figs/Currents_1x3_Ehr
 enfest_V12.pdf> <./figs/Currents_1x3_Ehrenfest_P0.5_IV_min_max_mean.pdf
@@ -926,7 +926,7 @@ ded in a single page
 <figs/1x3_PDist_Evo_site0.pdf, id=473, 867.24pt x 578.16pt>
 File: figs/1x3_PDist_Evo_site0.pdf Graphic file (type pdf)
 <use figs/1x3_PDist_Evo_site0.pdf>
-Package pdftex.def Info: figs/1x3_PDist_Evo_site0.pdf  used on input line 489.
+Package pdftex.def Info: figs/1x3_PDist_Evo_site0.pdf  used on input line 493.
 (pdftex.def)             Requested size: 483.69684pt x 322.47055pt.
 
 
@@ -978,7 +978,7 @@ type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2021/texmf-dist/fonts
 ype1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/ti
 mes/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8
 a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (17 pages, 1363734 
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (17 pages, 1363894 
 bytes).
 PDF statistics:
  600 PDF objects out of 1000 (max. 8388607)
