@@ -35,7 +35,7 @@
 }
 \begin{document}
 	
-\title{Franssons model: Tests of implementation}
+\title{Franssons model: Tests of implementation and first Ehrenfest results}
 \author{Rudolf Smorka}
 \maketitle
 \tableofcontents
@@ -105,7 +105,9 @@ The issue was an additional factor $1/\sqrt{2}$ in the definition of the vibrati
 	\caption{Population dynamics in the isolated Peierls-model: Comparison of GSE-TDVP with TT-HEOM for various number of vibrational levels and ranks. GSE-TDVP data has been checked to be converged for $M=5$ within the time-interval considered here.}
 \end{figure}
 \subsection{Coupled: Hopping and Onsite}
-Parameters: $L=3$, $t_0 = 1.0$, $T=\SI{0.1}{\electronvolt}\approx \SI{1160}{\kelvin}$, $\Gamma = \vert \nu\vert^2 = t_0/4$, $V=t_0$. The best agreement with the MF-HEOM data is obtained for $N_p=25$ and $r=150$ (runtime: 8d), however the steady-state has not been reached in this runtime.
+Parameters: $L=3$, $t_0 = 1.0$, $T=\SI{0.1}{\electronvolt}\approx \SI{1160}{\kelvin}$, $\Gamma = \vert \nu\vert^2 = t_0/4$, $V=t_0$. 
+Due to differences in the calculation of the initial condition (partition-free in the MF-HEOM, partitioned in the TT-HEOM) of the two methods, the transient dynamics is expected to show deviations. 
+Overall, the best agreement with the MF-HEOM data is obtained for $N_p=25$ and $r=150$ (runtime: 8d), however the steady-state has not been reached in this runtime. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.65\textwidth]{figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf}
@@ -232,7 +234,7 @@ If $\vec{U}$ diagonalizes the Hamiltonian $\vec{H}$, then $\bm{\Gamma}_\ell(\var
 \begin{equation}
 	I = \sum_k \frac{\Gamma_L(\varepsilon_k)\Gamma_R(\varepsilon_k)}{\Gamma_L(\varepsilon_k)+\Gamma_R(\varepsilon_k)}
 \end{equation}
-\subsection{Stationary electronic lattice occupation}
+\subsection{Stationary electronic lattice occupation}\label{sec:Stationary_el_lat_occ}
 \Cref{fig:Sz_SS} shows the steady-state electronic spin polarization in the full molecule. The parameters are $\mathbb{M}=2\times 4$, and everything else as before. 
 \begin{figure}[!h]
 	\centering
@@ -266,7 +268,7 @@ Upon inspecting the populations more closely, deviations at the system-lead inte
 \phantom{i}
 \newpage
 
-\section{}
+\section{Ehrenfest approach: Tests of implementation}
 \subsection{Reduction to classical MD for zero electron-phonon coupling}
 For vanishing electron-phonon coupling, the nuclear dynamics reduces to a purely molecular dynamics integration. 
 Then, the Hamiltonian reduces to 
@@ -323,8 +325,9 @@ In the numerical calculation, pseudo-random numbers are sampled from this distri
 	\includegraphics[width=0.95\textwidth]{figs/Comparison_Pdist_analytical_numerical.pdf}
 	\caption{Comparison of analytical harmonic oscillator Boltzmann probability density distribution ($\omega = 0.05$, $\beta = 40$) with pseudo-random numbers sampled from the same distribution (samplesize $n=900$).}\label{fig:Comparison_Pdist_analytical_numerical}
 \end{figure}\\
-\subsection{Existence of a unique steady-state under the static approximation} 
+\section{Existence of a unique steady-state}
 In the following, we consider statements about the steady-state for the electrons and vibrations independently, beginning with a discussion of the electronic system. The main assumption is a time-scale separation, such that in one subsystem the observables related to the other subsystem are essentially time-independent. 
+\subsection{Electronic steady-state: Fixed nuclei approximation} 
  
 The existence of a non-equilibrium steady-state, among other properties of open quantum systems, can be inferred directly from the spectrum of the Liouvillian superoperator \cite{rivas2012open}. 
 The vectorized density matrix $\vert\rho\rangle$ follows the equation of motion under some (time-independent) Liouvillian superoperator matrix $\mathcal{L}$
@@ -354,7 +357,7 @@ A unique non-equilibrium steady-state exists for all $\vert\rho(0)\rangle$ if th
 \end{figure}\\
 \Cref{fig:Liouvillian_Spec_X2_0.0_X1Var} shows the real and imaginary part  of the spectrum of the effective Liouvillian
 \begin{equation}
-	\mathcal{L}_\mathrm{eff}\rho = -i[H_\mathrm{eff}\rho-\rho H_\mathrm{eff}^\dagger ]\label{eq:Liouvillian_effective}
+	\mathcal{L}_\mathrm{eff}\rho = -i(H_\mathrm{eff}\rho-\rho H_\mathrm{eff}^\dagger )\label{eq:Liouvillian_effective}
 \end{equation}
 with non-hermitian effective Hamiltonian $H_\mathrm{eff}=H-\frac{i}{2}\sum_\ell \Gamma_\ell$ for Franssons model for $P=0$ ((a) and (b)) and $P=0.5$ ((c) and (d)) and various $X_1$. Here, the system size is $\mathbb{M}=1\times 3$ and the remaining parameters are 
 $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, $\omega_0 = 0.05t_0$, and $\Gamma_0 = t_0/4$. Note, that we set the position of the vibrational mode at the bond between sites 2 and 3 to $X_2 = 0$. The spectral properties of the effective Liouvillian for $X_2 = 1$ are shown in \cref{fig:Liouvillian_Spec_X2_1.0_X1Var}.
@@ -368,9 +371,8 @@ Introducing $\Gamma_\ell = \gamma_\ell^\dagger \gamma_\ell$, one can recast the 
 	\mathcal{L}_\mathrm{eff}\rho = -i[H,\rho] - \frac{1}{2}\sum_\ell\{\gamma_\ell^\dagger\gamma_\ell,\rho\}
 \end{equation}
 under the assumption that the quantum-jump term $\gamma^\dagger_\ell \rho\gamma_\ell$ is negligible \cite{minganti2019quantum}.
-For both cases of $X_2$, there exist degenerate eigenvalues $\lambda_0 = 0$, indicating the existence of several steady-states. 
-{\color{red} Discuss above results.}
-
+For both cases of $X_2$, there exist degenerate eigenvalues $\lambda_0 = 0$. At special points $X> 0$, this degeneracy is lifted and the spectrum of the effective Liouvillian bifurcates. 
+\subsection{Vibrational steady-state: Adiabatic approximation}
 The classical dynamical system can be represented by a vector $\bm{\xi} = (X_1,P_1,\dots,X_n,P_n)$ such that the classical equation of motion is 
 \begin{equation}
 	\frac{\dif }{\dif t}\bm{\xi} = \mathcal{M}\bm{\xi} + \vec{b}(\langle\rho\rangle),
@@ -407,97 +409,130 @@ The steady-state can be read off directly from the equation of motion
 	\bm{\xi}_\mathrm{ss} = \frac{1}{\omega_0}\begin{pmatrix}
 		 \tr{\bm{\rho} \partial_{X}\vec{H}_\mathrm{el-ph}}\\
 		0
-	\end{pmatrix}.
+	\end{pmatrix}.\label{eq:PhaseSpace_NESS}
 \end{equation}
 We conclude, that both electronic and vibrational systems, when treated independently, have a unique steady-state.
-\subsection{Existence of steady-state in the coupled dynamical system}
+\subsection{Numerical investigation of steady-states in the coupled dynamical system}
 In this section we investigate numerically if a steady-state is reached in the coupled electron-vibrational Ehrenfest-dynamics for the open Fransson model (considering the same parameters as before with $P=0.5$). 
-For this, the coupled quantum-classical HEOM equations of motion are solved where the initial vibrational coordinates are varied (and are not sampled from the distribution given in \cref{eq:Boltzmann_probabilityDist}).
-\Cref{fig:}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.94\textwidth]{figs/Pops_currents_phonons_1x3_V0.pdf}
+	\caption{(a),(b) and (c) local spin polarization on sites 1,2, and 3, respectively. (d) Symmetrized current. (e) and (f) phase space trajectories of the two vibrational modes. Different lines show different initial conditions for the vibrational positions $X_0$. The dashed orange line shows quantities in the steady state for $t_1=\lambda_1 = 0$.}\label{fig:Pops_currents_phonons_1x3_V0}
+\end{figure}\\
+For this, the coupled quantum-classical HEOM equations of motion are solved where the initial vibrational coordinates are varied (and not sampled from the distribution given in \cref{eq:Boltzmann_probabilityDist}).
 
-
- 
-Put here plot of data in TripleDot. Insight: Phonons oscillate around $X=-10$ (check against steady-state analysis from above with numerical coherences) harmonically. There is no damping. The initial Wigner distribution is far away from this equilibrium point. 
-Another insight is that even for $X_0$ close to the value of the steady-state, the modes run away. Hence, the coupling is too large. 
-Proposition: Thermal Wigner distribution has to be corrected out-of equilibrium by an el-ph coupling term. This el-ph coupling essentially shifts the mean of the distribution to the proper steady-state. Question is how to obtain this expression analytically. To first approximation, one could obtain the coherences (without el-ph coupling) numerically and plug them into the Wigner distribution to get the form
+We start with the equilibrium case $V=0$. Shown in \cref{fig:Pops_currents_phonons_1x3_V0} (a), (b), and (c) are the local spin polarization $s_i^z = \tr{\rho_i \sigma^z}$ on sites $i=1,2,3$, in (d) the symmetrized current $I_L-I_R$, and the phase-space trajectory of phonons at the bond between site 1 and 2 (e) and at the bond between sites 2 and 3 (f). The different lines show initial conditions $X_0=0,-0.5,-4,-12,-25$ for both modes. The initial vibrational momenta are set to $P_1(0)=P_2(0)=0$ in all cases.
+We further compare the local spin polarization and the current with the ones obtained for $t_1 = \lambda_1=0$ (orange dashed line). The green cross in (e) and (f) indicates the steady state phase space point under the adiabatic approximation
 \begin{equation}
-	\rho \sim \exp\left[-\frac{\alpha_j}{\omega_j}(P_j^2 + \omega_j^2(X_j+\langle \rho_{jj+1}+\rho_{j+1j}\rangle)^2)\right]
+	\bm{\xi}^\mathrm{adiab.}_\mathrm{ss} = \bm{\xi}_\mathrm{ss} (\rho_\mathrm{ss}^\mathrm{FNA}),
 \end{equation}
-Thus, legitimating (?) the use of smaller coupling.
-Idea: Scan $X=0...-25$ and check if there is a trajectory which goes to equilibrium (for varying voltage).
+which is the steady-state solution given in \cref{eq:PhaseSpace_NESS} with the steady-state density matrix under the fixed nuclei approaximation, $\rho_\mathrm{ss}^\mathrm{FNA}$. The steady-state density matrix in the FNA is obtained by propagating the HEOM under the full Hamiltonian (for a given $X_0,P_0$) but without propagating the classical degrees of freedom. 
 
+For an initial condition $X_0\neq 0$, the local spin polarization and the symmetrized current follow the vibrational oscillation.
+There is a current from left to right when $X_1,X_2<0$ and from right to left when $X_1,X_2>0$.  
+Within the time-interval considered here, the current does not reach a steady state. 
+Instead, it reaches a limit cycle.
+Averaged over time, however, the current is zero.
+Note that the amplitudes of oscillation of the spin polarization and the current are rather small compared to their steady-state values.
+Also, no damping of the vibrational modes is observed, and the oscillation is stable. 
+An exception is the case for $X_0=0$. Here, the vibrational modes are already in their steady state from the beginning $t=0$ and show basically no dynamics. 
+Simultaneously, the current reaches a steady state in this case. 
+Another important point is that the steady-state phase space point under the adiabatic approximation $\bm{\xi}^\mathrm{adiab.}_\mathrm{ss}$ agrees well with the numerical steady-state. 
+We now proceed with the same analysis to a moderate voltage $V=12$, shown in \cref{fig:Pops_currents_phonons_1x3_V12}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.94\textwidth]{figs/Pops_currents_phonons_1x3_V12.pdf}
+	\caption{Same as \cref{fig:Pops_currents_phonons_1x3_V0} for $V=12$.}\label{fig:Pops_currents_phonons_1x3_V12}
+\end{figure}\\
+Beginning with the spin polarization, one can see that the time-dependence is not periodic anymore, unlike in the case $V=0$. On site 1, the spin polarization is for some time-interval even larger than the steady-state result obtained for $t_1=\lambda_1 = 0$. For later times and sufficiently large $X_0$, the spin polarization almost vanishes temporarily. On sites 2 and 3, this effect is observed for all investigated $X_0$, although the drop in spin polarization depends on $X_0$.
+In contrast, the current is almost never larger than the steady-state current obtained for $t_1=\lambda_1=0$. The dynamics of the vibrational modes leads to a temporary reduction of the current.
+The vibrational dynamics deviates significantly from the single harmonic-oscillator like phase-space portrait for $V=0$, covering larger parts of the phase space as energy from the electronic system is absorbed. 
+In the time-interval considered here, the vibrational coordinates reach a limit cycle, which appears to be stable.
+Also, the equilibrium of the vibrational position is shifted to $X\approx -10$. 
+When $X_0$, however, is chosen carefully, the time-dependence of current and the populations can be reduced, such that a near-steady-state solution is found.
+An interesting point is that the numerical steady-state phase-space point deviates strongly from $\bm{\xi}^\mathrm{adiab.}_\mathrm{ss}$.
+We checked that the steady-state phase space point is voltage-dependent (but will not show any analysis on this). 
+To conclude, the results have following implications (not in general, but only within the Ehrenfest-approach considered here):
+\begin{itemize}
+	\item Given an arbitrary $\bm{\xi}_0$, a steady-state may not exist (but a limit-cycle may exist).
+	\item There exist $\bm{\xi}_0$, for which the time-dependence of long-time observables is small. (Speculation) When averaged over many trajectories normally distributed with means $\bm{\xi}_0$, a steady-state may be obtained as time-dependent contributions could cancel out.
+	\item The $\bm{\xi}_0$ which are close to steady-state, depend on $V$ and may deviate from the null vector. (Speculation) Even when when trajectories are sampled from \cref{eq:Boltzmann_probabilityDist} and quantities are obtained from a weighted average, a steady-state may not be found for all voltages.
+\end{itemize} 
+\newpage
+\section{Multi-trajectory Ehrenfest dynamics approach to the Fransson model}
 \subsection{Convergence with number of trajectories}
 In the following, the parameters are the same as before: $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, $\omega_0 = 0.05t_0$ $\Gamma_0 = t_0/4$ and $\beta = 40$.
 Note, that in \cite{fransson2020vibrational}, a dimensionless coupling $t_1/\omega_0 = 10$ is used, whereas here we use $t_1/\omega_0 = 2$. Thus we are in a parameter regime which is much easier to converge.  
 \Cref{fig:Current_convergence} shows the time-dependent symmetrized current $I_L(t)-I_R(t)$ for $V=18$ and $P=0.5$. Therein, gray faint lines are single trajectories, the red solid line is the weighted average for $n=100$ trajectories (weighted by the probability obtained from \cref{eq:Boltzmann_probabilityDist}) and the dashed orange line averaged over $n=1000$ trajectories. 
 It has been checked, that the absolute normalized difference between averaged currents for $n=100$ and $n=1000$ is below $0.05\%$.  
 \begin{figure}[!h]
-	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf}
+	\includegraphics[width=0.8\textwidth]{figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf}
 	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=18.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_convergence}
 \end{figure}\\
 However, for a smaller voltage, much more trajectories are necessary to converge the results. \Cref{fig:Current_V12_convergence} shows the weighted average of the symmetrized current for four different number of trajectories. The difference in current for $n=100$ and $n=1500$ is much larger compared to the case $V=18$ shown in \cref{fig:Current_convergence}.
 \begin{figure}[!h]
-	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_V12.pdf}
+	\includegraphics[width=0.8\textwidth]{figs/Currents_1x3_Ehrenfest_V12.pdf}
 	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=12.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_V12_convergence}
 \end{figure}\\
-It is apparent, that the no steady-state is reached in the time interval considered in the calculation. 
-\subsection{Reduction of saturation current}
-As can be seen in \cref{fig:Current_convergence}, the average current slightly oscillates with time. To capture this oscillation, \cref{fig:IV_1x3_MF-HEOM} shows the maximum (red line), minimum (blue line) and average (black line) of the current in the time interval $[200,2000]t_0^{-1}$.
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_P0.5_IV_min_max_mean.pdf}
-	\caption{}\label{fig:IV_1x3_MF-HEOM}
-\end{figure} 
-\subsubsection{Holstein model}
-We consider now a Holstein model with the Hamiltonian
-\begin{equation}
-	H = \varepsilon_0 d^\dagger d + g d^\dagger d X(t) + \sum_{\ell,k} \nu_{\ell,k}d^\dagger d_{\ell k}c + \mathrm{h.c.} + \sum_{\ell,k} \varepsilon_{\ell k}c^\dagger_{\ell k}c^\pdagger_{\ell k}.
-\end{equation}
-Using the unoccupied and occupied dot states as the basis, 
-under the Born-Markov approximation, an equation of motion for the reduced density matrix can be derived. Neglecting further the time-dependence of the system Green functions, the Master equation reads
-\begin{equation}
-	\dot{\rho}(t) = -i[H(t),\rho] + (-\Gamma_L \rho_{00}+\Gamma_R\rho_{11})\vert 0\rangle\langle 0\vert + (\Gamma_L \rho_{00}-\Gamma_R\rho_{11})\vert 1\rangle\langle 1\vert.
-\end{equation}
-Together with the classical equation of motion, the coupled system of equations of motion read
-\begin{align}
-	\dot{\rho}_{00} &= -\Gamma_L\rho_{00}+\Gamma_R\rho_{11}\\
-	\dot{\rho}_{11} &= \Gamma_L\rho_{00}-\Gamma_R\rho_{11}\\
-	\dot{\rho}_{01} &= i\rho_{01}(\varepsilon_0 + gX(t))\\
-	\dot{X} &= \omega_0 P(t)\\
-	\dot{P} &= -g(\rho_{01}(t)+\rho_{11}(t)) - \omega_0^2 X(t).
-\end{align}
-\begin{itemize}
-	\item For single phonon, e.g. on site 2 of a three-dot system, there exists a steady-state current
-	\item Already when placing two phonons, steady-state does not exist.
-\end{itemize}
-\subsection{Floquet-Liouvillian analysis}
-The vibrational dynamics is nearly periodic, such that
-\begin{equation}
-	\mathcal{L}(t) \approx \mathcal{L}(t+\tau)
-\end{equation}
-approximately holds. The time-dependence of the Liouvillian stems from the time-dependence of the classical vibrational modes, which is assumed to have the form given in \cref{eq:AnalyticalVib1,eq:AnalyticalVib2}.
-\subsection{Time-dependent Populations}
-Show that populations are also not stationary for long times, but switch depending on the positions of the phonons.
-Show $(t,V)$ imshow of population on a single site.
-Show $(t,\mathrm{site})$ imshow of all populations on all sites for different times.
-Can be explained with spectrum which is now time-dependent under the influence of phonons.
-Quantization of vibrational motion. Show FFT of population dynamics. Relation to phonon-frequencies. If matching, then there are quanta of vibration exchanged between electrons and vibrations.
-%\subsection{Show that steady-state density matrix is the one of the effective }
-%Clear from the analytical result without the phonons.
-\subsection{Picture 1: Time-dependent spectrum}
-Berry phase effects? 
-\subsection{Picture 2: Transistions induced by el-ph coupling between stationary eigenstates}
+It is apparent, that the no steady-state is reached in the time interval considered in the calculation. Rather a limit cycle is reached. These results confirm the third point given in the previous section. 
 \subsection{Time-dependent vibrational phase space density}
-Show that the phase space density for the nuclear DoF deviates from the initial probability density, and that it still can be well described by a Gaussian/coherent state. Therefore, resampling techniques cannot and should not be applied, because otherwise the deviation of the vibrational phase space density from the initial one is not accounted for correctly.
-Explain why currents and populations never reach steady state (because a current is associated with electron hopping, but electron hopping is depending on the positions of the phonons, and hopping induces vibrational dynamics). 
-Parameters: $w_0=0.05$, $N_\mathrm{traj} = 900$.
+\Cref{fig:TD_PSdensity} shows the time-evolution of the vibrational phase-space density for $t_0 = 1, t_1 = 0.1t_0, \lambda_0 = t_0/40, \lambda_1 = 0.1\lambda_0, \omega_0 = 0.05t_0, P = 0.5$, and $V=10t_0$ obtained for  $N_\mathrm{traj} = 900$. During time-evolution, the vibrational distribution deviates strongly from the initial equilibrium distribution.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=1.0\textwidth]{figs/1x3_PDist_Evo_site0.pdf}
-	\caption{Time-evolution of vibrational phase-space probability density at the bond between sites 1 and 2 for $\mathbb{M}=1\times 3$. Parameters are: $t_0 = 1, t_1 = 0.1t_0, \lambda_0 = t_0/40, \lambda_1 = 0.1\lambda_0, \omega_0 = 0.05t_0, P = 0.5$, and $V=10t_0$.}
+	\includegraphics[width=0.9\textwidth]{figs/1x3_PDist_Evo_site0.pdf}
+	\caption{Time-evolution of vibrational phase-space probability density at the bond between sites 1 and 2 for $\mathbb{M}=1\times 3$. }\label{fig:TD_PSdensity}
 \end{figure}
-Same figure with $P=-0.5,P=0.0$, and $\lambda_1 = 0$ and maybe different voltage.
-\subsection{Magnetoresistance}
+\section{Holstein model}
+In the following, we investigate the differences between the model considered before and the Holstein model.
+\subsection{Single-dot Holstein model}
+The main point is that in the asymetrically coupled Holstein model $g_\uparrow =-g_\downarrow$, the equilibrium position of the phonon mode is $X=P=0$ for all voltages. Therefore, averaging over Boltzmann distribution leads to a steady-state.
+
+%\subsection{Reduction of saturation current}
+%As can be seen in \cref{fig:Current_convergence}, the average current slightly oscillates with time. To capture this oscillation, \cref{fig:IV_1x3_MF-HEOM} shows the maximum (red line), minimum (blue line) and average (black line) of the current in the time interval $[200,2000]t_0^{-1}$.
+%\begin{figure}[!h]
+%	\centering
+%	\includegraphics[width=0.95\textwidth]{figs/Currents_1x3_Ehrenfest_P0.5_IV_min_max_mean.pdf}
+%	\caption{}\label{fig:IV_1x3_MF-HEOM}
+%\end{figure} 
+%\subsubsection{Holstein model}
+%We consider now a Holstein model with the Hamiltonian
+%\begin{equation}
+%	H = \varepsilon_0 d^\dagger d + g d^\dagger d X(t) + \sum_{\ell,k} \nu_{\ell,k}d^\dagger d_{\ell k}c + \mathrm{h.c.} + \sum_{\ell,k} \varepsilon_{\ell k}c^\dagger_{\ell k}c^\pdagger_{\ell k}.
+%\end{equation}
+%Using the unoccupied and occupied dot states as the basis, 
+%under the Born-Markov approximation, an equation of motion for the reduced density matrix can be derived. Neglecting further the time-dependence of the system Green functions, the Master equation reads
+%\begin{equation}
+%	\dot{\rho}(t) = -i[H(t),\rho] + (-\Gamma_L \rho_{00}+\Gamma_R\rho_{11})\vert 0\rangle\langle 0\vert + (\Gamma_L \rho_{00}-\Gamma_R\rho_{11})\vert 1\rangle\langle 1\vert.
+%\end{equation}
+%Together with the classical equation of motion, the coupled system of equations of motion read
+%\begin{align}
+%	\dot{\rho}_{00} &= -\Gamma_L\rho_{00}+\Gamma_R\rho_{11}\\
+%	\dot{\rho}_{11} &= \Gamma_L\rho_{00}-\Gamma_R\rho_{11}\\
+%	\dot{\rho}_{01} &= i\rho_{01}(\varepsilon_0 + gX(t))\\
+%	\dot{X} &= \omega_0 P(t)\\
+%	\dot{P} &= -g(\rho_{01}(t)+\rho_{11}(t)) - \omega_0^2 X(t).
+%\end{align}
+%\begin{itemize}
+%	\item For single phonon, e.g. on site 2 of a three-dot system, there exists a steady-state current
+%	\item Already when placing two phonons, steady-state does not exist.
+%\end{itemize}
+%\subsection{Floquet-Liouvillian analysis}
+%The vibrational dynamics is nearly periodic, such that
+%\begin{equation}
+%	\mathcal{L}(t) \approx \mathcal{L}(t+\tau)
+%\end{equation}
+%approximately holds. The time-dependence of the Liouvillian stems from the time-dependence of the classical vibrational modes, which is assumed to have the form given in \cref{eq:AnalyticalVib1,eq:AnalyticalVib2}.
+%\subsection{Time-dependent Populations}
+%Show that populations are also not stationary for long times, but switch depending on the positions of the phonons.
+%Show $(t,V)$ imshow of population on a single site.
+%Show $(t,\mathrm{site})$ imshow of all populations on all sites for different times.
+%Can be explained with spectrum which is now time-dependent under the influence of phonons.
+%Quantization of vibrational motion. Show FFT of population dynamics. Relation to phonon-frequencies. If matching, then there are quanta of vibration exchanged between electrons and vibrations.
+%%\subsection{Show that steady-state density matrix is the one of the effective }
+%%Clear from the analytical result without the phonons.
+%\subsection{Picture 1: Time-dependent spectrum}
+%Berry phase effects? 
+%\subsection{Picture 2: Transistions induced by el-ph coupling between stationary eigenstates}
 
 \printbibliography
 \end{document}

@@ -69,6 +69,8 @@
 \newlabel{fig:Difference_TFunc}{{8}{7}}
 \newlabel{fig:Difference_TFunc@cref}{{[figure][8][]8}{[1][6][]7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Stationary electronic lattice occupation}{7}{}\protected@file@percent }
+\newlabel{sec:Stationary_el_lat_occ}{{3.2}{7}}
+\newlabel{sec:Stationary_el_lat_occ@cref}{{[subsection][2][3]3.2}{[1][7][]7}}
 \newlabel{eq:NEGF_SS_rho}{{31}{7}}
 \newlabel{eq:NEGF_SS_rho@cref}{{[equation][31][]31}{[1][7][]7}}
 \@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Stationary site-dependent spin polarization for various voltage and $P=0.5,0.0-0.5$ with system size $\mathbb  {M}=2\times 4$.}}{8}{}\protected@file@percent }
@@ -80,7 +82,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Comparison of spin-dependent populations for $V=0$ from analytical NEGF expression (full lines) and numerically obtained steady-state (MF-HEOM, dashed lines).}}{10}{}\protected@file@percent }
 \newlabel{fig:Comp_NEGF_MF-HEOM_pops}{{11}{10}}
 \newlabel{fig:Comp_NEGF_MF-HEOM_pops@cref}{{[figure][11][]11}{[1][8][]10}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Ehrenfest Dynamics in the coupled molecule}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Ehrenfest approach: Tests of implementation}{10}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Reduction to classical MD for zero electron-phonon coupling}{10}{}\protected@file@percent }
 \newlabel{eq:TotalHamiltonian}{{32}{10}}
 \newlabel{eq:TotalHamiltonian@cref}{{[equation][32][]32}{[1][10][]10}}
@@ -100,40 +102,41 @@
 \citation{rivas2012open}
 \abx@aux@cite{rivas2012open}
 \abx@aux@segm{0}{0}{rivas2012open}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Existence of a unique steady-state under the static approximation}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Existence of a unique steady-state}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Electronic steady-state: Fixed nuclei approximation}{12}{}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Spectral properties of the effective Liouvillian: Real and imaginary part of the eigenvalues $\lambda _n$ for Franssons model with $P=0$ ((a) and (b)) and $P=0.5$ ((c) and (d)) for various vibrational positions $X_1$ of the mode at the bond between site 1 and 2. Parameters are given in the main text.}}{12}{}\protected@file@percent }
 \newlabel{fig:Liouvillian_Spec_X2_0.0_X1Var}{{14}{12}}
 \newlabel{fig:Liouvillian_Spec_X2_0.0_X1Var@cref}{{[figure][14][]14}{[1][12][]12}}
-\newlabel{eq:Liouvillian_effective}{{44}{12}}
-\newlabel{eq:Liouvillian_effective@cref}{{[equation][44][]44}{[1][12][]12}}
 \citation{minganti2019quantum}
 \abx@aux@cite{minganti2019quantum}
 \abx@aux@segm{0}{0}{minganti2019quantum}
+\newlabel{eq:Liouvillian_effective}{{44}{13}}
+\newlabel{eq:Liouvillian_effective@cref}{{[equation][44][]44}{[1][12][]13}}
 \@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Spectral properties of $\mathcal  {L}_\mathrm  {eff}$ for $X_2=1$. Parameters are the same as in \cref  {fig:Liouvillian_Spec_X2_0.0_X1Var}.}}{13}{}\protected@file@percent }
 \newlabel{fig:Liouvillian_Spec_X2_1.0_X1Var}{{15}{13}}
 \newlabel{fig:Liouvillian_Spec_X2_1.0_X1Var@cref}{{[figure][15][]15}{[1][12][]13}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Vibrational steady-state: Adiabatic approximation}{13}{}\protected@file@percent }
+\newlabel{eq:PhaseSpace_NESS}{{50}{14}}
+\newlabel{eq:PhaseSpace_NESS@cref}{{[equation][50][]50}{[1][14][]14}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Numerical investigation of steady-states in the coupled dynamical system}{14}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces (a),(b) and (c) local spin polarization on sites 1,2, and 3, respectively. (d) Symmetrized current. (e) and (f) phase space trajectories of the two vibrational modes. Different lines show different initial conditions for the vibrational positions $X_0$. The dashed orange line shows quantities in the steady state for $t_1=\lambda _1 = 0$.}}{15}{}\protected@file@percent }
+\newlabel{fig:Pops_currents_phonons_1x3_V0}{{16}{15}}
+\newlabel{fig:Pops_currents_phonons_1x3_V0@cref}{{[figure][16][]16}{[1][14][]15}}
 \citation{fransson2020vibrational}
 \abx@aux@cite{fransson2020vibrational}
 \abx@aux@segm{0}{0}{fransson2020vibrational}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Existence of steady-state in the coupled dynamical system}{14}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Convergence with number of trajectories}{14}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Symmetrized time-dependent current for $P=0.5$ and $V=18.0$ for $\mathbb  {M}=1\times 3$.}}{14}{}\protected@file@percent }
-\newlabel{fig:Current_convergence}{{16}{14}}
-\newlabel{fig:Current_convergence@cref}{{[figure][16][]16}{[1][14][]14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Symmetrized time-dependent current for $P=0.5$ and $V=12.0$ for $\mathbb  {M}=1\times 3$.}}{15}{}\protected@file@percent }
-\newlabel{fig:Current_V12_convergence}{{17}{15}}
-\newlabel{fig:Current_V12_convergence@cref}{{[figure][17][]17}{[1][14][]15}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Reduction of saturation current}{15}{}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces }}{15}{}\protected@file@percent }
-\newlabel{fig:IV_1x3_MF-HEOM}{{18}{15}}
-\newlabel{fig:IV_1x3_MF-HEOM@cref}{{[figure][18][]18}{[1][14][]15}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.6.1}Holstein model}{15}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Floquet-Liouvillian analysis}{16}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Time-dependent Populations}{16}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.9}Picture 1: Time-dependent spectrum}{16}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.10}Picture 2: Transistions induced by el-ph coupling between stationary eigenstates}{16}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.11}Time-dependent vibrational phase space density}{16}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.12}Magnetoresistance}{16}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Same as \cref  {fig:Pops_currents_phonons_1x3_V0} for $V=12$.}}{16}{}\protected@file@percent }
+\newlabel{fig:Pops_currents_phonons_1x3_V12}{{17}{16}}
+\newlabel{fig:Pops_currents_phonons_1x3_V12@cref}{{[figure][17][]17}{[1][14][]16}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Multi-trajectory Ehrenfest dynamics approach to the Fransson model}{16}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Convergence with number of trajectories}{16}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Symmetrized time-dependent current for $P=0.5$ and $V=18.0$ for $\mathbb  {M}=1\times 3$.}}{17}{}\protected@file@percent }
+\newlabel{fig:Current_convergence}{{18}{17}}
+\newlabel{fig:Current_convergence@cref}{{[figure][18][]18}{[1][16][]17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Symmetrized time-dependent current for $P=0.5$ and $V=12.0$ for $\mathbb  {M}=1\times 3$.}}{17}{}\protected@file@percent }
+\newlabel{fig:Current_V12_convergence}{{19}{17}}
+\newlabel{fig:Current_V12_convergence@cref}{{[figure][19][]19}{[1][16][]17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Time-dependent vibrational phase space density}{17}{}\protected@file@percent }
 \abx@aux@read@bbl@mdfivesum{55EBBCEE1B38D073DECA7E2C24730292}
 \abx@aux@refcontextdefaultsdone
 \abx@aux@defaultrefcontext{0}{fransson2019chirality}{none/global//global/global}
@@ -154,5 +157,7 @@
 \abx@aux@defaultlabelprefix{0}{fukadai2019dynamics}{}
 \abx@aux@defaultlabelprefix{0}{rivas2012open}{}
 \abx@aux@defaultlabelprefix{0}{minganti2019quantum}{}
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Time-evolution of vibrational phase-space probability density at the bond between sites 1 and 2 for $\mathbb  {M}=1\times 3$. Parameters are: $t_0 = 1, t_1 = 0.1t_0, \lambda _0 = t_0/40, \lambda _1 = 0.1\lambda _0, \omega _0 = 0.05t_0, P = 0.5$, and $V=10t_0$.}}{17}{}\protected@file@percent }
-\gdef \@abspage@last{17}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Time-evolution of vibrational phase-space probability density at the bond between sites 1 and 2 for $\mathbb  {M}=1\times 3$. }}{18}{}\protected@file@percent }
+\newlabel{fig:TD_PSdensity}{{20}{18}}
+\newlabel{fig:TD_PSdensity@cref}{{[figure][20][]20}{[1][16][]18}}
+\gdef \@abspage@last{18}

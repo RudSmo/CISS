@@ -1,4 +1,4 @@
-# Parameters of run on 2022-12-13T00:22:33.835 
+# Parameters of run on 2022-12-13T23:47:45.347 
 # The purpose of this run is the following: Test of Fransson model.
 # --------------------PARAMS----------------------------
 dt = 0.002

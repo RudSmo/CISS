@@ -71,7 +71,7 @@ ax2.set_ylim(0.14,0.25)
 ax2.set_ylabel(L"$I_L-I_R \, [t_0]$")
 ax2.set_xlabel(L"$t\, [t_0^{-1}]$",fontsize=15,labelpad=-2)
 ax2.annotate("(d)",(0.02,0.85),xycoords="axes fraction",fontsize=fs)
-ax2.legend(loc="lower right",ncol=2)
+ax2.legend(loc="lower right",ncol=2,framealpha=0.5)
 
 ax31.annotate("(e)",(0.06,0.85),xycoords="axes fraction",fontsize=fs)
 ax31.set_ylabel(L"$P_1$")

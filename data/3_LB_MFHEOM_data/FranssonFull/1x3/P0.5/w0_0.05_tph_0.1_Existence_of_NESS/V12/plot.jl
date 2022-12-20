@@ -1,6 +1,7 @@
 using LinearAlgebra
 using PyPlot
 using DelimitedFiles
+using HDF5
 
 plt.style.use("classic")
 rc("text", usetex=true)
@@ -47,6 +48,18 @@ for (f,fstr) in zip(folds,fold_str)
 	ax32.plot(dat_ph[2:end,4],dat_ph[2:end,5],linewidth=lw)
 end
 
+datSS_E = readdlm("../../../../../noPh/MF-HEOM/1x3/P0.5/Electrons_steadyState.dat")[121,2:7]
+datSS_C = readdlm("../../../../../noPh/MF-HEOM/1x3/P0.5/Currents_steadyState.dat")[121,2:3]
+
+lw = 2
+
+ax11.plot(Array(0:4900),fac*(datSS_E[1]-datSS_E[2])*ones(length(Array(0:4900))),color="orange",linewidth=2,linestyle="dashed")
+ax11.plot([4900],fac*(datSS_E[1]-datSS_E[2]),color="orange",marker="o",markersize=8,linewidth=0)
+ax12.plot(Array(0:4900),fac*(datSS_E[3]-datSS_E[4])*ones(length(Array(0:4900))),color="orange",linewidth=2,linestyle="dashed")
+ax12.plot([4900],fac*(datSS_E[3]-datSS_E[4]),color="orange",marker="o",markersize=8,linewidth=0)
+ax13.plot(Array(0:4900),fac*(datSS_E[5]-datSS_E[6])*ones(length(Array(0:4900))),color="orange",linewidth=2,linestyle="dashed")
+ax13.plot([4900],fac*(datSS_E[5]-datSS_E[6]),color="orange",marker="o",markersize=8,linewidth=0)
+
 ax11.set_ylabel(L"$s^z$")
 ax11.set_ylim(-0.03,0.17)
 ax11.set_xticks([0,1000,2000,3000,4000])
@@ -64,22 +77,80 @@ ax12.annotate("site 2",(0.76,0.89),xycoords="axes fraction",fontsize=fs)
 ax13.set_ylim(-0.03,0.17)
 ax13.set_yticklabels([])
 ax13.set_xlabel(L"$t\, [t_0^{-1}]$",fontsize=13,labelpad=-2)
+ax13.set_xlim(0,5000)
 ax13.annotate("(c)",(0.05,0.9),xycoords="axes fraction",fontsize=fs)
 ax13.annotate("site 3",(0.76,0.89),xycoords="axes fraction",fontsize=fs)
 
+ax2.plot(Array(0:7000),fac_c*(datSS_C[1]-datSS_C[2])*ones(length(Array(0:7000))),color="orange",linewidth=2,linestyle="dashed",label=L"Steady state $t_1 = \lambda_1 = 0$")
+ax2.plot([6950],fac_c*(datSS_C[1]-datSS_C[2]),color="orange",marker="o",markersize=8,linewidth=0)
+ax2.plot([-10000],[-1],marker="x",color="red",linewidth=0,markersize="8",label=L"$\xi^\mathrm{adiab.}_\mathrm{ss}$ for $X_0 = -10.5$")
 ax2.set_ylim(-0.01,0.2)
+ax2.set_xlim(0,7000)
 ax2.set_ylabel(L"$I_L-I_R \, [t_0]$")
 ax2.set_xlabel(L"$t\, [t_0^{-1}]$",fontsize=15,labelpad=-2)
 ax2.annotate("(d)",(0.02,0.85),xycoords="axes fraction",fontsize=fs)
-ax2.legend(loc="upper right",ncol=2)
+ax2.legend(loc="upper right",ncol=2,numpoints=1)
+
+
+function VDot(a)
+    sx = [0 1; 1 0.]
+    sy = [0 -1im; 1im 0.]
+    sz = [1 0; 0 -1.]
+    return a[1]*sx + a[2]*sy + a[3]*sz
+end
+
+function absv(a)
+    return sqrt(dot(a,a))
+end
+
+function UnitVector(a,c,j,num_laps,N)
+    phij = 2*pi*(j-1)*num_laps/(N-1)
+    cj = c*(j-1)/(N-1)
+    return [a*cos(phij),a*sin(phij),cj]
+end
+
+function VSigma(tso,a,c,k,num_laps,N)
+        rj = UnitVector(a,c,k,num_laps,N)
+        rj1 = UnitVector(a,c,k+1,num_laps,N)
+        rj2 = UnitVector(a,c,k+2,num_laps,N)
+        rjrj1 = rj-rj1
+        rjrj2 = rj-rj2
+
+        dj1 = rjrj1/absv(rjrj1)
+        dj2 = rjrj2/absv(rjrj2)
+
+        vj = cross(dj1,dj2)
+
+        Vj = 1im*tso*VDot(vj)
+        return Vj
+end
+
+tso = 1/40
+tph = 0.1
+w0 = 0.05
+rho = h5open("../../../../../../../src/MeanField_v2_weighting_noPhDyn/NoPh_Coherences/L3_tPh0.1_SOC0.025_SOCPh0.0025000000000000005_V12.0_w00.05_P0.5_X0_-10.5_dt0.002_1_final_Quantities")["Rho"][]
+t_rho_1 = -tph * sqrt(2*w0) * tr(rho[1:2,3:4])
+vs1 = VSigma(tso,1.0,1.0,1,1,3)
+l_rho_1 = tr(vs1 * rho[1:2,5:6])
+X1 = 1/w0 * (t_rho_1 + l_rho_1)
+X1 += conj(X1)
+println(X1)
+
+
+t_rho_2 = -tph * sqrt(2*w0) * tr(rho[3:4,5:6])
+X2 = 1/w0 * t_rho_2
+X2 += conj(X2)
+println(X2)
 
 ax31.annotate("(e)",(0.06,0.85),xycoords="axes fraction",fontsize=fs)
+ax31.plot([X1],[0],color="red",marker="x",markersize=9,linewidth=3)
 ax31.set_ylabel(L"$P_1$")
 ax31.set_xlabel(L"$X_1$")
 ax31.set_ylim(-12,12)
 ax31.set_xlim(-40,30)
 
 ax32.annotate("(f)",(0.06,0.85),xycoords="axes fraction",fontsize=fs)
+ax32.plot([X2],[0],color="red",marker="x",markersize=9,linewidth=3)
 ax32.set_yticklabels([])
 ax32.set_ylim(-12,12)
 ax32.set_xlim(-40,30)
