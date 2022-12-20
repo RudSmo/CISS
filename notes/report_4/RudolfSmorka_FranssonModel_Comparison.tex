@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+\begin{document}
+	
+\title{Report 4: Investigation of steady-states in the Holstein and Peierls model}
+\author{Rudolf Smorka}
+\maketitle
+\tableofcontents
+\section{Holstein Model}
+\subsection{Hamiltonian}
+The Hamiltonian of the Holstein model reads
+\begin{equation}
+	H_\mathrm{Holstein} = \sum_{j\sigma}( \varepsilon_{j\sigma}^\pdagger + g_{j\sigma}^\pdagger [a_j^\dagger+ a_j^\pdagger]) c_{j\sigma}^\dagger c_{j\sigma}^\pdagger - t \sum_{j\sigma}(c_{j\sigma}^\dagger c_{j+1\sigma}^\pdagger  + \mathrm{h.c.}) + \sum_j \omega_j^\pdagger  a_j^\dagger a_j^\pdagger
+\end{equation}
+consisting of spin-$1/2$ electrons on a lattice, electrons on each level of a site coupling locally to a vibrational mode. We say the electron-phonon coupling is symmetric if $g_{j\sigma}=g_{j\bar{\sigma}}$ and anti-symmetric if $g_{j\sigma}=-g_{j\bar{\sigma}}$. Within the quantum-classical approximation the term $a_j^\dagger+ a_j^\pdagger \rightarrow \sqrt{2\omega_0} X_j$ gets replaced by the classical position $X_j$ and $a_j^\dagger a_j^\pdagger \rightarrow \frac{1}{2}(\omega_jX_j^2+P_j^2)$.
+\subsection{Single dot}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Pops_currents_phonons_1x1_VVar.pdf}
+\end{figure}
+\section{Peierls Model}
+\subsection{Model}
+The Hamiltonian of the Peierls model reads
+\begin{equation}
+	H_\mathrm{Peierls} = \sum_{j\sigma} \varepsilon_{j\sigma}^\pdagger  c_{j\sigma}^\dagger c_{j\sigma}^\pdagger + \sum_{j\sigma}(-t + g_{j\sigma}^\pdagger [a_j^\dagger+ a_j^\pdagger])(c_{j\sigma}^\dagger c_{j+1\sigma}^\pdagger  + \mathrm{h.c.}) + \sum_j \omega_j^\pdagger  a_j^\dagger a_j^\pdagger
+\end{equation}
+\subsection{Double dot}
+\printbibliography
+\end{document}
+
+
+
+

@@ -17,3 +17,5 @@
 \contentsline {section}{\numberline {6}Multi-trajectory Ehrenfest dynamics approach to the Fransson model}{16}{}%
 \contentsline {subsection}{\numberline {6.1}Convergence with number of trajectories}{16}{}%
 \contentsline {subsection}{\numberline {6.2}Time-dependent vibrational phase space density}{17}{}%
+\contentsline {section}{\numberline {7}Holstein model}{17}{}%
+\contentsline {subsection}{\numberline {7.1}Single-dot Holstein model}{17}{}%
