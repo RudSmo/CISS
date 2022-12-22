@@ -13,61 +13,63 @@ using .ClassicalPhonons
 using .CustomStructures
 # -------------- Parameters --------------------------
 
+
+# Hamiltonian Parameters
+num_laps = 1
+num_ions = 3
+N = num_laps * num_ions
+t0  = 0.04
+eu  = -6*t0
+ed  = -6*t0
+E   = [eu,ed]
+ws  = 0.05*t0*ones(N)
+gPh = [0.0,0.0]
+a   = 1.0
+c   = 1.0
+tso = t0/40
+tPh = 0.1*t0
+tsoPh = 0.1*tso
+#model = HolsteinHopping
+#modelStr = "Holstein"
+model = FranssonHamiltonian
+#model = FranssonHamiltonianNH
+modelStr = "Fransson"
+
+
 # Simulation Parameters
-dt = 0.002
-tend = 250
+dt = 0.001/t0
+tend = 500/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
 # true = propagate as usuals
 # false = use initial density matrix from previous computation
 
-# Hamiltonian Parameters
-num_laps = 1
-num_ions = 1
-N = num_laps * num_ions
-t0  = 1.0
-eu  = 0.0
-ed  = 0.0
-E   = [eu,ed]
-ws  = 0.1*ones(N)
-gPh = [0.1,-0.1]
-a   = 1.0
-c   = 1.0
-tso = t0/40
-tPh = 0.0
-tsoPh = 0.0
-model = HolsteinHopping
-modelStr = "Holstein"
-#model = FranssonHamiltonian
-#model = FranssonHamiltonianNH
-#modelStr = "Fransson"
-
 if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
-    #phIn = "TDSCF"
-    phIn = "Wigner"
+    phIn = "TDSCF"
+    #phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = [1.0,0.0]#,0.0,0.0,0,0.0]#,0,0,0]
-popPhIn = [0]
+popElIn = [1.0,0.0,0.0,0.0,0,0.0]#,0,0,0]
+popPhIn = [0,0,0]
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-x0 = -1.0
-xnIn,pnIn = [x0],[0.0]#,-11.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
+x0 = 1.0
+xnIn,pnIn = [x0,0,0],[0.0,0,0]#,-11.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
 
 
 ## Leads
 P = 0.0
-tL = 1/4 * (ones(2) .+ P * [1,-1])  
-tR = 1/4 * ones(2)
-V  = 2.0
-nPoles = 40
+tL = t0/4 * (ones(2) .+ P * [1,-1])  
+tR = t0/4 * ones(2)
+V  = 12.0*t0
+nPoles = 35
 beta = 1/0.025
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
@@ -90,12 +92,12 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "SingleDot_Holstein"
+path = "FranssonParams"
 if !isdir(path)
 	mkdir(path)
 end
 
-num_avg = 20
+num_avg = 1
 for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_X0_-10_dt$(abs(dt))"
@@ -113,7 +115,7 @@ for ka in 1:num_avg
     IOsave.SaveParams(params,parampath,purpose)
 
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,vSampl,popElIn)
-    Average(ka,dataname1,num_avg)
+#    Average(ka,dataname1,num_avg)
 end
 
 end

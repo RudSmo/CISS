@@ -15,7 +15,7 @@ using .CustomStructures
 
 # Simulation Parameters
 dt = 0.002
-tend = 300
+tend = 120
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -36,7 +36,7 @@ a   = 1.0
 c   = 1.0
 tso = 0.0
 tPh = 0.0
-tsoPh = 0.1*tso
+tsoPh = 0.0*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
@@ -54,7 +54,7 @@ else
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = [1.0,0]
+popElIn = [0.0,0]
 popPhIn = [0]
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
@@ -71,7 +71,7 @@ path1 = "NoPh_1x1"
 if !isdir(path1)
 	mkdir(path1)
 end
-for V in [0.4,0.8,1.2,1.6]
+for V in [0.1,0.2,0.3,0.6,0.7,0.9,1.1,1.3,1.4,1.7,1.8,1.9]
 	nPoles = 40
 	beta = 1/0.025
 	HamPar = HamiltonianParams( num_laps,

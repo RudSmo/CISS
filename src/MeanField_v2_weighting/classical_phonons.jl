@@ -19,7 +19,7 @@ function Wigner(X,P,beta,w)
     W = zeros(length(P),length(X))
     for i in 1:length(P)
         for j in 1:length(X)
-            W[i,j] = 1/pi * tanh(0.5*beta*w) * exp(-tanh(0.5*beta*w) * (w* X[j]^2 + P[i]^2/w) )
+            W[i,j] = 1/pi * tanh(0.5*beta*w) * exp(-tanh(0.5*beta*w)/w * (w^2 * X[j]^2 + P[i]^2) )
         end
     end
     return W
@@ -85,9 +85,9 @@ function SymplecticEulerStep(HamPar,rho,dt)
             nd_up = rho[2*i-1,2*i-1] 
             nd_dn = rho[2*i,2*i] 
             Pn_c = HamPar.P[i] - dt * (sqrt(2*HamPar.ws[i]) * (HamPar.gPh[1] *  nd_up + HamPar.gPh[2] *  nd_dn) + HamPar.ws[i]^2 * HamPar.X[i])
-	        Xn_c = HamPar.X[i] + dt * HamPar.ws[i] * Pn_c
-	        push!(Pn,real(Pn_c))
-	        push!(Xn,real(Xn_c))
+	    Xn_c = HamPar.X[i] + dt * Pn_c
+	    push!(Pn,real(Pn_c))
+	    push!(Xn,real(Xn_c))
         end
         return Xn,Pn
     elseif HamPar.HamiltonStr == "Fransson"
@@ -110,14 +110,14 @@ function SymplecticEulerStep(HamPar,rho,dt)
                 so_elmt = coupl*tr((rho[2*i-1:2*i,2*i+3:2*i+4] + rho[2*i+3:2*i+4,2*i-1:2*i])  * [1 1-1im;1+1im -1] )
                 t_elmt = HamPar.HoppingPh* tr(rho[2*i-1:2*i,2*i+1:2*i+2] + rho[2*i+1:2*i+2,2*i-1:2*i]) 
                 Pn_c = HamPar.P[i] - dt * (sqrt(2*HamPar.ws[i]) * (t_elmt + so_elmt) + HamPar.ws[i]^2 * HamPar.X[i])
-	            Xn_c = HamPar.X[i] + dt * HamPar.ws[i] * Pn_c
+	        Xn_c = HamPar.X[i] + dt * Pn_c
             elseif i <= HamPar.N-1
                 t_elmt = HamPar.HoppingPh*tr(rho[2*i-1:2*i,2*i+1:2*i+2] + rho[2*i+1:2*i+2,2*i-1:2*i])
                 Pn_c = HamPar.P[i] - dt * (sqrt(2*HamPar.ws[i]) * t_elmt + HamPar.ws[i]^2 * HamPar.X[i])
-	            Xn_c = HamPar.X[i] + dt * HamPar.ws[i] * Pn_c 
+	        Xn_c = HamPar.X[i] + dt * Pn_c 
             else
                 Pn_c = HamPar.P[i] - dt * HamPar.ws[i]^2 * HamPar.X[i]
-                Xn_c = HamPar.X[i] + dt * HamPar.ws[i] * Pn_c
+                Xn_c = HamPar.X[i] + dt * Pn_c
             end 
 	        push!(Pn,real(Pn_c))
 	        push!(Xn,real(Xn_c))
