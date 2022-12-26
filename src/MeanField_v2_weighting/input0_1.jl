@@ -18,7 +18,7 @@ using .CustomStructures
 num_laps = 1
 num_ions = 3
 N = num_laps * num_ions
-t0  = 1.0
+t0  = 0.04
 eu  = -6*t0
 ed  = -6*t0
 E   = [eu,ed]
@@ -38,7 +38,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.001/t0
-tend = 500/t0
+tend = 200/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -60,12 +60,12 @@ popElIn = [1.0,0.0,0.0,0.0,0,0.0]#,0,0,0]
 popPhIn = [0,0,0]
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-x0 = 1.0
-xnIn,pnIn = [x0,0,0],[0.0,0,0]#,-11.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
+x0 = -1.0
+xnIn,pnIn = [x0,x0,x0],[0.0,0,0]#,-11.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
 
 
 ## Leads
-P = 0.0
+P = 0.5
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
 V  = 12.0*t0
@@ -92,7 +92,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "UnitLess"
+path = "FranssonParams/V$(V)"
 if !isdir(path)
 	mkdir(path)
 end

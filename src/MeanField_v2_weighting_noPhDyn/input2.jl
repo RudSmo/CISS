@@ -14,8 +14,9 @@ using .CustomStructures
 # -------------- Parameters --------------------------
 
 # Simulation Parameters
-dt = 0.001
-tend = 100
+t0 = 0.04
+dt = 0.002/t0
+tend = 300/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -26,20 +27,20 @@ initProp  = true
 num_laps = 1
 num_ions = 3
 N = num_laps * num_ions
-t0  = 1.0 
 eu  = -6*t0
 ed  = -6*t0
 E   = [eu,ed]
-ws  = 0.1*ones(N)
-gPh = [0.0,0.0]
+ws  = 0.05*t0*ones(N)
+gPh = [0.6,0.6]
 a   = 1.0
 c   = 1.0
-tso = 0.0# t0/40
-tPh = 0.0*t0
-tsoPh = 0.0*tso
+tso = t0/40
+tPh = 0.0
+tsoPh = 0.0
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
+#model = FranssonHamiltonianNH
 modelStr = "Fransson"
 
 if initProp
@@ -53,13 +54,20 @@ else
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = [0,0,1,0,0,0]
-popPhIn = [0,0,0]
+popElIn = [1.0,0.0,0.0,0.0,0,0.0]#,0,0,0]
+popPhIn = [0]
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-xnIn,pnIn = [1.0,0.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
+xnIn,pnIn = [-9.0,-11.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
 
 
+## Leads
+P = 0.5
+tL = 1/4 *t0* (ones(2) .+ P * [1,-1])  
+tR = 1/4 *t0* ones(2)
+V  = 0.0*t0
+nPoles = 40
+beta = 1/0.025
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
                             N,
@@ -75,28 +83,21 @@ HamPar = HamiltonianParams( num_laps,
                             gPh,
                             ws,
                             xnIn,
-                            pnIn)
+                            pnIn,
+			    tL,
+			    tR)
 
 
-## Leads
-P = 0.0
-tL = 0.0 * (ones(2) .+ P * [1,-1])  
-tR = 0.0 * ones(2)
-V  = 10.0
-nPoles = 1
-beta = 1/0.025
 
-path = "Momentum_test"
+path = "NoPh_Coherences"
 if !isdir(path)
 	mkdir(path)
 end
 
 num_avg = 1
-resampling = false
-rsmpl_stp = 15
 for ka in 1:num_avg
     if modelStr == "Fransson"
-        dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_w0$(ws[1])_P$(P)_dt$(abs(dt))"
+        dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_X0_-10_dt$(abs(dt))"
     elseif modelStr == "Holstein"
         dataname1 = "$(path)/L$(N)_gPhU$(gPh[1])_gPhD$(gPh[2])_dt$(abs(dt))"
     end
@@ -110,7 +111,7 @@ for ka in 1:num_avg
     purpose = "Test of Fransson model."
     IOsave.SaveParams(params,parampath,purpose)
 
-    @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,resampling,rhoIn,phIn,vSampl,popElIn)
+    @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,vSampl,popElIn)
 #    Average(ka,dataname1,num_avg)
 end
 
