@@ -31,7 +31,6 @@ ax32 = plt.axes([px+sx+dx,py-2*(sy+dy),sx,sy])
 
 folds = ["X0_-1.0","X0_-5.0","X0_-10.0","X0_-25.0"]
 fold_str = [L"$-1$",L"$-5$",L"$-10$",L"$-25$"]
-a = 10000
 lw = 2
 fac = 1
 fac_c = 1e3 * 2.8494561
@@ -39,14 +38,14 @@ fac_t = 1/(4.135668*1000)
 
 
 for (f,fstr) in zip(folds,fold_str)
-	dat_pop = readdlm("$(f)/L3_tPh0.004_SOC0.001_SOCPh0.0001_V4.8_w00.002_P0.5_$(f)_dt0.025_1_electrons.dat")
-	ax11.plot(dat_pop[2:end-a,1]*fac_t,(dat_pop[2:end-a,2]-dat_pop[2:end-a,3])*fac,linewidth=lw)
-	ax12.plot(dat_pop[2:end-a,1]*fac_t,(dat_pop[2:end-a,4]-dat_pop[2:end-a,5])*fac,linewidth=lw)
-	ax13.plot(dat_pop[2:end-a,1]*fac_t,(dat_pop[2:end-a,6]-dat_pop[2:end-a,7])*fac,linewidth=lw)
-	dat_cur = readdlm("$(f)/L3_tPh0.004_SOC0.001_SOCPh0.0001_V4.8_w00.002_P0.5_$(f)_dt0.025_1_currents.dat")
+	dat_pop = readdlm("$(f)/L3_tPh0.004_SOC0.001_SOCPh0.0001_V0.48_w00.002_P0.5_$(f)_dt0.025_1_electrons.dat")
+	ax11.plot(dat_pop[2:end,1]*fac_t,(dat_pop[2:end,2]-dat_pop[2:end,3])*fac,linewidth=lw)
+	ax12.plot(dat_pop[2:end,1]*fac_t,(dat_pop[2:end,4]-dat_pop[2:end,5])*fac,linewidth=lw)
+	ax13.plot(dat_pop[2:end,1]*fac_t,(dat_pop[2:end,6]-dat_pop[2:end,7])*fac,linewidth=lw)
+	dat_cur = readdlm("$(f)/L3_tPh0.004_SOC0.001_SOCPh0.0001_V0.48_w00.002_P0.5_$(f)_dt0.025_1_currents.dat")
         ax2.plot(dat_cur[2:end,1]*fac_t,(dat_cur[2:end,2]-dat_cur[2:end,3])*fac_c,linewidth=lw,label=L"$X_0=$"*fstr)
 
-	dat_ph = readdlm("$(f)/L3_tPh0.004_SOC0.001_SOCPh0.0001_V4.8_w00.002_P0.5_$(f)_dt0.025_1_phonons.dat")
+	dat_ph = readdlm("$(f)/L3_tPh0.004_SOC0.001_SOCPh0.0001_V0.48_w00.002_P0.5_$(f)_dt0.025_1_phonons.dat")
 	ax31.plot(dat_ph[2:end,2],dat_ph[2:end,3],linewidth=lw)
 	ax32.plot(dat_ph[2:end,4],dat_ph[2:end,5],linewidth=lw)
 end
@@ -57,7 +56,7 @@ datSS_C = readdlm("../../../noPh/V0.48/L3_tPh0.0_SOC0.001_SOCPh0.0_V0.48_w00.002
 
 lw = 2
 
-t_end = 10
+t_end = 6
 ax11.plot(Array(0:t_end),fac*(datSS_E[1]-datSS_E[2])*ones(length(Array(0:t_end))),color="orange",linewidth=2,linestyle="dashed")
 ax11.plot([t_end],fac*(datSS_E[1]-datSS_E[2]),color="orange",marker="o",markersize=8,linewidth=0)
 ax12.plot(Array(0:t_end),fac*(datSS_E[3]-datSS_E[4])*ones(length(Array(0:t_end))),color="orange",linewidth=2,linestyle="dashed")
@@ -65,34 +64,38 @@ ax12.plot([t_end],fac*(datSS_E[3]-datSS_E[4]),color="orange",marker="o",markersi
 ax13.plot(Array(0:t_end),fac*(datSS_E[5]-datSS_E[6])*ones(length(Array(0:t_end))),color="orange",linewidth=2,linestyle="dashed")
 ax13.plot([t_end],fac*(datSS_E[5]-datSS_E[6]),color="orange",marker="o",markersize=8,linewidth=0)
 
+ymin = 0.0
+ymax = 0.165
 ax11.set_ylabel(L"$s^z$")
-ax11.set_ylim(0.1,0.3)
+ax11.set_ylim(ymin,ymax)
 ax11.set_xlim(0,t_end)
 #ax11.set_xticks([0,1000,2000,3000,4000])
 ax11.set_xlabel(L"$t\, [\mathrm{ps}]$",fontsize=13,labelpad=-2)
 ax11.annotate("(a)",(0.1,0.85),xycoords="axes fraction",fontsize=fs)
-ax11.annotate("site 1",(0.8,0.82),xycoords="axes fraction",fontsize=fs)
+ax11.annotate("site 1",(0.05,0.1),xycoords="axes fraction",fontsize=fs)
 
-ax12.set_ylim(0.1,0.3)
+ax12.set_ylim(ymin,ymax)
 ax12.set_yticklabels([])
 ax12.set_xlim(0,t_end)
 #ax12.set_xticks([0,1000,2000,3000,4000])
 ax12.set_xlabel(L"$t\, [\mathrm{ps}]$",fontsize=13,labelpad=-2)
 ax12.annotate("(b)",(0.1,0.85),xycoords="axes fraction",fontsize=fs)
-ax12.annotate("site 2",(0.8,0.82),xycoords="axes fraction",fontsize=fs)
+ax12.annotate("site 2",(0.05,0.1),xycoords="axes fraction",fontsize=fs)
 
-ax13.set_ylim(0.1,0.3)
+ax13.set_ylim(ymin,ymax)
 ax13.set_xlim(0,t_end)
 ax13.set_yticklabels([])
 ax13.set_xlabel(L"$t\, [\mathrm{ps}]$",fontsize=13,labelpad=-2)
 ax13.annotate("(c)",(0.1,0.85),xycoords="axes fraction",fontsize=fs)
-ax13.annotate("site 3",(0.8,0.82),xycoords="axes fraction",fontsize=fs)
+ax13.annotate("site 3",(0.05,0.1),xycoords="axes fraction",fontsize=fs)
 
-ax2.plot(Array(0:t_end)*fac_t,fac_c*(datSS_C[1]-datSS_C[2])*ones(length(Array(0:t_end))),color="orange",linewidth=2,linestyle="dashed",label=L"Steady state $t_1 = \lambda_1 = 0$")
+ymin = 0
+ymax = 20
+ax2.plot(Array(0:t_end),fac_c*(datSS_C[1]-datSS_C[2])*ones(length(Array(0:t_end))),color="orange",linewidth=2,linestyle="dashed",label=L"Steady state $t_1 = \lambda_1 = 0$")
 ax2.plot([t_end],fac_c*(datSS_C[1]-datSS_C[2]),color="orange",marker="o",markersize=8,linewidth=0)
-ax2.plot([-10000],[-1],marker="x",color="green",linewidth=0,markersize="8",label=L"$\xi^\mathrm{adiab.}_\mathrm{ss}$ for $X_0=-1$")
+ax2.plot([-10000],[-1],marker="x",color="blue",linewidth=0,markersize="8",label=L"$\xi^\mathrm{adiab.}_\mathrm{ss}$ for $X_0=-1$")
 ax2.legend(loc="upper right",numpoints=1,ncol=3)
-ax2.set_ylim(25,30)
+ax2.set_ylim(ymin,ymax)
 ax2.set_xlim(0,t_end)
 ax2.set_ylabel(L"$I_L-I_R \, [\mathrm{mA}]$")
 ax2.set_xlabel(L"$t\, [\mathrm{ps}]$",fontsize=15,labelpad=-2)
@@ -144,14 +147,13 @@ X1 += conj(X1)
 t_rho_2 = -tph * sqrt(2*w0) * tr(rho[3:4,5:6])
 X2 = 1/w0 * t_rho_2
 X2 += conj(X2)
-println(X2)
 
-ax31.plot([X1],[0],color="green",marker="x",markersize=9,linewidth=3)
+ax31.plot([X1],[0],color="blue",marker="x",markersize=12,linewidth=3)
 ax31.annotate("(e)",(0.06,0.85),xycoords="axes fraction",fontsize=fs)
 ax31.set_ylabel(L"$P_1$",labelpad=-1)
 ax31.set_xlabel(L"$X_1$")
 
-ax32.plot([X2],[0],color="green",marker="x",markersize=9,linewidth=3)
+ax32.plot([X2],[0],color="blue",marker="x",markersize=12,linewidth=3)
 ax32.annotate("(f)",(0.06,0.85),xycoords="axes fraction",fontsize=fs)
 ax32.set_yticklabels([])
 ax32.set_xlabel(L"$X_2$")

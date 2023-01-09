@@ -23,8 +23,8 @@ initProp  = true
 # false = use initial density matrix from previous computation
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 10
+num_laps = 2
+num_ions = 4
 N = num_laps * num_ions
 t0  = 1.0 
 eu  = 0.0

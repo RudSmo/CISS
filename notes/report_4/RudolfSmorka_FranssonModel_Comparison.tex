@@ -121,22 +121,16 @@ Further, we investigate local currents between sites $j,k$ of the molecule, defi
 \end{figure}
 \newpage
 \section{Properties of the non-vibrating molecule}
-{\color{red}{Put here data with with correct parameters, that are $t_0=\SI{0.04}{\electronvolt}$, $T=\SI{300}{\kelvin} = \SI{0.025}{\electronvolt}$, $\Gamma= \frac{t_0}{4}$, $\lambda_0 = \frac{t_0}{40}$}}
 \subsection{Current-voltage characteristics}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.65\textwidth]{../report_3/figs/LB_1x3.pdf}
+	\includegraphics[width=0.65\textwidth]{figs/LB_1x3.pdf}
 	\caption{Current-voltage characteristics for $\mathbb{M}=1\times 3$ and parameters as in the main text.}\label{fig:IV_1x3}
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.6\textwidth]{../report_3/figs/LB_4x3.pdf}
+	\includegraphics[width=0.65\textwidth]{figs/LB_4x3.pdf}
 	\caption{Current-voltage characteristics for $\mathbb{M}=4\times 3$ and parameters as in the main text.}\label{fig:IV_4x3}
-\end{figure}
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.6\textwidth]{../report_3/figs/LB_8x4.pdf}
-	\caption{Current-voltage characteristics for $\mathbb{M}=8\times 4$ and parameters as in the main text.}\label{fig:IV_8x4}
 \end{figure}
 The relative energies of the leads chemical potential and the bare electronic levels of the molecule are shown in \cref{fig:Schematic_Energy_levels}
 \begin{figure}[!h]
@@ -145,12 +139,34 @@ The relative energies of the leads chemical potential and the bare electronic le
 	\caption{Schematic energy diagram of the Fransson model coupled to leads at $V=0$.}\label{fig:Schematic_Energy_levels}
 \end{figure}\\
 \subsection{Stationary electronic lattice occupation}\label{sec:Stationary_el_lat_occ}
-{\color{red}{Put here data with correct parameters, that are $t_0=\SI{0.04}{\electronvolt}$, $T=\SI{300}{\kelvin}$, $\Gamma= \frac{t_0}{4}$, $\lambda_0 = \frac{t_0}{40}$}}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{../report_3/figs/Comparison_populations_V0.pdf}
-	\caption{Comparison of spin-dependent populations for $V=0$ from analytical NEGF expression (full lines) and numerically obtained steady-state (MF-HEOM, dashed lines).}\label{fig:Comp_NEGF_MF-HEOM_pops}
+	\includegraphics[width=0.75\textwidth]{figs/Comparison_populations_V0.pdf}
+	\caption{Comparison of spin-dependent populations for $V=0$ from analytical NEGF expression (full lines) and numerically obtained population at $t=\SI{1.72}{\pico\second}$ (MF-HEOM, dashed lines).}\label{fig:Comp_NEGF_MF-HEOM_pops}
+\end{figure}
+\subsection{Population dynamics}
+To understand the discrepancy between the equilibrium populations in the NEGF and HEOM approaches, we investigate population dynamics in the following. \Cref{fig:MF_2x4_PopDyn_noPh} shows the dynamics of population of spin-up and spin-down electrons on all sites of a $\mathbb{M}=2\times 4$ molecule. Over the time-interval investigated here, the populations do not reach a stationary value. Related to non-stationary populations are so-called equilibrium currents flowing between the leads and the molecule, which are shown in \cref{fig:MF_2x4_CurDyn_noPh} (black line).
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.99\textwidth]{figs/MF_noPh_2x4_population_dynamics_V0.pdf}
+	\caption{Population dynamics of spin up (upper panel) and spin down (lower panel) electrons for $V=0$, $P=0.5$ and $\mathbb{M}=2\times 4$.}\label{fig:MF_2x4_PopDyn_noPh}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.99\textwidth]{figs/MF_noPh_2x4_current_dynamics_V0.pdf}
+	\caption{Comparison of current dynamics for $V=0$ and $\mathbb{M}=2\times 4$ for $P=0.0,0.5$ and $\lambda_0=\SI{0.0}{\electronvolt},\SI{0.04}{\electronvolt}$.}\label{fig:MF_2x4_CurDyn_noPh}
 \end{figure}\\
+\Cref{fig:MF_2x4_CurDyn_noPh} compares the case where the left lead is spin-polarized and the SOC in the molecule is $\lambda_0=\SI{0.04}{\electronvolt}$ with the case of a molecule with SOC but spin-unpolarized left lead (red line), and the cases of a molecule without SOC with $P=0.5$ (green line) and $P=0.0$ (orange line). 
+Even in the absence of SOC but for a spin-polarized lead, the current does not reach a steady state in the time-interval considered here. Thus, solely identifying SOC as the reason for equilibrium currents is suggestive, but one has to take into account also the spin-polarization of the lead.
+This comparison suggests that the cause of these equilibrium currents is the interplay between the spin-orbit interaction in the molecule and the spin-polarization in the left lead.
+\Cref{fig:MF_2x4_PopDyn_noPh_comp_Lambda}  shows the population on site 1 for $\lambda_0 = \SI{0.04}{\electronvolt}$ and $\lambda_0 = \SI{0.0}{\electronvolt}$. While the population in the molecule without SOC reaches a stationary value, the one with SOC does not.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.99\textwidth]{figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.pdf}
+	\caption{Equilibrium population dynamics on site 1 for  $\mathbb{M}=2\times 4$ and $P=0$.}\label{fig:MF_2x4_PopDyn_noPh_comp_Lambda}
+\end{figure}
+
+
 \section{Ehrenfest approach: Tests of implementation}
 \subsection{Reduction to classical MD for zero electron-phonon coupling}
 For vanishing electron-phonon coupling, the nuclear dynamics reduces to a purely molecular dynamics integration. 
@@ -252,16 +268,16 @@ The steady-state can be read off directly from the equation of motion
 \end{equation}
 We conclude, that both electronic and vibrational systems, when treated independently, have a unique steady-state.
 \subsection{Numerical investigation of steady-states in the coupled dynamical system}
-{\color{red}{Put here data with correct code and correct parameters.}}
+{\color{red}{Investigate molecule with $\lambda_0=\lambda_1=\SI{0.0}{\electronvolt}$. Does current still oscillate? Draw connection to \cref{fig:MF_2x4_PopDyn_noPh}.}}
 In this section we investigate numerically if a steady-state is reached in the coupled electron-vibrational Ehrenfest-dynamics for the open Fransson model (considering the same parameters as before with $P=0.5$). 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.94\textwidth]{../report_3/figs/Pops_currents_phonons_1x3_V0.pdf}
+	\includegraphics[width=0.94\textwidth]{figs/Pops_currents_phonons_1x3_V0.pdf}
 	\caption{(a),(b) and (c) local spin polarization on sites 1,2, and 3, respectively. (d) Symmetrized current. (e) and (f) phase space trajectories of the two vibrational modes. Different lines show different initial conditions for the vibrational positions $X_0$. The dashed orange line shows quantities in the steady state for $t_1=\lambda_1 = 0$.}\label{fig:Pops_currents_phonons_1x3_V0}
 \end{figure}\\
 For this, the coupled quantum-classical HEOM equations of motion are solved where the initial vibrational coordinates are varied (and not sampled from the distribution given in \cref{eq:Boltzmann_probabilityDist}).
 
-We start with the equilibrium case $V=0$. Shown in \cref{fig:Pops_currents_phonons_1x3_V0} (a), (b), and (c) are the local spin polarization $s_i^z = \tr{\rho_i \sigma^z}$ on sites $i=1,2,3$, in (d) the symmetrized current $I_L-I_R$, and the phase-space trajectory of phonons at the bond between site 1 and 2 (e) and at the bond between sites 2 and 3 (f). The different lines show initial conditions $X_0=0,-0.5,-4,-12,-25$ for both modes. The initial vibrational momenta are set to $P_1(0)=P_2(0)=0$ in all cases.
+We start with the equilibrium case $V=0$. Shown in \cref{fig:Pops_currents_phonons_1x3_V0} (a), (b), and (c) are the local spin polarization $s_i^z = \tr{\rho_i \sigma^z}$ on sites $i=1,2,3$, in (d) the symmetrized current $I_L-I_R$, and the phase-space trajectory of phonons at the bond between site 1 and 2 (e) and at the bond between sites 2 and 3 (f). The different lines show initial conditions $X_0=-1,-5,-10,-25$ for both modes. The initial vibrational momenta are set to $P_1(0)=P_2(0)=0$ in all cases.
 We further compare the local spin polarization and the current with the ones obtained for $t_1 = \lambda_1=0$ (orange dashed line). The green cross in (e) and (f) indicates the steady state phase space point under the adiabatic approximation
 \begin{equation}
 	\bm{\xi}^\mathrm{adiab.}_\mathrm{ss} = \bm{\xi}_\mathrm{ss} (\rho_\mathrm{ss}^\mathrm{FNA}),
@@ -281,8 +297,8 @@ Another important point is that the steady-state phase space point under the adi
 We now proceed with the same analysis to a moderate voltage $V=12$, shown in \cref{fig:Pops_currents_phonons_1x3_V12}.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.94\textwidth]{../report_3/figs/Pops_currents_phonons_1x3_V12.pdf}
-	\caption{Same as \cref{fig:Pops_currents_phonons_1x3_V0} for $V=12$.}\label{fig:Pops_currents_phonons_1x3_V12}
+	\includegraphics[width=0.94\textwidth]{figs/Pops_currents_phonons_1x3_V0.48.pdf}
+	\caption{Same as \cref{fig:Pops_currents_phonons_1x3_V0} for $V=\SI{0.48}{V}$.}\label{fig:Pops_currents_phonons_1x3_V12}
 \end{figure}\\
 Beginning with the spin polarization, one can see that the time-dependence is not periodic anymore, unlike in the case $V=0$. On site 1, the spin polarization is for some time-interval even larger than the steady-state result obtained for $t_1=\lambda_1 = 0$. For later times and sufficiently large $X_0$, the spin polarization almost vanishes temporarily. On sites 2 and 3, this effect is observed for all investigated $X_0$, although the drop in spin polarization depends on $X_0$.
 In contrast, the current is almost never larger than the steady-state current obtained for $t_1=\lambda_1=0$. The dynamics of the vibrational modes leads to a temporary reduction of the current.
@@ -298,6 +314,10 @@ To conclude, the results have following implications (not in general, but only w
 	\item There exist $\bm{\xi}_0$, for which the time-dependence of long-time observables is small. (Speculation) When averaged over many trajectories normally distributed with means $\bm{\xi}_0$, a steady-state may be obtained as time-dependent contributions could cancel out.
 	\item The $\bm{\xi}_0$ which are close to steady-state, depend on $V$ and may deviate from the null vector. (Speculation) Even when when trajectories are sampled from \cref{eq:Boltzmann_probabilityDist} and quantities are obtained from a weighted average, a steady-state may not be found for all voltages.
 \end{itemize} 
+\begin{itemize}
+	\item Observation: $V=0$, current dynamics determined by SOC. When there is a voltage-induced current, dynamics is determined by $t_1$ (see MeanField\_v2\_weighting/Tests\_2x4).
+	\item Phonons trap charge.
+\end{itemize}
 \newpage
 \section{Multi-trajectory Ehrenfest dynamics approach to the Fransson model}
 \subsection{Convergence with number of trajectories}

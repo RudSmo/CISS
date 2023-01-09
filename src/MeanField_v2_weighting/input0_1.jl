@@ -15,8 +15,8 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 3
+num_laps = 2
+num_ions = 4
 N = num_laps * num_ions
 t0  = 0.04
 eu  = -6*t0
@@ -28,7 +28,7 @@ a   = 1.0
 c   = 1.0
 tso = t0/40
 tPh = 0.1*t0
-tsoPh = 0.1*tso
+tsoPh = 0.0*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
@@ -37,8 +37,8 @@ modelStr = "Fransson"
 
 
 # Simulation Parameters
-dt = 0.001/t0
-tend = 200/t0
+dt = 0.002/t0
+tend = 500/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -56,20 +56,20 @@ else
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = [1.0,0.0,0.0,0.0,0,0.0]#,0,0,0]
-popPhIn = [0,0,0]
+popElIn = 1.0*[1,1,0,0,0,0,0,0]
+popPhIn = [0,0,0,0,0,0,0,0]
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-x0 = -1.0
-xnIn,pnIn = [x0,x0,x0],[0.0,0,0]#,-11.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
+x0 = 1.0
+xnIn,pnIn = x0*ones(N),zeros(N)
 
 
 ## Leads
 P = 0.5
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
-V  = 12.0*t0
-nPoles = 35
+V  = 12*t0
+nPoles = 20
 beta = 1/0.025
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
@@ -92,7 +92,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "FranssonParams/V$(V)"
+path = "Tests_2x4"
 if !isdir(path)
 	mkdir(path)
 end
