@@ -38,7 +38,7 @@ ax.legend(loc="best")
 
 
 ax.set_xlabel(L"$t\, [\mathrm{ps}]$")
-ax.set_ylabel(L"$I_L - I_R \, [\mu\mathrm{A}]$")
+ax.set_ylabel(L"$I_L - I_R \, [\mathrm{nA}]$")
 ax.set_ylim(-20,20)
 ax.set_xlim(0,1.8)
 

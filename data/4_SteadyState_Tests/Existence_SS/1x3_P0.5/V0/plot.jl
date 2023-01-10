@@ -12,12 +12,11 @@ rc("axes",labelsize=fs)
 rc("xtick",labelsize=fs-2)
 rc("ytick",labelsize=fs-2)
 
-
 fig = plt.figure(figsize = (10,10))
-px = 0.083
-py = 0.72
-sx1 = 0.285
-dx1 = 0.02
+px = 0.091
+py = 0.715
+sx1 = 0.25
+dx1 = 0.07
 sx = 0.43
 dx = 0.038
 dy = 0.05
@@ -66,35 +65,34 @@ ax13.plot(Array(0:t_end),fac*(datSS_E[5]-datSS_E[6])*ones(length(Array(0:t_end))
 ax13.plot([t_end],fac*(datSS_E[5]-datSS_E[6]),color="orange",marker="o",markersize=8,linewidth=0)
 
 ax11.set_ylabel(L"$s^z\, [\times 10^{-3}]$")
-ax11.set_ylim(-8,0.5)
+ax11.set_ylim(-7.2,-7.0)
 ax11.set_xlim(0,t_end)
 #ax11.set_xticks([0,1000,2000,3000,4000])
 ax11.set_xlabel(L"$t\, [\mathrm{ps}]$",fontsize=13,labelpad=-2)
 ax11.annotate("(a)",(0.1,0.85),xycoords="axes fraction",fontsize=fs)
-ax11.annotate("site 1",(0.8,0.82),xycoords="axes fraction",fontsize=fs)
+ax11.annotate("site 1",(0.75,0.88),xycoords="axes fraction",fontsize=fs)
 
-ax12.set_ylim(-8,0.5)
-ax12.set_yticklabels([])
+ax12.set_ylim(-0.2,0.0)
+#ax12.set_yticklabels([])
 ax12.set_xlim(0,t_end)
 #ax12.set_xticks([0,1000,2000,3000,4000])
 ax12.set_xlabel(L"$t\, [\mathrm{ps}]$",fontsize=13,labelpad=-2)
 ax12.annotate("(b)",(0.1,0.85),xycoords="axes fraction",fontsize=fs)
-ax12.annotate("site 2",(0.8,0.82),xycoords="axes fraction",fontsize=fs)
+ax12.annotate("site 2",(0.75,0.88),xycoords="axes fraction",fontsize=fs)
 
-ax13.set_ylim(-8,0.5)
+ax13.set_ylim(-0.1,0.05)
 ax13.set_xlim(0,t_end)
-ax13.plot([-10000],[-1],marker="x",color="green",linewidth=0,markersize="8",label=L"$\xi^\mathrm{adiab.}_\mathrm{ss}$ for $X_0=-1$")
-ax13.set_yticklabels([])
+#ax13.set_yticklabels([])
 ax13.set_xlabel(L"$t\, [\mathrm{ps}]$",fontsize=13,labelpad=-2)
 ax13.annotate("(c)",(0.1,0.85),xycoords="axes fraction",fontsize=fs)
-ax13.annotate("site 3",(0.8,0.82),xycoords="axes fraction",fontsize=fs)
-ax13.legend(loc="lower right",numpoints=1)
+ax13.annotate("site 3",(0.75,0.87),xycoords="axes fraction",fontsize=fs)
+ax13.legend(loc="lower right",numpoints=1,fontsize=12)
 
 ax2.plot(Array(0:t_end)*fac_t,fac_c*(datSS_C[1]-datSS_C[2])*ones(length(Array(0:t_end))),color="orange",linewidth=2,linestyle="dashed")
 ax2.plot([t_end],fac_c*(datSS_C[1]-datSS_C[2]),color="orange",marker="o",markersize=8,linewidth=0)
 ax2.set_ylim(-0.2,0.2)
 ax2.set_xlim(0,t_end)
-ax2.set_ylabel(L"$I_L-I_R \, [\mu \mathrm{A}]$",labelpad=-2)
+ax2.set_ylabel(L"$I_L-I_R \, [\mathrm{nA}]$",labelpad=-2)
 ax2.set_xlabel(L"$t\, [\mathrm{ps}]$",fontsize=15,labelpad=-2)
 ax2.annotate("(d)",(0.02,0.85),xycoords="axes fraction",fontsize=fs)
 
@@ -146,12 +144,10 @@ X2 = 1/w0 * t_rho_2
 X2 += conj(X2)
 println(X2)
 
-ax31.plot([X1],[0],color="green",marker="x",markersize=9,linewidth=3)
 ax31.annotate("(e)",(0.06,0.85),xycoords="axes fraction",fontsize=fs)
 ax31.set_ylabel(L"$P_1$",labelpad=-1)
 ax31.set_xlabel(L"$X_1$")
 
-ax32.plot([X2],[0],color="green",marker="x",markersize=9,linewidth=3)
 ax32.annotate("(f)",(0.06,0.85),xycoords="axes fraction",fontsize=fs)
 ax32.set_yticklabels([])
 ax32.set_xlabel(L"$X_2$")

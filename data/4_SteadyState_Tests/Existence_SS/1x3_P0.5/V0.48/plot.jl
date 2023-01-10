@@ -93,11 +93,10 @@ ymin = 0
 ymax = 20
 ax2.plot(Array(0:t_end),fac_c*(datSS_C[1]-datSS_C[2])*ones(length(Array(0:t_end))),color="orange",linewidth=2,linestyle="dashed",label=L"Steady state $t_1 = \lambda_1 = 0$")
 ax2.plot([t_end],fac_c*(datSS_C[1]-datSS_C[2]),color="orange",marker="o",markersize=8,linewidth=0)
-ax2.plot([-10000],[-1],marker="x",color="blue",linewidth=0,markersize="8",label=L"$\xi^\mathrm{adiab.}_\mathrm{ss}$ for $X_0=-1$")
 ax2.legend(loc="upper right",numpoints=1,ncol=3)
 ax2.set_ylim(ymin,ymax)
 ax2.set_xlim(0,t_end)
-ax2.set_ylabel(L"$I_L-I_R \, [\mathrm{mA}]$")
+ax2.set_ylabel(L"$I_L-I_R \, [\mu\mathrm{A}]$")
 ax2.set_xlabel(L"$t\, [\mathrm{ps}]$",fontsize=15,labelpad=-2)
 ax2.annotate("(d)",(0.02,0.85),xycoords="axes fraction",fontsize=fs)
 
@@ -148,12 +147,10 @@ t_rho_2 = -tph * sqrt(2*w0) * tr(rho[3:4,5:6])
 X2 = 1/w0 * t_rho_2
 X2 += conj(X2)
 
-ax31.plot([X1],[0],color="blue",marker="x",markersize=12,linewidth=3)
 ax31.annotate("(e)",(0.06,0.85),xycoords="axes fraction",fontsize=fs)
 ax31.set_ylabel(L"$P_1$",labelpad=-1)
 ax31.set_xlabel(L"$X_1$")
 
-ax32.plot([X2],[0],color="blue",marker="x",markersize=12,linewidth=3)
 ax32.annotate("(f)",(0.06,0.85),xycoords="axes fraction",fontsize=fs)
 ax32.set_yticklabels([])
 ax32.set_xlabel(L"$X_2$")

@@ -8,7 +8,7 @@ include("$(src_path)structures.jl")
 plt.style.use("classic")
 rc("text", usetex=true)
 rc("font",family="serif",serif="Times")
-fs = 17
+fs = 19
 rc("axes",labelsize=fs)
 rc("xtick",labelsize=fs-2)
 rc("ytick",labelsize=fs-2)
@@ -105,15 +105,21 @@ for site in 1:N
 end
 
 lw = 3
-plt.plot(Array(1:N),Nu,color="red",linewidth=lw,label=L"$N_\uparrow$"*" analytical NEGF")
-plt.plot(Array(1:N),Nd,color="blue",linewidth=lw,label=L"$N_\downarrow$"*" analytical NEGF")
+
+fig = plt.figure(figsize=(10,5))
+px = 0.1
+py = 0.11
+sx = 0.88
+sy = 0.86
+ax = plt.axes([px,py,sx,sy])
+ax.plot(Array(1:N),Nu,color="red",linewidth=lw,label=L"$n_\uparrow$"*" analytical NEGF")
+ax.plot(Array(1:N),Nd,color="blue",linewidth=lw,label=L"$n_\downarrow$"*" analytical NEGF")
 
 dat = readdlm("../V0.0/L8_tPh0.0_SOC0.001_SOCPh0.0_V0.0_w00.002_P0.5_X0_-1.0_dt0.05_1_electrons.dat")
-println(dat[end-100,1])
-plt.plot(Array(1:N),dat[end-100,2:2:end],color="red",linewidth=lw,linestyle="dashed",label=L"$N_\uparrow$"*" MF-HEOM")
-plt.plot(Array(1:N),dat[end-100,3:2:end],color="blue",linewidth=lw,linestyle="dashed",label=L"$N_\downarrow$"*" MF-HEOM")
-plt.legend(loc="best")
-plt.xlabel("sites")
-plt.ylabel("population")
+ax.plot(Array(1:N),dat[end-100,2:2:end],color="red",linewidth=lw,linestyle="dashed",label=L"$n_\uparrow$"*" MF-HEOM")
+ax.plot(Array(1:N),dat[end-100,3:2:end],color="blue",linewidth=lw,linestyle="dashed",label=L"$n_\downarrow$"*" MF-HEOM")
+ax.legend(loc="best")
+ax.set_xlabel("sites")
+ax.set_ylabel("population")
 plt.savefig("Comparison_populations_V0.pdf")
 

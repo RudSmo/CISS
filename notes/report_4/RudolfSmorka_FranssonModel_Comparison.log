@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  3 JAN 2023 18:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  9 JAN 2023 16:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -735,251 +735,173 @@ LaTeX Font Info:    Trying to load font information for U+bbold on input line 8
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/bbold/Ubbold.fd) [1
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<../report_3/figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf, id=26, 722.
-7pt x 505.89pt>
-File: ../report_3/figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf Graphic
- file (type pdf)
-<use ../report_3/figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf>
-Package pdftex.def Info: ../report_3/figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+
-SOC_V10.pdf  used on input line 119.
-(pdftex.def)             Requested size: 314.39998pt x 220.0758pt.
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<figs/Comparison_TTHEOM_MFHEOM_FranssonStatic.pdf, id=26, 722.7pt x 722.7pt>
+File: figs/Comparison_TTHEOM_MFHEOM_FranssonStatic.pdf Graphic file (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_FranssonStatic.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_FranssonStatic.pdf  used
+ on input line 120.
+(pdftex.def)             Requested size: 469.18652pt x 469.18703pt.
+<figs/LB_1x3.pdf, id=27, 722.7pt x 361.35pt>
+File: figs/LB_1x3.pdf Graphic file (type pdf)
+<use figs/LB_1x3.pdf>
+Package pdftex.def Info: figs/LB_1x3.pdf  used on input line 128.
+(pdftex.def)             Requested size: 314.39998pt x 157.197pt.
+<figs/LB_4x3.pdf, id=28, 722.7pt x 361.35pt>
+File: figs/LB_4x3.pdf Graphic file (type pdf)
+<use figs/LB_4x3.pdf>
+Package pdftex.def Info: figs/LB_4x3.pdf  used on input line 133.
+(pdftex.def)             Requested size: 314.39998pt x 157.197pt.
+<../report_3/figs/Spectrum_leads.pdf, id=29, 462.52798pt x 346.89601pt>
+File: ../report_3/figs/Spectrum_leads.pdf Graphic file (type pdf)
+<use ../report_3/figs/Spectrum_leads.pdf>
+Package pdftex.def Info: ../report_3/figs/Spectrum_leads.pdf  used on input lin
+e 139.
+(pdftex.def)             Requested size: 362.77263pt x 272.09164pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--142
+
+ []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2]
-<figs/LB_1x3.pdf, id=35, 722.7pt x 361.35pt>
-File: figs/LB_1x3.pdf Graphic file (type pdf)
-<use figs/LB_1x3.pdf>
-Package pdftex.def Info: figs/LB_1x3.pdf  used on input line 127.
-(pdftex.def)             Requested size: 314.39998pt x 157.197pt.
-<figs/LB_4x3.pdf, id=36, 722.7pt x 361.35pt>
-File: figs/LB_4x3.pdf Graphic file (type pdf)
-<use figs/LB_4x3.pdf>
-Package pdftex.def Info: figs/LB_4x3.pdf  used on input line 132.
-(pdftex.def)             Requested size: 314.39998pt x 157.197pt.
-<../report_3/figs/Spectrum_leads.pdf, id=37, 462.52798pt x 346.89601pt>
-File: ../report_3/figs/Spectrum_leads.pdf Graphic file (type pdf)
-<use ../report_3/figs/Spectrum_leads.pdf>
-Package pdftex.def Info: ../report_3/figs/Spectrum_leads.pdf  used on input lin
-e 138.
-(pdftex.def)             Requested size: 266.03473pt x 199.53246pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--141
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
- []
-
-[3 <../report_3/figs/Comparison_TTHEOM_TDVP_ED_hop+onsite+SOC_V10.pdf> <./figs/
-LB_1x3.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/LB_1x3.pdf): PDF incl
-usion: multiple pdfs with page group included in a single page
-> <./figs/LB_4x3.pdf
+[3 <./figs/Comparison_TTHEOM_MFHEOM_FranssonStatic.pdf>] [4 <./figs/LB_1x3.pdf>
+ <./figs/LB_4x3.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/LB_4x3.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
+> <../report_3/figs/Spectrum_leads.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../report_3/figs/Spectrum_le
+ads.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
 >]
-<figs/Comparison_populations_V0.pdf, id=108, 578.16pt x 433.62pt>
+<figs/Comparison_populations_V0.pdf, id=128, 722.7pt x 361.35pt>
 File: figs/Comparison_populations_V0.pdf Graphic file (type pdf)
 <use figs/Comparison_populations_V0.pdf>
 Package pdftex.def Info: figs/Comparison_populations_V0.pdf  used on input line
- 144.
-(pdftex.def)             Requested size: 362.77263pt x 272.07709pt.
-<figs/MF_noPh_2x4_population_dynamics_V0.pdf, id=109, 722.7pt x 505.89pt>
+ 145.
+(pdftex.def)             Requested size: 411.14526pt x 205.57465pt.
+ [5 <./figs/Comparison_populations_V0.pdf>]
+<figs/MF_noPh_2x4_population_dynamics_V0.pdf, id=146, 722.7pt x 505.89pt>
 File: figs/MF_noPh_2x4_population_dynamics_V0.pdf Graphic file (type pdf)
 <use figs/MF_noPh_2x4_population_dynamics_V0.pdf>
 Package pdftex.def Info: figs/MF_noPh_2x4_population_dynamics_V0.pdf  used on i
-nput line 151.
-(pdftex.def)             Requested size: 478.86252pt x 335.2084pt.
-<figs/MF_noPh_2x4_current_dynamics_V0.pdf, id=110, 722.7pt x 433.62pt>
+nput line 153.
+(pdftex.def)             Requested size: 445.0002pt x 311.5026pt.
+<figs/MF_noPh_2x4_current_dynamics_V0.pdf, id=147, 722.7pt x 433.62pt>
 File: figs/MF_noPh_2x4_current_dynamics_V0.pdf Graphic file (type pdf)
 <use figs/MF_noPh_2x4_current_dynamics_V0.pdf>
 Package pdftex.def Info: figs/MF_noPh_2x4_current_dynamics_V0.pdf  used on inpu
-t line 156.
-(pdftex.def)             Requested size: 478.86252pt x 287.3215pt.
-<figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.pdf, id=111, 722.7pt x 50
+t line 158.
+(pdftex.def)             Requested size: 445.0002pt x 267.00223pt.
+<figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.pdf, id=148, 722.7pt x 50
 5.89pt>
 File: figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.pdf Graphic file (ty
 pe pdf)
 <use figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.pdf>
 Package pdftex.def Info: figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.p
-df  used on input line 165.
-(pdftex.def)             Requested size: 478.86252pt x 335.2084pt.
- [4 <../report_3/figs/Spectrum_leads.pdf> <./figs/Comparison_populations_V0.pdf
+df  used on input line 167.
+(pdftex.def)             Requested size: 445.0002pt x 311.5026pt.
 
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Comparison_population
-s_V0.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
-ge
->] [5 <./figs/MF_noPh_2x4_population_dynamics_V0.pdf> <./figs/MF_noPh_2x4_curre
-nt_dynamics_V0.pdf
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/MF_noPh_2x4_current_d
-ynamics_V0.pdf): PDF inclusion: multiple pdfs with page group included in a sin
-gle page
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6 <./figs/MF_noPh_2x4_population_dynamics_V0.pdf>]
+Overfull \vbox (16.16714pt too high) has occurred while \output is active []
+
+
+[7 <./figs/MF_noPh_2x4_current_dynamics_V0.pdf> <./figs/MF_noPh_2x4_population_
+dynamics_V0_P0_LambdaVar.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/MF_noPh_2x4_populatio
+n_dynamics_V0_P0_LambdaVar.pdf): PDF inclusion: multiple pdfs with page group i
+ncluded in a single page
 >]
-<figs/Decoupled_vibrational_dynamics.pdf, id=187, 722.7pt x 361.35pt>
+<figs/Decoupled_vibrational_dynamics.pdf, id=215, 722.7pt x 361.35pt>
 File: figs/Decoupled_vibrational_dynamics.pdf Graphic file (type pdf)
 <use figs/Decoupled_vibrational_dynamics.pdf>
 Package pdftex.def Info: figs/Decoupled_vibrational_dynamics.pdf  used on input
- line 180.
+ line 182.
 (pdftex.def)             Requested size: 338.5863pt x 169.29417pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[6 <./figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.pdf>]
-<../report_3/figs/Comparison_Pdist_analytical_numerical.pdf, id=212, 650.43pt x
- 433.62pt>
-File: ../report_3/figs/Comparison_Pdist_analytical_numerical.pdf Graphic file (
-type pdf)
-<use ../report_3/figs/Comparison_Pdist_analytical_numerical.pdf>
-Package pdftex.def Info: ../report_3/figs/Comparison_Pdist_analytical_numerical
-.pdf  used on input line 225.
-(pdftex.def)             Requested size: 459.51051pt x 306.35056pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 220--228
-
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[7 <./figs/Decoupled_vibrational_dynamics.pdf>]
-<figs/Pops_currents_phonons_1x3_V0.pdf, id=231, 722.7pt x 722.7pt>
+<figs/Pops_currents_phonons_1x3_V0.pdf, id=216, 722.7pt x 722.7pt>
 File: figs/Pops_currents_phonons_1x3_V0.pdf Graphic file (type pdf)
 <use figs/Pops_currents_phonons_1x3_V0.pdf>
 Package pdftex.def Info: figs/Pops_currents_phonons_1x3_V0.pdf  used on input l
-ine 275.
+ine 204.
 (pdftex.def)             Requested size: 454.67621pt x 454.67484pt.
+
+
+LaTeX Warning: Reference `eq:Boltzmann_probabilityDist' on page 1 undefined on 
+input line 207.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8 <../report_3/figs/Comparison_Pdist_analytical_numerical.pdf>]
-<figs/Pops_currents_phonons_1x3_V0.48.pdf, id=256, 722.7pt x 722.7pt>
+<figs/Pops_currents_phonons_1x3_V0.48.pdf, id=217, 722.7pt x 722.7pt>
 File: figs/Pops_currents_phonons_1x3_V0.48.pdf Graphic file (type pdf)
 <use figs/Pops_currents_phonons_1x3_V0.48.pdf>
 Package pdftex.def Info: figs/Pops_currents_phonons_1x3_V0.48.pdf  used on inpu
-t line 300.
+t line 222.
 (pdftex.def)             Requested size: 454.67621pt x 454.67484pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[8 <./figs/Decoupled_vibrational_dynamics.pdf>]
+
+LaTeX Warning: Reference `eq:Boltzmann_probabilityDist' on page 1 undefined on 
+input line 237.
+
 [9 <./figs/Pops_currents_phonons_1x3_V0.pdf>] [10 <./figs/Pops_currents_phonons
-_1x3_V0.48.pdf>] [11]
-<../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf, id=310, 722.7pt x 325.2
+_1x3_V0.48.pdf>]
+
+LaTeX Warning: Reference `eq:Boltzmann_probabilityDist' on page 1 undefined on 
+input line 248.
+
+<../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf, id=285, 722.7pt x 325.2
 15pt>
 File: ../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf Graphic file (type 
 pdf)
 <use ../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf>
 Package pdftex.def Info: ../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf 
- used on input line 329.
+ used on input line 252.
 (pdftex.def)             Requested size: 386.95894pt x 174.12973pt.
-<../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf, id=311, 722.7pt x 325.215pt>
+<../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf, id=286, 722.7pt x 325.215pt>
 File: ../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf Graphic file (type pdf)
 <use ../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf>
 Package pdftex.def Info: ../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf  used 
-on input line 334.
+on input line 258.
 (pdftex.def)             Requested size: 386.95894pt x 174.12973pt.
-<../report_3/figs/1x3_PDist_Evo_site0.pdf, id=312, 867.24pt x 578.16pt>
-File: ../report_3/figs/1x3_PDist_Evo_site0.pdf Graphic file (type pdf)
-<use ../report_3/figs/1x3_PDist_Evo_site0.pdf>
-Package pdftex.def Info: ../report_3/figs/1x3_PDist_Evo_site0.pdf  used on inpu
-t line 342.
-(pdftex.def)             Requested size: 435.32419pt x 290.21732pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[12 <../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf> <../report_3/figs/C
+[11 <../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf> <../report_3/figs/C
 urrents_1x3_Ehrenfest_V12.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../report_3/figs/Currents_1x
 3_Ehrenfest_V12.pdf): PDF inclusion: multiple pdfs with page group included in 
 a single page
->]
-<figs/Holstein_1x1_current_V0.4_multiTraj.pdf, id=355, 722.7pt x 361.35pt>
-File: figs/Holstein_1x1_current_V0.4_multiTraj.pdf Graphic file (type pdf)
-<use figs/Holstein_1x1_current_V0.4_multiTraj.pdf>
-Package pdftex.def Info: figs/Holstein_1x1_current_V0.4_multiTraj.pdf  used on 
-input line 412.
-(pdftex.def)             Requested size: 483.69684pt x 241.84961pt.
+>] [12] (./RudolfSmorka_FranssonModel_Comparison.aux)
 
+LaTeX Warning: There were undefined references.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[13 <../report_3/figs/1x3_PDist_Evo_site0.pdf>]
-<figs/Pops_currents_phonons_1x1_VVar.pdf, id=392, 722.7pt x 722.7pt>
-File: figs/Pops_currents_phonons_1x1_VVar.pdf Graphic file (type pdf)
-<use figs/Pops_currents_phonons_1x1_VVar.pdf>
-Package pdftex.def Info: figs/Pops_currents_phonons_1x1_VVar.pdf  used on input
- line 417.
-(pdftex.def)             Requested size: 483.69684pt x 483.69922pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Pops_currents_phonons_imshow_1x1_VVar.pdf, id=393, 722.7pt x 867.24pt>
-File: figs/Pops_currents_phonons_imshow_1x1_VVar.pdf Graphic file (type pdf)
-<use figs/Pops_currents_phonons_imshow_1x1_VVar.pdf>
-Package pdftex.def Info: figs/Pops_currents_phonons_imshow_1x1_VVar.pdf  used o
-n input line 422.
-(pdftex.def)             Requested size: 483.69684pt x 580.43907pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Pops_currents_phonons_steadyState_1x1_VVar.pdf, id=394, 722.7pt x 867.24p
-t>
-File: figs/Pops_currents_phonons_steadyState_1x1_VVar.pdf Graphic file (type pd
-f)
-<use figs/Pops_currents_phonons_steadyState_1x1_VVar.pdf>
-Package pdftex.def Info: figs/Pops_currents_phonons_steadyState_1x1_VVar.pdf  u
-sed on input line 427.
-(pdftex.def)             Requested size: 483.69684pt x 580.43907pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Pops_currents_phonons_Peierls_1x2_VVar.pdf, id=395, 722.7pt x 722.7pt>
-File: figs/Pops_currents_phonons_Peierls_1x2_VVar.pdf Graphic file (type pdf)
-<use figs/Pops_currents_phonons_Peierls_1x2_VVar.pdf>
-Package pdftex.def Info: figs/Pops_currents_phonons_Peierls_1x2_VVar.pdf  used 
-on input line 440.
-(pdftex.def)             Requested size: 483.69684pt x 483.69922pt.
-<figs/Pops_currents_phonons_imshow_Peierls_1x2_VVar.pdf, id=396, 722.7pt x 867.
-24pt>
-File: figs/Pops_currents_phonons_imshow_Peierls_1x2_VVar.pdf Graphic file (type
- pdf)
-<use figs/Pops_currents_phonons_imshow_Peierls_1x2_VVar.pdf>
-Package pdftex.def Info: figs/Pops_currents_phonons_imshow_Peierls_1x2_VVar.pdf
-  used on input line 445.
-(pdftex.def)             Requested size: 483.69684pt x 580.43907pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[14 <./figs/Holstein_1x1_current_V0.4_multiTraj.pdf>] [15 <./figs/Pops_currents
-_phonons_1x1_VVar.pdf>] [16 <./figs/Pops_currents_phonons_imshow_1x1_VVar.pdf>]
-[17 <./figs/Pops_currents_phonons_steadyState_1x1_VVar.pdf>] [18 <./figs/Pops_c
-urrents_phonons_Peierls_1x2_VVar.pdf>] [19 <./figs/Pops_currents_phonons_imshow
-_Peierls_1x2_VVar.pdf>] (./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
 \openout1 = `RudolfSmorka_FranssonModel_Comparison.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16490 strings out of 478994
- 327690 string characters out of 5858184
- 839797 words of memory out of 5000000
- 33744 multiletter control sequences out of 15000+600000
- 420267 words of font info for 91 fonts, out of 8000000 for 9000
+ 16438 strings out of 478994
+ 324772 string characters out of 5858184
+ 838543 words of memory out of 5000000
+ 33698 multiletter control sequences out of 15000+600000
+ 420945 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,19n,75p,1873b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,19n,75p,1873b,1646s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb>
@@ -989,33 +911,26 @@ usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></us
 r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
 /local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
 local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/lo
-cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/loca
-l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/
-texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/202
-1/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2021/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/
-type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2021/texmf-dist/fo
-nts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf-dist/font
-s/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw
-/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utm
-ri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (19 pages, 3541842 
+cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2021/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/tex
+mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-dist/fonts
+/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw
+/times/utmri8a.pfb>
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (12 pages, 2211532 
 bytes).
 PDF statistics:
- 682 PDF objects out of 1000 (max. 8388607)
- 550 compressed objects within 6 object streams
+ 398 PDF objects out of 1000 (max. 8388607)
+ 336 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 106 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

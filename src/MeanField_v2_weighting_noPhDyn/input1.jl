@@ -16,7 +16,7 @@ using .CustomStructures
 # Simulation Parameters
 t0 = 0.04
 dt = 0.002/t0
-tend = 300/t0
+tend = 1000/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -34,7 +34,7 @@ ws  = 0.05*t0*ones(N)
 gPh = [0.0,0.0]
 a   = 1.0
 c   = 1.0
-tso = 0.0*t0/40
+tso = t0/40
 tPh = 0.0*t0
 tsoPh = 0.0*tso
 #model = HolsteinHopping
