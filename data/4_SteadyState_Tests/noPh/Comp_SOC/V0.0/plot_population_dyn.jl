@@ -36,13 +36,13 @@ ax1.set_xticklabels([])
 dat1 = readdlm("L8_tPh0.0_SOC0.001_SOCPh0.0_V0.0_w00.002_P0.0_X0_-1.0_dt0.05_1_electrons.dat")
 dat2 = readdlm("L8_tPh0.0_SOC0.0_SOCPh0.0_V0.0_w00.002_P0.0_X0_-1.0_dt0.05_1_electrons.dat")
 
-ax1.plot(dat1[2:end,1]*fac_t,dat1[2:end,2],linewidth=lw,color="k",label=L"$\lambda_0=0.04\,\mathrm{eV}$")
+ax1.plot(dat1[2:end,1]*fac_t,dat1[2:end,2],linewidth=lw,color="k",label=L"$\lambda_0=0.001\,\mathrm{eV}$")
 ax1.plot(dat2[2:end,1]*fac_t,dat2[2:end,2],linewidth=lw-1,color="red",label=L"$\lambda_0=0.0\,\mathrm{eV}$")
-ax11.plot(dat1[2:end,1]*fac_t,dat1[2:end,2],linewidth=lw,color="k",label=L"$\lambda=0.04\,\mathrm{eV}$")
+ax11.plot(dat1[2:end,1]*fac_t,dat1[2:end,2],linewidth=lw,color="k",label=L"$\lambda=0.001\,\mathrm{eV}$")
 ax11.plot(dat2[2:end,1]*fac_t,dat2[2:end,2],linewidth=lw-1,color="red",label=L"$\lambda=0.0\,\mathrm{eV}$")
-ax2.plot(dat1[2:end,1]*fac_t,dat1[2:end,3],linewidth=lw,color="k",label=L"$\lambda=0.04\,\mathrm{eV}$")
+ax2.plot(dat1[2:end,1]*fac_t,dat1[2:end,3],linewidth=lw,color="k",label=L"$\lambda=0.001\,\mathrm{eV}$")
 ax2.plot(dat2[2:end,1]*fac_t,dat2[2:end,3],linewidth=lw-1,color="red",label=L"$\lambda=0.0\,\mathrm{eV}$")
-ax22.plot(dat1[2:end,1]*fac_t,dat1[2:end,3],linewidth=lw,color="k",label=L"$\lambda=0.04\,\mathrm{eV}$")
+ax22.plot(dat1[2:end,1]*fac_t,dat1[2:end,3],linewidth=lw,color="k",label=L"$\lambda=0.001\,\mathrm{eV}$")
 ax22.plot(dat2[2:end,1]*fac_t,dat2[2:end,3],linewidth=lw-1,color="red",label=L"$\lambda=0.0\,\mathrm{eV}$")
 
 

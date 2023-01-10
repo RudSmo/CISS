@@ -15,8 +15,8 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 2
-num_ions = 4
+num_laps = 1
+num_ions = 3
 N = num_laps * num_ions
 t0  = 0.04
 eu  = -6*t0
@@ -68,7 +68,7 @@ xnIn,pnIn = x0*ones(N),zeros(N)
 P = 0.5
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
-V  = 12*t0
+V  = 0*t0
 nPoles = 20
 beta = 1/0.025
 HamPar = HamiltonianParams( num_laps,
@@ -92,10 +92,11 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "Tests_2x4"
+path = "Tests_1x3/V0.0/notPh_SOC_noSOCPh"
 if !isdir(path)
-	mkdir(path)
+	mkpath(path)
 end
+
 
 num_avg = 1
 for ka in 1:num_avg

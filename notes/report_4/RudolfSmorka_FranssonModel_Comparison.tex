@@ -156,12 +156,12 @@ To understand the discrepancy between the equilibrium populations in the NEGF an
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.92\textwidth]{figs/MF_noPh_2x4_current_dynamics_V0.pdf}
-	\caption{Comparison of current dynamics for $V=0$ and $\mathbb{M}=2\times 4$ for $P=0.0,0.5$ and $\lambda_0=\SI{0.0}{\electronvolt},\SI{0.04}{\electronvolt}$.}\label{fig:MF_2x4_CurDyn_noPh}
+	\caption{Comparison of current dynamics for $V=0$ and $\mathbb{M}=2\times 4$ for $P=0.0,0.5$ and $\lambda_0=\SI{0.0}{\electronvolt},\SI{0.001}{\electronvolt}$.}\label{fig:MF_2x4_CurDyn_noPh}
 \end{figure}\\
-\Cref{fig:MF_2x4_CurDyn_noPh} compares the case where the left lead is spin-polarized and the SOC in the molecule is $\lambda_0=\SI{0.04}{\electronvolt}$ with the case of a molecule with SOC but spin-unpolarized left lead (red line), and the cases of a molecule without SOC with $P=0.5$ (green line) and $P=0.0$ (orange line). 
-Even in the absence of SOC but for a spin-polarized lead, the current does not reach a steady state in the time-interval considered here. Thus, solely identifying SOC as the reason for equilibrium currents is suggestive, but one has to take into account also the spin-polarization of the lead.
+\Cref{fig:MF_2x4_CurDyn_noPh} compares the case where the left lead is spin-polarized and the SOC in the molecule is $\lambda_0=\SI{0.001}{\electronvolt}$ with the case of a molecule with SOC but spin-unpolarized left lead (red line), and the cases of a molecule without SOC coupled to a spin-polarized (green line) and spin-unpolarized lead (orange line). 
+Even in the absence of SOC but for a spin-polarized lead, the current does not reach a steady state in the time-interval considered here. 
 This comparison suggests that the cause of these equilibrium currents is the interplay between the spin-orbit interaction in the molecule and the spin-polarization in the left lead.
-\Cref{fig:MF_2x4_PopDyn_noPh_comp_Lambda}  shows the population on site 1 for $\lambda_0 = \SI{0.04}{\electronvolt}$ and $\lambda_0 = \SI{0.0}{\electronvolt}$. While the population in the molecule without SOC reaches a stationary value, the one with SOC does not.
+\Cref{fig:MF_2x4_PopDyn_noPh_comp_Lambda}  shows the population on site 1 for $\lambda_0 = \SI{0.001}{\electronvolt}$ and $\lambda_0 = \SI{0.0}{\electronvolt}$. While the population in the molecule without SOC reaches a stationary value, the one with SOC does not.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.92\textwidth]{figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.pdf}
@@ -197,7 +197,6 @@ with $A = \frac{X_0}{2}+\frac{P_0}{2i\omega}$ and $B  = A^*$.
 For the numerical comparison, $X_0 = 1$ and $P_0 = 0$ have been chosen. The numerical integration agrees with the analytical results, as shown in \cref{fig:Comparison_Vib_Analytical}.
 \section{Existence of a unique steady-state}
 \subsection{Numerical investigation of steady-states in the coupled dynamical system}
-{\color{red}{Investigate molecule with $\lambda_0=\lambda_1=\SI{0.0}{\electronvolt}$. Does current still oscillate? Draw connection to \cref{fig:MF_2x4_PopDyn_noPh}.}}
 In this section we investigate numerically if a steady-state is reached in the coupled electron-vibrational Ehrenfest-dynamics for the open Fransson model (considering the same parameters as before with $P=0.5$). 
 \begin{figure}[!h]
 	\centering
@@ -228,18 +227,30 @@ The vibrational dynamics deviates significantly from the single harmonic-oscilla
 In the time-interval considered here, the vibrational coordinates reach a limit cycle, which appears to be stable.
 Also, the equilibrium of the vibrational position is shifted to $X\approx -10$. 
 When $X_0$, however, is chosen carefully, the time-dependence of current and the populations can be reduced, such that a near-steady-state solution is found.
-An interesting point is that the numerical steady-state phase-space point deviates strongly from $\bm{\xi}^\mathrm{adiab.}_\mathrm{ss}$.
-We checked that the steady-state phase space point is voltage-dependent (but will not show any analysis on this). 
 To conclude, the results have following implications (not in general, but only within the Ehrenfest-approach considered here):
 \begin{itemize}
 	\item Given an arbitrary $\bm{\xi}_0$, a steady-state may not exist (but a limit-cycle may exist).
 	\item There exist $\bm{\xi}_0$, for which the time-dependence of long-time observables is small. (Speculation) When averaged over many trajectories normally distributed with means $\bm{\xi}_0$, a steady-state may be obtained as time-dependent contributions could cancel out.
 	\item The $\bm{\xi}_0$ which are close to steady-state, depend on $V$ and may deviate from the null vector. (Speculation) Even when when trajectories are sampled from \cref{eq:Boltzmann_probabilityDist} and quantities are obtained from a weighted average, a steady-state may not be found for all voltages.
 \end{itemize} 
-\begin{itemize}
-	\item Observation: $V=0$, current dynamics determined by SOC. When there is a voltage-induced current, dynamics is determined by $t_1$ (see MeanField\_v2\_weighting/Tests\_2x4).
-	\item Phonons trap charge.
-\end{itemize}
+\subsection{Origin of absence of steady-state}
+In this section we investigate which term in the Hamiltonian is responsible for the absence of the steady-state. \Cref{fig:MF_1x3_ParamTest} shows the symmetrized current for $V=\SI{0}{\volt}$ (a) and $V=\SI{0.48}{\volt}$ (b) for the following cases: Peierls model (blue line), Peierls and SOC (green), Fransson model (red line), SOC and phonon-assisted SOC (turquoise line) and SOC only (purple). Other parameters are identical to the ones used in the previous sections and $\mathbb{M}=1\times 3$. All vibrational modes are initialized in the phase space point $X_0=-1,P_0=0$. 
+The currents for the Peierls, Peierls-SOC and the Fransson model for both voltages are nearly identical, and for long times the current oscillates. When $t_1=\SI{0}{\electronvolt}$, the current reaches a steady state. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/MF_1x3_ParamTests.pdf}
+	\caption{Symmetrized current for $\mathbb{M}=1\times 3$ and various models for $V=\SI{0}{\volt}$ (a) and $V=\SI{0.48}{\volt}$ (b).}\label{fig:MF_1x3_ParamTest}
+\end{figure}
+\Cref{fig:MF_2x4_ParamTest} shows the same comparison as \cref{fig:MF_1x3_ParamTest} for a system with $\mathbb{M}=2\times 4$. 
+For $V=\SI{0}{\volt}$, current dynamics is dictated by the SOC, which can be seen from the nearly identical results for the Peierls-SOC, Fransson, SOC, and SOC with phonon-assisted SOC models. In contrast, the current is reaching a steady state in the Peierls-model.
+For $V=\SI{0.48}{\volt}$, dynamics is dictated by the Peierls electron-phonon coupling, similar to the cases investigated in the smaller system with system size $\mathbb{M}=1\times 3$.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/MF_2x4_ParamTests.pdf}
+	\caption{Symmetrized current for $\mathbb{M}=2\times 4$ and various models for $V=\SI{0}{\volt}$ (a) and $V=\SI{0.48}{\volt}$ (b).}\label{fig:MF_2x4_ParamTest}
+\end{figure}
+\subsection{Single trajectory calculation for a larger system}
+To investigate whether the previous findings are influenced by the system size, we consider a molecule consisting of $\mathbb{M}=4\times 4$ sites in the following.
 \newpage
 \section{Multi-trajectory Ehrenfest dynamics approach to the Fransson model}
 \subsection{Convergence with number of trajectories}

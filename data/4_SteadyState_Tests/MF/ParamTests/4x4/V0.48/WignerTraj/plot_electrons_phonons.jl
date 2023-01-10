@@ -11,6 +11,7 @@ rc("ytick",labelsize=fs-2)
 lw = 3
 fac_t = 1/(4.135668*1e3)
 fac_c = 1e3 * 2.8494561
+fac_ph = 0.001
 
 N = 16
 V = 0.48
@@ -45,9 +46,27 @@ ax1.set_xticks([-5,0,5,10])
 ax1.set_xlim(-5,10)
 
 ax2.imshow(dat_el[2:end,2:2:end] .+ dat_el[2:end,3:2:end],aspect="auto",extent=[1,N,Tend*fac_t,0],origin="lower")
-for i in 1:N-1
-	ax2.plot(dat_ph[2:end,2*i]*0.003/2 .+ i,dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
-	ax2.plot(dat_ph[2:end,2*(i+1)]*0.003/2 .+ i+1,dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
+
+
+#ax2.plot(ones(length(dat_ph[2:end,1])),dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
+
+
+for i in 1:N
+#	ax2.plot((i+1)*ones(length(dat_ph[2:end,1])) + 2*0.003*dat_ph[2:end,2*i],dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
+	pos = i * ones(length(dat_ph[2:end,1]))	
+	if i == 1
+		ax2.plot(pos - fac_ph * dat_ph[2:end,2*i], dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
+	elseif i == N
+		ax2.plot(pos + fac_ph * dat_ph[2:end,2*(i-1)], dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
+	else
+		ax2.plot(pos - fac_ph * dat_ph[2:end,2*(i-1)] + fac_ph * dat_ph[2:end,2*i], dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
+	end
+
+
+#	ax2.plot(dat_ph[2:end,2*i]-2*dat_ph[2:end,2*i]*0.003/2 .+ i,dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
+#	ax2.plot(N - 2*dat_ph[2:end,2*i]*0.003/2 .+ i,dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
+#	ax2.plot(N - 2*dat_ph[2:end,2*i]*0.003/2 .+ i,dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
+#	ax2.plot(dat_ph[2:end,2*(i+1)]*0.003/2 .+ i+1,dat_ph[2:end,1]*fac_t,color="k",linewidth=lw)
 end
 
 ax2.set_ylim(0,Tend*fac_t)

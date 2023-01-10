@@ -15,8 +15,8 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 4
-num_ions = 4
+num_laps = 1
+num_ions = 3
 N = num_laps * num_ions
 t0  = 0.04
 eu  = -6*t0
@@ -26,9 +26,9 @@ ws  = 0.05*t0*ones(N)
 gPh = [0.0,0.0]
 a   = 1.0
 c   = 1.0
-tso = 0.0
-tPh = 0.1*t0
-tsoPh = 0.0*tso
+tso = t0/40
+tPh = 0.0*t0
+tsoPh = 0.1*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
@@ -48,8 +48,8 @@ initProp  = true
 if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
-    #phIn = "TDSCF"
-    phIn = "Wigner"
+    phIn = "TDSCF"
+    #phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -92,10 +92,11 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "Tests_4x4"
+path = "Tests_1x3/V0.48/notPh_SOC_SOCPh"
 if !isdir(path)
-	mkdir(path)
+	mkpath(path)
 end
+
 
 num_avg = 1
 for ka in 1:num_avg
