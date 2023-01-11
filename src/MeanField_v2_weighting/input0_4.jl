@@ -65,7 +65,7 @@ xnIn,pnIn = x0*ones(N),zeros(N)
 
 
 ## Leads
-P = 0.5
+P = 0.0
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
 V  = 12*t0
@@ -98,8 +98,8 @@ if !isdir(path)
 end
 
 
-num_avg = 1
-for ka in 1:num_avg
+num_avg = 2
+for ka in 2:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_X0_-10_dt$(abs(dt))"
     elseif modelStr == "Holstein"

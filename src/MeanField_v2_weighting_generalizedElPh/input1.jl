@@ -14,8 +14,9 @@ using .CustomStructures
 # -------------- Parameters --------------------------
 
 # Simulation Parameters
-dt = 0.001
-tend = 1000
+t0 = 0.04
+dt = 0.002/t0
+tend = 2000/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -23,16 +24,17 @@ initProp  = true
 # false = use initial density matrix from previous computation
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 1
+num_laps = 4
+num_ions = 4
 N = num_laps * num_ions
-t0  = 1.0 
-eu  = 0.0#-6*t0
-ed  = 0.0#-6*t0
+eu  = -6*t0
+ed  = -6*t0
 E   = [eu,ed]
-ws  = 0.05*ones(N)
-gph = 0.025
-gPh = [gph*[1,0]]#,zeros(2)]
+ws  = 0.05*t0*ones(N)
+gph = 0.1*t0
+gPh = [zeros(2) for i in 1:N]
+gPh[8] = gph * ones(2)
+
 a   = 1.0
 c   = 1.0
 tso = t0/40
@@ -47,27 +49,27 @@ modelStr = "Holstein"
 if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
-    phIn = "TDSCF"
-    #phIn = "Wigner"
+    #phIn = "TDSCF"
+    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = [0.0,0.0]#[1.0,0,0.0,0,0,0]
-popPhIn = [0]
+popElIn = zeros(2*N)
+popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-xnIn,pnIn = [1.0],[0.0]#,0.0,0.0],[0.0,0.0,0.0]#InitialPh(popPhIn,ws,phases)
+xnIn,pnIn = InitialPh(popPhIn,ws,phases)
 
 
 ## Leads
-P = 0.0
+P = 0.5
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
-V  = 2.5
-nPoles = 40
+V  = 12*t0
+nPoles = 20
 beta = 1/0.025
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
@@ -90,7 +92,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "1x1_Ph_1_u"
+path = "4x4_Ph_8"
 if !isdir(path)
 	mkdir(path)
 end

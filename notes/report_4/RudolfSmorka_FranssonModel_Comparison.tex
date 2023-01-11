@@ -203,9 +203,9 @@ In this section we investigate numerically if a steady-state is reached in the c
 	\includegraphics[width=0.94\textwidth]{figs/Pops_currents_phonons_1x3_V0.pdf}
 	\caption{(a),(b) and (c) local spin polarization on sites 1,2, and 3, respectively. (d) Symmetrized current. (e) and (f) phase space trajectories of the two vibrational modes. Different lines show different initial conditions for the vibrational positions $X_0$. The dashed orange line shows quantities in the steady state for $t_1=\lambda_1 = 0$.}\label{fig:Pops_currents_phonons_1x3_V0}
 \end{figure}\\
-For this, the coupled quantum-classical HEOM equations of motion are solved where the initial vibrational coordinates are varied (and not sampled from the distribution given in \cref{eq:Boltzmann_probabilityDist}).
+For this, the coupled quantum-classical HEOM equations of motion are solved where the initial vibrational coordinates are varied (and not sampled from the thermal Wigner distribution).
 
-We start with the equilibrium case $V=0$. Shown in \cref{fig:Pops_currents_phonons_1x3_V0} (a), (b), and (c) are the local spin polarization $s_i^z = \tr{\rho_i \sigma^z}$ on sites $i=1,2,3$, in (d) the symmetrized current $I_L-I_R$, and the phase-space trajectory of phonons at the bond between site 1 and 2 (e) and at the bond between sites 2 and 3 (f). The different lines show initial conditions $X_0=-1,-5,-10,-25$ for both modes. The initial vibrational momenta are set to $P_1(0)=P_2(0)=0$ in all cases.
+We start with the equilibrium case $V=\SI{0}{\volt}$. Shown in \cref{fig:Pops_currents_phonons_1x3_V0} (a), (b), and (c) are the local spin polarization $s_i^z = \tr{\rho_i \sigma^z}$ on sites $i=1,2,3$, in (d) the symmetrized current $I_L-I_R$, and the phase-space trajectory of phonons at the bond between site 1 and 2 (e) and at the bond between sites 2 and 3 (f). The different lines show initial conditions $X_0=-1,-5,-10,-25$ for both modes. The initial vibrational momenta are set to $P_1(0)=P_2(0)=0$ in all cases.
 For an initial condition $X_0\neq 0$, the local spin polarization and the symmetrized current follow the vibrational oscillation.
 There is a current from left to right when $X_1,X_2<0$ and from right to left when $X_1,X_2>0$.  
 Within the time-interval considered here, the current does not reach a steady state. 
@@ -215,15 +215,15 @@ Note that the amplitudes of oscillation of the spin polarization and the current
 Also, no damping of the vibrational modes is observed, and the oscillation is stable. 
 An exception is the case for $X_0=0$. Here, the vibrational modes are already in their steady state from the beginning $t=0$ and show basically no dynamics. 
 Simultaneously, the current reaches a steady state in this case. 
-We now proceed with the same analysis to a moderate voltage $V=12$, shown in \cref{fig:Pops_currents_phonons_1x3_V12}.
+We now proceed with the same analysis to a moderate voltage $V=\SI{0.48}{\volt}$, shown in \cref{fig:Pops_currents_phonons_1x3_V12}.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.94\textwidth]{figs/Pops_currents_phonons_1x3_V0.48.pdf}
 	\caption{Same as \cref{fig:Pops_currents_phonons_1x3_V0} for $V=\SI{0.48}{V}$.}\label{fig:Pops_currents_phonons_1x3_V12}
 \end{figure}\\
-Beginning with the spin polarization, one can see that the time-dependence is not periodic anymore, unlike in the case $V=0$. On site 1, the spin polarization is for some time-interval even larger than the steady-state result obtained for $t_1=\lambda_1 = 0$. For later times and sufficiently large $X_0$, the spin polarization almost vanishes temporarily. On sites 2 and 3, this effect is observed for all investigated $X_0$, although the drop in spin polarization depends on $X_0$.
+Beginning with the spin polarization, one can see that the time-dependence is not periodic anymore, unlike in the case $V=\SI{0}{\volt}$. On site 1, the spin polarization is for some time-interval even larger than the steady-state result obtained for $t_1=\lambda_1 = 0$. For later times and sufficiently large $X_0$, the spin polarization almost vanishes temporarily. On sites 2 and 3, this effect is observed for all investigated $X_0$, although the drop in spin polarization depends on $X_0$.
 In contrast, the current is almost never larger than the steady-state current obtained for $t_1=\lambda_1=0$. The dynamics of the vibrational modes leads to a temporary reduction of the current.
-The vibrational dynamics deviates significantly from the single harmonic-oscillator like phase-space portrait for $V=0$, covering larger parts of the phase space as energy from the electronic system is absorbed. 
+The vibrational dynamics deviates significantly from the single harmonic-oscillator like phase-space portrait for $V=\SI{0}{\volt}$, covering larger parts of the phase space as energy from the electronic system is absorbed. 
 In the time-interval considered here, the vibrational coordinates reach a limit cycle, which appears to be stable.
 Also, the equilibrium of the vibrational position is shifted to $X\approx -10$. 
 When $X_0$, however, is chosen carefully, the time-dependence of current and the populations can be reduced, such that a near-steady-state solution is found.
@@ -231,7 +231,7 @@ To conclude, the results have following implications (not in general, but only w
 \begin{itemize}
 	\item Given an arbitrary $\bm{\xi}_0$, a steady-state may not exist (but a limit-cycle may exist).
 	\item There exist $\bm{\xi}_0$, for which the time-dependence of long-time observables is small. (Speculation) When averaged over many trajectories normally distributed with means $\bm{\xi}_0$, a steady-state may be obtained as time-dependent contributions could cancel out.
-	\item The $\bm{\xi}_0$ which are close to steady-state, depend on $V$ and may deviate from the null vector. (Speculation) Even when when trajectories are sampled from \cref{eq:Boltzmann_probabilityDist} and quantities are obtained from a weighted average, a steady-state may not be found for all voltages.
+	\item The $\bm{\xi}_0$ which are close to steady-state, depend on $V$ and may deviate from the null vector. (Speculation) Even when when trajectories are sampled from the thermal Wigner distribution and quantities are obtained from a weighted average, a steady-state may not be found for all voltages.
 \end{itemize} 
 \subsection{Origin of absence of steady-state}
 In this section we investigate which term in the Hamiltonian is responsible for the absence of the steady-state. \Cref{fig:MF_1x3_ParamTest} shows the symmetrized current for $V=\SI{0}{\volt}$ (a) and $V=\SI{0.48}{\volt}$ (b) for the following cases: Peierls model (blue line), Peierls and SOC (green), Fransson model (red line), SOC and phonon-assisted SOC (turquoise line) and SOC only (purple). Other parameters are identical to the ones used in the previous sections and $\mathbb{M}=1\times 3$. All vibrational modes are initialized in the phase space point $X_0=-1,P_0=0$. 
@@ -251,6 +251,16 @@ For $V=\SI{0.48}{\volt}$, dynamics is dictated by the Peierls electron-phonon co
 \end{figure}
 \subsection{Single trajectory calculation for a larger system}
 To investigate whether the previous findings are influenced by the system size, we consider a molecule consisting of $\mathbb{M}=4\times 4$ sites in the following.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.99\textwidth]{figs/L16_V0.48_tPh0.004_tso0.0_tsoPh0.0_v1_electrons_currents_phonons.pdf}
+	\caption{Peierls model with $P=0.5$ and $V=\SI{0.48}{\volt}$.}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L16_V0.48_tPh0.004_tso0.001_tsoPh0.0001_v1_electrons_currents_phonons.pdf}
+	\caption{Fransson model with $P=0.5$ and $V=\SI{0.48}{\volt}$.}
+\end{figure}
 \newpage
 \section{Multi-trajectory Ehrenfest dynamics approach to the Fransson model}
 \subsection{Convergence with number of trajectories}
@@ -260,15 +270,25 @@ Note, that in \cite{fransson2020vibrational}, a dimensionless coupling $t_1/\ome
 It has been checked, that the absolute normalized difference between averaged currents for $n=100$ and $n=1000$ is below $0.05\%$.  
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf}
+	\includegraphics[width=0.9\textwidth]{figs/Pops_currents_phonons_1x3_Avg_V0.48_P0.5.pdf}
+	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=18.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_convergence_2}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Pops_currents_phonons_1x3_Avg_V0.72_P0.5.pdf}
 	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=18.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_convergence}
 \end{figure}\\
 However, for a smaller voltage, much more trajectories are necessary to converge the results. \Cref{fig:Current_V12_convergence} shows the weighted average of the symmetrized current for four different number of trajectories. The difference in current for $n=100$ and $n=1500$ is much larger compared to the case $V=18$ shown in \cref{fig:Current_convergence}.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf}
+	\includegraphics[width=0.8\textwidth]{figs/Pops_currents_phonons_1x3_Avg_V0.48_PComp.pdf}
 	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=12.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_V12_convergence}
-\end{figure}\\
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Pops_currents_phonons_1x3_Avg_V0.72_PComp.pdf}
+	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=12.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_V18_convergence}
+\end{figure}
 It is apparent, that the no steady-state is reached in the time interval considered in the calculation. Rather a limit cycle is reached. These results confirm the third point given in the previous section. 
 %\section{Holstein model}
 %In the following, we investigate the differences between the model considered before and the Holstein model.

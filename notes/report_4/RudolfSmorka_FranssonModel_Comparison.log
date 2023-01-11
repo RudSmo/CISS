@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  10 JAN 2023 14:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  11 JAN 2023 10:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -839,10 +839,6 @@ ine 203.
 (pdftex.def)             Requested size: 454.67621pt x 454.67484pt.
 
 
-LaTeX Warning: Reference `eq:Boltzmann_probabilityDist' on page 1 undefined on 
-input line 206.
-
-
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 <figs/Pops_currents_phonons_1x3_V0.48.pdf, id=217, 722.7pt x 722.7pt>
@@ -854,12 +850,8 @@ t line 221.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8 <./figs/Decoupled_vibrational_dynamics.pdf>]
-
-LaTeX Warning: Reference `eq:Boltzmann_probabilityDist' on page 1 undefined on 
-input line 234.
-
-[9 <./figs/Pops_currents_phonons_1x3_V0.pdf>]
+[8 <./figs/Decoupled_vibrational_dynamics.pdf>] [9 <./figs/Pops_currents_phonon
+s_1x3_V0.pdf>]
 <figs/MF_1x3_ParamTests.pdf, id=260, 722.7pt x 578.16pt>
 File: figs/MF_1x3_ParamTests.pdf Graphic file (type pdf)
 <use figs/MF_1x3_ParamTests.pdf>
@@ -877,39 +869,85 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[10 <./figs/Pops_currents_phonons_1x3_V0.48.pdf>] [11 <./figs/MF_1x3_ParamTests
-.pdf>]
+<figs/L16_V0.48_tPh0.004_tso0.0_tsoPh0.0_v1_electrons_currents_phonons.pdf, id=
+262, 722.7pt x 578.16pt>
+File: figs/L16_V0.48_tPh0.004_tso0.0_tsoPh0.0_v1_electrons_currents_phonons.pdf
+ Graphic file (type pdf)
+<use figs/L16_V0.48_tPh0.004_tso0.0_tsoPh0.0_v1_electrons_currents_phonons.pdf>
+
+Package pdftex.def Info: figs/L16_V0.48_tPh0.004_tso0.0_tsoPh0.0_v1_electrons_c
+urrents_phonons.pdf  used on input line 256.
+(pdftex.def)             Requested size: 478.86252pt x 383.09534pt.
+<figs/L16_V0.48_tPh0.004_tso0.001_tsoPh0.0001_v1_electrons_currents_phonons.pdf
+, id=263, 722.7pt x 578.16pt>
+File: figs/L16_V0.48_tPh0.004_tso0.001_tsoPh0.0001_v1_electrons_currents_phonon
+s.pdf Graphic file (type pdf)
+<use figs/L16_V0.48_tPh0.004_tso0.001_tsoPh0.0001_v1_electrons_currents_phonons
+.pdf>
+Package pdftex.def Info: figs/L16_V0.48_tPh0.004_tso0.001_tsoPh0.0001_v1_electr
+ons_currents_phonons.pdf  used on input line 261.
+(pdftex.def)             Requested size: 435.32419pt x 348.25726pt.
+[10 <./figs/Pops_currents_phonons_1x3_V0.48.pdf>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[11 <./figs/MF_1x3_ParamTests.pdf>]
 
 LaTeX Warning: Reference `eq:Boltzmann_probabilityDist' on page 1 undefined on 
-input line 258.
+input line 269.
 
-<../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf, id=311, 722.7pt x 325.2
-15pt>
-File: ../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf Graphic file (type 
-pdf)
-<use ../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf>
-Package pdftex.def Info: ../report_3/figs/Currents_1x3_Ehrenfest_noAvg_V18.pdf 
- used on input line 262.
-(pdftex.def)             Requested size: 386.95894pt x 174.12973pt.
-<../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf, id=312, 722.7pt x 325.215pt>
-File: ../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf Graphic file (type pdf)
-<use ../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf>
-Package pdftex.def Info: ../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf  used 
-on input line 268.
-(pdftex.def)             Requested size: 386.95894pt x 174.12973pt.
+<figs/Pops_currents_phonons_1x3_Avg_V0.48_P0.5.pdf, id=313, 722.7pt x 722.7pt>
+File: figs/Pops_currents_phonons_1x3_Avg_V0.48_P0.5.pdf Graphic file (type pdf)
+
+<use figs/Pops_currents_phonons_1x3_Avg_V0.48_P0.5.pdf>
+Package pdftex.def Info: figs/Pops_currents_phonons_1x3_Avg_V0.48_P0.5.pdf  use
+d on input line 273.
+(pdftex.def)             Requested size: 435.32419pt x 435.32158pt.
+<figs/Pops_currents_phonons_1x3_Avg_V0.72_P0.5.pdf, id=314, 722.7pt x 722.7pt>
+File: figs/Pops_currents_phonons_1x3_Avg_V0.72_P0.5.pdf Graphic file (type pdf)
+
+<use figs/Pops_currents_phonons_1x3_Avg_V0.72_P0.5.pdf>
+Package pdftex.def Info: figs/Pops_currents_phonons_1x3_Avg_V0.72_P0.5.pdf  use
+d on input line 278.
+(pdftex.def)             Requested size: 435.32419pt x 435.32158pt.
+<figs/Pops_currents_phonons_1x3_Avg_V0.48_PComp.pdf, id=315, 722.7pt x 722.7pt>
+
+File: figs/Pops_currents_phonons_1x3_Avg_V0.48_PComp.pdf Graphic file (type pdf
+)
+<use figs/Pops_currents_phonons_1x3_Avg_V0.48_PComp.pdf>
+Package pdftex.def Info: figs/Pops_currents_phonons_1x3_Avg_V0.48_PComp.pdf  us
+ed on input line 284.
+(pdftex.def)             Requested size: 386.95894pt x 386.95496pt.
+<figs/Pops_currents_phonons_1x3_Avg_V0.72_PComp.pdf, id=316, 722.7pt x 722.7pt>
+
+File: figs/Pops_currents_phonons_1x3_Avg_V0.72_PComp.pdf Graphic file (type pdf
+)
+<use figs/Pops_currents_phonons_1x3_Avg_V0.72_PComp.pdf>
+Package pdftex.def Info: figs/Pops_currents_phonons_1x3_Avg_V0.72_PComp.pdf  us
+ed on input line 289.
+(pdftex.def)             Requested size: 386.95894pt x 386.95496pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[12 <./figs/MF_2x4_ParamTests.pdf>] [13 <../report_3/figs/Currents_1x3_Ehrenfes
-t_noAvg_V18.pdf> <../report_3/figs/Currents_1x3_Ehrenfest_V12.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ../report_3/figs/Currents_1x
-3_Ehrenfest_V12.pdf): PDF inclusion: multiple pdfs with page group included in 
-a single page
->] (./RudolfSmorka_FranssonModel_Comparison.aux)
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[12 <./figs/MF_2x4_ParamTests.pdf>] [13 <./figs/L16_V0.48_tPh0.004_tso0.0_tsoPh
+0.0_v1_electrons_currents_phonons.pdf>] [14 <./figs/L16_V0.48_tPh0.004_tso0.001
+_tsoPh0.0001_v1_electrons_currents_phonons.pdf>] [15 <./figs/Pops_currents_phon
+ons_1x3_Avg_V0.48_P0.5.pdf>] [16 <./figs/Pops_currents_phonons_1x3_Avg_V0.72_P0
+.5.pdf>] [17 <./figs/Pops_currents_phonons_1x3_Avg_V0.48_PComp.pdf>] [18 <./fig
+s/Pops_currents_phonons_1x3_Avg_V0.72_PComp.pdf>]
+(./RudolfSmorka_FranssonModel_Comparison.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -919,10 +957,10 @@ Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 
  ) 
 Here is how much of TeX's memory you used:
- 16453 strings out of 478994
- 325240 string characters out of 5858184
- 838629 words of memory out of 5000000
- 33711 multiletter control sequences out of 15000+600000
+ 16481 strings out of 478994
+ 327032 string characters out of 5858184
+ 838715 words of memory out of 5000000
+ 33735 multiletter control sequences out of 15000+600000
  420945 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,19n,75p,1873b,1646s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -950,11 +988,11 @@ mf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw
 /times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (13 pages, 2382174 
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (18 pages, 4794019 
 bytes).
 PDF statistics:
- 446 PDF objects out of 1000 (max. 8388607)
- 379 compressed objects within 4 object streams
+ 553 PDF objects out of 1000 (max. 8388607)
+ 468 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
