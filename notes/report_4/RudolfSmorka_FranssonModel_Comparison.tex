@@ -35,10 +35,11 @@
 }
 \begin{document}
 	
-\title{Report 4: Corrected results and investigation of steady-states in the Holstein and Peierls model}
+\title{Report 4: Corrected results and extension of analysis}
 \author{Rudolf Smorka}
 \maketitle
-%\tableofcontents
+\tableofcontents
+\newpage
 \section{Model}
 The model considered for a chiral, single-stranded molecule, as proposed in Refs.~\cite{fransson2019chirality,fransson2020vibrational,Fransson_2021,fransson2021charge}, reads
 \begin{align}
@@ -125,37 +126,38 @@ Parameters: $\mathbb{M}=1\times 3$, $t_0 = \SI{0.04}{\electronvolt}$, $\lambda_0
 For the same parameters, \cref{fig:IV_1x3,fig:IV_4x3} show the current-voltage characteristics for system sizes $\mathbb{M}=1\times 3$ and $\mathbb{M}=4\times 3$. The saturation current depends on the absolute magnitude of lead spin polarization, $\vert P\vert$, and for $P=0$ is just below $\Gamma_0$. For the parameters above, $\Gamma_0 = \SI{0.01}{\electronvolt}$ which corresponds to an expected current of $I_\mathrm{sat} \approx \SI{28.4945}{\micro\ampere}$.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.65\textwidth]{figs/LB_1x3.pdf}
+	\includegraphics[width=0.6\textwidth]{figs/LB_1x3.pdf}
 	\caption{Current-voltage characteristics for $\mathbb{M}=1\times 3$ and parameters as in the main text.}\label{fig:IV_1x3}
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.65\textwidth]{figs/LB_4x3.pdf}
+	\includegraphics[width=0.6\textwidth]{figs/LB_4x3.pdf}
 	\caption{Current-voltage characteristics for $\mathbb{M}=4\times 3$ and parameters as in the main text.}\label{fig:IV_4x3}
 \end{figure}
 The voltage at the current-onset is evident from the relative energies of the leads chemical potential and the bare electronic levels of the molecule, as shown in \cref{fig:Schematic_Energy_levels}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.75\textwidth]{../report_3/figs/Spectrum_leads.pdf}
+	\includegraphics[width=0.6\textwidth]{../report_3/figs/Spectrum_leads.pdf}
 	\caption{Schematic energy diagram of the Fransson model coupled to leads at $V=0$. Black lines in the center denote the energy-eigenlevels of the isolated molecule.}\label{fig:Schematic_Energy_levels}
-\end{figure}\\
-\subsection{Stationary electronic lattice occupation}\label{sec:Stationary_el_lat_occ}
+\end{figure}
+\subsection{Stationary electronic populations}\label{sec:Stationary_el_lat_occ}
+\Cref{fig:Comp_NEGF_MF-HEOM_pops} shows a comparison of the site-dependent spin-up and spin-down electron population in equilibrium with a spin-polarized left lead ($P=0.5$) within the analytical NEGF and the numerical MF-HEOM approach. 
+Especially at the edges of the molecule, deviations of the analytical from the numerical approach can be observed.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.85\textwidth]{figs/Comparison_populations_V0.pdf}
+	\includegraphics[width=0.78\textwidth]{figs/Comparison_populations_V0.pdf}
 	\caption{Comparison of spin-dependent populations for $V=0$ from analytical NEGF expression (full lines) and numerically obtained population at $t=\SI{1.72}{\pico\second}$ (MF-HEOM, dashed lines) for $\mathbb{M}=2\times 4$, $t_0 = \SI{0.04}{\electronvolt}$, $\lambda_0 = t_0/40$, $\Gamma_0 = t_0/4$ and $T =\SI{ 300}{K}$.}\label{fig:Comp_NEGF_MF-HEOM_pops}
 \end{figure}
-\newpage
-\subsection{Population dynamics}
-To understand the discrepancy between the equilibrium populations in the NEGF and HEOM approaches (as seen in \cref{fig:Comp_NEGF_MF-HEOM_pops}), we investigate population dynamics in the following. \Cref{fig:MF_2x4_PopDyn_noPh} shows the dynamics of population of spin-up and spin-down electrons on all sites of a $\mathbb{M}=2\times 4$ molecule. Over the time-interval investigated here, the populations do not reach a stationary value. Related to non-stationary populations are so-called equilibrium currents flowing between the leads and the molecule, which are shown in \cref{fig:MF_2x4_CurDyn_noPh} (black line).
+\subsection{Population and current dynamics}
+To understand the discrepancy between the equilibrium populations in the NEGF and HEOM approaches (as seen in \cref{fig:Comp_NEGF_MF-HEOM_pops}), we investigate population dynamics in the following. \Cref{fig:MF_2x4_PopDyn_noPh} shows the dynamics of population of spin-up and spin-down electrons on all sites of a $\mathbb{M}=2\times 4$ molecule (other parameters are as in \cref{fig:Comp_NEGF_MF-HEOM_pops}). Over the time-interval investigated here, the populations do not reach a stationary value. Related to non-stationary populations are so-called equilibrium currents flowing between the leads and the molecule, which are shown in \cref{fig:MF_2x4_CurDyn_noPh} (black line).
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.92\textwidth]{figs/MF_noPh_2x4_population_dynamics_V0.pdf}
+	\includegraphics[width=0.87\textwidth]{figs/MF_noPh_2x4_population_dynamics_V0.pdf}
 	\caption{Population dynamics of spin up (upper panel) and spin down (lower panel) electrons for $V=0$, $P=0.5$ and $\mathbb{M}=2\times 4$.}\label{fig:MF_2x4_PopDyn_noPh}
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.92\textwidth]{figs/MF_noPh_2x4_current_dynamics_V0.pdf}
+	\includegraphics[width=0.87\textwidth]{figs/MF_noPh_2x4_current_dynamics_V0.pdf}
 	\caption{Comparison of current dynamics for $V=0$ and $\mathbb{M}=2\times 4$ for $P=0.0,0.5$ and $\lambda_0=\SI{0.0}{\electronvolt},\SI{0.001}{\electronvolt}$.}\label{fig:MF_2x4_CurDyn_noPh}
 \end{figure}\\
 \Cref{fig:MF_2x4_CurDyn_noPh} compares the case where the left lead is spin-polarized and the SOC in the molecule is $\lambda_0=\SI{0.001}{\electronvolt}$ with the case of a molecule with SOC but spin-unpolarized left lead (red line), and the cases of a molecule without SOC coupled to a spin-polarized (green line) and spin-unpolarized lead (orange line). 
@@ -164,13 +166,12 @@ This comparison suggests that the cause of these equilibrium currents is the int
 \Cref{fig:MF_2x4_PopDyn_noPh_comp_Lambda}  shows the population on site 1 for $\lambda_0 = \SI{0.001}{\electronvolt}$ and $\lambda_0 = \SI{0.0}{\electronvolt}$. While the population in the molecule without SOC reaches a stationary value, the one with SOC does not.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.92\textwidth]{figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.pdf}
+	\includegraphics[width=0.87\textwidth]{figs/MF_noPh_2x4_population_dynamics_V0_P0_LambdaVar.pdf}
 	\caption{Equilibrium population dynamics on site 1 for  $\mathbb{M}=2\times 4$ and $P=0$.}\label{fig:MF_2x4_PopDyn_noPh_comp_Lambda}
 \end{figure}
 \newpage
 
 \section{Ehrenfest approach: Tests of implementation}
-\subsection{Reduction to classical MD for zero electron-phonon coupling}
 For vanishing electron-phonon coupling, the nuclear dynamics reduces to a purely molecular dynamics integration. 
 Then, the Hamiltonian reduces to 
 \begin{equation}
@@ -195,50 +196,44 @@ the solution of which can be found analytically as
 \end{align}
 with $A = \frac{X_0}{2}+\frac{P_0}{2i\omega}$ and $B  = A^*$.
 For the numerical comparison, $X_0 = 1$ and $P_0 = 0$ have been chosen. The numerical integration agrees with the analytical results, as shown in \cref{fig:Comparison_Vib_Analytical}.
-\section{Existence of a unique steady-state}
-\subsection{Numerical investigation of steady-states in the coupled dynamical system}
-In this section we investigate numerically if a steady-state is reached in the coupled electron-vibrational Ehrenfest-dynamics for the open Fransson model (considering the same parameters as before with $P=0.5$). 
+\newpage
+\section{Existence of a unique steady-state within the single-trajectory Ehrenfest method}
+In this section we investigate numerically if a steady-state is reached in the coupled electron-vibrational single-trajectory Ehrenfest-dynamics for the open Fransson model (considering the same parameters as before with $P=0.5$). 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.94\textwidth]{figs/Pops_currents_phonons_1x3_V0.pdf}
 	\caption{(a),(b) and (c) local spin polarization on sites 1,2, and 3, respectively. (d) Symmetrized current. (e) and (f) phase space trajectories of the two vibrational modes. Different lines show different initial conditions for the vibrational positions $X_0$. The dashed orange line shows quantities in the steady state for $t_1=\lambda_1 = 0$.}\label{fig:Pops_currents_phonons_1x3_V0}
 \end{figure}\\
-For this, the coupled quantum-classical HEOM equations of motion are solved where the initial vibrational coordinates are varied (and not sampled from the thermal Wigner distribution).
+For this, the coupled quantum-classical HEOM equations of motion are solved where the initial vibrational coordinates are varied (and not sampled from the thermal Wigner distribution). In the following, we use the parameters: $t_0=\SI{40}{\milli\electronvolt}$, $\lambda_0 = \SI{1}{\milli\electronvolt}$, $t_1 = 0.1t_0 = \SI{4}{\milli\electronvolt}$, $\lambda_1 =0.1\lambda_0 =  \SI{0.1}{\milli\electronvolt}$, $\omega_0 = 0.05t_0 = \SI{2}{\milli\electronvolt}$, $\Gamma_0 = \frac{t_0}{4} = \SI{10}{\milli\electronvolt}$ and $T =\SI{25}{\milli\electronvolt} \approx \SI{290}{\kelvin}$. The lead spin-polarization is $P=0.5$.
 
 We start with the equilibrium case $V=\SI{0}{\volt}$. Shown in \cref{fig:Pops_currents_phonons_1x3_V0} (a), (b), and (c) are the local spin polarization $s_i^z = \tr{\rho_i \sigma^z}$ on sites $i=1,2,3$, in (d) the symmetrized current $I_L-I_R$, and the phase-space trajectory of phonons at the bond between site 1 and 2 (e) and at the bond between sites 2 and 3 (f). The different lines show initial conditions $X_0=-1,-5,-10,-25$ for both modes. The initial vibrational momenta are set to $P_1(0)=P_2(0)=0$ in all cases.
-For an initial condition $X_0\neq 0$, the local spin polarization and the symmetrized current follow the vibrational oscillation.
-There is a current from left to right when $X_1,X_2<0$ and from right to left when $X_1,X_2>0$.  
-Within the time-interval considered here, the current does not reach a steady state. 
-Instead, it reaches a limit cycle.
-Averaged over time, however, the current is zero.
-Note that the amplitudes of oscillation of the spin polarization and the current are rather small compared to their steady-state values.
-Also, no damping of the vibrational modes is observed, and the oscillation is stable. 
-An exception is the case for $X_0=0$. Here, the vibrational modes are already in their steady state from the beginning $t=0$ and show basically no dynamics. 
-Simultaneously, the current reaches a steady state in this case. 
-We now proceed with the same analysis to a moderate voltage $V=\SI{0.48}{\volt}$, shown in \cref{fig:Pops_currents_phonons_1x3_V12}.
+These results show that even in equilibrium, a single trajectory calculation may not reach a steady-state.  
+We now proceed with the same analysis to a moderate voltage $V=\SI{0.48}{\volt}$, shown in \cref{fig:Pops_currents_phonons_1x3_V12}. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.94\textwidth]{figs/Pops_currents_phonons_1x3_V0.48.pdf}
 	\caption{Same as \cref{fig:Pops_currents_phonons_1x3_V0} for $V=\SI{0.48}{V}$.}\label{fig:Pops_currents_phonons_1x3_V12}
+\end{figure}
+The main observation from the results for  $V=\SI{0.48}{\volt}$ (energy diagram \cref{fig:Energies_V0.48}) is that energy is continuously pumped by the electrons into the vibrational motion. Eventually, the deviation from the equilibrium position increases by $1-2$ orders of magnitude (depending on $X_0$) within the time-interval investigated here. 
+One observes that the current and spin polarizations decrease nearly to zero for several hundreds of femtoseconds.
+In the Fransson model considered here, a phonon-assisted hopping term is included
+\begin{equation}
+	-t_1\sum_{j\sigma}(d_{j\sigma}^\dagger d_{j+1\sigma}^\pdagger + \mathrm{h.c.})\sqrt{2\omega_j}X_j.
+\end{equation}
+This term favors hopping for $X_j\gg 0$ and makes hopping unfavorable for $X_j\ll 0$. 
+This is confirmed in \cref{fig:Comp_1x3_cur_ph_V0.48}, from which it is clear that the current drops down at the same times when the phonon positions are negative with large amplitude.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Fransson_L1x3_V0.48_cur_ph_comp.pdf}
+	\caption{(a) Symmetrized current and (b) deviation from equilibrium bond distance for $V=\SI{0.48}{\volt}$ and other parameters as in \cref{fig:Pops_currents_phonons_1x3_V12}.}\label{fig:Comp_1x3_cur_ph_V0.48}
 \end{figure}\\
-Beginning with the spin polarization, one can see that the time-dependence is not periodic anymore, unlike in the case $V=\SI{0}{\volt}$. On site 1, the spin polarization is for some time-interval even larger than the steady-state result obtained for $t_1=\lambda_1 = 0$. For later times and sufficiently large $X_0$, the spin polarization almost vanishes temporarily. On sites 2 and 3, this effect is observed for all investigated $X_0$, although the drop in spin polarization depends on $X_0$.
-In contrast, the current is almost never larger than the steady-state current obtained for $t_1=\lambda_1=0$. The dynamics of the vibrational modes leads to a temporary reduction of the current.
-The vibrational dynamics deviates significantly from the single harmonic-oscillator like phase-space portrait for $V=\SI{0}{\volt}$, covering larger parts of the phase space as energy from the electronic system is absorbed. 
-In the time-interval considered here, the vibrational coordinates reach a limit cycle, which appears to be stable.
-Also, the equilibrium of the vibrational position is shifted to $X\approx -10$. 
-When $X_0$, however, is chosen carefully, the time-dependence of current and the populations can be reduced, such that a near-steady-state solution is found.
-To conclude, the results have following implications (not in general, but only within the Ehrenfest-approach considered here):
-\begin{itemize}
-	\item Given an arbitrary $\bm{\xi}_0$, a steady-state may not exist (but a limit-cycle may exist).
-	\item There exist $\bm{\xi}_0$, for which the time-dependence of long-time observables is small. (Speculation) When averaged over many trajectories normally distributed with means $\bm{\xi}_0$, a steady-state may be obtained as time-dependent contributions could cancel out.
-	\item The $\bm{\xi}_0$ which are close to steady-state, depend on $V$ and may deviate from the null vector. (Speculation) Even when when trajectories are sampled from the thermal Wigner distribution and quantities are obtained from a weighted average, a steady-state may not be found for all voltages.
-\end{itemize} 
-\subsection{Origin of absence of steady-state}
+\newpage
+\section{Origin of absence of steady-state}
 In this section we investigate which term in the Hamiltonian is responsible for the absence of the steady-state. \Cref{fig:MF_1x3_ParamTest} shows the symmetrized current for $V=\SI{0}{\volt}$ (a) and $V=\SI{0.48}{\volt}$ (b) for the following cases: Peierls model (blue line), Peierls and SOC (green), Fransson model (red line), SOC and phonon-assisted SOC (turquoise line) and SOC only (purple). Other parameters are identical to the ones used in the previous sections and $\mathbb{M}=1\times 3$. All vibrational modes are initialized in the phase space point $X_0=-1,P_0=0$. 
 The currents for the Peierls, Peierls-SOC and the Fransson model for both voltages are nearly identical, and for long times the current oscillates. When $t_1=\SI{0}{\electronvolt}$, the current reaches a steady state. 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/MF_1x3_ParamTests.pdf}
+	\includegraphics[width=0.75\textwidth]{figs/MF_1x3_ParamTests.pdf}
 	\caption{Symmetrized current for $\mathbb{M}=1\times 3$ and various models for $V=\SI{0}{\volt}$ (a) and $V=\SI{0.48}{\volt}$ (b).}\label{fig:MF_1x3_ParamTest}
 \end{figure}
 \Cref{fig:MF_2x4_ParamTest} shows the same comparison as \cref{fig:MF_1x3_ParamTest} for a system with $\mathbb{M}=2\times 4$. 
@@ -246,105 +241,146 @@ For $V=\SI{0}{\volt}$, current dynamics is dictated by the SOC, which can be see
 For $V=\SI{0.48}{\volt}$, dynamics is dictated by the Peierls electron-phonon coupling, similar to the cases investigated in the smaller system with system size $\mathbb{M}=1\times 3$.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/MF_2x4_ParamTests.pdf}
+	\includegraphics[width=0.75\textwidth]{figs/MF_2x4_ParamTests.pdf}
 	\caption{Symmetrized current for $\mathbb{M}=2\times 4$ and various models for $V=\SI{0}{\volt}$ (a) and $V=\SI{0.48}{\volt}$ (b).}\label{fig:MF_2x4_ParamTest}
 \end{figure}
-\subsection{Single trajectory calculation for a larger system}
-To investigate whether the previous findings are influenced by the system size, we consider a molecule consisting of $\mathbb{M}=4\times 4$ sites in the following.
+\clearpage
+\section{Effects of SOC, lead spin-polarization and electron-phonon coupling}
+In the following, we will investigate a larger system of $\mathbb{M}=4\times 4$ sites. The parameters are as in the previous sections. The respective energies for $V=\SI{0.48}{\volt}$ are shown in \cref{fig:Energies_V0.48}.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.99\textwidth]{figs/L16_V0.48_tPh0.004_tso0.0_tsoPh0.0_v1_electrons_currents_phonons.pdf}
-	\caption{Peierls model with $P=0.5$ and $V=\SI{0.48}{\volt}$.}
+	\includegraphics[width=0.7\textwidth]{figs/Spectrum_leads_16_tso0.001_0.48.pdf}
+	\caption{Energy eigenvalues of the uncoupled system ($\mathbb{M}=4\times 4$, $\lambda_0=\SI{1}{\milli\electronvolt}$ and $t_1=\lambda_1=\SI{0}{\electronvolt}$) (center) and leads chemical potentials for $V=\SI{0.48}{\volt}$ (left and right).}\label{fig:Energies_V0.48}
+\end{figure}
+\subsection{Kane-Mele model} 
+We first start with a discussion of the spectrum of the Kane-Mele model investigated in this section. \Cref{fig:Spectrum_4x4_eigenstates_P0.5} (a) shows the real and imaginary parts of the eigenvalues of the effective Kane-Mele model
+\begin{equation}
+	H_\mathrm{KM}^\mathrm{eff} = H_\mathrm{KM}-i\Gamma
+\end{equation}
+with $\Gamma = \Gamma_L +\Gamma_R$ and $\Gamma_L= \Gamma_0 (\mathds{1}_2 + P\sigma^z)\oplus 0_{2(N-1)}$, and \cref{fig:Spectrum_4x4_eigenstates_P0.5} (b), (c), (d), and (e) show the expectation values of $\mathds{1}$, $\sigma^x$, $\sigma^y$, and $\sigma^z$ for selected eigenstates (corresponding eigenvalues marked by black cross in \cref{fig:Spectrum_4x4_eigenstates_P0.5} (a)), respectively. 
+The spectrum of the Kane-Mele model shows a two-fold splitting of otherwise doubly degenerate eigenvalues (for $\lambda_0 = 0$). The splitting in the real part of the eigenvalues is induced by the SOC. Further, the imaginary part of the eigenvalues is split as well, which is induced by the spin-polarization of the lead. This means, that the probability of dissipating to the left lead, when occupying a certain eigenstate, depends depends on the spin characteristics of the eigenstate.
+The occupation probability of certain eigenstates shown in \cref{fig:Spectrum_4x4_eigenstates_P0.5} (b) is similar to the case $\lambda_0= 0$ (not shown here). However, due to the finite SOC, small deviations between occupation probabilities of states with opposite spin characteristics but close to equal eigenenergy are observed.
+The most pronounced effect of the SOC is the finite $\sigma^x$ and $\sigma^y$ expectation values, shown in \cref{fig:Spectrum_4x4_eigenstates_P0.5} (c) and (d). Here one observed that the SOC favors spin-alignment at next-nearest neighbor sites. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Eigenstates_leads_16_tso0.001_V0.48_P0.5.pdf}
+	\caption{}\label{fig:Spectrum_4x4_eigenstates_P0.5}
+\end{figure}
+\clearpage
+\Cref{fig:Cur_pop_KM_V0.0_P0.0} shows the dynamics of left current (left panel), site-resolved spin polarization (center), and the right current (right) for the Kane-Mele model, that means $\lambda_1=t_1 = \SI{0}{\electronvolt}$, at equilibrium ($V=\SI{0}{\volt}$) and spin-unpolarized left lead. \Cref{fig:Cur_pop_KM_V0.0_P0.5} shows the same plot with a spin-polarized lead $P=0.5$. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figs/L16_V0.0_tPh0.0_tso0.001_tsoPh0.0_P0.0_v2_spin_currents_phonons.pdf}
+	\caption{Kane-Mele model with spin-unpolarized left lead ($P=0.0$) at a bias voltage of $V=\SI{0.0}{\volt}$.}\label{fig:Cur_pop_KM_V0.0_P0.0}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figs/L16_V0.0_tPh0.0_tso0.001_tsoPh0.0_P0.5_v2_spin_currents_phonons.pdf}
+	\caption{Kane-Mele model with spin-polarized left lead ($P=0.5$) at a bias voltage of $V=\SI{0.0}{\volt}$.}\label{fig:Cur_pop_KM_V0.0_P0.5}
+\end{figure}
+\Cref{fig:Cur_pop_KM_V0.48_P0.0,fig:Cur_pop_KM_V0.48_P0.5} show the same observables for a finite bias $V=\SI{0.48}{\volt}$. For later comparison with the Peierls-model, \cref{fig:Cur_el_KM_V0.48_P0.5} shows the site-resolved total electron occupation number instead for $P=0.5$. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figs/L16_V0.48_tPh0.0_tso0.001_tsoPh0.0_P0.0_v2_spin_currents_phonons.pdf}
+	\caption{Kane-Mele model with spin-unpolarized left lead ($P=0.0$) at a bias voltage of $V=\SI{0.48}{\volt}$.}\label{fig:Cur_pop_KM_V0.48_P0.0}
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/L16_V0.48_tPh0.004_tso0.001_tsoPh0.0001_v1_electrons_currents_phonons.pdf}
-	\caption{Fransson model with $P=0.5$ and $V=\SI{0.48}{\volt}$.}
+	\includegraphics[width=0.75\textwidth]{figs/L16_V0.48_tPh0.0_tso0.001_tsoPh0.0_v1_electrons_currents_phonons.pdf}
+	\caption{Kane-Mele model with spin-polarized left lead ($P=0.5$) at a bias voltage of $V=\SI{0.48}{\volt}$.}\label{fig:Cur_pop_KM_V0.48_P0.5}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figs/L16_V0.48_tPh0.0_tso0.001_tsoPh0.0_P0.5_v1_electrons_currents_phonons.pdf}
+	\caption{Kane-Mele model with spin-polarized left lead ($P=0.5$) at a bias voltage of $V=\SI{0.48}{\volt}$.}\label{fig:Cur_el_KM_V0.48_P0.5}
+\end{figure}
+\clearpage
+\subsection{Peierls Model}
+We now turn to the Peierls model, that is the Fransson model with $\lambda_0 = \lambda_1 = \SI{0}{\electronvolt}$. The following results are single-trajectory calculations with initial condition for the bond vibrational modes set to be equal for all following cases. The initial conditions have been drawn from the thermal Wigner distribution. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{figs/L16_V0.48_tPh0.004_tso0.0_tsoPh0.0_P0.0_v2_electrons_currents_phonons.pdf}
+	\caption{Peierls model with $P=0.0$ at bias $V=\SI{0.48}{\volt}$.}\label{fig:Cur_pop_Peierls_V0.48_P0.0}
+\end{figure}\\
+\Cref{fig:Cur_pop_Peierls_V0.48_P0.0} shows the left current, total electron occupation expectation value as well as the time-dependent lattice position (black lines), and right current. Due to the absence of SOC and lead spin-polarization, the electron spin polarization in the molecule is strictly zero for all times.
+\Cref{fig:Cur_pop_Peierls_V0.48_P0.5} shows the same quantities for $P=0.5$ in the Peierls model.
+\Cref{fig:Cur_spin_Peierls_V0.48_P0.5} shows the site-resolved electron spin-polarization instead.
+ \begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.72\textwidth]{figs/L16_V0.48_tPh0.004_tso0.0_tsoPh0.0_P0.5_v2_electrons_currents_phonons.pdf}
+	\caption{Left current, electron occupation and lattice positions, and right current in the Peierls model with $P=0.5$ at bias $V=\SI{0.48}{\volt}$.}\label{fig:Cur_pop_Peierls_V0.48_P0.5}
+\end{figure}\\
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.72\textwidth]{figs/L16_V0.48_tPh0.004_tso0.0_tsoPh0.0_P0.5_v2_spin_currents_phonons.pdf}
+	\caption{Left current, electron spin-polarization and lattice positions, and right current in the Peierls model with $P=0.5$ at bias $V=\SI{0.48}{\volt}$.}\label{fig:Cur_spin_Peierls_V0.48_P0.5}
+\end{figure}
+\clearpage
+A particularly interesting observation is that in the case with a spin-polarized lead, the electronic spin-polarization is localized. This is particularly pronounced on site 6 in \cref{fig:Cur_spin_Peierls_V0.48_P0.5}. The origin of this spin-localization is the electron-vibrational coupling, which can be seen from the comparison of the spin-polarization on sites 5 (a) and 6 (b) and the corresponding bond mode, shown in \cref{fig:L16_Peierls_V0.48_v2_site5_site6_spin_ph}. This comparison shows that a spin is localized always when the next-nearest neighboring site to the direction of the current is far away (i.e. the deviation from the equilibrium site-distance is positive and large). In this case hopping is suppressed. This phenomenon occurs only when there is a spin-splitting of the eigenstates, which is here due to the spin-polarized lead.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.85\textwidth]{figs/L16_site_6_el_ph.pdf}
+	\caption{Time-dependent spin-polarization and vibrational position at sites 5 (a) and site 6 (b) for the model and initial conditions investigated in \cref{fig:Cur_spin_Peierls_V0.48_P0.5}.}\label{fig:L16_Peierls_V0.48_v2_site5_site6_spin_ph}
+\end{figure}
+\clearpage
+\subsection{Fransson Model}
+Turning now to the full Fransson model, \cref{fig:Cur_pop_Fransson_V0.48_P0.5} shows the same plot as before for the Fransson model coupled to two metallic leads. The effect of a spin-polarized lead is shown in \cref{fig:Cur_spin_Fransson_V0.48_P0.5}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.78\textwidth]{figs/L16_V0.48_tPh0.004_tso0.001_tsoPh0.0001_P0.0_v2_electrons_currents_phonons.pdf}
+	\caption{Left current, electron spin polarization and lattice positions, and right current in the Fransson model with $P=0.0$ at bias $V=\SI{0.48}{\volt}$.}\label{fig:Cur_pop_Fransson_V0.48_P0.5}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.72\textwidth]{figs/L16_V0.48_tPh0.004_tso0.001_tsoPh0.0001_P0.5_v2_electrons_currents_phonons.pdf}
+	\caption{Left current, electron spin-polarization and lattice positions, and right current in the Fransson model with $P=0.5$ at bias $V=\SI{0.48}{\volt}$.}\label{fig:Cur_spin_Fransson_V0.48_P0.5}
 \end{figure}
 \newpage
-\section{Multi-trajectory Ehrenfest dynamics approach to the Fransson model}
-\subsection{Convergence with number of trajectories}
-In the following, the parameters are the same as before: $t_0 = 1$, $\lambda_0 = t_0/40$, $t_1 = 0.1t_0$, $\lambda_1 = 0.1\lambda_0$, $\omega_0 = 0.05t_0$ $\Gamma_0 = t_0/4$ and $\beta = 40$.
-Note, that in \cite{fransson2020vibrational}, a dimensionless coupling $t_1/\omega_0 = 10$ is used, whereas here we use $t_1/\omega_0 = 2$. Thus we are in a parameter regime which is much easier to converge.  
-\Cref{fig:Current_convergence} shows the time-dependent symmetrized current $I_L(t)-I_R(t)$ for $V=18$ and $P=0.5$. Therein, gray faint lines are single trajectories, the red solid line is the weighted average for $n=100$ trajectories (weighted by the probability obtained from \cref{eq:Boltzmann_probabilityDist}) and the dashed orange line averaged over $n=1000$ trajectories. 
-It has been checked, that the absolute normalized difference between averaged currents for $n=100$ and $n=1000$ is below $0.05\%$.  
+\section{Multi-trajectory Ehrenfest dynamics in the Fransson model}
+Parameters: $t_0=\SI{40}{\milli\electronvolt}$, $\lambda_0 = \SI{1}{\milli\electronvolt}$, $t_1 = 0.1t_0 = \SI{4}{\milli\electronvolt}$, $\lambda_1 =0.1\lambda_0 =  \SI{0.1}{\milli\electronvolt}$, $\omega_0 = 0.05t_0 = \SI{2}{\milli\electronvolt}$, $\Gamma_0 = \frac{t_0}{4} = \SI{10}{\milli\electronvolt}$ and $T =\SI{25}{\milli\electronvolt} \approx \SI{290}{\kelvin}$. The lead spin-polarization is $P=0.5$. The system size is $\mathbb{M}=1\times 3$ and the initial condition for the vibrational positions and momenta are sampled from the thermal Wigner distribution. \Cref{fig:Sz_cur_Ph_1x3_Avg_V0.48_P0.5} shows the site-resolved spin polarization (a)-(c), symmetrized current (d) and vibrational phase-space portraits of the bond mode between site 1 and 2 (e) and between sites 2 and 3 (f) for $V=\SI{0.48}{\volt}$. The blue curves show results obtained from a weighted average over 500 trajectories and the green curve from averaging over 1000 trajectories. The results for both number of trajectories agree well. Further, the orange dashed line and dot show the steady-state values for the Kane-Mele model, without electron-phonon coupling.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/Pops_currents_phonons_1x3_Avg_V0.48_P0.5.pdf}
-	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=18.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_convergence_2}
-\end{figure}
+	\caption{(a), (b) and (c) local spin polarization on sites 1,2, and 3, respectively. (d) Symmetrized current. (e) and (f) phase space trajectories of the two vibrational modes. Different lines show different number of trajectories used in the weighted averaging of quantities. The dashed orange line shows quantities in the steady state for $t_1=\lambda_1 = 0$.}\label{fig:Sz_cur_Ph_1x3_Avg_V0.48_P0.5}
+\end{figure}\\
+\clearpage
+\Cref{fig:Sz_cur_Ph_1x3_Avg_V0.72_P0.5} shows the same quantities for the same parameters for $V=\SI{0.72}{\volt}$.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/Pops_currents_phonons_1x3_Avg_V0.72_P0.5.pdf}
-	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=18.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_convergence}
-\end{figure}\\
-However, for a smaller voltage, much more trajectories are necessary to converge the results. \Cref{fig:Current_V12_convergence} shows the weighted average of the symmetrized current for four different number of trajectories. The difference in current for $n=100$ and $n=1500$ is much larger compared to the case $V=18$ shown in \cref{fig:Current_convergence}.
+	\caption{Same as \cref{fig:Sz_cur_Ph_1x3_Avg_V0.48_P0.5} for $V=\SI{0.72}{\volt}$.}\label{fig:Sz_cur_Ph_1x3_Avg_V0.72_P0.5}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/L6_V0.48_tPh0.004_tso0.001_tsoPh0.0001_v1_electrons_currents_phonons.pdf}
+	\caption{Weighted average of left current (left panel), electronic site-resolved spin-polarization and lattice positions (center) and right current (right) for $\mathbb{M}=1\times 3$, $P=0.5$ at bias voltage $V=\SI{0.48}{\volt}$.}\label{fig:L6_V0.48_P0.5_avg_sp_cur_ph}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/L6_V0.72_tPh0.004_tso0.001_tsoPh0.0001_v1_electrons_currents_phonons.pdf}
+	\caption{Same as in \cref{fig:L6_V0.48_P0.5_avg_sp_cur_ph} for $V=\SI{0.72}{\volt}$.}
+\end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/Pops_currents_phonons_1x3_Avg_V0.48_PComp.pdf}
-	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=12.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_V12_convergence}
+	\caption{Comparison of weighted average of spin-polarizations (a)-(c) and vibrational phase-space portraits (e), (f) for $P=0.5$ (blue line) and $P=-0.5$ (green line). Magneto-current (d) obtained from the symmetrized currents $I_\uparrow$ (for $P=0.5$) and $I_\downarrow$ (for $P=-0.5$). Bias voltage is $V=\SI{0.48}{\volt}$.}\label{fig:L6_V0.48_PComp_avg}
 \end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/Pops_currents_phonons_1x3_Avg_V0.72_PComp.pdf}
-	\caption{Symmetrized time-dependent current for $P=0.5$ and $V=12.0$ for $\mathbb{M}=1\times 3$.}\label{fig:Current_V18_convergence}
+	\caption{Same as \cref{fig:L6_V0.48_PComp_avg} for $V=\SI{0.72}{\volt}$.}\label{fig:L6_V0.72_PComp_avg}
 \end{figure}
-It is apparent, that the no steady-state is reached in the time interval considered in the calculation. Rather a limit cycle is reached. These results confirm the third point given in the previous section. 
-%\section{Holstein model}
-%In the following, we investigate the differences between the model considered before and the Holstein model.
-%\subsection{Single-dot Holstein model}
-%The main point is that in the asymetrically coupled Holstein model $g_\uparrow =-g_\downarrow$, the equilibrium position of the phonon mode is $X=P=0$ for all voltages. Therefore, averaging over Boltzmann distribution leads to a steady-state.
+\clearpage
+\section{Adiabatic potential energy surface in the Fransson model}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.99\textwidth]{figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf}
+	\caption{Adiabatic potential energy surfaces for the Fransson model with molecular size $\mathbb{M}=1\times 3$, $t_0=\SI{40}{\milli\electronvolt}$, $\lambda_0 = \SI{0.1}{\milli\electronvolt}$ and $\omega_0 = \SI{2}{\milli\electronvolt}$ for $t_1=\SI{4}{\milli\electronvolt}$ and $\lambda_1 = \SI{0}{\milli\electronvolt}$ (a$_1$)-(a$_3$), $t_1=\SI{0}{\milli\electronvolt}$ and $\lambda_1 = \SI{4}{\milli\electronvolt}$ (b$_1$)-(b$_3$), and $t_1=\SI{4}{\milli\electronvolt}$ and $\lambda_1 = \SI{4}{\milli\electronvolt}$ (c$_1$)-(c$_3$)}
+\end{figure}
+\section{Time-dependent electronic spectrum}
+\section{Population-dynamics of eigenstates of electronic Hamiltonian}
 
-
-%\section{Holstein Model}
-%\subsection{Hamiltonian}
-%The Hamiltonian of the Holstein model reads
-%\begin{equation}
-%	H_\mathrm{Holstein} = \sum_{j\sigma}( \varepsilon_{j\sigma}^\pdagger + g_{j\sigma}^\pdagger [a_j^\dagger+ a_j^\pdagger]) c_{j\sigma}^\dagger c_{j\sigma}^\pdagger - t \sum_{j\sigma}(c_{j\sigma}^\dagger c_{j+1\sigma}^\pdagger  + \mathrm{h.c.}) + \sum_j \omega_j^\pdagger  a_j^\dagger a_j^\pdagger
-%\end{equation}
-%consisting of spin-$1/2$ electrons on a lattice, electrons on each level of a site coupling locally to a vibrational mode. We say the electron-phonon coupling is symmetric if $g_{j\sigma}=g_{j\bar{\sigma}}$ and anti-symmetric if $g_{j\sigma}=-g_{j\bar{\sigma}}$. Within the quantum-classical approximation the term $a_j^\dagger+ a_j^\pdagger \rightarrow \sqrt{2\omega_0} X_j$ gets replaced by the classical position $X_j$ and $a_j^\dagger a_j^\pdagger \rightarrow \frac{1}{2}(\omega_jX_j^2+P_j^2)$.
-%\subsection{Single dot}
-%Parameters: $\varepsilon_\uparrow = 0.2 = -\varepsilon_\downarrow$, $g_\uparrow = 0.1 = -g_\downarrow$, $\omega_0 = 0.1$, $\Gamma_0 = \frac{1}{4}$ and $\beta = 40$. \Cref{fig:Holstein_1x1_V0.4_multiTraj_current} shows the symmetrized current for 200 trajectories (black lines) and the weighted average (red line) for $V=0.4$. The current relaxes to a steady state. 
-%\Cref{fig:Holstein_1x1_Pops_currents_phonons_VVar} shows the following averaged quantities for various voltages: (a) Spin-up population, (b) spin-down population, (c) symmetrized current, and (d) phase-space trajectory of the vibrational mode. 
-%The presented data suggests that a unique steady state exists for all voltages. The time-scale on which this steady-state is reached, however, depends on $V$. For example, for $V=0.4$ the steady state is reached already for $t\sim 3\times 10^3 \Gamma_0^{-1}$, but for $V=2.0$ the steady-state is not reached on the time-scale investigated here.
-%\begin{figure}[!h]
-%	\centering
-%	\includegraphics[width=1.0\textwidth]{figs/Holstein_1x1_current_V0.4_multiTraj.pdf}
-%	\caption{Symmetrized current in the single-dot Holstein model with asymmetric coupling $g = 0.1$ for $V=0.4$. Black lines: Individual trajectories with initial condition sampled from thermal Wigner distribution ($n=200$). Red line: Weighted average.}\label{fig:Holstein_1x1_V0.4_multiTraj_current}
-%\end{figure}\newpage
-%\begin{figure}[!h]
-%	\centering
-%	\includegraphics[width=1.0\textwidth]{figs/Pops_currents_phonons_1x1_VVar.pdf}
-%	\caption{Time-dependence of (a) spin-up population, (b) spin-down population, (c) symmetrized current, and (d) averaged phase-space trajectories in the single Holstein dot with asymmetric coupling. Different lines denote different voltages $V$. Full circles in (a)-(c) show the steady-state values for $g=0$. For all voltages, the sample size is $n=200$.}\label{fig:Holstein_1x1_Pops_currents_phonons_VVar}
-%\end{figure}\newpage
-%\begin{figure}[!h]
-%	\centering
-%	\includegraphics[width=1.0\textwidth]{figs/Pops_currents_phonons_imshow_1x1_VVar.pdf}
-%	\caption{Voltage dependence of dynamics of (a) spin-up population, (b) spin-down population, (c) symmetrized current, (d) vibrational position and (e) momentum. Parameters are given in the main text.}
-%\end{figure}\newpage
-%\begin{figure}[!h]
-%	\centering
-%	\includegraphics[width=1.0\textwidth]{figs/Pops_currents_phonons_steadyState_1x1_VVar.pdf}
-%	\caption{Steady-state values. Black lines denote the Ehrenfest calculation with $g=0.1$, orange lines calculations with $g=0$. Red lines are the maximal value of $X,P$ and blue lines the minimum within the interval $[15000,20000]t_0^{-1}$.}
-%\end{figure}\newpage
-%\section{Peierls Model}
-%\subsection{Model}
-%The Hamiltonian of the Peierls model reads
-%\begin{equation}
-%	H_\mathrm{Peierls} = \sum_{j\sigma} \varepsilon_{j\sigma}^\pdagger  c_{j\sigma}^\dagger c_{j\sigma}^\pdagger + \sum_{j\sigma}(-t + g_{j\sigma}^\pdagger [a_j^\dagger+ a_j^\pdagger])(c_{j\sigma}^\dagger c_{j+1\sigma}^\pdagger  + \mathrm{h.c.}) + \sum_j \omega_j^\pdagger  a_j^\dagger a_j^\pdagger
-%\end{equation}
-%\subsection{Double dot}
-%Parameters: $\varepsilon_\uparrow = -\varepsilon_\downarrow =0.2, t_0 = 1, t_1 = 0.1t_0, \omega_0 = 0.1/t_0, \Gamma_0 = t_0/4, \beta = 40$.
-%\begin{figure}[!h]
-%	\centering
-%	\includegraphics[width=1.0\textwidth]{figs/Pops_currents_phonons_Peierls_1x2_VVar.pdf}
-%	\caption{Peierls model for $L=2$ and $t_1=0.1$.}
-%\end{figure}
-%\begin{figure}[!h]
-%	\centering
-%	\includegraphics[width=1.0\textwidth]{figs/Pops_currents_phonons_imshow_Peierls_1x2_VVar.pdf}
-%	\caption{Peierls model.}
-%\end{figure}
 \printbibliography
 \end{document}
 

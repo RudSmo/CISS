@@ -28,15 +28,16 @@ tsoPh = 0.0001
 #tsoPh = 0.0
 Tend = 37500
 #Tend = 6250
-ver = 1
+ver = 2
+P = 0.0
 
-dat_el = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P0.5_X0_-10_dt0.05_$(ver)_electrons.dat")
-dat_ph = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P0.5_X0_-10_dt0.05_$(ver)_phonons.dat")
-dat_cur = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P0.5_X0_-10_dt0.05_$(ver)_currents.dat")
+dat_el = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P$(P)_X0_-10_dt0.05_$(ver)_electrons.dat")
+dat_ph = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P$(P)_X0_-10_dt0.05_$(ver)_phonons.dat")
+dat_cur = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P$(P)_X0_-10_dt0.05_$(ver)_currents.dat")
 
 fig = plt.figure(figsize=(10,8))
 px = 0.08
-py = 0.08
+py = 0.07
 sx1 = 0.19
 sx2 = 0.49
 sy = 0.83
@@ -59,7 +60,7 @@ ax1.set_xlim(-5,10)
 if plot == "electrons"
 	Nd = dat_el[2:end,2:2:end] + dat_el[2:end,3:2:end]
 else
-	Nd = dat_el[2:end,2:2:end] - dat_el[2:end,3:2:end]
+	Nd = (dat_el[2:end,2:2:end] - dat_el[2:end,3:2:end]) * 10^3
 end
 
 cp = plt.cm.jet
@@ -95,7 +96,7 @@ cbar = fig.colorbar(cmap, ax=ax2, cax = ax2_c,pad=.001,aspect=90,orientation="ho
 if plot == "electrons"
 	cbar.set_label(L"$n$",labelpad=-47)
 else
-	cbar.set_label(L"$s^z$",labelpad=-45)
+	cbar.set_label(L"$s^z\,[\times 10^{-3}]$",labelpad=-49)
 end
 cbar.ax.tick_params(labelsize=fs,labelbottom=false,labeltop=true)
 
@@ -106,6 +107,6 @@ ax3.set_yticklabels([])
 ax3.plot(dat_cur[2:end,3]*fac_c,dat_cur[2:end,1]*fac_t,color="k",linewidth=lw)
 ax3.set_xlabel(L"$I_R\,[\mu\mathrm{A}]$")
 
-plt.savefig("L$(N)_V$(V)_tPh$(tPh)_tso$(tso)_tsoPh$(tsoPh)_v$(ver)_electrons_currents_phonons.pdf")
+plt.savefig("L$(N)_V$(V)_tPh$(tPh)_tso$(tso)_tsoPh$(tsoPh)_P$(P)_v$(ver)_electrons_currents_phonons.pdf")
 
 

@@ -167,7 +167,8 @@ function HolsteinHopping(HamPar)
     Ho = Onsite_A(HamPar.N,HamPar.OnsiteEnergies)
     Hh = Hopping_A_nn(HamPar.N,HamPar.Hopping)
     Hph = Holstein(HamPar.N,HamPar.gPh,HamPar.ws,HamPar.X)
-    return Ho .+ Hh .+ Hph
+    Htph = Peierls_Old(HamPar.N,HamPar.HoppingPh,HamPar.ws,HamPar.X)
+    return Ho .+ Hh .+ Hph .+ Htph
 end
 
 end

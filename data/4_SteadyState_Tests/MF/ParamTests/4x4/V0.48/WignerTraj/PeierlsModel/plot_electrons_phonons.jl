@@ -27,13 +27,17 @@ tPh = 0.004
 tso = 0.0
 #tsoPh = 0.0001
 tsoPh = 0.0
-Tend = 12500
+#Tend = 12500
+Tend = 37500
 #Tend = 6250
-ver = 1
+ver = 2
+#ver = 1
+#P = 0.0
+P = 0.5
 
-dat_el = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P0.5_X0_-10_dt0.05_$(ver)_electrons.dat")
-dat_ph = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P0.5_X0_-10_dt0.05_$(ver)_phonons.dat")
-dat_cur = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P0.5_X0_-10_dt0.05_$(ver)_currents.dat")
+dat_el = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P$(P)_X0_-10_dt0.05_$(ver)_electrons.dat")
+dat_ph = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P$(P)_X0_-10_dt0.05_$(ver)_phonons.dat")
+dat_cur = readdlm("L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w00.002_P$(P)_X0_-10_dt0.05_$(ver)_currents.dat")
 
 fig = plt.figure(figsize=(10,8))
 px = 0.08
@@ -107,6 +111,6 @@ ax3.set_yticklabels([])
 ax3.plot(dat_cur[2:end,3]*fac_c,dat_cur[2:end,1]*fac_t,color="k",linewidth=lw)
 ax3.set_xlabel(L"$I_R\,[\mu\mathrm{A}]$")
 
-plt.savefig("L$(N)_V$(V)_tPh$(tPh)_tso$(tso)_tsoPh$(tsoPh)_v$(ver)_electrons_currents_phonons.pdf")
+plt.savefig("L$(N)_V$(V)_tPh$(tPh)_tso$(tso)_tsoPh$(tsoPh)_P$(P)_v$(ver)_$(plot)_currents_phonons.pdf")
 
 

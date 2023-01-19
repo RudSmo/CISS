@@ -15,25 +15,27 @@ rc("ytick",labelsize=fs-2)
 
 fig = plt.figure(figsize = (10,10))
 px = 0.102
-py = 0.797
+py = 0.79
 sx = 0.88
 dy = 0.07
-dy1 = dy-0.04
+dy1 = dy-0.05
 sy = 0.19
 
 fac_c = 1e3 * 2.8494561
 fac_t = 1/(4.135668)
 fac_s = 1e3
 
-ax1 = plt.axes([px,py,sx,sy])
+ax1 = plt.axes([px,py,sx,sy+0.007])
+ax11 = plt.axes([0.25,0.815,0.4,0.08])
 ax1.set_xticklabels([])
-ax2 = plt.axes([px,py-sy-dy1,sx,sy])
+ax2 = plt.axes([px,py-sy-dy1,sx,sy+0.007])
 ax3 = plt.axes([px,py-2*sy-dy-dy1,sx,sy])
 ax4 = plt.axes([px,py-3*sy-2*dy-dy1,sx,sy])
 
 
 MF_dat_cur = readdlm("MFHEOM/V0.48/L3_tPh0.0_SOC0.001_SOCPh0.0_V0.48_w00.002_P0.0_X0_-10.0_np40_dt0.0125_1_currents.dat")
 ax1.plot(fac_t * MF_dat_cur[2:end,1],fac_c * (MF_dat_cur[2:end,2]-MF_dat_cur[2:end,3]), color="k", linewidth=lw,label="exact")
+ax11.plot(fac_t * MF_dat_cur[2:end,1],fac_c * (MF_dat_cur[2:end,2]-MF_dat_cur[2:end,3]), color="k", linewidth=lw,label="exact")
 
 MF_dat_pop = readdlm("MFHEOM/V0.48/L3_tPh0.0_SOC0.001_SOCPh0.0_V0.48_w00.002_P0.0_X0_-10.0_np40_dt0.0125_1_electrons.dat")
 ax2.plot(fac_t * MF_dat_pop[2:end,1],fac_s * (MF_dat_pop[2:end,2]-MF_dat_pop[2:end,3]), color="k", linewidth=lw)
@@ -43,6 +45,7 @@ colors = ["red","blue","green","orange","pink"]
 for (r,col) in zip(ranks,colors)
 	TT_dat_cur = readdlm("np10_r$(r)/V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_$(r).txt")	
 	ax1.plot(fac_t * TT_dat_cur[2:end,1],fac_c * (TT_dat_cur[2:end,2]-TT_dat_cur[2:end,3]), color = col, linewidth = lw-1,label=L"$r=\,$"*string(r))
+	ax11.plot(fac_t * TT_dat_cur[2:end,1],fac_c * (TT_dat_cur[2:end,2]-TT_dat_cur[2:end,3]), color=col, linewidth=lw-1)
 
 	TT_dat_pop = readdlm("np10_r$(r)/V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_$(r).txt") 
 	ax2.plot(fac_t * TT_dat_pop[2:end,1],fac_s * (TT_dat_pop[2:end,2]-TT_dat_pop[2:end,3]), color = col, linewidth = lw-1)
@@ -52,7 +55,8 @@ ax1.set_ylabel(L"$I_L-I_R\,[\mu\mathrm{A}]$")
 an_x_1 = 0.02
 an_y_1 = 0.1
 ax1.annotate("(a)",(an_x_1,an_y_1),xycoords="axes fraction",fontsize=fs)
-
+ax11.set_xlim(200,500)
+ax11.set_ylim(13.9,14.1)
 
 ax2.set_ylabel(L"$s_1^z\,[\times 10^{-3}]$",labelpad=3)
 ax2.set_ylim(-0.5,0.5)

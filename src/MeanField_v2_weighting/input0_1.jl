@@ -15,8 +15,8 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 3
+num_laps = 4
+num_ions = 4
 N = num_laps * num_ions
 t0  = 0.04
 eu  = -6*t0
@@ -27,8 +27,8 @@ gPh = [0.0,0.0]
 a   = 1.0
 c   = 1.0
 tso = t0/40
-tPh = 0.1*t0
-tsoPh = 0.1*tso
+tPh = 0.0 #0.1*t0
+tsoPh = 0.0 #0.1*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
@@ -38,7 +38,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.002/t0
-tend = 500/t0
+tend = 250/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -61,14 +61,15 @@ popPhIn = [0,0,0,0,0,0,0,0]
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 x0 = 1.0
-xnIn,pnIn = x0*ones(N),zeros(N)
+xnIn,pnIn = [-4.28, 13.0, -2.66, -6.68, 4.82, 12.32, -0.66, 9.58, -3.98, -4.06, 12.22, 12.34, 7.76, 3.52, 5.96, -11.82], 
+ 	    [-0.022, -0.082, -0.024, 0.132, -0.128, 0.188, -0.014, 0.168, 0.016, 0.02, -0.002, -0.048, -0.204, -0.034, -0.012, 0.034] 
 
 
 ## Leads
 P = 0.5
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
-V  = 12*t0
+V  = 0*t0
 nPoles = 20
 beta = 1/0.025
 HamPar = HamiltonianParams( num_laps,
@@ -92,14 +93,14 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "Tests_1x3/V0.48/tPh_SOC_SOCPh"
+path = "Tests_4x4/V0.48/KM"#WignerTraj/Fransson"
 if !isdir(path)
 	mkpath(path)
 end
 
 
-num_avg = 1
-for ka in 1:num_avg
+num_avg = 2
+for ka in 2:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_X0_-10_dt$(abs(dt))"
     elseif modelStr == "Holstein"
