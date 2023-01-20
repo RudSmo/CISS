@@ -1,0 +1,8 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Model}{1}{}%
+\contentsline {section}{\numberline {2}Born-Oppenheimer potential energy of the three-site Fransson model}{2}{}%
+\contentsline {section}{\numberline {3}Comparison of TT-HEOM with MF-HEOM}{5}{}%
+\contentsline {subsection}{\numberline {3.1}Fransson model}{5}{}%
+\contentsline {subsection}{\numberline {3.2}Single-site: Holstein model}{5}{}%
+\contentsline {subsection}{\numberline {3.3}Two sites: Peierls model}{5}{}%
