@@ -24,18 +24,18 @@ function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur
 
 	pop = Populations(rho_i)
 	pop_es = PopulationsES(rho_i,hcen_i)
-	mom = MomentumElectrons(rho_i)
+	#mom = MomentumElectrons(rho_i)
 	cur1 = Current(cur1_c)
 	cur2 = Current(cur2_c)
-	loccur = LocalCurrent(rho_i,hcen_i)
+	#loccur = LocalCurrent(rho_i,hcen_i)
 	if i == 1
 		curfile = open("$(path)_currents.dat","w")
 		popfile = open("$(path)_electrons.dat","w")
 		popesfile = open("$(path)_electrons_es.dat","w")
 		phfile  = open("$(path)_phonons.dat","w")
 		weightf = open("$(path)_weight.dat","w")
-		momentumf= open("$(path)_momentum_el.dat","w")
-		loccurf = open("$(path)_loc_cur.dat","w")
+		#momentumf= open("$(path)_momentum_el.dat","w")
+		#loccurf = open("$(path)_loc_cur.dat","w")
 
 		write(curfile,"#(1)t (2)IL (3)IR\n")	
 		write(popfile,"#(1)t ")
@@ -58,26 +58,26 @@ function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur
 		write(phfile,"\n")
 		write(weightf,"$(weight)\n")
 
-		write(momentumf,"#(1)t ")
-		k = 2
-		for i in 1:length(qn)-1
-			write(momentumf,"($(i+1))p$(i) ")
-		end	
-		write(momentumf,"\n")
+		#write(momentumf,"#(1)t ")
+		#k = 2
+		#for i in 1:length(qn)-1
+		#	write(momentumf,"($(i+1))p$(i) ")
+		#end	
+		#write(momentumf,"\n")
 
-		write(loccurf,"#(1)t")
-		for i in 1:length(qn)-1
-			write(loccurf,"($(i+1))cur($(i),$(i+1)) ")
-		end
-		write(loccurf,"\n")
+		#write(loccurf,"#(1)t")
+		#for i in 1:length(qn)-1
+		#	write(loccurf,"($(i+1))cur($(i),$(i+1)) ")
+		#end
+		#write(loccurf,"\n")
 
 		close(curfile)
 		close(popfile)
 		close(popesfile)
 		close(phfile)
 		close(weightf)
-		close(momentumf)
-		close(loccurf)
+		#close(momentumf)
+		#close(loccurf)
 	end
 	
 	if i % GlobalConstants.AppendData == 0
@@ -87,8 +87,8 @@ function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur
 		push!(cur2_l,cur2)
 		push!(q_l, qn)
 		push!(p_l, pn)
-		push!(mom_el, mom)
-		push!(loc_cur_l,loccur)
+		#push!(mom_el, mom)
+		#push!(loc_cur_l,loccur)
 		push!(tim,abs(i*dt))
 	end
 
@@ -97,15 +97,15 @@ function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur
 		popfile = open("$(path)_electrons.dat","a")
 		popesfile = open("$(path)_electrons_es.dat","a")
 		phfile  = open("$(path)_phonons.dat","a")
-		momfile = open("$(path)_momentum_el.dat","a")
-		loccurf = open("$(path)_loc_cur.dat","a")
+		#momfile = open("$(path)_momentum_el.dat","a")
+		#loccurf = open("$(path)_loc_cur.dat","a")
 		for j in 1:length(pop_l)
 			write(popfile,"$(tim[j]) ")
 			write(popesfile,"$(tim[j]) ")
 			write(curfile,"$(tim[j]) $(cur1_l[j]) $(cur2_l[j]) \n") 
 			write(phfile, "$(tim[j]) ")
-			write(momfile, "$(tim[j]) ")
-			write(loccurf, "$(tim[j]) ")
+		#	write(momfile, "$(tim[j]) ")
+		#	write(loccurf, "$(tim[j]) ")
 
 				
 			for k in 1:length(pop_l[j])
@@ -115,25 +115,25 @@ function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur
 			for k in 1:length(q_l[j])
 				write(phfile, "$(q_l[j][k]) $(p_l[j][k]) ")
 			end
-			for k in 1:length(mom_el[j])
-				write(momfile, "$(mom_el[j][k]) ")
-			end
-			for k in 1:length(loc_cur_l[j])
-				write(loccurf, "$(loc_cur_l[j][k]) ")
-			end
+		#	for k in 1:length(mom_el[j])
+		#		write(momfile, "$(mom_el[j][k]) ")
+		#	end
+		#	for k in 1:length(loc_cur_l[j])
+		#		write(loccurf, "$(loc_cur_l[j][k]) ")
+		#	end
 
 			write(popfile, "\n")
 			write(popesfile, "\n")
 			write(phfile, "\n")
-			write(momfile, "\n")
-			write(loccurf, "\n")
+		#	write(momfile, "\n")
+		#	write(loccurf, "\n")
 		end
 		close(curfile)
 		close(popfile)		
 		close(popesfile)	
 		close(phfile)
-		close(momfile)
-		close(loccurf)
+		#close(momfile)
+		#close(loccurf)
 		pop_l = []
 		pop_es_l = []
 		cur1_l = []
@@ -152,7 +152,7 @@ end
 
 function Average(ind,path,num_avg)
 	pathr = "$(path)_$(ind)"
-	observables = ["currents","electrons","electrons_es","phonons","momentum_el","loc_cur"]
+	observables = ["currents","electrons","electrons_es","phonons"]#,"momentum_el","loc_cur"]
 	rm("$(pathr)_final_Quantities")
 	if ind == 1
 		weight  = readdlm("$(pathr)_weight.dat")[1]	
