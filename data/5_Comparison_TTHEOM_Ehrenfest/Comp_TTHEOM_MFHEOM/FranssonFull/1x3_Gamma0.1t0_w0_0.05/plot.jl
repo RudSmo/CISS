@@ -60,8 +60,7 @@ colors = ["green", "blue", "red", "turquoise", "orange", "purple"]
 for (cur_fil,pop_fil,label,col) in zip(TT_Cur_Files,TT_Pop_Files,TT_labels,colors)
 	cur_dat = readdlm(cur_fil)
 	pop_dat = readdlm(pop_fil)
-	ax1.plot(cur_dat[2:end,1]*fac_t, (cur_dat[2:end,2]-cur_dat[2:end,3])*fac_c,color=col,label=label,linewidth=lw)
-#	ax2.plot(pop_dat[2:end,1]*fac_t, 0.5*(pop_dat[2:end,2]-pop_dat[2:end,3]),color=col,linewidth=lw)
+	ax1.plot(cur_dat[2:end,1]*fac_t, (cur_dat[2:end,2]+cur_dat[2:end,4]-cur_dat[2:end,3]-cur_dat[2:end,5])*fac_c,color=col,label=label,linewidth=lw)
 	ax2.plot(pop_dat[2:end,1]*fac_t, pop_dat[2:end,3],color=col,linewidth=lw)
 end
 
