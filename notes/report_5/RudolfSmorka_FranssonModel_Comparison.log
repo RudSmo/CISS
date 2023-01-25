@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  20 JAN 2023 10:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  25 JAN 2023 12:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -734,80 +734,31 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write4
 \openout4 = `RudolfSmorka_FranssonModel_Comparison.toc'.
 
-LaTeX Font Info:    Trying to load font information for U+bbold on input line 7
-4.
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/bbold/Ubbold.fd) [1
-
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
-01.
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/doublestroke/Udsrom.fd
-File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-)
-<figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf, id=19, 9
-39.51pt x 867.24pt>
-File: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf Grap
-hic file (type pdf)
-<use figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf>
-Package pdftex.def Info: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_
-multiAngle.pdf  used on input line 110.
-(pdftex.def)             Requested size: 478.86252pt x 442.0219pt.
-<figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf, id=20, 722.7pt
- x 433.62pt>
-File: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf Graphic fi
-le (type pdf)
-<use figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf>
-Package pdftex.def Info: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_
-cuts.pdf  used on input line 115.
-(pdftex.def)             Requested size: 478.86252pt x 287.3215pt.
-<figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf, id=21, 8
-67.24pt x 433.62pt>
-File: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf Grap
-hic file (type pdf)
-<use figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf>
-Package pdftex.def Info: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_
-difference.pdf  used on input line 120.
-(pdftex.def)             Requested size: 478.86252pt x 239.43127pt.
+<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf, id=1, 722
+.7pt x 505.89pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf Graph
+ic file (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0
+.05_V0.48.pdf  used on input line 96.
+(pdftex.def)             Requested size: 411.14526pt x 287.8045pt.
+<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1.0_V0.48.pdf, id=2, 722.
+7pt x 505.89pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1.0_V0.48.pdf Graphi
+c file (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1.0_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1
+.0_V0.48.pdf  used on input line 101.
+(pdftex.def)             Requested size: 411.14526pt x 287.8045pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+[1
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2] [3 <./figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf>
-] [4 <./figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf> <./figs
-/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/PES_1x3_SOC0.001_tPh0
-.004_SOCPh0.0001_multiState_difference.pdf): PDF inclusion: multiple pdfs with 
-page group included in a single page
->]
-<figs/Comparison_TTHEOM_MFHEOM_1x3_w0_0.05_Gamma0.1t0.pdf, id=115, 722.7pt x 50
-5.89pt>
-File: figs/Comparison_TTHEOM_MFHEOM_1x3_w0_0.05_Gamma0.1t0.pdf Graphic file (ty
-pe pdf)
-<use figs/Comparison_TTHEOM_MFHEOM_1x3_w0_0.05_Gamma0.1t0.pdf>
-Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_1x3_w0_0.05_Gamma0.1t0.p
-df  used on input line 132.
-(pdftex.def)             Requested size: 435.32419pt x 304.7251pt.
-<figs/Comparison_TTHEOM_MFHEOM_1x3_w0_3.0_Gamma0.1t0.pdf, id=116, 722.7pt x 505
-.89pt>
-File: figs/Comparison_TTHEOM_MFHEOM_1x3_w0_3.0_Gamma0.1t0.pdf Graphic file (typ
-e pdf)
-<use figs/Comparison_TTHEOM_MFHEOM_1x3_w0_3.0_Gamma0.1t0.pdf>
-Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_1x3_w0_3.0_Gamma0.1t0.pd
-f  used on input line 139.
-(pdftex.def)             Requested size: 435.32419pt x 304.7251pt.
- [5
-
- <./figs/Comparison_TTHEOM_MFHEOM_1x3_w0_0.05_Gamma0.1t0.pdf>] [6 <./figs/Compa
-rison_TTHEOM_MFHEOM_1x3_w0_3.0_Gamma0.1t0.pdf>]
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/
+Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf>] [2 <./figs/Com
+parison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1.0_V0.48.pdf>]
 (./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
@@ -815,40 +766,30 @@ Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 
  ) 
 Here is how much of TeX's memory you used:
- 16360 strings out of 478994
- 322374 string characters out of 5858184
- 839939 words of memory out of 5000000
- 33623 multiletter control sequences out of 15000+600000
- 420220 words of font info for 93 fonts, out of 8000000 for 9000
+ 16296 strings out of 478994
+ 320216 string characters out of 5858184
+ 828466 words of memory out of 5000000
+ 33575 multiletter control sequences out of 15000+600000
+ 419371 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,19n,75p,1873b,1656s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
-b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb
-></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
-/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></u
-sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
-r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/l
-ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
-021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2021
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/te
-xmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2021/t
-exmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/
-fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (6 pages, 3035202 b
-ytes).
+ 71i,10n,75p,1873b,1656s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
+sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
+ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (2 pages, 352208 by
+tes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 183 compressed objects within 2 object streams
+ 104 PDF objects out of 1000 (max. 8388607)
+ 83 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
