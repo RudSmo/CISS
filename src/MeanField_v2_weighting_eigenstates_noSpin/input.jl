@@ -16,7 +16,7 @@ using .CustomStructures
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 3
+num_ions = 1
 N = num_laps * num_ions
 t0  = 0.04
 E  = -6*t0
@@ -28,7 +28,7 @@ modelStr = "Holstein"
 
 # Simulation Parameters
 dt = 0.002/t0
-tend = 100/t0
+tend = 20/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -39,7 +39,8 @@ if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
     #phIn = "TDSCF"
-    phIn = "Wigner"
+#    phIn = "Wigner"
+    phIn = "unocc"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -83,7 +84,7 @@ if !isdir(path)
 end
 
 
-num_avg = 1
+num_avg = 5
 for ka in 1:num_avg
     dataname1 = "$(path)/L$(N)_gPh$(gPh)_tPh$(tPh)_V$(V)_w0$(ws[1])_X0_$(x0)_dt$(abs(dt))" 
     dataname2 = "$(dataname1)_$(ka)"
@@ -95,7 +96,7 @@ for ka in 1:num_avg
     IOsave.SaveParams(params,parampath,purpose)
 
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,vSampl,popElIn)
-#    Average(ka,dataname1,num_avg)
+    Average(ka,dataname1,num_avg)
 end
 
 end

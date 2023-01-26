@@ -47,7 +47,10 @@ function Propagate(
 
 		X0,P0   = SampleWigner_Multi(beta,HamPar.ws,HamPar.N)
 		weight  = prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
-		
+	elseif phIn == "unocc"
+		phases = [rand()*2*pi for i in 1:length(HamPar.N)]
+		X0,P0 = InitialPh(zeros(HamPar.N),HamPar.ws,phases)
+		weight  = 1.0 	
 	elseif phIn == "fromFile"
 		fid     = h5open(pathIn,"r")
 		X0      = read(fid["q"])

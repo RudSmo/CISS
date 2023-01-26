@@ -1,10 +1,10 @@
-# Parameters of run on 2023-01-20T10:58:07.860 
+# Parameters of run on 2023-01-26T16:49:28.656 
 # The purpose of this run is the following: Test of Holstein model.
 # --------------------PARAMS----------------------------
 dt = 0.05
-Nstep = 50000
+Nstep = 10000
 N = 1
-ws = [0.002, 0.002, 0.002]
+ws = [0.002]
 gPh = 0.004
 tL = 0.01
 tR = 0.01
