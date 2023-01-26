@@ -13,7 +13,7 @@ rc("axes",labelsize=fs)
 rc("xtick",labelsize=fs-2)
 rc("ytick",labelsize=fs-2)
 
-w0 = 5.0
+w0 = 10.0
 V = 0.48
 
 px = 0.09
@@ -67,21 +67,22 @@ end
 ax1.legend(loc="best")
 ax1.set_xticklabels([])
 ax1.set_ylabel(L"$I_L-I_R\,[\mu\mathrm{A}]$")
-ax1.set_xlim(0,250)
-ax1.set_ylim(-5,25)
-ax11.set_xlim(100,250)
-ax11.set_ylim(13.79,14.0)
-ax11.set_yticks([13.8,13.9,14.0])
+ax1.set_xlim(0,400)
+ax1.set_ylim(-5,45)
+ax11.set_xlim(100,400)
+ax11.set_ylim(27.687,27.705)
+ax11.set_yticks([27.688,27.692,27.696,27.7,27.704])
+ax11.set_yticklabels(["27.688","27.692","27.696","27.700","27.704"])
 
 ax2.set_ylabel(L"$n$")
 ax2.set_xlabel(L"$t\,[\mathrm{fs}]$")
 #ax2.set_ylim(-1,1)
-ax2.set_ylim(-0.1,1.1)
-ax2.set_xlim(0,250)
-ax22.set_xlim(100,250)
-ax22.set_ylim(0.748,0.75)
-ax22.set_yticks([0.748,0.749,0.75])
-ax22.set_yticklabels(["0.748","0.749","0.750"])
+ax2.set_ylim(-0.1,0.6)
+ax2.set_xlim(0,400)
+ax22.set_xlim(100,400)
+ax22.set_ylim(0.4997,0.5001)
+ax22.set_yticks([0.4997,0.4999,0.5001])
+ax22.set_yticklabels(["0.4997","0.4999","0.5001"])
 
-plt.savefig("Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_$(w0)_V$(V).pdf")
+plt.savefig("Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_$(w0)_eps0_V$(V).pdf")
 

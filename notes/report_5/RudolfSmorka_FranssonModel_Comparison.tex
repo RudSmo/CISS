@@ -38,7 +38,7 @@
 \title{Report 5: Comparison of TT-HEOM with MF-HEOM. Holstein and Peierls Model}
 \author{Rudolf Smorka}
 \maketitle
-\tableofcontents
+%\tableofcontents
 %\section{Born-Oppenheimer potential energy of the three-site Fransson model}
 %The Born-Oppenheimer approximation yields the following Hamiltonian for the three-site Fransson model
 %\begin{equation}
@@ -85,32 +85,61 @@
 %	\caption{Same as \cref{fig:TTHEOM_MFHEOM_comp_w0_0.05} for $\omega_0 = \SI{3}{\milli\electronvolt}$. }\label{fig:TTHEOM_MFHEOM_comp_w0_3}
 %\end{figure}
 \section{Holstein model}
-\subsection{Spinless case}
-We first investigate the spinless case of a molecular junction where the molecule is modeled by a single-site Holstein site
+We first investigate the spinless case of a molecular junction with a single electronic level and a single vibrational mode. The molecule is modeled by a Holstein-like model
 \begin{equation}
 	H_\mathrm{mol} = \varepsilon_0 d^\dagger d + g d^\dagger d (a^\dagger + a) + \omega_0 a^\dagger a
 \end{equation}
-We use the following parameters: $\Gamma = \SI{10}{\milli\electronvolt}$, $\varepsilon_0 = -\SI{240}{\milli\electronvolt}$, $g=\SI{4}{\milli\electronvolt}$, and $T=\SI{300}{\kelvin}$. The bias voltage is $V=\SI{480}{\milli\volt}$. \Cref{fig:Holstein_w0_0.05} (a) shows the symmetrized current and in \cref{fig:Holstein_w0_0.05} (b) the dot population for $\omega_0=\SI{2}{\milli\electronvolt}$. 
+We use the following parameters: $\Gamma = \SI{10}{\milli\electronvolt}$, $\varepsilon_0 = -\SI{240}{\milli\electronvolt}$, $g=\SI{4}{\milli\electronvolt}$, and $T=\SI{300}{\kelvin}$. The bias voltage is $V=\SI{480}{\milli\volt}$. \Cref{fig:Holstein_w0_0.05} (a) shows a comparison of the dynamics of the symmetrized current and in \cref{fig:Holstein_w0_0.05} (b) the dot population for $\omega_0=\SI{2}{\milli\electronvolt}$ obtained within a combination of Ehrenfest-dynamics with HEOM (MF-HEOM, black line) and within the tensor-train HEOM method (colored lines). 
+The comparison for a larger vibrational frequency of $\omega_0=\SI{40}{\milli\electronvolt}$ is shown in \cref{fig:Holstein_w0_1.0}, and for $\omega_0=\SI{200}{\milli\electronvolt}$ without an offset of the electronic energy ($\varepsilon_0 = \SI{0}{\milli\electronvolt}$) in \cref{fig:Holstein_w0_5.0_eps0}. 
+
+Except for $\omega_0=\SI{2}{\milli\electronvolt}$, the minimal rank of $r=100$ and $n_\mathrm{vib}=10$ are enough for obtaining converged results within the TT-HEOM framework. In these cases, the MF-HEOM results for times $t>\SI{100}{\femto\second}$ agree quantitatively with the TT-HEOM results up to deviations of the order of $10^{-3}-10^{-4}$. A much larger rank and number of vibrational states is needed for converged results in the case of a small vibrational frequency.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.85\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf}
+	\includegraphics[width=0.86\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf}
 	\caption{Comparison of TT-HEOM (colored lines, various rank $r$ and number of vibrational states $n_\mathrm{vib}$) with HEOM combined with Ehrenfest-dynamics (black line, $n=40000$): (a) Symmetrized current, (b) dot population in a model consisting of a single electronic level and a single vibrational mode with $\omega_0 = \SI{2}{\milli\electronvolt}$.}\label{fig:Holstein_w0_0.05}
+\end{figure}\\
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1.0_V0.48.pdf}
+	\caption{Same as in \cref{fig:Holstein_w0_0.05} for $\omega_0=\SI{40}{\milli\electronvolt}$.}\label{fig:Holstein_w0_1.0}
+\end{figure}\\
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_eps0_V0.48.pdf}
+	\caption{Same as in \cref{fig:Holstein_w0_0.05} for $\omega_0=\SI{200}{\milli\electronvolt}$ and $\varepsilon_0 = \SI{0}{\milli\electronvolt}$.}\label{fig:Holstein_w0_5.0_eps0}
+\end{figure}
+\clearpage
+\section{Peierls model}
+We now turn to the comparison of results obtained within the TT-HEOM with ones from MF-HEOM for the two-site Peierls model. The Peierls model for spinless fermions reads
+\begin{equation}
+	H = \varepsilon_1^\pdagger d_1^\dagger d_1^\pdagger +\varepsilon_2^\pdagger d_2^\dagger d_2^\pdagger +(d_1^\dagger d_2^\pdagger + \mathrm{h.c.})(-t_0 - t_1(a^\dagger + a)) + \omega_0 a^\dagger a,
+\end{equation}
+that is two electronic sites, between which electrons can hop with hopping amplitude $t_0$, and a single vibrational mode. The vibrational position is coupled to a transition of an electron from one site to the other with amplitude $t_1$. 
+
+Parameters are the following: $t_0 = \SI{40}{\milli\electronvolt}$, $\varepsilon_j = -\SI{240}{\milli\electronvolt}$, $t_1=\SI{4}{\milli\electronvolt}$, $\Gamma = \SI{10}{\milli\electronvolt}$ and $T=\SI{300}{\kelvin}$. The bias voltage is $V=\SI{480}{\milli\volt}$. \Cref{fig:Peierls_w0_1.0} shows the comparison for $\omega_0=\SI{40}{\milli\electronvolt}$, \cref{fig:Peierls_w0_5.0} for $\omega_0=\SI{200}{\milli\electronvolt}$, 
+\cref{fig:Peierls_w0_5.0_eps0} for $\omega_0=\SI{200}{\milli\electronvolt}$ without electronic energy-offset $\varepsilon_j = \SI{0}{\milli\electronvolt}$, 
+and \cref{fig:Peierls_w0_10.0} for $\omega_0=\SI{400}{\milli\electronvolt}$.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.98\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_1.0_V0.48.pdf}
+	\caption{Comparison of TT-HEOM with MF-HEOM in the spinless Peierls model: (a) Symmetrized current, (b) population of site 1, (c) population of site 2 for $\omega_0=\SI{40}{\milli\electronvolt}$.}\label{fig:Peierls_w0_1.0}
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.85\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1.0_V0.48.pdf}
-	\caption{Same as in \cref{fig:Holstein_w0_0.05} for $\omega_0=\SI{40}{\milli\electronvolt}$.}\label{fig:Holstein_w0_1.0}
+	\includegraphics[width=0.99\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_V0.48.pdf}
+	\caption{Same as in \cref{fig:Peierls_w0_1.0} for $\omega_0=\SI{200}{\milli\electronvolt}$.}\label{fig:Peierls_w0_5.0}
 \end{figure}
-
-\subsection{Spinfull case}
-
-
-\section{Two sites: Peierls model}
-
-
-
-
-\printbibliography
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.99\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_eps0_V0.48.pdf}
+	\caption{Same as in \cref{fig:Peierls_w0_1.0} for $\omega_0=\SI{200}{\milli\electronvolt}$ and $\varepsilon_j = \SI{0}{\milli\electronvolt}$.}\label{fig:Peierls_w0_5.0_eps0}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.99\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_10.0_V0.48.pdf}
+	\caption{Same as in \cref{fig:Peierls_w0_1.0} for $\omega_0=\SI{400}{\milli\electronvolt}$.}\label{fig:Peierls_w0_10.0}
+\end{figure}
+%\printbibliography
 \end{document}
 
 
