@@ -28,8 +28,8 @@ ax11 = plt.axes([px+0.4,py+0.08,0.46,0.15])
 ax2 = plt.axes([px,py-sy-dy,sx,sy])
 ax22 = plt.axes([px+0.4,py+0.08-sy-dy,0.46,0.15])
 
-curMF = readdlm("MF/currents_avg_n29.dat")
-popMF = readdlm("MF/electrons_avg_n29.dat")
+curMF = readdlm("MF/currents_avg_n30.dat")
+popMF = readdlm("MF/electrons_avg_n30.dat")
 
 
 TT_Cur_Files = ["TT/np10_r100_nV10_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
@@ -63,25 +63,26 @@ for (cur_fil,pop_fil,label,col) in zip(TT_Cur_Files,TT_Pop_Files,TT_labels,color
 	ax2.plot(pop_dat[2:end,1]*fac_t, pop_dat[2:end,2],color=col,linewidth=lw)
 	ax22.plot(pop_dat[2:end,1]*fac_t, pop_dat[2:end,2],color=col,linewidth=lw)
 end
-
+t_end = 350
 ax1.legend(loc="best")
 ax1.set_xticklabels([])
 ax1.set_ylabel(L"$I_L-I_R\,[\mu\mathrm{A}]$")
-ax1.set_xlim(0,250)
+ax1.set_xlim(0,t_end)
 ax1.set_ylim(-5,25)
-ax11.set_xlim(100,250)
-ax11.set_ylim(13.79,14.0)
-ax11.set_yticks([13.8,13.9,14.0])
+ax11.set_xlim(100,t_end)
+ax11.set_ylim(14.02,14.04)
+ax11.set_yticks([14.02,14.03,14.04])
+ax11.set_yticklabels(["14.02","14.03","14.04"])
 
 ax2.set_ylabel(L"$n$")
 ax2.set_xlabel(L"$t\,[\mathrm{fs}]$")
 #ax2.set_ylim(-1,1)
 ax2.set_ylim(-0.1,1.1)
-ax2.set_xlim(0,250)
-ax22.set_xlim(100,250)
-ax22.set_ylim(0.748,0.75)
-ax22.set_yticks([0.748,0.749,0.75])
-ax22.set_yticklabels(["0.748","0.749","0.750"])
+ax2.set_xlim(0,t_end)
+ax22.set_xlim(100,t_end)
+ax22.set_ylim(0.7468,0.7472)
+ax22.set_yticks([0.7468,0.747,0.7472])
+ax22.set_yticklabels(["0.7468","0.7470","0.7472"])
 
 plt.savefig("Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_$(w0)_V$(V).pdf")
 
