@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  25 JAN 2023 14:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  26 JAN 2023 14:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -746,14 +746,26 @@ c file (type pdf)
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1
 .0_V0.48.pdf  used on input line 103.
 (pdftex.def)             Requested size: 445.0002pt x 311.5026pt.
-<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_eps0_V0.48.pdf, id=3,
+<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_V0.48.pdf, id=3, 722.
+7pt x 505.89pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_V0.48.pdf Graphi
+c file (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5
+.0_V0.48.pdf  used on input line 108.
+(pdftex.def)             Requested size: 445.0002pt x 311.5026pt.
+<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_eps0_V0.48.pdf, id=4,
  722.7pt x 505.89pt>
 File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_eps0_V0.48.pdf G
 raphic file (type pdf)
 <use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_eps0_V0.48.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5
-.0_eps0_V0.48.pdf  used on input line 108.
+.0_eps0_V0.48.pdf  used on input line 113.
 (pdftex.def)             Requested size: 445.0002pt x 311.5026pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--116
+
+ []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -764,45 +776,70 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/
-Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf>] [2 <./figs/Com
-parison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1.0_V0.48.pdf> <./figs/Comparison_
-TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_eps0_V0.48.pdf
+Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_10.0_V0.48.pdf, id=49, 72
+2.7pt x 505.89pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_10.0_V0.48.pdf Graph
+ic file (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_10.0_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1
+0.0_V0.48.pdf  used on input line 119.
+(pdftex.def)             Requested size: 445.0002pt x 311.5026pt.
+[2 <./figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_1.0_V0.48.pdf> <./fi
+gs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_V0.48.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Comparison_TTHEOM_MFH
-EOM_Holstein_1x1_noSpin_w0_5.0_eps0_V0.48.pdf): PDF inclusion: multiple pdfs wi
-th page group included in a single page
+EOM_Holstein_1x1_noSpin_w0_5.0_V0.48.pdf): PDF inclusion: multiple pdfs with pa
+ge group included in a single page
+>] [3 <./figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_5.0_eps0_V0.48.pd
+f> <./figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_10.0_V0.48.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Comparison_TTHEOM_MFH
+EOM_Holstein_1x1_noSpin_w0_10.0_V0.48.pdf): PDF inclusion: multiple pdfs with p
+age group included in a single page
 >]
-<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_1.0_V0.48.pdf, id=92, 722.
-7pt x 650.43pt>
+<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf, id=139, 72
+2.7pt x 650.43pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf Graphi
+c file (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.
+05_V0.48.pdf  used on input line 137.
+(pdftex.def)             Requested size: 474.02083pt x 426.61537pt.
+<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_1.0_V0.48.pdf, id=140, 722
+.7pt x 650.43pt>
 File: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_1.0_V0.48.pdf Graphic
  file (type pdf)
 <use figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_1.0_V0.48.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_1.
-0_V0.48.pdf  used on input line 124.
+0_V0.48.pdf  used on input line 142.
 (pdftex.def)             Requested size: 474.02083pt x 426.61537pt.
-<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_V0.48.pdf, id=93, 722.
-7pt x 650.43pt>
+<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_V0.48.pdf, id=141, 722
+.7pt x 650.43pt>
 File: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_V0.48.pdf Graphic
  file (type pdf)
 <use figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_V0.48.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.
-0_V0.48.pdf  used on input line 129.
+0_V0.48.pdf  used on input line 147.
 (pdftex.def)             Requested size: 478.86252pt x 430.98225pt.
-<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_eps0_V0.48.pdf, id=94,
- 722.7pt x 650.43pt>
+<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_eps0_V0.48.pdf, id=142
+, 722.7pt x 650.43pt>
 File: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_eps0_V0.48.pdf Gr
 aphic file (type pdf)
 <use figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_eps0_V0.48.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.
-0_eps0_V0.48.pdf  used on input line 134.
+0_eps0_V0.48.pdf  used on input line 152.
 (pdftex.def)             Requested size: 478.86252pt x 430.98225pt.
-<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_10.0_V0.48.pdf, id=95, 722
-.7pt x 650.43pt>
+<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_10.0_V0.48.pdf, id=143, 72
+2.7pt x 650.43pt>
 File: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_10.0_V0.48.pdf Graphi
 c file (type pdf)
 <use figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_10.0_V0.48.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_10
-.0_V0.48.pdf  used on input line 139.
+.0_V0.48.pdf  used on input line 157.
 (pdftex.def)             Requested size: 478.86252pt x 430.98225pt.
 
 
@@ -814,12 +851,16 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[3
 
- <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_1.0_V0.48.pdf>]
-[4 <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_V0.48.pdf>]
-[5 <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_eps0_V0.48.pdf>]
-[6 <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_10.0_V0.48.pdf>]
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4
+
+ <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf>]
+[5 <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_1.0_V0.48.pdf>]
+[6 <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_V0.48.pdf>]
+[7 <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_5.0_eps0_V0.48.pdf>]
+[8 <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_10.0_V0.48.pdf>]
 (./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
@@ -827,10 +868,10 @@ Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 
  ) 
 Here is how much of TeX's memory you used:
- 16143 strings out of 478994
- 318582 string characters out of 5858184
- 829501 words of memory out of 5000000
- 33421 multiletter control sequences out of 15000+600000
+ 16167 strings out of 478994
+ 320033 string characters out of 5858184
+ 830615 words of memory out of 5000000
+ 33442 multiletter control sequences out of 15000+600000
  419025 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,10n,75p,1873b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -845,11 +886,11 @@ cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
 texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/te
 xlive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021
 /texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (6 pages, 583651 by
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (8 pages, 744011 by
 tes).
 PDF statistics:
- 222 PDF objects out of 1000 (max. 8388607)
- 187 compressed objects within 2 object streams
+ 296 PDF objects out of 1000 (max. 8388607)
+ 252 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

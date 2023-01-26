@@ -30,8 +30,8 @@ ax22 = plt.axes([px+0.4,py+0.05-sy-dy,0.45,0.12])
 ax3 = plt.axes([px,py-2*(sy+dy),sx,sy])
 ax33 = plt.axes([px+0.4,py+0.05-2*(sy+dy),0.45,0.12])
 
-curMF = readdlm("MF/currents_avg_n29.dat")
-popMF = readdlm("MF/electrons_avg_n29.dat")
+curMF = readdlm("MF/currents_avg_n30.dat")
+popMF = readdlm("MF/electrons_avg_n30.dat")
 
 
 TT_Cur_Files = ["TT/np10_r100_nV10_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
@@ -81,26 +81,26 @@ ax1.set_ylabel(L"$I_L-I_R\,[\mu\mathrm{A}]$")
 ax1.set_ylim(-6,25)
 ax1.set_xlim(0,250)
 ax11.set_xlim(50,250)
-ax11.set_ylim(14.02,14.08)
-ax11.set_yticks([14.02,14.04,14.06,14.08])
-ax11.set_yticklabels(["14.02","14.04","14.06","14.08"])
+ax11.set_ylim(13.6,14.1)
+#ax11.set_yticks([14.02,14.04,14.06,14.08])
+#ax11.set_yticklabels(["14.02","14.04","14.06","14.08"])
 
 ax2.set_ylabel(L"$n_{1}$")
 ax2.set_xticklabels([])
 ax2.set_xlim(0,250)
 ax22.set_xlim(100,250)
-ax22.set_ylim(0.72,0.76)
+ax22.set_ylim(0.74,0.76)
 ax2.set_ylim(-0.05,1.1)
-ax22.set_yticks([0.72,0.74,0.76])
+ax22.set_yticks([0.74,0.75,0.76])
 
 
 ax3.set_ylabel(L"$n_{2}$")
 ax3.set_xlabel(L"$t\,[\mathrm{fs}]$")
 ax3.set_xlim(0,250)
 ax33.set_xlim(100,250)
-ax33.set_ylim(0.72,0.76)
+ax33.set_ylim(0.73,0.75)
 ax3.set_ylim(-0.05,1.1)
-ax33.set_yticks([0.72,0.74,0.76])
+ax33.set_yticks([0.73,0.74,0.75])
 
 plt.savefig("Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_$(w0)_V$(V).pdf")
 

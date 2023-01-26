@@ -28,8 +28,10 @@ ax11 = plt.axes([px+0.4,py+0.08,0.46,0.15])
 ax2 = plt.axes([px,py-sy-dy,sx,sy])
 ax22 = plt.axes([px+0.4,py+0.08-sy-dy,0.46,0.15])
 
-curMF = readdlm("MF/currents_avg_n29.dat")
-popMF = readdlm("MF/electrons_avg_n29.dat")
+curMF = readdlm("MF/currents_avg_n30.dat")
+curNo = readdlm("../noPh/L1_gPh0.0_tPh0.0_V0.48_w00.04_X0_0.0_dt0.025_1_currents.dat")
+popMF = readdlm("MF/electrons_avg_n30.dat")
+popNo = readdlm("../noPh/L1_gPh0.0_tPh0.0_V0.48_w00.04_X0_0.0_dt0.025_1_electrons.dat")
 
 
 TT_Cur_Files = ["TT/np10_r100_nV10_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
@@ -47,11 +49,15 @@ TT_labels = [L"$r=100, \ n_\mathrm{vib} = 10$",
              L"$r=150, \ n_\mathrm{vib} = 15$"]
 
 ax1.plot(curMF[2:end,1]*fac_t, (curMF[2:end,2]-curMF[2:end,3])*fac_c*2, color="k",label = "MF-HEOM", linewidth=lw+2)
+ax1.plot(curNo[2:end,1]*fac_t, (curNo[2:end,2]-curNo[2:end,3])*fac_c*2, color="orange",label = L"exact, $g=0\,\mathrm{meV}$", linewidth=lw-1,linestyle="dashed")
 ax11.plot(curMF[2:end,1]*fac_t, (curMF[2:end,2]-curMF[2:end,3])*fac_c*2, color="k",label = "MF-HEOM", linewidth=lw+2)
+ax11.plot(curNo[2:end,1]*fac_t, (curNo[2:end,2]-curNo[2:end,3])*fac_c*2, color="orange", linewidth=lw-1,linestyle="dashed")
 ax1.annotate("(a)",(0.02,0.9),xycoords="axes fraction",fontsize=fs)
 
 ax2.plot(popMF[2:end,1]*fac_t, popMF[2:end,2], color="k", linewidth=lw+2)
+ax2.plot(popNo[2:end,1]*fac_t, popNo[2:end,2], color="orange", linewidth=lw-1,linestyle="dashed")
 ax22.plot(popMF[2:end,1]*fac_t, popMF[2:end,2], color="k", linewidth=lw+2)
+ax22.plot(popNo[2:end,1]*fac_t, popNo[2:end,2], color="orange", linewidth=lw-1,linestyle="dashed")
 ax2.annotate("(b)",(0.02,0.9),xycoords="axes fraction",fontsize=fs)
 
 colors = ["green", "blue", "red", "turquoise"]
@@ -63,26 +69,26 @@ for (cur_fil,pop_fil,label,col) in zip(TT_Cur_Files,TT_Pop_Files,TT_labels,color
 	ax2.plot(pop_dat[2:end,1]*fac_t, pop_dat[2:end,2],color=col,linewidth=lw)
 	ax22.plot(pop_dat[2:end,1]*fac_t, pop_dat[2:end,2],color=col,linewidth=lw)
 end
-
-ax1.legend(loc="best")
+t_end = 350
+ax1.legend(loc="best",ncol=2)
 ax1.set_xticklabels([])
 ax1.set_ylabel(L"$I_L-I_R\,[\mu\mathrm{A}]$")
-ax1.set_xlim(0,400)
-ax1.set_ylim(-5,45)
-ax11.set_xlim(100,400)
-ax11.set_ylim(27.687,27.705)
-ax11.set_yticks([27.688,27.692,27.696,27.7,27.704])
-ax11.set_yticklabels(["27.688","27.692","27.696","27.700","27.704"])
+ax1.set_xlim(0,t_end)
+ax1.set_ylim(-5,25)
+ax11.set_xlim(100,t_end)
+ax11.set_ylim(14.03,14.06)
+ax11.set_yticks([14.03,14.04,14.05,14.06])
+ax11.set_yticklabels(["14.03","14.04","14.05","14.06"])
 
 ax2.set_ylabel(L"$n$")
 ax2.set_xlabel(L"$t\,[\mathrm{fs}]$")
 #ax2.set_ylim(-1,1)
-ax2.set_ylim(-0.1,0.6)
-ax2.set_xlim(0,400)
-ax22.set_xlim(100,400)
-ax22.set_ylim(0.4997,0.5001)
-ax22.set_yticks([0.4997,0.4999,0.5001])
-ax22.set_yticklabels(["0.4997","0.4999","0.5001"])
+ax2.set_ylim(-0.1,1.1)
+ax2.set_xlim(0,t_end)
+ax22.set_xlim(100,t_end)
+ax22.set_ylim(0.7464,0.7472)
+ax22.set_yticks([0.7464,0.7468,0.7472])
+ax22.set_yticklabels(["0.7464","0.7468","0.7472"])
 
-plt.savefig("Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_$(w0)_eps0_V$(V).pdf")
+plt.savefig("Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_$(w0)_V$(V).pdf")
 
