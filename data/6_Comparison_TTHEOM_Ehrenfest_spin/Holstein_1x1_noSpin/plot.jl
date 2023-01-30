@@ -28,24 +28,24 @@ ax11 = plt.axes([px+0.4,py+0.06,0.46,0.15])
 ax2 = plt.axes([px,py-sy-dy,sx,sy])
 ax22 = plt.axes([px+0.4,py+0.06-sy-dy,0.46,0.15])
 
-curMF = readdlm("MF/mid/currents_avg_n30.dat")
-popMF = readdlm("MF/mid/electrons_avg_n30.dat")
+curMF = readdlm("MF/long/currents_avg_n30.dat")
+popMF = readdlm("MF/long/electrons_avg_n30.dat")
 curNo = readdlm("noPh/L1_gPh0.0_tPh0.0_V0.48_w00.04_X0_0.0_dt0.025_1_currents.dat") 
 popNo = readdlm("noPh/L1_gPh0.0_tPh0.0_V0.48_w00.04_X0_0.0_dt0.025_1_electrons.dat")
 
-TT_Cur_Files = ["TT/np10_r100_nV10_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-                "TT/np10_r100_nV12_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-                "TT/np10_r100_nV15_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-                "TT/np10_r100_nV17_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt"]
+TT_Cur_Files = ["TT/np10_r100_nV12_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+                "TT/np10_r100_nV17_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+                "TT/np10_r100_nV25_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+                "TT/np10_r100_nV35_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt"]
 
-TT_Pop_Files = ["TT/np10_r100_nV10_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-                "TT/np10_r100_nV12_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-                "TT/np10_r100_nV15_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-                "TT/np10_r100_nV17_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt"]
-TT_labels = [L"$n_\mathrm{vib} = 10$",
-             L"$n_\mathrm{vib} = 12$",
-             L"$n_\mathrm{vib} = 15$",
-             L"$n_\mathrm{vib} = 17$"]
+TT_Pop_Files = ["TT/np10_r100_nV12_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+                "TT/np10_r100_nV17_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+                "TT/np10_r100_nV25_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+                "TT/np10_r100_nV35_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt"]
+TT_labels = [L"$n_\mathrm{vib} = 12$",
+             L"$n_\mathrm{vib} = 17$",
+             L"$n_\mathrm{vib} = 25$",
+             L"$n_\mathrm{vib} = 35$"]
 
 ax1.plot(curMF[2:end,1]*fac_t, (curMF[2:end,2]-curMF[2:end,3])*fac_c*2, color="k",label = "MF-HEOM", linewidth=lw+2)
 ax11.plot(curMF[2:end,1]*fac_t, (curMF[2:end,2]-curMF[2:end,3])*fac_c*2, color="k",label = "MF-HEOM", linewidth=lw+2)
@@ -73,7 +73,7 @@ for (cur_fil,pop_fil,label,col) in zip(TT_Cur_Files,TT_Pop_Files,TT_labels,color
 	ax2.plot(pop_dat[:,1]*fac_t, pop_dat[:,2],color=col,linewidth=lw)
 	ax22.plot(pop_dat[:,1]*fac_t, pop_dat[:,2],color=col,linewidth=lw)
 end
-t_end = 1000
+t_end = 2000
 ax1.legend(loc="lower left")
 ax1.set_xticklabels([])
 ax1.set_ylabel(L"$I_L-I_R\,[\mu\mathrm{A}]$")

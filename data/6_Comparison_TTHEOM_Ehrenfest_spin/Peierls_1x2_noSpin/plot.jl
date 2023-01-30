@@ -30,25 +30,25 @@ ax22 = plt.axes([px+0.4,py+0.05-sy-dy,0.45,0.12])
 ax3 = plt.axes([px,py-2*(sy+dy),sx,sy])
 ax33 = plt.axes([px+0.4,py+0.05-2*(sy+dy),0.45,0.12])
 
-curMF = readdlm("MF/mid/currents_avg_n30.dat")
-popMF = readdlm("MF/mid/electrons_avg_n30.dat")
+curMF = readdlm("MF/long/currents_avg_n30.dat")
+popMF = readdlm("MF/long/electrons_avg_n30.dat")
 curNo = readdlm("noPh/L2_gPh0.0_tPh0.0_V0.48_w00.002_X0_0.0_dt0.05_1_currents.dat")
 popNo = readdlm("noPh/L2_gPh0.0_tPh0.0_V0.48_w00.002_X0_0.0_dt0.05_1_electrons.dat")
 
-TT_Cur_Files = ["TT/np10_r100_nV10_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-		"TT/np10_r100_nV12_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+TT_Cur_Files = ["TT/np10_r100_nV12_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
 		"TT/np10_r100_nV15_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-		"TT/np10_r100_nV20_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt"]
+		"TT/np10_r100_nV20_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+		"TT/np10_r100_nV35_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt"]
 
-TT_Pop_Files = ["TT/np10_r100_nV10_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-                "TT/np10_r100_nV12_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+TT_Pop_Files = ["TT/np10_r100_nV12_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
                 "TT/np10_r100_nV15_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
-                "TT/np10_r100_nV20_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt"]
+                "TT/np10_r100_nV20_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
+                "TT/np10_r100_nV35_V0.48/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt"]
 
-TT_labels = [L"$n_\mathrm{vib} = 10$",
-             L"$n_\mathrm{vib} = 12$",
-	     L"$n_\mathrm{vib} = 15$",
-	     L"$n_\mathrm{vib} = 20$"]
+TT_labels = [L"$n_\mathrm{vib} = 12$",
+             L"$n_\mathrm{vib} = 15$",
+	     L"$n_\mathrm{vib} = 20$",
+	     L"$n_\mathrm{vib} = 35$"]
 
 ax1.plot(curMF[2:end,1]*fac_t, (curMF[2:end,2]-curMF[2:end,3])*fac_c*2, color="k",label = "MF-HEOM", linewidth=lw+2)
 ax11.plot(curMF[2:end,1]*fac_t, (curMF[2:end,2]-curMF[2:end,3])*fac_c*2, color="k",label = "MF-HEOM", linewidth=lw+2)
@@ -81,7 +81,7 @@ for (cur_fil,pop_fil,label,col) in zip(TT_Cur_Files,TT_Pop_Files,TT_labels,color
 	ax3.plot(pop_dat[2:end,1]*fac_t, pop_dat[2:end,3],color=col,linewidth=lw)
 	ax33.plot(pop_dat[2:end,1]*fac_t, pop_dat[2:end,3],color=col,linewidth=lw)
 end
-t_end = 600
+t_end = 1100
 ax1.legend(loc="lower left")
 ax1.set_xticklabels([])
 ax1.set_ylabel(L"$I_L-I_R\,[\mu\mathrm{A}]$")
