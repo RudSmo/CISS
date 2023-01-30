@@ -16,7 +16,7 @@ using .CustomStructures
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 3
+num_ions = 2
 N = num_laps * num_ions
 t0  = 0.04
 eu  = -6*t0
@@ -26,14 +26,14 @@ ws  = 0.05*t0*ones(N)
 gPh = [0.0,0.0]
 a   = 1.0
 c   = 1.0
-tso = t0/40
+tso = 0.0
 tPh = 0.0*t0
 tsoPh = 0.0*tso
-#model = HolsteinHopping
-#modelStr = "Holstein"
-model = FranssonHamiltonian
+model = HolsteinHopping
+modelStr = "Holstein"
+#model = FranssonHamiltonian
 #model = FranssonHamiltonianNH
-modelStr = "Fransson"
+#modelStr = "Fransson"
 
 
 # Simulation Parameters
@@ -46,8 +46,8 @@ initProp  = true
 # false = use initial density matrix from previous computation
 
 if initProp
-    #rhoIn = "pure"
-    rhoIn = "equilibrium"
+    rhoIn = "pure"
+    #rhoIn = "equilibrium"
     #phIn = "TDSCF"
     phIn = "Wigner"
     pathIn = ""
@@ -56,8 +56,8 @@ else
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = 1.0*[1,1,0,0,0,0]
-popPhIn = [0,0,0]
+popElIn = zeros(2*N)
+popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 x0 = 0.0
@@ -65,7 +65,7 @@ xnIn,pnIn = zeros(N),zeros(N)
 
 
 ## Leads
-P = 0.5
+P = 0.0
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
 V  = 12*t0
@@ -92,7 +92,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "ES_test"
+path = "Peierls_noPh"
 if !isdir(path)
 	mkpath(path)
 end
