@@ -7,8 +7,10 @@ rc("text", usetex=true)
 rc("font",family="serif",serif="Times")
 fs = 17
 lw = 3
-fac_c = 1e3 * 2.8494561
+fac_c = 1e3 * 0.2433946
+fac_c_SS = 1e6
 fac_t = 1/(4.135668)
+
 rc("axes",labelsize=fs)
 rc("xtick",labelsize=fs-2)
 rc("ytick",labelsize=fs-2)
@@ -32,6 +34,10 @@ curMF = readdlm("MF/long/currents_avg_n30.dat")
 popMF = readdlm("MF/long/electrons_avg_n30.dat")
 curNo = readdlm("noPh/L1_gPh0.0_tPh0.0_V0.48_w00.04_X0_0.0_dt0.025_1_currents.dat") 
 popNo = readdlm("noPh/L1_gPh0.0_tPh0.0_V0.48_w00.04_X0_0.0_dt0.025_1_electrons.dat")
+curSS = readdlm("Christoph_HEOM/CU2352.dat")
+popSS = readdlm("Christoph_HEOM/EL2352.dat") 
+
+t_end = 2000
 
 TT_Cur_Files = ["TT/np10_r100_nV12_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
                 "TT/np10_r100_nV17_V0.48/current_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_100.txt",
@@ -48,7 +54,12 @@ TT_labels = [L"$n_\mathrm{vib} = 12$",
              L"$n_\mathrm{vib} = 35$"]
 
 ax1.plot(curMF[2:end,1]*fac_t, (curMF[2:end,2]-curMF[2:end,3])*fac_c*2, color="k",label = "MF-HEOM", linewidth=lw+2)
+
+ax1.plot(t_end-10,(curSS[end,2]-curSS[end,3])*fac_c_SS,color="orange",marker="o",label="HEOM steady-state")
+
 ax11.plot(curMF[2:end,1]*fac_t, (curMF[2:end,2]-curMF[2:end,3])*fac_c*2, color="k",label = "MF-HEOM", linewidth=lw+2)
+ax11.plot(t_end-10,(curSS[end,2]-curSS[end,3])*fac_c_SS,color="orange",marker="o")
+
 ax1.plot(curMF[2:end,1]*fac_t, ones(length(curMF[2:end,1]))*(curNo[end,2]-curNo[end,3])*fac_c*2, color="orange",label = L"exact $g=0\,\mathrm{meV}$", linewidth=lw,linestyle="dashed")
 ax11.plot(curMF[2:end,1]*fac_t, ones(length(curMF[2:end,1]))*(curNo[end,2]-curNo[end,3])*fac_c*2, color="orange",linewidth=lw,linestyle="dashed")
 ax1.annotate("(a)",(0.02,0.9),xycoords="axes fraction",fontsize=fs)
@@ -58,6 +69,8 @@ ax22.plot(popMF[2:end,1]*fac_t, popMF[2:end,2], color="k", linewidth=lw+2)
 ax2.plot(popMF[2:end,1]*fac_t, popNo[end,2]*ones(length(popMF[2:end,1])), color="orange", linewidth=lw,linestyle="dashed")
 ax22.plot(popMF[2:end,1]*fac_t, popNo[end,2]*ones(length(popMF[2:end,1])), color="orange", linewidth=lw,linestyle="dashed")
 ax2.annotate("(b)",(0.02,0.9),xycoords="axes fraction",fontsize=fs)
+ax2.plot(t_end-10,popSS[end,2],color="orange",marker="o")
+ax22.plot(t_end-10,popSS[end,2],color="orange",marker="o")
 
 colors = ["green", "blue", "red", "turquoise"]
 for (cur_fil,pop_fil,label,col) in zip(TT_Cur_Files,TT_Pop_Files,TT_labels,colors)
@@ -73,14 +86,13 @@ for (cur_fil,pop_fil,label,col) in zip(TT_Cur_Files,TT_Pop_Files,TT_labels,color
 	ax2.plot(pop_dat[:,1]*fac_t, pop_dat[:,2],color=col,linewidth=lw)
 	ax22.plot(pop_dat[:,1]*fac_t, pop_dat[:,2],color=col,linewidth=lw)
 end
-t_end = 2000
-ax1.legend(loc="lower left")
+ax1.legend(loc="lower left",numpoints=1)
 ax1.set_xticklabels([])
 ax1.set_ylabel(L"$I_L-I_R\,[\mu\mathrm{A}]$")
 ax1.set_xlim(0,t_end)
-ax1.set_ylim(-10,23)
+ax1.set_ylim(-1,1.5)
 ax11.set_xlim(100,t_end)
-ax11.set_ylim(8,14.5)
+ax11.set_ylim(0.6,1.3)
 #ax11.set_yticks([13.8,13.9,14.0])
 
 ax2.set_ylabel(L"$n$")

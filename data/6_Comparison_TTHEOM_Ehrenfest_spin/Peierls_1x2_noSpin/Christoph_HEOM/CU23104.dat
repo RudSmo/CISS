@@ -1,0 +1,16 @@
+#Tier, num. trunc.:                   2T
+#Npad, Nleads, Nels, NoscS:                  10                   2                   2                   1
+#threshold:     0.0000E+00
+#temperature of left / right lead:     0.2901E+03     0.2901E+03
+#Width of Lorentzian:     0.1000E+05     0.1000E+05
+#V:     0.3989E-01     0.0000E+00     0.0000E+00     0.3989E-01
+#bias:     0.4800E+00     0.4800E+00     0.5000E-02
+#electronic matrix:    -0.2400E+00     0.0000E+00     0.4000E-01     0.0000E+00     0.4000E-01     0.0000E+00    -0.2400E+00     0.0000E+00
+#U:     0.0000E+00     0.0000E+00     0.0000E+00     0.0000E+00
+#Nph:                  25
+#frequencies of modes in reduced system:     0.2000E-02
+#coupling to position in reduced system:     0.0000E+00     0.0000E+00
+#el-ph coupling  in reduced system:     0.4000E-02     0.0000E+00     0.4000E-02     0.0000E+00     0.4000E-02     0.0000E+00     0.4000E-02     0.0000E+00
+#phi, cL, cR, ecL, ecR
+   0.480000000E+00   0.482514260E-06  -0.482514260E-06   0.427050800E-03  -0.427050800E-03
+ 
