@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  1 FEB 2023 14:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  2 FEB 2023 16:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -723,52 +723,96 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x3_noSpin_w0_0.05_V0.48.pdf, id=16, 72
+2.7pt x 505.89pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x3_noSpin_w0_0.05_V0.48.pdf Graph
+ic file (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x3_noSpin_w0_0.05_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x3_noSpin_w0_0
+.05_V0.48.pdf  used on input line 64.
+(pdftex.def)             Requested size: 411.14526pt x 287.8045pt.
+<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x4_noSpin_w0_0.05_V0.48.pdf, id=17, 72
+2.7pt x 505.89pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x4_noSpin_w0_0.05_V0.48.pdf Graph
+ic file (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x4_noSpin_w0_0.05_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x4_noSpin_w0_0
+.05_V0.48.pdf  used on input line 70.
+(pdftex.def)             Requested size: 411.14526pt x 287.8045pt.
+<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x8_noSpin_w0_0.05_V0.48.pdf, id=18, 72
+2.7pt x 505.89pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x8_noSpin_w0_0.05_V0.48.pdf Graph
+ic file (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x8_noSpin_w0_0.05_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x8_noSpin_w0_0
+.05_V0.48.pdf  used on input line 76.
+(pdftex.def)             Requested size: 411.14526pt x 287.8045pt.
+ [2
+
+ <./figs/Comparison_TTHEOM_MFHEOM_Holstein_1x3_noSpin_w0_0.05_V0.48.pdf> <./fig
+s/Comparison_TTHEOM_MFHEOM_Holstein_1x4_noSpin_w0_0.05_V0.48.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Comparison_TTHEOM_MFH
+EOM_Holstein_1x4_noSpin_w0_0.05_V0.48.pdf): PDF inclusion: multiple pdfs with p
+age group included in a single page
+>]
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 9
+5.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 )
-<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf, id=1, 722
-.7pt x 505.89pt>
+[3 <./figs/Comparison_TTHEOM_MFHEOM_Holstein_1x8_noSpin_w0_0.05_V0.48.pdf>]
+<figs/Comparison_TTHEOM_MFHEOM_Fransson_1x3_w0_0.05_V0.48.pdf, id=102, 722.7pt 
+x 505.89pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Fransson_1x3_w0_0.05_V0.48.pdf Graphic file
+ (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Fransson_1x3_w0_0.05_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Fransson_1x3_w0_0.05_V0.
+48.pdf  used on input line 102.
+(pdftex.def)             Requested size: 411.14526pt x 287.8045pt.
+<figs/Comparison_TTHEOM_MFHEOM_Fransson_1x4_w0_0.05_V0.48.pdf, id=103, 722.7pt 
+x 505.89pt>
+File: figs/Comparison_TTHEOM_MFHEOM_Fransson_1x4_w0_0.05_V0.48.pdf Graphic file
+ (type pdf)
+<use figs/Comparison_TTHEOM_MFHEOM_Fransson_1x4_w0_0.05_V0.48.pdf>
+Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Fransson_1x4_w0_0.05_V0.
+48.pdf  used on input line 108.
+(pdftex.def)             Requested size: 411.14526pt x 287.8045pt.
+<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf, id=104, 7
+22.7pt x 505.89pt>
 File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf Graph
 ic file (type pdf)
 <use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0
-.05_V0.48.pdf  used on input line 44.
-(pdftex.def)             Requested size: 459.51051pt x 321.66113pt.
- [1
+.05_V0.48.pdf  used on input line 117.
+(pdftex.def)             Requested size: 411.14526pt x 287.8045pt.
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/
-Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf>]
-<figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_Spin_w0_0.05_V0.48.pdf, id=44, 722.
-7pt x 650.43pt>
-File: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_Spin_w0_0.05_V0.48.pdf Graphic
- file (type pdf)
-<use figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_Spin_w0_0.05_V0.48.pdf>
-Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_Spin_w0_0.0
-5_V0.48.pdf  used on input line 51.
-(pdftex.def)             Requested size: 435.32419pt x 391.78941pt.
- [2
+[4
 
- <./figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_Spin_w0_0.05_V0.48.pdf>]
-<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf, id=69, 722
-.7pt x 650.43pt>
+ <./figs/Comparison_TTHEOM_MFHEOM_Fransson_1x3_w0_0.05_V0.48.pdf> <./figs/Compa
+rison_TTHEOM_MFHEOM_Fransson_1x4_w0_0.05_V0.48.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Comparison_TTHEOM_MFH
+EOM_Fransson_1x4_w0_0.05_V0.48.pdf): PDF inclusion: multiple pdfs with page gro
+up included in a single page
+>]
+<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf, id=150, 72
+2.7pt x 650.43pt>
 File: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf Graphi
 c file (type pdf)
 <use figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf>
 Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.
-05_V0.48.pdf  used on input line 59.
-(pdftex.def)             Requested size: 435.32419pt x 391.78941pt.
- [3
+05_V0.48.pdf  used on input line 132.
+(pdftex.def)             Requested size: 411.14526pt x 370.03436pt.
 
- <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf>]
-<figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_Spin_w0_0.05_V0.48.pdf, id=94, 722.7
-pt x 505.89pt>
-File: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_Spin_w0_0.05_V0.48.pdf Graphic 
-file (type pdf)
-<use figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_Spin_w0_0.05_V0.48.pdf>
-Package pdftex.def Info: figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_Spin_w0_0.05
-_V0.48.pdf  used on input line 65.
-(pdftex.def)             Requested size: 435.32419pt x 304.7251pt.
- [4
 
- <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_Spin_w0_0.05_V0.48.pdf>]
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5 <./figs/Comparison_TTHEOM_MFHEOM_Holstein_1x1_noSpin_w0_0.05_V0.48.pdf>]
+[6 <./figs/Comparison_TTHEOM_MFHEOM_Peierls_1x2_noSpin_w0_0.05_V0.48.pdf>]
 (./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
@@ -776,27 +820,35 @@ Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 
  ) 
 Here is how much of TeX's memory you used:
- 16088 strings out of 478994
- 316222 string characters out of 5858184
- 822242 words of memory out of 5000000
- 33369 multiletter control sequences out of 15000+600000
- 419025 words of font info for 86 fonts, out of 8000000 for 9000
+ 16124 strings out of 478994
+ 317809 string characters out of 5858184
+ 832242 words of memory out of 5000000
+ 33395 multiletter control sequences out of 15000+600000
+ 419601 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,9n,75p,1873b,1638s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
-local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (4 pages, 431935 by
+ 71i,19n,75p,1873b,1638s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
+/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr
+/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
+ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
+al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
+live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texli
+ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/tex
+mf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (6 pages, 638781 by
 tes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 116 compressed objects within 2 object streams
+ 246 PDF objects out of 1000 (max. 8388607)
+ 204 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

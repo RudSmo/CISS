@@ -81,8 +81,8 @@ ax22.plot(600:t_end, popNo[end,2]*ones(length(600:t_end)), color="orange",linest
 
 ax3.plot(popMF[2:end,1]*fac_t, popMF[2:end,3], color="k", linewidth=lw+1)
 ax33.plot(popMF[2:end,1]*fac_t, popMF[2:end,3], color="k", linewidth=lw+1)
-ax3.plot(popNo[2:end,1]*fac_t, popNo[2:end,2], color="orange", linewidth=lw+1,linestyle="dashed")
-ax33.plot(popNo[2:end,1]*fac_t, popNo[2:end,2], color="orange", linewidth=lw+1,linestyle="dashed")
+ax3.plot(popNo[2:end,1]*fac_t, popNo[2:end,3], color="orange", linewidth=lw+1,linestyle="dashed")
+ax33.plot(popNo[2:end,1]*fac_t, popNo[2:end,3], color="orange", linewidth=lw+1,linestyle="dashed")
 ax3.plot(Tend, popSS[end,3],color="orange",marker="o", label="HEOM steady-state")
 ax33.plot(Tend, popSS[end,3],color="orange",marker="o", label="HEOM steady-state")
 ax3.annotate("(c)",(0.02,0.9),xycoords="axes fraction",fontsize=fs)

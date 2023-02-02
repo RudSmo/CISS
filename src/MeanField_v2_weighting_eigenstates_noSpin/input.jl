@@ -16,7 +16,7 @@ using .CustomStructures
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 2
+num_ions = 8
 N = num_laps * num_ions
 t0  = 0.04
 E  = -6*t0
@@ -28,7 +28,7 @@ modelStr = "Holstein"
 
 # Simulation Parameters
 dt = 0.002/t0
-tend = 100/t0
+tend = 50/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -78,7 +78,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "Peierls_1x2_noPh"
+path = "noPh"
 if !isdir(path)
 	mkpath(path)
 end

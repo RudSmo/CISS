@@ -16,7 +16,7 @@ using .CustomStructures
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 2
+num_ions = 4
 N = num_laps * num_ions
 t0  = 0.04
 eu  = -6*t0
@@ -26,19 +26,19 @@ ws  = 0.05*t0*ones(N)
 gPh = [0.0,0.0]
 a   = 1.0
 c   = 1.0
-tso = 0.0
+tso = t0 / 40
 tPh = 0.0*t0
 tsoPh = 0.0*tso
-model = HolsteinHopping
-modelStr = "Holstein"
-#model = FranssonHamiltonian
+#model = HolsteinHopping
+#modelStr = "Holstein"
+model = FranssonHamiltonian
 #model = FranssonHamiltonianNH
-#modelStr = "Fransson"
+modelStr = "Fransson"
 
 
 # Simulation Parameters
 dt = 0.002/t0
-tend = 100/t0
+tend = 26/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -48,8 +48,8 @@ initProp  = true
 if initProp
     rhoIn = "pure"
     #rhoIn = "equilibrium"
-    #phIn = "TDSCF"
-    phIn = "Wigner"
+    phIn = "TDSCF"
+    #phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -65,7 +65,7 @@ xnIn,pnIn = zeros(N),zeros(N)
 
 
 ## Leads
-P = 0.0
+P = 0.5
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
 V  = 12*t0
@@ -92,7 +92,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "Peierls_noPh"
+path = "Fransson_noPh"
 if !isdir(path)
 	mkpath(path)
 end
