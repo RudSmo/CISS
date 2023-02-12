@@ -54,6 +54,15 @@ function Hopping_A_nn(N,t)
     return Hh
 end
 
+function Hopping_A_nn_spin(N,t)
+    tu,td = t
+    Hh = zeros(2*N,2*N)
+    for i in 1:2*N-2
+        Hh[i,i+2] = -tu
+        Hh[i+2,i] = -td
+    end
+    return Hh
+end
 
 function Onsite_A(N,E)
     eu,ed = E 
@@ -225,6 +234,10 @@ function NNN(N,tns)
 	return H
 end
 
-
+function SpinHopping(N,eps,t0)
+        Ho = Onsite_A(N,eps)
+        Hh = Hopping_A_nn_spin(N,t0)
+        return Ho .+ Hh
+end
 
 end

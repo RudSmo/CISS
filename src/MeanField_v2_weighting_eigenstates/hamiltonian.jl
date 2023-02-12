@@ -1,7 +1,7 @@
 module Hamiltonian
 using LinearAlgebra
 
-export VDot,absv,UnitVector,FranssonHamiltonian,FranssonHamiltonianNH,HolsteinHopping
+export VDot,absv,UnitVector,FranssonHamiltonian,FranssonHamiltonianNH,HolsteinHopping,SpinHopping
 
 
 function VDot(a)
@@ -50,6 +50,15 @@ function Hopping_A_nn(N,t)
     for i in 1:2*N-2
         Hh[i,i+2] = -t
         Hh[i+2,i] = -t
+    end
+    return Hh
+end
+function Hopping_A_nn_spin(N,t)
+    tu,td = t
+    Hh = zeros(2*N,2*N)
+    for i in 1:2*N-2
+        Hh[i,i+2] = -tu
+        Hh[i+2,i] = -td
     end
     return Hh
 end
@@ -169,6 +178,12 @@ function HolsteinHopping(HamPar)
     Hph = Holstein(HamPar.N,HamPar.gPh,HamPar.ws,HamPar.X)
     Htph = Peierls_Old(HamPar.N,HamPar.HoppingPh,HamPar.ws,HamPar.X)
     return Ho .+ Hh .+ Hph .+ Htph
+end
+
+function SpinHopping(HamPar,t0)
+	Ho = Onsite_A(HamPar.N,HamPar.OnsiteEnergies)
+	Hh = Hopping_A_nn_spin(HamPar.N,t0)
+	return Ho .+ Hh	
 end
 
 end

@@ -66,24 +66,47 @@ Notable points are the avoided crossings of states $S_1,S_2$ with $S_3,S_4$ at $
 	\caption{Absolute difference between BO-eigenstates $S_1$ and $S_3$ (a) and $S_3$ and $S_5$ (b) in the vibrational displacement space.} 
 \end{figure}
 \clearpage
-\section{Comparison of TT-HEOM with MF-HEOM}\label{sec:1_Comp_TTHEOM_MFHEOM}
-\subsection{Fransson model}
-Parameters: $\mathbb{M}=1\times 3$, $t_0 = \SI{40}{\milli\electronvolt}$, $\lambda_0 = \SI{1}{\milli\electronvolt}$, $t_1=\SI{4}{\milli\electronvolt}$, $\lambda_1 = \SI{0.1}{\milli\electronvolt}$, $\Gamma_0 = \SI{4}{\milli\electronvolt}$ (with lead spin polarization $P = 0.5$), $V=\SI{0.48}{\volt}$ and $T =\SI{ 300}{K}$.
-The following vibrational frequencies are investigated: $\omega_0 = \SI{2}{\milli\electronvolt}$ and $\omega_0=\SI{120}{\milli\electronvolt}$.  
+%\section{Comparison of TT-HEOM with MF-HEOM}\label{sec:1_Comp_TTHEOM_MFHEOM}
+%\subsection{Fransson model}
+%Parameters: $\mathbb{M}=1\times 3$, $t_0 = \SI{40}{\milli\electronvolt}$, $\lambda_0 = \SI{1}{\milli\electronvolt}$, $t_1=\SI{4}{\milli\electronvolt}$, $\lambda_1 = \SI{0.1}{\milli\electronvolt}$, $\Gamma_0 = \SI{4}{\milli\electronvolt}$ (with lead spin polarization $P = 0.5$), $V=\SI{0.48}{\volt}$ and $T =\SI{ 300}{K}$.
+%The following vibrational frequencies are investigated: $\omega_0 = \SI{2}{\milli\electronvolt}$ and $\omega_0=\SI{120}{\milli\electronvolt}$.  
+%
+%We start with the case low vibrational frequency first, shown in \cref{fig:TTHEOM_MFHEOM_comp_w0_0.05}. There we plot the symmetrized current (a) and the spin-down population on the first site (b), comparing the MF-HEOM results (weighted average over $n=9000$ trajectories sampled from the thermal Wigner distribution for a harmonic oscillator) with TT-HEOM results (various ranks $r$ and number of vibrational states $n_\mathrm{vib}$ for each vibrational mode). Even a rank of $r=200$ and $n_\mathrm{vib}=30$ vibrational states are not sufficient for converging the TT-HEOM results. Although the symmetrized current seems to be converged with increasing the rank and the number of vibrational states in the time-interval until $\sim\SI{5}{\femto\second}$, the population rises above one for all investigated ranks. The unphysical population is obtained already in the first time-step of the calculation.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_MFHEOM_1x3_w0_0.05_Gamma0.1t0.pdf}
+%	\caption{Comparison of MF-HEOM (sample size $n=9000$) with TT-HEOM (for various rank $r$ and number of vibrational states $n_\mathrm{vib}$): Symmetrized current (a) and population of spin-down electron on the first site (b) for $\omega_0 = \SI{2}{\milli\electronvolt}$. }\label{fig:TTHEOM_MFHEOM_comp_w0_0.05}
+%\end{figure}
+%
+%We now turn to the case with higher vibrational frequency $\omega_0=\SI{120}{\milli\electronvolt}$, shown in \cref{fig:TTHEOM_MFHEOM_comp_w0_3}. In essence, the time-scale on which the symmetrized current and the population diverges within the TT-HEOM, does not significantly change upon increasing the vibrational frequency.
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_MFHEOM_1x3_w0_3.0_Gamma0.1t0.pdf}
+%	\caption{Same as \cref{fig:TTHEOM_MFHEOM_comp_w0_0.05} for $\omega_0 = \SI{3}{\milli\electronvolt}$. }\label{fig:TTHEOM_MFHEOM_comp_w0_3}
+%\end{figure}
+\section{Ground State of the Fransson model}
+\subsection{Influence of on-site potential}
+In the limit of $\varepsilon\rightarrow-\infty$ the ground state of the Fransson model is a product state of doubly occupied electronic sites and all vibrational modes in their lowest energy state
+\begin{equation}
+	\vert \Psi_\mathrm{GS}\rangle = \vert \uparrow\downarrow,\uparrow\downarrow,\dots,\uparrow\downarrow\rangle\vert 0,\dots,0\rangle.
+\end{equation}
+\subsection{Influence of Hopping}
+Hopping tends to delocalize electrons and due to its off-diagonal contribution the ground state is a superposition over many configurations. The dominant one is with half filling with one electron per site. Contributions with smaller weight are ones in which a single site is doubly occupied and one is empty, while all others are singly occupied. The table below shows representative configurations for $t_0 = \SI{40}{\electronvolt}$ and $\varepsilon = \SI{0}{\electronvolt}$ for $L=6$ (due to spin-flip and translational symmetry of the model in this limit, many configurations are degenerate).
+\begin{center}
+\begin{tabular}{cc}
+	Configuration & Weight\\
+	\hline
+	$\vert \uparrow,\downarrow,\uparrow,\downarrow,\uparrow,\downarrow\rangle $&  0.1250\\
+	$\vert \downarrow,\uparrow\downarrow,0,\uparrow,\downarrow,\uparrow\rangle $&  0.0833\\
+	$\vert \uparrow\downarrow,0,\uparrow,\uparrow\downarrow,\downarrow,0\rangle $&  0.0555\\
+	$\vert \uparrow,\downarrow,\uparrow\downarrow,\downarrow,\uparrow,0\rangle $&  0.0416\\
+	$\vert \uparrow\downarrow,0,\uparrow,\uparrow,\downarrow,\downarrow\rangle $&  0.0277\\
+	$\vert \uparrow\downarrow,0,\uparrow\downarrow,0,\uparrow\downarrow,0\rangle$&  -0.1250\\
+	\hline
+\end{tabular}
+\end{center}
+\subsection{Influence of SOC}
 
-We start with the case low vibrational frequency first, shown in \cref{fig:TTHEOM_MFHEOM_comp_w0_0.05}. There we plot the symmetrized current (a) and the spin-down population on the first site (b), comparing the MF-HEOM results (weighted average over $n=9000$ trajectories sampled from the thermal Wigner distribution for a harmonic oscillator) with TT-HEOM results (various ranks $r$ and number of vibrational states $n_\mathrm{vib}$ for each vibrational mode). Even a rank of $r=200$ and $n_\mathrm{vib}=30$ vibrational states are not sufficient for converging the TT-HEOM results. Although the symmetrized current seems to be converged with increasing the rank and the number of vibrational states in the time-interval until $\sim\SI{5}{\femto\second}$, the population rises above one for all investigated ranks. The unphysical population is obtained already in the first time-step of the calculation.
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_MFHEOM_1x3_w0_0.05_Gamma0.1t0.pdf}
-	\caption{Comparison of MF-HEOM (sample size $n=9000$) with TT-HEOM (for various rank $r$ and number of vibrational states $n_\mathrm{vib}$): Symmetrized current (a) and population of spin-down electron on the first site (b) for $\omega_0 = \SI{2}{\milli\electronvolt}$. }\label{fig:TTHEOM_MFHEOM_comp_w0_0.05}
-\end{figure}
-
-We now turn to the case with higher vibrational frequency $\omega_0=\SI{120}{\milli\electronvolt}$, shown in \cref{fig:TTHEOM_MFHEOM_comp_w0_3}. In essence, the time-scale on which the symmetrized current and the population diverges within the TT-HEOM, does not significantly change upon increasing the vibrational frequency.
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_MFHEOM_1x3_w0_3.0_Gamma0.1t0.pdf}
-	\caption{Same as \cref{fig:TTHEOM_MFHEOM_comp_w0_0.05} for $\omega_0 = \SI{3}{\milli\electronvolt}$. }\label{fig:TTHEOM_MFHEOM_comp_w0_3}
-\end{figure}
 \end{document}
 
 

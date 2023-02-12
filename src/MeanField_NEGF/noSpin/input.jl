@@ -7,9 +7,12 @@ using .Hamiltonian
 using .Observables
 using .CustomStructs
 
-t0 = 1.0
-eu = 0.0
-ed = 0.0
+t0 = 0.04
+tu = t0
+td = 0.75*t0
+T0 = [tu,td]
+eu = -6*t0
+ed = -6*t0
 E = [eu,ed]
 a = 1.0
 c = 1.0
@@ -26,10 +29,10 @@ tR  = 0.025
 beta = 1/tL
 qs = [SampleWigner(beta,ws[i],"v2")[1] for i in 1:N] 
 
-HS = Hamiltonian.FranssonHamiltonian(N,E,t0,tso,a,c,num_laps,tph,tsoph,ws,qs)
+#HS = Hamiltonian.FranssonHamiltonian(N,E,t0,tso,a,c,num_laps,tph,tsoph,ws,qs)
+HS = Hamiltonian.SpinHopping(N,E,T0)
 
-
-En = Array(-3.0:0.005:3.0)
+En = Array(-10*t0:0.01*t0:2*t0)
 sys_par = SystemParams(N,HS,En)
 
 P = 0.5
@@ -50,19 +53,22 @@ muR = 0.0
 lead_par = LeadParamsSF(muL,muR,gLu,gLd,gLud,gLdu,gRu,gRd,gRud,gRdu,tL,tR)
 
 
-Vnu = Array(-5.0:0.03:5.0)
-Vnd = Array(-5.0:0.03:5.0)
+Vnu = Array(0.0*t0:0.1*t0:25*t0)
+Vnd = Array(0.0*t0:0.1*t0:25*t0)
 
 T = LB_TransmissionE(sys_par,lead_par)
 D = DOS(sys_par.En,sys_par.HS,0.02)
 
-path = "data"
+path = "SpinHopping_$(num_laps)x$(ions)"
 if !isdir(path)
 	mkpath(path)
 end
 
-filnameT = open("$(path)/N$(N)_ions$(ions)_numL$(num_laps)_tso$(tso)_tPh$(tph)_tsoPh$(tsoph)_w$(ws[1])_P$(P)_transmission_3.dat","w")
-filnameD = open("$(path)/N$(N)_ions$(ions)_numL$(num_laps)_tso$(tso)_tPh$(tph)_tsoPh$(tsoph)_w$(ws[1])_P$(P)_dos_3.dat","w")
+filname = "$(path)/N$(N)_ions$(ions)_tu$(tu)_td$(td)_P$(P)"
+
+filnameT = open("$(filname)_transmission.dat","w")
+
+filnameD = open("$(filname)_dos.dat","w")
 for i in 1:length(T)
 	write(filnameT,"$(En[i]) $(T[i]) \n")
 	write(filnameD,"$(En[i]) $(D[i]) \n")
@@ -71,8 +77,6 @@ end
 close(filnameT)
 close(filnameD)
 
-#filname = "$(path)/N$(N)_currents_spin.dat"
-#savestp = 1
-#LB_CurrentV(sys_par,lead_par,Vnu,Vnd,filname,savestp)
-##end
-#
+filname = "$(filname)_currents.dat"
+savestp = 1
+LB_CurrentV(sys_par,lead_par,Vnu,Vnd,filname,savestp)
