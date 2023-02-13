@@ -16,7 +16,7 @@ using .CustomStructures
 # Simulation Parameters
 t0 = 0.04
 dt = 0.002/t0
-tend = 1000/t0
+tend = 166/t0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -25,7 +25,7 @@ initProp  = true
 
 # Hamiltonian Parameters
 num_laps = 2
-num_ions = 4
+num_ions = 2
 N = num_laps * num_ions
 eu  = -6*t0
 ed  = -6*t0
@@ -54,24 +54,24 @@ else
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = [0.0,0,0.0,0.0,0.0,0.0]
-popPhIn = [0,0,0,0,0,0,0,0]
+popElIn = zeros(2*N)
+popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-X0 = -1.0
-xnIn,pnIn = InitialPh(popPhIn,ws,phases)
+X0 = 0.0
+xnIn,pnIn = zeros(N),zeros(N)#InitialPh(popPhIn,ws,phases)
 
 
 ## Leads
-P = 0.5
+P = 0.0
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
 
-path1 = "NoPh_2x4"
+path1 = "NoPh_1x2"
 if !isdir(path1)
 	mkdir(path1)
 end
-for V in [0.0]
+for V in [12.0*t0]
 	nPoles = 20
 	beta = 1/0.025
 	HamPar = HamiltonianParams( num_laps,
