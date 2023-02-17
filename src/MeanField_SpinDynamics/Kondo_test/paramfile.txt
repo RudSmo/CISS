@@ -1,0 +1,13 @@
+# Parameters of run on 2023-02-14T17:09:19.644 
+# The purpose of this run is the following: Test of Spin Peierls model.
+# --------------------PARAMS----------------------------
+dt = 0.002
+Nstep = 40000
+N = 1
+tL = [1.5, 0.5]
+tR = [1.0, 1.0]
+Jsd = 1.2
+V = 1.5
+nPoles = 30
+beta = 40.0
+# ----------------THIS IS THE END.----------------------

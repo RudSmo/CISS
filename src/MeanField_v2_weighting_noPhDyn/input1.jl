@@ -63,7 +63,7 @@ xnIn,pnIn = zeros(N),zeros(N)#InitialPh(popPhIn,ws,phases)
 
 
 ## Leads
-P = 0.0
+P = 0.5
 tL = t0/4 * (ones(2) .+ P * [1,-1])  
 tR = t0/4 * ones(2)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  10 FEB 2023 19:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  17 FEB 2023 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -675,13 +675,7 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'RudolfSmorka_FranssonModel_Comparison.bbl' fou
 nd.
 
-(./RudolfSmorka_FranssonModel_Comparison.bbl
-
-Package biblatex Warning: BibTeX reported the following issues
-(biblatex)                with 'Fransson_2021':
-(biblatex)                - Invalid format of field 'month'.
-
-)
+(./RudolfSmorka_FranssonModel_Comparison.bbl)
 Package biblatex Info: Reference section=0 on input line 36.
 Package biblatex Info: Reference segment=0 on input line 36.
 
@@ -730,64 +724,141 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+dsrom on input line 4
-6.
-
-(/usr/local/texlive/2021/texmf-dist/tex/latex/doublestroke/Udsrom.fd
-File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-)
-
-LaTeX Warning: Reference `sec:1_Comp_TTHEOM_MFHEOM' on page 1 undefined on inpu
-t line 51.
-
-<figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf, id=1, 93
-9.51pt x 867.24pt>
-File: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf Grap
-hic file (type pdf)
-<use figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf>
-Package pdftex.def Info: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_
-multiAngle.pdf  used on input line 55.
-(pdftex.def)             Requested size: 478.86252pt x 442.0219pt.
-LaTeX Font Info:    Trying to load font information for U+bbold on input line 5
-6.
-(/usr/local/texlive/2021/texmf-dist/tex/latex/bbold/Ubbold.fd)
-<figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf, id=2, 722.7pt 
-x 433.62pt>
-File: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf Graphic fi
-le (type pdf)
-<use figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf>
-Package pdftex.def Info: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_
-cuts.pdf  used on input line 60.
-(pdftex.def)             Requested size: 478.86252pt x 287.3215pt.
-<figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf, id=3, 86
-7.24pt x 433.62pt>
-File: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf Grap
-hic file (type pdf)
-<use figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf>
-Package pdftex.def Info: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_
-difference.pdf  used on input line 65.
-(pdftex.def)             Requested size: 478.86252pt x 239.43127pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+<figs/Peierls_L2_FranssonParams_Vvar.pdf, id=1, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_FranssonParams_Vvar.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_FranssonParams_Vvar.pdf>
+Package pdftex.def Info: figs/Peierls_L2_FranssonParams_Vvar.pdf  used on input
+ line 62.
+(pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
+<figs/Peierls_L2_FranssonParams_Vvar_phonons.pdf, id=2, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_FranssonParams_Vvar_phonons.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_FranssonParams_Vvar_phonons.pdf>
+Package pdftex.def Info: figs/Peierls_L2_FranssonParams_Vvar_phonons.pdf  used 
+on input line 67.
+(pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [1
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2 <./figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf>]
-[3 <./figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf> <./figs/P
-ES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/
+Peierls_L2_FranssonParams_Vvar.pdf>]
+<figs/Peierls_L2_noPh_IV.pdf, id=48, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_noPh_IV.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_noPh_IV.pdf>
+Package pdftex.def Info: figs/Peierls_L2_noPh_IV.pdf  used on input line 117.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+<figs/Peierls_L2_NewParams_Vvar.pdf, id=49, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_NewParams_Vvar.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_NewParams_Vvar.pdf>
+Package pdftex.def Info: figs/Peierls_L2_NewParams_Vvar.pdf  used on input line
+ 123.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+ [2 <./figs/Peierls_L2_FranssonParams_Vvar_phonons.pdf>] [3 <./figs/Peierls_L2_
+noPh_IV.pdf> <./figs/Peierls_L2_NewParams_Vvar.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_NewParams_
+Vvar.pdf): PDF inclusion: multiple pdfs with page group included in a single pa
+ge
+>]
+<figs/Peierls_L2_current_processes_SimpleParams_V4.png, id=110, 916.42375pt x 3
+62.35374pt>
+File: figs/Peierls_L2_current_processes_SimpleParams_V4.png Graphic file (type 
+png)
+<use figs/Peierls_L2_current_processes_SimpleParams_V4.png>
+Package pdftex.def Info: figs/Peierls_L2_current_processes_SimpleParams_V4.png 
+ used on input line 142.
+(pdftex.def)             Requested size: 435.32419pt x 172.12534pt.
+<figs/Peierls_L2_NewParams_Vvar_phonons.pdf, id=112, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_NewParams_Vvar_phonons.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_NewParams_Vvar_phonons.pdf>
+Package pdftex.def Info: figs/Peierls_L2_NewParams_Vvar_phonons.pdf  used on in
+put line 148.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Peierls_L2_NewParams_Vvar_ES.pdf, id=113, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_NewParams_Vvar_ES.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_NewParams_Vvar_ES.pdf>
+Package pdftex.def Info: figs/Peierls_L2_NewParams_Vvar_ES.pdf  used on input l
+ine 153.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Peierls_L2_NewParams_EL_VVar.pdf, id=114, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_NewParams_EL_VVar.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_NewParams_EL_VVar.pdf>
+Package pdftex.def Info: figs/Peierls_L2_NewParams_EL_VVar.pdf  used on input l
+ine 158.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
+68.
+(/usr/local/texlive/2021/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+)
+
+LaTeX Warning: Reference `sec:1_Comp_TTHEOM_MFHEOM' on page 1 undefined on inpu
+t line 173.
+
+<figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf, id=115, 
+939.51pt x 867.24pt>
+File: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf Grap
+hic file (type pdf)
+<use figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_multiAngle.pdf>
+Package pdftex.def Info: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_
+multiAngle.pdf  used on input line 177.
+(pdftex.def)             Requested size: 478.86252pt x 442.0219pt.
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 1
+78.
+(/usr/local/texlive/2021/texmf-dist/tex/latex/bbold/Ubbold.fd)
+<figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf, id=116, 722.7p
+t x 433.62pt>
+File: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf Graphic fi
+le (type pdf)
+<use figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_cuts.pdf>
+Package pdftex.def Info: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_
+cuts.pdf  used on input line 182.
+(pdftex.def)             Requested size: 478.86252pt x 287.3215pt.
+<figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf, id=117, 
+867.24pt x 433.62pt>
+File: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf Grap
+hic file (type pdf)
+<use figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_difference.pdf>
+Package pdftex.def Info: figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.0001_multiState_
+difference.pdf  used on input line 187.
+(pdftex.def)             Requested size: 478.86252pt x 239.43127pt.
+ [4 <./figs/Peierls_L2_current_processes_SimpleParams_V4.png>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[5 <./figs/Peierls_L2_NewParams_Vvar_phonons.pdf> <./figs/Peierls_L2_NewParams_
+Vvar_ES.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_NewParams_
+Vvar_ES.pdf): PDF inclusion: multiple pdfs with page group included in a single
+ page
+>] [6 <./figs/Peierls_L2_NewParams_EL_VVar.pdf>] [7 <./figs/PES_1x3_SOC0.001_tP
+h0.004_SOCPh0.0001_multiState_multiAngle.pdf>] [8 <./figs/PES_1x3_SOC0.001_tPh0
+.004_SOCPh0.0001_multiState_cuts.pdf> <./figs/PES_1x3_SOC0.001_tPh0.004_SOCPh0.
+0001_multiState_difference.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/PES_1x3_SOC0.001_tPh0
 .004_SOCPh0.0001_multiState_difference.pdf): PDF inclusion: multiple pdfs with 
 page group included in a single page
->] [4
+>] [9
 
 ] (./RudolfSmorka_FranssonModel_Comparison.aux)
 
@@ -799,13 +870,13 @@ Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 
  ) 
 Here is how much of TeX's memory you used:
- 16138 strings out of 478994
- 317191 string characters out of 5858184
- 831318 words of memory out of 5000000
- 33407 multiletter control sequences out of 15000+600000
+ 16181 strings out of 478994
+ 319110 string characters out of 5858184
+ 838614 words of memory out of 5000000
+ 33441 multiletter control sequences out of 15000+600000
  419874 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,10n,75p,1873b,1646s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,13n,75p,1873b,1646s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
 b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
@@ -819,14 +890,16 @@ cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
 l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/t
 exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/t
-exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (4 pages, 2892044 b
+ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (9 pages, 3163786 b
 ytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 121 compressed objects within 2 object streams
+ 307 PDF objects out of 1000 (max. 8388607)
+ 254 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

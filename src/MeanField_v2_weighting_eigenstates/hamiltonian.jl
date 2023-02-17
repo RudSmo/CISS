@@ -1,7 +1,7 @@
 module Hamiltonian
 using LinearAlgebra
 
-export VDot,absv,UnitVector,FranssonHamiltonian,FranssonHamiltonianNH,HolsteinHopping,SpinHopping
+export VDot,absv,UnitVector,FranssonHamiltonian,FranssonHamiltonian_H0,FranssonHamiltonian_HI,FranssonHamiltonianNH,HolsteinHopping,SpinHopping
 
 
 function VDot(a)
@@ -161,6 +161,18 @@ function FranssonHamiltonian(HamPar)
 	#end
     Hsoph = Peierls_SOC(HamPar.N,HamPar.SOCPh,HamPar.a_hel,HamPar.c_hel,HamPar.num_laps,HamPar.ws,HamPar.X)
 	return Ho+Hh+HSo+Heph+Hsoph
+end
+function FranssonHamiltonian_H0(HamPar)
+        Ho = Onsite_A(HamPar.N,HamPar.OnsiteEnergies)
+        Hh = Hopping_A_nn(HamPar.N,HamPar.Hopping)
+        HSo = SOC_A_nn(HamPar.N,HamPar.SOC,HamPar.a_hel,HamPar.c_hel,HamPar.num_laps)
+        return Ho+Hh+HSo
+end
+
+function FranssonHamiltonian_HI(HamPar)
+    	Heph = Peierls_Old(HamPar.N,HamPar.HoppingPh,HamPar.ws,HamPar.X)
+    	Hsoph = Peierls_SOC(HamPar.N,HamPar.SOCPh,HamPar.a_hel,HamPar.c_hel,HamPar.num_laps,HamPar.ws,HamPar.X)
+        return Heph+Hsoph
 end
 
 function FranssonHamiltonianNH(HamPar)

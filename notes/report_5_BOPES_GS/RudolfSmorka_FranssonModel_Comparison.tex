@@ -35,11 +35,133 @@
 }
 \begin{document}
 	
-\title{Report 5: Comparison of TT-HEOM with MF-HEOM. Holstein and Peierls Model}
+\title{Additional Results and Analyses}
 \author{Rudolf Smorka}
 \maketitle
 %\tableofcontents
-\section{Born-Oppenheimer potential energy of the three-site Fransson model}
+\section{Peierls model within Ehrenfest approach}
+The problem is that within Ehrenfest-HEOM, the Peierls model shows a non-relaxing vibrational dynamics. This paragraph is devoted to an understanding why this is the case.
+\subsection{The problem}
+Already in the two-site Peierls model 
+\begin{equation}
+	H_\mathrm{Peierls} = \varepsilon_0 (c_1^\dagger c_1^\pdagger + c_2^\dagger c_2^\pdagger) -(t_0 + \sqrt{2\omega}t_1X(t))(c_1^\dagger c_2^\pdagger + \mathrm{h.c.})
+\end{equation}
+coupled to two leads under the HEOM for the electronic subsystem and Hamilton's EOM for the classical vibration subsystem, the vibrational bond mode does not relax for the parameters
+\begin{align*}
+	\varepsilon_0 &= -\SI{240}{\milli\electronvolt}\\
+	\omega_0 &= \SI{2}{\milli\electronvolt}\\
+	t_0 &= \SI{40}{\milli\electronvolt}\\
+	t_1 &= \SI{4}{\milli\electronvolt}\\
+	\Gamma &= \SI{10}{\milli\electronvolt}\\
+	V 	&= \SI{480}{\milli\volt}\\
+	T &= \SI{25}{\milli\electronvolt}.
+\end{align*}
+This results in an oscillating current without reaching a steady-state, shown in \cref{fig:I_t_L2_F_params}, and an effective linear increase of vibrational energy with time, shown in \cref{fig:Eph_t_L2_F_params}. This effect is pronounced when the chemical potential of the right lead $\mu_R$ is below the molecular level with highest energy and above the level with lowest energy.   
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_FranssonParams_Vvar.pdf}
+	\caption{Dynamics of symmetrized current for various voltage with parameters used by Fransson.}\label{fig:I_t_L2_F_params}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_FranssonParams_Vvar_phonons.pdf}
+	\caption{Dynamics of vibrational energy $E_\mathrm{ph} = \frac{1}{2}(\omega^2 X^2 + P^2)$ for the parameters above.}\label{fig:Eph_t_L2_F_params}
+\end{figure}
+\subsection{Analysis of the problem}
+The bare molecular spectrum and eigenstates are
+\begin{align}
+	\varepsilon_\pm &= \varepsilon_0 \pm \vert t_0 +t_1\sqrt{2\omega}X\vert\\
+	\vert \psi_\pm\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix}
+		\pm 1\\
+		1
+	\end{pmatrix}.
+\end{align}
+As the eigenenergies depend on $X$, they are time-dependent since $X$ is time-dependent in the Ehrenfest-approach.
+Since the eigenstates are identical to the ones in the two-site tight binding model ($t_1 = 0$), the electron-phonon part of the Peierls Hamiltonian is diagonal in this basis 
+\begin{equation}
+	\tilde{H}_\mathrm{el-ph} = \begin{pmatrix}
+		\langle \psi_+ \vert H_\mathrm{el-ph}\vert \psi_+\rangle & \langle \psi_+ \vert H_\mathrm{el-ph}\vert \psi_-\rangle\\
+		\langle \psi_- \vert H_\mathrm{el-ph}\vert \psi_+\rangle & \langle \psi_- \vert H_\mathrm{el-ph}\vert \psi_-\rangle
+	\end{pmatrix}
+	= \begin{pmatrix}
+		-\sqrt{2\omega}t_1 X & 0\\
+		0 & \sqrt{2\omega}t_1 X
+	\end{pmatrix}
+\end{equation}
+This means, that the electron-vibrational coupling cannot produce any coherence between eigenstates $\vert \psi_+\rangle$ and $\vert \psi_-\rangle$. Any coherence has to come from the coupling to the leads. 
+The reduced density matrix at time $t$ in this basis is then
+\begin{equation}
+	\rho(t) = \begin{pmatrix}
+	\vert c_+(t)\vert^2 &  c_+^{\phantom{*}}(t)c_-^*(t) \\
+	c_-^{\phantom{*}}(t)c_+^*(t) & \vert c_-(t)\vert^2 
+	\end{pmatrix}
+\end{equation}
+Population of a state $\vert\psi_\pm\rangle$ produces a quantum force on the vibration
+\begin{equation}
+	F(t)\sim \sqrt{2\omega}t_1\tr{\rho(t)(-\tilde{c}_+^\dagger \tilde{c}_+^\pdagger + \tilde{c}_-^\dagger \tilde{c}_-^\pdagger)} = \sqrt{2\omega}t_1(\vert c_-(t)\vert^2-\vert c_+(t)\vert^2).
+\end{equation}
+Again, any coherence in $\rho(t)$ does not produce a force on the vibration. The force depends only on the population difference of the two molecular eigenstates. The $\sim$ sign is there because the force also contains a harmonic potential part, which is not relevant here because we want to know the effect coming from the electrons.
+\subsection{Simplifying the problem}
+The problem can be simplified by setting the parameters to
+\begin{align*}
+	\varepsilon_0 &= \SI{0}{\milli\electronvolt}\\
+	\omega_0 &= \SI{0.1}{\electronvolt}\\
+	t_0 &= \SI{2}{\electronvolt}\\
+	t_1 &= \SI{0.2}{\electronvolt}\\
+	\Gamma &= \SI{10}{\milli\electronvolt}\\
+	T &= \SI{5}{\milli\electronvolt}.
+\end{align*}
+Setting the temperature to roughly $\SI{60}{\kelvin}$ and the system-lead coupling $\Gamma=\SI{10}{\milli\electronvolt}$ ensures that thermal broadening is suppressed, but the states are only broadened by the coupling to the leads. The two levels are separated by $2\varepsilon_+$, which is proportional to $t_0$. Hence, setting $t_0/\Gamma = 200$ leads to well-resolved and relatively narrow conductance peaks at $V=2\varepsilon_\pm$. Shifting the on-site energy to zero simplifies the analysis when we apply a voltage. The choice of $T,\Gamma,\varepsilon_0$ and $t_0$ altogether ensures that in equilibrium only the state $\vert\psi_-\rangle$ below Fermi level is occupied. An occupancy of both states is only possible when a finite voltage $V\gtrapprox 2\varepsilon_\pm$ (a voltage smaller than $2\varepsilon_\pm$ is also fine if the states are sufficiently broadened) is applied. For $t_1=0$, the I-V curve is shown in \cref{fig:IV_L2_t1_0}. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_L2_noPh_IV.pdf}
+	\caption{I-V curve for the parameters given above and $t_1=\SI{0}{\electronvolt}$.}\label{fig:IV_L2_t1_0}
+\end{figure}
+We set the voltage to $V=\{0,4,7\}\, \mathrm{V}$ which represent the three different voltage regimes (without electron-vibrational coupling): No electronic levels in the bias window, chemical potential on resonance with the levels, and both levels in the bias window. The symmetrized current is shown in \cref{fig:I_t_L2_N_params} and the phonon energy in \cref{fig:Eph_t_L2_N_params}. Further, \cref{fig:ES_t_L2_N_params} shows the population of the eigenstates $\vert\psi_\pm\rangle$ and \cref{fig:ELD_t_L2_N_params} shows the instantaneous eigenenergies $\varepsilon_\pm$ under the influence of vibrational dynamics corresponding to the different voltages. The most striking effects are for $V=\SI{4}{\volt}$. There, the current strongly oscillates back and forth, the vibrational energy increases linearly with time, the eigenstate population oscillates strongly and the vibrational displacement attains a value large enough such that the eigenlevels $\varepsilon_\pm$ cross. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_L2_NewParams_Vvar.pdf}
+	\caption{Symmetrized current for the parameters listed above.}\label{fig:I_t_L2_N_params}
+\end{figure}
+\begin{itemize}
+	\item[Q:] Why does the current oscillate between positive and negative values for $V=\SI{4}{\electronvolt}$?
+	\item[A:] Check out the energy-eigenlevels for $V=\SI{4}{\electronvolt}$ in \cref{fig:ELD_t_L2_N_params}. They oscillate. Therefore, there are two scenarios: Either the gap is minimal, or it is maximal. If the gap is minimal, then both levels are in the bias window (hence $I>0$). When the gap is maximal, both level energies could be outside of the bias window provided $X$ is large enough. More specifically, $X$ has to be at least 
+	\begin{equation}
+		X > \frac{1}{t_1\sqrt{2\omega}}\left(\frac{V}{2}-t_0\right)
+	\end{equation}
+	in order to push the levels outside of the bias window for a fixed voltage $V$.
+	In this case, assuming the levels are never fully occupied, there is a current from the right lead into the lower level and a current from the upper level into both lead (hence $I<0$). The two processes are depicted in \cref{fig:Current_processes_N} 
+	\item[Q:] If both levels are in the bias window for $V=\SI{7}{\electronvolt}$, why does the current oscillate slightly?
+	\item[A:] The oscillation comes from the vibrations. However, because voltage is large enough so that both levels are inside the bias window, this cannot be the full explanation. Actually, there are two effects. First, the vibrational mode oscillates around an equilibrium position $X_0> 0$, which increases the energy gap and and pushes the levels closer to the edges of the bias window. 
+	Second, the integrated spectral density decreases whenever $X$ increases because a small part of the electronic spectral density is pushed out of the bias window. 
+	\item[Q:] What is the frequency of the oscillations?
+	\item[A:]
+\end{itemize}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_current_processes_SimpleParams_V4.png}
+	\caption{Electronic processes for $V=\SI{4}{\electronvolt}$ for $X=0$ ($t_0$), $X>0$ ($t_1$), and $X<0$ ($t_2$). The instantaneous electronic energies are depicted by black horizontal bars. The arrows denote the direction of charge current. At $t_1$, the levels are assumed to be populated. For $t_0$ both levels are at the edges of the bias window, at $t_2$ both levels are outside of the bias window and at $t_3$ both are inside the bias window.
+	}\label{fig:Current_processes_N}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_L2_NewParams_Vvar_phonons.pdf}
+	\caption{Phonon energy dynamics for the parameters listed above.}\label{fig:Eph_t_L2_N_params}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_L2_NewParams_Vvar_ES.pdf}
+	\caption{Eigenstate population dynamics. The full line shows the population of lower state $\vert \psi_-\rangle $, the dashed one the population of upper state $\vert \psi_+\rangle$.}\label{fig:ES_t_L2_N_params}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_L2_NewParams_EL_VVar.pdf}
+	\caption{Instantaneous eigenlevels under vibrational dynamics.}\label{fig:ELD_t_L2_N_params}
+\end{figure}
+
+\section{Born-Oppenheimer potential energy analysis }
+
+\subsection{Three-site Fransson model}
 The Born-Oppenheimer approximation yields the following Hamiltonian for the three-site Fransson model
 \begin{equation}
 	H_\mathrm{BO} = \begin{pmatrix}

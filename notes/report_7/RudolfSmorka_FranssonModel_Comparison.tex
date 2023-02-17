@@ -31,30 +31,121 @@
 	a4paper,
 	total={170mm,257mm},
 	left=20mm,
-	top=20mm,
+	top=10mm,
+	right=20mm,
+	bottom=15mm
 }
 \begin{document}
 \title{Report 7}
 \author{Rudolf Smorka}
 \maketitle
+\section{Parameters}
+We consider Fransson's model, which describes electrons or excitons on sites of a helical molecule. The Hamiltonian of this model consists of an electronic part, which incorporates electron hopping and static spin-orbit coupling 
+\begin{equation}
+	\begin{split}
+		\hat{H}_\mathrm{el} &= \sum_{j,\sigma} \varepsilon_{j\sigma}^\pdagger \hat{d}_{j\sigma}^\dagger \hat{d}_{j\sigma}^\pdagger - t_0 \sum_{j\sigma} (\hat{d}_{j\sigma}^\dagger \hat{d}_{j+1,\sigma}^\pdagger + \mathrm{h.c.}) +\\& \lambda_0^\pdagger\sum_{j\sigma\sigma'} (i\hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2,\sigma'}^\pdagger + \mathrm{h.c.}),
+	\end{split}
+\end{equation}
+the coupling between electrons and vibrations
+\begin{align}
+	\hat{H}_\mathrm{el-ph} &= - t_1^\pdagger \sum_{j,\sigma}  \hat{d}_{j\sigma}^\dagger \hat{d}_{j+1\sigma}^\pdagger (\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger) \\ & + \lambda_1^\pdagger\sum_{j,\sigma,\sigma'} (i \hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)} \cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2\sigma'}^\pdagger +\mathrm{h.c.})(\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger),\label{eq:HelPh}
+\end{align}
+and the vibrational part
+\begin{equation}
+	\hat{H}_\mathrm{ph} = \sum_{j} \omega_{j}^\pdagger \hat{a}_{j}^\dagger \hat{a}_{j}^\pdagger.
+	\label{eq:HPh} 
+\end{equation}
+The molecule is coupled to two leads of non-interacting electrons. The left lead is spin-polarized, characterized by $P$. The effect of this spin polarization is taken into account by making the leads spectral function (which we take to be constant) spin-dependent
+\begin{equation}
+	\Gamma_L= \Gamma_0 (1+P\sigma^z)
+\end{equation}
+In the following, we use the parameters:
+\begin{align*}
+	\varepsilon_0 &= -\SI{240}{\milli\electronvolt}\\
+	\omega_0 &= \SI{2}{\milli\electronvolt}\\
+	t_0 &= \SI{40}{\milli\electronvolt}\\
+	t_1 &= \SI{4}{\milli\electronvolt}\\
+	\lambda_0 &= \SI{1}{\milli\electronvolt}\\
+	\lambda_1 &= \SI{0.1}{\milli\electronvolt}\\
+	\Gamma &= \SI{10}{\milli\electronvolt}\\
+	V 	&= \SI{480}{\milli\volt}\\
+	T &= \SI{25}{\milli\electronvolt}.
+\end{align*}
+Within the TT-HEOM, the number of vibrational states is $n_\mathrm{vib}=30$. In both TT-HEOM and Ehrenfest-HEOM, the number of Pad\'{e} poles is $N_p = 10$. The Ehrenfest results are obtained by averaging over $12000$ trajectories with vibrational positions and momenta sampled from the thermal Wigner distribution at time $t=0$.
+\clearpage
 \section{$N=1\times 2$}
+This system size corresponds to four electronic levels and one vibrational mode.
 \subsection{$P=0.5$}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x2_w0_0.05_V0.48_P0.5.pdf}
+	\includegraphics[width=1.0\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x2_w0_0.05_V0.48_P0.5_norm.pdf}
 \end{figure}
+\clearpage
 \subsection{$P=0$}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x2_w0_0.05_V0.48_P0.0.pdf}
+	\includegraphics[width=1.0\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x2_w0_0.05_V0.48_P0.0_norm.pdf}
 \end{figure}
+\clearpage
 \subsection{$P=-0.5$}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x2_w0_0.05_V0.48_P-0.5.pdf}
+	\includegraphics[width=0.92\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x2_w0_0.05_V0.48_P-0.5_norm.pdf}
 \end{figure}
+%\clearpage
+\subsection{Magnetoresistance}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x2_w0_0.05_V0.48_Magnetoresistance.pdf}
+\end{figure}
+\clearpage
 \section{$N=1\times 3$}
+This system size corresponds to six electronic levels and two vibrational modes.
+\subsection{$P=0.5$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x3_w0_0.05_V0.48_P0.5_norm.pdf}
+\end{figure}
+\clearpage
+\subsection{$P=-0.5$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x3_w0_0.05_V0.48_P-0.5_norm.pdf}
+\end{figure}
+%\clearpage
+\subsection{Magnetoresistance}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_1x3_w0_0.05_V0.48_Magnetoresistance.pdf}
+\end{figure}
+\clearpage
 \section{$N=2\times 2$}
+This system size corresponds to eight electronic levels and three vibrational modes.
+\subsection{$P=0.5$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_2x2_w0_0.05_V0.48_P0.5_norm.pdf}
+\end{figure}
+\clearpage
+\subsection{$P=0$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_2x2_w0_0.05_V0.48_P0.0_norm.pdf}
+\end{figure}
+\clearpage
+\subsection{$P=-0.5$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_2x2_w0_0.05_V0.48_P-0.5_norm.pdf}
+\end{figure}
+%\clearpage
+\subsection{Magnetoresistance}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.92\textwidth]{figs/Comparison_TTHEOM_MFHEOM_Fransson_2x2_w0_0.05_V0.48_Magnetoresistance.pdf}
+\end{figure}
+\clearpage
+
 \end{document}
 
 
