@@ -16,28 +16,29 @@ using .CustomStructures
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 2
+num_ions = 3
 N = num_laps * num_ions
-t0  = 0.04
-eu  = 0.0#-6*t0
-ed  = 0.0 #-6*t0
+T0  = 0.04
+t0  = -T0
+eu  = -6*T0
+ed  = -6*T0
 E   = [eu,ed]
-ws  = 0.05*t0*ones(N)
-gPh = ones(2) * 0.1 * t0
+ws  = 0.05*T0*ones(N)
+gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = 0.0 # t0 / 40
-tPh = 0.0 * t0 
-tsoPh = 0.0*tso
-model = HolsteinHopping
-modelStr = "Holstein"
-#model = FranssonHamiltonian
-#modelStr = "Fransson"
+tso = T0 / 40
+tPh = 0.1 * t0 
+tsoPh = 0.1 * tso
+#model = HolsteinHopping
+#modelStr = "Holstein"
+model = FranssonHamiltonian
+modelStr = "Fransson"
 #model = FranssonHamiltonianNH
 
 # Simulation Parameters
-dt = 0.002/t0
-tend = 750/t0
+dt = 0.002/T0
+tend = 750/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -64,13 +65,13 @@ xnIn,pnIn = zeros(N),zeros(N)
 
 
 ## Leads
-P = 0.0
-tl = t0/10
+P = 0.5
+tl = T0/10
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-V  = 0*t0
+V  = 10*T0
 nPoles = 20
-beta = 1/0.0125 #1/0.025
+beta = 1/0.025 
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
                             N,
@@ -92,10 +93,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-#path = "Peierls_L2/Eps"
-#path = "Peierls_L2/noEps_largerGap"
-#path = "Holstein_L2/noEps"
-path = "Holstein_L2/noEps_largerGap"
+path = "Fransson_L3_rev"
 if !isdir(path)
 	mkpath(path)
 end

@@ -7,8 +7,8 @@ export HolsteinHopping
 function Hopping_A_nn(N,t)
     Hh = zeros(N,N)
     for i in 1:N-1
-        Hh[i,i+1] = -t
-        Hh[i+1,i] = -t
+        Hh[i,i+1] = t
+        Hh[i+1,i] = t
     end
     return Hh
 end
@@ -36,8 +36,8 @@ function Peierls_Old(N,tph,ws,xs)
     H = zeros(N,N)
     k = 1
     for i in 1:N-1
-        H[i,i+1] = -tph * sqrt(2*ws[k])*xs[k]  
-        H[i+1,i] = -tph * sqrt(2*ws[k])*xs[k]  
+        H[i,i+1] = tph * sqrt(2*ws[k])*xs[k]  
+        H[i+1,i] = tph * sqrt(2*ws[k])*xs[k]  
     end
     return H
 end
@@ -47,11 +47,11 @@ function Peierls(N,tph,ws,xs)
     H = zeros(N,N)
     k = 1
     for i in 1:N-1
-        H[i,i+1] = -tph * sqrt(2*ws[k])*xs[k]  
-        H[i+1,i] = -tph * sqrt(2*ws[k])*xs[k]  
+        H[i,i+1] = tph * sqrt(2*ws[k])*xs[k]  
+        H[i+1,i] = tph * sqrt(2*ws[k])*xs[k]  
     end
-    H[N,N-1] = -tph * sqrt(2*ws[N])*xs[N]
-    H[N-1,N] = -tph * sqrt(2*ws[N])*xs[N]
+    H[N,N-1] = tph * sqrt(2*ws[N])*xs[N]
+    H[N-1,N] = tph * sqrt(2*ws[N])*xs[N]
     return H
 end
 

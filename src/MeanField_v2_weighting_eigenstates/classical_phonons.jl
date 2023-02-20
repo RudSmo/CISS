@@ -17,9 +17,10 @@ end
 
 function Wigner(X,P,beta,w)
     W = zeros(length(P),length(X))
+    aj = tanh(0.5*beta*w)
     for i in 1:length(P)
         for j in 1:length(X)
-            W[i,j] = 1/pi * tanh(0.5*beta*w) * exp(-tanh(0.5*beta*w)/w * (w^2 * X[j]^2 + P[i]^2) )
+            W[i,j] = 1/pi * aj * exp(-aj/w * (w^2 * X[j]^2 + P[i]^2) )
         end
     end
     return W

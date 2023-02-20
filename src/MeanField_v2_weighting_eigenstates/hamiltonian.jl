@@ -48,8 +48,8 @@ end
 function Hopping_A_nn(N,t)
     Hh = zeros(2*N,2*N)
     for i in 1:2*N-2
-        Hh[i,i+2] = -t
-        Hh[i+2,i] = -t
+        Hh[i,i+2] = t
+        Hh[i+2,i] = t
     end
     return Hh
 end
@@ -57,8 +57,8 @@ function Hopping_A_nn_spin(N,t)
     tu,td = t
     Hh = zeros(2*N,2*N)
     for i in 1:2*N-2
-        Hh[i,i+2] = -tu
-        Hh[i+2,i] = -td
+        Hh[i,i+2] = tu
+        Hh[i+2,i] = td
     end
     return Hh
 end
@@ -94,8 +94,8 @@ function Peierls_Old(N,tph,ws,xs)
     H = zeros(2*N,2*N)
     k = 1
     for i in 1:2*N-2
-        H[i,i+2] = -tph * sqrt(2*ws[k])*xs[k]  
-        H[i+2,i] = -tph * sqrt(2*ws[k])*xs[k]  
+        H[i,i+2] = tph * sqrt(2*ws[k])*xs[k]  
+        H[i+2,i] = tph * sqrt(2*ws[k])*xs[k]  
         if i % 2 == 0
             k += 1
         end
@@ -108,14 +108,14 @@ function Peierls(N,tph,ws,xs)
     H = zeros(2*N,2*N)
     k = 1
     for i in 1:2*N-2
-        H[i,i+2] = -tph * sqrt(2*ws[k])*xs[k]  
-        H[i+2,i] = -tph * sqrt(2*ws[k])*xs[k]  
+        H[i,i+2] = tph * sqrt(2*ws[k])*xs[k]  
+        H[i+2,i] = tph * sqrt(2*ws[k])*xs[k]  
         if i % 2 == 0
             k += 1
         end
     end
-    H[2*N,2*N-2] = -tph * sqrt(2*ws[N])*xs[N]
-    H[2*N-2,2*N] = -tph * sqrt(2*ws[N])*xs[N]
+    H[2*N,2*N-2] = tph * sqrt(2*ws[N])*xs[N]
+    H[2*N-2,2*N] = tph * sqrt(2*ws[N])*xs[N]
     return H
 end
 
