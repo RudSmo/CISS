@@ -1,0 +1,6 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Holstein model}{1}{}%
+\contentsline {subsection}{\numberline {1.1}Spinless case}{1}{}%
+\contentsline {subsection}{\numberline {1.2}Spinfull case}{4}{}%
+\contentsline {section}{\numberline {2}Peierls model}{4}{}%

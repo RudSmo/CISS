@@ -323,46 +323,52 @@ end
 num_sites = 3
 num_laps = 1
 N = num_sites * num_laps
-vibStates = 5
-T0 = 50.0
+vibStates = 10
+T0 = 0.04
 t0 = T0
-E =  0.0
+E =  -6*t0
 eps = [E,E]
-tPh = 0.0 * T0
-λ0 = 0.0 * t0 / 40
-λPh = 0.0 * λ0
-wPh = 0.05 * T0
+tPh = 0.1*t0
+λ0 = t0/40
+λPh = 0.1 * λ0
+wPh = 0.002
 r_helix = 1.0
 c_helix = 1.0
 
+
 H = Fransson(num_sites,num_laps,vibStates,eps,t0,tPh,λ0,λPh,wPh,r_helix,c_helix)
-
-state_confs = GenerateFullBasis(N,vibStates)
-
-
-ev = eigvecs(H)
-println(size(ev))
-GS = ev[:,1]
-
-overlaps = []
-confstr = []
-for conf in state_confs
-	cstr,cstate = conf
-	ol = cstate' * GS
-	if abs(ol) > 1e-3
-		push!(overlaps,real(ol))
-		push!(confstr,cstr)
-	end
-end
-
-so = sortperm(overlaps)
-overlaps = overlaps[so][end:-1:1]
-confstr = confstr[so][end:-1:1]
-
-for (cstr,ol) in zip(confstr,overlaps)
-	println(cstr," ",ol)
-end
+fil = open("Hamiltonian_Fransson_$(num_laps)x$(num_sites)_eps_$(E)_w0_$(wPh)_t0_$(T0)_t1_$(tPh)_tso_$(λ0)_tsoPh_$(λPh)_nv$(vibStates).txt","w")
+sH = sparse(H)
+println(sH)
+write(fil,H)
 
 
-
-
+#state_confs = GenerateFullBasis(N,vibStates)
+#
+#
+#ev = eigvecs(H)
+#println(size(ev))
+#GS = ev[:,1]
+#
+#overlaps = []
+#confstr = []
+#for conf in state_confs
+#	cstr,cstate = conf
+#	ol = cstate' * GS
+#	if abs(ol) > 1e-3
+#		push!(overlaps,real(ol))
+#		push!(confstr,cstr)
+#	end
+#end
+#
+#so = sortperm(overlaps)
+#overlaps = overlaps[so][end:-1:1]
+#confstr = confstr[so][end:-1:1]
+#
+#for (cstr,ol) in zip(confstr,overlaps)
+#	println(cstr," ",ol)
+#end
+#
+#
+#
+#

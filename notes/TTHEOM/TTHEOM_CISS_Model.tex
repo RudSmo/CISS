@@ -54,7 +54,7 @@ The coupling between electrons and vibrations consists of a Peierls-type term, c
 \begin{align}
 	\hat{H}_\mathrm{el-vib} &= - t_1^\pdagger \sum_{j,\sigma}  \hat{d}_{j\sigma}^\dagger \hat{d}_{j+1\sigma}^\pdagger (\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger) \\ & + \lambda_1^\pdagger\sum_{j,\sigma,\sigma'} (i \hat{d}_{j\sigma}^\dagger (\vec{v}_j^{(+)} \cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{d}_{j+2\sigma'}^\pdagger +\mathrm{h.c.})(\hat{a}_{j}^\dagger + \hat{a}_{j}^\pdagger).\label{eq:H_el-vib}
 \end{align}
-Here, $\vec{v}^{(+)}_j = \vec{d}_i\times \vec{d}_{i+1}$, and $\vec{d}_{i+s} = \frac{\vec{r}_i - \vec{r}_{i+s}}{\vert \vec{r}_i - \vec{r}_{i+s}\vert}$ for $\vec{r}_i = (a\cos (\phi_i), a\sin(\phi_i),c_i)$ with $\phi_i = \frac{2\pi(i-1)M}{\mathbb{M}-1}$ and $c_i = c\frac{i-1}{\mathbb{M}-1}$. Further, $a$ is the radius of the helix and $c$ the pitch. These coordinates encode the helical geometry of the molecule of $\mathbb{M}=N\times M$ total number of sites, $M$ laps with $N$ sites per lap.
+Here, $\vec{v}^{(+)}_j = \vec{d}_i\times \vec{d}_{i+1}$, and $\vec{d}_{i+s} = \frac{\vec{r}_i - \vec{r}_{i+s}}{\vert \vec{r}_i - \vec{r}_{i+s}\vert}$ for $\vec{r}_i = (a\cos (\phi_i), a\sin(\phi_i),c_i)$ with $\phi_i = \frac{2\pi(i-1)M}{\mathbb{M}-1}$ and $c_i = c\frac{i-1}{\mathbb{M}-1}$. Further, $a$ is the radius of the helix and $c$ the pitch. These coordinates encode the helical geometry of the molecule of $\mathbb{M}=M\times N$ total number of sites, $M$ laps with $N$ sites per lap.
 The vibrational part is given by
 \begin{equation}
 	\hat{H}_\mathrm{vib} = \sum_{j} \omega_{j}^\pdagger \hat{a}_{j}^\dagger \hat{a}_{j}^\pdagger.
@@ -118,6 +118,7 @@ The ordering scheme of degrees of freedom in the tensor train is shown in the fi
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/Schematic_ordering.png}
 \end{figure}
+\printbibliography
 \end{document}
 
 
