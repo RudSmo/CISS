@@ -40,13 +40,12 @@
 \maketitle
 %\tableofcontents
 \section{Transport through Peierls model within Ehrenfest-HEOM}
-The problem is that within Ehrenfest-HEOM, the Peierls model shows a non-relaxing vibrational dynamics. This paragraph is devoted to an understanding why this is the case.
-\subsection{The problem}
-Already in the two-site Peierls model 
+\subsection{Aim}
+The aim is to understand the relaxation of the current through a two-site Peierls model 
 \begin{equation}
-	H_\mathrm{Peierls} = \varepsilon_0 (c_1^\dagger c_1^\pdagger + c_2^\dagger c_2^\pdagger)+ \omega_0 a^\dagger a -(t_0 + t_1(a^\dagger + a))(c_1^\dagger c_2^\pdagger + \mathrm{h.c.})
+	H_\mathrm{Peierls} = \varepsilon_0 (c_1^\dagger c_1^\pdagger + c_2^\dagger c_2^\pdagger)+ \omega_0 a^\dagger a -(t_0 + t_1(a^\dagger + a))(c_1^\dagger c_2^\pdagger + \mathrm{h.c.}),
 \end{equation}
-coupled to two leads under the HEOM for the electronic subsystem and Hamilton's EOM for the classical vibration subsystem, the vibrational bond mode does not relax for the parameters
+coupled to two leads, solved within the Ehrenfest-HEOM approach. Following Franssons work, the parameters are
 \begin{align*}
 	\varepsilon_0 &= -\SI{240}{\milli\electronvolt}\\
 	\omega_0 &= \SI{2}{\milli\electronvolt}\\
@@ -70,13 +69,13 @@ in terms of vibrational coordinate $x$ and momentum $p$. Introducing the mass-sc
 \end{equation}
 The classical equation of motion are then
 \begin{align}
-	\dot{X} &= \frac{\partial H}{\partial P} = P \\
-	\dot{P} &= -\frac{\partial H}{\partial X} = -\omega_0^2 X +t_1\sqrt{2 \omega_0}\tr{\rho(c_1^\dagger c_2^\pdagger + \mathrm{h.c.})}.
+	\dot{X} &= \frac{\partial \langle H\rangle}{\partial P} = P \\
+	\dot{P} &= -\frac{\partial\langle  H\rangle}{\partial X} = -\omega_0^2 X +t_1\sqrt{2 \omega_0}\tr{\rho(c_1^\dagger c_2^\pdagger + \mathrm{h.c.})}.
 \end{align}
-This results in an oscillating current without reaching a steady-state, shown in \cref{fig:I_t_L2_F_params}, and an effective linear increase of vibrational energy with time, shown in \cref{fig:Eph_t_L2_F_params}. This effect is pronounced when the chemical potential of the right lead $\mu_R$ is below the molecular level with highest energy and above the level with lowest energy.   
+This results in a strongly oscillating current for some voltages, and a non-oscillating current in other, as shown in \cref{fig:I_t_L2_F_params}. The vibrational energy with time, shown in \cref{fig:Eph_t_L2_F_params}, indicates that molecular vibrations play an important role for some voltages.  
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_FranssonParams_Vvar.pdf}
+	\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_FranssonParams_Vvar_currents.pdf}
 	\caption{Dynamics of symmetrized current for various voltage with parameters used by Fransson.}\label{fig:I_t_L2_F_params}
 \end{figure}
 \begin{figure}[!h]
@@ -87,7 +86,7 @@ This results in an oscillating current without reaching a steady-state, shown in
 \subsection{Analysis of the problem (I)}
 The bare molecular spectrum and eigenstates are
 \begin{align}
-	\varepsilon_\pm &= \varepsilon_0 \pm \vert t_0 +t_1\sqrt{2\omega}X\vert\\
+	\varepsilon_\pm &= \varepsilon_0 \pm \vert t_0 +t_1\sqrt{2\omega_0}X\vert\\
 	\vert \psi_\pm\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix}
 		\pm 1\\
 		1
@@ -105,21 +104,37 @@ Since the eigenstates are identical to the ones in the two-site tight binding mo
 		0 & \sqrt{2\omega}t_1 X
 	\end{pmatrix}
 \end{equation}
-This means, that the electron-vibrational coupling cannot produce any coherence between eigenstates $\vert \psi_+\rangle$ and $\vert \psi_-\rangle$. Any coherence has to come from the coupling to the leads. 
+This means, that the electron-vibrational coupling cannot produce any coherence between eigenstates $\vert \psi_+\rangle$ and $\vert \psi_-\rangle$. Any coherence between eigenstates has to come from the coupling to the leads. The couplings in the energy-eigenbasis are
+\begin{align}
+	\tilde{\Gamma}_L &=  \frac{\Gamma_L}{2}\begin{pmatrix}
+		1 & -1 \\
+		-1 & 1
+	\end{pmatrix}\\
+	\tilde{\Gamma}_R &=  \frac{\Gamma_R}{2}\begin{pmatrix}
+		1 & 1 \\
+		1 & 1
+	\end{pmatrix}\\
+\end{align}
+where $\Gamma_L, \Gamma_R$ are constant coupling of the problem in the site-basis. A schematic of the transformed system is shown in \cref{fig:Schematic_Peierls_transformed}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Schematic_Peierls_diagonalization.png}
+	\caption{Schematic of the two-site classical Peierls model in the site-basis (left) and the energy-eigenbasis (right).}\label{fig:Schematic_Peierls_transformed}
+\end{figure}\\
 The reduced density matrix at time $t$ in this basis is then
 \begin{equation}
 	\rho(t) = \begin{pmatrix}
 	\vert c_+(t)\vert^2 &  c_+^{\phantom{*}}(t)c_-^*(t) \\
 	c_-^{\phantom{*}}(t)c_+^*(t) & \vert c_-(t)\vert^2 
-	\end{pmatrix}
+	\end{pmatrix}.
 \end{equation}
-Population of a state $\vert\psi_\pm\rangle$ produces a quantum force on the vibration
+Populating a state $\vert\psi_\pm\rangle$ produces a quantum force on the vibration
 \begin{equation}
-	F(t)\sim \sqrt{2\omega}t_1\tr{\rho(t)(-\tilde{c}_+^\dagger \tilde{c}_+^\pdagger + \tilde{c}_-^\dagger \tilde{c}_-^\pdagger)} = \sqrt{2\omega}t_1(\vert c_-(t)\vert^2-\vert c_+(t)\vert^2).
+	F(t)\sim -\sqrt{2\omega}t_1\tr{\rho(t)(-\tilde{c}_+^\dagger \tilde{c}_+^\pdagger + \tilde{c}_-^\dagger \tilde{c}_-^\pdagger)} = \sqrt{2\omega}t_1(\vert c_+(t)\vert^2-\vert c_-(t)\vert^2).
 \end{equation}
-Again, any coherence in $\rho(t)$ does not produce a force on the vibration. The force depends only on the population difference of the two molecular electronic eigenstates. The $\sim$ sign is there because the force also contains a harmonic potential part, which is not relevant here because we want to know the effect coming from the electrons alone. This force (together with the harmonic contribution) will drive the vibration to a new momentum and position
+From this expression it is clear that a coherence between eigenstates in $\rho(t)$ does not produce a force on the vibration. The force depends only on the population difference of the two molecular electronic eigenstates. The $\sim$ sign is there because the force also contains a harmonic potential part, which is not relevant here because we want to know the effect coming from the electrons alone. This force (together with the harmonic contribution) will drive the vibration to a new momentum and position
 \begin{align*}
-	P(t+\dif t) &\approx  P_0 - \dif t (\sqrt{2\omega}t_1(\vert c_-(t)\vert^2 - \vert c_+(t)\vert^2 ) + \omega^2 X(t)) \\
+	P(t+\dif t) &\approx  P_0 - \dif t (\sqrt{2\omega}t_1(\vert c_+(t)\vert^2 - \vert c_-(t)\vert^2 ) + \omega^2 X(t)) \\
 	X(t+\dif t) &\approx X(t) + \dif t P(t).
 \end{align*}
 The new position $X(t+\dif  t)$ enters the Hamiltonian to yield $H(t+\dif t)$, and thus leads to new changes in $\rho(t+\dif t)$ in the next time-step. This cycle repeats itself until the simulation is finished. Since both the coupling to the leads and the vibrational motion leads to changes in $\rho(t)$, it is beneficial to disentangle the effects from each other coming from these two origins. This can be achieved in different ways: 
@@ -217,7 +232,7 @@ We set the voltage to $V=\{0,4,7\}\, \mathrm{V}$ which represent the three diffe
 		\begin{itemize}
 			\item Left chemical potential is resonant with the upper level $\mu_L=\varepsilon_+$, but right chemical potential not resonant $\mu_R>\varepsilon_+$. 
 			\item The vibrational mode can push the upper level outside the bias window, but the lower one cannot enter the bias window.
-			\item Parameters: $\varepsilon_0 = -\SI{1}{\electronvolt}$, $V=\SI{2}{\electronvolt}$
+			\item Parameters: $\varepsilon_0 = -\SI{1}{\electronvolt}$, $V=\SI{2}{volt}$
 		\end{itemize}
 		\item[(iv)] Transport through lower level blocked, but upper level cannot leave the bias window 
 		\begin{itemize}
@@ -244,17 +259,17 @@ We set the voltage to $V=\{0,4,7\}\, \mathrm{V}$ which represent the three diffe
 	Also, in cases (iii) and (iv), the population difference is approximately equal with the effect that the vibrational energy is also of the same order of magnitude. 
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_currents.pdf}
+		\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_currents.pdf}
 		\caption{Symmetrized current for the cases discussed above.}\label{fig:Peierls_L2_SimpleParams_Cases_currents}
 	\end{figure}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf}
+		\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf}
 		\caption{Vibrational energy for the cases discussed above.}\label{fig:Peierls_L2_SimpleParams_Cases_phonons}
 	\end{figure}
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[width=0.8\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_ES.pdf}
+		\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_ES.pdf}
 		\caption{Eigenstate population for the cases discussed above.}\label{fig:Peierls_L2_SimpleParams_Cases_ES}
 	\end{figure}
 	\begin{figure}[!h]

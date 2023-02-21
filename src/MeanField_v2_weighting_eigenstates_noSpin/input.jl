@@ -23,13 +23,13 @@ t0  = -T0
 E   = 0.0
 ws  = 0.1*ones(N)
 gPh = 0.0*T0
-tPh = -0.2
+tPh = 0.1*t0
 model = HolsteinHopping
 modelStr = "Holstein"
 
 # Simulation Parameters
-dt = 0.001/T0
-tend = 5000/T0
+dt = 0.002/T0
+tend = 1000/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -59,9 +59,9 @@ xnIn,pnIn = [0.25,0.0],[-0.05,0.0]
 ## Leads
 tL = 0.01
 tR = 0.01
-nPoles = 10
+nPoles = 25
 beta = 1/0.005
-V = 0.0
+V = 20.0
 HamPar = HamiltonianParams( num_laps,
        	                    num_ions,
                             N,
@@ -78,7 +78,7 @@ HamPar = HamiltonianParams( num_laps,
 			    tR)
 
 
-path = "Peierls_L2_SimpleParams"
+path = "Peierls_L2_SimpleParams_cases_v2"
 if !isdir(path)
 	mkpath(path)
 end
