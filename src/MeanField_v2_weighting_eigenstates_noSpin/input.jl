@@ -57,11 +57,11 @@ xnIn,pnIn = [0.25,0.0],[-0.05,0.0]
 
 
 ## Leads
-tL = 0.01
-tR = 0.01
+tL = 2.0
+tR = 2.0
 nPoles = 25
 beta = 1/0.005
-V = 20.0
+V = 4.0
 HamPar = HamiltonianParams( num_laps,
        	                    num_ions,
                             N,
@@ -78,7 +78,7 @@ HamPar = HamiltonianParams( num_laps,
 			    tR)
 
 
-path = "Peierls_L2_SimpleParams_cases_v2"
+path = "Peierls_L2_SimpleParams_cases_v3"
 if !isdir(path)
 	mkpath(path)
 end

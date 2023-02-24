@@ -38,7 +38,7 @@
 \author{Rudolf Smorka}
 \maketitle
 %\tableofcontents
-\section{Aim}
+\section{Aim}\label{sec:Aim}
 The aim is to understand the relaxation of the current through a two-site Peierls model 
 \begin{equation}
 	H_\mathrm{Peierls} = \varepsilon_0 (c_1^\dagger c_1^\pdagger + c_2^\dagger c_2^\pdagger)+ \omega_0 a^\dagger a -(t_0 + t_1(a^\dagger + a))(c_1^\dagger c_2^\pdagger + \mathrm{h.c.}),
@@ -105,20 +105,20 @@ The bare molecular spectrum and eigenstates are
 \begin{align}
 	\varepsilon_\pm &= \varepsilon_0 \pm \vert t_0 +t_1\sqrt{2\omega_0}X\vert\\
 	\vert \psi_\pm\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix}
-		\pm 1\\
-		1
+		1\\
+		\pm 1
 	\end{pmatrix}.
 \end{align}
 As the eigenenergies depend on $X$, they are time-dependent since $X$ is time-dependent in the Ehrenfest-approach.
 Since the eigenstates are identical to the ones in the two-site tight binding model ($t_1 = 0$), the electron-phonon part of the Peierls Hamiltonian is diagonal in this basis 
 \begin{equation}
 	\tilde{H}_\mathrm{el-ph} = \begin{pmatrix}
-		\langle \psi_+ \vert H_\mathrm{el-ph}\vert \psi_+\rangle & \langle \psi_+ \vert H_\mathrm{el-ph}\vert \psi_-\rangle\\
-		\langle \psi_- \vert H_\mathrm{el-ph}\vert \psi_+\rangle & \langle \psi_- \vert H_\mathrm{el-ph}\vert \psi_-\rangle
+		\langle \psi_- \vert H_\mathrm{el-ph}\vert \psi_-\rangle & \langle \psi_- \vert H_\mathrm{el-ph}\vert \psi_+\rangle\\
+		\langle \psi_+ \vert H_\mathrm{el-ph}\vert \psi_-\rangle & \langle \psi_+ \vert H_\mathrm{el-ph}\vert \psi_+\rangle
 	\end{pmatrix}
 	= \begin{pmatrix}
-		-\sqrt{2\omega}t_1 X & 0\\
-		0 & \sqrt{2\omega}t_1 X
+		\sqrt{2\omega}t_1 X & 0\\
+		0 & -\sqrt{2\omega}t_1 X
 	\end{pmatrix}
 \end{equation}
 This means, that the electron-vibrational coupling cannot produce any coherence between eigenstates $\vert \psi_+\rangle$ and $\vert \psi_-\rangle$. Any coherence between eigenstates has to come from the coupling to the leads. The couplings in the energy-eigenbasis are
@@ -140,18 +140,20 @@ where $\Gamma_L, \Gamma_R$ are constant coupling of the problem in the site-basi
 \end{figure}\\
 The reduced density matrix at time $t$ in this basis is then
 \begin{equation}
-	\rho(t) = \begin{pmatrix}
-	\vert c_+(t)\vert^2 &  c_+^{\phantom{*}}(t)c_-^*(t) \\
-	c_-^{\phantom{*}}(t)c_+^*(t) & \vert c_-(t)\vert^2 
+	\tilde{\rho}(t) = \begin{pmatrix}
+	\vert c_-(t)\vert^2 &  c_-^{\phantom{*}}(t)c_+^*(t) \\
+	c_+^{\phantom{*}}(t)c_-^*(t) & \vert c_+(t)\vert^2 
 	\end{pmatrix}.
 \end{equation}
 Populating a state $\vert\psi_\pm\rangle$ produces a quantum force on the vibration
-\begin{equation}
-	F(t)\sim -\sqrt{2\omega}t_1\tr{\rho(t)(-\tilde{c}_+^\dagger \tilde{c}_+^\pdagger + \tilde{c}_-^\dagger \tilde{c}_-^\pdagger)} = \sqrt{2\omega}t_1(\vert c_+(t)\vert^2-\vert c_-(t)\vert^2).
-\end{equation}
+\begin{align}
+	F(t) &\sim -\tr{\rho(t)\partial_X H_\mathrm{el-ph}} \\
+	&= -\tr{\tilde{\rho}(t)\partial_X \tilde{H}_\mathrm{el-ph}}\\
+	&= -\sqrt{2\omega}t_1\tr{\tilde{\rho}(t) (c_-^\dagger c_-^\pdagger - c_+^\dagger c_+^\pdagger)} = \sqrt{2\omega}t_1 (\vert c_+\vert^2 - \vert c_-\vert^2).\\
+\end{align}
 From this expression it is clear that a coherence between eigenstates in $\rho(t)$ does not produce a force on the vibration. The force depends only on the population difference of the two molecular electronic eigenstates. The $\sim$ sign is there because the force also contains a harmonic potential part, which is not relevant here because we want to know the effect coming from the electrons alone. This force (together with the harmonic contribution) will drive the vibration to a new momentum and position
 \begin{align*}
-	P(t+\dif t) &\approx  P_0 - \dif t (\sqrt{2\omega}t_1(\vert c_+(t)\vert^2 - \vert c_-(t)\vert^2 ) + \omega^2 X(t)) \\
+	P(t+\dif t) &\approx  P(t) - \dif t (\sqrt{2\omega}t_1(\vert c_-(t)\vert^2 - \vert c_+(t)\vert^2 ) + \omega^2 X(t)) \\
 	X(t+\dif t) &\approx X(t) + \dif t P(t).
 \end{align*}
 The new position $X(t+\dif  t)$ enters the Hamiltonian to yield $H(t+\dif t)$, and thus leads to new changes in $\rho(t+\dif t)$ in the next time-step. This cycle repeats itself until the simulation is finished. Since both the coupling to the leads and the vibrational motion leads to changes in $\rho(t)$, it is beneficial to disentangle the effects from each other coming from these two origins. This can be achieved in different ways: 
@@ -172,7 +174,7 @@ The new position $X(t+\dif  t)$ enters the Hamiltonian to yield $H(t+\dif t)$, a
 		\item We do not learn anything about the back-reaction of the vibration on the electrons
 	\end{itemize}
 \end{itemize}
-\section{Single-trajectory results for simplified parameters}
+\section{Simplification of problem: Slow charge dynamics}\label{sec:SimpleParams}
 The problem can be simplified by setting the parameters to
 \begin{align*}
 	\varepsilon_0 &= \SI{0}{\milli\electronvolt}\\
@@ -182,13 +184,16 @@ The problem can be simplified by setting the parameters to
 	\Gamma &= \SI{10}{\milli\electronvolt}\\
 	T &= \SI{5}{\milli\electronvolt}.
 \end{align*}
-Setting the temperature to roughly $\SI{60}{\kelvin}$ and the system-lead coupling $\Gamma=\SI{10}{\milli\electronvolt}$ ensures that thermal broadening is suppressed, but the states are only broadened by the coupling to the leads. The two levels are separated by $2\varepsilon_+$, which is proportional to $t_0$. Hence, setting $t_0/\Gamma = 200$ leads to well-resolved and relatively narrow conductance peaks at $V=2\varepsilon_\pm$. Shifting the on-site energy to zero simplifies the analysis when we apply a voltage. The choice of $T,\Gamma,\varepsilon_0$ and $t_0$ altogether ensures that in equilibrium only the state $\vert\psi_-\rangle$ below Fermi level is occupied. An occupancy of both states is only possible when a finite voltage $V\gtrapprox 2\varepsilon_\pm$ (a voltage smaller than $2\varepsilon_\pm$ is also fine if the states are sufficiently broadened) is applied. For $t_1=0$, the I-V curve is shown in \cref{fig:IV_L2_t1_0}. 
+Setting the temperature to roughly $\SI{60}{\kelvin}$ and the system-lead coupling $\Gamma=\SI{10}{\milli\electronvolt}$ ensures that thermal broadening is suppressed, but the states are only broadened by the coupling to the leads. 
+The two levels are separated by $2\varepsilon_+$, which is proportional to $t_0$. Hence, setting $t_0/\Gamma = 200$ leads to well-resolved and relatively narrow conductance peaks at $V=2\varepsilon_\pm$. From the perspective of dynamics, $\Gamma$ is the bottleneck of all processes with an onset of steady-state expected at $\tau_\mathrm{el}\sim\Gamma^{-1}\approx \SI{25}{\femto\second}$ (hopping takes place on a time-scale of $\sim \SI{120}{\atto\second}$), while the vibrational time-scale is $\tau_\mathrm{ph}\sim 2\pi\omega^{-1} \approx \SI{15}{\femto\second}$. Hence, the the vibration can readjust dynamically to the charge dynamics and we can investigate the validity of the previous analysis. 
+Shifting the on-site energy to zero simplifies the analysis when we apply a voltage. The choice of $T,\Gamma,\varepsilon_0$ and $t_0$ altogether ensures that in equilibrium only the state $\vert\psi_-\rangle$ below Fermi level is occupied. An occupancy of both states is only possible when a finite voltage $V\gtrapprox 2\varepsilon_\pm$ (a voltage smaller than $2\varepsilon_\pm$ is also fine if the states are sufficiently broadened) is applied. For $t_1=0$, the I-V curve is shown in \cref{fig:IV_L2_t1_0}. 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figs/Peierls_L2_noPh_IV.pdf}
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_noPh_IV.pdf}
 	\caption{I-V curve for the parameters given above and $t_1=\SI{0}{\electronvolt}$.}\label{fig:IV_L2_t1_0}
-\end{figure}
-We set the voltage to $V=\{0,4,7\}\, \mathrm{V}$ which represent the three different voltage regimes (without electron-vibrational coupling): No electronic levels in the bias window, chemical potential on resonance with the levels, and both levels in the bias window. The symmetrized current is shown in \cref{fig:I_t_L2_N_params} and the phonon energy in \cref{fig:Eph_t_L2_N_params}. Further, \cref{fig:ES_t_L2_N_params} shows the population of the eigenstates $\vert\psi_\pm\rangle$ and \cref{fig:ELD_t_L2_N_params} shows the instantaneous eigenenergies $\varepsilon_\pm$ under the influence of vibrational dynamics corresponding to the different voltages. 
+\end{figure}\\
+\subsection{Single-trajectory results}
+\indent We set the voltage to $V=\{0,4,7\}\, \mathrm{V}$ which represent the three different voltage regimes (without electron-vibrational coupling): No electronic levels in the bias window, chemical potential on resonance with the levels, and both levels in the bias window. The symmetrized current is shown in \cref{fig:I_t_L2_N_params} and the phonon energy in \cref{fig:Eph_t_L2_N_params}. Further, \cref{fig:ES_t_L2_N_params} shows the population of the eigenstates $\vert\psi_\pm\rangle$ and \cref{fig:ELD_t_L2_N_params} shows the instantaneous eigenenergies $\varepsilon_\pm$ under the influence of vibrational dynamics corresponding to the different voltages. 
 These figures show a single trajectory with the same initial condition as used in \cref{fig:I_t_L2_F_params,fig:Eph_t_L2_F_params}.
 %The most striking effects are for $V=\SI{4}{\volt}$. There, the current strongly oscillates back and forth, the vibrational energy increases linearly with time, the eigenstate population oscillates strongly and the vibrational displacement attains a value large enough such that the eigenlevels $\varepsilon_\pm$ cross. 
 \begin{figure}[!h]
@@ -206,23 +211,66 @@ These figures show a single trajectory with the same initial condition as used i
 	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_Vvar_ES.pdf}
 	\caption{Eigenstate population dynamics. The full line shows the population of lower state $\vert \psi_-\rangle $, the dashed one the population of upper state $\vert \psi_+\rangle$.}\label{fig:ES_t_L2_N_params}
 \end{figure}
+\clearpage
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_EL_ParVar_Ph.pdf}
 	\caption{Instantaneous eigenlevels under vibrational dynamics.}\label{fig:ELD_t_L2_N_params}
 \end{figure}
+\subsection{Averaged result}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_Vvar_avg_currents.pdf}
+	\caption{Symmetrized current for the parameters listed above, averaged over 6000 trajectories.}\label{fig:I_t_L2_avg_N_params}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_Vvar_avg_phonons.pdf}
+	\caption{Phonon energy dynamics for the parameters listed above, averaged over 6000 trajectories.}\label{fig:Eph_t_L2_avg_N_params}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_Vvar_avg_ES.pdf}
+	\caption{Eigenstate population dynamics. The full line shows the population of lower state $\vert \psi_-\rangle $, the dashed one the population of upper state $\vert \psi_+\rangle$. The results are averaged over 6000 trajectories.}\label{fig:ES_t_L2_avg_N_params}
+\end{figure}
 \clearpage
-\section{Simplified parameters: Averaged results}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_EL_ParVar_Ph_avg.pdf}
+	\caption{Instantaneous eigenlevels under vibrational dynamics, averaged over 6000 trajectories.}\label{fig:ELD_t_L2_avg_N_params}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_EL_ES_ParVar_Ph_avg.pdf}
+	\caption{Minimum of mean-field vibrational potential energy (\cref{eq:VibPotentialMF_minimum}), obtained from the instantaneous eigenstate population difference $\vert c_-\vert^2-\vert c_+\vert^2$, and vibrational position $X$.}\label{fig:EL_ESD_t_L2_avg_N_params}
+\end{figure}
 
+\clearpage
 \section{Analysis of the problem (II) and answers}
 \begin{itemize}
-	\item[Q:] Why does the current oscillate between positive and negative values for $V=\SI{4}{\electronvolt}$?
-	\item[A:] Check out the energy-eigenlevels for $V=\SI{4}{\electronvolt}$ in \cref{fig:ELD_t_L2_N_params}. They oscillate. Therefore, there are two scenarios: Either the gap is minimal, or it is maximal. If the gap is minimal, then both levels are in the bias window (hence $I>0$). When the gap is maximal, both level energies could be outside of the bias window provided $X$ is large enough. More specifically, $X$ has to be at least 
+	\item[Q:] Why does the current drop down to zero for $V=\SI{4}{\electronvolt}$?
+	\item[A:] Check out the energy-eigenlevels for $V=\SI{4}{\electronvolt}$ in \cref{fig:ELD_t_L2_N_params,fig:ELD_t_L2_avg_N_params}. Without electron-vibrational coupling, both levels are inside the bias window and a current can flow through the system. Initially, the mean vibrational position is $\langle X_0\rangle = 0$, and hence the energy-gap is not modified by the vibronic coupling initially.
+	Due to the coupling to the leads, the eigenstate populate increases. The modified vibrational potential energy is then
+	\begin{equation}
+		U(X) = \frac{\omega^2X^2}{2} - \sqrt{2\omega}t_1 X(\vert c_-\vert^2-\vert c_+\vert^2),\label{eq:VibPotentialMF}
+	\end{equation}  
+	which has a minimum at 
+	\begin{equation}
+		X = t_1 \sqrt{\frac{2}{\omega^3}}(\vert c_-\vert^2 - \vert c_+\vert^2).\label{eq:VibPotentialMF_minimum}
+	\end{equation}
+	For a population difference of $\vert c_-\vert^2-\vert c_+\vert^2 = 1$, as is the case for $V=\SI{4}{\volt}$ after $\sim \SI{150}{\femto\second}$, the minimum of $U(X)$ is (with $\omega=\SI{0.1}{\milli\electronvolt}$, $t_1=\SI{0.2}{\electronvolt}$) at $X=\sqrt{80}\approx 8.94$. In \cref{fig:ELD_t_L2_avg_N_params} one can see that $X$ oscillates around $8.9$. 
+	Another example is $V=\SI{5.0}{\volt}$, for which both eigenstates are populated approximately equally. The expected minimum is thus at $X=0$, which agrees with the numerical value around which $\langle X\rangle$ oscillates (\cref{fig:ELD_t_L2_avg_N_params}).
+	The electronic populations, however, do not change instantaneously, but on a time-scale dictated by the coupling to the leads $\Gamma$. The vibrational potential energy therefore changes smoothly with time. Since the vibrational frequency is large enough, the oscillator follows this change adiabatically. When the electronic steady-state is reached, the vibrational mode oscillates around the minimum of the potential with $\langle X\rangle >0$. Since the gap 
+	\begin{equation}
+	\Delta\varepsilon = \varepsilon_+-\varepsilon_- = 2\vert t_0+\sqrt{2\omega}t_1X\vert \label{eq:GapXDep}
+	\end{equation}
+	is proportional to $X$, the levels are on average pushed outside of the bias window (see \cref{fig:ELD_t_L2_avg_N_params}), which results in no available open transport channels and thus to a vanishing current. From the time-evolution of the current shown in \cref{fig:I_t_L2_F_params_avg} one can see that the current reaches a finite value after $\sim \SI{10}{\femto\second}$, which is consistent with the fact that the electronic time-scale in the molecule is  $\tau_\mathrm{el}\sim \SI{120}{\atto\second}$. The current drops then to zero, because the vibrational dynamics is activated (from the vibrational frequency one gets $\tau_\mathrm{ph}\approx \SI{15}{\femto\second}$), leading to a change in the electronic energies as discussed above. Since the states have been partially populated within the first $\SI{10}{\femto\second}$, and the energy of the states is above the Fermi-level of the leads, there is a current of electrons from the molecule into the leads. This scenario is schematically depicted in \cref{fig:Current_processes_N}.
+	In particular, $X$ has to be at least 
 	\begin{equation}
 		X > \frac{1}{t_1\sqrt{2\omega}}\left(\frac{V}{2}-t_0\right)
 	\end{equation}
 	in order to push the levels outside of the bias window for a fixed voltage $V$.
-	In this case, assuming the levels are never fully occupied, there is a current from the right lead into the lower level and a current from the upper level into both lead (hence $I<0$). The two processes are depicted in \cref{fig:Current_processes_N} 
+	In this case, assuming the levels are never fully occupied, there is a current from the right lead into the lower level and a current from the upper level into both lead (hence $I<0$, as seen for the single trajectory in \cref{fig:I_t_L2_N_params}). 
 	\begin{figure}[!h]
 		\centering
 		\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_current_processes_SimpleParams_V4.png}
@@ -234,8 +282,8 @@ These figures show a single trajectory with the same initial condition as used i
 	Second, the integrated spectral density decreases whenever $X$ increases because a small part of the electronic spectral density is pushed out of the bias window. 
 	\item[Q:] What is the frequency of the oscillations?
 	\item[A:] It is $\omega\approx \omega_0$ but slightly below, similar to the driven harmonic oscillator.
-	\item[Q:] When does the vibrational energy increase linearly in time?
-	\item[A:] Consider following cases with slight changes in the parameters (schematically depicted in \cref{fig:Peierls_L2_SimpleParams_Schematic_cases}):
+	\item[Q:] What determines the vibrational oscillation amplitude?
+	\item[A:] To answer this question, consider following cases with slight changes in the parameters (schematically depicted in \cref{fig:Peierls_L2_SimpleParams_Schematic_cases}):
 	\begin{itemize}
 		\item[(i)] Both levels can enter and leave the bias window due to vibrational dynamics
 		\begin{itemize}
@@ -285,8 +333,18 @@ These figures show a single trajectory with the same initial condition as used i
 	\end{figure}
 	\begin{figure}[!h]
 		\centering
+		\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_currents_avg.pdf}
+		\caption{Same as in \cref{fig:Peierls_L2_SimpleParams_Cases_currents}, averaged over 6000 trajectories.}\label{fig:Peierls_L2_SimpleParams_Cases_currents_avg}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
 		\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf}
 		\caption{Vibrational energy for the cases discussed above.}\label{fig:Peierls_L2_SimpleParams_Cases_phonons}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf}
+		\caption{Same as in \cref{fig:Peierls_L2_SimpleParams_Cases_phonons}, averaged over 6000 trajectories.}\label{fig:Peierls_L2_SimpleParams_Cases_phonons_avg}
 	\end{figure}
 	\begin{figure}[!h]
 		\centering
@@ -295,15 +353,101 @@ These figures show a single trajectory with the same initial condition as used i
 	\end{figure}
 	\begin{figure}[!h]
 		\centering
+		\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_Cases_Vvar_ES_avg.pdf}
+		\caption{Same as in \cref{fig:Peierls_L2_SimpleParams_Cases_ES}, averaged over 6000 trajectories.}\label{fig:Peierls_L2_SimpleParams_Cases_ES_avg}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
 		\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph.pdf}
 		\caption{Eigenlevels and vibrational position (purple) for the cases discussed above.}\label{fig:Peierls_L2_SimpleParams_Cases_El_vib}
 	\end{figure}
-	\item[Q:] How do these results depend on the initial condition for the vibrational mode? Do the oscillations average out?
-	\item[Q:] What happens physically in case (i)?
-	\item[A:] Speculative: The sites come closer and closer to each other, such that at some point they change their positions. This is unphysical. The origin of this is that a harmonic potential is assumed which does not prevent both sites to get too close to each other. 
+	\clearpage
+	\begin{figure}[!h]
+		\centering
+		\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph_avg.pdf}
+		\caption{Same as in \cref{fig:Peierls_L2_SimpleParams_Cases_El_vib}, averaged over 6000 trajectories.}\label{fig:Peierls_L2_SimpleParams_Cases_El_vib_avg}
+	\end{figure}
 \end{itemize}
+\section{Effect of quantum nuclei}
+In the previous section, we showed the charge current and vibrational dynamics, and its effects on the electronic spectrum, under a bias voltage in a junction with a classical Peierls model as the central system. Herein, the time-scale of charge dynamics from the leads into the molecule was determined mainly by the $\Gamma$. Treating the vibrational mode classically leads to a change in the electronic spectrum due to the linear dependence of the energy-gap $\Delta \varepsilon$ on the vibrational position $X$ (see \cref{eq:GapXDep}). Since $\omega>\Gamma$, the vibrational mode readjusted to the new vibrational potential $U(X,t)$, which is the harmonic potential modified by a linear term proportional to the instantaneous eigenstate population difference (\cref{eq:VibPotentialMF}), quickly enough and saturated in the minimum of the potential energy (\cref{eq:VibPotentialMF_minimum}). 
 
+One questions is thus, how much does the classical approximation deviate from the full quantum solution. To obtain a first step into this direction, we compute the dynamics of a quantum vibrational mode in the time-dependent mean-field potential given in \cref{eq:VibPotentialMF}, given the numerical solution of the eigenstate population difference $\vert c_-\vert^2 - \vert c_+\vert^2$, by solving the time-dependent Schrödinger equation under the Hamiltonian
+\begin{equation}
+	H_\mathrm{vib} = \omega a^\dagger a - t_1 (\vert c_-(t)\vert^2 - \vert c_+(t)\vert^2) (a^\dagger + a).
+\end{equation} 
+This approach assumes that the effect of the vibration on the electrons is the same as in the Ehrenfest approach discussed above. This assumption has to be scrutinized on its own, but will not be investigated further here, but elsewhere.
+\subsection{Slow vibrational dynamics}
+\Cref{fig:PhQ_vs_PhC_SimpleParams} shows a comparison between such a quantum treatment of the molecular vibration under the mean-field potential arising from the electron-vibrational coupling (black line) with the Ehrenfest-HEOM approach (red line) for various voltage. The parameters used here are the same as in \cref{sec:SimpleParams}. 
+\Cref{fig:PhQ_nv_SimpleParams} shows the occupation probability at time $t_\mathrm{f} = \SI{250}{\femto\second}$ of a harmonic oscillator eigenstate with quantum number $n$. 
+The eigenstates are of the initial potential, which is 
+\begin{equation}
+	U(X) = \frac{\omega^2X^2}{2}
+\end{equation}
+since the molecule is initially unoccupied and the population difference is thus zero.
+Generally, the agreement between the quantum dynamics approach and the Ehrenfest-HEOM depends on the used parameters. For example, the position dynamics agrees nearly perfectly for $V= \SI{4.4}{\volt}$, while for $V=\SI{2}{\volt}$ the vibrational mode oscillates around a potential energy minimum, which appears to be shifted by 0.5 in comparison to the one in the Ehrenfest treatment. For high bias voltage $V=\SI{5}{\volt}$, the Ehrenfest approach predicts a much greater oscillation amplitude than the quantum approach. However, these deviations are, compared to the following analysis, relatively small and one can say that for the simplified parameters, treating the vibrational mode classically is a good approximation. 
+The population of vibrational eigenstates, shown in \cref{fig:PhQ_nv_SimpleParams}, shows however, that except for high voltage $V=\SI{5}{\volt}$, excited states of the initial harmonic oscillator potential are populated. This makes sense, because for smaller voltages the potential $U(X)$ changes considerably, whereas for $V=\SI{5}{\volt}$ the population difference is nearly zero and thus the potential approximately remains unchanged over time.  
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_PhQ.pdf}
+	\caption{Comparison of vibrational postion dynamics for different voltages within a quantum treatment of the vibration with the mean-field potential given in \cref{eq:VibPotentialMF} (black line), and the Ehrenfest-HEOM (red line). The parameters are as in \cref{sec:SimpleParams}.}\label{fig:PhQ_vs_PhC_SimpleParams}
+\end{figure} 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_PhQ_nv.pdf}
+	\caption{Population of vibrational eigenstates for different voltages.}\label{fig:PhQ_nv_SimpleParams}
+\end{figure}\\
+The time-dependence of the potential can be transferred into the time-dependence of the bosonic ladder operators by the shift-operator $D(\beta)$. Since the minimum of the vibrational potential energy changes as
+\begin{equation}
+	X_\mathrm{min}(t) = X_\mathrm{min}(t_\mathrm{i}) + \underbrace{t_1\sqrt{\frac{2}{\omega^3}}(\vert c_-(t)\vert^2 - \vert c_+(t)\vert^2)}_{\equiv \alpha(t)},\label{eq:Alpha(t)}
+\end{equation}
+it is easy to show that this corresponds to 
+\begin{equation}
+	\tilde{X}(t) = X+\alpha(t) =\sqrt{\frac{1}{2\omega}} (\tilde{a}^\dagger(t) + \tilde{a}(t))
+\end{equation}
+with
+\begin{equation}
+	\tilde{a}(t) = D^\dagger (\beta(t)) aD (\beta(t))
+\end{equation}
+and the displacement operator is defined as 
+\begin{equation}
+	D(\beta) = \exp\left(\beta a^\dagger - \beta^* a\right).
+\end{equation}
+In our case, the shift-parameter $\beta$ is given by the displacement of the vibrational energy $\alpha(t)$ at time $t$
+\begin{equation}
+	\beta(t) = \sqrt{\frac{\omega}{2}} \alpha(t).
+\end{equation}
+The population of vibrational states of the shifted potential is shown in \cref{fig:PhQ_nv_SimpleParams_shifted}. It shows that the vibrational wavefunction remains in the ground state of the instantaneous mean-field potential $U(X,t)$ throughout the full time-evolution. In this regard, for the parameters investigated here, quantum vibrational dynamics is adiabatic in the mean-field time-dependent potential produced by the electrons.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_NewParams_PhQ_nv_shifted.pdf}
+	\caption{Population of vibrational eigenstates for different voltages in the harmonic oscillator eigenbasis shifted by $\alpha(t)$ as defined in \cref{eq:Alpha(t)}.}\label{fig:PhQ_nv_SimpleParams_shifted}
+\end{figure} 
 \clearpage
+\subsection{Parameters used by Fransson}
+We now turn to the comparison between a quantum treatment of the vibrational mode and the Ehrenfest approach for the parameters of the original problem. Again, \cref{fig:PhQ_vs_PhC_FranssonParams} shows a comparison of the quantum treatment and the Ehrenfest-HEOM for selected voltages. 
+The voltages are chosen for representative situations, schematically shown in \cref{fig:Schematic_Voltages_FranssonParams}. $V=\SI{0}{\volt}$ corresponds to both levels below Fermi-level, $V=\SI{0.4}{\volt}$ to the right lead chemical potential resonant with $\varepsilon_+$, $V=\SI{0.48}{\volt}$ to $\mu_R$ in the middle between $\varepsilon_+$ and $\varepsilon_-$, $V=\SI{0.56}{\volt}$ to the case where the upper level is in the bias window and $\mu_R=\varepsilon_-$, and finally $V=\SI{0.8}{\volt}$ to the high-bias regime in which both levels are in the bias window.
+Similarly to the parameters investigated above, the Ehrenfest-approach agrees with the quantum treatment particularly well when both levels are inside the bias window but the voltage is not too large. In the low bias regime and for very large voltages, the oscillation amplitudes and frequencies, and also the damping is different in both approaches. 
+\Cref{fig:PhQ_nv_FranssonParams} shows the nuclear wave functions (at time $t_\mathrm{f} = \SI{12}{\pico\second}$) occupation number probability. Contrary to the previous parameters, the vibrational wavefunction remains mostly in the ground state for $V=\SI{0}{\volt}$ (all levels fully occupied since they are below Fermi-level) and $V=\SI{0.8}{\volt}$ (all levels in the bias window). For intermediate voltages $V=\SI{0.4}{\volt}$ and $V=\SI{0.56}{\volt}$, the highest lying state with a finite occupation probability is $n=3$. Thus, the wave-function can be described by the ground state and the first, second and third vibrational excited state. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Schematic_Voltages_FranssonParams.png}
+	\caption{Schematic of the investigated voltage regimes of the spinless two-site Peierls model with the original Parameters.}\label{fig:Schematic_Voltages_FranssonParams}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_FranssonParams_PhQ.pdf}
+	\caption{Comparison of vibrational postion dynamics for different voltages within a quantum treatment of the vibration with the mean-field potential given in \cref{eq:VibPotentialMF} (black line), and the Ehrenfest-HEOM (red line). The parameters are as in \cref{sec:Aim}.}\label{fig:PhQ_vs_PhC_FranssonParams}
+\end{figure} 
+\clearpage
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_FranssonParams_PhQ_nv.pdf}
+	\caption{Population of vibrational eigenstates for different voltages for the original parameters.}\label{fig:PhQ_nv_FranssonParams}
+\end{figure} 
+\section{Effect of classical nuclei within the full HEOM}
+The previous analysis suggests that both for the simplified and the original parameters, treating the vibrational mode classically is agreeing well with an approach, in which the vibrational mode is treated quantum-mechanically but it is in a mean-field potential produced by the population difference. Underlying the latter approach is the assumption, that charge dynamics is determined by states in the single-excitation subspace only. The aim of this section is to investigate the validity of   
+\section{Full quantum dynamics with HEOM}
+In this section we investigate the Peierls model without the above mentioned approximations within the full HEOM.
 \section{Born-Oppenheimer potential energy analysis }
 \section{Ground State of the Peierls model}
 \subsection{Influence of on-site potential}

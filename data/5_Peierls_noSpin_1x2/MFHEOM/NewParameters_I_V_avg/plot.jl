@@ -11,7 +11,7 @@ fac_c = 1e3 * 0.2433946
 fac_c_SS = 1e6
 fac_t = 1/(4.135668)
 
-obs = "el" # "cur"  "ph", "el"
+obs = "ph" # "cur"  "ph", "el"
 
 rc("axes",labelsize=fs)
 rc("xtick",labelsize=fs-2)

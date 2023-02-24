@@ -45,7 +45,7 @@ t1  = 0.2
 w0  = 0.1
 
 params = [2.0,4.0,4.2,4.4,4.6,5.0]
-labels = [L"$V=2.0$",L"$V=4.0$",L"$V=4.2$",L"$V=4.4$",L"$V=4.6$",L"$V=5.0$"]
+labels = [L"$V=2.0\,\mathrm{V}$",L"$V=4.0\,\mathrm{V}$",L"$V=4.2\,\mathrm{V}$",L"$V=4.4\,\mathrm{V}$",L"$V=4.6\,\mathrm{V}$",L"$V=5.0\,\mathrm{V}$"]
 colors = ["blue","green","red","orange","gray","magenta"]
 axes = [ax1,ax2,ax3,ax4,ax5,ax6]
 taxes = [tax1,tax2,tax3,tax4,tax5,tax6]
