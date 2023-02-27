@@ -7,14 +7,14 @@ for i in 20:2:40
 	dat = readdlm("V$(i)/currents_avg_n30.dat")
 	write(fil,"$(i*0.1) $(dat[end,2]-dat[end,3]) \n")
 end
-for i in 41:50
-        dat = readdlm("V$(i)/currents_avg_n30.dat")
-        write(fil,"$(i*0.1) $(dat[end,2]-dat[end,3]) \n")
-end
-for i in 51:2:61
-        dat = readdlm("V$(i)/currents_avg_n30.dat")
-        write(fil,"$(i*0.1) $(dat[end,2]-dat[end,3]) \n")
-end
+#for i in 41:50
+#        dat = readdlm("V$(i)/currents_avg_n30.dat")
+#        write(fil,"$(i*0.1) $(dat[end,2]-dat[end,3]) \n")
+#end
+#for i in 51:2:61
+#        dat = readdlm("V$(i)/currents_avg_n30.dat")
+#        write(fil,"$(i*0.1) $(dat[end,2]-dat[end,3]) \n")
+#end
 close(fil)
 
 

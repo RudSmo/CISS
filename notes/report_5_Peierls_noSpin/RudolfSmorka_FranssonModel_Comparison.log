@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  24 FEB 2023 14:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  27 FEB 2023 13:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -794,10 +794,10 @@ put line 138.
 <figs/Peierls_L2_noPh_IV.pdf, id=112, 722.7pt x 397.485pt>
 File: figs/Peierls_L2_noPh_IV.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_noPh_IV.pdf>
-Package pdftex.def Info: figs/Peierls_L2_noPh_IV.pdf  used on input line 192.
+Package pdftex.def Info: figs/Peierls_L2_noPh_IV.pdf  used on input line 194.
 (pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 186--195
+Underfull \hbox (badness 10000) in paragraph at lines 186--197
 
  []
 
@@ -808,19 +808,19 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: figs/Peierls_L2_NewParams_Vvar_currents.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Vvar_currents.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Vvar_currents.pdf  used on i
-nput line 201.
+nput line 203.
 (pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
 <figs/Peierls_L2_NewParams_Vvar_phonons.pdf, id=114, 722.7pt x 397.485pt>
 File: figs/Peierls_L2_NewParams_Vvar_phonons.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Vvar_phonons.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Vvar_phonons.pdf  used on in
-put line 206.
+put line 208.
 (pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
 <figs/Peierls_L2_NewParams_Vvar_ES.pdf, id=115, 722.7pt x 397.485pt>
 File: figs/Peierls_L2_NewParams_Vvar_ES.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Vvar_ES.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Vvar_ES.pdf  used on input l
-ine 211.
+ine 213.
 (pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -848,19 +848,19 @@ Vvar_ES.pdf): PDF inclusion: multiple pdfs with page group included in a single
 File: figs/Peierls_L2_NewParams_EL_ParVar_Ph.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_EL_ParVar_Ph.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_EL_ParVar_Ph.pdf  used on in
-put line 217.
+put line 219.
 (pdftex.def)             Requested size: 483.69684pt x 241.85292pt.
 <figs/Peierls_L2_NewParams_Vvar_avg_currents.pdf, id=196, 722.7pt x 397.485pt>
 File: figs/Peierls_L2_NewParams_Vvar_avg_currents.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Vvar_avg_currents.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Vvar_avg_currents.pdf  used 
-on input line 223.
+on input line 225.
 (pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
 <figs/Peierls_L2_NewParams_Vvar_avg_phonons.pdf, id=197, 722.7pt x 397.485pt>
 File: figs/Peierls_L2_NewParams_Vvar_avg_phonons.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Vvar_avg_phonons.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Vvar_avg_phonons.pdf  used o
-n input line 228.
+n input line 230.
 (pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
 
 
@@ -870,7 +870,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: figs/Peierls_L2_NewParams_Vvar_avg_ES.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Vvar_avg_ES.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Vvar_avg_ES.pdf  used on inp
-ut line 233.
+ut line 235.
 (pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -894,7 +894,7 @@ ngle page
 File: figs/Peierls_L2_NewParams_EL_ParVar_Ph_avg.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_EL_ParVar_Ph_avg.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_EL_ParVar_Ph_avg.pdf  used o
-n input line 239.
+n input line 241.
 (pdftex.def)             Requested size: 435.32419pt x 290.21732pt.
 <figs/Peierls_L2_NewParams_EL_ES_ParVar_Ph_avg.pdf, id=271, 867.24pt x 578.16pt
 >
@@ -902,9 +902,18 @@ File: figs/Peierls_L2_NewParams_EL_ES_ParVar_Ph_avg.pdf Graphic file (type pdf)
 
 <use figs/Peierls_L2_NewParams_EL_ES_ParVar_Ph_avg.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_EL_ES_ParVar_Ph_avg.pdf  use
-d on input line 244.
+d on input line 246.
 (pdftex.def)             Requested size: 435.32419pt x 290.21732pt.
- [10
+
+
+LaTeX Warning: Reference `eq:VibPotentialMF_minimum' on page 1 undefined on inp
+ut line 247.
+
+
+LaTeX Warning: Reference `eq:VibPotentialMF_minimum' on page 1 undefined on inp
+ut line 247.
+
+[10
 
  <./figs/Peierls_L2_NewParams_EL_ParVar_Ph_avg.pdf> <./figs/Peierls_L2_NewParam
 s_EL_ES_ParVar_Ph_avg.pdf
@@ -913,75 +922,79 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_NewParams_
 EL_ES_ParVar_Ph_avg.pdf): PDF inclusion: multiple pdfs with page group included
  in a single page
 >]
-<figs/Peierls_L2_current_processes_SimpleParams_V4.png, id=317, 946.53625pt x 3
+<figs/L2_Peierls_MF_potential.pdf, id=317, 722.7pt x 397.485pt>
+File: figs/L2_Peierls_MF_potential.pdf Graphic file (type pdf)
+<use figs/L2_Peierls_MF_potential.pdf>
+Package pdftex.def Info: figs/L2_Peierls_MF_potential.pdf  used on input line 2
+65.
+(pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
+ [11
+
+ <./figs/L2_Peierls_MF_potential.pdf>]
+<figs/Peierls_L2_current_processes_SimpleParams_V4.png, id=338, 946.53625pt x 3
 62.35374pt>
 File: figs/Peierls_L2_current_processes_SimpleParams_V4.png Graphic file (type 
 png)
 <use figs/Peierls_L2_current_processes_SimpleParams_V4.png>
 Package pdftex.def Info: figs/Peierls_L2_current_processes_SimpleParams_V4.png 
- used on input line 276.
+ used on input line 283.
 (pdftex.def)             Requested size: 435.32419pt x 166.65157pt.
- [11
-
- <./figs/Peierls_L2_current_processes_SimpleParams_V4.png>]
-<figs/L2_Peierls_SimpleParams_schematic_cases.png, id=322, 617.30624pt x 533.99
+ [12 <./figs/Peierls_L2_current_processes_SimpleParams_V4.png>]
+<figs/L2_Peierls_SimpleParams_schematic_cases.png, id=343, 617.30624pt x 533.99
 5pt>
 File: figs/L2_Peierls_SimpleParams_schematic_cases.png Graphic file (type png)
 <use figs/L2_Peierls_SimpleParams_schematic_cases.png>
 Package pdftex.def Info: figs/L2_Peierls_SimpleParams_schematic_cases.png  used
- on input line 322.
+ on input line 331.
 (pdftex.def)             Requested size: 386.95894pt x 334.74013pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Peierls_L2_NewParams_Cases_Vvar_currents.pdf, id=323, 722.7pt x 397.485pt
+<figs/Peierls_L2_NewParams_Cases_Vvar_currents.pdf, id=344, 722.7pt x 397.485pt
 >
 File: figs/Peierls_L2_NewParams_Cases_Vvar_currents.pdf Graphic file (type pdf)
 
 <use figs/Peierls_L2_NewParams_Cases_Vvar_currents.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Cases_Vvar_currents.pdf  use
-d on input line 331.
+d on input line 340.
 (pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
-<figs/Peierls_L2_NewParams_Cases_Vvar_currents_avg.pdf, id=324, 722.7pt x 397.4
+<figs/Peierls_L2_NewParams_Cases_Vvar_currents_avg.pdf, id=345, 722.7pt x 397.4
 85pt>
 File: figs/Peierls_L2_NewParams_Cases_Vvar_currents_avg.pdf Graphic file (type 
 pdf)
 <use figs/Peierls_L2_NewParams_Cases_Vvar_currents_avg.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Cases_Vvar_currents_avg.pdf 
- used on input line 336.
+ used on input line 345.
 (pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
-<figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf, id=325, 722.7pt x 397.485pt>
+<figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf, id=346, 722.7pt x 397.485pt>
 
 File: figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf  used
- on input line 341.
+ on input line 350.
 (pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
 File: figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf  used
- on input line 346.
+ on input line 355.
 (pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
-<figs/Peierls_L2_NewParams_Cases_Vvar_ES.pdf, id=326, 722.7pt x 397.485pt>
+<figs/Peierls_L2_NewParams_Cases_Vvar_ES.pdf, id=347, 722.7pt x 397.485pt>
 File: figs/Peierls_L2_NewParams_Cases_Vvar_ES.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Cases_Vvar_ES.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Cases_Vvar_ES.pdf  used on i
-nput line 351.
+nput line 360.
 (pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
-<figs/Peierls_L2_NewParams_Cases_Vvar_ES_avg.pdf, id=327, 722.7pt x 397.485pt>
+<figs/Peierls_L2_NewParams_Cases_Vvar_ES_avg.pdf, id=348, 722.7pt x 397.485pt>
 File: figs/Peierls_L2_NewParams_Cases_Vvar_ES_avg.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Cases_Vvar_ES_avg.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Cases_Vvar_ES_avg.pdf  used 
-on input line 356.
+on input line 365.
 (pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
-<figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph.pdf, id=328, 867.24pt x 578.16pt>
+<figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph.pdf, id=349, 867.24pt x 578.16pt>
 
 File: figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph.pdf  used
- on input line 361.
+ on input line 370.
 (pdftex.def)             Requested size: 483.69684pt x 322.47055pt.
+ [13 <./figs/L2_Peierls_SimpleParams_schematic_cases.png>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -997,103 +1010,104 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[12] [13 <./figs/L2_Peierls_SimpleParams_schematic_cases.png> <./figs/Peierls_L
-2_NewParams_Cases_Vvar_currents.pdf>] [14 <./figs/Peierls_L2_NewParams_Cases_Vv
-ar_currents_avg.pdf> <./figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf
+[14 <./figs/Peierls_L2_NewParams_Cases_Vvar_currents.pdf> <./figs/Peierls_L2_Ne
+wParams_Cases_Vvar_currents_avg.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_NewParams_
-Cases_Vvar_phonons.pdf): PDF inclusion: multiple pdfs with page group included 
-in a single page
->] [15 <./figs/Peierls_L2_NewParams_Cases_Vvar_ES.pdf>] [16 <./figs/Peierls_L2_
-NewParams_Cases_Vvar_ES_avg.pdf> <./figs/Peierls_L2_NewParams_Cases_EL_ParVar_P
-h.pdf
+Cases_Vvar_currents_avg.pdf): PDF inclusion: multiple pdfs with page group incl
+uded in a single page
+>] [15 <./figs/Peierls_L2_NewParams_Cases_Vvar_phonons.pdf>] [16 <./figs/Peierl
+s_L2_NewParams_Cases_Vvar_ES.pdf> <./figs/Peierls_L2_NewParams_Cases_Vvar_ES_av
+g.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_NewParams_
-Cases_EL_ParVar_Ph.pdf): PDF inclusion: multiple pdfs with page group included 
-in a single page
->]
-<figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph_avg.pdf, id=442, 867.24pt x 578.1
+Cases_Vvar_ES_avg.pdf): PDF inclusion: multiple pdfs with page group included i
+n a single page
+>] [17 <./figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph.pdf>]
+<figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph_avg.pdf, id=464, 867.24pt x 578.1
 6pt>
 File: figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph_avg.pdf Graphic file (type p
 df)
 <use figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph_avg.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph_avg.pdf  
-used on input line 367.
+used on input line 376.
 (pdftex.def)             Requested size: 483.69684pt x 322.47055pt.
-<figs/Peierls_L2_NewParams_PhQ.pdf, id=443, 867.24pt x 361.35pt>
+
+
+LaTeX Warning: Reference `eq:VibPotentialMF_minimum' on page 1 undefined on inp
+ut line 381.
+
+<figs/Peierls_L2_NewParams_PhQ.pdf, id=465, 867.24pt x 361.35pt>
 File: figs/Peierls_L2_NewParams_PhQ.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_PhQ.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_PhQ.pdf  used on input line 
-391.
+400.
 (pdftex.def)             Requested size: 483.69684pt x 201.5441pt.
-<figs/Peierls_L2_NewParams_PhQ_nv.pdf, id=444, 722.7pt x 289.08pt>
+<figs/Peierls_L2_NewParams_PhQ_nv.pdf, id=466, 722.7pt x 289.08pt>
 File: figs/Peierls_L2_NewParams_PhQ_nv.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_PhQ_nv.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_PhQ_nv.pdf  used on input li
-ne 396.
+ne 405.
 (pdftex.def)             Requested size: 483.69684pt x 193.47968pt.
- [17
+[18
 
- <./figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph_avg.pdf>] [18 <./figs/Peierls_
+ <./figs/Peierls_L2_NewParams_Cases_EL_ParVar_Ph_avg.pdf>] [19 <./figs/Peierls_
 L2_NewParams_PhQ.pdf> <./figs/Peierls_L2_NewParams_PhQ_nv.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_NewParams_
 PhQ_nv.pdf): PDF inclusion: multiple pdfs with page group included in a single 
 page
 >]
-<figs/Peierls_L2_NewParams_PhQ_nv_shifted.pdf, id=503, 722.7pt x 289.08pt>
+<figs/Peierls_L2_NewParams_PhQ_nv_shifted.pdf, id=526, 722.7pt x 289.08pt>
 File: figs/Peierls_L2_NewParams_PhQ_nv_shifted.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_NewParams_PhQ_nv_shifted.pdf>
 Package pdftex.def Info: figs/Peierls_L2_NewParams_PhQ_nv_shifted.pdf  used on 
-input line 422.
+input line 431.
 (pdftex.def)             Requested size: 483.69684pt x 193.47968pt.
- [19 <./figs/Peierls_L2_NewParams_PhQ_nv_shifted.pdf>]
-<figs/Schematic_Voltages_FranssonParams.png, id=529, 957.5775pt x 349.305pt>
+ [20 <./figs/Peierls_L2_NewParams_PhQ_nv_shifted.pdf>]
+<figs/Schematic_Voltages_FranssonParams.png, id=551, 957.5775pt x 349.305pt>
 File: figs/Schematic_Voltages_FranssonParams.png Graphic file (type png)
 <use figs/Schematic_Voltages_FranssonParams.png>
 Package pdftex.def Info: figs/Schematic_Voltages_FranssonParams.png  used on in
-put line 433.
+put line 442.
 (pdftex.def)             Requested size: 483.69684pt x 176.44293pt.
-<figs/Peierls_L2_FranssonParams_PhQ.pdf, id=530, 867.24pt x 361.35pt>
+<figs/Peierls_L2_FranssonParams_PhQ.pdf, id=552, 867.24pt x 361.35pt>
 File: figs/Peierls_L2_FranssonParams_PhQ.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_FranssonParams_PhQ.pdf>
 Package pdftex.def Info: figs/Peierls_L2_FranssonParams_PhQ.pdf  used on input 
-line 438.
+line 447.
 (pdftex.def)             Requested size: 483.69684pt x 201.5441pt.
- [20
+ [21
 
  <./figs/Schematic_Voltages_FranssonParams.png> <./figs/Peierls_L2_FranssonPara
 ms_PhQ.pdf>]
-<figs/Peierls_L2_FranssonParams_PhQ_nv.pdf, id=551, 722.7pt x 289.08pt>
+<figs/Peierls_L2_FranssonParams_PhQ_nv.pdf, id=573, 722.7pt x 289.08pt>
 File: figs/Peierls_L2_FranssonParams_PhQ_nv.pdf Graphic file (type pdf)
 <use figs/Peierls_L2_FranssonParams_PhQ_nv.pdf>
 Package pdftex.def Info: figs/Peierls_L2_FranssonParams_PhQ_nv.pdf  used on inp
-ut line 444.
+ut line 453.
 (pdftex.def)             Requested size: 483.69684pt x 193.47968pt.
 
-[21
+[22
 
- <./figs/Peierls_L2_FranssonParams_PhQ_nv.pdf>]
+ <./figs/Peierls_L2_FranssonParams_PhQ_nv.pdf>] [23]
 (./RudolfSmorka_FranssonModel_Comparison.aux)
+
+LaTeX Warning: There were undefined references.
+
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
 \openout1 = `RudolfSmorka_FranssonModel_Comparison.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16324 strings out of 478994
- 325951 string characters out of 5858184
- 842767 words of memory out of 5000000
- 33577 multiletter control sequences out of 15000+600000
+ 16331 strings out of 478994
+ 326185 string characters out of 5858184
+ 840765 words of memory out of 5000000
+ 33583 multiletter control sequences out of 15000+600000
  419360 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,13n,75p,1873b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,13n,75p,1873b,1646s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 }</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
@@ -1112,11 +1126,11 @@ ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
 e/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/
 2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (21 pages, 11338728
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (23 pages, 11350465
  bytes).
 PDF statistics:
- 624 PDF objects out of 1000 (max. 8388607)
- 535 compressed objects within 6 object streams
+ 649 PDF objects out of 1000 (max. 8388607)
+ 556 compressed objects within 6 object streams
  0 named destinations out of 1000 (max. 500000)
- 151 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 156 words of extra memory for PDF output out of 10000 (max. 10000000)
 
