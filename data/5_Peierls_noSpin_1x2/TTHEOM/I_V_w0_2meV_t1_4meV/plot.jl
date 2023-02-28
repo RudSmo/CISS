@@ -43,11 +43,11 @@ for (v,vl,col) in zip(V,Vlat,colors)
 	
 	ve = v * 0.04
 	curTT = readdlm("$(fname)current_realtime_Hop+Onsite_bias_$(ve)_dt_0.25_rank_100.txt")
-	ax.plot(curTT[2:end,1]*fac_t,(curTT[2:end,2]-curTT[2:end,3])*fac_c,linewidth=lw,label=vl,color=col,linestyle="dashed")
+	ax.plot(curTT[2:end,1]*fac_t,(curTT[2:end,2]-curTT[2:end,3])*fac_c,linewidth=lw-1,color="k",linestyle="dashed")
 end
 
 ax.legend(loc="center right")
 ax.set_xlabel(L"$t\, [\mathrm{fs}]$")
-
+ax.set_xlim(0,1500)
 ax.set_ylabel(L"$I\,[\mu \mathrm{A}]$")
 plt.savefig("Peierls_L2_FranssonParams_Vvar_comparison_currents.pdf")

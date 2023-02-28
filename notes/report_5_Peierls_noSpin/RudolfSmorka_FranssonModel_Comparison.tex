@@ -50,7 +50,6 @@ coupled to two leads, solved within the Ehrenfest-HEOM approach. Following Frans
 	t_0 &= \SI{40}{\milli\electronvolt}\\
 	t_1 &= \SI{4}{\milli\electronvolt}\\
 	\Gamma &= \SI{10}{\milli\electronvolt}\\
-	V 	&= \SI{480}{\milli\volt}\\
 	T &= \SI{25}{\milli\electronvolt}.
 \end{align*}
 Using the creation and annihilation operators
@@ -174,8 +173,8 @@ The new position $X(t+\dif  t)$ enters the Hamiltonian to yield $H(t+\dif t)$, a
 		\item We do not learn anything about the back-reaction of the vibration on the electrons
 	\end{itemize}
 \end{itemize}
-\section{Simplification of problem: Slow charge dynamics}\label{sec:SimpleParams}
-The problem can be simplified by setting the parameters to
+\section{Change of parameters}\label{sec:SimpleParams}
+To simplify the different voltage regimes, the parameters are set to
 \begin{align*}
 	\varepsilon_0 &= \SI{0}{\milli\electronvolt}\\
 	\omega_0 &= \SI{0.1}{\electronvolt}\\
@@ -244,14 +243,14 @@ These figures show a single trajectory with the same initial condition as used i
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/Peierls_L2_NewParams_EL_ES_ParVar_Ph_avg.pdf}
-	\caption{Minimum of mean-field vibrational potential energy (\cref{eq:VibPotentialMF_minimum}), obtained from the instantaneous eigenstate population difference $\vert c_-\vert^2-\vert c_+\vert^2$, and vibrational position $X$.}\label{fig:EL_ESD_t_L2_avg_N_params}
+	\caption{Minimum of mean-field vibrational potential energy (\cref{eq:VibPotentialMF}), obtained from the instantaneous eigenstate population difference $\vert c_-\vert^2-\vert c_+\vert^2$, and vibrational position $X$ (purple line).}\label{fig:EL_ESD_t_L2_avg_N_params}
 \end{figure}
 
 \clearpage
 \section{Analysis of the problem (II) and answers}
 \begin{itemize}
 	\item[Q:] Why does the current drop down to zero for $V=\SI{4}{\electronvolt}$?
-	\item[A:] Check out the energy-eigenlevels for $V=\SI{4}{\electronvolt}$ in \cref{fig:ELD_t_L2_N_params,fig:ELD_t_L2_avg_N_params}. Without electron-vibrational coupling, both levels are inside the bias window and a current can flow through the system. Initially, the mean vibrational position is $\langle X_0\rangle = 0$, and hence the energy-gap is not modified by the vibronic coupling initially.
+	\item[A:] Check out the energy-eigenlevels for $V=\SI{4}{\electronvolt}$ in \cref{fig:ELD_t_L2_N_params,fig:ELD_t_L2_avg_N_params}. Without electron-vibrational coupling, both levels are inside the bias window and a current can flow through the system. Initially, the mean vibrational position is $\langle X_0\rangle = 0$, and hence the energy-gap is not modified by the vibronic coupling.
 	Due to the coupling to the leads, the eigenstate populate increases. The modified vibrational potential energy is then
 	\begin{align}
 		U(X) &= \frac{\omega^2X^2}{2} - \sqrt{2\omega}t_1 X(\vert c_-\vert^2-\vert c_+\vert^2),\label{eq:VibPotentialMF}\\
@@ -459,8 +458,32 @@ Since $\Gamma$ is smaller than all other parameters, my expectation is that sequ
 \section{Comparison of Ehrenfest with full HEOM}
 In this section we investigate the Peierls model without the above mentioned approximations within the full HEOM. 
 \subsection{Fransson parameters}
-Here, we use the parameters used by Fransson, as given in \cref{sec:Aim}.
+Here, we use the parameters used by Fransson, as given in \cref{sec:Aim}. \Cref{fig:I_t_L2_F_params_comparison} compares the symmetrized current obtained from Ehrenfest-HEOM (colored lines) with the ones obtained from TT-HEOM (black dashed lines). For the TT-HEOM results, a rank of $r=100$ and $n_v=10$ vibrational states have been used and checked for converged results. Overall, the Ehrenfest-HEOM and the TT-HEOM results agree fairly well. From the Ehrenfest-HEOM results, for example at $V=\SI{0.48}{\volt}$, one can obtain the vibrational relaxation rate. It is approximately $\SI{0.9}{\pico\second^{-1}}$. Since the oscillation amplitude of $X$ at short time is approximately $40$, the time-scale of relaxation is approximately $\tau \approx \SI{45}{\pico\second}$. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L2_FranssonParams_Vvar_comparison_currents.pdf}
+	\caption{Comparison of symmetrized current dynamics for various voltages: Ehrenfest-HEOM (colored lines), TT-HEOM (dashed black lines).}\label{fig:I_t_L2_F_params_comparison}
+\end{figure}
 \subsection{Parameter set 1}
+Here we use the parameters
+\begin{align}
+	\varepsilon_0 &= -\SI{240}{\milli\electronvolt}\\
+	\omega_0 &= \SI{100}{\milli\electronvolt}\\
+	t_0 &= \SI{40}{\milli\electronvolt}\\
+	t_1 &= \SI{20}{\milli\electronvolt}, \SI{4}{\milli\electronvolt}\\
+	\Gamma &= \SI{10}{\milli\electronvolt}\\
+	T &= \SI{25}{\milli\electronvolt}.
+\end{align}
+\subsection{Parameter set 2}
+Here we use the parameters
+\begin{align}
+	\varepsilon_0 &= -\SI{240}{\milli\electronvolt}\\
+	\omega_0 &= \SI{50}{\milli\electronvolt}\\
+	t_0 &= \SI{40}{\milli\electronvolt}\\
+	t_1 &= \SI{20}{\milli\electronvolt},\SI{4}{\milli\electronvolt}\\
+	\Gamma &= \SI{10}{\milli\electronvolt}\\
+	T &= \SI{25}{\milli\electronvolt}.
+\end{align}
 %\section{Born-Oppenheimer potential energy analysis }
 \section{Ground State of the two-site Peierls model}
 \subsection{Classical vibration}
@@ -480,31 +503,28 @@ where we used the ordering $\vert 00\rangle,\vert 01\rangle,\vert 10\rangle,\ver
 	\varepsilon_o &= 2\varepsilon\qquad & \vert \psi_o\rangle &= \vert 11\rangle\\
 	\varepsilon_\pm &= \varepsilon\pm \vert t_0+t_1\sqrt{2\omega}X\vert \qquad &\vert \psi_\pm\rangle &= \frac{1}{\sqrt{2}}(\vert 01\rangle \pm \vert 10\rangle).
 \end{align}
-For the simplified parameter considered above, the empty ($\vert\psi_u\rangle$) and doubly occupied ($\vert \psi_o\rangle$) molecular states are degenerate. The remaining two states, the bonding and anti-bonding states, are the same as in the single-particle formulation applied in the previous sections. The ground state is for $t_0=\SI{2}{\electronvolt}$, $\omega=\SI{0.1}{\electronvolt}$ and $t_1=\SI{0.2}{\volt}$ is the anti-bonding state $\vert\psi_-\rangle$.
-\subsection{Influence of on-site potential}
-In the limit of $\varepsilon\rightarrow-\infty$ the ground state of the Fransson model is a product state of doubly occupied electronic sites and all vibrational modes in their lowest energy state
+For the simplified parameter considered above, the empty ($\vert\psi_u\rangle$) and doubly occupied ($\vert \psi_o\rangle$) molecular states are degenerate. The remaining two states, the bonding and anti-bonding states, are the same as in the single-particle formulation applied in the previous sections. For $t_0=\SI{2}{\electronvolt}$, $\omega=\SI{0.1}{\electronvolt}$ and $t_1=\SI{0.2}{\volt}$, the ground state is the anti-bonding state $\vert\psi_-\rangle$. For the parameters given in \cref{sec:Aim}, that is $\varepsilon=\SI{-240}{\milli\electronvolt}$, $t_0=\SI{40}{\milli\electronvolt}$, $t_1=\SI{0.04}{\milli\electronvolt}$, the ground state is, assuming $X\sim 10$ (then $\sqrt{2\omega}t_1X$ is of order  $\SI{1}{\milli\electronvolt}$), the fully occupied one.
+\subsection{Quantum vibration}
+The Hamiltonian investigated before 
 \begin{equation}
-	\vert \Psi_\mathrm{GS}\rangle = \vert \uparrow\downarrow,\uparrow\downarrow,\dots,\uparrow\downarrow\rangle\vert 0,\dots,0\rangle.
+	H = \varepsilon_0 (c_1^\dagger c_1^\pdagger + c_2^\dagger c_2^\pdagger) -( t_0 + t_1(a^\dagger + a))(c_1^\dagger c_2^\pdagger  + \mathrm{h.c.})
 \end{equation}
-\subsection{Influence of Hopping}
-Hopping tends to delocalize electrons and due to its off-diagonal contribution the ground state is a superposition over many configurations. The dominant one is with half filling with one electron per site. Contributions with smaller weight are ones in which a single site is doubly occupied and one is empty, while all others are singly occupied. The table below shows representative configurations for $t_0 = \SI{40}{\electronvolt}$ and $\varepsilon = \SI{0}{\electronvolt}$ for $L=6$ (due to spin-flip and translational symmetry of the model in this limit, many configurations are degenerate).
-\begin{center}
-\begin{tabular}{cc}
-	Configuration & Weight\\
-	\hline
-	$\vert \uparrow,\downarrow,\uparrow,\downarrow,\uparrow,\downarrow\rangle $&  0.1250\\
-	$\vert \downarrow,\uparrow\downarrow,0,\uparrow,\downarrow,\uparrow\rangle $&  0.0833\\
-	$\vert \uparrow\downarrow,0,\uparrow,\uparrow\downarrow,\downarrow,0\rangle $&  0.0555\\
-	$\vert \uparrow,\downarrow,\uparrow\downarrow,\downarrow,\uparrow,0\rangle $&  0.0416\\
-	$\vert \uparrow\downarrow,0,\uparrow,\uparrow,\downarrow,\downarrow\rangle $&  0.0277\\
-	$\vert \uparrow\downarrow,0,\uparrow\downarrow,0,\uparrow\downarrow,0\rangle$&  -0.1250\\
-	\hline
-\end{tabular}
-\end{center}
-\subsection{Influence of Peierls-coupling}
-\section{Nonadiabatic transition matrix elements}
-\subsection{Spinless Peierls model}
-Aka two-level one-mode model with nonadiabatic coupling. 
+is diagonalized numerically. For this, the basis states $\vert n_1 n_2\rangle \vert n\rangle$ with $n_1,n_2 \in\{ 1,0 \}$ and $n=0\dots M$ are constructed. 
+For the simplified parameters, the ground state wave function is of anti-bonding type in the electronic sub-space, with a broad vibrational excitation spectrum
+\begin{equation}
+	\vert \Psi_\mathrm{GS}\rangle = (\vert 10 \rangle + \vert 01\rangle ) \sum_n a_n\vert n. \rangle
+\end{equation} 
+Here, $a_n$ is the weight of a single configuration depending on the vibrational quantum number $n$. They are shown in \cref{fig:Peierls_L2_GS_nv_weights}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/GS_nv_L2_Peierls_SimpleParams.pdf}
+	\caption{Real part of weight of configurations $(\vert 01\rangle+\vert 10\rangle)\vert n\rangle$ in the ground state of the Peierls model with the parameters as in \cref{sec:SimpleParams}.}\label{fig:Peierls_L2_GS_nv_weights}
+\end{figure}\\
+Considering the parameters given in \cref{sec:Aim}, the ground state wavefunction is an exact product state with both sites fully occupied and the harmonic oscillator in its ground state
+\begin{equation}
+	\vert\Psi_\mathrm{GS}\rangle = \vert 1,1\rangle\vert 0\rangle.
+\end{equation}
+The difference of the ground states for these two sets of parameters is due to the non-vanishing on-site energy $\varepsilon_0$ in the parameters given in \cref{sec:Aim}. 
 \end{document}
 
 
