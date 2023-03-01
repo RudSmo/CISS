@@ -106,7 +106,7 @@ The bare molecular spectrum and eigenstates are
 	\vert \psi_\pm\rangle &= \frac{1}{\sqrt{2}}\begin{pmatrix}
 		1\\
 		\pm 1
-	\end{pmatrix}.
+	\end{pmatrix}.\label{eq:EV_Peierls}
 \end{align}
 As the eigenenergies depend on $X$, they are time-dependent since $X$ is time-dependent in the Ehrenfest-approach.
 Since the eigenstates are identical to the ones in the two-site tight binding model ($t_1 = 0$), the electron-phonon part of the Peierls Hamiltonian is diagonal in this basis 
@@ -137,7 +137,52 @@ where $\Gamma_L, \Gamma_R$ are constant coupling of the problem in the site-basi
 	\includegraphics[width=1.0\textwidth]{figs/Schematic_Peierls_diagonalization.png}
 	\caption{Schematic of the two-site classical Peierls model in the site-basis (left) and the energy-eigenbasis (right).}\label{fig:Schematic_Peierls_transformed}
 \end{figure}\\
-The reduced density matrix at time $t$ in this basis is then
+Diagonalization of the effective Hamiltonian 
+\begin{equation}
+	H = H_\mathrm{Peierls}-i(\Gamma_L + \Gamma_R)
+\end{equation}
+obtained by coupling the Peierls-model to leads at its edges as localized losses (working in the site-basis again). 
+There are the right eigenstates $\vert \psi_\pm^R\rangle$ and their corresponding eigenvalues
+\begin{align}
+	H\vert \psi_\pm^R\rangle &= \varepsilon_\pm \vert\psi_\pm^R\rangle\\
+	\vert \psi_\pm^R\rangle &= \begin{pmatrix}
+		\frac{-i(\Gamma_L-\Gamma_R)\pm\sqrt{4\xi^2-(\Gamma_L-\Gamma_R)^2}}{2\xi}\\
+		1
+	\end{pmatrix}\\
+	\varepsilon_\pm &= \varepsilon \pm \sqrt{-\frac{1}{4}(\Gamma_L-\Gamma_R)^2 + \xi^2} - \frac{i(\Gamma_L+\Gamma_R)}{2}\\
+	&\equiv \alpha_\pm -i\gamma \label{eq:EW_Peierls_Eff}
+\end{align}
+and the left eigenstates satisfy
+\begin{align}
+	H^\dagger \vert \psi_\pm^L\rangle &= \varepsilon_\pm^* \vert \psi_\pm^L\rangle\\
+	\vert \psi_\pm^L\rangle &= \vert \psi_\pm^R\rangle^*.
+\end{align}
+where we used $\xi=t_0+\sqrt{2\omega}t_1X$ for brevity. Since the eigenvalues of the effective Hamiltonian are complex, their interpretation is not the systems energy.
+We consider $\Gamma_{L,R}>0$, the eigenvalues have negative imaginary part. Then, the time-dependent Schrödinger equation is solved by 
+\begin{equation}
+	\vert \psi^R_n(t)\rangle = \exP{-i\varepsilon_n t}\vert\psi_n^R(0)\rangle
+\end{equation}
+with $\varepsilon_n = \alpha_n -i\gamma$ from \cref{eq:EW_Peierls_Eff}.
+The particle number operator $N^R_n(t) = \langle \psi^R_n(t)\vert \psi^R_n(t)\rangle$ follows the rate equation 
+\begin{equation}
+	\frac{\dif}{\dif t}N^R_n(t) = -2\gamma \exP{-2\gamma t}N^R_n(0).
+\end{equation}
+The right states are thus decaying with rate $2\gamma = \Gamma_L+\Gamma_R$, and can be interpreted as out-going from the central system into the leads. 
+Similarly, the states $\vert \psi_\pm^L\rangle$ are in-going from the leads into the system and are exponentially increasing.
+In the case we consider below $\Gamma_L = \Gamma_R$, the eigenvectors reduce to the ones given in \cref{eq:EV_Peierls}, and therefore the left and right eigenvectors are bi-orthogonal
+\begin{align}
+	\vert\tilde{\psi}_n^L\rangle &= \frac{\vert \psi_n^L\rangle}{\sqrt{\langle \psi_n^L\vert\psi_n^R \rangle}}\\
+	\langle \tilde{\psi}^L_n\vert  \tilde{\psi}^R_m\rangle &= \delta_{nm}.
+\end{align}  
+For a general $\Gamma_L\neq \Gamma_R$ (and $x\neq 0$), this is not the case. This is because $[H,H^\dagger]\neq 0$, meaning $H$ is non-normal.
+Specifically, $[H,H^\dagger]$ is
+\begin{equation}
+	[H,H^\dagger] = 2ix (\Gamma_L-\Gamma_R)\begin{pmatrix}
+		0  & 1\\
+		-1 & 0
+	\end{pmatrix}.
+\end{equation}
+In the eigenbasis of the Peierls-Hamiltonian, the reduced density matrix at time $t$ is
 \begin{equation}
 	\tilde{\rho}(t) = \begin{pmatrix}
 	\vert c_-(t)\vert^2 &  c_-^{\phantom{*}}(t)c_+^*(t) \\
