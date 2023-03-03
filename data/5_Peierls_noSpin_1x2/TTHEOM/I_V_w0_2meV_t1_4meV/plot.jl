@@ -48,6 +48,6 @@ end
 
 ax.legend(loc="center right")
 ax.set_xlabel(L"$t\, [\mathrm{fs}]$")
-ax.set_xlim(0,1500)
+ax.set_xlim(0,750)
 ax.set_ylabel(L"$I\,[\mu \mathrm{A}]$")
 plt.savefig("Peierls_L2_FranssonParams_Vvar_comparison_currents.pdf")

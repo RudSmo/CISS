@@ -17,9 +17,10 @@ end
 
 function Wigner(X,P,beta,w)
     W = zeros(length(P),length(X))
+    aj = tanh(0.5*beta*w)
     for i in 1:length(P)
         for j in 1:length(X)
-            W[i,j] = 1/pi * tanh(0.5*beta*w) * exp(-tanh(0.5*beta*w)/w * (w^2 * X[j]^2 + P[i]^2) )
+            W[i,j] = 1/pi * aj * exp(-aj/w * (w^2 * X[j]^2 + P[i]^2) )
         end
     end
     return W
@@ -85,9 +86,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
             nd_up = rho[2*i-1,2*i-1] 
             nd_dn = rho[2*i,2*i] 
 	    if i < HamPar.N
-		    rho_up = rho[2*i-1,2*i+1] + rho[2*i+1,2*i-1]
-	            rho_dn = rho[2*i,2*i+2] + rho[2*i+2,2*i]
-                    t_elmt = HamPar.HoppingPh[1]*rho_up + HamPar.HoppingPh[2]*rho_dn
+	            t_elmt = HamPar.HoppingPh* tr(rho[2*i-1:2*i,2*i+1:2*i+2] + rho[2*i+1:2*i+2,2*i-1:2*i])
 	    else
 		    t_elmt = 0.0
 	    end
@@ -115,15 +114,28 @@ function SymplecticEulerStep(HamPar,rho,dt)
                 coupl = 1im * HamPar.SOCPh
 
                 so_elmt = coupl*tr((rho[2*i-1:2*i,2*i+3:2*i+4] + rho[2*i+3:2*i+4,2*i-1:2*i])  * [1 1-1im;1+1im -1] )
-		rho_up = rho[2*i-1,2*i+1] + rho[2*i+1,2*i-1]
-		rho_dn = rho[2*i,2*i+2] + rho[2*i+2,2*i]
-                t_elmt = HamPar.HoppingPh[1]*rho_up + HamPar.HoppingPh[2]*rho_dn
+		rhoEL1 = rho[2*i-1:2*i,2*i+1:2*i+2]
+		rhoD1up = HamPar.HoppingPh[1] * rhoEL1[1,1]
+		rhoD1dn = HamPar.HoppingPh[2] * rhoEL1[2,2]
+	
+		rhoEL2 = rho[2*i+1:2*i+2,2*i-1:2*i]
+		rhoD2up = HamPar.HoppingPh[1] * rhoEL2[1,1]
+		rhoD2dn = HamPar.HoppingPh[2] * rhoEL2[2,2]
+		
+		
+                t_elmt = rhoD1up + rhoD1dn + rhoD2up + rhoD2dn
+
                 Pn_c = HamPar.P[i] - dt * (sqrt(2*HamPar.ws[i]) * (t_elmt + so_elmt) + HamPar.ws[i]^2 * HamPar.X[i])
 	        Xn_c = HamPar.X[i] + dt * Pn_c
             elseif i <= HamPar.N-1
-		rho_up = rho[2*i-1,2*i+1] + rho[2*i+1,2*i-1]
-                rho_dn = rho[2*i,2*i+2] + rho[2*i+2,2*i]
-                t_elmt = HamPar.HoppingPh[1]*rho_up + HamPar.HoppingPh[2]*rho_dn
+		rhoEL1 = rho[2*i-1:2*i,2*i+1:2*i+2]
+		rhoD1up = HamPar.HoppingPh[1] * rhoEL1[1,1]
+		rhoD1dn = HamPar.HoppingPh[2] * rhoEL1[2,2]
+		rhoEL2 = rho[2*i+1:2*i+2,2*i-1:2*i]
+		rhoD2up = HamPar.HoppingPh[1] * rhoEL2[1,1]
+		rhoD2dn = HamPar.HoppingPh[2] * rhoEL2[2,2]
+
+                t_elmt = rhoD1up + rhoD1dn + rhoD2up + rhoD2dn
                 Pn_c = HamPar.P[i] - dt * (sqrt(2*HamPar.ws[i]) * t_elmt + HamPar.ws[i]^2 * HamPar.X[i])
 	        Xn_c = HamPar.X[i] + dt * Pn_c 
             else

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  21 FEB 2023 17:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  2 MAR 2023 08:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -734,34 +734,212 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figs/Convergence_TTHEOM_Fransson_1x2_w0_0.05_V0.48_P0.5_norm.pdf, id=19, 722.7
-pt x 722.7pt>
+<figs/Peierls_L2_FranssonParams_Vvar_comparison_currents.pdf, id=19, 722.7pt x 
+397.485pt>
+File: figs/Peierls_L2_FranssonParams_Vvar_comparison_currents.pdf Graphic file 
+(type pdf)
+<use figs/Peierls_L2_FranssonParams_Vvar_comparison_currents.pdf>
+Package pdftex.def Info: figs/Peierls_L2_FranssonParams_Vvar_comparison_current
+s.pdf  used on input line 80.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.002_t1_0.004_Vvar_norm.pdf, id=20, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_w0_0.002_t1_0.004_Vvar_norm.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_w0_0.002_t1_0.004_Vvar_norm.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.002_t1_0.004_Vvar_norm.pdf  used 
+on input line 85.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.002_t1_0.004_I_V_comparison.pdf, id=21, 722.7pt x 397.485
+pt>
+File: figs/Peierls_L2_w0_0.002_t1_0.004_I_V_comparison.pdf Graphic file (type p
+df)
+<use figs/Peierls_L2_w0_0.002_t1_0.004_I_V_comparison.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.002_t1_0.004_I_V_comparison.pdf  
+used on input line 89.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+ [2
+
+ <./figs/Peierls_L2_FranssonParams_Vvar_comparison_currents.pdf> <./figs/Peierl
+s_L2_w0_0.002_t1_0.004_Vvar_norm.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.002_t
+1_0.004_Vvar_norm.pdf): PDF inclusion: multiple pdfs with page group included i
+n a single page
+> <./figs/Peierls_L2_w0_0.002_t1_0.004_I_V_comparison.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.002_t
+1_0.004_I_V_comparison.pdf): PDF inclusion: multiple pdfs with page group inclu
+ded in a single page
+>]
+<figs/Peierls_L2_w0_0.05_t1_0.004_Vvar_comparison_currents.pdf, id=101, 722.7pt
+ x 397.485pt>
+File: figs/Peierls_L2_w0_0.05_t1_0.004_Vvar_comparison_currents.pdf Graphic fil
+e (type pdf)
+<use figs/Peierls_L2_w0_0.05_t1_0.004_Vvar_comparison_currents.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.05_t1_0.004_Vvar_comparison_curre
+nts.pdf  used on input line 95.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.05_t1_0.004_Vvar_norm.pdf, id=102, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_w0_0.05_t1_0.004_Vvar_norm.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_w0_0.05_t1_0.004_Vvar_norm.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.05_t1_0.004_Vvar_norm.pdf  used o
+n input line 100.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.05_t1_0.004_I_V_comparison.pdf, id=103, 722.7pt x 397.485
+pt>
+File: figs/Peierls_L2_w0_0.05_t1_0.004_I_V_comparison.pdf Graphic file (type pd
+f)
+<use figs/Peierls_L2_w0_0.05_t1_0.004_I_V_comparison.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.05_t1_0.004_I_V_comparison.pdf  u
+sed on input line 104.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+ [3
+
+ <./figs/Peierls_L2_w0_0.05_t1_0.004_Vvar_comparison_currents.pdf> <./figs/Peie
+rls_L2_w0_0.05_t1_0.004_Vvar_norm.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.05_t1
+_0.004_Vvar_norm.pdf): PDF inclusion: multiple pdfs with page group included in
+ a single page
+> <./figs/Peierls_L2_w0_0.05_t1_0.004_I_V_comparison.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.05_t1
+_0.004_I_V_comparison.pdf): PDF inclusion: multiple pdfs with page group includ
+ed in a single page
+>]
+<figs/Peierls_L2_w0_0.1_t1_0.004_Vvar_comparison_currents.pdf, id=169, 722.7pt 
+x 397.485pt>
+File: figs/Peierls_L2_w0_0.1_t1_0.004_Vvar_comparison_currents.pdf Graphic file
+ (type pdf)
+<use figs/Peierls_L2_w0_0.1_t1_0.004_Vvar_comparison_currents.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.1_t1_0.004_Vvar_comparison_curren
+ts.pdf  used on input line 110.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.1_t1_0.004_Vvar_norm.pdf, id=170, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_w0_0.1_t1_0.004_Vvar_norm.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_w0_0.1_t1_0.004_Vvar_norm.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.1_t1_0.004_Vvar_norm.pdf  used on
+ input line 115.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.1_t1_0.004_I_V_comparison.pdf, id=171, 722.7pt x 397.485p
+t>
+File: figs/Peierls_L2_w0_0.1_t1_0.004_I_V_comparison.pdf Graphic file (type pdf
+)
+<use figs/Peierls_L2_w0_0.1_t1_0.004_I_V_comparison.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.1_t1_0.004_I_V_comparison.pdf  us
+ed on input line 119.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+ [4
+
+ <./figs/Peierls_L2_w0_0.1_t1_0.004_Vvar_comparison_currents.pdf> <./figs/Peier
+ls_L2_w0_0.1_t1_0.004_Vvar_norm.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.1_t1_
+0.004_Vvar_norm.pdf): PDF inclusion: multiple pdfs with page group included in 
+a single page
+> <./figs/Peierls_L2_w0_0.1_t1_0.004_I_V_comparison.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.1_t1_
+0.004_I_V_comparison.pdf): PDF inclusion: multiple pdfs with page group include
+d in a single page
+>]
+<figs/Peierls_L2_w0_0.05_t1_0.02_Vvar_comparison_currents.pdf, id=236, 722.7pt 
+x 397.485pt>
+File: figs/Peierls_L2_w0_0.05_t1_0.02_Vvar_comparison_currents.pdf Graphic file
+ (type pdf)
+<use figs/Peierls_L2_w0_0.05_t1_0.02_Vvar_comparison_currents.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.05_t1_0.02_Vvar_comparison_curren
+ts.pdf  used on input line 125.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.05_t1_0.02_Vvar_norm.pdf, id=237, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_w0_0.05_t1_0.02_Vvar_norm.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_w0_0.05_t1_0.02_Vvar_norm.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.05_t1_0.02_Vvar_norm.pdf  used on
+ input line 130.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.05_t1_0.02_I_V_comparison.pdf, id=238, 722.7pt x 397.485p
+t>
+File: figs/Peierls_L2_w0_0.05_t1_0.02_I_V_comparison.pdf Graphic file (type pdf
+)
+<use figs/Peierls_L2_w0_0.05_t1_0.02_I_V_comparison.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.05_t1_0.02_I_V_comparison.pdf  us
+ed on input line 134.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+ [5
+
+ <./figs/Peierls_L2_w0_0.05_t1_0.02_Vvar_comparison_currents.pdf> <./figs/Peier
+ls_L2_w0_0.05_t1_0.02_Vvar_norm.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.05_t1
+_0.02_Vvar_norm.pdf): PDF inclusion: multiple pdfs with page group included in 
+a single page
+> <./figs/Peierls_L2_w0_0.05_t1_0.02_I_V_comparison.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.05_t1
+_0.02_I_V_comparison.pdf): PDF inclusion: multiple pdfs with page group include
+d in a single page
+>]
+<figs/Peierls_L2_w0_0.1_t1_0.02_Vvar_comparison_currents.pdf, id=304, 722.7pt x
+ 397.485pt>
+File: figs/Peierls_L2_w0_0.1_t1_0.02_Vvar_comparison_currents.pdf Graphic file 
+(type pdf)
+<use figs/Peierls_L2_w0_0.1_t1_0.02_Vvar_comparison_currents.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.1_t1_0.02_Vvar_comparison_current
+s.pdf  used on input line 140.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.1_t1_0.02_Vvar_norm.pdf, id=305, 722.7pt x 397.485pt>
+File: figs/Peierls_L2_w0_0.1_t1_0.02_Vvar_norm.pdf Graphic file (type pdf)
+<use figs/Peierls_L2_w0_0.1_t1_0.02_Vvar_norm.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.1_t1_0.02_Vvar_norm.pdf  used on 
+input line 145.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Peierls_L2_w0_0.1_t1_0.02_I_V_comparison.pdf, id=306, 722.7pt x 397.485pt
+>
+File: figs/Peierls_L2_w0_0.1_t1_0.02_I_V_comparison.pdf Graphic file (type pdf)
+
+<use figs/Peierls_L2_w0_0.1_t1_0.02_I_V_comparison.pdf>
+Package pdftex.def Info: figs/Peierls_L2_w0_0.1_t1_0.02_I_V_comparison.pdf  use
+d on input line 149.
+(pdftex.def)             Requested size: 386.95897pt x 212.82523pt.
+<figs/Convergence_TTHEOM_Fransson_1x2_w0_0.05_V0.48_P0.5_norm.pdf, id=307, 722.
+7pt x 722.7pt>
 File: figs/Convergence_TTHEOM_Fransson_1x2_w0_0.05_V0.48_P0.5_norm.pdf Graphic 
 file (type pdf)
 <use figs/Convergence_TTHEOM_Fransson_1x2_w0_0.05_V0.48_P0.5_norm.pdf>
 Package pdftex.def Info: figs/Convergence_TTHEOM_Fransson_1x2_w0_0.05_V0.48_P0.
-5_norm.pdf  used on input line 80.
+5_norm.pdf  used on input line 155.
 (pdftex.def)             Requested size: 483.69687pt x 483.69922pt.
-<figs/Convergence_TTHEOM_Fransson_1x3_w0_0.05_V0.48_P0.5_norm.pdf, id=20, 722.7
-pt x 722.7pt>
+ [6
+
+ <./figs/Peierls_L2_w0_0.1_t1_0.02_Vvar_comparison_currents.pdf> <./figs/Peierl
+s_L2_w0_0.1_t1_0.02_Vvar_norm.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.1_t1_
+0.02_Vvar_norm.pdf): PDF inclusion: multiple pdfs with page group included in a
+ single page
+> <./figs/Peierls_L2_w0_0.1_t1_0.02_I_V_comparison.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_L2_w0_0.1_t1_
+0.02_I_V_comparison.pdf): PDF inclusion: multiple pdfs with page group included
+ in a single page
+>]
+<figs/Convergence_TTHEOM_Fransson_1x3_w0_0.05_V0.48_P0.5_norm.pdf, id=372, 722.
+7pt x 722.7pt>
 File: figs/Convergence_TTHEOM_Fransson_1x3_w0_0.05_V0.48_P0.5_norm.pdf Graphic 
 file (type pdf)
 <use figs/Convergence_TTHEOM_Fransson_1x3_w0_0.05_V0.48_P0.5_norm.pdf>
 Package pdftex.def Info: figs/Convergence_TTHEOM_Fransson_1x3_w0_0.05_V0.48_P0.
-5_norm.pdf  used on input line 93.
+5_norm.pdf  used on input line 168.
 (pdftex.def)             Requested size: 483.69687pt x 483.69922pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 90--96
+Underfull \hbox (badness 10000) in paragraph at lines 165--171
 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[2
-
- <./figs/Convergence_TTHEOM_Fransson_1x2_w0_0.05_V0.48_P0.5_norm.pdf>]
-[3 <./figs/Convergence_TTHEOM_Fransson_1x3_w0_0.05_V0.48_P0.5_norm.pdf>]
+[7 <./figs/Convergence_TTHEOM_Fransson_1x2_w0_0.05_V0.48_P0.5_norm.pdf>]
+[8 <./figs/Convergence_TTHEOM_Fransson_1x3_w0_0.05_V0.48_P0.5_norm.pdf>]
 (./RudolfSmorka_FranssonModel_Comparison.aux)
 Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 .run.xml'.
@@ -769,10 +947,10 @@ Package logreq Info: Writing requests to 'RudolfSmorka_FranssonModel_Comparison
 
  ) 
 Here is how much of TeX's memory you used:
- 16094 strings out of 478994
- 315583 string characters out of 5858184
+ 16185 strings out of 478994
+ 320832 string characters out of 5858184
  836320 words of memory out of 5000000
- 33376 multiletter control sequences out of 15000+600000
+ 33452 multiletter control sequences out of 15000+600000
  421696 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,19n,75p,1873b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -788,17 +966,18 @@ local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
 cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loca
 l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/
 texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on RudolfSmorka_FranssonModel_Comparison.pdf (3 pages, 455777 by
-tes).
+live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/
+texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist
+/fonts/type1/urw/times/utmri8a.pfb>
+Output written on RudolfSmorka_FranssonModel_Comparison.pdf (8 pages, 1045263 b
+ytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
+ 475 PDF objects out of 1000 (max. 8388607)
+ 394 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 86 words of extra memory for PDF output out of 10000 (max. 10000000)
 

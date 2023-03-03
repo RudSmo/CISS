@@ -18,27 +18,27 @@ using .CustomStructures
 num_laps = 1
 num_ions = 3
 N = num_laps * num_ions
-t0  = 0.04
-eu  = -6*t0
-ed  = -6*t0
+T0  = 0.04
+t0  = -T0
+eu  = -6*T0
+ed  = -6*T0
 E   = [eu,ed]
-ws  = 0.05*t0*ones(N)
-gPh = [0.0,0.0]
+ws  = 0.01*ones(N)
+gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = t0/40
-tPh = 0.0*t0*[1,-1] 
-tsoPh = 0.0*tso
+tso = 0.0
+tPh = [-0.02,-0.02]
+tsoPh = 0.0
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
-#model = FranssonHamiltonianNH
 modelStr = "Fransson"
-
+#model = FranssonHamiltonianNH
 
 # Simulation Parameters
-dt = 0.002/t0
-tend = 100/t0
+dt = 0.002/T0
+tend = 600/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -46,31 +46,32 @@ initProp  = true
 # false = use initial density matrix from previous computation
 
 if initProp
-    #rhoIn = "pure"
-    rhoIn = "equilibrium"
-    #phIn = "TDSCF"
-    phIn = "Wigner"
+    rhoIn = "pure"
+    #rhoIn = "equilibrium"
+    phIn = "TDSCF"
+    #phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
     phIn = rhoIn
-    pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
+    pathIn = "Holstein_L2/noEps/L2_gPhU0.004_gPhD0.004_V0.0_w00.002_X0_0.0_dt0.05_1_final_Quantities"
 end
-popElIn = 1.0*[1,1,0,0,0,0]
-popPhIn = [0,0,0]
+popElIn = [1,1,0,0,0,0]
+popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 x0 = 0.0
-xnIn,pnIn = zeros(N),zeros(N)
+xnIn,pnIn = [1.,-1,0.0],[0.,0,0]
 
 
 ## Leads
-P = 0.5
-tL = t0/4 * (ones(2) .+ P * [1,-1])  
-tR = t0/4 * ones(2)
-V  = 12*t0
+P = 0.0
+tl = 0.004
+tL = tl * (ones(2) .+ P * [1,-1])  
+tR = tl * ones(2)
+V  = 0.4
 nPoles = 10
-beta = 1/0.025
+beta = 1/0.025 
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
                             N,
@@ -92,7 +93,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "ES_test"
+path = "L3_Leads"
 if !isdir(path)
 	mkpath(path)
 end
@@ -101,7 +102,7 @@ end
 num_avg = 1
 for ka in 1:num_avg
     if modelStr == "Fransson"
-        dataname1 = "$(path)/L$(N)_tPh$(tPh)_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_X0_-10_dt$(abs(dt))"
+        dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_noEps_dt$(abs(dt))"
     elseif modelStr == "Holstein"
         dataname1 = "$(path)/L$(N)_gPhU$(gPh[1])_gPhD$(gPh[2])_V$(V)_w0$(ws[1])_X0_$(x0)_dt$(abs(dt))"
     end

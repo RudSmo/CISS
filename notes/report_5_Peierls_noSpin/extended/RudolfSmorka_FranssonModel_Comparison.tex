@@ -157,7 +157,7 @@ and the left eigenstates satisfy
 	H^\dagger \vert \psi_\pm^L\rangle &= \varepsilon_\pm^* \vert \psi_\pm^L\rangle\\
 	\vert \psi_\pm^L\rangle &= \vert \psi_\pm^R\rangle^*.
 \end{align}
-where we used $\xi=t_0+\sqrt{2\omega}t_1X$ for brevity. Since the eigenvalues of the effective Hamiltonian are complex, their interpretation is not the systems energy.
+where we used $\xi=t_0+\sqrt{2\omega}t_1X$ for brevity. Since the eigenvalues of the effective Hamiltonian are complex, they cannot be interpretation as the systems energy. However, the imaginary part of the eigenvalues gives the decay rate.
 We consider $\Gamma_{L,R}>0$, the eigenvalues have negative imaginary part. Then, the time-dependent Schrödinger equation is solved by 
 \begin{equation}
 	\vert \psi^R_n(t)\rangle = \exP{-i\varepsilon_n t}\vert\psi_n^R(0)\rangle
@@ -168,7 +168,7 @@ The particle number operator $N^R_n(t) = \langle \psi^R_n(t)\vert \psi^R_n(t)\ra
 	\frac{\dif}{\dif t}N^R_n(t) = -2\gamma \exP{-2\gamma t}N^R_n(0).
 \end{equation}
 The right states are thus decaying with rate $2\gamma = \Gamma_L+\Gamma_R$, and can be interpreted as out-going from the central system into the leads. 
-Similarly, the states $\vert \psi_\pm^L\rangle$ are in-going from the leads into the system and are exponentially increasing.
+Similarly, the the left states $\vert \psi_\pm^L\rangle$ are in-going from the leads into the system and are exponentially increasing, as they are the eigenstates of $H^\dagger$, which can be interpreted as the Hamiltonian with a localized gain.
 In the case we consider below $\Gamma_L = \Gamma_R$, the eigenvectors reduce to the ones given in \cref{eq:EV_Peierls}, and therefore the left and right eigenvectors are bi-orthogonal
 \begin{align}
 	\vert\tilde{\psi}_n^L\rangle &= \frac{\vert \psi_n^L\rangle}{\sqrt{\langle \psi_n^L\vert\psi_n^R \rangle}}\\
