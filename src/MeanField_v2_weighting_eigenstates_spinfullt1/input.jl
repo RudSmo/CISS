@@ -16,7 +16,7 @@ using .CustomStructures
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 3
+num_ions = 4
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
@@ -56,12 +56,12 @@ else
     phIn = rhoIn
     pathIn = "Holstein_L2/noEps/L2_gPhU0.004_gPhD0.004_V0.0_w00.002_X0_0.0_dt0.05_1_final_Quantities"
 end
-popElIn = [1,1,0,0,0,0]
+popElIn = [1,1,0,0,0,0,0,0]
 popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 x0 = 0.0
-xnIn,pnIn = [1.,-1,0.0],[0.,0,0]
+xnIn,pnIn = [1.,-1,0.5,0],[0.,0,0,0]
 
 
 ## Leads
@@ -93,7 +93,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L3_Leads"
+path = "L4_Leads"
 if !isdir(path)
 	mkpath(path)
 end

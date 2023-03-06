@@ -29,9 +29,10 @@ end
 ns = 4 # number of sites in a lap
 L0 = Array(1:30) # number of turns
 W00 = []
-n = 1
+n = 0
 for l0 in L0
-	w00 = -alpha*f(n,ns*l0,l0)
+#	w00 = -alpha*Psi(n,ns*l0,l0)/(2*dz)
+	w00 = -alpha*Psi(n,ns*l0,l0)
 	push!(W00,w00)
 end
 plt.plot(L0,abs.(W00))

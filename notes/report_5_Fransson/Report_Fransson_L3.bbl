@@ -1,0 +1,66 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{Gutierrez_Díaz_Naaman_Cuniberti_2012}{article}{}
+    \name{author}{4}{}{%
+      {{hash=GR}{%
+         family={Gutierrez},
+         familyi={G\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=DE}{%
+         family={Díaz},
+         familyi={D\bibinitperiod},
+         given={E.},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=NR}{%
+         family={Naaman},
+         familyi={N\bibinitperiod},
+         given={R.},
+         giveni={R\bibinitperiod},
+      }}%
+      {{hash=CG}{%
+         family={Cuniberti},
+         familyi={C\bibinitperiod},
+         given={G.},
+         giveni={G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {American Physical Society}%
+    }
+    \strng{namehash}{GR+1}
+    \strng{fullhash}{GRDENRCG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \verb{doi}
+    \verb 10.1103/PhysRevB.85.081404
+    \endverb
+    \field{number}{8}
+    \field{pages}{081404}
+    \field{title}{Spin-selective transport through helical molecular systems}
+    \field{volume}{85}
+    \field{journaltitle}{Physical Review B}
+    \field{year}{2012}
+    \warn{\item Invalid format of field 'month'}
+  \endentry
+\enddatalist
+\endinput

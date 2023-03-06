@@ -23,7 +23,7 @@ t0  = -T0
 E   = -0.24
 ws  = 0.01*ones(N)
 gPh = 0.0*T0
-tPh = -0.02
+tPh = 0.0
 model = HolsteinHopping
 modelStr = "Holstein"
 
@@ -54,7 +54,7 @@ popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 x0 = 0.0
-xnIn,pnIn = [1,-1.,0.0],[0.,0,0]
+xnIn,pnIn = [1,-1.,0.5],[0.,0,0]
 #zeros(N),zeros(N)
 #[-0.1,0.3,0.05,0],[0.002,-0.01,0.0005,0]
 
