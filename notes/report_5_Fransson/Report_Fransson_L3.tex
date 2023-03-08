@@ -34,7 +34,7 @@
 	top=20mm,
 }
 \begin{document}
-\title{Additional results and analyses: Transport through three-site Peierls model}
+\title{Additional results and analyses: Transport through three-site model}
 \author{Rudolf Smorka}
 \maketitle
 %\tableofcontents
@@ -63,6 +63,32 @@ To check whether the implementation is valid, we consider the current dynamics t
 	\caption{Comparison of vibrational displacement of bond mode between sites 1 and 2, divided by the number of eigenlevels: Spinfull (black line) and spinless (red line) Peierls-model with $L=3$ sites.}\label{fig:Consistency_phonons}
 \end{figure}
 \section{Uniqueness of the steady-state}
+\subsection{Peierls model}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Fransson_L3_P0_unique_steady_state.pdf}
+	\caption{Symmetrized current for $t_1 = \SI{20}{\milli\electronvolt}$, $\omega_0=\SI{10}{\milli\electronvolt}$ for different initial vibrational positions and momenta (sampled from thermal Wigner distribution).}
+\end{figure}
+\clearpage
+\subsection{Fransson model}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Fransson_L3_P0.5_unique_steady_state.pdf}
+	\caption{Symmetrized current for $t_1 = \SI{20}{\milli\electronvolt}$, $\lambda_0 = \SI{1}{\milli\electronvolt}$, $\lambda_1 = \SI{1}{\milli\electronvolt}$, $\omega_0 = \SI{10}{\milli\electronvolt}$ and $P=0.5$ and different initial vibrational positions and momenta (sampled from thermal Wigner distribution).}
+\end{figure}
+\section{Example of non-unique steady-state}
+For $L=1\times 2$ (no spin), and the following parameters
+\begin{align}
+	\varepsilon_0 &= \SI{-240}{\milli\electronvolt}\\
+	\omega_0 &= \SI{10}{\milli\electronvolt}\\
+	t_0 &= \SI{40}{\milli\electronvolt}\\
+	t_1 &= \SI{40}{\milli\electronvolt}\\
+	\lambda_0 &= \SI{1}{\milli\electronvolt}\\
+	\lambda_1 &= \SI{0.1}{\milli\electronvolt}\\
+	\Gamma &= \SI{10}{\milli\electronvolt}\\
+	T &= \SI{25}{\milli\electronvolt}.
+\end{align}
+the system is bi-stable for some voltages. This bi-stability is also observed in larger systems with spin.
 
 \end{document}
 

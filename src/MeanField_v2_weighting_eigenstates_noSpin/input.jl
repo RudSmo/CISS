@@ -16,20 +16,20 @@ using .CustomStructures
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 3
+num_ions = 2
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
 E   = -0.24
 ws  = 0.01*ones(N)
 gPh = 0.0*T0
-tPh = 0.0
+tPh = -0.04
 model = HolsteinHopping
 modelStr = "Holstein"
 
 # Simulation Parameters
 dt = 0.002/T0
-tend = 600/T0
+tend = 800/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -48,24 +48,24 @@ else
     phIn = rhoIn
     pathIn = "data_single/L1_Delta$(eu-ed)_gph$(gph)_ws$(ws)_dt$(abs(dt))_final_Quantities"
 end
-popElIn = zeros(N)
+popElIn = ones(N)
 popElIn[1] = 1.0
 popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 x0 = 0.0
-xnIn,pnIn = [1,-1.,0.5],[0.,0,0]
+xnIn,pnIn = [1.0,0.],[0.1,0.]
 #zeros(N),zeros(N)
 #[-0.1,0.3,0.05,0],[0.002,-0.01,0.0005,0]
 
 
 ## Leads
-tL = 0.004
-tR = 0.004
+tL = 0.01
+tR = 0.01
 nPoles = 10
 beta = 1/0.025
 V = 0.4
-path = "L3_Leads"
+path = "L2_steady_state/XP0_n1"
 if !isdir(path)
 	mkpath(path)
 end

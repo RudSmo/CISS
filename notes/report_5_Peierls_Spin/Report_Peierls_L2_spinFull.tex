@@ -156,13 +156,30 @@ The coupling matrices in the single-particle eigenstate basis are
 The influence of a spin-dependent molecule-lead coupling can be seen from diagonalizing the effective Hamiltonian
 \begin{equation}
 	H_\mathrm{eff} = \begin{pmatrix}
-		\varepsilon - i\gamma_l\left(1+\frac{P}{2}\right) & 0 & \xi & 0\\
-		0 & \varepsilon - i\gamma_l\left(1-\frac{P}{2}\right) & 0 & \xi\\
+		\varepsilon - i\gamma_l\left(1+p\right) & 0 & \xi & 0\\
+		0 & \varepsilon - i\gamma_l\left(1-p\right) & 0 & \xi\\
 		\xi & 0 & \varepsilon - i\gamma_r & 0\\
 		0 & \xi & 0 & \varepsilon - i\gamma_r
 	\end{pmatrix}
 \end{equation}
+the eigenvalues of which can be obtained analytically
+\begin{align}
+	\varepsilon_{1,\pm} = \frac{1}{2}\left(2\varepsilon \pm \sqrt{-\gamma_R^2 + 2\gamma_R\gamma_{L+}-\gamma_{L+}^2+4\xi^2} - i \gamma_R - i\gamma_{L+}\right)\\
+	\varepsilon_{2,\pm} = \frac{1}{2}\left(2\varepsilon \pm \sqrt{-\gamma_R^2 + 2\gamma_R\gamma_{L-}-\gamma_{L-}^2+4\xi^2} - i \gamma_R - i\gamma_{L-}\right)
+\end{align}
+with $\gamma_{L\pm} = \gamma_L(1\pm p)$, and $\xi = -t_0-t_1\sqrt{2\omega}X$. For $\gamma_L=\gamma_R=\gamma$, the real part of $\varepsilon_{1,+}$ and $\varepsilon_{2,+}$ are identical (same is true for the $-$ levels). They differ only in the imaginary part by $\pm P$.
 \subsection{Peierls + SOC}
+Assuming $\alpha_{1,2},\beta \in \mathds{R}$ the eigenvalues of the Peierls-model with intra-site SOC and inter-site SOC is for the case $\alpha_1=\alpha_2$
+\begin{align}
+	\varepsilon_1 &= \varepsilon + \alpha - \xi -\beta\\
+	\varepsilon_2 &= \varepsilon - \alpha + \xi -\beta\\
+	\varepsilon_3 &= \varepsilon - \alpha - \xi +\beta\\
+	\varepsilon_4 &= \varepsilon + \alpha + \xi +\beta.
+\end{align}
+In the case $\alpha_1\neq \alpha_2$, the eigenvalues are
+\begin{equation}
+	\varepsilon_{\pm_1,\pm_2} = \frac{1}{2}(2\varepsilon \pm_1 \sqrt{\alpha_1^2 + \alpha_2^2 - 2\alpha_1\alpha_2 + 4\xi^2 \pm_2 8\xi\beta +4\beta^2} \pm_2(\alpha_1+\alpha_2)).
+\end{equation}
 \section{Exact diagonalization of the interacting molecule}
 \section{Mean-field potential}
 \subsection{Peierls}

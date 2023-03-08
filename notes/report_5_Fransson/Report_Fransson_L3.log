@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  6 MAR 2023 15:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  8 MAR 2023 13:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -674,13 +674,7 @@ Package: blx-case-expl3 2020/12/31 v3.16 expl3 case changing code for biblatex
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Report_Fransson_L3.bbl' found.
 
-(./Report_Fransson_L3.bbl
-
-Package biblatex Warning: BibTeX reported the following issues
-(biblatex)                with 'Gutierrez_Díaz_Naaman_Cuniberti_2012':
-(biblatex)                - Invalid format of field 'month'.
-
-)
+(./Report_Fransson_L3.bbl)
 Package biblatex Info: Reference section=0 on input line 36.
 Package biblatex Info: Reference segment=0 on input line 36.
 
@@ -747,20 +741,41 @@ ed on input line 62.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+<figs/Fransson_L3_P0_unique_steady_state.pdf, id=3, 722.7pt x 397.485pt>
+File: figs/Fransson_L3_P0_unique_steady_state.pdf Graphic file (type pdf)
+<use figs/Fransson_L3_P0_unique_steady_state.pdf>
+Package pdftex.def Info: figs/Fransson_L3_P0_unique_steady_state.pdf  used on i
+nput line 69.
+(pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
 [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/
 Peierls_L3_spin_noSpin_comparison.pdf>] [2 <./figs/Peierls_L3_spin_noSpin_compa
-rison_phonons.pdf>] (./Report_Fransson_L3.aux)
+rison_phonons.pdf> <./figs/Fransson_L3_P0_unique_steady_state.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Fransson_L3_P0_unique
+_steady_state.pdf): PDF inclusion: multiple pdfs with page group included in a 
+single page
+>]
+<figs/Fransson_L3_P0.5_unique_steady_state.pdf, id=84, 722.7pt x 397.485pt>
+File: figs/Fransson_L3_P0.5_unique_steady_state.pdf Graphic file (type pdf)
+<use figs/Fransson_L3_P0.5_unique_steady_state.pdf>
+Package pdftex.def Info: figs/Fransson_L3_P0.5_unique_steady_state.pdf  used on
+ input line 76.
+(pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
+ [3
+
+ <./figs/Fransson_L3_P0.5_unique_steady_state.pdf>]
+(./Report_Fransson_L3.aux)
 Package logreq Info: Writing requests to 'Report_Fransson_L3.run.xml'.
 \openout1 = `Report_Fransson_L3.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16098 strings out of 478994
- 315365 string characters out of 5858184
+ 16093 strings out of 478994
+ 315542 string characters out of 5858184
  829221 words of memory out of 5000000
- 33381 multiletter control sequences out of 15000+600000
+ 33374 multiletter control sequences out of 15000+600000
  419025 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,13n,75p,1854b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -774,10 +789,10 @@ cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
 /texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/20
 21/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Report_Fransson_L3.pdf (2 pages, 293106 bytes).
+Output written on Report_Fransson_L3.pdf (3 pages, 591073 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
+ 136 PDF objects out of 1000 (max. 8388607)
+ 112 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
