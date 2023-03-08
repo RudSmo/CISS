@@ -46,7 +46,8 @@ function Propagate(
 		#P0 		= [A[i][2] for i in 1:HamPar.N]
 
 		X0,P0   	= SampleWigner_Multi(beta,HamPar.ws,HamPar.N)
-		weight  	= prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
+		weight  	= 1.0 
+		# prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
 		
 	elseif phIn == "fromFile"
 		fid     = h5open(pathIn,"r")
