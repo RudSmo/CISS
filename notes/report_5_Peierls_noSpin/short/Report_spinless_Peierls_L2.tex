@@ -210,6 +210,26 @@ From this expression it is clear that a coherence between eigenstates in $\rho(t
 	X(t+\dif t) &\approx X(t) + \dif t P(t).
 \end{align*}
 The new position $X(t+\dif  t)$ enters the Hamiltonian to yield $H(t+\dif t)$, and thus leads to new changes in $\rho(t+\dif t)$ in the next time-step. This cycle repeats itself until the simulation is finished.
+\subsection{Born-Oppenheimer states}
+In the Born-Oppenheimer approach, the Hamiltonian in the basis of the two-site local electronic states becomes
+\begin{equation}
+	H^\mathrm{BO}(X)=\begin{pmatrix}
+		\varepsilon_0 & \frac{X^2}{2}-t_0-t_1\sqrt{2\omega_0}X\\
+		\frac{X^2}{2}-t_0-t_1\sqrt{2\omega_0}X & \varepsilon_0
+	\end{pmatrix}
+\end{equation}
+which has eigenvalues
+\begin{equation}
+	\varepsilon_\pm^\mathrm{BO}(X) = \varepsilon_0 \pm\sqrt{\left(\frac{X^2}{2}-t_0-t_1\sqrt{2\omega}X\right)^2}
+\end{equation}
+and eigenstates
+\begin{equation}
+	\vert\psi_\pm^\mathrm{BO}(X)\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix}
+		\pm 1\\
+		1
+	\end{pmatrix}.
+\end{equation}
+The non-adiabatic coupling between any eigenstate is zero, since the Born-Oppenheimer eigenstates are independent of $X$.
 \subsection{Classical vibration within the full electronic space}
 The Peierls-Hamiltonian within the classical vibration approximation can be diagonalized exactly.
 Herein, the basis states are $\vert n_1 n_2\rangle$ with $n_1,n_2=0,1$. In this basis, the Hamiltonian reads
