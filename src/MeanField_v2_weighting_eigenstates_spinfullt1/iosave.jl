@@ -20,7 +20,7 @@ function SaveParams(params,path,purpose)
 	close(file)
 end
 
-function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,q_l,p_l,mom_el,weight,path)
+function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,q_l,p_l,mom_el,path)
 
 	pop = Populations(rho_i)
 	pop_es = PopulationsES(rho_i,hcen_i)
@@ -35,7 +35,6 @@ function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur
 		popfile = open("$(path)_electrons.dat","w")
 		popesfile = open("$(path)_electrons_es.dat","w")
 		phfile  = open("$(path)_phonons.dat","w")
-		weightf = open("$(path)_weight.dat","w")
 		momentumf= open("$(path)_momentum_el.dat","w")
 		loccurf = open("$(path)_loc_cur.dat","w")
 
@@ -58,7 +57,6 @@ function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur
 			k += 2
 		end
 		write(phfile,"\n")
-		write(weightf,"$(weight)\n")
 
 		write(momentumf,"#(1)t ")
 		k = 2
@@ -78,7 +76,6 @@ function SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,qn,pn,tim,i,dt,cur
 		close(popfile)
 		close(popesfile)
 		close(phfile)
-		close(weightf)
 		close(momentumf)
 		close(loccurf)
 	end
@@ -162,55 +159,24 @@ function Average(ind,path,num_avg)
 	observables = ["currents","electrons","electrons_es","phonons","momentum_el","loc_cur"]
 	rm("$(pathr)_final_Quantities")
 	if ind == 1
-		weight  = readdlm("$(pathr)_weight.dat")[1]	
-		weightTf = open("$(path)_weightTot.dat","w")
-		write(weightTf,"$(weight)")
-		close(weightTf)
-		rm("$(pathr)_weight.dat")
-		
 		for obs in observables
 			file_avg = readdlm("$(pathr)_$(obs).dat")
-			file_avg[2:end,2:end] = file_avg[2:end,2:end] * weight
 			writedlm("$(path)_$(obs)_avg.dat",file_avg) 
 			rm("$(pathr)_$(obs).dat")
 		end
-	elseif ind < num_avg
-		weight  = readdlm("$(pathr)_weight.dat")[1]
-		weightT = readdlm("$(path)_weightTot.dat")[1]	
-		weightT += weight
-
-		writedlm("$(path)_weightTot.dat",weightT) 
-		rm("$(pathr)_weight.dat")
-					
+	elseif ind <= num_avg
+	
 		for obs in observables
 			file_avg = readdlm("$(path)_$(obs)_avg.dat")
 			file_raw = readdlm("$(pathr)_$(obs).dat")
 
 			F_avg    = copy(file_avg)
-			F_avg[2:end,2:end] += file_raw[2:end,2:end] * weight
+			F_avg[2:end,2:end] += file_raw[2:end,2:end] * (ind-1)
+			F_avg[2:end,2:end] = F_avg[2:end,2:end] ./ ind
 			rm("$(path)_$(obs)_avg.dat")
 			writedlm("$(path)_$(obs)_avg.dat",F_avg) 
 			rm("$(pathr)_$(obs).dat")
 		end
-	elseif ind == num_avg
-		weight  = readdlm("$(pathr)_weight.dat")[1]	
-		weightT = readdlm("$(path)_weightTot.dat")[1]	
-		weightT += weight
-
-		writedlm("$(path)_weightTot.dat",weightT) 
-		rm("$(pathr)_weight.dat")
-		for obs in observables
-			file_avg = readdlm("$(path)_$(obs)_avg.dat")
-			file_raw = readdlm("$(pathr)_$(obs).dat")
-
-			F_avg    = copy(file_avg)
-			F_avg[2:end,2:end] += file_raw[2:end,2:end] * weight 
-			F_avg[2:end,2:end] /= weightT
-			rm("$(path)_$(obs)_avg.dat")
-			writedlm("$(path)_$(obs)_avg.dat",F_avg) 
-			rm("$(pathr)_$(obs).dat")
-		end
-		
 	end
 end
 

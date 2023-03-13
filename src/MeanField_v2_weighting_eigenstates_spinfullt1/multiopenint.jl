@@ -39,21 +39,17 @@ function Propagate(
 	if phIn == "TDSCF"
 		X0 		= HamPar.X
 		P0 		= HamPar.P
-		weight  	= prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
 	elseif phIn == "Wigner"
 		#A      	= [SampleWigner(beta,HamPar.ws[i],vSampl) for i in 1:HamPar.N]
 		#X0 		= [A[i][1] for i in 1:HamPar.N]
 		#P0 		= [A[i][2] for i in 1:HamPar.N]
 
 		X0,P0   	= SampleWigner_Multi(beta,HamPar.ws,HamPar.N)
-		weight  	= 1.0 
-		# prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
 		
 	elseif phIn == "fromFile"
 		fid     = h5open(pathIn,"r")
 		X0      = read(fid["q"])
 		P0      = read(fid["p"])
-		weight  = prod(Wignerweights(X0,P0,beta,HamPar.ws,vSampl))
 	end
 
 	Xin         = X0
@@ -121,7 +117,7 @@ function Propagate(
 		HamPar.X = Xn
 		HamPar.P = Pn
 		hcen_i  = HamPar.Hamiltonian(HamPar)	
-		pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,loc_cur_l = SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,Xn,Pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,X_l,P_l,mom_el,weight,path)
+		pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,loc_cur_l = SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,Xn,Pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,X_l,P_l,mom_el,path)
 		if i == numstep 
 			fil = h5open("$(path)_final_Quantities","w")
 			fil["Rho"] = rho_i

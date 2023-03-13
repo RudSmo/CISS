@@ -16,7 +16,7 @@ using .CustomStructures
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 4
+num_ions = 2
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
@@ -38,7 +38,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.002/T0
-tend = 600/T0
+tend = 20/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -56,12 +56,12 @@ else
     phIn = rhoIn
     pathIn = "Holstein_L2/noEps/L2_gPhU0.004_gPhD0.004_V0.0_w00.002_X0_0.0_dt0.05_1_final_Quantities"
 end
-popElIn = [1,1,0,0,0,0,0,0]
+popElIn = [1,1,0,0]
 popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 x0 = 0.0
-xnIn,pnIn = [1.,-1,0.5,0],[0.,0,0,0]
+xnIn,pnIn = [1.,-1],[0.,0]
 
 
 ## Leads
@@ -93,13 +93,13 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L4_Leads"
+path = "L2_test_avg"
 if !isdir(path)
 	mkpath(path)
 end
 
 
-num_avg = 1
+num_avg = 4
 for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_noEps_dt$(abs(dt))"
@@ -117,7 +117,7 @@ for ka in 1:num_avg
     IOsave.SaveParams(params,parampath,purpose)
 
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,vSampl,popElIn)
-#    Average(ka,dataname1,num_avg)
+    Average(ka,dataname1,num_avg)
 end
 
 end
