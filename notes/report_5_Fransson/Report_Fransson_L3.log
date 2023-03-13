@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  8 MAR 2023 13:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  8 MAR 2023 16:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -763,19 +763,74 @@ File: figs/Fransson_L3_P0.5_unique_steady_state.pdf Graphic file (type pdf)
 Package pdftex.def Info: figs/Fransson_L3_P0.5_unique_steady_state.pdf  used on
  input line 76.
 (pdftex.def)             Requested size: 435.32419pt x 239.42686pt.
- [3
+<figs/Fransson_L2_P0_non-unique_steady_state_currents.pdf, id=85, 722.7pt x 397
+.485pt>
+File: figs/Fransson_L2_P0_non-unique_steady_state_currents.pdf Graphic file (ty
+pe pdf)
+<use figs/Fransson_L2_P0_non-unique_steady_state_currents.pdf>
+Package pdftex.def Info: figs/Fransson_L2_P0_non-unique_steady_state_currents.p
+df  used on input line 94.
+(pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
+<figs/Fransson_L2_P0_non-unique_steady_state_phonons.pdf, id=86, 722.7pt x 397.
+485pt>
+File: figs/Fransson_L2_P0_non-unique_steady_state_phonons.pdf Graphic file (typ
+e pdf)
+<use figs/Fransson_L2_P0_non-unique_steady_state_phonons.pdf>
+Package pdftex.def Info: figs/Fransson_L2_P0_non-unique_steady_state_phonons.pd
+f  used on input line 98.
+(pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
+<figs/Fransson_L2_P0_non-unique_steady_state_el_es.pdf, id=87, 722.7pt x 397.48
+5pt>
+File: figs/Fransson_L2_P0_non-unique_steady_state_el_es.pdf Graphic file (type 
+pdf)
+<use figs/Fransson_L2_P0_non-unique_steady_state_el_es.pdf>
+Package pdftex.def Info: figs/Fransson_L2_P0_non-unique_steady_state_el_es.pdf 
+ used on input line 102.
+(pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
+<figs/L2_nonUnique_SS_EL_ParVar_Ph.pdf, id=88, 867.24pt x 578.16pt>
+File: figs/L2_nonUnique_SS_EL_ParVar_Ph.pdf Graphic file (type pdf)
+<use figs/L2_nonUnique_SS_EL_ParVar_Ph.pdf>
+Package pdftex.def Info: figs/L2_nonUnique_SS_EL_ParVar_Ph.pdf  used on input l
+ine 106.
+(pdftex.def)             Requested size: 483.69684pt x 322.47055pt.
 
- <./figs/Fransson_L3_P0.5_unique_steady_state.pdf>]
-(./Report_Fransson_L3.aux)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3
+
+ <./figs/Fransson_L3_P0.5_unique_steady_state.pdf>] [4 <./figs/Fransson_L2_P0_n
+on-unique_steady_state_currents.pdf> <./figs/Fransson_L2_P0_non-unique_steady_s
+tate_phonons.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Fransson_L2_P0_non-un
+ique_steady_state_phonons.pdf): PDF inclusion: multiple pdfs with page group in
+cluded in a single page
+>] [5 <./figs/Fransson_L2_P0_non-unique_steady_state_el_es.pdf> <./figs/L2_nonU
+nique_SS_EL_ParVar_Ph.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L2_nonUnique_SS_EL_Pa
+rVar_Ph.pdf): PDF inclusion: multiple pdfs with page group included in a single
+ page
+>] (./Report_Fransson_L3.aux)
 Package logreq Info: Writing requests to 'Report_Fransson_L3.run.xml'.
 \openout1 = `Report_Fransson_L3.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16093 strings out of 478994
- 315542 string characters out of 5858184
- 829221 words of memory out of 5000000
- 33374 multiletter control sequences out of 15000+600000
+ 16117 strings out of 478994
+ 316900 string characters out of 5858184
+ 830221 words of memory out of 5000000
+ 33394 multiletter control sequences out of 15000+600000
  419025 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,13n,75p,1854b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -789,10 +844,10 @@ cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
 /texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/20
 21/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Report_Fransson_L3.pdf (3 pages, 591073 bytes).
+Output written on Report_Fransson_L3.pdf (5 pages, 2854173 bytes).
 PDF statistics:
- 136 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 213 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

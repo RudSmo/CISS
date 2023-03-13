@@ -62,7 +62,7 @@ To check whether the implementation is valid, we consider the current dynamics t
 	\includegraphics[width=0.8\textwidth]{figs/Peierls_L3_spin_noSpin_comparison_phonons.pdf}
 	\caption{Comparison of vibrational displacement of bond mode between sites 1 and 2, divided by the number of eigenlevels: Spinfull (black line) and spinless (red line) Peierls-model with $L=3$ sites.}\label{fig:Consistency_phonons}
 \end{figure}
-\section{Uniqueness of the steady-state}
+\section{Uniqueness of single trajectory steady-state}
 \subsection{Peierls model}
 \begin{figure}[!h]
 	\centering
@@ -76,7 +76,7 @@ To check whether the implementation is valid, we consider the current dynamics t
 	\includegraphics[width=0.9\textwidth]{figs/Fransson_L3_P0.5_unique_steady_state.pdf}
 	\caption{Symmetrized current for $t_1 = \SI{20}{\milli\electronvolt}$, $\lambda_0 = \SI{1}{\milli\electronvolt}$, $\lambda_1 = \SI{1}{\milli\electronvolt}$, $\omega_0 = \SI{10}{\milli\electronvolt}$ and $P=0.5$ and different initial vibrational positions and momenta (sampled from thermal Wigner distribution).}
 \end{figure}
-\section{Example of non-unique steady-state}
+\section{Example of non-unique single trajectory steady-state}
 For $L=1\times 2$ (no spin), and the following parameters
 \begin{align}
 	\varepsilon_0 &= \SI{-240}{\milli\electronvolt}\\
@@ -89,6 +89,24 @@ For $L=1\times 2$ (no spin), and the following parameters
 	T &= \SI{25}{\milli\electronvolt}.
 \end{align}
 the system is bi-stable for some voltages. This bi-stability is also observed in larger systems with spin.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/Fransson_L2_P0_non-unique_steady_state_currents.pdf}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/Fransson_L2_P0_non-unique_steady_state_phonons.pdf}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/Fransson_L2_P0_non-unique_steady_state_el_es.pdf}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/L2_nonUnique_SS_EL_ParVar_Ph.pdf}
+\end{figure}
+
+
 
 \end{document}
 

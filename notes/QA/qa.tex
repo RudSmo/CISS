@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+\begin{document}
+\title{General questions and answers}
+\author{Rudolf Smorka}
+\maketitle
+\begin{itemize}
+	\item[Q:] What are the limitations of the model Jonas Fransson used to explain the vibrational origin of the CISS effect?
+	\item[A:] Lack of experimental evidence: While Fransson's model is conceptually appealing, it has not been directly supported by experimental evidence.
+	
+	Simplified assumptions: Fransson's model makes several simplifying assumptions, such as neglecting the effects of electron-electron interactions and assuming a single vibrational mode in the molecule. These assumptions may not fully capture the complexity of electron transport through real chiral molecules.
+	
+	Limited scope: Fransson's model only applies to certain classes of chiral molecules with specific electronic and vibrational properties, and may not be applicable to a wider range of systems.
+	
+	Alternative explanations: There are alternative explanations for the observed CISS effect, such as spin-dependent scattering at the molecule-metal interfaces or spin-dependent transport through spin-active defects in the molecule. 
+	\item[Q:] Elaborate on point 4
+	\item[A:] One alternative explanation for the chirality-induced spin selectivity (CISS) effect observed in electron transport through chiral molecules is spin-dependent scattering at the molecule-metal interfaces. This mechanism relies on the fact that the chiral molecule-metal interface can introduce spin-dependent scattering, which can lead to differences in the transmission probability of the two spin channels.
+	
+	For example, if the molecule-metal interface has spin-active defects or impurities, such as adatoms or vacancies, then these defects may introduce spin-dependent scattering that can affect the electron transmission through the molecule. The degree of spin-dependence of the scattering will depend on the particular nature of the defects and their interactions with the electronic and spin degrees of freedom in the molecule.
+	
+	This mechanism is distinct from Fransson's model, which is based on the idea that the molecule's internal vibrations induce a chiral bias in the electron transmission through the molecule. While both mechanisms can potentially contribute to the CISS effect, it is currently unclear which one dominates under different experimental conditions and in different molecular systems.
+	\item[Q:] What are specific examples of magnetic defects, which could lead to CISS?
+	\item[A:] Magnetic adatoms: Magnetic impurities or adatoms, such as Fe or Co, can induce local spin polarization in the metal surface, leading to spin-dependent scattering at the molecule-metal interface.
+	
+	Chiral adsorbates: Chiral molecules adsorbed on the metal surface can induce a chiral bias in the electronic structure of the metal, leading to spin-dependent scattering.
+	
+	Surface defects: Surface defects, such as vacancies or adatoms, can introduce spin-dependent scattering at the molecule-metal interface.
+	
+	Hybridization defects: Hybridization defects, such as missing atoms or dangling bonds, can lead to spin-dependent scattering due to differences in the local electronic structure.  
+\end{itemize}
+\end{document}
+
+
+
+
