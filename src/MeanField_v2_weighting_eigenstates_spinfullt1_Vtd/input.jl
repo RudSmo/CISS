@@ -16,7 +16,7 @@ using .CustomStructures
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 2
+num_ions = 50
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
@@ -27,7 +27,7 @@ ws  = 0.01*ones(N)
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = 0.0
+tso = T0/40
 tPh = zeros(2)*1.0 #[-0.02,-0.02]
 tsoPh = 0.0
 #model = HolsteinHopping
@@ -38,7 +38,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.002/T0
-tend = 50/T0
+tend = 300/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -46,8 +46,8 @@ initProp  = true
 # false = use initial density matrix from previous computation
 
 if initProp
-    rhoIn = "pure"
-    #rhoIn = "equilibrium"
+    #rhoIn = "pure"
+    rhoIn = "equilibrium"
     phIn = "TDSCF"
     #phIn = "Wigner"
     pathIn = ""
@@ -66,16 +66,16 @@ xnIn,pnIn = zeros(N),zeros(N)
 
 ## Leads
 P = 0.0
-tl = 0.02
+tl = 0.01
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
 
-V = (0.4,)
-Vtype = "const"
-Vdrop = "sym"
-#V = (80/T0,7.5/T0) # (t0,tau)
-#Vtype = "lorentz" 
-#Vdrop = "left"
+#V = (0.4,)
+#Vtype = "const"
+#Vdrop = "sym"
+V = (80/T0,7.5/T0) # (t0,tau)
+Vtype = "lorentz" 
+Vdrop = "left"
 
 nPoles = 10
 beta = 1/0.025 
@@ -100,7 +100,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L$(N)_test_const"
+path = "L$(N)_test_lorentz"
 if !isdir(path)
 	mkpath(path)
 end
