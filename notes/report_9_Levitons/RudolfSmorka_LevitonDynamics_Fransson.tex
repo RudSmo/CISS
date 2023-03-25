@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+\begin{document}
+\title{Leviton Dynamics in Fransson model}
+\author{Rudolf Smorka}
+\maketitle
+%\tableofcontents
+\section{General overview of Levitons}
+Give a quick overview of Levitons, their theoretical formulation and mention that the papers in which they have been studied experimentally and theoretically.
+\section{Real-space analysis}
+Show space-time plots of Levitons. Investigate influence of $P$, $t_1$, $\lambda_0$, $\lambda_1$ systematically. Start with the simple case of setting everything to zero, so a standard tight-binding model.
+\section{Momentum-space analysis}
+Show here the deviation of the occupation of energy eigenstates at time $t$ from equilibrium. Infer momentum-space processes from this.
+Show that no particle-hole excitations are created in the simple tight-binding model. But in the el-ph model, they are time-dependent PH excitations. Spin-resolved? 
+\end{document}
+
+
+
+
