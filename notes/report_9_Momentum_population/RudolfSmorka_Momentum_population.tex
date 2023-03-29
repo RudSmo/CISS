@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+\begin{document}
+\title{}
+\author{Rudolf Smorka}
+\maketitle
+\section{Aim}
+The aim of this document is to understand the voltage-dependence of the steady-state momentum-space population. 
+
+Milestones:
+\begin{itemize}
+	\item Simulate a simple TB model
+	\begin{itemize}
+		\item Plot the voltage-dependent nonequilibrium momentum-space population (one can use LB for this)
+		\item Investigate the differences from the equilibrium Fermi distribution
+	\end{itemize}
+	\item Simulate a TB model with molecular vibrations within Ehrenfest approximation
+	\begin{itemize}
+		\item Make the same plots as in the first milestone
+	\end{itemize}
+	\item Simulate an effective model having the same DOS as the one for the 	vibrational model with equilibrium vibrations
+	\begin{itemize}
+		\item Show sample-averaged DOS, and compute energy-dependent coupling function
+		\item Feed these quantities (discretized in energy-space) into LB formulas, and compare to Ehrenfest approach
+	\end{itemize}	
+\end{itemize}
+\section{Voltage-dependent nonequilibrium energy-space population}
+We use the HEOM for non-interacting systems to obtain the nonequilibrium population $n_k$ of a energy-eigenstate $k$, when applying a voltage $V$. The model is a 1D TB chain coupled to two leads at its ends.
+\end{document}
+
+
+
+
