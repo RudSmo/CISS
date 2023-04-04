@@ -59,7 +59,7 @@ function Propagate(
 	elseif Vtype == "lorentz"
 		TI = [i*dt for i in 1:numstep]
 		t0,tau = Vs
-		V = 2*tau ./ ((TI .- t0) .^ 2 .+ tau^2)	
+		V = 2*tau ./ (pi * ((TI .- t0) .^ 2 .+ tau^2))	
 	end
 	if Vdrop == "sym"
 		VL = V ./ 2
