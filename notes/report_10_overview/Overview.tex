@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=20mm,
+	top=20mm,
+}
+\begin{document}
+\title{Overview of collected data and outlook}
+\author{Rudolf Smorka}
+\maketitle
+\section{Comparison between TTHEOM and MFHEOM (report from 02.03.23)}
+Done:
+\begin{itemize}
+	\item Two-site spinless Peierls model: 
+	\begin{itemize}
+		\item MFHEOM and TTHEOM currents agree well for $t_1=\SI{4}{\milli\electronvolt}$ and $\omega_0 = \SI{2}{\milli\electronvolt},\SI{50}{\milli\electronvolt}, \SI{100}{\milli\electronvolt}$
+		\item Disagreement for larger $t_1$: MFHEOM does not capture reduction of current with increasing $t_1$
+	\end{itemize}
+	\item Two-site spinfull Peierls and three-site Fransson models:
+	\begin{itemize}
+		\item Not able to obtain numerically converged results for $\omega_0=\SI{50}{\milli\electronvolt}$ and $t_1=\SI{20}{\milli\electronvolt}$ even with $r=140$, deviation of norm from unity is $\sim 0.002$ after $\SI{250}{\femto\second}$
+	\end{itemize}
+\end{itemize}
+To be done:
+\begin{itemize}
+	\item Agreed with Raffaele to use the tAMEn solver, implementation in other programming language (?). Could potentially take weeks/months to have a working code if implemented by myself. 
+\end{itemize}
+\section{Analysis of transport in spinless two-site Peierls and comparison between analytical results and MFHEOM data (report from 10.03.23)}
+Done:
+\begin{itemize}
+	\item Single-particle eigenenergies and eigenstates of the uncoupled and coupled problem
+	\item Potential of mean force, and quantitative comparison between its minimum and vibrational position
+	\item Qualitative explanation of current-voltage characteristics based on vibrational dynamics and how it affects single-particle eigenstates
+\end{itemize}
+To be done:
+\begin{itemize}
+	\item Extend analysis to spinfull two-site model and three-site Fransson model
+	\item Compute I-V for system sizes $2\times 4, 3\times 4,4\times 4,5\times 4$. Spin polarization is expected to be larger for bigger systems. Question is if there is any spin polarization within Ehrenfest approach.
+\end{itemize}
+\section{Analysis of uniqueness of steady-state MFHEOM (report from 25.03.23)}
+Done:
+\begin{itemize}
+	\item For parameters used by Fransson, the steady-state in Fransson and Peierls models do not depend on initial condition
+	\item For $t_1=t_0=\SI{40}{\milli\electronvolt}$ even for two-site spinless molecule, steady-state depends on initial condition, model displays bistability. 
+\end{itemize}
+\end{document}
+
+
+
+
