@@ -34,7 +34,7 @@
 	top=20mm,
 }
 \begin{document}
-\title{}
+\title{Nonequilibrium momentum-space distribution}
 \author{Rudolf Smorka}
 \maketitle
 \section{Aim}
@@ -59,6 +59,17 @@ Milestones:
 \end{itemize}
 \section{Voltage-dependent nonequilibrium energy-space population}
 We use the HEOM for non-interacting systems to obtain the nonequilibrium population $n_k$ of a energy-eigenstate $k$, when applying a voltage $V$. The model is a 1D TB chain coupled to two leads at its ends.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Momentumdist_L50_TB_VVar.pdf}
+\end{figure}
+\section{Effect of vibrations within Ehrenfest}
+\subsection{Full calculation}
+Trajectory-averaged Ehrenfest calculations, show momentum distribution for Peierls model with $t_1 = 0.1t_0$. 
+Check out dynamics of vibrations (away from equilibrium), compute time-dependent DOS with averaged vibrations as input
+\subsection{Equilibrium electronic density of states}
+Plot averaged DOS for same model, phonons distributed according to thermal Wigner.
+Can this DOS fed into LB formula reproduce Ehrenfest results?
 \end{document}
 
 
