@@ -68,7 +68,40 @@ We use the HEOM for non-interacting systems to obtain the nonequilibrium populat
 Trajectory-averaged Ehrenfest calculations, show momentum distribution for Peierls model with $t_1 = 0.1t_0$. 
 Check out dynamics of vibrations (away from equilibrium), compute time-dependent DOS with averaged vibrations as input
 \subsection{Equilibrium electronic density of states}
-Plot averaged DOS for same model, phonons distributed according to thermal Wigner.
+Plots show averaged DOS for system with parameters
+\begin{align*}
+	\varepsilon_0 &= \SI{-240}{\milli\electronvolt}\\
+	\omega_0 &= \SI{2}{\milli\electronvolt}\\
+	t_0 &= \SI{40}{\milli\electronvolt}\\
+	t_1 &= \SI{4}{\milli\electronvolt}\\
+	\lambda_0 &= \SI{1}{\milli\electronvolt}\\
+	\lambda_1 &= \SI{0.1}{\milli\electronvolt}\\
+	\Gamma &= \SI{10}{\milli\electronvolt}\\
+	T &= \SI{25}{\milli\electronvolt}
+\end{align*}
+\subsubsection{$L=2\times 4$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L2x4_Fransson_DOS_avg_1e4.pdf}
+	\caption{Density of states for $P=0.5$ (red line), $P=-0.5$ (blue line), $P=0.0$ (black line) and for $\lambda_1=t_1=\SI{0}{\electronvolt}$ (orange line).}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L2x4_Fransson_diff_DOS_avg_1e4.pdf}
+	\caption{Lead-induced spin polarization in density of states (a) and integrated polarization (b).}
+\end{figure}
+\subsubsection{$L=4\times 4$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L4x4_Fransson_DOS_avg_1e5.pdf}
+	\caption{Density of states for $P=0.5$ (red line), $P=-0.5$ (blue line), $P=0.0$ (black line) and for $\lambda_1=t_1=\SI{0}{\electronvolt}$ (orange line).}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L4x4_Fransson_diff_DOS_avg_1e5.pdf}
+	\caption{Lead-induced spin polarization in density of states (a) and integrated polarization (b).}
+\end{figure}
+
 Can this DOS fed into LB formula reproduce Ehrenfest results?
 \end{document}
 
