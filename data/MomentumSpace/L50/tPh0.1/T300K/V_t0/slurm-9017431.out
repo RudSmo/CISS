@@ -1,0 +1,29 @@
+mkdir: created directory '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852'
+199016.793214 seconds (25.79 G allocations: 394.855 TiB, 47.63% gc time)
+elapsed time (ns): 199016793213606
+gc time (ns):      94793816074982
+bytes allocated:   434147508395612
+pool allocs:       22862249235
+non-pool GC allocs:7513593
+malloc() calls:    2920000583
+realloc() calls:   20
+GC pauses:         9444485
+full collections:  1104923
+data0/
+data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_loc_cur_avg.dat
+data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_momentum_el_avg.dat
+data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_phonons_avg.dat
+data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_electrons_es_avg.dat
+data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_electrons_avg.dat
+data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_currents_avg.dat
+data0/paramfile.txt
+removed '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852/data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_loc_cur_avg.dat'
+removed '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852/data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_momentum_el_avg.dat'
+removed '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852/data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_phonons_avg.dat'
+removed '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852/data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_electrons_es_avg.dat'
+removed '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852/data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_electrons_avg.dat'
+removed '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852/data0/L50_tPhU_-0.004_tPhD_-0.004_SOC0.0_SOCPh0.0_V0.04_dt0.05_currents_avg.dat'
+removed '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852/data0/paramfile.txt'
+removed directory '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852/data0'
+removed '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852/input0.jl'
+removed directory '/tmp/fr_rs1121.9017431/MS50_tPh.9017431.230406_154852'
