@@ -15,7 +15,7 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 2
+num_laps = 1
 num_ions = 3
 N = num_laps * num_ions
 T0  = 0.04
@@ -38,7 +38,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.002/T0
-tend = 200/T0
+tend = 1000/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -48,8 +48,8 @@ initProp  = true
 if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
-    phIn = "TDSCF"
-    #phIn = "Wigner"
+    #phIn = "TDSCF"
+    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -69,7 +69,7 @@ P = 0.0
 tl = 0.004
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-V  = 0.0
+V  = T0
 nPoles = 10
 beta = 1/0.025 
 HamPar = HamiltonianParams( num_laps,
@@ -93,7 +93,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L6"
+path = "L3_testV2"
 if !isdir(path)
 	mkpath(path)
 end

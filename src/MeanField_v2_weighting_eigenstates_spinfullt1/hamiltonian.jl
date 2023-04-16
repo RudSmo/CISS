@@ -21,8 +21,8 @@ function UnitVector(a,c,j,num_laps,N)
 end
 function SOC_A_nn(N,tso,a,c,num_laps)
     Hs = zeros(2*N,2*N)*(1+0.0*1im)
-    k = 1
-    for j in 1:2:2*N-4
+    for k in 1:N-2
+	j = 2*k-1
         rj = UnitVector(a,c,k,num_laps,N)
         rj1 = UnitVector(a,c,k+1,num_laps,N)
         rj2 = UnitVector(a,c,k+2,num_laps,N) 
@@ -40,7 +40,6 @@ function SOC_A_nn(N,tso,a,c,num_laps)
         Hs[j+1,j+4] = Vj[2,1]
         Hs[j,j+5] = Vj[1,2]
         Hs[j+1,j+5] = Vj[2,2]  
-        k += 1
     end
     return Hs+Hs'
 end
@@ -78,13 +77,10 @@ end
 #-------------------------- Electron-Phonon Hamiltonian-------------------------------------
 function Holstein(N,gPh,ws,xs)
     H = zeros(2*N,2*N)
-    k = 1
-    for i in 1:2:2*N
-        H[i,i] = gPh[1] * sqrt(2*ws[k])*xs[k]
+    for k in 1:N
+    	i = 2*k-1    
+	H[i,i] = gPh[1] * sqrt(2*ws[k])*xs[k]
         H[i+1,i+1] = gPh[2] * sqrt(2*ws[k])*xs[k] 
-        if i % 2 == 0
-            k += 1
-        end
     end
     return H
 end
@@ -92,15 +88,12 @@ end
 
 function Peierls_Old(N,tph,ws,xs)
     H = zeros(2*N,2*N)
-    k = 1
-    for i in 1:2:2*N-2
+    for k in 1:N-1
+	i = 2*k-1
         H[i,i+2] = tph[1] * sqrt(2*ws[k])*xs[k] 
 	H[i+1,i+3] = tph[2] * sqrt(2*ws[k])*xs[k] 
         H[i+2,i] = tph[1] * sqrt(2*ws[k])*xs[k]  
 	H[i+3,i+1] = tph[2] * sqrt(2*ws[k])*xs[k]
-        if i % 2 == 0
-            k += 1
-        end
     end
     return H
 end
@@ -125,9 +118,8 @@ end
 
 function Peierls_SOC(N,tsoph,a,c,num_laps,ws,xs)
     Hs = zeros(2*N,2*N)*(1+0.0*1im)
-    k = 1
-    for j in 1:2:2*N-4
-        n = Int((j+1)/2)
+    for k in 1:N-2
+	j = 2*k-1
         rj = UnitVector(a,c,k,num_laps,N)
         rj1 = UnitVector(a,c,k+1,num_laps,N)
         rj2 = UnitVector(a,c,k+2,num_laps,N) 
@@ -138,13 +130,12 @@ function Peierls_SOC(N,tsoph,a,c,num_laps,ws,xs)
         dj2 = rjrj2/absv(rjrj2)
         
         vj = cross(dj1,dj2) 
-        Vj = 1im*tsoph*VDot(vj) * sqrt(2*ws[n]) * xs[n]
+        Vj = 1im*tsoph*VDot(vj) * sqrt(2*ws[k]) * xs[k]
 
         Hs[j,j+4] = Vj[1,1]
         Hs[j+1,j+4] = Vj[2,1]
         Hs[j,j+5] = Vj[1,2]
         Hs[j+1,j+5] = Vj[2,2]  
-        k += 1
     end
     return Hs+Hs'
 end
