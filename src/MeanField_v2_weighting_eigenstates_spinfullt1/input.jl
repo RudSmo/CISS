@@ -20,16 +20,16 @@ num_ions = 3
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
-eu  = 0.0 #-6*T0
-ed  = 0.0 #-6*T0
+eu  = -6*T0
+ed  = -6*T0
 E   = [eu,ed]
-ws  = 0.01*ones(N)
+ws  = 0.002*ones(N)
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
 tPh = [-0.004,-0.004]
-tsoPh = tso
+tsoPh = 0.1*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
@@ -65,11 +65,11 @@ xnIn,pnIn = [(-1)^i*0.1*sin(0.001) for i in 1:N],[0.01*cos(0.001) for i in 1:N]
 
 
 ## Leads
-P = 0.0
+P = -0.5
 tl = 0.004
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-V  = T0
+V  = 48 * 0.2 * T0
 nPoles = 10
 beta = 1/0.025 
 HamPar = HamiltonianParams( num_laps,
@@ -93,13 +93,13 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L3_testV2"
+path = "L1x3_test"
 if !isdir(path)
 	mkpath(path)
 end
 
 
-num_avg = 1
+num_avg = 100
 for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_noEps_dt$(abs(dt))"
@@ -117,7 +117,7 @@ for ka in 1:num_avg
     IOsave.SaveParams(params,parampath,purpose)
 
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,vSampl,popElIn)
-#    Average(ka,dataname1,num_avg)
+    Average(ka,dataname1,num_avg)
 end
 
 end
