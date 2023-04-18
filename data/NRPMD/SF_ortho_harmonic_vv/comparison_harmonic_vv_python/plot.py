@@ -40,14 +40,14 @@ rc("text",usetex=True)
 
 
 dat1 = np.load("Averaged_pops_1000000_harmonic_vv_dt5.npy",allow_pickle=True)[()]
-dat2 = np.load("Averaged_pops_995000_python_dt5.npy",allow_pickle=True)[()]
-dat3 = np.load("Averaged_pops_500000_python_dt5.npy",allow_pickle=True)[()]
-dat4 = np.load("Averaged_pops_100000_spinLSC.npy",allow_pickle=True)[()]
+dat2 = np.load("Averaged_Pops_1000000_harmonic_vv_dt5_initialState_02.npy",allow_pickle=True)[()]
+dat3 = np.load("Averaged_pops_995000_python_dt5.npy",allow_pickle=True)[()]
+dat4 = np.load("Averaged_pops_285000_python_dt5_initialState_02.npy",allow_pickle=True)[()]
 datE = np.genfromtxt("exact-ortho-28.dat")
 
 dat = [dat1,dat2,dat3,dat4]
 
-lab = ["spin-PLDM, harmonic, "+r"$n_\mathrm{traj}=10^6$","spin-PLDM, python, "+"$n_\mathrm{traj}=10^6$", "spin-PLDM, python, "+"$n_\mathrm{traj}=5\cdot 10^5$", "spin-LSC, "+"$n_\mathrm{traj}=10^5$"]
+lab = ["harmonic, "+r"$n_\mathrm{traj}=10^6$","harmonic, "+"$n_\mathrm{traj}=10^6$, -initial\_state 2", "python, "+"$n_\mathrm{traj}=5\cdot 10^5$", "python, "+"$n_\mathrm{traj}=10^5$, -initial\_state 2"]
 
 llab = [r"$S_0 S_0$", r"$T_1 T_1$", r"$S_1 S_0$", r"$S_0 S_1$", r"$CA$", r"$AC$", r"$DE_1$", r"$DE_2$"]
 
@@ -69,20 +69,21 @@ for i,j in enumerate(dat):
 		ax[i].tick_params(labelbottom=False)
 	ax[i].annotate(lab[i],(0.1,0.9),xycoords="axes fraction")
 	for k,col in enumerate(colors):
-		if i == 3:
-			li = str(k)
-		else:
-			li = "0"+str(k)
+		#if i == 3:
+		#	li = str(k)
+		#else:
+		#	li = "0"+str(k)
+		li = "0"+str(k)
 		time_end = j["time"][-1]
 		ax[i].plot(Time(j["time"],"au").get("fs"),np.abs(j[li]),label=llab[k],color=col,linewidth=2)
 		ax[i].set_ylabel(r"Population")
 
 colors=cm.jet(np.arange(0.0,1.0,1/8)-0.05)
-for i,c in zip(range(1,len(datE[0,:])),colors):
-	ax[-1].plot(datE[:,0],datE[:,i],linestyle="--",dashes=(5, 1),color=c)
+#for i,c in zip(range(1,len(datE[0,:])),colors):
+#	ax[-1].plot(datE[:,0],datE[:,i],linestyle="--",dashes=(5, 1),color=c)
 
 
 ax[0].legend(title=r"State",handlelength=1.2,fontsize=12,bbox_to_anchor=(1.13,1.1),labelspacing=0.3)
 ax[-1].set_xlabel(r"Time (fs)")
 
-plt.savefig("SFOrtho_Comparison_spin_PLDM_spinLSC_python_harmonic.pdf")
+plt.savefig("SFOrtho_Comparison_spin_PLDM_python_harmonic.pdf")
