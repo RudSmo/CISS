@@ -15,15 +15,15 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 3
+num_laps = 3
+num_ions = 4
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
-eu  = -6*T0
-ed  = -6*T0
+eu  = 0.0
+ed  = 0.0
 E   = [eu,ed]
-ws  = 0.002*ones(N)
+ws  = 0.01*ones(N)
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
@@ -48,8 +48,8 @@ initProp  = true
 if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
-    #phIn = "TDSCF"
-    phIn = "Wigner"
+    phIn = "TDSCF"
+    #phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -61,15 +61,17 @@ popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
 x0 = 0.0
-xnIn,pnIn = [(-1)^i*0.1*sin(0.001) for i in 1:N],[0.01*cos(0.001) for i in 1:N]
+xnIn,pnIn = zeros(N),zeros(N)
+xnIn[2] = 0.5
+xnIn[9] = -1.0 
 
 
 ## Leads
-P = -0.5
+P = 0.0
 tl = 0.004
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-V  = 48 * 0.2 * T0
+V  = 0.0
 nPoles = 10
 beta = 1/0.025 
 HamPar = HamiltonianParams( num_laps,
@@ -93,13 +95,13 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L1x3_test"
+path = "L$(num_laps)x$(num_ions)_test_eps0"
 if !isdir(path)
 	mkpath(path)
 end
 
 
-num_avg = 100
+num_avg = 1
 for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_noEps_dt$(abs(dt))"
@@ -117,7 +119,7 @@ for ka in 1:num_avg
     IOsave.SaveParams(params,parampath,purpose)
 
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,vSampl,popElIn)
-    Average(ka,dataname1,num_avg)
+#    Average(ka,dataname1,num_avg)
 end
 
 end
