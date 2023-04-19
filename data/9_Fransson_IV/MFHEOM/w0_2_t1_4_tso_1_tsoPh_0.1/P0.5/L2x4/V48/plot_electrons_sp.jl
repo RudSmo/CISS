@@ -35,7 +35,7 @@ cp = plt.cm.inferno
 cmap = plt.cm.ScalarMappable(cmap=cp)
 sp = dat[:,2:2:end] - dat[:,3:2:end]
 vmn = minimum(sp)
-vmx = maximum(sp)-0.05
+vmx = maximum(sp)-0.08
 
 
 im = ax.imshow(sp,aspect="auto",vmin=vmn,vmax=vmx,interpolation="none",extent=[0.5,N+0.5,dat[end,1]*fac_t*1e-3,0],cmap="inferno")

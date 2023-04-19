@@ -17,28 +17,40 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
-  \entry{fransson2020vibrational}{article}{}
-    \name{author}{1}{}{%
-      {{hash=FJ}{%
-         family={Fransson},
+  \entry{fetherolf2020unification}{article}{}
+    \name{author}{3}{}{%
+      {{hash=FJH}{%
+         family={Fetherolf},
          familyi={F\bibinitperiod},
-         given={Jonas},
-         giveni={J\bibinitperiod},
+         given={Jonathan\bibnamedelima H},
+         giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
+      }}%
+      {{hash=GD}{%
+         family={Gole{\v{z}}},
+         familyi={G\bibinitperiod},
+         given={Denis},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=BTC}{%
+         family={Berkelbach},
+         familyi={B\bibinitperiod},
+         given={Timothy\bibnamedelima C},
+         giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod},
       }}%
     }
     \list{publisher}{1}{%
       {APS}%
     }
-    \strng{namehash}{FJ1}
-    \strng{fullhash}{FJ1}
+    \strng{namehash}{FJH+1}
+    \strng{fullhash}{FJHGDBTC1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{number}{23}
-    \field{pages}{235416}
-    \field{title}{Vibrational origin of exchange splitting and chiral-induced
-  spin selectivity}
-    \field{volume}{102}
-    \field{journaltitle}{Physical Review B}
+    \field{number}{2}
+    \field{pages}{021062}
+    \field{title}{A unification of the Holstein polaron and dynamic disorder
+  pictures of charge transport in organic crystals}
+    \field{volume}{10}
+    \field{journaltitle}{Physical Review X}
     \field{year}{2020}
   \endentry
 \enddatalist
