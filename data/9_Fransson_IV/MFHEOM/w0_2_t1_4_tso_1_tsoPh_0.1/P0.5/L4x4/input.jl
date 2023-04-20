@@ -67,7 +67,7 @@ P = 0.5
 tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-Vs = [65]
+Vs = [48]
 
 for v in Vs
 	V  = v * 0.2 * T0
@@ -103,7 +103,7 @@ for v in Vs
 	num_avg = 1
 	for ka in 1:num_avg
 	    if modelStr == "Fransson"
-		dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_noEps_dt$(abs(dt))"
+		dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_noEps_Np$(nPoles)_dt$(abs(dt))"
 	    elseif modelStr == "Holstein"
 		dataname1 = "$(path)/L$(N)_gPhU$(gPh[1])_gPhD$(gPh[2])_V$(V)_w0$(ws[1])_X0_$(x0)_dt$(abs(dt))"
 	    end
