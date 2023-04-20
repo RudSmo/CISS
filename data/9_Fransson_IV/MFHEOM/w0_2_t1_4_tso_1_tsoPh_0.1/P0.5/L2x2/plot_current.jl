@@ -35,7 +35,7 @@ Vs = ["V48","V55","V65"]
 labels = [L"$V=\,0.384\mathrm{V}$",L"$V=\,0.44\mathrm{V}$",L"$V=\,0.52\mathrm{V}$"]
 colors = ["blue","red","black"]
 for (v,lab,col) in zip(Vs,labels,colors)
-        dat = readdlm("$(v)/currents_avg_n41.dat")
+        dat = readdlm("$(v)/currents_avg_n697_comb.dat")
 	curfile = fnfilter(readdir("$(v)/noPh/"),"*currents*")[1]
 	datNo = readdlm("$(v)/noPh/$(curfile)")
         ax.plot(dat[:,1]*fac_t*1e-3,(dat[:,2]-dat[:,3])*fac_c,linewidth=lw,label=lab,color=col)	

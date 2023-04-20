@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  19 APR 2023 15:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  19 APR 2023 19:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -735,40 +735,227 @@ FHEOM_vs_TTHEOM.pdf  used on input line 54.
  [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/
-Fransson_L2_P0_non-unique_steady_state_currents_MFHEOM_vs_TTHEOM.pdf>] [2] [3]
-(./report_11.aux)
+Fransson_L2_P0_non-unique_steady_state_currents_MFHEOM_vs_TTHEOM.pdf>] [2]
+<figs/L1x2_P0.5_VVar_current.pdf, id=50, 722.7pt x 397.485pt>
+File: figs/L1x2_P0.5_VVar_current.pdf Graphic file (type pdf)
+<use figs/L1x2_P0.5_VVar_current.pdf>
+Package pdftex.def Info: figs/L1x2_P0.5_VVar_current.pdf  used on input line 15
+1.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+<figs/L1x2_VVar_magnetocurrent.pdf, id=51, 722.7pt x 397.485pt>
+File: figs/L1x2_VVar_magnetocurrent.pdf Graphic file (type pdf)
+<use figs/L1x2_VVar_magnetocurrent.pdf>
+Package pdftex.def Info: figs/L1x2_VVar_magnetocurrent.pdf  used on input line 
+156.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+ [3
+
+ <./figs/L1x2_P0.5_VVar_current.pdf> <./figs/L1x2_VVar_magnetocurrent.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L1x2_VVar_magnetocurr
+ent.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>]
+<figs/L1x3_P0.5_VVar_current.pdf, id=92, 722.7pt x 397.485pt>
+File: figs/L1x3_P0.5_VVar_current.pdf Graphic file (type pdf)
+<use figs/L1x3_P0.5_VVar_current.pdf>
+Package pdftex.def Info: figs/L1x3_P0.5_VVar_current.pdf  used on input line 16
+7.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+<figs/L1x3_VVar_magnetocurrent.pdf, id=93, 722.7pt x 397.485pt>
+File: figs/L1x3_VVar_magnetocurrent.pdf Graphic file (type pdf)
+<use figs/L1x3_VVar_magnetocurrent.pdf>
+Package pdftex.def Info: figs/L1x3_VVar_magnetocurrent.pdf  used on input line 
+172.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+ [4
+
+ <./figs/L1x3_P0.5_VVar_current.pdf> <./figs/L1x3_VVar_magnetocurrent.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L1x3_VVar_magnetocurr
+ent.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>]
+<figs/L2x2_P0.5_VVar_current.pdf, id=131, 722.7pt x 397.485pt>
+File: figs/L2x2_P0.5_VVar_current.pdf Graphic file (type pdf)
+<use figs/L2x2_P0.5_VVar_current.pdf>
+Package pdftex.def Info: figs/L2x2_P0.5_VVar_current.pdf  used on input line 17
+9.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+<figs/L2x2_VVar_magnetocurrent.pdf, id=132, 722.7pt x 397.485pt>
+File: figs/L2x2_VVar_magnetocurrent.pdf Graphic file (type pdf)
+<use figs/L2x2_VVar_magnetocurrent.pdf>
+Package pdftex.def Info: figs/L2x2_VVar_magnetocurrent.pdf  used on input line 
+184.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+ [5
+
+ <./figs/L2x2_P0.5_VVar_current.pdf> <./figs/L2x2_VVar_magnetocurrent.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L2x2_VVar_magnetocurr
+ent.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>]
+<figs/L2x4_P0.5_VVar_current.pdf, id=171, 722.7pt x 397.485pt>
+File: figs/L2x4_P0.5_VVar_current.pdf Graphic file (type pdf)
+<use figs/L2x4_P0.5_VVar_current.pdf>
+Package pdftex.def Info: figs/L2x4_P0.5_VVar_current.pdf  used on input line 19
+1.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+<figs/L2x4_VVar_magnetocurrent.pdf, id=172, 722.7pt x 397.485pt>
+File: figs/L2x4_VVar_magnetocurrent.pdf Graphic file (type pdf)
+<use figs/L2x4_VVar_magnetocurrent.pdf>
+Package pdftex.def Info: figs/L2x4_VVar_magnetocurrent.pdf  used on input line 
+196.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+ [6
+
+ <./figs/L2x4_P0.5_VVar_current.pdf> <./figs/L2x4_VVar_magnetocurrent.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L2x4_VVar_magnetocurr
+ent.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>]
+<figs/L4x4_P0.5_VVar_current.pdf, id=210, 722.7pt x 397.485pt>
+File: figs/L4x4_P0.5_VVar_current.pdf Graphic file (type pdf)
+<use figs/L4x4_P0.5_VVar_current.pdf>
+Package pdftex.def Info: figs/L4x4_P0.5_VVar_current.pdf  used on input line 20
+3.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+<figs/L4x4_VVar_magnetocurrent.pdf, id=211, 722.7pt x 397.485pt>
+File: figs/L4x4_VVar_magnetocurrent.pdf Graphic file (type pdf)
+<use figs/L4x4_VVar_magnetocurrent.pdf>
+Package pdftex.def Info: figs/L4x4_VVar_magnetocurrent.pdf  used on input line 
+208.
+(pdftex.def)             Requested size: 386.95894pt x 212.82523pt.
+<figs/L4x4_V0.384_P0.5_electrons_sp.pdf, id=212, 650.43pt x 505.89pt>
+File: figs/L4x4_V0.384_P0.5_electrons_sp.pdf Graphic file (type pdf)
+<use figs/L4x4_V0.384_P0.5_electrons_sp.pdf>
+Package pdftex.def Info: figs/L4x4_V0.384_P0.5_electrons_sp.pdf  used on input 
+line 213.
+(pdftex.def)             Requested size: 290.22105pt x 225.73401pt.
+<figs/L4x4_V0.44_P0.5_electrons_sp.pdf, id=213, 650.43pt x 505.89pt>
+File: figs/L4x4_V0.44_P0.5_electrons_sp.pdf Graphic file (type pdf)
+<use figs/L4x4_V0.44_P0.5_electrons_sp.pdf>
+Package pdftex.def Info: figs/L4x4_V0.44_P0.5_electrons_sp.pdf  used on input l
+ine 214.
+(pdftex.def)             Requested size: 290.22105pt x 225.73401pt.
+<figs/L4x4_V0.52_P0.5_electrons_sp.pdf, id=214, 650.43pt x 505.89pt>
+File: figs/L4x4_V0.52_P0.5_electrons_sp.pdf Graphic file (type pdf)
+<use figs/L4x4_V0.52_P0.5_electrons_sp.pdf>
+Package pdftex.def Info: figs/L4x4_V0.52_P0.5_electrons_sp.pdf  used on input l
+ine 215.
+(pdftex.def)             Requested size: 290.22105pt x 225.73401pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/L4x4_V0.384_P0.5_phonons_rspace.pdf, id=215, 650.43pt x 505.89pt>
+File: figs/L4x4_V0.384_P0.5_phonons_rspace.pdf Graphic file (type pdf)
+<use figs/L4x4_V0.384_P0.5_phonons_rspace.pdf>
+Package pdftex.def Info: figs/L4x4_V0.384_P0.5_phonons_rspace.pdf  used on inpu
+t line 220.
+(pdftex.def)             Requested size: 290.22105pt x 225.73401pt.
+<figs/L4x4_V0.44_P0.5_phonons_rspace.pdf, id=216, 650.43pt x 505.89pt>
+File: figs/L4x4_V0.44_P0.5_phonons_rspace.pdf Graphic file (type pdf)
+<use figs/L4x4_V0.44_P0.5_phonons_rspace.pdf>
+Package pdftex.def Info: figs/L4x4_V0.44_P0.5_phonons_rspace.pdf  used on input
+ line 221.
+(pdftex.def)             Requested size: 290.22105pt x 225.73401pt.
+<figs/L4x4_V0.52_P0.5_phonons_rspace.pdf, id=217, 650.43pt x 505.89pt>
+File: figs/L4x4_V0.52_P0.5_phonons_rspace.pdf Graphic file (type pdf)
+<use figs/L4x4_V0.52_P0.5_phonons_rspace.pdf>
+Package pdftex.def Info: figs/L4x4_V0.52_P0.5_phonons_rspace.pdf  used on input
+ line 222.
+(pdftex.def)             Requested size: 290.22105pt x 225.73401pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/sz_i_t30ps_comp_nonInteracting.pdf, id=218, 462.52798pt x 346.89601pt>
+File: figs/sz_i_t30ps_comp_nonInteracting.pdf Graphic file (type pdf)
+<use figs/sz_i_t30ps_comp_nonInteracting.pdf>
+Package pdftex.def Info: figs/sz_i_t30ps_comp_nonInteracting.pdf  used on input
+ line 227.
+(pdftex.def)             Requested size: 362.77263pt x 272.09164pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/n_i_t30ps_comp_nonInteracting.pdf, id=219, 462.52798pt x 346.89601pt>
+File: figs/n_i_t30ps_comp_nonInteracting.pdf Graphic file (type pdf)
+<use figs/n_i_t30ps_comp_nonInteracting.pdf>
+Package pdftex.def Info: figs/n_i_t30ps_comp_nonInteracting.pdf  used on input 
+line 233.
+(pdftex.def)             Requested size: 362.77263pt x 272.09164pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7
+
+ <./figs/L4x4_P0.5_VVar_current.pdf> <./figs/L4x4_VVar_magnetocurrent.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L4x4_VVar_magnetocurr
+ent.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>] [8 <./figs/L4x4_V0.384_P0.5_electrons_sp.pdf> <./figs/L4x4_V0.44_P0.5_electr
+ons_sp.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L4x4_V0.44_P0.5_elect
+rons_sp.pdf): PDF inclusion: multiple pdfs with page group included in a single
+ page
+> <./figs/L4x4_V0.52_P0.5_electrons_sp.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L4x4_V0.52_P0.5_elect
+rons_sp.pdf): PDF inclusion: multiple pdfs with page group included in a single
+ page
+>] [9 <./figs/L4x4_V0.384_P0.5_phonons_rspace.pdf> <./figs/L4x4_V0.44_P0.5_phon
+ons_rspace.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L4x4_V0.44_P0.5_phono
+ns_rspace.pdf): PDF inclusion: multiple pdfs with page group included in a sing
+le page
+> <./figs/L4x4_V0.52_P0.5_phonons_rspace.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L4x4_V0.52_P0.5_phono
+ns_rspace.pdf): PDF inclusion: multiple pdfs with page group included in a sing
+le page
+>] [10 <./figs/sz_i_t30ps_comp_nonInteracting.pdf> <./figs/n_i_t30ps_comp_nonIn
+teracting.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/n_i_t30ps_comp_nonInt
+eracting.pdf): PDF inclusion: multiple pdfs with page group included in a singl
+e page
+>] (./report_11.aux)
 Package logreq Info: Writing requests to 'report_11.run.xml'.
 \openout1 = `report_11.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16274 strings out of 478994
- 318643 string characters out of 5858184
- 835225 words of memory out of 5000000
- 33556 multiletter control sequences out of 15000+600000
- 419706 words of font info for 88 fonts, out of 8000000 for 9000
+ 16197 strings out of 478994
+ 319409 string characters out of 5858184
+ 828104 words of memory out of 5000000
+ 33462 multiletter control sequences out of 15000+600000
+ 419360 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,13n,75p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,13n,75p,1845b,1638s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
-/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></
 usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
 r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
 local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/lo
 cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/loca
-l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/t
-exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
-ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
-/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report_11.pdf (3 pages, 423264 bytes).
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/
+2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf
+-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report_11.pdf (10 pages, 2072052 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 75 compressed objects within 1 object stream
+ 483 PDF objects out of 1000 (max. 8388607)
+ 367 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -42,7 +42,7 @@ vmn = minimum(sp)
 vmx = maximum(sp)
 
 
-im = ax.imshow(sp,aspect="auto",vmin=vmn,vmax=vmx,interpolation="none",extent=[1,N,dat[end,1]*fac_t*1e-3,0],cmap="inferno")
+im = ax.imshow(sp,aspect="auto",vmin=vmn,vmax=vmx,extent=[1,N,dat[end,1]*fac_t*1e-3,0],cmap="inferno")#,interpolation="none")
 ax.set_xlabel(L"site $i$")
 ax.set_ylabel(L"$t \, [\mathrm{ps}]$",labelpad=7)
 cbar = fig.colorbar(im, ax=ax, cax = cax, aspect=90,pad=.001)

@@ -67,7 +67,7 @@ P = 0.5
 tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-Vs = [48,55,65]
+Vs = [65]
 
 for v in Vs
 	V  = v * 0.2 * T0

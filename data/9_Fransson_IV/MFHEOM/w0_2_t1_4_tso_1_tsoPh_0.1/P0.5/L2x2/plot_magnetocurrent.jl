@@ -30,8 +30,8 @@ N = num_laps * num_sites
 Vs = ["V48","V55","V65"]
 labels = [L"$V=\,0.384\mathrm{V}$",L"$V=\,0.44\mathrm{V}$",L"$V=\,0.52\mathrm{V}$"]
 for (v,lab) in zip(Vs,labels)
-        datP = readdlm("$(v)/currents_avg_n41.dat")
-        datM = readdlm("../../P-0.5/L$(num_laps)x$(num_sites)/$(v)/currents_avg_n41.dat")
+        datP = readdlm("$(v)/currents_avg_n697_comb.dat")
+        datM = readdlm("../../P-0.5/L$(num_laps)x$(num_sites)/$(v)/currents_avg_n697_comb.dat")
         curP = datP[:,2]-datP[:,3]
         curM = datM[:,2]-datM[:,3]
         curT = curP + curM
