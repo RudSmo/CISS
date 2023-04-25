@@ -4,16 +4,7 @@ using LinearAlgebra
 using PyCall
 random = pyimport("random")
 using .Hamiltonian
-export InitialPh,PhononPopulation,SampleWigner,SampleWigner_Multi,Wignerweights,SymplecticEulerStep
-
-function InitialPh(popPh,ws,phase)
-    return [sqrt(2*popPh[i]/ws[i])*cos(phase[i]) for i in 1:length(popPh)],
-           [-sqrt(2*popPh[i]*ws[i])*sin(phase[i]) for i in 1:length(popPh)]
-end
-
-function PhononPopulation(qn,pn,ws)
-    return [qn[i]^2*ws[i]/2 + pn[i]^2 for i in 1:length(qn)]
-end
+export SampleWigner_Multi,Wignerweights,SymplecticEulerStep
 
 function Wigner(X,P,beta,w)
     W = zeros(length(P),length(X))
@@ -53,11 +44,10 @@ function SampleWigner(beta,w,version)
 end
 
 function SampleWigner_Multi(beta,w,m)
-    # Assume w[i] = w[1]
     P = Array(-1:0.002:1)
     X = Array(-15:0.02:15) 
-    aj = tanh(0.5*beta*w[1])
-    W = Wigner(X,P,beta,w[1]) 
+    aj = tanh(0.5*beta*w)
+    W = Wigner(X,P,beta,w) 
     Xr = []
     Pr = []
     for i in 1:m
@@ -84,7 +74,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 		ws = HamPar.ws
 		si = 2*i-1  # site index
 		if HamPar.N == 1
-			Pn_c = HamPar.P[i] - dt*HamPar.ws[i]^2 * HamPar.X[i]
+			Pn_c = HamPar.P[i] - dt*HamPar.ws^2 * HamPar.X[i]
 			Xn_c = HamPar.X[i] + dt * Pn_c
 		elseif HamPar.N == 2	
 			rhoEL1 = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]
@@ -97,7 +87,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				t_elmt = alpha
 			end	
 
-			Pn_c = HamPar.P[i] - dt * (sqrt(2*ws[i]) * t_elmt + HamPar.ws[i]^2 * HamPar.X[i])
+			Pn_c = HamPar.P[i] - dt * (t_elmt + HamPar.ws^2 * HamPar.X[i])
 			Xn_c = HamPar.X[i] + dt * Pn_c
 		elseif HamPar.N >= 3
 			if i == 1
@@ -119,7 +109,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tm_up = -HamPar.HoppingPh[1] * rhoELm[1,1]
 				tm_dn = -HamPar.HoppingPh[2] * rhoELm[2,2]
 				t_elmt = tm_up + tm_dn
-				Pn_c = HamPar.P[i] - dt * (sqrt(2*ws[i]) *(t_elmt + so_elmt) + HamPar.ws[i]^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c
 			elseif i == 2 && HamPar.N > 3
 				# forward soc-ph
@@ -151,7 +141,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
 				t_elmt += tp_up + tp_dn
 
-				Pn_c = HamPar.P[i] - dt * (sqrt(2*ws[i]) * (t_elmt + so_elmt) + HamPar.ws[i]^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c	
 			elseif i > 2 && i <= HamPar.N-2
 				# forward soc-ph
@@ -198,7 +188,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
 				t_elmt += tp_up + tp_dn	
 				
-				Pn_c = HamPar.P[i] - dt * (sqrt(2*ws[i]) * (t_elmt + so_elmt) + HamPar.ws[i]^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c
 					
 			elseif i == HamPar.N-1
@@ -236,7 +226,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
 				t_elmt += tp_up + tp_dn
 
-				Pn_c = HamPar.P[i] - dt * (sqrt(2*ws[i]) * (t_elmt + so_elmt) + HamPar.ws[i]^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c
 				
 			elseif i == HamPar.N
@@ -262,7 +252,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
 				t_elmt = tp_up + tp_dn
 
-				Pn_c = HamPar.P[i] - dt * (sqrt(2*ws[i]) * (t_elmt + so_elmt) + HamPar.ws[i]^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c
 			end
 		end		

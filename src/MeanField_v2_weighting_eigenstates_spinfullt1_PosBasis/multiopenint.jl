@@ -43,7 +43,6 @@ function Propagate(
 		#A      	= [SampleWigner(beta,HamPar.ws[i],vSampl) for i in 1:HamPar.N]
 		#X0 		= [A[i][1] for i in 1:HamPar.N]
 		#P0 		= [A[i][2] for i in 1:HamPar.N]
-
 		X0,P0   	= SampleWigner_Multi(beta,HamPar.ws,HamPar.N)
 		
 	elseif phIn == "fromFile"

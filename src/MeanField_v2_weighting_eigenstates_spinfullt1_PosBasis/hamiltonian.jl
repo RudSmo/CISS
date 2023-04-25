@@ -1,7 +1,7 @@
 module Hamiltonian
 using LinearAlgebra
 
-export VDot,absv,UnitVector,FranssonHamiltonian,FranssonHamiltonian_H0,FranssonHamiltonian_HI,FranssonHamiltonianNH,HolsteinHopping,SpinHopping
+export VDot,absv,UnitVector,EPeierlsHamiltonian
 
 
 function VDot(a)
@@ -75,45 +75,17 @@ end
 
 
 #-------------------------- Electron-Phonon Hamiltonian-------------------------------------
-function Holstein(N,gPh,ws,xs)
-    H = zeros(2*N,2*N)
-    for k in 1:N
-    	i = 2*k-1    
-	H[i,i] = gPh[1] * sqrt(2*ws[k])*xs[k]
-        H[i+1,i+1] = gPh[2] * sqrt(2*ws[k])*xs[k] 
-    end
-    return H
-end
-
-
-function Peierls_Old(N,tph,ws,xs)
+function Peierls(N,tph,ws,xs)
     H = zeros(2*N,2*N)
     for k in 1:N-1
 	i = 2*k-1
-        H[i,i+2] = tph[1] *sqrt(2*ws[k])* (xs[k+1]-xs[k]) 
-	H[i+1,i+3] = tph[2] *sqrt(2*ws[k])* (xs[k+1]-xs[k]) 
-        H[i+2,i] = tph[1] *sqrt(2*ws[k])* (xs[k+1]-xs[k])  
-	H[i+3,i+1] = tph[2] *sqrt(2*ws[k])* (xs[k+1]-xs[k])
+        H[i,i+2] = tph[1]* (xs[k+1]-xs[k]) 
+	H[i+1,i+3] = tph[2] *(xs[k+1]-xs[k]) 
+        H[i+2,i] = tph[1] *(xs[k+1]-xs[k])  
+	H[i+3,i+1] = tph[2] *(xs[k+1]-xs[k])
     end
     return H
 end
-
-
-function Peierls(N,tph,ws,xs)
-    H = zeros(2*N,2*N)
-    k = 1
-    for i in 1:2*N-2
-        H[i,i+2] = tph * sqrt(2*ws[k])*xs[k]  
-        H[i+2,i] = tph * sqrt(2*ws[k])*xs[k]  
-        if i % 2 == 0
-            k += 1
-        end
-    end
-    H[2*N,2*N-2] = tph * sqrt(2*ws[N])*xs[N]
-    H[2*N-2,2*N] = tph * sqrt(2*ws[N])*xs[N]
-    return H
-end
-
 
 
 function Peierls_SOC(N,tsoph,a,c,num_laps,ws,xs)
@@ -130,7 +102,7 @@ function Peierls_SOC(N,tsoph,a,c,num_laps,ws,xs)
         dj2 = rjrj2/absv(rjrj2)
         
         vj = cross(dj1,dj2) 
-        Vj = 1im*tsoph*VDot(vj) *sqrt(2*ws[k])* (xs[k+1]-xs[k])
+        Vj = 1im*tsoph*VDot(vj) * (xs[k+1]-xs[k])
 
         Hs[j,j+4] = Vj[1,1]
         Hs[j+1,j+4] = Vj[2,1]
@@ -142,53 +114,13 @@ end
 
 
 
-function FranssonHamiltonian(HamPar)
+function EPeierlsHamiltonian(HamPar)
 	Ho = Onsite_A(HamPar.N,HamPar.OnsiteEnergies)
 	Hh = Hopping_A_nn(HamPar.N,HamPar.Hopping)
 	HSo = SOC_A_nn(HamPar.N,HamPar.SOC,HamPar.a_hel,HamPar.c_hel,HamPar.num_laps)
-	#if ver == "0"
-    	Heph = Peierls_Old(HamPar.N,HamPar.HoppingPh,HamPar.ws,HamPar.X)
-    	#Heph = Peierls(HamPar.N,HamPar.HoppingPh,HamPar.ws,HamPar.X)
-	#else
-	#	Heph = Peierls(N,tph,ws,xs)
-	#end
+    	Heph = Peierls(HamPar.N,HamPar.HoppingPh,HamPar.ws,HamPar.X)
     	Hsoph = Peierls_SOC(HamPar.N,HamPar.SOCPh,HamPar.a_hel,HamPar.c_hel,HamPar.num_laps,HamPar.ws,HamPar.X)
 	return Ho+Hh+HSo+Heph+Hsoph
-end
-function FranssonHamiltonian_H0(HamPar)
-        Ho = Onsite_A(HamPar.N,HamPar.OnsiteEnergies)
-        Hh = Hopping_A_nn(HamPar.N,HamPar.Hopping)
-        HSo = SOC_A_nn(HamPar.N,HamPar.SOC,HamPar.a_hel,HamPar.c_hel,HamPar.num_laps)
-        return Ho+Hh+HSo
-end
-
-function FranssonHamiltonian_HI(HamPar)
-    	Heph = Peierls_Old(HamPar.N,HamPar.HoppingPh,HamPar.ws,HamPar.X)
-    	Hsoph = Peierls_SOC(HamPar.N,HamPar.SOCPh,HamPar.a_hel,HamPar.c_hel,HamPar.num_laps,HamPar.ws,HamPar.X)
-        return Heph+Hsoph
-end
-
-function FranssonHamiltonianNH(HamPar)
-    HF = FranssonHamiltonian(HamPar)
-    HF[1,1] -= 1im/2* HamPar.GL[1]
-    HF[2,2] -= 1im/2* HamPar.GL[2]
-    HF[end-1,end-1] -= 1im/2* HamPar.GR[1]
-    HF[end,end] -= 1im/2 * HamPar.GR[2]
-    return HF
-end
-
-function HolsteinHopping(HamPar)
-    Ho = Onsite_A(HamPar.N,HamPar.OnsiteEnergies)
-    Hh = Hopping_A_nn(HamPar.N,HamPar.Hopping)
-    Hph = Holstein(HamPar.N,HamPar.gPh,HamPar.ws,HamPar.X)
-    Htph = Peierls_Old(HamPar.N,HamPar.HoppingPh,HamPar.ws,HamPar.X)
-    return Ho .+ Hh .+ Hph .+ Htph
-end
-
-function SpinHopping(HamPar,t0)
-	Ho = Onsite_A(HamPar.N,HamPar.OnsiteEnergies)
-	Hh = Hopping_A_nn_spin(HamPar.N,t0)
-	return Ho .+ Hh	
 end
 
 end

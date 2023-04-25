@@ -14,8 +14,9 @@ mutable struct HamiltonianParams
     HoppingPh   :: Array
     SOC         :: Float64
     SOCPh       :: Float64
-    gPh         :: Array
-    ws          :: Array
+    Kph         :: Float64
+    Mph		:: Float64
+    ws		:: Float64
     X           :: Array
     P           :: Array
     GL          :: Array
