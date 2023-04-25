@@ -90,10 +90,10 @@ function Peierls_Old(N,tph,ws,xs)
     H = zeros(2*N,2*N)
     for k in 1:N-1
 	i = 2*k-1
-        H[i,i+2] = tph[1] * (xs[k+1]-xs[k]) 
-	H[i+1,i+3] = tph[2] * (xs[k+1]-xs[k]) 
-        H[i+2,i] = tph[1] * (xs[k+1]-xs[k])  
-	H[i+3,i+1] = tph[2] * (xs[k+1]-xs[k])
+        H[i,i+2] = tph[1] *sqrt(2*ws[k])* (xs[k+1]-xs[k]) 
+	H[i+1,i+3] = tph[2] *sqrt(2*ws[k])* (xs[k+1]-xs[k]) 
+        H[i+2,i] = tph[1] *sqrt(2*ws[k])* (xs[k+1]-xs[k])  
+	H[i+3,i+1] = tph[2] *sqrt(2*ws[k])* (xs[k+1]-xs[k])
     end
     return H
 end
@@ -130,7 +130,7 @@ function Peierls_SOC(N,tsoph,a,c,num_laps,ws,xs)
         dj2 = rjrj2/absv(rjrj2)
         
         vj = cross(dj1,dj2) 
-        Vj = 1im*tsoph*VDot(vj) * (xs[k+1]-xs[k])
+        Vj = 1im*tsoph*VDot(vj) *sqrt(2*ws[k])* (xs[k+1]-xs[k])
 
         Hs[j,j+4] = Vj[1,1]
         Hs[j+1,j+4] = Vj[2,1]

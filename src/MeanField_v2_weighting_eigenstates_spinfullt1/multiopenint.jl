@@ -131,6 +131,11 @@ function Propagate(
 			fil["P"] = Pin
 			close(fil)	 
 		end
+#		EEl = tr(hcen_i) 
+#		EPh = 0.5*HamPar.ws[1]^2*HamPar.X[1]^2 + 0.5*HamPar.P[1]^2 # #sum([0.5*HamPar.ws[i]^2*HamPar.X[i]^2 + HamPar.P[i]^2 for i in 1:length(HamPar.X)])
+#		println(EEl)
+#		println(EPh)
+#		println("")
 	#	if i == numstep
 	#		println(rho_c[1,3]+rho_c[3,1])
 	#	end

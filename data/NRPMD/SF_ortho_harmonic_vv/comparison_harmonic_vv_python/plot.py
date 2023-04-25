@@ -73,9 +73,9 @@ for i,j in enumerate(dat):
 		#	li = str(k)
 		#else:
 		#	li = "0"+str(k)
-		li = "0"+str(k)
+		li = "2"+str(k)
 		time_end = j["time"][-1]
-		ax[i].plot(Time(j["time"],"au").get("fs"),np.abs(j[li]),label=llab[k],color=col,linewidth=2)
+		ax[i].plot(Time(j["time"],"au").get("fs"),np.real(j[li]),label=llab[k],color=col,linewidth=2)
 		ax[i].set_ylabel(r"Population")
 
 colors=cm.jet(np.arange(0.0,1.0,1/8)-0.05)
@@ -86,4 +86,4 @@ colors=cm.jet(np.arange(0.0,1.0,1/8)-0.05)
 ax[0].legend(title=r"State",handlelength=1.2,fontsize=12,bbox_to_anchor=(1.13,1.1),labelspacing=0.3)
 ax[-1].set_xlabel(r"Time (fs)")
 
-plt.savefig("SFOrtho_Comparison_spin_PLDM_python_harmonic.pdf")
+plt.savefig("SFOrtho_Comparison_spin_PLDM_python_harmonic_is2.pdf")

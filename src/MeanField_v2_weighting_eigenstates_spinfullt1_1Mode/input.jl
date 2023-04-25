@@ -15,8 +15,8 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 2
-num_ions = 4
+num_laps = 1
+num_ions = 3
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
@@ -28,8 +28,8 @@ gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
-tPh = [-0.1*T0,-0.1*T0]
-tsoPh = 0.1*tso
+tPh = zeros(2)
+tsoPh = 0.0
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
@@ -64,8 +64,8 @@ xnIn,pnIn = 3.92, -0.042
 
 
 ## Leads
-P = -0.5
-tl = 0.004
+P = 0.0
+tl = 0.0
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
 V  = 0.2 * T0 * 48

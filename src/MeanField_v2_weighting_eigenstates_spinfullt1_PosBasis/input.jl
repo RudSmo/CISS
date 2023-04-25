@@ -15,7 +15,7 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 2
+num_laps = 1
 num_ions = 3
 N = num_laps * num_ions
 T0  = 0.04
@@ -27,8 +27,8 @@ ws  = 0.002*ones(N)
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = T0/40
-tPh = [0.1*T0,0.1*T0]
+tso = 0.001
+tPh = [0.004,0.004]
 tsoPh = 0.1*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
@@ -38,7 +38,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.002/T0
-tend = 1000/T0
+tend = 800/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -46,10 +46,10 @@ initProp  = true
 # false = use initial density matrix from previous computation
 
 if initProp
-    #rhoIn = "pure"
-    rhoIn = "equilibrium"
-    phIn = "TDSCF"
-    #phIn = "Wigner"
+    rhoIn = "pure"
+    #rhoIn = "equilibrium"
+    #phIn = "TDSCF"
+    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -64,7 +64,7 @@ xnIn,pnIn = [3.06, 12.98, 0.86, -14.62, -13.78, -1.42, -2.24, 5.88],[0.368, 0.23
 
 
 ## Leads
-P = 0.0
+P = -0.5
 tl = 0.004
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)

@@ -120,6 +120,13 @@ function Propagate(
 		HamPar.P = Pn
 		hcen_i  = HamPar.Hamiltonian(HamPar)	
 		pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,loc_cur_l = SaveOutput(cur1_c,cur2_c,pop_l,pop_es_l,rho_i,hcen_i,Xn,Pn,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,X_l,P_l,mom_el,path)
+	
+#		EEl = tr(hcen_i)
+#                EPh = 0.5*HamPar.ws^2*HamPar.X^2 + 0.5*HamPar.P^2 # #sum([0.5*HamPar.ws[i]^2*HamPar.X[i]^2 + HamPar.P[i]^2 for i in 1:length(HamPar.X)])
+#                println(EEl)
+#                println(EPh)
+#                println("")
+		
 		if i == numstep 
 			fil = h5open("$(path)_final_Quantities","w")
 			fil["Rho"] = rho_i
