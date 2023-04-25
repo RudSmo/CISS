@@ -15,7 +15,7 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 1
+num_laps = 2
 num_ions = 3
 N = num_laps * num_ions
 T0  = 0.04
