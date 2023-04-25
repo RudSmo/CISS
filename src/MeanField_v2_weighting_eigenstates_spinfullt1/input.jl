@@ -20,15 +20,15 @@ num_ions = 4
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
-eu  = 0.0
-ed  = 0.0
+eu  = -0.24
+ed  = -0.24
 E   = [eu,ed]
-ws  = 0.01*ones(N)
+ws  = 0.002*ones(N)
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
-tPh = [-0.004,-0.004]
+tPh = [-0.1*T0,-0.1*T0]
 tsoPh = 0.1*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
@@ -49,7 +49,7 @@ if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
     phIn = "TDSCF"
-    #phIn = "Wigner"
+    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -60,10 +60,7 @@ popElIn = zeros(2*N)
 popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-x0 = 0.0
 xnIn,pnIn = zeros(N),zeros(N)
-xnIn[2] = 0.5
-xnIn[9] = -1.0 
 
 
 ## Leads
@@ -71,7 +68,7 @@ P = 0.0
 tl = 0.004
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-V  = 0.0
+V  = 0.2 * T0 * 65
 nPoles = 10
 beta = 1/0.025 
 HamPar = HamiltonianParams( num_laps,
@@ -95,7 +92,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L$(num_laps)x$(num_ions)_test_eps0"
+path = "L$(num_laps)x$(num_ions)_spinSoliton"
 if !isdir(path)
 	mkpath(path)
 end

@@ -234,6 +234,11 @@ Remark:
 	\caption{Comparison of local electron density $n_i$ (trajectory-averaged) at $t=\SI{30}{\pico\second}$ between Ehrenfest approach and with $t_1=\lambda_1 = 0$.}
 \end{figure}
 
+\begin{align*}
+	H &= \sum_{j} (c_j^\dagger c_{j+1} + \mathrm{h.c.})(-t_0 -t_1\sqrt{2\omega_0}X) + \sum_{j} (c_j^\dagger c_{j+2} + \mathrm{h.c.})(\lambda_0 +\lambda_1\sqrt{2\omega_0}X)\\
+	\dot{X} &= P\\
+	\dot{P} &= -\frac{\partial H}{\partial X} =\sum_j t_1\sqrt{2\omega}\tr{\rho_{jj+1}+\mathrm{h.c.}} - \lambda_1 \sqrt{2\omega}\tr{\rho_{jj+2}+\mathrm{h.c.}}
+\end{align*}
 
 %\printbibliography
 \end{document}
