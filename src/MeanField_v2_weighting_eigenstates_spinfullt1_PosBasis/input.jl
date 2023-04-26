@@ -15,8 +15,8 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 2
+num_laps = 2
+num_ions = 4
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
@@ -46,7 +46,7 @@ initProp  = true
 if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
-    #phIn = "TDSCF"
+ #   phIn = "TDSCF"
     phIn = "Wigner"
     pathIn = ""
 else
@@ -58,7 +58,8 @@ popElIn = zeros(2*N)
 popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-xnIn,pnIn = [3.06, 12.98, 0.86, -14.62, -13.78, -1.42, -2.24, 5.88],[0.368, 0.238, -0.134, -0.154, -0.054, -0.118, 0.096, 0.118]
+xnIn,pnIn = [3.06, 12.98, 0.86], [0.368, 0.238, -0.134]
+#[3.06, 12.98, 0.86, -14.62, -13.78, -1.42, -2.24, 5.88],[0.368, 0.238, -0.134, -0.154, -0.054, -0.118, 0.096, 0.118]
 
 
 ## Leads

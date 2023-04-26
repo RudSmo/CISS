@@ -92,174 +92,201 @@ function SymplecticEulerStep(HamPar,rho,dt)
 		elseif HamPar.N >= 3
 			if i == 1
 				# forward soc-ph	
-				rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
-				rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+1,HamPar.num_laps,HamPar.N)
-				rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+2,HamPar.num_laps,HamPar.N)
-				rjrj1 = rj-rj1
-				rjrj2 = rj-rj2
-				dj1 = rjrj1/absv(rjrj1)
-				dj2 = rjrj2/absv(rjrj2)
-				vj = cross(dj1,dj2)
-				coupl = 1im * HamPar.SOCPh
-				rhoELS = rho[si:si+1,si+4:si+5] + rho[si+4:si+5,si:si+1]
-				so_elmt = -coupl*tr(rhoELS  * sigma)
+				#rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
+				#rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+1,HamPar.num_laps,HamPar.N)
+				#rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+2,HamPar.num_laps,HamPar.N)
+				#rjrj1 = rj-rj1
+				#rjrj2 = rj-rj2
+				#dj1 = rjrj1/absv(rjrj1)
+				#dj2 = rjrj2/absv(rjrj2)
+				#vj = cross(dj1,dj2)
+				#coupl = 1im * HamPar.SOCPh
+				#rhoELS = rho[si:si+1,si+4:si+5] + rho[si+4:si+5,si:si+1]
+				#so_elmt = -coupl*tr(rhoELS  * sigma)
+
+				#tm_up = HamPar.HoppingPh[1] * rho_p[1,1]
+				#tm_dn = HamPar.HoppingPh[2] * rho_p[2,2]
+				#t_elmt = tm_up + tm_dn
 				
 				# forward tPh
-				rhoELm = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]
-				tm_up = -HamPar.HoppingPh[1] * rhoELm[1,1]
-				tm_dn = -HamPar.HoppingPh[2] * rhoELm[2,2]
-				t_elmt = tm_up + tm_dn
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
-				Xn_c = HamPar.X[i] + dt * Pn_c
-			elseif i == 2 && HamPar.N > 3
-				# forward soc-ph
-				rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
-				rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+1,HamPar.num_laps,HamPar.N)
-				rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+2,HamPar.num_laps,HamPar.N)
-				rjrj1 = rj-rj1
-				rjrj2 = rj-rj2
+				rho_n = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]
 
-				dj1 = rjrj1/absv(rjrj1)
-				dj2 = rjrj2/absv(rjrj2)
-
-				vj = cross(dj1,dj2)
-				coupl_m = 1im * HamPar.SOCPh
-				rhoELS_m = rho[si:si+1,si+4:si+5] + rho[si+4:si+5,si:si+1]
-				so_elmt = -coupl_m*tr(rhoELS_m  * sigma)
-
-				# forward tPh
-
-				rhoELm = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]  #(i+1) - (i)
-				tm_up = -HamPar.HoppingPh[1] * rhoELm[1,1]
-				tm_dn = -HamPar.HoppingPh[2] * rhoELm[2,2]
-				t_elmt = tm_up + tm_dn
-
-				# backward tPh
-
-				rhoELp = rho[si:si+1,si-2:si-1] + rho[si-2:si-1,si:si+1] #(i) - (i-1)
-				tp_up  = HamPar.HoppingPh[1] * rhoELp[1,1]
-				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
-				t_elmt += tp_up + tp_dn
-
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
-				Xn_c = HamPar.X[i] + dt * Pn_c	
-			elseif i > 2 && i <= HamPar.N-2
-				# forward soc-ph
-				rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
-				rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+1,HamPar.num_laps,HamPar.N)
-				rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+2,HamPar.num_laps,HamPar.N)
-				rjrj1 = rj-rj1
-				rjrj2 = rj-rj2
-
-				dj1 = rjrj1/absv(rjrj1)
-				dj2 = rjrj2/absv(rjrj2)
-
-				vj = cross(dj1,dj2)
-				coupl_m = 1im * HamPar.SOCPh
-				rhoELS_m = rho[si:si+1,si+4:si+5] + rho[si+4:si+5,si:si+1]
-				so_elmt = -coupl_m*tr(rhoELS_m  * sigma)
-				
-				# backward soc-ph
-				rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i-2,HamPar.num_laps,HamPar.N)
-				rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i-1,HamPar.num_laps,HamPar.N)
-				rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
-				rjrj1 = rj-rj1
-				rjrj2 = rj-rj2
-
-				dj1 = rjrj1/absv(rjrj1)
-				dj2 = rjrj2/absv(rjrj2)
-
-				vj = cross(dj1,dj2)
-				coupl_p = 1im * HamPar.SOCPh
-				rhoELS_p = rho[si:si+1,si-4:si-3] + rho[si-4:si-3,si:si+1]
-				so_elmt += coupl_p*tr(rhoELS_p  * sigma)
-				
-				# forward tPh
-
-				rhoELm = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]  #(i+1) - (i)
-				tm_up = -HamPar.HoppingPh[1] * rhoELm[1,1]
-				tm_dn = -HamPar.HoppingPh[2] * rhoELm[2,2]
-				t_elmt = tm_up + tm_dn
-				
-				# backward tPh
-
-				rhoELp = rho[si:si+1,si-2:si-1] + rho[si-2:si-1,si:si+1] #(i) - (i-1)
-				tp_up  = HamPar.HoppingPh[1] * rhoELp[1,1]
-				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
-				t_elmt += tp_up + tp_dn	
-				
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
-				Xn_c = HamPar.X[i] + dt * Pn_c
+				F_p  = -HamPar.Kph * (2*HamPar.X[i] - HamPar.X[i+1])  + 2*(HamPar.HoppingPh[1] * rho_n[1,1]  + HamPar.HoppingPh[2] * rho_n[2,2])
 					
-			elseif i == HamPar.N-1
-
-				if HamPar.N > 3
-					# backward
-					rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i-2,HamPar.num_laps,HamPar.N)
-					rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i-1,HamPar.num_laps,HamPar.N)
-					rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
-					rjrj1 = rj-rj1
-					rjrj2 = rj-rj2
-
-					dj1 = rjrj1/absv(rjrj1)
-					dj2 = rjrj2/absv(rjrj2)
-
-					vj = cross(dj1,dj2)
-					coupl_p = 1im * HamPar.SOCPh
-					rhoELS_p = rho[si:si+1,si-4:si-3] + rho[si-4:si-3,si:si+1]
-					so_elmt = coupl_p*tr(rhoELS_p  * sigma)
-				else
-					so_elmt = 0.0
-				end
-				
-				# forward tPh
-
-				rhoELm = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]  #(i+1) - (i)
-				tm_up  = -HamPar.HoppingPh[1] * rhoELm[1,1]
-				tm_dn  = -HamPar.HoppingPh[2] * rhoELm[2,2]
-				t_elmt = tm_up + tm_dn
-
-				# backward tPh
-
-				rhoELp = rho[si:si+1,si-2:si-1] + rho[si-2:si-1,si:si+1] #(i) - (i-1)
-				tp_up  = HamPar.HoppingPh[1] * rhoELp[1,1]
-				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
-				t_elmt += tp_up + tp_dn
-
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
+				Pn_c = HamPar.P[i] + F_p * dt/HamPar.Mph
 				Xn_c = HamPar.X[i] + dt * Pn_c
-				
 			elseif i == HamPar.N
-				# backward SOC-ph
-				rj  = UnitVector(HamPar.a_hel,HamPar.c_hel,i-2,HamPar.num_laps,HamPar.N)
-				rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i-1,HamPar.num_laps,HamPar.N)
-				rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
-				rjrj1 = rj-rj1
-				rjrj2 = rj-rj2
-
-				dj1 = rjrj1/absv(rjrj1)
-				dj2 = rjrj2/absv(rjrj2)
-
-				vj = cross(dj1,dj2)
-				coupl_p = 1im * HamPar.SOCPh
-				rhoELS_p = rho[si:si+1,si-4:si-3] + rho[si-4:si-3,si:si+1]
-				so_elmt = coupl_p*tr(rhoELS_p  * sigma)
-
 				# backward tPh
-
-				rhoELp = rho[si:si+1,si-2:si-1] + rho[si-2:si-1,si:si+1] #(i) - (i-1)
-				tp_up  = HamPar.HoppingPh[1] * rhoELp[1,1]
-				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
-				t_elmt = tp_up + tp_dn
-
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
+                                rho_p = rho[si-2:si-1,si:si+1] + rho[si:si+1,si-2:si-1]
+				F_p  = -HamPar.Kph * (2*HamPar.X[i] - HamPar.X[i-1])  - 2*(HamPar.HoppingPh[1] * rho_p[1,1]  + HamPar.HoppingPh[2] * rho_p[2,2])
+				Pn_c = HamPar.P[i] + F_p * dt/HamPar.Mph 
+                                Xn_c = HamPar.X[i] + dt * Pn_c
+			else
+				# backward tPh
+                                rho_p = rho[si-2:si-1,si:si+1] + rho[si:si+1,si-2:si-1]
+				# forward
+				rho_n = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]
+				
+				F_p  = -HamPar.Kph * (2*HamPar.X[i] - HamPar.X[i-1] - HamPar.X[i+1])  + 2*(HamPar.HoppingPh[1] * (rho_n[1,1]-rho_p[1,1])  + HamPar.HoppingPh[2] * (rho_n[2,2]-rho_p[2,2]))
+				Pn_c = HamPar.P[i] + F_p * dt/HamPar.Mph
 				Xn_c = HamPar.X[i] + dt * Pn_c
 			end
-		end		
+		end
 		push!(Pn,real(Pn_c))
-		push!(Xn,real(Xn_c))
-	end 
-	return Xn,Pn
+                push!(Xn,real(Xn_c))
+        end
+        return Xn,Pn
 end
+
+#			elseif i == 2 && HamPar.N > 3
+#				# forward soc-ph
+#				rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
+#				rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+1,HamPar.num_laps,HamPar.N)
+#				rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+2,HamPar.num_laps,HamPar.N)
+#				rjrj1 = rj-rj1
+#				rjrj2 = rj-rj2
+#
+#				dj1 = rjrj1/absv(rjrj1)
+#				dj2 = rjrj2/absv(rjrj2)
+#
+#				vj = cross(dj1,dj2)
+#				coupl_m = 1im * HamPar.SOCPh
+#				rhoELS_m = rho[si:si+1,si+4:si+5] + rho[si+4:si+5,si:si+1]
+#				so_elmt = -coupl_m*tr(rhoELS_m  * sigma)
+#
+#				# forward tPh
+#
+#				rhoELm = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]  #(i+1) - (i)
+#				tm_up = -HamPar.HoppingPh[1] * rhoELm[1,1]
+#				tm_dn = -HamPar.HoppingPh[2] * rhoELm[2,2]
+#				t_elmt = tm_up + tm_dn
+#
+#				# backward tPh
+#
+#				rhoELp = rho[si:si+1,si-2:si-1] + rho[si-2:si-1,si:si+1] #(i) - (i-1)
+#				tp_up  = HamPar.HoppingPh[1] * rhoELp[1,1]
+#				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
+#				t_elmt += tp_up + tp_dn
+#
+#				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
+#				Xn_c = HamPar.X[i] + dt * Pn_c	
+#			elseif i > 2 && i <= HamPar.N-2
+#				# forward soc-ph
+#				rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
+#				rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+1,HamPar.num_laps,HamPar.N)
+#				rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i+2,HamPar.num_laps,HamPar.N)
+#				rjrj1 = rj-rj1
+#				rjrj2 = rj-rj2
+#
+#				dj1 = rjrj1/absv(rjrj1)
+#				dj2 = rjrj2/absv(rjrj2)
+#
+#				vj = cross(dj1,dj2)
+#				coupl_m = 1im * HamPar.SOCPh
+#				rhoELS_m = rho[si:si+1,si+4:si+5] + rho[si+4:si+5,si:si+1]
+#				so_elmt = -coupl_m*tr(rhoELS_m  * sigma)
+#				
+#				# backward soc-ph
+#				rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i-2,HamPar.num_laps,HamPar.N)
+#				rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i-1,HamPar.num_laps,HamPar.N)
+#				rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
+#				rjrj1 = rj-rj1
+#				rjrj2 = rj-rj2
+#
+#				dj1 = rjrj1/absv(rjrj1)
+#				dj2 = rjrj2/absv(rjrj2)
+#
+#				vj = cross(dj1,dj2)
+#				coupl_p = 1im * HamPar.SOCPh
+#				rhoELS_p = rho[si:si+1,si-4:si-3] + rho[si-4:si-3,si:si+1]
+#				so_elmt += coupl_p*tr(rhoELS_p  * sigma)
+#				
+#				# forward tPh
+#
+#				rhoELm = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]  #(i+1) - (i)
+#				tm_up = -HamPar.HoppingPh[1] * rhoELm[1,1]
+#				tm_dn = -HamPar.HoppingPh[2] * rhoELm[2,2]
+#				t_elmt = tm_up + tm_dn
+#				
+#				# backward tPh
+#
+#				rhoELp = rho[si:si+1,si-2:si-1] + rho[si-2:si-1,si:si+1] #(i) - (i-1)
+#				tp_up  = HamPar.HoppingPh[1] * rhoELp[1,1]
+#				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
+#				t_elmt += tp_up + tp_dn	
+#				
+#				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
+#				Xn_c = HamPar.X[i] + dt * Pn_c
+#					
+#			elseif i == HamPar.N-1
+#
+#				if HamPar.N > 3
+#					# backward
+#					rj = UnitVector(HamPar.a_hel,HamPar.c_hel,i-2,HamPar.num_laps,HamPar.N)
+#					rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i-1,HamPar.num_laps,HamPar.N)
+#					rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
+#					rjrj1 = rj-rj1
+#					rjrj2 = rj-rj2
+#
+#					dj1 = rjrj1/absv(rjrj1)
+#					dj2 = rjrj2/absv(rjrj2)
+#
+#					vj = cross(dj1,dj2)
+#					coupl_p = 1im * HamPar.SOCPh
+#					rhoELS_p = rho[si:si+1,si-4:si-3] + rho[si-4:si-3,si:si+1]
+#					so_elmt = coupl_p*tr(rhoELS_p  * sigma)
+#				else
+#					so_elmt = 0.0
+#				end
+#				
+#				# forward tPh
+#
+#				rhoELm = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]  #(i+1) - (i)
+#				tm_up  = -HamPar.HoppingPh[1] * rhoELm[1,1]
+#				tm_dn  = -HamPar.HoppingPh[2] * rhoELm[2,2]
+#				t_elmt = tm_up + tm_dn
+#
+#				# backward tPh
+#
+#				rhoELp = rho[si:si+1,si-2:si-1] + rho[si-2:si-1,si:si+1] #(i) - (i-1)
+#				tp_up  = HamPar.HoppingPh[1] * rhoELp[1,1]
+#				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
+#				t_elmt += tp_up + tp_dn
+#
+#				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
+#				Xn_c = HamPar.X[i] + dt * Pn_c
+#				
+#			elseif i == HamPar.N
+#				# backward SOC-ph
+#				rj  = UnitVector(HamPar.a_hel,HamPar.c_hel,i-2,HamPar.num_laps,HamPar.N)
+#				rj1 = UnitVector(HamPar.a_hel,HamPar.c_hel,i-1,HamPar.num_laps,HamPar.N)
+#				rj2 = UnitVector(HamPar.a_hel,HamPar.c_hel,i,HamPar.num_laps,HamPar.N)
+#				rjrj1 = rj-rj1
+#				rjrj2 = rj-rj2
+#
+#				dj1 = rjrj1/absv(rjrj1)
+#				dj2 = rjrj2/absv(rjrj2)
+#
+#				vj = cross(dj1,dj2)
+#				coupl_p = 1im * HamPar.SOCPh
+#				rhoELS_p = rho[si:si+1,si-4:si-3] + rho[si-4:si-3,si:si+1]
+#				so_elmt = coupl_p*tr(rhoELS_p  * sigma)
+#
+#				# backward tPh
+#
+#				rhoELp = rho[si:si+1,si-2:si-1] + rho[si-2:si-1,si:si+1] #(i) - (i-1)
+#				tp_up  = HamPar.HoppingPh[1] * rhoELp[1,1]
+#				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
+#				t_elmt = tp_up + tp_dn
+#
+#				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
+#				Xn_c = HamPar.X[i] + dt * Pn_c
+#			end
+#		end		
+#		push!(Pn,real(Pn_c))
+#		push!(Xn,real(Xn_c))
+#	end 
+#	return Xn,Pn
+#end
 
 end

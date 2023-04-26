@@ -15,8 +15,8 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 3
+num_laps = 4
+num_ions = 4
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
@@ -28,8 +28,8 @@ gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
-tPh = zeros(2)
-tsoPh = 0.0
+tPh = 0.1 * t0 * ones(2)
+tsoPh = 0.1 * tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
 model = FranssonHamiltonian
@@ -48,8 +48,8 @@ initProp  = true
 if initProp
     #rhoIn = "pure"
     rhoIn = "equilibrium"
-    phIn = "TDSCF"
-    #phIn = "Wigner"
+    #phIn = "TDSCF"
+    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -64,8 +64,8 @@ xnIn,pnIn = 3.92, -0.042
 
 
 ## Leads
-P = 0.0
-tl = 0.0
+P = 0.5
+tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
 V  = 0.2 * T0 * 48
@@ -98,7 +98,7 @@ if !isdir(path)
 end
 
 
-num_avg = 1
+num_avg = 10
 for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_noEps_dt$(abs(dt))"
@@ -116,7 +116,7 @@ for ka in 1:num_avg
     IOsave.SaveParams(params,parampath,purpose)
 
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,vSampl,popElIn)
-#    Average(ka,dataname1,num_avg)
+    Average(ka,dataname1,num_avg)
 end
 
 end

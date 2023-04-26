@@ -23,7 +23,7 @@ for v in Vs
 	dPR = -dPL
 	dML = -(curT+curD) / curT^2
 	dMR = -dML
-	mr_std = 100 * sqrt( (dPL * stdPL)^2 + (dPR * stdPR)^2 + (dML * stdML)^2 + (dMR * stdMR)^2 ) / sqrt(nt)	
+	mr_std = 100 * sqrt( (dPL * stdPL)^2 + (dPR * stdPR)^2 + (dML * stdML)^2 + (dMR * stdMR)^2 ) #/ sqrt(nt)	
 	push!(mag_res,mr_avg)
 	push!(mag_res_std,mr_std)
 end

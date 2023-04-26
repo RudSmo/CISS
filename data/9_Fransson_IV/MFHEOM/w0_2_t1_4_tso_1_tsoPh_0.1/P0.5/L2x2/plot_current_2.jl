@@ -34,11 +34,10 @@ P = 0.5
 Vs = ["V48","V55","V65"]
 labels = [L"$V=\,0.384\mathrm{V}$",L"$V=\,0.44\mathrm{V}$",L"$V=\,0.52\mathrm{V}$"]
 colors = ["blue","red","black"]
-nt = 1417*[1,1,1]
-for (v,lab,col,n) in zip(Vs,labels,colors,nt)
-        dat = readdlm("$(v)/currents_avg_n$(n)_comb.dat")
+for (v,lab,col) in zip(Vs,labels,colors)
+        dat = readdlm("$(v)/currents_avg_n1417_comb.dat")
 	Id = (dat[:,2]-dat[:,3])*fac_c
-	dat_std = readdlm("$(v)/currents_std_n$(n)_comb.dat")
+	dat_std = readdlm("$(v)/currents_std_n1417_comb.dat")
 	cur_std = sqrt.((dat_std[:,2]*fac_c) .^ 2 .+ (dat_std[:,3]*fac_c) .^ 2)
 	cur_serr = cur_std/sqrt(101)
 
@@ -58,4 +57,4 @@ ax.set_xlim(-0.1,30.1)
 ax.legend()
 
 
-plt.savefig("L$(num_laps)x$(num_sites)_P$(P)_VVar_current_1417_comb.pdf")
+plt.savefig("L$(num_laps)x$(num_sites)_P$(P)_VVar_current_201.pdf")
