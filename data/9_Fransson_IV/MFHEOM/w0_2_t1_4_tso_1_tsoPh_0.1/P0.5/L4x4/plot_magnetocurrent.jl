@@ -29,17 +29,35 @@ num_laps = 4
 N = num_laps * num_sites
 Vs = ["V48","V55","V65"]
 labels = [L"$V=\,0.384\mathrm{V}$",L"$V=\,0.44\mathrm{V}$",L"$V=\,0.52\mathrm{V}$"]
-for (v,lab) in zip(Vs,labels)
-        datP = readdlm("$(v)/currents_avg_n51.dat")
-        datM = readdlm("../../P-0.5/L$(num_laps)x$(num_sites)/$(v)/currents_avg_n51.dat")
-        curP = datP[:,2]-datP[:,3]
-        curM = datM[:,2]-datM[:,3]
-        curT = curP + curM
-        curD = curP - curM
-        ax.plot(datP[:,1]*fac_t*1e-3,100 * curD ./ curT,linewidth=lw,label=lab)
+colors = ["blue","red","black"]
+for (v,lab,col) in zip(Vs,labels,colors)
+        datP = readdlm("$(v)/currents_avg_n101.dat")
+        datM = readdlm("../../P-0.5/L$(num_laps)x$(num_sites)/$(v)/currents_avg_n101.dat")
+
+	datstdP = readdlm("$(v)/currents_std_n101.dat") 
+	stdPL   = datstdP[:,2]
+	stdPR   = datstdP[:,3] 
+	datstdM = readdlm("../../P-0.5/L$(num_laps)x$(num_sites)/$(v)/currents_std_n101.dat")
+	stdML   = datstdM[:,2]
+	stdMR   = datstdM[:,3]
+
+	curT = datP[:,2]-datP[:,3] + datM[:,2]-datM[:,3]
+	curD = datP[:,2]-datP[:,3] - (datM[:,2]-datM[:,3])
+
+	dPL = (curT .- curD) ./ (curT.^2)
+        dPR = -dPL
+        dML = -(curT .+ curD) ./ (curT.^2)
+        dMR = -dML
+        mr_serr = 100/sqrt(101) * sqrt.( (dPL .* stdPL).^2 .+ (dPR .* stdPR).^2 .+ (dML .* stdML).^2 + (dMR .* stdMR) .^ 2 )
+	
+	MR = 100 * curD ./ curT
+        ax.plot(datP[:,1]*fac_t*1e-3,MR,color=col,linewidth=lw,label=lab)
+	ax.fill_between(datP[:,1]*fac_t*1e-3,MR,MR+mr_serr,color=col,alpha=0.2)
+        ax.fill_between(datP[:,1]*fac_t*1e-3,MR,MR-mr_serr,color=col,alpha=0.2)
+	
 end
 
-
+ax.set_ylim(-25,25)
 ax.set_xlabel(L"$t\,[\mathrm{ps}]$")
 ax.set_ylabel(L"$M_R\,[\%]$")
 ax.legend()

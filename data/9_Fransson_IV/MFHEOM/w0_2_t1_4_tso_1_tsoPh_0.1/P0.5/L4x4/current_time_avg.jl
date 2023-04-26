@@ -2,7 +2,7 @@ using DelimitedFiles
 
 Vs = [48,55,65]
 nS = 101
-tA = 4000 
+tA = 5000 
 for v in Vs
 	dat_avg = readdlm("V$(v)/currents_avg_n$(nS).dat")
 	N = length(dat_avg[tA:end,1])
