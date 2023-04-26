@@ -1,11 +1,12 @@
 using DelimitedFiles
 
+nS = 201
 Vs = [48,55,65]
 mag_res = []
 mag_res_std = []
 for v in Vs
-	datP = readdlm("V$(v)/currents_time_avg.dat")
-	datM = readdlm("../../P-0.5/L4x4/V$(v)/currents_time_avg.dat")
+	datP = readdlm("V$(v)/currents_time_avg_nS$(nS).dat")
+	datM = readdlm("../../P-0.5/L4x4/V$(v)/currents_time_avg_nS$(nS).dat")
 	
 	curP = datP[1,1] - datP[1,2]
 	stdPL,stdPR = datP[2,1:2] 

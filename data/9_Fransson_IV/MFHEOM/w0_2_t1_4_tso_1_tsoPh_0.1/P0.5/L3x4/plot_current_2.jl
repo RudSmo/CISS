@@ -35,9 +35,9 @@ Vs = ["V48","V55","V65"]
 labels = [L"$V=\,0.384\mathrm{V}$",L"$V=\,0.44\mathrm{V}$",L"$V=\,0.52\mathrm{V}$"]
 colors = ["blue","red","black"]
 for (v,lab,col) in zip(Vs,labels,colors)
-        dat = readdlm("$(v)/currents_avg_n101.dat")
+        dat = readdlm("$(v)/currents_avg_n201.dat")
 	Id = (dat[:,2]-dat[:,3])*fac_c
-	dat_std = readdlm("$(v)/currents_std_n101.dat")
+	dat_std = readdlm("$(v)/currents_std_n201.dat")
 	cur_std = sqrt.((dat_std[:,2]*fac_c) .^ 2 .+ (dat_std[:,3]*fac_c) .^ 2)
 	cur_serr = cur_std/sqrt(101)
 
@@ -57,4 +57,4 @@ ax.set_xlim(-0.1,30.1)
 ax.legend()
 
 
-plt.savefig("L$(num_laps)x$(num_sites)_P$(P)_VVar_current_101.pdf")
+plt.savefig("L$(num_laps)x$(num_sites)_P$(P)_VVar_current_201.pdf")
