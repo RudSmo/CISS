@@ -9,7 +9,7 @@ from time import perf_counter, asctime
 import os, sys, re
 import time
 
-rank_max = 100 
+rank_max = 5 
 
 filename_appendix='_Hop+Onsite_bias_'+str(Phi*au2eV)+'_dt_'+str(dt*au2fs)+'_rank_'+str(rank_max)
 output_info = open( 'simulation_info'+filename_appendix+'.txt', 'w')
