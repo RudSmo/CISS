@@ -77,18 +77,18 @@ function SymplecticEulerStep(HamPar,rho,dt)
 			Pn_c = HamPar.P[i] - dt*HamPar.ws^2 * HamPar.X[i]
 			Xn_c = HamPar.X[i] + dt * Pn_c
 		elseif HamPar.N == 2	
-			rhoEL1 = rho[si:si+1,si+2:si+3] + rho[si+2:si+3,si:si+1]
-			rhoD1up = HamPar.HoppingPh[1] * rhoEL1[1,1]
-			rhoD1dn = HamPar.HoppingPh[2] * rhoEL1[2,2]
-			alpha = rhoD1up + rhoD1dn
-			if i == 1
-				t_elmt = -alpha
-			else	
-				t_elmt = alpha
-			end	
+			rho_p = rho[1:2,3:4] + rho[3:4,1:2]
+			
 
-			Pn_c = HamPar.P[i] - dt * (t_elmt + HamPar.ws^2 * HamPar.X[i])
-			Xn_c = HamPar.X[i] + dt * Pn_c
+			if i == 1	
+				F_p  = -HamPar.Kph * (2*HamPar.X[i] - HamPar.X[i+1])  + 2*(HamPar.HoppingPh[1] * rho_p[1,1]  + HamPar.HoppingPh[2] * rho_p[2,2])
+			else
+				F_p  = -HamPar.Kph * (2*HamPar.X[i] - HamPar.X[i-1])  - 2*(HamPar.HoppingPh[1] * rho_p[1,1]  + HamPar.HoppingPh[2] * rho_p[2,2])
+			end
+
+			Pn_c = HamPar.P[i] + F_p * dt/HamPar.Mph	
+			Xn_c = HamPar.X[i] + Pn_c * dt
+			
 		elseif HamPar.N >= 3
 			if i == 1
 				# forward soc-ph	
@@ -109,7 +109,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tm_up = -HamPar.HoppingPh[1] * rhoELm[1,1]
 				tm_dn = -HamPar.HoppingPh[2] * rhoELm[2,2]
 				t_elmt = tm_up + tm_dn
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c
 			elseif i == 2 && HamPar.N > 3
 				# forward soc-ph
@@ -141,7 +141,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
 				t_elmt += tp_up + tp_dn
 
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c	
 			elseif i > 2 && i <= HamPar.N-2
 				# forward soc-ph
@@ -188,7 +188,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
 				t_elmt += tp_up + tp_dn	
 				
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c
 					
 			elseif i == HamPar.N-1
@@ -226,7 +226,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
 				t_elmt += tp_up + tp_dn
 
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c
 				
 			elseif i == HamPar.N
@@ -252,7 +252,7 @@ function SymplecticEulerStep(HamPar,rho,dt)
 				tp_dn  = HamPar.HoppingPh[2] * rhoELp[2,2]
 				t_elmt = tp_up + tp_dn
 
-				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.ws^2 * HamPar.X[i])
+				Pn_c = HamPar.P[i] - dt * (t_elmt + so_elmt + HamPar.Kph * HamPar.X[i])
 				Xn_c = HamPar.X[i] + dt * Pn_c
 			end
 		end		

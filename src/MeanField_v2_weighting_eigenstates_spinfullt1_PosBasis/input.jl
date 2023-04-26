@@ -15,8 +15,8 @@ using .CustomStructures
 
 
 # Hamiltonian Parameters
-num_laps = 3
-num_ions = 3
+num_laps = 1
+num_ions = 2
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
@@ -29,7 +29,7 @@ ws  = sqrt(Kph/Mph)      # 3 meV
 a   = 1.0
 c   = 1.0
 tso = 0.001
-tPh = [0.12,-0.12]  # in eV/A
+tPh = [0.12,0.12]  # in eV/A
 tsoPh = 0.0
 model = EPeierlsHamiltonian
 modelStr = "Fransson"
@@ -44,8 +44,8 @@ initProp  = true
 # false = use initial density matrix from previous computation
 
 if initProp
-    rhoIn = "pure"
-    #rhoIn = "equilibrium"
+    #rhoIn = "pure"
+    rhoIn = "equilibrium"
     #phIn = "TDSCF"
     phIn = "Wigner"
     pathIn = ""
@@ -55,7 +55,6 @@ else
     pathIn = "Holstein_L2/noEps/L2_gPhU0.004_gPhD0.004_V0.0_w00.002_X0_0.0_dt0.05_1_final_Quantities"
 end
 popElIn = zeros(2*N)
-popElIn[9] = 1.0
 popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]

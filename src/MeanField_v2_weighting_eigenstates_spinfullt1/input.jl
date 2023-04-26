@@ -11,12 +11,13 @@ using LinearAlgebra
 using .MultiOpenIntegrator
 using .ClassicalPhonons
 using .CustomStructures
+using DelimitedFiles
 # -------------- Parameters --------------------------
 
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 3
+num_laps = 4
+num_ions = 4
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
@@ -28,7 +29,7 @@ gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
-tPh = -0.004*ones(2)
+tPh = 0.1*T0*ones(2)
 tsoPh = 0.1*tso
 #model = HolsteinHopping
 #modelStr = "Holstein"
@@ -38,7 +39,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.002/T0
-tend = 1000/T0
+tend = 500/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
 initProp  = true
@@ -46,10 +47,10 @@ initProp  = true
 # false = use initial density matrix from previous computation
 
 if initProp
-    #rhoIn = "pure"
-    rhoIn = "equilibrium"
+    rhoIn = "pure"
+    #rhoIn = "equilibrium"
     phIn = "TDSCF"
-    phIn = "Wigner"
+#    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -57,10 +58,12 @@ else
     pathIn = "Holstein_L2/noEps/L2_gPhU0.004_gPhD0.004_V0.0_w00.002_X0_0.0_dt0.05_1_final_Quantities"
 end
 popElIn = zeros(2*N)
+popElIn[1] = 1.0
 popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-xnIn,pnIn = zeros(N),zeros(N)
+dat = readdlm("L4x4_iso/L16_tPh_0.004_thPd_0.004_SOC0.001_SOCPh0.0_V0.0_w00.002_P0.0_noEps_dt0.05_1_phonons.dat")
+xnIn,pnIn = dat[2,2:2:end],dat[2,3:2:end]
 
 
 ## Leads
@@ -68,8 +71,8 @@ P = 0.0
 tl = 0.0
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-V  = 0.2 * T0 * 65
-nPoles = 10
+V  = 0.2 * T0 * 0.0
+nPoles = 2
 beta = 1/0.025 
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
@@ -92,7 +95,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L$(num_laps)x$(num_ions)_spinSoliton"
+path = "L$(num_laps)x$(num_ions)_iso"
 if !isdir(path)
 	mkpath(path)
 end
