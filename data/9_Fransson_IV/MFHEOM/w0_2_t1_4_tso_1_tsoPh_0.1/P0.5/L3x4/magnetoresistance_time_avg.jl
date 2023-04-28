@@ -7,8 +7,8 @@ mag_res_std = []
 dat0 = readdlm("V48/currents_avg_n51.dat")
 nt = length(dat0[tA:end,1])
 for v in Vs
-	datP = readdlm("V$(v)/currents_time_avg_nS51.dat")
-	datM = readdlm("../../P-0.5/L3x4/V$(v)/currents_time_avg_nS51.dat")
+	datP = readdlm("V$(v)/currents_time_avg_nS51_std.dat")
+	datM = readdlm("../../P-0.5/L3x4/V$(v)/currents_time_avg_nS51_std.dat")
 	
 	curP = datP[1,1] - datP[1,2]
 	stdPL,stdPR = datP[2,1:2] 

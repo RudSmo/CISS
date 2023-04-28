@@ -1,7 +1,7 @@
 using DelimitedFiles
 
-Vs = [48,55,65]
-nS = 51
+Vs = [48]#,55,65]
+nS = 301
 tA = 5000 
 for v in Vs
 	dat_avg = readdlm("V$(v)/currents_avg_n$(nS).dat")

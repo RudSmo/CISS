@@ -4,11 +4,11 @@ Vs = [48,55,65]
 tA = 5000
 mag_res = []
 mag_res_std = []
-dat0 = readdlm("V48/currents_time_avg_nS1417.dat")
+dat0 = readdlm("V48/currents_avg_n1417_comb.dat")
 nt = length(dat0[tA:end,1])
 for v in Vs
-	datP = readdlm("V$(v)/currents_time_avg_nS1417.dat")
-	datM = readdlm("../../P-0.5/L2x2/V$(v)/currents_time_avg_nS1417.dat")
+	datP = readdlm("V$(v)/currents_time_avg_nS1417_std.dat")
+	datM = readdlm("../../P-0.5/L2x2/V$(v)/currents_time_avg_nS1417_std.dat")
 	
 	curP = datP[1,1] - datP[1,2]
 	stdPL,stdPR = datP[2,1:2] 
