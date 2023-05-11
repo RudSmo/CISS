@@ -33,7 +33,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.0001
-tend = 500/T0
+tend = 10
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 initProp  = true
@@ -59,7 +59,7 @@ clIntegrator = SymplecticRuth4Step
 # false = use initial density matrix from previous computation
 
 if initProp
-    #rhoIn = "pure"
+#    rhoIn = "pure"
     rhoIn = "equilibrium"
     phIn = "TDSCF"
 #    phIn = "Wigner"
@@ -83,7 +83,7 @@ tL = tl * (ones(2) .+ P * [1,-1])
 tR = tl * ones(2)
 V  = 2.0 * T0
 nPoles = 15
-beta = 1/0.025 
+beta = ws[1]/0.025 
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
                             N,
@@ -113,8 +113,8 @@ if !isdir(path)
 end
 
 
-num_avg = 1
-for ka in 1:num_avg
+num_avg = 2
+for ka in 2:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_$(clIntegrator)_$(elIntegrator)_dt$(abs(dt))"
     elseif modelStr == "Holstein"

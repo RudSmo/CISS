@@ -50,7 +50,7 @@ function Propagate(
 	chi2		= 0.0 .+ 1im .* xi ./beta
 	chiLP 	    	= [chi1,chi2]
 	if rhoIn == "pure"
-		rho0    = Diagonal(float(popIn))
+		rho0    = zeros(ComplexF64,size(hcen_i)) .+ Diagonal(float(popIn))
 	elseif rhoIn == "equilibrium"
 		rho0	= DensityFExOpen(HamPar.N,1,hcen_i,kappa,chiLP,GammaT,beta)*(1+0*1im)
 	elseif rhoIn == "closedEquilibrium"
