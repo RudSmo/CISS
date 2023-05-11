@@ -7,9 +7,6 @@ include("classical_phonons.jl")
 include("structures.jl")
 using LinearAlgebra
 using HDF5
-using Profile
-using ProfileView
-
 
 function Propagate(
 		  HamPar 	::Any,  
