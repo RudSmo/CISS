@@ -1,0 +1,101 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{ruth1983canonical}{article}{}
+    \name{author}{1}{}{%
+      {{hash=RRD}{%
+         family={Ruth},
+         familyi={R\bibinitperiod},
+         given={Ronald\bibnamedelima D},
+         giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{RRD1}
+    \strng{fullhash}{RRD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{CERN-LEP-TH-83-14}
+    \field{pages}{2669\bibrangedash 2671}
+    \field{title}{A canonical integration technique}
+    \field{volume}{30}
+    \field{journaltitle}{IEEE Trans. Nucl. Sci.}
+    \field{year}{1983}
+  \endentry
+
+  \entry{forest1990fourth}{article}{}
+    \name{author}{2}{}{%
+      {{hash=FE}{%
+         family={Forest},
+         familyi={F\bibinitperiod},
+         given={Etienne},
+         giveni={E\bibinitperiod},
+      }}%
+      {{hash=RRD}{%
+         family={Ruth},
+         familyi={R\bibinitperiod},
+         given={Ronald\bibnamedelima D},
+         giveni={R\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{FERRD1}
+    \strng{fullhash}{FERRD1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{105\bibrangedash 117}
+    \field{title}{Fourth-order symplectic integration}
+    \field{volume}{43}
+    \field{journaltitle}{Physica D: Nonlinear Phenomena}
+    \field{year}{1990}
+  \endentry
+
+  \entry{richardson2011symplectic}{article}{}
+    \name{author}{2}{}{%
+      {{hash=RA}{%
+         family={Richardson},
+         familyi={R\bibinitperiod},
+         given={AS},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=FJ}{%
+         family={Finn},
+         familyi={F\bibinitperiod},
+         given={JM},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IOP Publishing}%
+    }
+    \strng{namehash}{RAFJ1}
+    \strng{fullhash}{RAFJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1}
+    \field{pages}{014004}
+    \field{title}{Symplectic integrators with adaptive time steps}
+    \field{volume}{54}
+    \field{journaltitle}{Plasma Physics and Controlled Fusion}
+    \field{year}{2011}
+  \endentry
+\enddatalist
+\endinput

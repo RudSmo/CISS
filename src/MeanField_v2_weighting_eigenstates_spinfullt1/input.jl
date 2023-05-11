@@ -16,13 +16,13 @@ using DelimitedFiles
 
 
 # Hamiltonian Parameters
-num_laps = 4
-num_ions = 4
+num_laps = 1
+num_ions = 2
 N = num_laps * num_ions
 T0  = 0.04
 t0  = -T0
-eu  = -0.24
-ed  = -0.24
+eu  = 0.0 #-0.24
+ed  = 0.0 #-0.24
 E   = [eu,ed]
 ws  = 0.002*ones(N)
 gPh = zeros(2)
@@ -38,7 +38,7 @@ modelStr = "Fransson"
 #model = FranssonHamiltonianNH
 
 # Simulation Parameters
-dt = 0.002/T0
+dt = 0.001/T0
 tend = 500/T0
 numstep = Int(tend/abs(dt))
 writeMode = "minimal"
@@ -62,8 +62,8 @@ popElIn[1] = 1.0
 popPhIn = zeros(N)
 vSampl = "v2"
 phases = [rand()*2*pi for i in 1:length(popPhIn)]
-dat = readdlm("L4x4_iso/L16_tPh_0.004_thPd_0.004_SOC0.001_SOCPh0.0_V0.0_w00.002_P0.0_noEps_dt0.05_1_phonons.dat")
-xnIn,pnIn = dat[2,2:2:end],dat[2,3:2:end]
+#dat = readdlm("L4x4_iso/L16_tPh_0.004_thPd_0.004_SOC0.001_SOCPh0.0_V0.0_w00.002_P0.0_noEps_dt0.05_1_phonons.dat")
+xnIn,pnIn = [1.0,-1.0],zeros(N) # dat[2,2:2:end],dat[2,3:2:end]
 
 
 ## Leads
@@ -95,7 +95,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L$(num_laps)x$(num_ions)_iso"
+path = "Phonon_test" #"L$(num_laps)x$(num_ions)_iso"
 if !isdir(path)
 	mkpath(path)
 end
