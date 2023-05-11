@@ -14,26 +14,26 @@ using DelimitedFiles
 
 # Hamiltonian Parameters
 num_laps = 2
-num_ions = 3
+num_ions = 4
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
 T0  = 0.04/ws[1]  # in eV
 t0  = -T0
-eu  = 0.0/ws[1]#-0.24
-ed  = 0.0/ws[1]#-0.24
+eu  = -6*T0
+ed  = -6*T0
 E   = [eu,ed]
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = 0.5*T0
+tso = T0/40
 tPh = 0.1*T0*ones(2)
-tsoPh = 0.1*T0
+tsoPh = 0.1*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.0001
-tend = 10
+tend = 5
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 initProp  = true
@@ -72,16 +72,16 @@ end
 popElIn = zeros(2*N)
 popElIn[1] = 1.0
 popPhIn = zeros(N)
-xnIn = [1.0,-1.0,0.5,0.4,-2.0,1.0]
-pnIn = [0.4,-2.0,1.0,-1.0,0.5,0.4] 
+xnIn = [1.0,-1.0,0.5,0.4,-2.0,1.0,0.2,-3.0]
+pnIn = [0.4,-2.0,1.0,-1.0,0.5,0.4,0.0,-1.0] 
 
 
 ## Leads
-P = 0.0
+P = -0.5
 tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-V  = 2.0 * T0
+V  = 12.0 * T0
 nPoles = 15
 beta = ws[1]/0.025 
 HamPar = HamiltonianParams( num_laps,
@@ -105,7 +105,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L$(num_ions)_open"
+path = "L$(num_ions)_PVar"
 #"L$(num_ions)_coupled"
 #"vibrations_only"#"L$(num_ions)_combined"
 if !isdir(path)
@@ -113,8 +113,8 @@ if !isdir(path)
 end
 
 
-num_avg = 2
-for ka in 2:num_avg
+num_avg = 1
+for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_$(clIntegrator)_$(elIntegrator)_dt$(abs(dt))"
     elseif modelStr == "Holstein"

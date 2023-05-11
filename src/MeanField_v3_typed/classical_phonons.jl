@@ -23,8 +23,8 @@ end
 
 
 function HigherOrderSymplecticStep(HamPar::Any,rho::Array{ComplexF64},dt::Float64,coeffs::Array)::Tuple{Array{Float64}, Array{Float64}}
-	Pn = similar(HamPar.P)#zeros(Float64,size(HamPar.P))
-        Xn = similar(HamPar.X)#zeros(Float64,size(HamPar.X))
+	Pn = similar(HamPar.P)
+        Xn = similar(HamPar.X)
         for i in 1:HamPar.N
             H_red = FranssonHamiltonian_Mode_v2(HamPar,i)
             derv  = tr(@views rho*H_red)

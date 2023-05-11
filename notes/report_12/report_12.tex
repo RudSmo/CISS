@@ -179,9 +179,9 @@ Note the logarithmic scale and the offset by $10^{-9}$ to show results which are
 	\caption{Comparison of integration errors for different integrators in the isolated Bond-Peierls model.}\label{fig:L3_Iso_tot_Energy}
 \end{figure}
 \newpage
-Some comments: 
+Figure commentary:
 \begin{itemize}
-	\item Integration error is clearly visible in the total energy. The other quantities are conserved for all integrators.
+	\item Integration error is clearly visible in the total energy. The other quantities are conserved for all integrators and thus do not provide a measure of the error as useful as the total energy.
 	\item Using a non-symplectic integrator (in this case, RK4, blue line) for the classical equation of motion leads to an error which is orders of magnitude larger than using a symplectic integrator with a lower convergence order (e.g. symplectic Euler, green line). The error also increases with time in this case.
 	\item Symplectic integrators with convergence order 1 or 2 (green, red and turquoise lines) lead to periodically oscillating error, which does not grow in time as fast as the error acquired using the non-symplectic integrator
 	\item Only symplectic integrators with convergence order 3 and 4 lead to an error-free (in the sense of errors below machine precision) integration (purple and black lines)
@@ -196,6 +196,22 @@ is conserved. However, within the used formulation this quantity is not accessib
 	\dot{W}_\mathrm{el-vib} + \dot{E}_\mathrm{vib} = 0
 \end{equation*}
 with $\dot{W}_\mathrm{el-vib}$ and $\dot{E}_\mathrm{vib}$ as defined above holds also for the open system. 
+Another thing to check is if for vanishing electron-vibrational coupling, the current-voltage characteristics agrees with the one obtained from Landauer-Büttiker approach, shown in \cref{fig:L3_open_uncoupled} (a) for the model above with $T_1=0$. \Cref{fig:L3_open_uncoupled} (b) shows the deviation of the trace of the reduced density matrix in the steady state from the number of sites and (c) the reduced system energy.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1.0\textwidth]{figs/L3_uncoupled_open.pdf}
+	\caption{(a) current-voltage characteristics for a purely electronic problem, (b) deviation of trace of steady-state density matrix from number of sites, (c) steady-state system energy.}\label{fig:L3_open_uncoupled}
+\end{figure}
+\clearpage
+Figure commentary:
+\begin{itemize}
+	\item The current-voltage characteristics obtained from solving the coupled equations of motion discuseed above agrees perfectly with the one obtained from the Landauer-Büttiker approach.
+	\item The trace of the density matrix does not change with voltage (as it should be), and the deviation from the number of sites (the normalization of the single-particle density matrix) is due to the "true" steady-state is reached after longer time than the one which was used for the propagation. A longer time has to be used to make this quantity go to zero.  
+	\item  The system energy changes with voltage, which one can explain with states above Fermi-level which get populated in the steady state. 
+\end{itemize}
+\section{Some selected results}
+
+
 
 
 
