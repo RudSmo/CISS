@@ -169,27 +169,30 @@ function Average(ind,path,num_avg)
 			writedlm("$(path)_$(obs)_avg.dat",file_avg) 
 			rm("$(pathr)_$(obs).dat")
 		end
-	elseif ind <= num_avg
+	elseif ind < num_avg
 	
 		for obs in observables
 			file_avg = readdlm("$(path)_$(obs)_avg.dat")
 			file_raw = readdlm("$(pathr)_$(obs).dat")
 
 			F_avg    = copy(file_avg)
-			F_avg[2:end,2:end] += file_raw[2:end,2:end]
-			F_avg[2:end,2:end] = F_avg[2:end,2:end]
+			for k in 2:length(F_avg[2,:])
+				F_avg[2:end,k] .+= file_raw[2:end,k]
+			end
 			rm("$(path)_$(obs)_avg.dat")
 			writedlm("$(path)_$(obs)_avg.dat",F_avg) 
 			rm("$(pathr)_$(obs).dat")
 		end
-	elseif ind == num_avg
+	else
 		for obs in observables
                         file_avg = readdlm("$(path)_$(obs)_avg.dat")
                         file_raw = readdlm("$(pathr)_$(obs).dat")
 
                         F_avg    = copy(file_avg)
-                        F_avg[2:end,2:end] .+= file_raw[2:end,2:end]
-                        F_avg[2:end,2:end] ./= F_avg[2:end,2:end]
+			for k in 2:length(F_avg[2,:])
+				F_avg[2:end,k] .+= file_raw[2:end,k]
+				F_avg[2:end,k] ./= num_avg
+			end
                         rm("$(path)_$(obs)_avg.dat")
                         writedlm("$(path)_$(obs)_avg.dat",F_avg)
                         rm("$(pathr)_$(obs).dat")
