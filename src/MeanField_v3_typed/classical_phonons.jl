@@ -60,9 +60,16 @@ function SymplecticRuth4Step(HamPar::Any,rho::Array{ComplexF64},dt::Float64)
 end
 
 function P_RHS(derv::ComplexF64,X::Float64)::ComplexF64
+        return -(derv+X)
+end
+
+function X_RHS(P::Float64)::Float64
+        return P
+end
+function P_RHS_RK(derv::Number,X::Number)::Number
 	return -(derv+X)	
 end
-function X_RHS(P::Float64)::Float64
+function X_RHS_RK(P::Number)::Number
 	return P
 end
 function RK4_intertwined(HamPar,rho,dt)	
@@ -71,13 +78,13 @@ function RK4_intertwined(HamPar,rho,dt)
 	for i in 1:HamPar.N
 		H_red = Hamiltonian.FranssonHamiltonian_Mode_v2(HamPar,i)
 		derv  = tr(rho*H_red)
-		p1 = dt*P_RHS(derv,HamPar.X[i])	
+		p1 = dt*P_RHS_RK(derv,HamPar.X[i])	
 		x1 = dt*p1
-		p2 = dt*P_RHS(derv,x1 + 1/3 * p1)
+		p2 = dt*P_RHS_RK(derv,x1 + 1/3 * p1)
                 x2 = dt*(p2 + 1/3 * x1)
-		p3 = dt*P_RHS(derv,x2 - 1/3 * p1 + p2)
+		p3 = dt*P_RHS_RK(derv,x2 - 1/3 * p1 + p2)
 		x3 = dt*(p3 - 1/3 * x1 + x2)
-		p4 = dt*P_RHS(derv,x3 + 1.0 * p1 - p2 + p3)	
+		p4 = dt*P_RHS_RK(derv,x3 + 1.0 * p1 - p2 + p3)	
 		Pn_c = HamPar.P[i] + 1/8 * (p1 + 3*p2 + 3*p3 + p4)
                 x4 = dt*(p4 + 1.0 * x1 - x2 + x3)
                 Xn_c = HamPar.X[i] + 1/8 * (x1 + 3*x2 + 3*x3 + x4)
@@ -90,12 +97,12 @@ function RK4_sequential(HamPar::Any,rho::Array,dt::Float64)::Tuple
         Pn = []
         Xn = []
         for i in 1:HamPar.N
-                H_red = Hamiltonian.FranssonHamiltonian_Mode_v2(HamPar,i)
+                H_red = FranssonHamiltonian_Mode_v2(HamPar,i)
                 derv  = tr(rho*H_red)
-                p1 = dt*P_RHS(derv,HamPar.X[i])
-                p2 = dt*P_RHS(derv,HamPar.X[i] + 1/3 * p1)
-                p3 = dt*P_RHS(derv,HamPar.X[i] - 1/3 * p1 + p2)
-                p4 = dt*P_RHS(derv,HamPar.X[i] + 1.0 * p1 - p2 + p3)
+                p1 = dt*P_RHS_RK(derv,HamPar.X[i])
+                p2 = dt*P_RHS_RK(derv,HamPar.X[i] + 1/3 * p1)
+                p3 = dt*P_RHS_RK(derv,HamPar.X[i] - 1/3 * p1 + p2)
+                p4 = dt*P_RHS_RK(derv,HamPar.X[i] + 1.0 * p1 - p2 + p3)
                 Pn_c = HamPar.P[i] + 1/8 * (p1 + 3*p2 + 3*p3 + p4)
 
                 x1 = dt*HamPar.P[i]

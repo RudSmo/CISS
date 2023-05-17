@@ -14,7 +14,7 @@ using DelimitedFiles
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 2
+num_ions = 3
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
 T0  = 0.04/ws[1]  # in eV
@@ -25,18 +25,18 @@ E   = [eu,ed]
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = 0.0#T0/40
+tso = T0/40
 tPh = 0.1*T0*ones(2)
-tsoPh = 0.0*tso
+tsoPh = 0.1*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 
 # Simulation Parameters
-dt = 0.0001
-tend = 0.1
+dt = 0.00005
+tend = 50
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
-initProp  = true
+
 
 # Electronic integrators
 elIntegrator = RK4_VNL!
@@ -58,11 +58,12 @@ clIntegrator = SymplecticRuth4Step
 # true = propagate as usuals
 # false = use initial density matrix from previous computation
 
+initProp  = true
 if initProp
 #    rhoIn = "pure"
     rhoIn = "equilibrium"
-#    phIn = "TDSCF"
-    phIn = "Wigner"
+    phIn = "TDSCF"
+#    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -72,9 +73,7 @@ end
 popElIn = zeros(2*N)
 popElIn[1] = 1.0
 popPhIn = zeros(N)
-xnIn = [1.0,-1.0]#,0.5]#,0.4,-2.0,1.0,0.2,-3.0]
-pnIn = [0.4,-2.0]#,1.0]#,-1.0,0.5,0.4,0.0,-1.0] 
-
+xnIn,pnIn = [0.7691068624482689,-3.61069243320506,-5.245657309206734],[-7.401418656594664,-4.3318963287495675,1.5952234947490966]
 
 ## Leads
 P = 0.5
@@ -83,9 +82,10 @@ tL = tl * (ones(2) .+ P * [1,-1])
 tR = tl * ones(2)
 #for v in 0:70
 #V  = v * 0.2 * T0
-V = 20*0.2*T0
+V = 12*T0
 nPoles = 15
 beta = ws[1]/0.025 
+
 HamPar = HamiltonianParams( num_laps,
                             num_ions,
                             N,
@@ -107,15 +107,13 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L$(num_ions)_test/V$(V)"
-#"L$(num_ions)_coupled"
-#"vibrations_only"#"L$(num_ions)_combined"
+path = "L$(num_ions)_steady_state/convergence"#V$(V)"
 if !isdir(path)
 	mkpath(path)
 end
 
 
-num_avg = 500
+num_avg = 1
 for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_$(clIntegrator)_$(elIntegrator)_dt$(abs(dt))"
@@ -133,7 +131,6 @@ for ka in 1:num_avg
     SaveParams(params,parampath,purpose)
 
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,elIntegrator,clIntegrator,popElIn)
-    Average(ka,dataname1,num_avg)
+#    Average(ka,dataname1,num_avg)
 end
 
-#end

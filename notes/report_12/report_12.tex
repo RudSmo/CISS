@@ -72,7 +72,7 @@ The Ehrenfest equations of motion for the dimensionless coordinates and momenta 
 where the dimensionless time $\tau=\omega t$ has been introduced.
 The initial coordinates and momenta are sampled from either the Wigner representation of the thermal Gibbs state
 \begin{equation}
-	\rho_W^\mathrm{G}(X,P) = \prod_j 2\alpha_j \exP{-\alpha_j (X_j^2+P_j^2)}
+	\rho_W^\mathrm{G}(X,P) = \prod_j 2\alpha_j \exP{-\alpha_j (X_j^2+P_j^2)}\label{eq:Wigner_Thermal}
 \end{equation}
 with $\alpha_j = \tanh\left(\frac{\beta\hbar\omega_j}{2}\right)$,
 or the Wigner representation of the ground state
@@ -156,7 +156,7 @@ To find out which combination of integrators yields optimal results, we consider
 \begin{equation*}
 	H =  \sum_{j\sigma}\left(-T_0 + \frac{T_1}{\sqrt{2}}X \right)(c_{j\sigma}^\dagger c_{j\sigma}^\pdagger + \mathrm{h.c.}) 
 \end{equation*}
-with the vibrational frequency $\omega = \SI{2}{\milli\electronvolt}$, hopping integral $t_0 = \SI{40}{\milli\electronvolt}$ and Peierls coupling $t_1=\SI{4}{\milli\electronvolt}$ (note that $T_0=t_0/(\hbar \omega)$ and $T_1=t_1/(\hbar\omega)$, as defined above in the dimensionless Hamiltonian). The initial position and momenta of the two bond-modes are
+with the vibrational frequency $\hbar \omega = \SI{2}{\milli\electronvolt}$, hopping integral $t_0 = \SI{40}{\milli\electronvolt}$ and Peierls coupling $t_1=\SI{4}{\milli\electronvolt}$ (note that $T_0=t_0/(\hbar \omega)$ and $T_1=t_1/(\hbar\omega)$, as defined above in the dimensionless Hamiltonian). The initial position and momenta of the two bond-modes are
 \begin{equation*}
 	(X_0^{(1)},P_0^{(1)}) = (1,0.4), \qquad (X_0^{(2)},P_0^{(2)}) = (-1,-2)
 \end{equation*} 
@@ -209,7 +209,26 @@ Figure commentary:
 	\item The trace of the density matrix does not change with voltage (as it should be), and the deviation from the number of sites (the normalization of the single-particle density matrix) is due to the "true" steady-state is reached after longer time than the one which was used for the propagation. A longer time has to be used to make this quantity go to zero.  
 	\item  The system energy changes with voltage, which one can explain with states above Fermi-level which get populated in the steady state. 
 \end{itemize}
-\section{Some selected results}
+\section{Convergence of time propagation with step size}
+We consider the Fransson model 
+\begin{align*}
+	H&=\sum_{j,\sigma} E_{j\sigma}^\pdagger \hat{c}_{j\sigma}^\dagger \hat{c}_{j\sigma}^\pdagger + \sum_{j\sigma} \left(-T_0 + \frac{T_1}{\sqrt{2}}X_j\right)(\hat{c}_{j\sigma}^\dagger \hat{c}_{j+1,\sigma}^\pdagger + \mathrm{h.c.}) +\\& \sum_{j\sigma\sigma'}\left(\lambda_0 + \frac{\lambda_1}{\sqrt{2}}X_j \right) (i\hat{c}_{j\sigma}^\dagger (\vec{v}_j^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{c}_{j+2,\sigma'}^\pdagger + \mathrm{h.c.}) + \sum_j \frac{1}{2}\left(X_j^2 + P_j^2+\frac{1}{2}\right)
+\end{align*}
+coupled to two leads at the terminating sites. The following parameters
+\begin{align*}
+	\hbar \omega &= \SI{2}{\milli\electronvolt}\\
+	t_0 &= \SI{40}{\milli\electronvolt}\\
+	\varepsilon &= -6t_0\\
+	t_1 &= 0.1t_0\\
+	\lambda_0 &= \frac{t_0}{40}\\
+	\lambda_1 &= 0.1\lambda_0\\
+	\Gamma_0 &= \frac{t_0}{4}\\
+	T &= \SI{25}{\milli\electronvolt}\\
+	V &=4t_0.
+\end{align*}
+The initial density matrix is obtained using the partition-free approach, in which the electronic system is 
+in equilibrium with the leads. The initial coordinates and momenta are drawn from the Wigner representation of the thermal state of a harmonic oscillator, \cref{eq:Wigner_Thermal}. A single trajectory calculation is made for varying time step size to check the convergence of the time propagation.
+
 
 
 
