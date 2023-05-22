@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  17 MAY 2023 15:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  22 MAY 2023 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -766,18 +766,38 @@ File: figs/L3_uncoupled_open.pdf Graphic file (type pdf)
 <use figs/L3_uncoupled_open.pdf>
 Package pdftex.def Info: figs/L3_uncoupled_open.pdf  used on input line 202.
 (pdftex.def)             Requested size: 483.69684pt x 483.71245pt.
- [6 <./figs/L3_uncoupled_open.pdf>] [7
+ [6 <./figs/L3_uncoupled_open.pdf>]
+<figs/L3_convergence_integrators.pdf, id=122, 650.43pt x 650.43pt>
+File: figs/L3_convergence_integrators.pdf Graphic file (type pdf)
+<use figs/L3_convergence_integrators.pdf>
+Package pdftex.def Info: figs/L3_convergence_integrators.pdf  used on input lin
+e 237.
+(pdftex.def)             Requested size: 435.32419pt x 435.3293pt.
 
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/L3_convergence_dt.pdf, id=123, 650.43pt x 650.43pt>
+File: figs/L3_convergence_dt.pdf Graphic file (type pdf)
+<use figs/L3_convergence_dt.pdf>
+Package pdftex.def Info: figs/L3_convergence_dt.pdf  used on input line 244.
+(pdftex.def)             Requested size: 435.32419pt x 435.3293pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7
+
+] [8 <./figs/L3_convergence_integrators.pdf>] [9 <./figs/L3_convergence_dt.pdf>
 ] (./report_12.aux)
 Package logreq Info: Writing requests to 'report_12.run.xml'.
 \openout1 = `report_12.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16312 strings out of 478994
- 319557 string characters out of 5858184
- 842469 words of memory out of 5000000
- 33586 multiletter control sequences out of 15000+600000
+ 16328 strings out of 478994
+ 320107 string characters out of 5858184
+ 842543 words of memory out of 5000000
+ 33600 multiletter control sequences out of 15000+600000
  419994 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,13n,75p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -805,10 +825,10 @@ ve/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive
 /2021/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/times/utmri8a.pfb>
-Output written on report_12.pdf (7 pages, 676978 bytes).
+Output written on report_12.pdf (9 pages, 778557 bytes).
 PDF statistics:
- 195 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
+ 243 PDF objects out of 1000 (max. 8388607)
+ 197 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -26,25 +26,25 @@ ax2 = plt.axes([px,py-sy-dy,sx,sy])
 ax3 = plt.axes([px,py-2*(sy+dy),sx,sy])
 
 # currents 
-dat11 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V80.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_currents.dat") 
-dat12 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V80.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0001_1_currents.dat")
-dat13 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V80.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt1.0e-5_1_currents.dat") 
+dat11 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_currents.dat") 
+dat12 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0001_1_currents.dat")
+dat13 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt5.0e-5_1_currents.dat") 
 
 # electrons 
-dat21 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V80.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_electrons.dat")
-dat22 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V80.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0001_1_electrons.dat")
-dat23 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V80.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt1.0e-5_1_electrons.dat")
+dat21 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_electrons.dat")
+dat22 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0001_1_electrons.dat")
+dat23 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt5.0e-5_1_electrons.dat")
 
 # phonons
-dat31 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V80.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_phonons.dat")
-dat32 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V80.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0001_1_phonons.dat")
-dat33 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V80.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt1.0e-5_1_phonons.dat")
+dat31 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_phonons.dat")
+dat32 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0001_1_phonons.dat")
+dat33 = readdlm("L3_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt5.0e-5_1_phonons.dat")
 
 axes = [ax1,ax2,ax3]
 datas = [[dat11,dat12,dat13],[dat21,dat22,dat23],[dat31,dat32,dat33]]
-labels = [L"$dt=0.024\,\mathrm{fs}$",L"$dt=0.012\,\mathrm{fs}$",L"$dt=0.0012\,\mathrm{fs}$"]
+labels = [L"$dt=0.024\,\mathrm{fs}$",L"$dt=0.012\,\mathrm{fs}$",L"$dt=0.006\,\mathrm{fs}$"]
 colors = ["blue","green","red"]
-ylabels = [L"$I\,[\Gamma_0]$",L"$s_1^z$",L"$X$"]
+ylabels = [L"$I\,[\Gamma_0]$",L"$s_1^z$",L"$X_1$"]
 annotations = ["(a)","(b)","(c)"]
 ws = 0.002
 T0 = 0.04/ws
@@ -63,17 +63,20 @@ for (ax,data,ylab,ann) in zip(axes,datas,ylabels,annotations)
 		end
 	end
 	ax.set_ylabel(ylab)
-	ax.set_xlim(0,15000)
+	ax.set_xlim(0,6000)
 	ax.annotate(ann,(annx,anny),xycoords="axes fraction",fontsize=fs)
 end
 
 ax1.set_xticklabels([])
+ax1.set_ylim(0.1,0.25)
 ax2.set_xticklabels([])
+ax2.set_ylim(0.1,0.15)
 ax1.annotate("(a)",(annx,anny),xycoords="axes fraction",fontsize=fs)
 ax1.set_ylabel(L"$I \, [\Gamma]$")
-ax1.legend(loc="center right",framealpha=0.8)
+ax1.legend(loc="lower right",framealpha=0.8)
 
 ax3.set_xlabel(L"$t\,[\mathrm{fs}]$")
+ax3.set_ylim(-12,10)
 
-plt.savefig("L3_convergence.pdf")
+plt.savefig("L3_convergence_dt.pdf")
 

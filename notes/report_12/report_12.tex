@@ -91,7 +91,7 @@ In \cref{fig:Wigner_sampling} the result of sampling using the above Box-Muller 
 	\includegraphics[width=0.9\textwidth]{figs/Comparison_sampled_Wigner.pdf}
 	\caption{Comparison between analytical and sampled Wigner distribution $\rho_W^\mathrm{G}(X,P)$ of the thermal state.}\label{fig:Wigner_sampling}
 \end{figure}
-\section{Time-propagation}
+\section{Time-propagation: Comparison of integrators in isolated system}
 The system of coupled differential equations for the reduced density matrix, the first tier auxiliary density matrices, and the classical canonical variables takes the following form
 \begin{align*}
 	\frac{\dif}{\dif \tau}\rho &= -i[H_\mathrm{el}+H_\mathrm{el-vib},\rho] + \sum_\ell (\Pi_\ell^\dagger + \Pi_\ell^{\phantom{\dagger}}) \\
@@ -209,7 +209,7 @@ Figure commentary:
 	\item The trace of the density matrix does not change with voltage (as it should be), and the deviation from the number of sites (the normalization of the single-particle density matrix) is due to the "true" steady-state is reached after longer time than the one which was used for the propagation. A longer time has to be used to make this quantity go to zero.  
 	\item  The system energy changes with voltage, which one can explain with states above Fermi-level which get populated in the steady state. 
 \end{itemize}
-\section{Convergence of time propagation with step size}
+\section{Convergence of time propagation: Open system}
 We consider the Fransson model 
 \begin{align*}
 	H&=\sum_{j,\sigma} E_{j\sigma}^\pdagger \hat{c}_{j\sigma}^\dagger \hat{c}_{j\sigma}^\pdagger + \sum_{j\sigma} \left(-T_0 + \frac{T_1}{\sqrt{2}}X_j\right)(\hat{c}_{j\sigma}^\dagger \hat{c}_{j+1,\sigma}^\pdagger + \mathrm{h.c.}) +\\& \sum_{j\sigma\sigma'}\left(\lambda_0 + \frac{\lambda_1}{\sqrt{2}}X_j \right) (i\hat{c}_{j\sigma}^\dagger (\vec{v}_j^{(+)}\cdot \bm{\sigma})_{\sigma\sigma'}^\pdagger \hat{c}_{j+2,\sigma'}^\pdagger + \mathrm{h.c.}) + \sum_j \frac{1}{2}\left(X_j^2 + P_j^2+\frac{1}{2}\right)
@@ -224,12 +224,30 @@ coupled to two leads at the terminating sites. The following parameters
 	\lambda_1 &= 0.1\lambda_0\\
 	\Gamma_0 &= \frac{t_0}{4}\\
 	T &= \SI{25}{\milli\electronvolt}\\
-	V &=4t_0.
+	V &=6t_0.
 \end{align*}
 The initial density matrix is obtained using the partition-free approach, in which the electronic system is 
-in equilibrium with the leads. The initial coordinates and momenta are drawn from the Wigner representation of the thermal state of a harmonic oscillator, \cref{eq:Wigner_Thermal}. A single trajectory calculation is made for varying time step size to check the convergence of the time propagation.
+in equilibrium with the leads. The initial coordinates and momenta are drawn from the Wigner representation of the thermal state of a harmonic oscillator, \cref{eq:Wigner_Thermal}. 
 
 
+\subsection{Comparison of integrators}
+For the parameters given above, \cref{fig:Convergence_integrators} shows the current (a), the spin polarization on site 1 (b) and the displacement of the bond between sites 1 and 2 (c) for the Symplectic Ruth 4th order (blue), Symplectic Euler 1st order (green) and the non-symplectic Runge-Kutta 4th order (red) for a single trajectory with initial vibrational coordinates drawn from the Wigner representation of the thermal state of the harmonic oscillator. For all integrators a time-step size of $dt=\SI{0.012}{\femto\second}$ has been used. The electronic equations of motion are solved in all cases using a Runge-Kutta 4th order integrator.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L3_convergence_integrators.pdf}
+	\caption{Comparison of (a) current, (b) electronic spin polarization on site 1, (c) vibrational bond displacement between sites 1 and 2 (single trajectory) for different integrators for the vibrational equations of motion.}\label{fig:Convergence_integrators}
+\end{figure}
+\subsection{Convergence with step size}
+A single trajectory calculation is made for varying time step size to check the convergence of the time propagation. A comparison of step size for the same three observables as used for the comparison of various vibrational integrators are shown in \cref{fig:Convergence_dt}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L3_convergence_dt.pdf}
+	\caption{Comparison of (a) current, (b) electronic spin polarization on site 1, (c) vibrational bond displacement between sites 1 and 2 (single trajectory) for various step size. In all cases, a Runge-Kutta 4th order integrator is used for the electronic equations of motion and a symplectic Ruth 4th order for the vibrational equations of motion.}\label{fig:Convergence_dt}
+\end{figure}
+
+
+\section{Two sites and a single vibrational mode: Steady state and convergence with sample size}
+\section{8 Sites: Steady state and convergence with sample size}
 
 
 

@@ -32,7 +32,7 @@ model = FranssonHamiltonian
 modelStr = "Fransson"
 
 # Simulation Parameters
-dt = 0.00005
+dt = 0.0002
 tend = 50
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
@@ -80,8 +80,6 @@ P = 0.5
 tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-#for v in 0:70
-#V  = v * 0.2 * T0
 V = 12*T0
 nPoles = 15
 beta = ws[1]/0.025 
@@ -107,7 +105,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 
-path = "L$(num_ions)_steady_state/convergence"#V$(V)"
+path = "L$(num_ions)_dt_conv"
 if !isdir(path)
 	mkpath(path)
 end
