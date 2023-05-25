@@ -91,7 +91,7 @@ In \cref{fig:Wigner_sampling} the result of sampling using the above Box-Muller 
 	\includegraphics[width=0.9\textwidth]{figs/Comparison_sampled_Wigner.pdf}
 	\caption{Comparison between analytical and sampled Wigner distribution $\rho_W^\mathrm{G}(X,P)$ of the thermal state.}\label{fig:Wigner_sampling}
 \end{figure}
-\section{Time-propagation: Comparison of integrators in isolated system}
+\section{Time-propagation: Comparison of integrators in isolated system}\label{sec:3TimePropagation}
 The system of coupled differential equations for the reduced density matrix, the first tier auxiliary density matrices, and the classical canonical variables takes the following form
 \begin{align*}
 	\frac{\dif}{\dif \tau}\rho &= -i[H_\mathrm{el}+H_\mathrm{el-vib},\rho] + \sum_\ell (\Pi_\ell^\dagger + \Pi_\ell^{\phantom{\dagger}}) \\
@@ -234,19 +234,106 @@ in equilibrium with the leads. The initial coordinates and momenta are drawn fro
 For the parameters given above, \cref{fig:Convergence_integrators} shows the current (a), the spin polarization on site 1 (b) and the displacement of the bond between sites 1 and 2 (c) for the Symplectic Ruth 4th order (blue), Symplectic Euler 1st order (green) and the non-symplectic Runge-Kutta 4th order (red) for a single trajectory with initial vibrational coordinates drawn from the Wigner representation of the thermal state of the harmonic oscillator. For all integrators a time-step size of $dt=\SI{0.012}{\femto\second}$ has been used. The electronic equations of motion are solved in all cases using a Runge-Kutta 4th order integrator.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/L3_convergence_integrators.pdf}
+	\includegraphics[width=0.99\textwidth]{figs/L3_convergence_integrators.pdf}
 	\caption{Comparison of (a) current, (b) electronic spin polarization on site 1, (c) vibrational bond displacement between sites 1 and 2 (single trajectory) for different integrators for the vibrational equations of motion.}\label{fig:Convergence_integrators}
 \end{figure}
+\clearpage
 \subsection{Convergence with step size}
 A single trajectory calculation is made for varying time step size to check the convergence of the time propagation. A comparison of step size for the same three observables as used for the comparison of various vibrational integrators are shown in \cref{fig:Convergence_dt}.
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/L3_convergence_dt.pdf}
+	\includegraphics[width=0.99\textwidth]{figs/L3_convergence_dt.pdf}
 	\caption{Comparison of (a) current, (b) electronic spin polarization on site 1, (c) vibrational bond displacement between sites 1 and 2 (single trajectory) for various step size. In all cases, a Runge-Kutta 4th order integrator is used for the electronic equations of motion and a symplectic Ruth 4th order for the vibrational equations of motion.}\label{fig:Convergence_dt}
 \end{figure}
+\clearpage
+\section{Two sites and a single vibrational mode}
+Here we investigate transport dynamics through the model introduced before with two sites, each with up and down spin level, and one classical bond vibrational mode. This model is coupled to two leads. The left lead has a spin polarization of $P=+\frac{1}{2}$; the right lead is spin unpolarized. 
+The parameters are the same as in the previous section. Note, however, due to the system size being smaller than three sites, there is no SOC and no vibrationally assisted SOC in this system. The only electron-vibrational coupling is therefore the Peierls coupling.
 
-
-\section{Two sites and a single vibrational mode: Steady state and convergence with sample size}
+The aim of this investigation is to give an answer to the following questions:
+\begin{itemize}
+	\item[1.] How does the steady state depend on the initial condition? 
+	\item[2.] On which time scale is the steady state reached?
+\end{itemize}
+These questions are answered by integrating the coupled equations of motions using a 4th order Runge-Kutta integrator for the electronic equations of motion and a 4th order Ruth integrator for the vibrational equations of motion for a very long time interval. The initial vibrational displacement and momentum are sampled from the thermal Wigner distribution and observables are compared among the different trajectories. The results are shown in \cref{fig:L2_dynamics_V140,fig:L2_dynamics_V220,fig:L2_dynamics_V252} for voltages $V=7t_0$, $V=11t_0$ and $V=12.6t_0$, respectively. The differently colored lines show observables for different initial conditions. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.85\textwidth]{figs/L2_dynamics_V140.0.pdf}
+	\caption{(a) Charge current, (b) spin polarization on the first site and (c) displacement of bond mode for $V=7t_0$. Differently colored lines show single trajectories for initial vibrational coordinates drawn from the thermal Wigner distribution.}\label{fig:L2_dynamics_V140}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.65\textwidth]{figs/L2_dynamics_V220.0.pdf}	
+	\caption{Same as \cref{fig:L2_dynamics_V140} for $V=11t_0$.}\label{fig:L2_dynamics_V220}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.65\textwidth]{figs/L2_dynamics_V252.00000000000003.pdf}
+	\caption{Same as \cref{fig:L2_dynamics_V140} for $V=12.6t_0$.}\label{fig:L2_dynamics_V252}
+\end{figure}
+\clearpage
+Answers to the above questions:
+\begin{itemize}
+	\item[1.] Within the parameter regime investigated here and within the Ehrenfest approach, a steady state is reached independently of the initial condition. 
+	\item[2.] The time scale on which the steady state is reached depends on various parameters. The only one which has been investigated here is the voltage. There is a clear increase of the relaxation rate with increasing voltage. For example, in the off-resonant voltage regime, $V=7t_0$, the steady state is not reached after $\SI{180}{\pico\second}$, but for intermediate voltage $V=11t_0$ the steady state is reached already after $\SI{100}{\pico\second}$. In direct comparison, in the model with the same parameters but vanishing electron-vibrational coupling, the steady state is reached after 
+\end{itemize}
+\section{Three sites and two vibrational modes}
+We ask the same question as in the previous section for the model with three electronic sites and two vibrational modes. In this case, the results from the previous section are not expected to hold equally. This is because the electron-vibrational coupling mediates an effective coupling between the, otherwise noninteracting, vibrational modes. This is clear from the equations of motion given in \cref{sec:3TimePropagation}. For example, one has there
+\begin{align*}
+	\dot{X}_2 &= P_2,\\
+	\dot{P}_2 &= -X_2 - \tr{\rho(t)\partial_{X_2}H},
+\end{align*}
+therefore, the formal solution of $X_2$ is 
+\begin{align*}
+	X_2(t) &= X_2(t_0)-\int_0^t \dif s\, \left(X_2(s)+\tr{\rho(s)\partial_{X_2}H}\right).
+\end{align*}
+Since the derivative of the Hamiltonian with respect to $X_2$ is (we use the single-particle basis $\vert j,\sigma\rangle$, where $j$ is the site index and $\sigma$ spin index, with the spin-major ordering, e.g. $\vert 1,\uparrow\rangle$, $\vert 1,\downarrow\rangle$, $\vert 2,\uparrow\rangle\dots$)
+\begin{equation*}
+	\partial_{X_2} H = \begin{pmatrix}
+		0 & 0 & 0 & 0 & t_1 & 0 \\
+		0 & 0 & 0 & 0 & 0    & t_1 \\
+		\vdots &   \ddots &     &    &    & \vdots\\ 
+		t_1 & 0 & 0 & \dots & & 0\\
+		0 & t_1& 0 &\dots & 0 &0 
+	\end{pmatrix}
+\end{equation*}
+the trace is evaluated to
+\begin{equation*}
+	\tr{\rho\partial_{X_2}H} = t_1(\rho_{31}^{\uparrow\uparrow}(t) + \rho_{31}^{\downarrow\downarrow}(t)+\mathrm{h.c.}).
+\end{equation*}
+The components $\rho_{31}^{\uparrow\uparrow}(t),\rho_{31}^{\downarrow\downarrow}(t)$ are obtained from the electronic equations of motion. From the system Liouvillian $[H_\mathrm{el}+H_\mathrm{el-vib},\cdot{}]$, it is clear that the time-evolution of $\rho_{31}^{\uparrow\uparrow}$ is
+\begin{align*}
+	i\dot{\rho}_{31}^{\uparrow\uparrow}&=[H_\mathrm{el}+H_\mathrm{el-vib},\rho(t)]_{31}^{\uparrow \uparrow} \\&= \rho_{11}^{\downarrow\uparrow}(X_1\lambda_{1}^{\uparrow\downarrow} +\lambda_0^{\uparrow\downarrow}) +\rho_{11}^{\uparrow\uparrow}(X_1 \lambda_{1}^{\uparrow\uparrow} +\lambda_{0}^{\uparrow\uparrow}) + \rho_{21}^{\uparrow\uparrow}(X_2t_1 -t_1) - \\ 
+	&\rho_{32}^{\uparrow\uparrow}(X_1t_1 -t_0) - \rho_{33}^{\uparrow\downarrow}(X_1\lambda_{1}^{\downarrow\uparrow} + \lambda_{0}^{\downarrow\uparrow}) - \rho_{33}^{\uparrow\uparrow}(X_1 \lambda_1^{\uparrow\uparrow} + \lambda_0^{\uparrow\uparrow})
+\end{align*}
+and 
+\begin{align*}
+	i\dot{\rho}_{31}^{\downarrow\downarrow} &= \rho_{11}^{\downarrow\downarrow}(X_1\lambda_1^{\downarrow\downarrow} + \lambda_0^{\downarrow\downarrow}) + \rho_{11}^{\uparrow\downarrow}(X_1\lambda_1^{\downarrow\uparrow} +\lambda_0^{\downarrow\uparrow}) + \rho_{21}^{\downarrow\downarrow}(X_2t_1 -t_0) -\\ &\rho_{32}^{\downarrow\downarrow}(X_1t_1 - t_0) - \rho_{33}^{\downarrow\downarrow}(X_1\lambda_1^{\downarrow\downarrow} + \lambda_0^{\downarrow\downarrow}) - \rho_{33}^{\downarrow\uparrow}(X_1\lambda_1^{\uparrow\downarrow} + \lambda_0^{\uparrow\downarrow})
+\end{align*}
+where a spin index was introduced for the SOC terms, in which the component of $\vec{v}\cdot\bm{\sigma}$ has been absorbed.
+Therefore, the formal solution of $X_2(t)$ is of the form
+\begin{align*}
+	X_2(t) &= X_2(t_0) - \int_0^t \dif s\, \left[X_2(s) + f(X_1(s),X_2(s),\rho(s))\right]
+\end{align*}
+with 
+\begin{equation*}
+	f(X_1(s),X_2(s),\rho(s)) = \tr{\rho(s)\partial_{X_2}H}=\rho_{31}^{\uparrow\uparrow}(0)+\rho_{31}^{\downarrow\downarrow}(0)+\mathrm{h.c.}+\int_0^s \dif p \, \left(\dot{\rho}_{31}^{\uparrow\uparrow}(p) + \dot{\rho}_{31}^{\downarrow\downarrow}(p)+\mathrm{h.c.}\right).
+\end{equation*}
+From this exposition, it is clear that the coordinate $X_2(t)$ at time $t$ depends on the time-evolution of $X_1(s),X_2(s)$ and $\rho(s)$ at  previous times $0\leq s<t$. It is clear though, that it is not possible to formulate the system above in terms of a simple effective Hamiltonian of the form
+\begin{align*}
+	H_\mathrm{eff} = \frac{1}{2}\sum_i\left(X_i^2 + P_i^2 + \frac{1}{2}\right) + \alpha (X_1- X_2)^2.
+\end{align*}
+From the equations of motion investigated above, the effective Hamiltonian is rather of the type
+\begin{align}
+	H_\mathrm{eff}(t) = \frac{1}{2}\sum_i\left(X_i^2(t) + P_i^2(t) + \frac{1}{2}\right) + F_1(t)X_1(t) + F_2(t)X_2(t)\label{eq:H_eff_vibs}
+\end{align}
+where $F_1(t)$ and $F_2(t)$ are
+\begin{align*}
+	F_1(t) &= \tr{\rho(t)\partial_{X_1}H}\\
+	F_2(t) &= \tr{\rho(t)\partial_{X_2}H}.
+\end{align*}
+It is easy to see that the effective Hamiltonian in \cref{eq:H_eff_vibs} reproduced the classical equations of motion, given the time-evolution of $\rho(t)$ is supplied, because the derivative terms vanish $\partial_{X_i}F_j(t)=0$ for all $i,j=1,2$. 
+Both functions $F_{1,2}(t)$ contain the full information of the time evolution of all variables of the original problem, $X_1,X_2$ and $\rho$, up to time $t$.
 \section{8 Sites: Steady state and convergence with sample size}
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  22 MAY 2023 17:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  24 MAY 2023 14:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -772,32 +772,65 @@ File: figs/L3_convergence_integrators.pdf Graphic file (type pdf)
 <use figs/L3_convergence_integrators.pdf>
 Package pdftex.def Info: figs/L3_convergence_integrators.pdf  used on input lin
 e 237.
-(pdftex.def)             Requested size: 435.32419pt x 435.3293pt.
+(pdftex.def)             Requested size: 478.86252pt x 478.86917pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/L3_convergence_dt.pdf, id=123, 650.43pt x 650.43pt>
-File: figs/L3_convergence_dt.pdf Graphic file (type pdf)
-<use figs/L3_convergence_dt.pdf>
-Package pdftex.def Info: figs/L3_convergence_dt.pdf  used on input line 244.
-(pdftex.def)             Requested size: 435.32419pt x 435.3293pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [7
 
-] [8 <./figs/L3_convergence_integrators.pdf>] [9 <./figs/L3_convergence_dt.pdf>
-] (./report_12.aux)
+] [8 <./figs/L3_convergence_integrators.pdf>]
+<figs/L3_convergence_dt.pdf, id=154, 650.43pt x 650.43pt>
+File: figs/L3_convergence_dt.pdf Graphic file (type pdf)
+<use figs/L3_convergence_dt.pdf>
+Package pdftex.def Info: figs/L3_convergence_dt.pdf  used on input line 245.
+(pdftex.def)             Requested size: 478.86252pt x 478.86917pt.
+ [9
+
+ <./figs/L3_convergence_dt.pdf>]
+<figs/L2_dynamics_V140.0.pdf, id=178, 650.43pt x 650.43pt>
+File: figs/L2_dynamics_V140.0.pdf Graphic file (type pdf)
+<use figs/L2_dynamics_V140.0.pdf>
+Package pdftex.def Info: figs/L2_dynamics_V140.0.pdf  used on input line 261.
+(pdftex.def)             Requested size: 411.14526pt x 411.1526pt.
+<figs/L2_dynamics_V220.0.pdf, id=179, 650.43pt x 650.43pt>
+File: figs/L2_dynamics_V220.0.pdf Graphic file (type pdf)
+<use figs/L2_dynamics_V220.0.pdf>
+Package pdftex.def Info: figs/L2_dynamics_V220.0.pdf  used on input line 266.
+(pdftex.def)             Requested size: 314.39998pt x 314.40614pt.
+<figs/L2_dynamics_V252.00000000000003.pdf, id=180, 650.43pt x 650.43pt>
+File: figs/L2_dynamics_V252.00000000000003.pdf Graphic file (type pdf)
+<use figs/L2_dynamics_V252.00000000000003.pdf>
+Package pdftex.def Info: figs/L2_dynamics_V252.00000000000003.pdf  used on inpu
+t line 271.
+(pdftex.def)             Requested size: 314.39998pt x 314.40614pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[10
+
+ <./figs/L2_dynamics_V140.0.pdf>] [11 <./figs/L2_dynamics_V220.0.pdf> <./figs/L
+2_dynamics_V252.00000000000003.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L2_dynamics_V252.0000
+0000000003.pdf): PDF inclusion: multiple pdfs with page group included in a sin
+gle page
+>] [12
+
+] [13] (./report_12.aux)
 Package logreq Info: Writing requests to 'report_12.run.xml'.
 \openout1 = `report_12.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16328 strings out of 478994
- 320107 string characters out of 5858184
- 842543 words of memory out of 5000000
- 33600 multiletter control sequences out of 15000+600000
+ 16356 strings out of 478994
+ 321016 string characters out of 5858184
+ 842748 words of memory out of 5000000
+ 33625 multiletter control sequences out of 15000+600000
  419994 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,13n,75p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -825,10 +858,10 @@ ve/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive
 /2021/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/times/utmri8a.pfb>
-Output written on report_12.pdf (9 pages, 778557 bytes).
+Output written on report_12.pdf (13 pages, 1773055 bytes).
 PDF statistics:
- 243 PDF objects out of 1000 (max. 8388607)
- 197 compressed objects within 2 object streams
+ 319 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

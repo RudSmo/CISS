@@ -19,8 +19,8 @@ N = num_laps * num_ions
 ws  = 0.002*ones(N)
 T0  = 0.04/ws[1]  # in eV
 t0  = -T0
-eu  = -6*T0
-ed  = -6*T0
+eu  = 0.0 #-6*T0
+ed  = 0.0 #-6*T0
 E   = [eu,ed]
 gPh = zeros(2)
 a   = 1.0
@@ -33,7 +33,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.0002
-tend = 50
+tend = 120
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -62,8 +62,8 @@ initProp  = true
 if initProp
 #    rhoIn = "pure"
     rhoIn = "equilibrium"
-    phIn = "TDSCF"
-#    phIn = "Wigner"
+#    phIn = "TDSCF"
+    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -73,14 +73,15 @@ end
 popElIn = zeros(2*N)
 popElIn[1] = 1.0
 popPhIn = zeros(N)
-xnIn,pnIn = [0.7691068624482689,-3.61069243320506,-5.245657309206734],[-7.401418656594664,-4.3318963287495675,1.5952234947490966]
-
+#xnIn,pnIn = [0.7691068624482689,-3.61069243320506,-5.245657309206734],[-7.401418656594664,-4.3318963287495675,1.5952234947490966]
+xnIn,pnIn = zeros(N), zeros(N)
 ## Leads
-P = 0.5
+P = 0.0
 tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-V = 12*T0
+
+V = T0
 nPoles = 15
 beta = ws[1]/0.025 
 
@@ -104,14 +105,13 @@ HamPar = HamiltonianParams( num_laps,
 			    tR)
 
 
-
-path = "L$(num_ions)_dt_conv"
+path = "L$(num_ions)_noEps_GammaSym"
 if !isdir(path)
 	mkpath(path)
 end
 
 
-num_avg = 1
+num_avg = 20
 for ka in 1:num_avg
     if modelStr == "Fransson"
         dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_$(clIntegrator)_$(elIntegrator)_dt$(abs(dt))"
@@ -129,6 +129,5 @@ for ka in 1:num_avg
     SaveParams(params,parampath,purpose)
 
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,phIn,elIntegrator,clIntegrator,popElIn)
-#    Average(ka,dataname1,num_avg)
+    Average(ka,dataname1,num_avg)
 end
-
