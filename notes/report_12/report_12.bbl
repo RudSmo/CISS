@@ -97,5 +97,54 @@
     \field{journaltitle}{Plasma Physics and Controlled Fusion}
     \field{year}{2011}
   \endentry
+
+  \entry{bastida2006modified}{article}{}
+    \name{author}{5}{}{%
+      {{hash=BA}{%
+         family={Bastida},
+         familyi={B\bibinitperiod},
+         given={Adolfo},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=CC}{%
+         family={Cruz},
+         familyi={C\bibinitperiod},
+         given={Carlos},
+         giveni={C\bibinitperiod},
+      }}%
+      {{hash=ZJ}{%
+         family={Z{\'u}{\~n}iga},
+         familyi={Z\bibinitperiod},
+         given={Jos{\'e}},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=RA}{%
+         family={Requena},
+         familyi={R\bibinitperiod},
+         given={Alberto},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=MB}{%
+         family={Miguel},
+         familyi={M\bibinitperiod},
+         given={Beatriz},
+         giveni={B\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Elsevier}%
+    }
+    \strng{namehash}{BA+1}
+    \strng{fullhash}{BACCZJRAMB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{1-3}
+    \field{pages}{53\bibrangedash 57}
+    \field{title}{A modified Ehrenfest method that achieves Boltzmann quantum
+  state populations}
+    \field{volume}{417}
+    \field{journaltitle}{Chemical physics letters}
+    \field{year}{2006}
+  \endentry
 \enddatalist
 \endinput

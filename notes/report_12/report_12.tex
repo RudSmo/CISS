@@ -96,7 +96,7 @@ The system of coupled differential equations for the reduced density matrix, the
 \begin{align*}
 	\frac{\dif}{\dif \tau}\rho &= -i[H_\mathrm{el}+H_\mathrm{el-vib},\rho] + \sum_\ell (\Pi_\ell^\dagger + \Pi_\ell^{\phantom{\dagger}}) \\
 	\Pi_\ell(t) &= \frac{1}{4}(\mathds{1}-2\rho)\Gamma_\ell-\sum_{p=1}^{N_p} \Pi_{\ell,p}(t)\\
-	\frac{\dif}{\dif t} \Pi_{\ell,p}(t) &= -\frac{i\eta_p}{\beta_\ell}\Gamma_\ell - i\left(H_\mathrm{el}+H_\mathrm{el-ph}-\frac{i}{2}\Gamma-\chi_p^+\mathds{1}\right)\Pi_{\ell,p}(t)\\
+	\frac{\dif}{\dif t} \Pi_{\ell,p}(t) &= -\frac{i\eta_p}{\beta_\ell}\Gamma_\ell - i\left(H_\mathrm{el}+H_\mathrm{el-vib}-\frac{i}{2}\Gamma-\chi_p^+\mathds{1}\right)\Pi_{\ell,p}(t)\\
 	\frac{\dif P_j}{\dif \tau}&= -X_j - \tr{\rho \nabla_{X_j}H_\mathrm{el-vib}}, \\
 	\frac{\dif X_j}{\dif \tau} &=  P_j.
 \end{align*}
@@ -246,7 +246,7 @@ A single trajectory calculation is made for varying time step size to check the 
 	\caption{Comparison of (a) current, (b) electronic spin polarization on site 1, (c) vibrational bond displacement between sites 1 and 2 (single trajectory) for various step size. In all cases, a Runge-Kutta 4th order integrator is used for the electronic equations of motion and a symplectic Ruth 4th order for the vibrational equations of motion.}\label{fig:Convergence_dt}
 \end{figure}
 \clearpage
-\section{Two sites and a single vibrational mode}
+\section{Two sites and a single vibrational mode: Comparison of independent trajectory with trajectory-bundles Ehrenfest}
 Here we investigate transport dynamics through the model introduced before with two sites, each with up and down spin level, and one classical bond vibrational mode. This model is coupled to two leads. The left lead has a spin polarization of $P=+\frac{1}{2}$; the right lead is spin unpolarized. 
 The parameters are the same as in the previous section. Note, however, due to the system size being smaller than three sites, there is no SOC and no vibrationally assisted SOC in this system. The only electron-vibrational coupling is therefore the Peierls coupling.
 
@@ -255,10 +255,26 @@ The aim of this investigation is to give an answer to the following questions:
 	\item[1.] How does the steady state depend on the initial condition? 
 	\item[2.] On which time scale is the steady state reached?
 \end{itemize}
-These questions are answered by integrating the coupled equations of motions using a 4th order Runge-Kutta integrator for the electronic equations of motion and a 4th order Ruth integrator for the vibrational equations of motion for a very long time interval. The initial vibrational displacement and momentum are sampled from the thermal Wigner distribution and observables are compared among the different trajectories. The results are shown in \cref{fig:L2_dynamics_V140,fig:L2_dynamics_V220,fig:L2_dynamics_V252} for voltages $V=7t_0$, $V=11t_0$ and $V=12.6t_0$, respectively. The differently colored lines show observables for different initial conditions. 
+These questions are answered by integrating the coupled equations of motions using a 4th order Runge-Kutta integrator for the electronic equations of motion and a 4th order Ruth integrator for the vibrational equations of motion for a very long time interval. The initial vibrational displacement and momentum are sampled from the thermal Wigner distribution and observables are compared among the different trajectories. Two different propagation strategies are used to obtain the averaged observables. 
+
+The first one is to propagate a swarm of trajectories corresponding to a set of initial conditions. Observables are then computed as the average over the observables computed for the individual trajectories. 
+
+The second strategy is to perform a single quantum propagation in the mean-field obtained by averaging the couplings for all trajectories (bundle trajectory). That is, the quantum system is propagated under the averaged Hamiltonian
+\begin{equation*}
+	\bar{H}(t)= \frac{1}{N}\sum_{k=1}^N H(\{X_i^{(k)}(t)\},\{P_i^{(k)}(t)\})
+\end{equation*}
+with $N$ the number of trajectories. Because of the linear electron-vibrational coupling, averaging the Hamiltonian is equivalent to the Hamiltonian with trajectory-averaged vibrational coordinates
+\begin{equation*}
+	\bar{H}(t) = H(\{\bar{X}_i(t)\},\{\bar{P}_i(t)\}).
+\end{equation*}
+Within the bundle trajectory approach, the latter averaging procedure is employed in the code because it is numerically more efficient (Array addition instead of Matrix addition in the averaging of the Hamiltonian). 
+
+Both approaches conserve the energy of the isolated system, and the results are compared in the following.
+\subsection{Independent trajectory Ehrenfest}
+The results are shown in \cref{fig:L2_dynamics_V140,fig:L2_dynamics_V220,fig:L2_dynamics_V252} for voltages $V=7t_0$, $V=11t_0$ and $V=12.6t_0$, respectively. The differently colored lines show observables for different initial conditions. The observables of interest are the charge current, shown in subfigures (a), electronic spin polarization on the first site in (b) and the vibrational displacement in (c). 
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.85\textwidth]{figs/L2_dynamics_V140.0.pdf}
+	\includegraphics[width=0.65\textwidth]{figs/L2_dynamics_V140.0.pdf}
 	\caption{(a) Charge current, (b) spin polarization on the first site and (c) displacement of bond mode for $V=7t_0$. Differently colored lines show single trajectories for initial vibrational coordinates drawn from the thermal Wigner distribution.}\label{fig:L2_dynamics_V140}
 \end{figure}
 \begin{figure}[!h]
@@ -266,17 +282,31 @@ These questions are answered by integrating the coupled equations of motions usi
 	\includegraphics[width=0.65\textwidth]{figs/L2_dynamics_V220.0.pdf}	
 	\caption{Same as \cref{fig:L2_dynamics_V140} for $V=11t_0$.}\label{fig:L2_dynamics_V220}
 \end{figure}
+\clearpage
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.65\textwidth]{figs/L2_dynamics_V252.00000000000003.pdf}
+	\includegraphics[width=0.7\textwidth]{figs/L2_dynamics_V252.00000000000003.pdf}
 	\caption{Same as \cref{fig:L2_dynamics_V140} for $V=12.6t_0$.}\label{fig:L2_dynamics_V252}
 \end{figure}
-\clearpage
 Answers to the above questions:
 \begin{itemize}
-	\item[1.] Within the parameter regime investigated here and within the Ehrenfest approach, a steady state is reached independently of the initial condition. 
+	\item[1.] Within the parameter regime investigated here and within the Ehrenfest approach, a steady state is reached independently of the initial condition for the two-site model. 
 	\item[2.] The time scale on which the steady state is reached depends on various parameters. The only one which has been investigated here is the voltage. There is a clear increase of the relaxation rate with increasing voltage. For example, in the off-resonant voltage regime, $V=7t_0$, the steady state is not reached after $\SI{180}{\pico\second}$, but for intermediate voltage $V=11t_0$ the steady state is reached already after $\SI{100}{\pico\second}$. In direct comparison, in the model with the same parameters but vanishing electron-vibrational coupling, the steady state is reached after 
 \end{itemize}
+\subsection{Comparison between independent and bundle trajectory Ehrenfest approaches}
+\Cref{fig:L2_dynamics_compare_indp_swarm} shows the dynamics of the same observables as investigated in the previous section using the independent trajectory Ehrenfest approach (blue lines) and the swarm Ehrenfest approach averaged over 250 trajectories (red lines). The voltage is $V=12.6t_0$ and other parameters are the same. As can be clearly seen, the same steady state is obtained using both approaches. However, the amplitude of oscillations is much smaller in the swarm Ehrenfest approach compared to the single independent trajectory calculation. This is a direct consequence of the averaging of the electronic Hamiltonian. In \cite{bastida2006modified}, the authors report that the bundle trajectory method is more advantageous in their model system since the average potential energy varies more smoothly in time. It is not clear if this conclusion can also be drawn in the model system investigated here. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L2_dynamics_V252.00000000000003_compare_indep_swarm.pdf}
+	\caption{Comparison of independent trajectory Ehrenfest with swarm-Ehrenfest. Charge current (a), spin polarization on first site (b) and vibrational position (c).}\label{fig:L2_dynamics_compare_indp_swarm}
+\end{figure}\\
+\clearpage
+From a numerical perspective for this model system, both approaches, the independent trajectory approach for a single trajectory and the bundle trajectory Ehrenfest for 250 trajectories take approximately the same CPU time. The swarm-trajectory approach has a slightly larger memory requirement, because each trajectory has to be stored for a given time step. 
+From this one could conclude that the vibrational dynamics is not the bottleneck of the current implementation. This is to be expected since propagating the electronic equations of motion involves many matrix-matrix multiplications, whereas propagating the vibrational degrees of freedom involves only array additions, which are numerically much cheaper. The bottleneck in the vibrational dynamics is computing the quantum force
+\begin{equation*}
+	\tr{\rho \partial_{X_i}H}
+\end{equation*}   
+which scales as $\sim (2L)^4$ (for small matrices, no optimization) where $L$ is the system size. This operation is performed $L$ times (for each site) at a given time step. The propagation itself scales only like $\sim N L$ for $N$ trajectories. An optimal strategy would thus to perform many swarm Ehrenfest calculations (choosing $N$ small enough such that each calculation is as costly as a single trajectory calculation) to increase the statistics.  
 \section{Three sites and two vibrational modes}
 We ask the same question as in the previous section for the model with three electronic sites and two vibrational modes. In this case, the results from the previous section are not expected to hold equally. This is because the electron-vibrational coupling mediates an effective coupling between the, otherwise noninteracting, vibrational modes. This is clear from the equations of motion given in \cref{sec:3TimePropagation}. For example, one has there
 \begin{align*}
