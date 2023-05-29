@@ -14,8 +14,8 @@ clc
 
 %% LOOP OVER COORDINATES
 
-Lvec = linspace(-6, 6, 10);
-qvec = linspace(-6, 6, 8);
+Lvec = linspace(-6, 6, 15);
+qvec = linspace(-6, 6, 15);
 % Tvec = linspace(-pi/4, pi/4, 7);
 
 % Lvec = [10];
@@ -51,10 +51,9 @@ num_ions = 3;
 N_rud = num_laps * num_ions;
 ws  = 0.002*ones(N_rud);
 T0  = 0.04/ws(1) ; # in eV
-#T0  = 0.04/ws(1)
 t0_rud  = -T0;
-eu  = -0.5*T0;
-ed  = -0.5*T0;
+eu  = -6*T0;
+ed  = -6*T0;
 E_rud   = [eu,ed];
 gPh = zeros(2);
 a_rud   = 1.0;
@@ -94,9 +93,9 @@ for L = Lvec
         % Lead Space
         kTL = 0.00095 / ws(1); %left lead temperature
         kTR = 0.00095 / ws(1); %right lead temperature
-        muL = 1*1.2*T0; %left lead fermi level
+        muL = 7.0 * T0 %1*1.2*T0; %left lead fermi level
         muR = -muL; %right lead fermi level
-        c = 0.21; %leads energy band width
+        c = 50*T0 %0.21; %leads energy band width
 
         %% INITIAL NUCLEAR GEOMETRY
         % number of sites
@@ -144,7 +143,7 @@ for L = Lvec
             (muR > muL) * muR + (muL > muR) * muL +20, nw); %small grid
         omega(1,1,:) = omega_grid;
 
-        nw1 = 2; %5000
+        nw1 = 5000; %5000
         omega1_grid = linspace(- c, (muL > muR) * muL + (muR > muL) * muR + 0.02, nw1); %large grid
         omega1(1,1,:) = omega1_grid;
 
