@@ -231,7 +231,7 @@ in equilibrium with the leads. The initial coordinates and momenta are drawn fro
 
 
 \subsection{Comparison of integrators}
-For the parameters given above, \cref{fig:Convergence_integrators} shows the current (a), the spin polarization on site 1 (b) and the displacement of the bond between sites 1 and 2 (c) for the Symplectic Ruth 4th order (blue), Symplectic Euler 1st order (green) and the non-symplectic Runge-Kutta 4th order (red) for a single trajectory with initial vibrational coordinates drawn from the Wigner representation of the thermal state of the harmonic oscillator. For all integrators a time-step size of $dt=\SI{0.012}{\femto\second}$ has been used. The electronic equations of motion are solved in all cases using a Runge-Kutta 4th order integrator.
+For the parameters given above, \cref{fig:Convergence_integrators} shows the current (a), the spin polarization on site 1 (b) and the displacement of the bond between sites 1 and 2 (c) for the Symplectic Ruth 4th order (blue), Symplectic Euler 1st order (green) and the non-symplectic Runge-Kutta 4th order (red) for a single trajectory with initial vibrational coordinates drawn from the Wigner representation of the thermal state of the harmonic oscillator. For all integrators a time-step size of $dt=\SI{0.012}{\femto\second}$ has been used. The electronic equations of motion are solved in all cases using a Runge-Kutta 4th order integrator. Within the shown scale, the observables lay on top of each other using all three integrators.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.99\textwidth]{figs/L3_convergence_integrators.pdf}
@@ -364,6 +364,7 @@ where $F_1(t)$ and $F_2(t)$ are
 \end{align*}
 It is easy to see that the effective Hamiltonian in \cref{eq:H_eff_vibs} reproduced the classical equations of motion, given the time-evolution of $\rho(t)$ is supplied, because the derivative terms vanish $\partial_{X_i}F_j(t)=0$ for all $i,j=1,2$. 
 Both functions $F_{1,2}(t)$ contain the full information of the time evolution of all variables of the original problem, $X_1,X_2$ and $\rho$, up to time $t$.
+{\color{red} use higher $\omega$: 1. Reach a steady-state, 2. reach it faster. Compare independent trajectory with trajectory bundles Ehrenfest. Assumption: If both agree for two modes and higher frequency, both approaches also agree for lower frequency and more modes. Within this assumption, the problem of not having enough statistics and not reaching the steady state is solved.}
 \section{8 Sites: Steady state and convergence with sample size}
 
 

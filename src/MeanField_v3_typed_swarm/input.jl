@@ -13,8 +13,8 @@ using DelimitedFiles
 
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 3
+num_laps = 2
+num_ions = 4
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
 T0  = 0.04/ws[1]  # in eV
@@ -33,7 +33,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.0002
-tend = 180 
+tend = 1 
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -103,8 +103,8 @@ HamPar = HamiltonianParams( num_laps,
 			    tR)
 
 
-num_avg = 100000
-path = "L$(num_ions)_test/V$(v)/N$(num_avg)"
+num_avg = 500000
+path = "L$(num_ions)_test_w0$(ws[1])/V$(v)/N$(num_avg)"
 if !isdir(path)
 	mkpath(path)
 end
