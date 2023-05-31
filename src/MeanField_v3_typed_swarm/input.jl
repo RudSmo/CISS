@@ -13,8 +13,8 @@ using DelimitedFiles
 
 
 # Hamiltonian Parameters
-num_laps = 2
-num_ions = 4
+num_laps = 1
+num_ions = 3
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
 T0  = 0.04/ws[1]  # in eV
@@ -33,7 +33,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.0002
-tend = 1 
+tend = 10
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -60,23 +60,21 @@ clIntegrator = SymplecticRuth4Step
 
 initProp  = true
 if initProp
-#    rhoIn = "pure"
-    rhoIn = "equilibrium"
+    rhoIn = "pure"
+#    rhoIn = "equilibrium"
     pathIn = ""
 else
     rhoIn = "fromFile"
     pathIn = "Holstein_L2/noEps/L2_gPhU0.004_gPhD0.004_V0.0_w00.002_X0_0.0_dt0.05_1_final_Quantities"
 end
 popElIn = zeros(2*N)
-popElIn[1] = 1.0
 
 ## Leads
 P = 0.5
 tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
-v = 70
-V = v*0.2*T0
+V = 12*T0
 nPoles = 15
 beta = ws[1]/0.025 
 
@@ -104,14 +102,14 @@ HamPar = HamiltonianParams( num_laps,
 
 
 num_avg = 500000
-path = "L$(num_ions)_test_w0$(ws[1])/V$(v)/N$(num_avg)"
+path = "L$(num_ions)_comparison/N$(num_avg)"
 if !isdir(path)
 	mkpath(path)
 end
 
 
 if modelStr == "Fransson"
-	dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_$(clIntegrator)_$(elIntegrator)_dt$(abs(dt))"
+	dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_$(clIntegrator)_$(elIntegrator)_initEmpty_dt$(abs(dt))"
 elseif modelStr == "Holstein"
 	dataname1 = "$(path)/L$(N)_gPhU$(gPh[1])_gPhD$(gPh[2])_V$(V)_w0$(ws[1])_X0_$(x0)_dt$(abs(dt))"
 end
