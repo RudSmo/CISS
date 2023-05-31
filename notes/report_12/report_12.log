@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  30 MAY 2023 17:02
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  31 MAY 2023 10:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -750,28 +750,31 @@ r/m/n/10 ) ob-tained from $\OML/cmm/m/it/10 ^^Z\OT1/cmr/m/n/10 (\OML/cmm/m/it/1
  []
 
 [3]
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 1
+65.
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/bbold/Ubbold.fd)
 <figs/L3_coupled_iso_integrators.pdf, id=63, 650.43pt x 650.43pt>
 File: figs/L3_coupled_iso_integrators.pdf Graphic file (type pdf)
 <use figs/L3_coupled_iso_integrators.pdf>
 Package pdftex.def Info: figs/L3_coupled_iso_integrators.pdf  used on input lin
-e 178.
+e 172.
 (pdftex.def)             Requested size: 483.69684pt x 483.71245pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [4] [5 <./figs/L3_coupled_iso_integrators.pdf>]
-<figs/L3_uncoupled_open.pdf, id=92, 650.43pt x 650.43pt>
+<figs/L3_uncoupled_open.pdf, id=93, 650.43pt x 650.43pt>
 File: figs/L3_uncoupled_open.pdf Graphic file (type pdf)
 <use figs/L3_uncoupled_open.pdf>
-Package pdftex.def Info: figs/L3_uncoupled_open.pdf  used on input line 202.
+Package pdftex.def Info: figs/L3_uncoupled_open.pdf  used on input line 196.
 (pdftex.def)             Requested size: 483.69684pt x 483.71245pt.
  [6 <./figs/L3_uncoupled_open.pdf>]
-<figs/L3_convergence_integrators.pdf, id=122, 650.43pt x 650.43pt>
+<figs/L3_convergence_integrators.pdf, id=123, 650.43pt x 650.43pt>
 File: figs/L3_convergence_integrators.pdf Graphic file (type pdf)
 <use figs/L3_convergence_integrators.pdf>
 Package pdftex.def Info: figs/L3_convergence_integrators.pdf  used on input lin
-e 237.
+e 231.
 (pdftex.def)             Requested size: 478.86252pt x 478.86917pt.
 
 
@@ -780,23 +783,23 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [7
 
 ] [8 <./figs/L3_convergence_integrators.pdf>]
-<figs/L3_convergence_dt.pdf, id=154, 650.43pt x 650.43pt>
+<figs/L3_convergence_dt.pdf, id=155, 650.43pt x 650.43pt>
 File: figs/L3_convergence_dt.pdf Graphic file (type pdf)
 <use figs/L3_convergence_dt.pdf>
-Package pdftex.def Info: figs/L3_convergence_dt.pdf  used on input line 245.
+Package pdftex.def Info: figs/L3_convergence_dt.pdf  used on input line 239.
 (pdftex.def)             Requested size: 478.86252pt x 478.86917pt.
  [9
 
  <./figs/L3_convergence_dt.pdf>]
-<figs/L2_dynamics_V140.0.pdf, id=178, 650.43pt x 650.43pt>
+<figs/L2_dynamics_V140.0.pdf, id=179, 650.43pt x 650.43pt>
 File: figs/L2_dynamics_V140.0.pdf Graphic file (type pdf)
 <use figs/L2_dynamics_V140.0.pdf>
-Package pdftex.def Info: figs/L2_dynamics_V140.0.pdf  used on input line 277.
+Package pdftex.def Info: figs/L2_dynamics_V140.0.pdf  used on input line 271.
 (pdftex.def)             Requested size: 314.39998pt x 314.40614pt.
-<figs/L2_dynamics_V220.0.pdf, id=179, 650.43pt x 650.43pt>
+<figs/L2_dynamics_V220.0.pdf, id=180, 650.43pt x 650.43pt>
 File: figs/L2_dynamics_V220.0.pdf Graphic file (type pdf)
 <use figs/L2_dynamics_V220.0.pdf>
-Package pdftex.def Info: figs/L2_dynamics_V220.0.pdf  used on input line 282.
+Package pdftex.def Info: figs/L2_dynamics_V220.0.pdf  used on input line 276.
 (pdftex.def)             Requested size: 314.39998pt x 314.40614pt.
 
 
@@ -812,28 +815,28 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L2_dynamics_V220.0.pd
 f): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<figs/L2_dynamics_V252.00000000000003.pdf, id=225, 650.43pt x 650.43pt>
+<figs/L2_dynamics_V252.00000000000003.pdf, id=226, 650.43pt x 650.43pt>
 File: figs/L2_dynamics_V252.00000000000003.pdf Graphic file (type pdf)
 <use figs/L2_dynamics_V252.00000000000003.pdf>
 Package pdftex.def Info: figs/L2_dynamics_V252.00000000000003.pdf  used on inpu
-t line 288.
+t line 282.
 (pdftex.def)             Requested size: 338.5863pt x 338.59276pt.
 
-Overfull \hbox (1.15317pt too wide) in paragraph at lines 296--296
+Overfull \hbox (1.15317pt too wide) in paragraph at lines 290--290
 []\OT1/cmr/bx/n/12 Comparison be-tween in-de-pen-dent and bun-dle tra-jec-tory 
 Ehren-fest ap-proaches 
  []
 
-<figs/L2_dynamics_V252.00000000000003_compare_indep_swarm.pdf, id=226, 650.43pt
+<figs/L2_dynamics_V252.00000000000003_compare_indep_swarm.pdf, id=227, 650.43pt
  x 650.43pt>
 File: figs/L2_dynamics_V252.00000000000003_compare_indep_swarm.pdf Graphic file
  (type pdf)
 <use figs/L2_dynamics_V252.00000000000003_compare_indep_swarm.pdf>
 Package pdftex.def Info: figs/L2_dynamics_V252.00000000000003_compare_indep_swa
-rm.pdf  used on input line 300.
+rm.pdf  used on input line 294.
 (pdftex.def)             Requested size: 435.32419pt x 435.3293pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 297--303
+Underfull \hbox (badness 10000) in paragraph at lines 291--297
 
  []
 
@@ -844,36 +847,43 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
  <./figs/L2_dynamics_V252.00000000000003.pdf>] [13 <./figs/L2_dynamics_V252.000
 00000000003_compare_indep_swarm.pdf>]
-<figs/L1x3_w0_20_comparison_bundles_indep_V50.pdf, id=275, 650.43pt x 650.43pt>
+<figs/L1x3_w0_20_comparison_bundles_indep_V50.pdf, id=276, 650.43pt x 650.43pt>
 
 File: figs/L1x3_w0_20_comparison_bundles_indep_V50.pdf Graphic file (type pdf)
 <use figs/L1x3_w0_20_comparison_bundles_indep_V50.pdf>
 Package pdftex.def Info: figs/L1x3_w0_20_comparison_bundles_indep_V50.pdf  used
- on input line 371.
+ on input line 365.
 (pdftex.def)             Requested size: 435.32419pt x 435.3293pt.
+ [14
 
-Overfull \hbox (6.77934pt too wide) in paragraph at lines 374--374
-[]\OT1/cmr/bx/n/14.4 System size de-pen-dence of current-voltage char-ac-ter-is
--tics and mag-
- []
-
-[14
-
- <./figs/L1x3_w0_20_comparison_bundles_indep_V50.pdf>] [15] (./report_12.aux)
+ <./figs/L1x3_w0_20_comparison_bundles_indep_V50.pdf>]
+<figs/L2x4_gnuplot.png, id=300, 636.3775pt x 476.78125pt>
+File: figs/L2x4_gnuplot.png Graphic file (type png)
+<use figs/L2x4_gnuplot.png>
+Package pdftex.def Info: figs/L2x4_gnuplot.png  used on input line 382.
+(pdftex.def)             Requested size: 232.17241pt x 173.94003pt.
+<figs/L2x4_gnuplot_v2.png, id=302, 636.3775pt x 476.78125pt>
+File: figs/L2x4_gnuplot_v2.png Graphic file (type png)
+<use figs/L2x4_gnuplot_v2.png>
+Package pdftex.def Info: figs/L2x4_gnuplot_v2.png  used on input line 383.
+(pdftex.def)             Requested size: 232.17241pt x 173.94003pt.
+ [15 <./figs/L2x4_gnuplot.png> <./figs/L2x4_gnuplot_v2.png>] [16] (./report_12.
+aux)
 Package logreq Info: Writing requests to 'report_12.run.xml'.
 \openout1 = `report_12.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16374 strings out of 478994
- 322000 string characters out of 5858184
- 842856 words of memory out of 5000000
- 33641 multiletter control sequences out of 15000+600000
- 419994 words of font info for 91 fonts, out of 8000000 for 9000
+ 16403 strings out of 478994
+ 322650 string characters out of 5858184
+ 842899 words of memory out of 5000000
+ 33660 multiletter control sequences out of 15000+600000
+ 420555 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,13n,75p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
-}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb
+></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
 /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
 usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
@@ -896,10 +906,10 @@ ve/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive
 /2021/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf
 -dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/font
 s/type1/urw/times/utmri8a.pfb>
-Output written on report_12.pdf (15 pages, 1937050 bytes).
+Output written on report_12.pdf (16 pages, 2065895 bytes).
 PDF statistics:
- 368 PDF objects out of 1000 (max. 8388607)
- 309 compressed objects within 4 object streams
+ 380 PDF objects out of 1000 (max. 8388607)
+ 315 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

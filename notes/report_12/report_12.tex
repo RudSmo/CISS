@@ -34,7 +34,7 @@
 	top=20mm,
 }
 \begin{document}
-\title{Report 12: Fixing the units and some questions on the integrator}
+\title{Report 12: Units, Sampling, Integrators for time propagation, and comparison between trajectory bundles and independent trajectory Ehrenfest}
 \author{Rudolf Smorka}
 \maketitle
 \section{Units}
@@ -160,16 +160,10 @@ with the vibrational frequency $\hbar \omega = \SI{2}{\milli\electronvolt}$, hop
 \begin{equation*}
 	(X_0^{(1)},P_0^{(1)}) = (1,0.4), \qquad (X_0^{(2)},P_0^{(2)}) = (-1,-2)
 \end{equation*} 
-and the electronic system is initialized in an empty chain with an electron on the first site with spin up
+and the electronic system is initialized such that each site and spin state are equally occupied 
 \begin{equation*}
-	\rho_0 = \begin{pmatrix}
-		1 &0& \dots& 0\\
-		0 &0& \dots& 0\\
-		\vdots &\ddots&\dots& \vdots \\
-		0 & \dots & \dots & 0
-	\end{pmatrix},
+	\rho_0 = \frac{1}{2}\mathbb{1},
 \end{equation*}
-which is far away from the ground state and therefore dynamics is oscillatory.
 \Cref{fig:L3_Iso_tot_Energy} (a) shows the time-evolution of the absolute deviation of the total energy from the initial total energy. The different lines show results obtained with different integrators for the classical equation of motion. In all cases, a Runge-Kutta 4th order integrator has been used for solving the electronic equation of motion.
 Note the logarithmic scale and the offset by $10^{-9}$ to show results which are numerically zero. The time-step in the electronic in vibrational integrators are set to $dt=0.0001$ (in dimensionless units; in dimensioned units, $dt=\SI{0.012}{\femto\second}$), except for the symplectic Euler integrator, where two different time steps have been used for comparison of the error. 
 \Cref{fig:L3_Iso_tot_Energy} (b) shows the trace of the density matrix, and \cref{fig:L3_Iso_tot_Energy} (c) the quantity $\dot{W}_\mathrm{el-vib}+\dot{E}_\mathrm{vib}$.
@@ -207,7 +201,7 @@ Figure commentary:
 \begin{itemize}
 	\item The current-voltage characteristics obtained from solving the coupled equations of motion discuseed above agrees perfectly with the one obtained from the Landauer-Büttiker approach.
 	\item The trace of the density matrix does not change with voltage (as it should be), and the deviation from the number of sites (the normalization of the single-particle density matrix) is due to the "true" steady-state is reached after longer time than the one which was used for the propagation. A longer time has to be used to make this quantity go to zero.  
-	\item  The system energy changes with voltage, which one can explain with states above Fermi-level which get populated in the steady state. 
+	\item  The system energy changes with voltage, which one can explain with states above Fermi-level of the central system which get populated in the steady state. 
 \end{itemize}
 \section{Convergence of time propagation: Open system}
 We consider the Fransson model 
@@ -371,16 +365,26 @@ Here we use a larger $\omega_0 = \SI{20}{\milli\electronvolt}$ in order to reach
 	\includegraphics[width=0.9\textwidth]{figs/L1x3_w0_20_comparison_bundles_indep_V50.pdf}
 	\caption{Comparison of trajectory bundles Ehrenfest with independent trajectory Ehrenfest.}\label{fig:1x3_Indep_Bundles_comp}
 \end{figure}
-\section{System size dependence of current-voltage characteristics and magnetoresistance}
-We now turn to the original problem with $\omega_0=\SI{2}{\milli\electronvolt}$. 
+\section{Outlook}
+The previous independent trajectory Ehrenfest calculations have shown that the magnetoresistance is a quantity, which is very sensitive to fluctuations due to the finite number of trajectories. To avoid this problem, in the following, a different strategy is used. Here, the initial condition for the propagation with positive and negative lead spin polarization is the same (meaning, sampling of initial positions and momenta is performed before starting the propagation). 
 
-
-The previous independent trajectory Ehrenfest calculations (report 9 and group seminar) have shown that the magnetoresistance is a quantity, which is very sensitive to fluctuations due to the finite number of trajectories. To avoid this problem, in the following, a different strategy is used. Here, the initial condition for the propagation with positive and negative leads spin polarization is the same (i.e. sampling of initial positions and momenta is performed before starting the propagation).  
-
-
-
-
-
+Calculations using this strategy within the trajectory bundles Ehrenfest approach are currently running for system sizes  
+\begin{itemize}
+	\item $L=3\times 4$, 
+	\item $L=3\times 3$, 
+	\item $L=2\times 4$,
+\end{itemize}
+for $5\cdot 10^4$ and $2.5\cdot 10^5$ trajectories.
+From the trajectory bundles calculations for the three site model with larger vibrational frequency, convergence is achieved with $10^5$ trajectories. Since in the original problem the vibrational frequency is $\omega_0 = \SI{2}{\milli\electronvolt}$, it is expected that the steady state is not reached before tens of picoseconds (observation from previous calculations). In order to achieve convergence for these long times, possibly a larger number of trajectories is necessary. This can be seen, for example, in the following case for a system size of $L=2\times 4$ which shows the current dynamics for two number of trajectories using the original parameters and setting the lead spin polarization $P=0.5$. As can be seen, the dynamics is initially relaxing (right sub figure) but for longer times the amplitude oscillation of observables increases again. With increasing number of trajectories, the time at which this change of dynamics takes place shifts to longer times while for shorter times the observables show good agreement among different number of trajectories. 
+It seems that a finite number of trajectories, which is too small to sample the full phase space which describes the dynamics, leads to recurrences in the dynamics of the observables.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.48\textwidth]{figs/L2x4_gnuplot.png}
+	\includegraphics[width=0.48\textwidth]{figs/L2x4_gnuplot_v2.png}
+	\caption{Comparison of current dynamics for $L=2\times 4$, $V=14t_0$ and $P=0.5$ for $n=6\cdot 10^4$ (blue) and $n=3\cdot 10^5$ (red) trajectories.}\label{fig:L2x4_traj_conv}
+\end{figure}\\
+A larger number of trajectories can be obtained by propagating trajectory bundles independently (which is a combination of the two Ehrenfest approaches discussed above) by averaging observables from independent trajectory bundles calculations which are computed in parallel. The blue (red) currents shown in \cref{fig:L2x4_traj_conv} have been obtained by averaging over 6 (3) independent trajectory bundles calculations with $10^4$ ($10^5$) trajectories propagated as a bundle.
+\section{}
 \printbibliography
 
 \end{document}
