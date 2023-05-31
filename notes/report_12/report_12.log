@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  31 MAY 2023 22:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  1 JUN 2023 00:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -891,27 +891,39 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L3_comparison_TTHEOM_
 MFHEOM_v3_bundles.pdf): PDF inclusion: multiple pdfs with page group included i
 n a single page
 >]
-<figs/SFOrtho_Comparison_spin_PLDM_python_harmonic_is2.pdf, id=349, 469.755pt x
+<figs/Comparison_MFHEOM_v3_bundles_v2_currents_sysDep.pdf, id=349, 650.43pt x 6
+50.43pt>
+File: figs/Comparison_MFHEOM_v3_bundles_v2_currents_sysDep.pdf Graphic file (ty
+pe pdf)
+<use figs/Comparison_MFHEOM_v3_bundles_v2_currents_sysDep.pdf>
+Package pdftex.def Info: figs/Comparison_MFHEOM_v3_bundles_v2_currents_sysDep.p
+df  used on input line 408.
+(pdftex.def)             Requested size: 386.95894pt x 386.96599pt.
+<figs/SFOrtho_Comparison_spin_PLDM_python_harmonic_is2.pdf, id=350, 469.755pt x
  650.43pt>
 File: figs/SFOrtho_Comparison_spin_PLDM_python_harmonic_is2.pdf Graphic file (t
 ype pdf)
 <use figs/SFOrtho_Comparison_spin_PLDM_python_harmonic_is2.pdf>
 Package pdftex.def Info: figs/SFOrtho_Comparison_spin_PLDM_python_harmonic_is2.
-pdf  used on input line 408.
+pdf  used on input line 416.
 (pdftex.def)             Requested size: 386.95894pt x 535.78761pt.
- [17
 
- <./figs/SFOrtho_Comparison_spin_PLDM_python_harmonic_is2.pdf>] [18]
-(./report_12.aux)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[17
+
+ <./figs/Comparison_MFHEOM_v3_bundles_v2_currents_sysDep.pdf>] [18 <./figs/SFOr
+tho_Comparison_spin_PLDM_python_harmonic_is2.pdf>] (./report_12.aux)
 Package logreq Info: Writing requests to 'report_12.run.xml'.
 \openout1 = `report_12.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16435 strings out of 478994
- 323922 string characters out of 5858184
+ 16441 strings out of 478994
+ 324296 string characters out of 5858184
  842985 words of memory out of 5000000
- 33685 multiletter control sequences out of 15000+600000
+ 33690 multiletter control sequences out of 15000+600000
  421394 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,13n,75p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -941,10 +953,10 @@ e/2021/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/
 2021/texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-
 dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts
 /type1/urw/times/utmri8a.pfb>
-Output written on report_12.pdf (18 pages, 2794832 bytes).
+Output written on report_12.pdf (18 pages, 3041119 bytes).
 PDF statistics:
- 442 PDF objects out of 1000 (max. 8388607)
- 369 compressed objects within 4 object streams
+ 467 PDF objects out of 1000 (max. 8388607)
+ 392 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

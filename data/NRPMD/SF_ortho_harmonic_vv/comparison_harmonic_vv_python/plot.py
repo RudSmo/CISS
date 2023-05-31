@@ -68,6 +68,7 @@ for i,j in enumerate(dat):
 	if i != 3:
 		ax[i].tick_params(labelbottom=False)
 	ax[i].annotate(lab[i],(0.1,0.9),xycoords="axes fraction")
+	ax[i].set_ylim(-0.05,1)
 	for k,col in enumerate(colors):
 		#if i == 3:
 		#	li = str(k)
@@ -75,12 +76,13 @@ for i,j in enumerate(dat):
 		#	li = "0"+str(k)
 		li = "2"+str(k)
 		time_end = j["time"][-1]
-		ax[i].plot(Time(j["time"],"au").get("fs"),np.real(j[li]),label=llab[k],color=col,linewidth=2)
+		ax[i].plot(Time(j["time"],"au").get("fs"),np.real(j[li])/64,label=llab[k],color=col,linewidth=2)
 		ax[i].set_ylabel(r"Population")
 
 colors=cm.jet(np.arange(0.0,1.0,1/8)-0.05)
-#for i,c in zip(range(1,len(datE[0,:])),colors):
-#	ax[-1].plot(datE[:,0],datE[:,i],linestyle="--",dashes=(5, 1),color=c)
+for i,c in zip(range(1,len(datE[0,:])),colors):
+	ax[-1].plot(datE[:,0],datE[:,i],linestyle="--",dashes=(5, 1),color=c)
+
 
 
 ax[0].legend(title=r"State",handlelength=1.2,fontsize=12,bbox_to_anchor=(1.13,1.1),labelspacing=0.3)

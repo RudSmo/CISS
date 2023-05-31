@@ -384,9 +384,9 @@ It seems that a finite number of trajectories, which is too small to sample the 
 	\caption{Comparison of current dynamics for $L=2\times 4$, $V=14t_0$ and $P=0.5$ for $n=6\cdot 10^4$ (blue) and $n=3\cdot 10^5$ (red) trajectories.}\label{fig:L2x4_traj_conv}
 \end{figure}\\
 A larger number of trajectories can be obtained by propagating trajectory bundles independently (which is a combination of the two Ehrenfest approaches discussed above) by averaging observables from independent trajectory bundles calculations which are computed in parallel. The blue (red) currents shown in \cref{fig:L2x4_traj_conv} have been obtained by averaging over 6 (3) independent trajectory bundles calculations with $10^4$ ($10^5$) trajectories propagated as a bundle.
-\section{Comparison to previous versions of the MFHEOM and TTHEOM}
+\section{MFHEOM and TTHEOM comparison}
 \subsection{$L=1\times 2$}
-For the original parameters and a voltage of $V=\SI{0.48}{\volt}$, \cref{fig:L2_comparison_bundles_TTHEOM} shows a comparison of the current (a) and the spin polarization on the first site (b) obtained within the trajectory bundles approach (red) with $500000$ trajectories and the tensor train HEOM (black). The latter has been obtained for a rank $120$ and $30$ vibrational basis states. Both observables agree well with each other within the time interval investigated here. For longer times, deviations between the currents are apparent, which might be due an insufficient rank.   
+For the original parameters and a voltage of $V=\SI{0.48}{\volt}$, \cref{fig:L2_comparison_bundles_TTHEOM} shows a comparison of the current (a) and the spin polarization on the first site (b) obtained within the trajectory bundles approach (red) with $500000$ trajectories and the tensor train HEOM (black). The latter has been obtained for a rank $120$ and $30$ vibrational basis states. 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.75\textwidth]{figs/L2_comparison_TTHEOM_MFHEOM_v3_bundles.pdf}
@@ -401,7 +401,15 @@ For the original parameters and a voltage of $V=\SI{0.48}{\volt}$, \cref{fig:L2_
 \end{figure}
 \clearpage
 
-\section{Spin polarization and magnetoresistance}
+\section{Comparison to previous results}
+\subsection{System size dependence of current}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Comparison_MFHEOM_v3_bundles_v2_currents_sysDep.pdf}
+	\caption{Comparison of current dynamics: Obtained with the previous code (v1; not dimensionless Hamiltonian with mass-scaled coordinates), the current code with independent trajectories (v2; dimensionless Hamiltonian), and the trajectory bundle approach (bundle). The number of trajectories in the v1 code are $1500$, the v2: $820$ ($L=1\times 3$) and $2050$ ($L=2\times 4$), and the bundle approach $5\cdot 10^4$.}
+\end{figure}
+\subsection{Electronic spin polarization}
+\subsection{Magnetoresistance}
 \section{Singlet fission results}
 \begin{figure}[!h]
 	\centering
