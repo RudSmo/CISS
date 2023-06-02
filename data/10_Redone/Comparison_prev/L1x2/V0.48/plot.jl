@@ -46,8 +46,8 @@ dat1E = readdlm("TTHEOM/1x2_sym_np10_r120_nV30_V0.48_P0.5_corrected/n_site_realt
 dat2C = readdlm("noPh/L2_tPh_0.0_thPd_0.0_SOC0.5_SOCPh0.0_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_currents.dat")
 dat2E = readdlm("noPh/L2_tPh_0.0_thPd_0.0_SOC0.5_SOCPh0.0_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_electrons.dat")
 
-dat3C = readdlm("MFHEOM_v3_bundle/L2_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_initEmpty_dt0.0002_currents.dat")
-dat3E = readdlm("MFHEOM_v3_bundle/L2_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_initEmpty_dt0.0002_electrons.dat")
+dat3C = readdlm("MFHEOM_v3_PVar/currents_avg_n3_P.dat")
+dat3E = readdlm("MFHEOM_v3_PVar/electrons_avg_n3_P.dat")
 
 #dat4C = readdlm("MFHEOM_v2")
 #dat4E = readdlm("MFHEOM_v2")
@@ -74,5 +74,5 @@ ax2.set_xlabel(L"$t\,[\mathrm{fs}]$")
 ax2.set_xlim(0,800)
 ax2.annotate("(b)",(annx,anny),xycoords="axes fraction",fontsize=fs)
 
-plt.savefig("L2_comparison_TTHEOM_MFHEOM_v3_bundles.pdf")
+plt.savefig("L2_comparison_TTHEOM_MFHEOM_v3_PVar.pdf")
 
