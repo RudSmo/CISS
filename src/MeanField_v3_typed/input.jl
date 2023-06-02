@@ -13,7 +13,7 @@ using DelimitedFiles
 
 
 # Hamiltonian Parameters
-num_laps = 1
+num_laps = 2
 num_ions = 3
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
@@ -26,14 +26,14 @@ gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
-tPh = 0.0*T0*ones(2)
-tsoPh = 0.0*tso
+tPh = 0.1*T0*ones(2)
+tsoPh = 0.1*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.0002
-tend = 10
+tend = 25
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -62,8 +62,8 @@ initProp  = true
 if initProp
     rhoIn = "pure"
 #    rhoIn = "equilibrium"
-#    phIn = "TDSCF"
-    phIn = "Wigner"
+    phIn = "TDSCF"
+#    phIn = "Wigner"
     pathIn = ""
 else
     rhoIn = "fromFile"
@@ -72,8 +72,8 @@ else
 end
 popElIn = zeros(2*N)
 popPhIn = zeros(N)
-#xnIn,pnIn = [0.7691068624482689,-3.61069243320506,-5.245657309206734],[-7.401418656594664,-4.3318963287495675,1.5952234947490966]
-xnIn,pnIn = zeros(N), zeros(N)
+xnIn,pnIn = [0.7691068624482689,-3.61069243320506,-5.245657309206734,-0.25,3.31,0.01],[2.45,-4.0,-7.401418656594664,-4.3318963287495675,1.5952234947490966,1.2]
+#xnIn,pnIn = zeros(N), zeros(N)
 ## Leads
 P = 0.5
 tl = T0/4
@@ -104,7 +104,7 @@ HamPar = HamiltonianParams( num_laps,
 			    tR)
 
 
-path = "L$(num_ions)_noPh"
+path = "L$(num_ions)_PVar"
 if !isdir(path)
 	mkpath(path)
 end

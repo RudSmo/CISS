@@ -53,7 +53,7 @@ dat3E = readdlm("MFHEOM_v3_PVar/electrons_avg_n3_P.dat")
 #dat4E = readdlm("MFHEOM_v2")
 
 
-ax1.plot(dat3C[2:end,1]*fac_t_v3, (dat3C[2:end,2]-dat3C[2:end,3])*fac_c_v3, color=colors[3], label = "Bundles Ehrenfest "*L"$(n=500000)$", linewidth=lw)
+ax1.plot(dat3C[2:end,1]*fac_t_v3, (dat3C[2:end,2]-dat3C[2:end,3])*fac_c_v3, color=colors[3], label = "Ehrenfest", linewidth=lw)
 ax1.plot(dat1C[2:end,1]*fac_t_v2, (dat1C[2:end,2]-dat1C[2:end,3]+dat1C[2:end,4]-dat1C[2:end,5])*fac_c_v2/2, color=colors[1], label = "TTHEOM", linewidth=lw)
 ax1.plot(dat2C[2:end,1]*fac_t_v3, (dat2C[2:end,2]-dat2C[2:end,3])*fac_c_v3, color=colors[2], label = L"$t_1=0$", linewidth=lw-1,linestyle="dashed")
 
@@ -61,17 +61,17 @@ ax1.legend()
 ax1.set_ylabel(ylabels[1])
 ax1.set_xticklabels([])
 ax1.set_ylim(0.9,1.3)
-ax1.set_xlim(0,800)
+ax1.set_xlim(0,1200)
 ax1.annotate("(a)",(annx,anny),xycoords="axes fraction",fontsize=fs)
 
 
 
-ax2.plot(dat3E[2:end,1]*fac_t_v3, (dat3E[2:end,2]-dat3E[2:end,3]), color=colors[3], label = "Bundles Ehrenfest "*L"$(n=500000)$", linewidth=lw)
+ax2.plot(dat3E[2:end,1]*fac_t_v3, (dat3E[2:end,2]-dat3E[2:end,3]), color=colors[3], label = "Ehrenfest", linewidth=lw)
 ax2.plot(dat1E[2:end,1]*fac_t_v2, (dat1E[2:end,2]-dat1E[2:end,3]), color=colors[1], label = "TTHEOM", linewidth=lw)
 ax2.plot(dat2E[2:end,1]*fac_t_v3, (dat2E[2:end,2]-dat2E[2:end,3]), color=colors[2], linewidth=lw-1,linestyle="dashed")
 ax2.set_ylabel(ylabels[2],labelpad=3)
 ax2.set_xlabel(L"$t\,[\mathrm{fs}]$")
-ax2.set_xlim(0,800)
+ax2.set_xlim(0,1200)
 ax2.annotate("(b)",(annx,anny),xycoords="axes fraction",fontsize=fs)
 
 plt.savefig("L2_comparison_TTHEOM_MFHEOM_v3_PVar.pdf")
