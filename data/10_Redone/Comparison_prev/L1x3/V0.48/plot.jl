@@ -46,8 +46,8 @@ dat1E = readdlm("TTHEOM/n_site_realtime_Hop+Onsite_bias_0.48_dt_0.25_rank_140.tx
 dat2C = readdlm("noPh/L3_tPh_0.0_thPd_0.0_SOC0.5_SOCPh0.0_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_currents.dat")
 dat2E = readdlm("noPh/L3_tPh_0.0_thPd_0.0_SOC0.5_SOCPh0.0_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_dt0.0002_1_electrons.dat")
 
-dat3C = readdlm("MFHEOM_v3_PVar/currents_avg_n51_P.dat")
-dat3E = readdlm("MFHEOM_v3_PVar/electrons_avg_n51_P.dat")
+dat3C = readdlm("MFHEOM_v3_PVar_InitGS/currents_avg_n3_P.dat")
+dat3E = readdlm("MFHEOM_v3_PVar_InitGS/electrons_avg_n3_P.dat")
 
 ax1.plot(dat3C[2:end,1]*fac_t_v3, (dat3C[2:end,2]-dat3C[2:end,3])*fac_c_v3, color=colors[3], label = "Ehrenfest", linewidth=lw)
 ax1.plot(dat1C[2:end,1]*fac_t_v2, (dat1C[2:end,2]-dat1C[2:end,3]+dat1C[2:end,4]-dat1C[2:end,5])*fac_c_v2/2, color=colors[1], label = "TTHEOM", linewidth=lw)
