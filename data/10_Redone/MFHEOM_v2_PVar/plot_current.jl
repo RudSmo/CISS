@@ -34,19 +34,19 @@ size = [3,4,8,12,16]
 ms = 12
 for (v,vn,col) in zip(V,Vn,colors)
 
-	dats = ["L2x5/V$(v)/currents_time_avg_nS101",
-		"L3x3/V$(v)/currents_time_avg_nS201",
-		"L2x4/V$(v)/currents_time_avg_nS101",
-		"L2x4/V$(v)/currents_time_avg_nS101",
-		"L2x3/V$(v)/currents_time_avg_nS1417", 
-		"L1x3/V$(v)/currents_time_avg_nS301"]
+	dats = ["L2x5/V$(v)/currents_time_avg_nS",
+		"L3x3/V$(v)/currents_time_avg_nS",
+		"L2x4/V$(v)/currents_time_avg_nS",
+		"L2x3/V$(v)/currents_time_avg_nS",
+		"L2x2/V$(v)/currents_time_avg_nS10", 
+		"L1x3/V$(v)/currents_time_avg_nS61"]
 
 
-	dats_n = ["L4x4/V$(v)/noPh/L16_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
-		  "L3x4/V$(v)/noPh/L12_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
-	   	  "L2x4/V$(v)/noPh/L8_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
-	   	  "L2x2/V$(v)/noPh/L4_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
-	   	  "L1x3/V$(v)/noPh/L3_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat"]
+#	dats_n = ["L4x4/V$(v)/noPh/L16_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
+#		  "L3x4/V$(v)/noPh/L12_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
+#	   	  "L2x4/V$(v)/noPh/L8_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
+#	   	  "L2x2/V$(v)/noPh/L4_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
+#	   	  "L1x3/V$(v)/noPh/L3_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat"]
 
 	IT = []
 	sIT = []
@@ -59,19 +59,19 @@ for (v,vn,col) in zip(V,Vn,colors)
 		push!(sIT,serr)
 	end
 
-	for dat in dats_n[end:-1:1]
-		data = readdlm(dat)
-		push!(ITn,(data[end,2]-data[end,3])*fac_c)
-	end
+#	for dat in dats_n[end:-1:1]
+#		data = readdlm(dat)
+#		push!(ITn,(data[end,2]-data[end,3])*fac_c)
+#	end
 
 
 	if v == V[1]
 	
 		ax.errorbar(size,IT,yerr=sIT,marker="o",linewidth=2,color=col,label=L"$t_1=4\,\mathrm{meV}, \ \lambda_1 = 0.1\,\mathrm{meV}$",markersize=ms,linestyle="")
-		ax.plot(size,ITn,marker="d",linewidth=0,color="red",label=L"$t_1=\lambda_1 = 0\,\mathrm{meV}$",markersize=ms)
+#		ax.plot(size,ITn,marker="d",linewidth=0,color="red",label=L"$t_1=\lambda_1 = 0\,\mathrm{meV}$",markersize=ms)
 	else
 		ax.errorbar(size,IT,yerr=sIT,marker="o",linewidth=1,color=col,markersize=ms)
-		ax.plot(size,ITn,marker="d",linewidth=0,color="red",markersize=ms)
+#		ax.plot(size,ITn,marker="d",linewidth=0,color="red",markersize=ms)
 	end
 
 end
@@ -80,4 +80,5 @@ ax.set_xlabel("system size")
 ax.set_ylabel(L"$I\,[\mu\mathrm{A}]$")
 ax.set_xlim(1,17)
 ax.legend(loc="lower left")
-plt.savefig("Currents_sizeVar_P$(P)_VVar.png",dpi=200)
+#plt.savefig("Currents_sizeVar_P$(P)_VVar.png",dpi=200)
+plt.savefig("Currents_sizeVar_P$(P)_VVar.pdf")"
