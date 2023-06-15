@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  12 JUN 2023 13:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  14 JUN 2023 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -723,35 +723,117 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+<figs/L2x3_P0.5_VVar_current.pdf, id=1, 722.7pt x 397.485pt>
+File: figs/L2x3_P0.5_VVar_current.pdf Graphic file (type pdf)
+<use figs/L2x3_P0.5_VVar_current.pdf>
+Package pdftex.def Info: figs/L2x3_P0.5_VVar_current.pdf  used on input line 53
+.
+(pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
 
-LaTeX Warning: Empty bibliography on input line 40.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Currents_sizeVar_P0.5_VVar.pdf, id=2, 650.43pt x 325.215pt>
+File: figs/Currents_sizeVar_P0.5_VVar.pdf Graphic file (type pdf)
+<use figs/Currents_sizeVar_P0.5_VVar.pdf>
+Package pdftex.def Info: figs/Currents_sizeVar_P0.5_VVar.pdf  used on input lin
+e 67.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+<figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf, id=3, 650.43pt x 325.215pt>
+File: figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf Graphic file (type pdf)
+<use figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf>
+Package pdftex.def Info: figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf  used on inp
+ut line 75.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+<figs/IV_sizeVar_PVar_VVar.pdf, id=4, 650.43pt x 325.215pt>
+File: figs/IV_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
+<use figs/IV_sizeVar_PVar_VVar.pdf>
+Package pdftex.def Info: figs/IV_sizeVar_PVar_VVar.pdf  used on input line 80.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./report_14.aux)
+<figs/Magnetocurrents_sizeVar_VVar_std.pdf, id=22, 650.43pt x 325.215pt>
+File: figs/Magnetocurrents_sizeVar_VVar_std.pdf Graphic file (type pdf)
+<use figs/Magnetocurrents_sizeVar_VVar_std.pdf>
+Package pdftex.def Info: figs/Magnetocurrents_sizeVar_VVar_std.pdf  used on inp
+ut line 90.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+<figs/Magnetocurrents_sizeVar_VVar_stderr.pdf, id=23, 650.43pt x 325.215pt>
+File: figs/Magnetocurrents_sizeVar_VVar_stderr.pdf Graphic file (type pdf)
+<use figs/Magnetocurrents_sizeVar_VVar_stderr.pdf>
+Package pdftex.def Info: figs/Magnetocurrents_sizeVar_VVar_stderr.pdf  used on 
+input line 95.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+
+[2 <./figs/L2x3_P0.5_VVar_current.pdf> <./figs/Currents_sizeVar_P0.5_VVar.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Currents_sizeVar_P0.5
+_VVar.pdf): PDF inclusion: multiple pdfs with page group included in a single p
+age
+>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3 <./figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf> <./figs/IV_sizeVar_PVar_VVar.p
+df
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/IV_sizeVar_PVar_VVar.
+pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>] [4 <./figs/Magnetocurrents_sizeVar_VVar_std.pdf> <./figs/Magnetocurrents_siz
+eVar_VVar_stderr.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Magnetocurrents_sizeV
+ar_VVar_stderr.pdf): PDF inclusion: multiple pdfs with page group included in a
+ single page
+>] (./report_14.aux)
 Package logreq Info: Writing requests to 'report_14.run.xml'.
 \openout1 = `report_14.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16060 strings out of 478994
- 314014 string characters out of 5858184
- 823102 words of memory out of 5000000
- 33346 multiletter control sequences out of 15000+600000
- 419025 words of font info for 86 fonts, out of 8000000 for 9000
+ 16312 strings out of 478994
+ 319982 string characters out of 5858184
+ 836369 words of memory out of 5000000
+ 33589 multiletter control sequences out of 15000+600000
+ 419706 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,6n,75p,1845b,1638s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/
-local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on report_14.pdf (1 page, 66373 bytes).
+ 71i,7n,75p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><
+/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
+/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/202
+1/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2021/
+texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
+1/urw/times/utmri8a.pfb>
+Output written on report_14.pdf (4 pages, 8060060 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
- 22 compressed objects within 1 object stream
+ 238 PDF objects out of 1000 (max. 8388607)
+ 173 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
