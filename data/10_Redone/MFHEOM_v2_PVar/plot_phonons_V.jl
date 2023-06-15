@@ -41,8 +41,8 @@ fac_V = 0.2 * 0.04
 for (sys,size,lab,col,ns) in zip(syssize,sizes,labels,colors,Ns)
 	datP = readdlm("$(size)/Phonons_steadyState_$(ns)_P.dat")
 	datM = readdlm("$(size)/Phonons_steadyState_$(ns)_M.dat")	
-	ax.plot(datP[:,1]*fac_V,datP[:,4],color=col,label=lab,linewidth=lw)
-	ax.plot(datM[:,1]*fac_V,datM[:,4],color=col,linestyle="dashed",linewidth=lw)
+	ax.plot(datP[:,1]*fac_V,datP[:,2],color=col,label=lab,linewidth=lw)
+	ax.plot(datM[:,1]*fac_V,datM[:,2],color=col,linestyle="dashed",linewidth=lw)
 end
 
 
