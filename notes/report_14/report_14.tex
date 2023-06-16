@@ -41,9 +41,20 @@
 \section{Dynamics}
 Show for $L=1x3$ and $L=2x4$ the dependence on voltage for couple of voltages. 
 Show here averaged and single-trajectory runs.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L2x3_P0.5_SampleVar_current.pdf}
+	\includegraphics[width=0.9\textwidth]{figs/L3x3_P0.5_SampleVar_current.pdf}
+\end{figure}
 Show dependence on system size for a couple of voltages. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Current_dyn_P0.5_sysVar_V60.pdf}
+\end{figure}
 Insight: Transient charge current dynamics consists of multiple time-scales. The last one, in which the current drops down does not depend on system size and not on voltage. It is determined by electron-vibrational coupling.
+
 Show Magnetocurrent: For $L=1x3$ its strictly zero and $L=2x2$ is the smallest system size to see an effect on the single-trajectory level. 
+
 \section{Steady state}
 For obtaining the steady state magnetoresistance $M_R$, the steady state currents $I_P$ under varying lead spin polarization $P$ have to be obtained. As shown in the previous section, there are multiple time scales in the transient dynamics. 
 In the last time scale, the charge current does not change significantly with time, apart from oscillations around a time-averaged value. These oscillations arise due to the finite number of trajectories, and their amplitude decreases with increasing number of trajectories. The steady state currents $I_P$ are obtained by averaging the time-dependent, ensemble-averaged current $\langle I_P(t)\rangle$ over the last time scale.
@@ -95,6 +106,23 @@ in which we show the standard deviation $\sigma_{M_R}$ obtained from the standar
 	\includegraphics[width=1\textwidth]{figs/Magnetocurrents_sizeVar_VVar_stderr.pdf}
 	\caption{Magnetocurrent: System size and voltage dependence. Error bars indicate error obtained from standard deviation of the time average of the charge currents.}\label{fig:Magnetocurrent_stderr}
 \end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/MR_sizeVar_PVar_VVar.pdf}
+	\caption{Voltage dependence of magnetoresistance for various system size. Magnetoresistance obtained from steady state currents.}\label{fig:MR_V}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/PhX1_V_sizeVar_PVar_VVar.pdf}
+	\caption{Voltage dependence of bond displacement at bond between sites 1 and 2 for various system size.}\label{fig:PhX1_V}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/Sz1_V_sizeVar_PVar_VVar.pdf}
+	\caption{Voltage dependence of spin polarization $s_i^z$ at site 1 for various system size.}\label{fig:Sz1}
+\end{figure}
+
+
 Concerning the magnetoresistance, the results shown here are not in agreement with the ones shown in Fig. 2 in \cite{fransson2020vibrational}. For example, for a system size of $L=2\times 4$, Fransson obtains a magnetoresistance of around $5\%$ for $V=\SI{0.6}{\volt}$, while we obtain below $0.1\%$.
 \begin{itemize}
 	\item Current-voltage for static phonons: $X_i=\langle X(t)\rangle_\mathrm{stat}$ (obtained from full calculation): Is the current drop with system size a purely electronic effect due to rearranged geometry?

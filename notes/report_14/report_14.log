@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  14 JUN 2023 18:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  15 JUN 2023 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -723,91 +723,152 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<figs/L2x3_P0.5_VVar_current.pdf, id=1, 722.7pt x 397.485pt>
-File: figs/L2x3_P0.5_VVar_current.pdf Graphic file (type pdf)
-<use figs/L2x3_P0.5_VVar_current.pdf>
-Package pdftex.def Info: figs/L2x3_P0.5_VVar_current.pdf  used on input line 53
-.
-(pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Currents_sizeVar_P0.5_VVar.pdf, id=2, 650.43pt x 325.215pt>
-File: figs/Currents_sizeVar_P0.5_VVar.pdf Graphic file (type pdf)
-<use figs/Currents_sizeVar_P0.5_VVar.pdf>
-Package pdftex.def Info: figs/Currents_sizeVar_P0.5_VVar.pdf  used on input lin
-e 67.
-(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
-<figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf, id=3, 650.43pt x 325.215pt>
-File: figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf Graphic file (type pdf)
-<use figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf>
-Package pdftex.def Info: figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf  used on inp
-ut line 75.
-(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
-<figs/IV_sizeVar_PVar_VVar.pdf, id=4, 650.43pt x 325.215pt>
-File: figs/IV_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
-<use figs/IV_sizeVar_PVar_VVar.pdf>
-Package pdftex.def Info: figs/IV_sizeVar_PVar_VVar.pdf  used on input line 80.
-(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+<figs/L2x3_P0.5_SampleVar_current.pdf, id=1, 722.7pt x 433.62pt>
+File: figs/L2x3_P0.5_SampleVar_current.pdf Graphic file (type pdf)
+<use figs/L2x3_P0.5_SampleVar_current.pdf>
+Package pdftex.def Info: figs/L2x3_P0.5_SampleVar_current.pdf  used on input li
+ne 46.
+(pdftex.def)             Requested size: 435.32419pt x 261.19295pt.
+<figs/L3x3_P0.5_SampleVar_current.pdf, id=2, 722.7pt x 433.62pt>
+File: figs/L3x3_P0.5_SampleVar_current.pdf Graphic file (type pdf)
+<use figs/L3x3_P0.5_SampleVar_current.pdf>
+Package pdftex.def Info: figs/L3x3_P0.5_SampleVar_current.pdf  used on input li
+ne 47.
+(pdftex.def)             Requested size: 435.32419pt x 261.19295pt.
+<figs/Current_dyn_P0.5_sysVar_V60.pdf, id=3, 722.7pt x 433.62pt>
+File: figs/Current_dyn_P0.5_sysVar_V60.pdf Graphic file (type pdf)
+<use figs/Current_dyn_P0.5_sysVar_V60.pdf>
+Package pdftex.def Info: figs/Current_dyn_P0.5_sysVar_V60.pdf  used on input li
+ne 52.
+(pdftex.def)             Requested size: 435.32419pt x 261.19295pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [1
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<figs/Magnetocurrents_sizeVar_VVar_std.pdf, id=22, 650.43pt x 325.215pt>
-File: figs/Magnetocurrents_sizeVar_VVar_std.pdf Graphic file (type pdf)
-<use figs/Magnetocurrents_sizeVar_VVar_std.pdf>
-Package pdftex.def Info: figs/Magnetocurrents_sizeVar_VVar_std.pdf  used on inp
-ut line 90.
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./figs/
+L2x3_P0.5_SampleVar_current.pdf> <./figs/L3x3_P0.5_SampleVar_current.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L3x3_P0.5_SampleVar_c
+urrent.pdf): PDF inclusion: multiple pdfs with page group included in a single 
+page
+>]
+<figs/L2x3_P0.5_VVar_current.pdf, id=65, 722.7pt x 397.485pt>
+File: figs/L2x3_P0.5_VVar_current.pdf Graphic file (type pdf)
+<use figs/L2x3_P0.5_VVar_current.pdf>
+Package pdftex.def Info: figs/L2x3_P0.5_VVar_current.pdf  used on input line 64
+.
+(pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Currents_sizeVar_P0.5_VVar.pdf, id=66, 650.43pt x 325.215pt>
+File: figs/Currents_sizeVar_P0.5_VVar.pdf Graphic file (type pdf)
+<use figs/Currents_sizeVar_P0.5_VVar.pdf>
+Package pdftex.def Info: figs/Currents_sizeVar_P0.5_VVar.pdf  used on input lin
+e 78.
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
-<figs/Magnetocurrents_sizeVar_VVar_stderr.pdf, id=23, 650.43pt x 325.215pt>
-File: figs/Magnetocurrents_sizeVar_VVar_stderr.pdf Graphic file (type pdf)
-<use figs/Magnetocurrents_sizeVar_VVar_stderr.pdf>
-Package pdftex.def Info: figs/Magnetocurrents_sizeVar_VVar_stderr.pdf  used on 
-input line 95.
+<figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf, id=67, 650.43pt x 325.215pt>
+File: figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf Graphic file (type pdf)
+<use figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf>
+Package pdftex.def Info: figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf  used on inp
+ut line 86.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+<figs/IV_sizeVar_PVar_VVar.pdf, id=68, 650.43pt x 325.215pt>
+File: figs/IV_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
+<use figs/IV_sizeVar_PVar_VVar.pdf>
+Package pdftex.def Info: figs/IV_sizeVar_PVar_VVar.pdf  used on input line 91.
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
 
-[2 <./figs/L2x3_P0.5_VVar_current.pdf> <./figs/Currents_sizeVar_P0.5_VVar.pdf
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2 <./figs/Current_dyn_P0.5_sysVar_V60.pdf>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3 <./figs/L2x3_P0.5_VVar_current.pdf> <./figs/Currents_sizeVar_P0.5_VVar.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Currents_sizeVar_P0.5
 _VVar.pdf): PDF inclusion: multiple pdfs with page group included in a single p
 age
 >]
+<figs/Magnetocurrents_sizeVar_VVar_std.pdf, id=151, 650.43pt x 325.215pt>
+File: figs/Magnetocurrents_sizeVar_VVar_std.pdf Graphic file (type pdf)
+<use figs/Magnetocurrents_sizeVar_VVar_std.pdf>
+Package pdftex.def Info: figs/Magnetocurrents_sizeVar_VVar_std.pdf  used on inp
+ut line 101.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+<figs/Magnetocurrents_sizeVar_VVar_stderr.pdf, id=152, 650.43pt x 325.215pt>
+File: figs/Magnetocurrents_sizeVar_VVar_stderr.pdf Graphic file (type pdf)
+<use figs/Magnetocurrents_sizeVar_VVar_stderr.pdf>
+Package pdftex.def Info: figs/Magnetocurrents_sizeVar_VVar_stderr.pdf  used on 
+input line 106.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+<figs/MR_sizeVar_PVar_VVar.pdf, id=153, 650.43pt x 325.215pt>
+File: figs/MR_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
+<use figs/MR_sizeVar_PVar_VVar.pdf>
+Package pdftex.def Info: figs/MR_sizeVar_PVar_VVar.pdf  used on input line 111.
+
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+<figs/PhX1_V_sizeVar_PVar_VVar.pdf, id=154, 650.43pt x 325.215pt>
+File: figs/PhX1_V_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
+<use figs/PhX1_V_sizeVar_PVar_VVar.pdf>
+Package pdftex.def Info: figs/PhX1_V_sizeVar_PVar_VVar.pdf  used on input line 
+116.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+<figs/Sz1_V_sizeVar_PVar_VVar.pdf, id=155, 650.43pt x 325.215pt>
+File: figs/Sz1_V_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
+<use figs/Sz1_V_sizeVar_PVar_VVar.pdf>
+Package pdftex.def Info: figs/Sz1_V_sizeVar_PVar_VVar.pdf  used on input line 1
+21.
+(pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
+
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[3 <./figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf> <./figs/IV_sizeVar_PVar_VVar.p
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4 <./figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf> <./figs/IV_sizeVar_PVar_VVar.p
 df
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/IV_sizeVar_PVar_VVar.
 pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [4 <./figs/Magnetocurrents_sizeVar_VVar_std.pdf> <./figs/Magnetocurrents_siz
+>] [5 <./figs/Magnetocurrents_sizeVar_VVar_std.pdf> <./figs/Magnetocurrents_siz
 eVar_VVar_stderr.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Magnetocurrents_sizeV
 ar_VVar_stderr.pdf): PDF inclusion: multiple pdfs with page group included in a
  single page
->] (./report_14.aux)
+>] [6 <./figs/MR_sizeVar_PVar_VVar.pdf> <./figs/PhX1_V_sizeVar_PVar_VVar.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/PhX1_V_sizeVar_PVar_V
+Var.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
+e
+>] [7 <./figs/Sz1_V_sizeVar_PVar_VVar.pdf>] (./report_14.aux)
 Package logreq Info: Writing requests to 'report_14.run.xml'.
 \openout1 = `report_14.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16312 strings out of 478994
- 319982 string characters out of 5858184
- 836369 words of memory out of 5000000
- 33589 multiletter control sequences out of 15000+600000
+ 16354 strings out of 478994
+ 321499 string characters out of 5858184
+ 834480 words of memory out of 5000000
+ 33625 multiletter control sequences out of 15000+600000
  419706 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,7n,75p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -830,10 +891,10 @@ ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
 texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on report_14.pdf (4 pages, 8060060 bytes).
+Output written on report_14.pdf (7 pages, 9177062 bytes).
 PDF statistics:
- 238 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
+ 368 PDF objects out of 1000 (max. 8388607)
+ 290 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
