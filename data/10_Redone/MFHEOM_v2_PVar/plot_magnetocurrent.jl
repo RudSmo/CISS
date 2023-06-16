@@ -29,38 +29,52 @@ ax = plt.axes([px,py,sx,sy])
 P = 0.5
 
 colors = ["k","red","blue"]
-size = [3,4,6,8,9,10]
+symbols = ["x","o","d"]
+
+#syssizes = [["L1x3","L2x3","L3x3"],
+#	    ["L2x4","L3x4"],
+# 	    ["L2x2","L2x5","L2x6"]]
+#
+#sizes = [[3,6,9],
+#	 [8,12],
+#	 [4,10,12]]
+
+syssizes = [["L1x3","L2x2","L2x3","L2x4","L3x3","L2x5","L3x4"]]
+sizes = [[3,4,6,8,9,10,12]]
+
 ms = 9
 V = [1,2,3]
 Vn = ["0.4","0.48","0.6"]
+
 datname = "Magnetoresistance_time_avg_stderr.dat"
+
+
 for (v,vn,col) in zip(V,Vn,colors)
-
-	dats = ["L2x5/$(datname)",
-		  "L3x3/$(datname)",
-		  "L2x4/$(datname)",
-		  "L2x3/$(datname)",
-		  "L2x2/$(datname)", 
-		  "L1x3/$(datname)"]
+	for (size,sys,symb) in zip(sizes,syssizes,symbols)
 
 
-	M_R = []
-	s_M_R = []
 
-	for dat in dats[end:-1:1]
-		data = readdlm(dat)
-		push!(M_R,abs(data[v,2]))
-		push!(s_M_R,data[v,3])
+		M_R = []
+		s_M_R = []
+
+		for s in sys
+			
+			data = readdlm("$(s)/$(datname)")
+			push!(M_R,abs(data[v,2]))
+			push!(s_M_R,data[v,3])
+		end
+
+		if size == sizes[1]
+			ax.errorbar(size,M_R,yerr=s_M_R,marker=symb,linewidth=2,color=col,label=L"$V=\,$"*"$(vn)"*L"$\, \mathrm{V}$",markersize=ms)
+		else
+			ax.errorbar(size,M_R,yerr=s_M_R,marker=symb,linewidth=2,color=col,markersize=ms)
+		end
 	end
-
-	
-	ax.errorbar(size,M_R,yerr=s_M_R,marker="o",linewidth=2,color=col,label=L"$V=$"*"$(vn)"*L"$\, \mathrm{V}$",markersize=ms)
-
 end
 
-ax.set_xlabel("system size")
+ax.set_xlabel("system size "*L"$N$")
 ax.set_ylabel(L"$M_R\,[\%]$")
-ax.set_xlim(2,11)
+ax.set_xlim(2,13)
 ax.legend(loc="upper left")
 #plt.savefig("Magnetocurrents_sizeVar_VVar.png",dpi=200)
 plt.savefig("Magnetocurrents_sizeVar_VVar_stderr.pdf")

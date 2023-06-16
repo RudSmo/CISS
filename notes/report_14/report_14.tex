@@ -41,6 +41,7 @@
 \section{Dynamics}
 Show for $L=1x3$ and $L=2x4$ the dependence on voltage for couple of voltages. 
 Show here averaged and single-trajectory runs.
+\subsection{Charge currents}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/L2x3_P0.5_SampleVar_current.pdf}
@@ -54,11 +55,22 @@ Show dependence on system size for a couple of voltages.
 Insight: Transient charge current dynamics consists of multiple time-scales. The last one, in which the current drops down does not depend on system size and not on voltage. It is determined by electron-vibrational coupling.
 
 Show Magnetocurrent: For $L=1x3$ its strictly zero and $L=2x2$ is the smallest system size to see an effect on the single-trajectory level. 
-
+\subsection{Magnetoresistance}
+\subsection{Electronic spin polarization}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Sz_space_dyn_sysVar_2x.pdf}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Sz_space_dyn_sysVar_x3.pdf}
+\end{figure}
 \section{Steady state}
-For obtaining the steady state magnetoresistance $M_R$, the steady state currents $I_P$ under varying lead spin polarization $P$ have to be obtained. As shown in the previous section, there are multiple time scales in the transient dynamics. 
+For obtaining the steady state magnetoresistance $M_R$, the steady state currents $I_P$ under varying lead spin polarization $P$ have to be obtained. 
+\subsection{Time averaging for obtaining steady state observables}
+As shown in the previous section, there are multiple time scales in the transient dynamics. 
 In the last time scale, the charge current does not change significantly with time, apart from oscillations around a time-averaged value. These oscillations arise due to the finite number of trajectories, and their amplitude decreases with increasing number of trajectories. The steady state currents $I_P$ are obtained by averaging the time-dependent, ensemble-averaged current $\langle I_P(t)\rangle$ over the last time scale.
-The ensemble averaged current and the time interval for the time average is shown in \cref{fig:Current_dynamics_averaging}. The full lines show $\langle I_P(t)\rangle$ for $P=0.5$, obtained from an ensemble average over 1800 trajectories (72 averages over 25 trajectories each). The shaded area indicates the standard error $\frac{\sigma}{\sqrt{N}}$ obtained from the standard deviation $\sigma$ of the ensemble average, treating the average over 25 trajectories as a single data point (sample size is thus $N=72$). The differently colored lines in the interval $\mathcal{I}=[30,85]\SI{}{\pico\second}$ shows the ensemble averaged current used for obtaining the steady state currents.
+The ensemble averaged current and the time interval for the time average is shown in \cref{fig:Current_dynamics_averaging}. The full lines show $\langle I_P(t)\rangle$ for $P=0.5$, obtained from an ensemble average over 1800 trajectories (72 averages over 25 trajectories each). The shaded area indicates the standard error $\frac{\sigma}{\sqrt{N}}$ obtained from the standard deviation $\sigma$ of the ensemble average, treating the average over 25 trajectories as a single data point (sample size is thus $N=72$). The differently colored lines in the interval $\mathcal{I}=[30,84]\SI{}{\pico\second}$ shows the ensemble averaged current used for obtaining the steady state currents.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1.0\textwidth]{figs/L2x3_P0.5_VVar_current.pdf}
@@ -69,6 +81,7 @@ The standard deviation $\sigma_{I_P}$ of the steady state current consists of th
 	\sigma_{I_P} = \frac{1}{N_t}\sqrt{\sum_{t\in \mathcal{I}}\left(\sigma_{\langle I_P^L(t)\rangle}^2+\sigma_{\langle I_P^R(t)\rangle}^2\right)}
 \end{equation*}
 with the standard deviations $\sigma_{\langle I^{L,R}_P(t)\rangle}$ obtained from the usual definition of the standard deviation. 
+\subsection{Steady state charge currents}
 \Cref{fig:Currents_SteadyState} shows the steady state current $I_{P=0.5}$ as defined above for various system size and voltage. The errorbars indicate the standard deviation $\sigma_{I_{P=0.5}}$. Here, the standard error is not shown because it is not visible on the shown scale as the number of time points used in the average is $N_t = 5\cdot 10^4$.
 In this plot, the black, red and blue data points show the steady state current for voltages $V=\SI{0.4}{\volt},\SI{0.48}{\volt}$ and $\SI{0.6}{\volt}$, respectively, obtained with the new version of the code. The orange dots show the steady state currents for $V=\SI{0.348}{\volt}$ and the orange diamonds the currents for the noninteracting problem. 
 Comparing the orange dots with the black dots, the difference is due to different voltages computes. Apart from this difference, the new and the old code agree on the trend of decreasing currents with increasing system size. While currents increase with increasing voltage in the regime investigated here (partial resonance), the relative change of the current with system size seems to be independent of the voltage. This can be seen for example for $\frac{I(L=3)}{I(L=10)}$ which is $\approx 1.8$ for $V=\SI{50}{\volt}$, $\approx 1.9$ for $V=\SI{60}{\volt}$, and $\approx 1.6$ for $V=\SI{75}{\volt}$. 
@@ -91,6 +104,7 @@ Also note that the system size dependence shown here is qualitatively in agreeme
 	\includegraphics[width=1\textwidth]{figs/IV_sizeVar_PVar_VVar.pdf}
 	\caption{Current voltage characteristics for various system size. Full lines are steady state currents for $P=0.5$ and dashed lines for $P=-0.5$.}
 \end{figure}
+\subsection{Steady state magnetoresistance}
 \Cref{fig:Magnetocurrent_std,fig:Magnetocurrent_stderr} show the system size and voltage dependence of the magnetoresistance $M_R$
 \begin{equation*}
 	M_R=100\left\vert\frac{I_\uparrow-I_\downarrow}{I_\uparrow+I_\downarrow}\right\vert,
@@ -99,28 +113,36 @@ in which we show the standard deviation $\sigma_{M_R}$ obtained from the standar
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\textwidth]{figs/Magnetocurrents_sizeVar_VVar_std.pdf}
-	\caption{Magnetocurrent: System size and voltage dependence. Error bars indicate error obtained from standard error of the time average of the charge currents.}\label{fig:Magnetocurrent_std}
+	\caption{Magnetocurrent: System size and voltage dependence. Error bars indicate error obtained from standard deviation of the time average of the charge currents.}\label{fig:Magnetocurrent_std}
 \end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\textwidth]{figs/Magnetocurrents_sizeVar_VVar_stderr.pdf}
-	\caption{Magnetocurrent: System size and voltage dependence. Error bars indicate error obtained from standard deviation of the time average of the charge currents.}\label{fig:Magnetocurrent_stderr}
+	\caption{Magnetocurrent: System size and voltage dependence. Error bars indicate error obtained from standard error of the time average of the charge currents.}\label{fig:Magnetocurrent_stderr}
 \end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\textwidth]{figs/MR_sizeVar_PVar_VVar.pdf}
 	\caption{Voltage dependence of magnetoresistance for various system size. Magnetoresistance obtained from steady state currents.}\label{fig:MR_V}
 \end{figure}
+\subsection{Vibrational displacement}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\textwidth]{figs/PhX1_V_sizeVar_PVar_VVar.pdf}
 	\caption{Voltage dependence of bond displacement at bond between sites 1 and 2 for various system size.}\label{fig:PhX1_V}
 \end{figure}
+\subsection{Electronic spin polarization}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\textwidth]{figs/Sz1_V_sizeVar_PVar_VVar.pdf}
 	\caption{Voltage dependence of spin polarization $s_i^z$ at site 1 for various system size.}\label{fig:Sz1}
 \end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=1\textwidth]{figs/Sz_space_V65_sizeVar_PVar.pdf}
+	\caption{Spatial distribution of electronic spin polarization $s_i^z$ for $V=\SI{0.52}{\volt}$. Full lines are for $P=0.5$, dashed lines for $P=-0.5$.}\label{fig:Sz_i_V65}
+\end{figure}
+
 
 
 Concerning the magnetoresistance, the results shown here are not in agreement with the ones shown in Fig. 2 in \cite{fransson2020vibrational}. For example, for a system size of $L=2\times 4$, Fransson obtains a magnetoresistance of around $5\%$ for $V=\SI{0.6}{\volt}$, while we obtain below $0.1\%$.

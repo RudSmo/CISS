@@ -84,20 +84,22 @@ end
 fac_c = 0.002* 1e3 * 0.2433946
 V = [50,60,75]
 Vn = [L"$0.4\,\mathrm{V}$",L"$0.48\,\mathrm{V}$",L"$0.6\,\mathrm{V}$"]
-Ns =[[11,21,21,72,10,71],
-     [11,19,21,71,10,61],
-     [11,20,11,72,10,61]]
+
+Ns =[[11,11,21,21,72,10,71],
+     [11,11,19,21,71,10,61],
+     [11,11,20,11,72,10,61]]
 colors = ["k","red","blue"]
-size = [3,4,6,8,9,10]
+size = [3,4,6,8,9,10,12]
 ms = 5
 for (i,v,vn,col) in zip(1:length(V),V,Vn,colors)
 
-	dats = ["L2x5/V$(v)/currents_time_avg_nS$(Ns[i][1])_P",
-		"L3x3/V$(v)/currents_time_avg_nS$(Ns[i][2])_P",
-		"L2x4/V$(v)/currents_time_avg_nS$(Ns[i][3])_P",
-		"L2x3/V$(v)/currents_time_avg_nS$(Ns[i][4])_P",
-		"L2x2/V$(v)/currents_time_avg_nS$(Ns[i][5])_P", 
-		"L1x3/V$(v)/currents_time_avg_nS$(Ns[i][6])_P"]
+	dats = ["L3x4/V$(v)/currents_time_avg_nS$(Ns[i][1])_P",
+		"L2x5/V$(v)/currents_time_avg_nS$(Ns[i][2])_P",
+		"L3x3/V$(v)/currents_time_avg_nS$(Ns[i][3])_P",
+		"L2x4/V$(v)/currents_time_avg_nS$(Ns[i][4])_P",
+		"L2x3/V$(v)/currents_time_avg_nS$(Ns[i][5])_P",
+		"L2x2/V$(v)/currents_time_avg_nS$(Ns[i][6])_P", 
+		"L1x3/V$(v)/currents_time_avg_nS$(Ns[i][7])_P"]
 
 
 #	dats_n = ["L4x4/V$(v)/noPh/L16_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
@@ -129,7 +131,7 @@ end
 
 
 
-ax.set_xlabel("system size")
+ax.set_xlabel("system size "*L"$N$")
 ax.set_ylabel(L"$I\,[\mu\mathrm{A}]$")
 ax.set_xlim(1,17)
 ax.legend(loc="upper right")

@@ -31,7 +31,7 @@ cax = plt.axes([px+3*(sx+dx),py,0.01,sy])
 
 dat1 = readdlm("L2x3/V60/electrons_avg_n71_P.dat")
 dat2 = readdlm("L2x4/V60/electrons_avg_n21_P.dat")
-dat3 = readdlm("L2x5/V60/electrons_avg_n11_P.dat")
+dat3 = readdlm("L2x6/V60/electrons_avg_n11_P.dat")
 
 cp = plt.cm.inferno
 cmap = plt.cm.ScalarMappable(cmap=cp)
@@ -45,7 +45,7 @@ N = 6
 ax1.imshow(sp1,aspect="auto",vmin=vmn,vmax=vmx,cmap="inferno",extent=[0.5,N+0.5,dat1[end,1]*fac_t*1e-3,0])
 N = 8
 ax2.imshow(sp2,aspect="auto",vmin=vmn,vmax=vmx,extent=[0.5,N+0.5,dat2[end,1]*fac_t*1e-3,0],cmap="inferno")
-N = 10
+N = 12
 im = ax3.imshow(sp3,aspect="auto",vmin=vmn,vmax=vmx,extent=[0.5,N+0.5,dat3[end,1]*fac_t*1e-3,0],cmap="inferno")
 
 ax1.set_xlabel(L"site $i$")
@@ -56,7 +56,7 @@ ax2.set_xlabel(L"site $i$")
 ax2.annotate(L"$L=2\times 4$",(0.7,0.05),xycoords="axes fraction",fontsize=fs,color="white")
 
 ax3.set_xlabel(L"site $i$")
-ax3.annotate(L"$L=2\times 5$",(0.7,0.05),xycoords="axes fraction",fontsize=fs,color="white")
+ax3.annotate(L"$L=2\times 6$",(0.7,0.05),xycoords="axes fraction",fontsize=fs,color="white")
 
 ax1.set_ylim(85,0)
 ax2.set_yticklabels([])

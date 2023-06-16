@@ -31,10 +31,10 @@ fac_c = 0.002* 1e3 * 0.2433946
 Ns =[[11,21,21,72,10,71],
      [11,19,21,71,10,61],
      [11,20,11,72,10,61]]
-colors = ["k","red","blue","green","orange","purple"]
-sizes = ["L1x3","L2x2","L2x3","L2x4","L3x3","L2x5"]
-labels = [L"$L=1\times3$",L"$L=2\times 2$",L"$L=2\times 3$",L"$L=2\times 4$",L"$L=3\times 3$",L"$L=2\times 5$"]
-Ns = [71,10,72,11,11,11]
+colors = ["k","red","blue","green","orange","purple","magenta"]
+sizes = ["L1x3","L2x2","L2x3","L2x4","L3x3","L2x5","L3x4"]
+labels = [L"$L=1\times3$",L"$L=2\times 2$",L"$L=2\times 3$",L"$L=2\times 4$",L"$L=3\times 3$",L"$L=2\times 5$",L"$L=3\times 4$"]
+Ns = [71,10,72,11,11,11,11]
 ms = 8
 fac_V = 0.2 * 0.04
 for (size,lab,col,ns) in zip(sizes,labels,colors,Ns)

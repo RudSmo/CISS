@@ -14,7 +14,7 @@ using DelimitedFiles
 num_laps = 3
 num_ions = 4
 N = num_laps * num_ions
-ws  = 0.0004*ones(N)
+ws  = 0.002*ones(N)
 T0  = 0.04/ws[1]  # in eV
 t0  = -T0
 eu  = -6*T0
@@ -24,13 +24,13 @@ gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
-tPh = 0.1*T0*ones(2)
-tsoPh = 0.1*tso
+tPh = 0.0*T0*ones(2)
+tsoPh = 0.0*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 
 # Simulation Parameters
-dt = 0.00001
+dt = 0.0002
 tend = 100
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
@@ -73,8 +73,8 @@ popPhIn = zeros(N)
 #xnIn,pnIn = [0.7691068624482689,-3.61069243320506,-5.245657309206734],[-7.401418656594664,-4.3318963287495675,1.5952234947490966]
 xnIn,pnIn = zeros(N), zeros(N)
 ## Leads
-P = -0.5
-tl = T0/4
+P = 0.5
+tl = T0/4 * 1/sqrt(N)
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
 
@@ -103,7 +103,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 version = 0
-path = "w0_Var"
+path = "Gamma_NVar"
 if !isdir(path)
 	mkpath(path)
 end
