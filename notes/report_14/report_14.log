@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  16 JUN 2023 13:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  20 JUN 2023 14:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -727,13 +727,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: figs/L2x3_P0.5_SampleVar_current.pdf Graphic file (type pdf)
 <use figs/L2x3_P0.5_SampleVar_current.pdf>
 Package pdftex.def Info: figs/L2x3_P0.5_SampleVar_current.pdf  used on input li
-ne 47.
+ne 51.
 (pdftex.def)             Requested size: 435.32419pt x 261.19295pt.
 <figs/L3x3_P0.5_SampleVar_current.pdf, id=2, 722.7pt x 433.62pt>
 File: figs/L3x3_P0.5_SampleVar_current.pdf Graphic file (type pdf)
 <use figs/L3x3_P0.5_SampleVar_current.pdf>
 Package pdftex.def Info: figs/L3x3_P0.5_SampleVar_current.pdf  used on input li
-ne 48.
+ne 52.
 (pdftex.def)             Requested size: 435.32419pt x 261.19295pt.
 
 
@@ -743,7 +743,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: figs/Current_dyn_P0.5_sysVar_V60.pdf Graphic file (type pdf)
 <use figs/Current_dyn_P0.5_sysVar_V60.pdf>
 Package pdftex.def Info: figs/Current_dyn_P0.5_sysVar_V60.pdf  used on input li
-ne 53.
+ne 57.
 (pdftex.def)             Requested size: 435.32419pt x 261.19295pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -751,7 +751,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <figs/Sz_space_dyn_sysVar_2x.pdf, id=4, 939.51pt x 505.89pt>
 File: figs/Sz_space_dyn_sysVar_2x.pdf Graphic file (type pdf)
 <use figs/Sz_space_dyn_sysVar_2x.pdf>
-Package pdftex.def Info: figs/Sz_space_dyn_sysVar_2x.pdf  used on input line 62
+Package pdftex.def Info: figs/Sz_space_dyn_sysVar_2x.pdf  used on input line 66
 .
 (pdftex.def)             Requested size: 435.32419pt x 234.40273pt.
 
@@ -760,7 +760,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <figs/Sz_space_dyn_sysVar_x3.pdf, id=5, 939.51pt x 505.89pt>
 File: figs/Sz_space_dyn_sysVar_x3.pdf Graphic file (type pdf)
 <use figs/Sz_space_dyn_sysVar_x3.pdf>
-Package pdftex.def Info: figs/Sz_space_dyn_sysVar_x3.pdf  used on input line 66
+Package pdftex.def Info: figs/Sz_space_dyn_sysVar_x3.pdf  used on input line 70
 .
 (pdftex.def)             Requested size: 435.32419pt x 234.40273pt.
 
@@ -769,7 +769,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <figs/L2x3_P0.5_VVar_current.pdf, id=6, 722.7pt x 397.485pt>
 File: figs/L2x3_P0.5_VVar_current.pdf Graphic file (type pdf)
 <use figs/L2x3_P0.5_VVar_current.pdf>
-Package pdftex.def Info: figs/L2x3_P0.5_VVar_current.pdf  used on input line 76
+Package pdftex.def Info: figs/L2x3_P0.5_VVar_current.pdf  used on input line 80
 .
 (pdftex.def)             Requested size: 483.69684pt x 266.03456pt.
 
@@ -779,29 +779,23 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: figs/Currents_sizeVar_P0.5_VVar.pdf Graphic file (type pdf)
 <use figs/Currents_sizeVar_P0.5_VVar.pdf>
 Package pdftex.def Info: figs/Currents_sizeVar_P0.5_VVar.pdf  used on input lin
-e 91.
+e 95.
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
 <figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf, id=8, 650.43pt x 325.215pt>
 File: figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf Graphic file (type pdf)
 <use figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf>
 Package pdftex.def Info: figs/Currents_sizeVar_P0.5_VVar_sqrtN.pdf  used on inp
-ut line 99.
+ut line 103.
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
 <figs/IV_sizeVar_PVar_VVar.pdf, id=9, 650.43pt x 325.215pt>
 File: figs/IV_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
 <use figs/IV_sizeVar_PVar_VVar.pdf>
-Package pdftex.def Info: figs/IV_sizeVar_PVar_VVar.pdf  used on input line 104.
+Package pdftex.def Info: figs/IV_sizeVar_PVar_VVar.pdf  used on input line 108.
 
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
 [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -812,25 +806,30 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/L3x3_P0.5_SampleVar_c
 urrent.pdf): PDF inclusion: multiple pdfs with page group included in a single 
 page
 >]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 <figs/Magnetocurrents_sizeVar_VVar_std.pdf, id=81, 650.43pt x 325.215pt>
 File: figs/Magnetocurrents_sizeVar_VVar_std.pdf Graphic file (type pdf)
 <use figs/Magnetocurrents_sizeVar_VVar_std.pdf>
 Package pdftex.def Info: figs/Magnetocurrents_sizeVar_VVar_std.pdf  used on inp
-ut line 115.
+ut line 119.
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
 <figs/Magnetocurrents_sizeVar_VVar_stderr.pdf, id=82, 650.43pt x 325.215pt>
 File: figs/Magnetocurrents_sizeVar_VVar_stderr.pdf Graphic file (type pdf)
 <use figs/Magnetocurrents_sizeVar_VVar_stderr.pdf>
 Package pdftex.def Info: figs/Magnetocurrents_sizeVar_VVar_stderr.pdf  used on 
-input line 120.
+input line 124.
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
 <figs/MR_sizeVar_PVar_VVar.pdf, id=83, 650.43pt x 325.215pt>
 File: figs/MR_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
 <use figs/MR_sizeVar_PVar_VVar.pdf>
-Package pdftex.def Info: figs/MR_sizeVar_PVar_VVar.pdf  used on input line 125.
+Package pdftex.def Info: figs/MR_sizeVar_PVar_VVar.pdf  used on input line 129.
 
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -844,7 +843,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: figs/PhX1_V_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
 <use figs/PhX1_V_sizeVar_PVar_VVar.pdf>
 Package pdftex.def Info: figs/PhX1_V_sizeVar_PVar_VVar.pdf  used on input line 
-131.
+135.
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
 [3 <./figs/Current_dyn_P0.5_sysVar_V60.pdf> <./figs/Sz_space_dyn_sysVar_2x.pdf
 
@@ -858,7 +857,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: figs/Sz1_V_sizeVar_PVar_VVar.pdf Graphic file (type pdf)
 <use figs/Sz1_V_sizeVar_PVar_VVar.pdf>
 Package pdftex.def Info: figs/Sz1_V_sizeVar_PVar_VVar.pdf  used on input line 1
-37.
+41.
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -867,7 +866,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: figs/Sz_space_V65_sizeVar_PVar.pdf Graphic file (type pdf)
 <use figs/Sz_space_V65_sizeVar_PVar.pdf>
 Package pdftex.def Info: figs/Sz_space_V65_sizeVar_PVar.pdf  used on input line
- 142.
+ 146.
 (pdftex.def)             Requested size: 483.69684pt x 241.85622pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -931,7 +930,7 @@ ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
 texmf-dist/fonts/type1/urw/symbol/usyr.pfb></usr/local/texlive/2021/texmf-dist/
 fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type
 1/urw/times/utmri8a.pfb>
-Output written on report_14.pdf (9 pages, 9350340 bytes).
+Output written on report_14.pdf (9 pages, 9350401 bytes).
 PDF statistics:
  461 PDF objects out of 1000 (max. 8388607)
  351 compressed objects within 4 object streams
