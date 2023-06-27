@@ -38,36 +38,16 @@
 \author{Rudolf Smorka}
 \maketitle
 
-\section{Dynamics}
-Show for $L=1x3$ and $L=2x4$ the dependence on voltage for couple of voltages. 
-Show here averaged and single-trajectory runs.
-
-Make lot of 2x2: One voltage in which energy-scale/time-scale argument works, one voltage in which it seems not to work and is not clear what happens on longer time scales. Need more investigation.
-
-Idea: Electronic spin polarization - "spin polaron" - is due to bound states (not contributing to transport because their energy is below right lead chemical potential)?  Still existing when voltage is very high? 
-\subsection{Charge currents}
+\section{Electronic spin polarization}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/L2x3_P0.5_SampleVar_current.pdf}
-	\includegraphics[width=0.9\textwidth]{figs/L3x3_P0.5_SampleVar_current.pdf}
-\end{figure}
-Show dependence on system size for a couple of voltages. 
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Current_dyn_P0.5_sysVar_V60.pdf}
-\end{figure}
-Insight: Transient charge current dynamics consists of multiple time-scales. The last one, in which the current drops down does not depend on system size and not on voltage. It is determined by electron-vibrational coupling.
-
-Show Magnetocurrent: For $L=1x3$ its strictly zero and $L=2x2$ is the smallest system size to see an effect on the single-trajectory level. 
-\subsection{Magnetoresistance}
-\subsection{Electronic spin polarization}
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Sz_space_dyn_sysVar_2x.pdf}
+	\includegraphics[width=0.85\textwidth]{figs/Sz_space_dyn_sysVar_2x.pdf}
+	\caption{Dynamics of electronic spin polarization for systems with two laps and various number of sites per lap for $V=\SI{0.48}{\volt}$.}
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.9\textwidth]{figs/Sz_space_dyn_sysVar_x3.pdf}
+	\includegraphics[width=0.85\textwidth]{figs/Sz_space_dyn_sysVar_x3.pdf}
+	\caption{Dynamics of electronic spin polarization with fixed number of sites per lap and varying number of laps for $V=\SI{0.48}{\volt}$.}
 \end{figure}
 \section{Steady state}
 For obtaining the steady state magnetoresistance $M_R$, the steady state currents $I_P$ under varying lead spin polarization $P$ have to be obtained. 
@@ -108,6 +88,7 @@ Also note that the system size dependence shown here is qualitatively in agreeme
 	\includegraphics[width=1\textwidth]{figs/IV_sizeVar_PVar_VVar.pdf}
 	\caption{Current voltage characteristics for various system size. Full lines are steady state currents for $P=0.5$ and dashed lines for $P=-0.5$.}
 \end{figure}
+\clearpage
 \subsection{Steady state magnetoresistance}
 \Cref{fig:Magnetocurrent_std,fig:Magnetocurrent_stderr} show the system size and voltage dependence of the magnetoresistance $M_R$
 \begin{equation*}
@@ -129,12 +110,14 @@ in which we show the standard deviation $\sigma_{M_R}$ obtained from the standar
 	\includegraphics[width=1\textwidth]{figs/MR_sizeVar_PVar_VVar.pdf}
 	\caption{Voltage dependence of magnetoresistance for various system size. Magnetoresistance obtained from steady state currents.}\label{fig:MR_V}
 \end{figure}
+\clearpage
 \subsection{Vibrational displacement}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\textwidth]{figs/PhX1_V_sizeVar_PVar_VVar.pdf}
 	\caption{Voltage dependence of bond displacement at bond between sites 1 and 2 for various system size.}\label{fig:PhX1_V}
 \end{figure}
+\clearpage
 \subsection{Electronic spin polarization}
 \begin{figure}[!h]
 	\centering
@@ -146,16 +129,16 @@ in which we show the standard deviation $\sigma_{M_R}$ obtained from the standar
 	\includegraphics[width=1\textwidth]{figs/Sz_space_V65_sizeVar_PVar.pdf}
 	\caption{Spatial distribution of electronic spin polarization $s_i^z$ for $V=\SI{0.52}{\volt}$. Full lines are for $P=0.5$, dashed lines for $P=-0.5$.}\label{fig:Sz_i_V65}
 \end{figure}
+\clearpage
 
 
-
-Concerning the magnetoresistance, the results shown here are not in agreement with the ones shown in Fig. 2 in \cite{fransson2020vibrational}. For example, for a system size of $L=2\times 4$, Fransson obtains a magnetoresistance of around $5\%$ for $V=\SI{0.6}{\volt}$, while we obtain below $0.1\%$.
-\begin{itemize}
-	\item Current-voltage for static phonons: $X_i=\langle X(t)\rangle_\mathrm{stat}$ (obtained from full calculation): Is the current drop with system size a purely electronic effect due to rearranged geometry?
-	\item Current-voltage for statically disordered phonons: Sample $X_i$ from Wigner, but do not make any propagation of them. Is the static disorder leading to changes in eigenstates (e.g. their localization), which leads to a decrease of the current?
-	\item How to obtain memory kernel from the calculations? Compute the position autocorrelation function for phonons.
-	\item How to extend the model to three dimensional phonons: Include vibrational mode in $x-y$ plane (inclusion of chirality of phonons), relation to molecular ratchets 
-\end{itemize}
+%Concerning the magnetoresistance, the results shown here are not in agreement with the ones shown in Fig. 2 in \cite{fransson2020vibrational}. For example, for a system size of $L=2\times 4$, Fransson obtains a magnetoresistance of around $5\%$ for $V=\SI{0.6}{\volt}$, while we obtain below $0.1\%$.
+%\begin{itemize}
+%	\item Current-voltage for static phonons: $X_i=\langle X(t)\rangle_\mathrm{stat}$ (obtained from full calculation): Is the current drop with system size a purely electronic effect due to rearranged geometry?
+%	\item Current-voltage for statically disordered phonons: Sample $X_i$ from Wigner, but do not make any propagation of them. Is the static disorder leading to changes in eigenstates (e.g. their localization), which leads to a decrease of the current?
+%	\item How to obtain memory kernel from the calculations? Compute the position autocorrelation function for phonons.
+%	\item How to extend the model to three dimensional phonons: Include vibrational mode in $x-y$ plane (inclusion of chirality of phonons), relation to molecular ratchets 
+%\end{itemize}
 \printbibliography
 \end{document}
 

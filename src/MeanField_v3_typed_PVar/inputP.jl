@@ -11,11 +11,12 @@ using DelimitedFiles
 
 
 # Hamiltonian Parameters
-num_laps = 3
-num_ions = 4
+num_laps = 2
+num_ions = 2
 N = num_laps * num_ions
-ws  = 0.002*ones(N)
-T0  = 0.04/ws[1]  # in eV
+Hop = 0.04
+ws  = 0.01*Hop*ones(N)
+T0  = Hop/ws[1]  # in eV
 t0  = -T0
 eu  = -6*T0
 ed  = -6*T0
@@ -24,14 +25,14 @@ gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
-tPh = 0.0*T0*ones(2)
-tsoPh = 0.0*tso
+tPh = 0.1*T0*ones(2)
+tsoPh = 0.1*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 
 # Simulation Parameters
-dt = 0.0002
-tend = 100
+dt = 0.00003
+tend = 50
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -70,15 +71,15 @@ else
 end
 popElIn = zeros(2*N)
 popPhIn = zeros(N)
-#xnIn,pnIn = [0.7691068624482689,-3.61069243320506,-5.245657309206734],[-7.401418656594664,-4.3318963287495675,1.5952234947490966]
+#xnIn,pnIn = [0.76,-3.61,-5.24,2.4],[-7.40,-4.33,1.59,-0.3]
 xnIn,pnIn = zeros(N), zeros(N)
 ## Leads
 P = 0.5
-tl = T0/4 * 1/sqrt(N)
+tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
 
-V = 60 * 0.2 * T0
+V = 75 * 0.2 * T0
 nPoles = 15
 beta = ws[1]/0.025 
 
@@ -103,17 +104,17 @@ HamPar = HamiltonianParams( num_laps,
 
 
 version = 0
-path = "Gamma_NVar"
+path = "Franssons_w0/V$(V)"
 if !isdir(path)
 	mkpath(path)
 end
 
 
-num_avg = 1
+num_avg = 50
 for ka in 1:num_avg
     
     if modelStr == "Fransson"
-        dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_$(clIntegrator)_$(elIntegrator)_dt$(abs(dt))"
+        dataname1 = "$(path)/L$(N)_tPh_$(tPh[1])_thPd_$(tPh[2])_SOC$(tso)_SOCPh$(tsoPh)_V$(V)_w0$(ws[1])_P$(P)_$(clIntegrator)_$(elIntegrator)_2_dt$(abs(dt))"
     elseif modelStr == "Holstein"
         dataname1 = "$(path)/L$(N)_gPhU$(gPh[1])_gPhD$(gPh[2])_V$(V)_w0$(ws[1])_X0_$(x0)_dt$(abs(dt))"
     end
@@ -131,7 +132,9 @@ for ka in 1:num_avg
 	    	HamPar.X  = readdlm("init_X_traj$(version).dat")[ka,:]
 		HamPar.P  = readdlm("init_X_traj$(version).dat")[ka,:]
     end
+#    HamPar.X = xnIn
+#    HamPar.P = pnIn
      
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,elIntegrator,clIntegrator,popElIn)
-#    Average(ka,dataname1,num_avg)
+    Average(ka,dataname1,num_avg)
 end

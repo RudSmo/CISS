@@ -85,17 +85,17 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
     end
     # Hopping
     for i in 1:num_sites-1
-        hu = -t0* nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
-        hd = -t0* nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
+        hu = t0* nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
+        hd = t0* nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
         HS += kron(hu+hu'+hd+hd',IdB)
     end
     # SOC
     for i in 1:num_sites-2
         vs  = VSVec(num_sites,r_helix,c_helix,i,num_laps) 
-        huu = -1im*λ0*vs[1,1]*nfop(i,1,num_sites,d)*nfop(i+2,1,num_sites,d)'
-        hud = -1im*λ0*vs[1,2]*nfop(i,1,num_sites,d)*nfop(i+2,2,num_sites,d)'
-        hdu = -1im*λ0*vs[2,1]*nfop(i,2,num_sites,d)*nfop(i+2,1,num_sites,d)'
-        hdd = -1im*λ0*vs[2,2]*nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d)'
+        huu = 1im*λ0*vs[1,1]*nfop(i,1,num_sites,d)*nfop(i+2,1,num_sites,d)'
+        hud = 1im*λ0*vs[1,2]*nfop(i,1,num_sites,d)*nfop(i+2,2,num_sites,d)'
+        hdu = 1im*λ0*vs[2,1]*nfop(i,2,num_sites,d)*nfop(i+2,1,num_sites,d)'
+        hdd = 1im*λ0*vs[2,2]*nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d)'
         HS += kron(huu + hud + hdu + hdd + huu' + hud' + hdu' + hdd',IdB)
     end
     # Harmonic oscillators
@@ -110,19 +110,19 @@ function Fransson(num_sites::Int64,num_laps::Int64,vibStates::Int64,eps::Array,t
         qv   = nkron([Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
 	el_hop = nfop(i,1,num_sites,d)*nfop(i+1,1,num_sites,d)'
 	el_hop += el_hop'
-        HSB -= tPh*kron(el_hop,qv)
+        HSB += tPh*kron(el_hop,qv)
 	el_hop = nfop(i,2,num_sites,d)*nfop(i+1,2,num_sites,d)'
 	el_hop += el_hop'
-        HSB -= tPh*kron(el_hop,qv)
+        HSB += tPh*kron(el_hop,qv)
     end
     # Electron-Phonon (SOC)
     for i in 1:num_sites-2
         vs  = VSVec(num_sites,r_helix,c_helix,i,num_laps) 
         qv  = nkron([Idkron(i-1,vibStates),bd+b,Idkron(num_sites-i,vibStates)])
-        huu = -1im*λPh*vs[1,1]*(nfop(i,1,num_sites,d)*nfop(i+2,1,num_sites,d))
-        hud = -1im*λPh*vs[1,2]*(nfop(i,1,num_sites,d)*nfop(i+2,2,num_sites,d))
-        hdu = -1im*λPh*vs[2,1]*(nfop(i,2,num_sites,d)*nfop(i+2,1,num_sites,d))
-        hdd = -1im*λPh*vs[2,2]*(nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d))
+        huu = 1im*λPh*vs[1,1]*(nfop(i,1,num_sites,d)*nfop(i+2,1,num_sites,d))
+        hud = 1im*λPh*vs[1,2]*(nfop(i,1,num_sites,d)*nfop(i+2,2,num_sites,d))
+        hdu = 1im*λPh*vs[2,1]*(nfop(i,2,num_sites,d)*nfop(i+2,1,num_sites,d))
+        hdd = 1im*λPh*vs[2,2]*(nfop(i,2,num_sites,d)*nfop(i+2,2,num_sites,d))
         HSB += kron(huu + hud + hdu + hdd + huu' + hud' + hdu' + hdd',qv) 
     end
     H = HS+HB+HSB

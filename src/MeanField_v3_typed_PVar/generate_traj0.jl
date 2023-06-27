@@ -2,12 +2,12 @@ src_path=expanduser("~/Uni/PhD/projects/2022/SOC-Holstein_ComparisonMethods/src/
 include("$(src_path)classical_phonons.jl")
 using DelimitedFiles
 
-num_laps = 3
-num_ions = 4
+num_laps = 2
+num_ions = 2
 N = num_laps * num_ions
 ws  = 0.0004*ones(N)
 beta = ws[1]/0.025
-num_avg = 1 
+num_avg = 50 
 X0,P0           = SampleWigner_Multi(beta,ws,N,num_avg)
 X_l,P_l         = zeros(num_avg,N),zeros(num_avg,N)
 X_l[:,:]        = X0

@@ -68,20 +68,16 @@ for i,j in enumerate(dat):
 	if i != 3:
 		ax[i].tick_params(labelbottom=False)
 	ax[i].annotate(lab[i],(0.1,0.9),xycoords="axes fraction")
-	ax[i].set_ylim(-0.05,1)
+	ax[i].set_ylim(-0.05*64,1*64)
 	for k,col in enumerate(colors):
-		#if i == 3:
-		#	li = str(k)
-		#else:
-		#	li = "0"+str(k)
 		li = "2"+str(k)
 		time_end = j["time"][-1]
-		ax[i].plot(Time(j["time"],"au").get("fs"),np.real(j[li])/64,label=llab[k],color=col,linewidth=2)
+		ax[i].plot(Time(j["time"],"au").get("fs"),np.abs(j[li]),label=llab[k],color=col,linewidth=2)
 		ax[i].set_ylabel(r"Population")
 
 colors=cm.jet(np.arange(0.0,1.0,1/8)-0.05)
 for i,c in zip(range(1,len(datE[0,:])),colors):
-	ax[-1].plot(datE[:,0],datE[:,i],linestyle="--",dashes=(5, 1),color=c)
+	ax[-1].plot(datE[:,0],datE[:,i]*64,linestyle="--",dashes=(5, 1),color=c)
 
 
 
