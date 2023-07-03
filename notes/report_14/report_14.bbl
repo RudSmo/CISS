@@ -41,5 +41,35 @@
     \field{journaltitle}{Physical Review B}
     \field{year}{2020}
   \endentry
+
+  \entry{hayden2022canonical}{article}{}
+    \name{author}{2}{}{%
+      {{hash=HP}{%
+         family={Hayden},
+         familyi={H\bibinitperiod},
+         given={Patrick},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=SJ}{%
+         family={Sorce},
+         familyi={S\bibinitperiod},
+         given={Jonathan},
+         giveni={J\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IOP Publishing}%
+    }
+    \strng{namehash}{HPSJ1}
+    \strng{fullhash}{HPSJ1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{22}
+    \field{pages}{225302}
+    \field{title}{A canonical Hamiltonian for open quantum systems}
+    \field{volume}{55}
+    \field{journaltitle}{Journal of Physics A: Mathematical and Theoretical}
+    \field{year}{2022}
+  \endentry
 \enddatalist
 \endinput
