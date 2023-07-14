@@ -11,6 +11,7 @@
 \usepackage{booktabs}
 \usepackage{siunitx}
 \usepackage{xcolor}
+\usepackage{mathrsfs}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \newtheorem{definition}{Definition}
@@ -68,7 +69,7 @@ and the vector $\vert \mathcal{B}(t)\rangle$ is defined by
 Next, the EOM for the Pad\'{e} resolved auxiliary density matrices is vectorized
 \begin{align}
 	\frac{\dif}{\dif t}\vert \Pi_{\ell,p}(t)\rangle &= -\frac{i\eta_p}{\beta_\ell}\vert\Gamma_\ell\rangle - i\mathds{1}\otimes \left(H_\mathrm{el}+H_\mathrm{el-vib}(X(t))-\frac{i}{2} \Gamma-\chi_p^+\mathds{1}\right)\vert \Pi_{\ell,p}(t)\rangle\\
-	&\equiv -\frac{i\eta_p}{\beta_\ell}\vert\Gamma_\ell\rangle + \mathcal{K}_{p}(X(t)).
+	&\equiv -\frac{i\eta_p}{\beta_\ell}\vert\Gamma_\ell\rangle + \mathcal{K}_{p}(X(t))\vert \Pi_{\ell,p}(t)\rangle.
 \end{align}
 Now, the combined vector of density matrices is introduced $\vert \sigma\rangle = \vert \rho\rangle \oplus \bigoplus_{\ell}\bigoplus_{p}\vert \Pi_{\ell,p}\rangle$, such that the electronic part of the equations of motion is reduced to a single matrix equation
 %\begin{scriptsize}
@@ -119,7 +120,19 @@ resulting in the steady state density matrix
 \begin{equation*}
 	\vert \rho_\mathrm{ss} \rangle = \lim_{t\rightarrow \infty} \exP{\mathcal{A}t}\int_0^t \exP{-\mathcal{A}s}\vert \mathcal{B}(s)\rangle \dif s.
 \end{equation*}
-
+\textit{2) Time-dependent $X(t)$:} Consider a time-depependent $X(t)$, however, not solved from the classical Hamilton equation of motion, but rather with an externally controlled driving. In this case the steady state solution 
+Then,  the solution to $\vert \Pi_{\ell,p}(t)\rangle$ is given by 
+\begin{align*}
+	\vert \Pi_{\ell,p}(t)\rangle = -\frac{i\eta_p}{\beta_\ell}\exP{\int_0^t \mathcal{K}_p(s)\dif s}\int_0^t  \exP{-\int_0^s \mathcal{K}_p(s')\dif s'} \vert \Gamma_\ell\rangle.
+\end{align*}
+The integral over the superoperator $\mathcal{K}_p(t)$ is
+\begin{equation*}
+	\int_{t_0}^t \dif s\, \mathcal{K}_p(s) = -i\mathds{1}\otimes\left( \mathscr{H}(t,t_0) - \left[-\frac{i}{2}\Gamma + \chi_p^+\mathds{1}\right](t-t_0)\right) \equiv \mathscr{K}_p(t,t_0)
+\end{equation*}
+with $\mathscr{H}(t,t_0)=\int_{t_0}^t \dif s\, H(s)$. With these abbreviations, the solution for the ADO is
+\begin{equation*}
+	\vert \Pi_{\ell,p}(t)\rangle = -\frac{i\eta_p}{\beta_\ell}\exP{\mathscr{K}_p(t,t_0)}\int_{t_0}^t  \exP{-\mathscr{K}_p(s,s_0)} \vert \Gamma_\ell\rangle.
+\end{equation*} 
 \printbibliography
 \end{document}
 

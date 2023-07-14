@@ -178,4 +178,3 @@ function SpinHopping(HamPar,t0)
 	Hh = Hopping_A_nn_spin(HamPar.N,t0)
 	return Ho .+ Hh	
 end
-

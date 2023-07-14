@@ -1,0 +1,14 @@
+# Parameters of run on 2023-07-13T11:19:03.249 
+# The purpose of this run is the following: Test of Fransson model.
+# --------------------PARAMS----------------------------
+dt = 0.0002
+Nstep = 80000
+N = 1
+ws = [0.001, 0.001, 0.001, 0.001]
+gPh = [0.0, 0.0]
+tL = [0.0, 0.0]
+tR = [0.0, 0.0]
+V = 300.0
+nPoles = 1
+beta = 0.04
+# ----------------THIS IS THE END.----------------------
