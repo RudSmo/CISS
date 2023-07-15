@@ -30,24 +30,24 @@
 \geometry{
 	a4paper,
 	total={170mm,257mm},
-	left=20mm,
-	top=20mm,
+	left=15mm,
+	right=15mm,
+	top=15mm,
 }
 \begin{document}
 \title{Report 15: Dynamics in the isolated molecule: Comparison between Ehrenfest and ML-MCTDH}
 \author{Rudolf Smorka}
 \maketitle
-\section{Spinless Peierls model}
-First, we compare the dynamics in the spinless Peierls model, which is described by the following Hamiltonian
+We compare the dynamics in the isolated spinless Peierls model, which is described by the following Hamiltonian
 \begin{equation*}
-	H_\mathrm{Peierls} = \sum_i \varepsilon_i^\pdagger c_i^\dagger c_i^\pdagger + \sum_\alpha \omega_\alpha^\pdagger a_\alpha^\dagger a_\alpha^\pdagger -t_0\sum_i (c_i^\dagger c_{i+1}^\pdagger + \mathrm{h.c.}) + t_1\sum_{i}(c_i^\dagger c_{i+1}^\pdagger + \mathrm{h.c.})(a_{i+\frac{1}{2}}^\dagger + a_{i+\frac{1}{2}}^\pdagger)
+	H_\mathrm{Peierls}/\hbar\omega = \sum_i E_i^\pdagger c_i^\dagger c_i^\pdagger + \sum_\alpha a_\alpha^\dagger a_\alpha^\pdagger -T_0\sum_i (c_i^\dagger c_{i+1}^\pdagger + \mathrm{h.c.}) + T_1\sum_{i}(c_i^\dagger c_{i+1}^\pdagger + \mathrm{h.c.})(a_{i+\frac{1}{2}}^\dagger + a_{i+\frac{1}{2}}^\pdagger)
 \end{equation*}
 of electrons on a one-dimensional lattice with open boundary condition interacting with bond-vibrations via nearest-neighbor hopping. The parameters are 
 \begin{align*}
-	\varepsilon_i &= -\SI{240}{\milli\electronvolt}\\
+	\varepsilon_i &= \hbar\omega E_i= -\SI{240}{\milli\electronvolt}\\
 	\omega_\alpha &= \SI{2}{\milli\electronvolt}\\
-	t_0 &= \SI{40}{\milli\electronvolt}\\
-	t_1 &= \SI{4}{\milli\electronvolt},
+	t_0 &= \hbar\omega T_0= \SI{40}{\milli\electronvolt}\\
+	t_1 &= \hbar\omega T_1 = \SI{4}{\milli\electronvolt},
 \end{align*}
 which are the same as used in the reports on the Fransson model previously. 
 The initial state is assumed to be a product state
@@ -58,7 +58,11 @@ The electronic system is initialized in the following state
 \begin{equation*}
 	\vert \psi_0\rangle = \vert 1,0,\dots,0\rangle,
 \end{equation*}
-corresponding to a single-electron excitation localized on the first site of the lattice. The initial state for the vibrations is a thermal state. Initially, the electronic and the vibrational system are uncoupled. To obtain the thermal state, in both Ehrenfest and MCTDH calculations a statistical sampling of the initial wave function is performed. Since in the Ehrenfest method the vibrations are treated as classical particles, their position and momentum is sampled from the thermal Wigner distribution in phase space of the thermal state of the uncoupled one-dimensional harmonic oscillator. In MCTDH, the statistical sampling of the vibrational wave function is performed as developed in \cite{manthe2001partition}. For each realization of the wave function, imaginary time propagation is performed, the resulting state being the initial condition for a real-time propagation. 
+corresponding to a single-electron excitation localized on the first site of the lattice. The initial state for the vibrations is a thermal state. To obtain the thermal state, in both Ehrenfest and MCTDH calculations a statistical sampling of the initial wave function is performed. Since in the Ehrenfest method the vibrations are treated as classical particles, their position and momentum is sampled from the thermal Wigner distribution in phase space of the thermal state of the uncoupled one-dimensional harmonic oscillator. In MCTDH, the statistical sampling of the vibrational wave function is performed as developed in \cite{manthe2001partition}. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf}
+\end{figure}
 \printbibliography
 \end{document}
 
