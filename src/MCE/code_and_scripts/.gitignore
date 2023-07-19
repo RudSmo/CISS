@@ -1,0 +1,26 @@
+# PyCharm settings
+.idea/
+
+# build artefacts
+build/
+src/simulate.c
+*.so
+*__pycache__/
+*figs_*
+images_for_video/
+miroslav_single_traj/
+
+ref_data/
+wigner_functions/
+data_export/
+size_dependence/
+video_2d_spreading/
+video_config_spreading/
+convergence_plots/
+
+#profiler
+*.nvvp
+
+# binary MCE data
+MCE_binary_start/*
+MCE_binary_results/*

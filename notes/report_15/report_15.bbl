@@ -47,5 +47,53 @@
     \field{journaltitle}{Chemical physics letters}
     \field{year}{2001}
   \endentry
+
+  \entry{alonso2012ehrenfest}{article}{}
+    \name{author}{5}{}{%
+      {{hash=AJL}{%
+         family={Alonso},
+         familyi={A\bibinitperiod},
+         given={Jos{\'e}\bibnamedelima Luis},
+         giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod},
+      }}%
+      {{hash=CGJ}{%
+         family={Clemente-Gallardo},
+         familyi={C\bibinithyphendelim G\bibinitperiod},
+         given={Jes{\'u}s},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=CJC}{%
+         family={Cuch{\'\i}},
+         familyi={C\bibinitperiod},
+         given={Juan\bibnamedelima Carlos},
+         giveni={J\bibinitperiod\bibinitdelim C\bibinitperiod},
+      }}%
+      {{hash=EP}{%
+         family={Echenique},
+         familyi={E\bibinitperiod},
+         given={Pablo},
+         giveni={P\bibinitperiod},
+      }}%
+      {{hash=FF}{%
+         family={Falceto},
+         familyi={F\bibinitperiod},
+         given={Fernando},
+         giveni={F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {AIP Publishing}%
+    }
+    \strng{namehash}{AJL+1}
+    \strng{fullhash}{AJLCGJCJCEPFF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{5}
+    \field{title}{Ehrenfest dynamics is purity non-preserving: A necessary
+  ingredient for decoherence}
+    \field{volume}{137}
+    \field{journaltitle}{The Journal of Chemical Physics}
+    \field{year}{2012}
+  \endentry
 \enddatalist
 \endinput

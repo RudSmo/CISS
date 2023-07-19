@@ -3,11 +3,11 @@ include("$(src_path)classical_phonons.jl")
 using DelimitedFiles
 
 num_laps = 1
-num_ions = 4
+num_ions = 3
 N = num_laps * num_ions
-ws  = 0.001*ones(N)
+ws  = 0.002*ones(N)
 beta = ws[1]/0.025
-num_avg = 10000 
+num_avg = 500
 X0,P0           = SampleWigner_Multi(beta,ws,N,num_avg)
 X_l,P_l         = zeros(num_avg,N),zeros(num_avg,N)
 X_l[:,:]        = X0

@@ -44,22 +44,25 @@ ax1.set_xticklabels([])
 
 ax1.annotate("ML-MCTDH",(0.8,0.07),xycoords="axes fraction",fontsize=fs)
 ax1.set_ylabel("Population")
-
+annx = 0.013
+anny = 0.88
+ax1.annotate("(a)",(annx,anny),xycoords="axes fraction",fontsize=fs)
 for i in 2:2:8
         ax2.plot(datE[2:end,1]*fac_t,datE[2:end,i],linewidth=lw,color=col[Int(i/2)],label="site $(i-1)")
 end
 
-ax2.annotate("Ehrenfest",(0.8,0.85),xycoords="axes fraction",fontsize=fs)
+ax2.annotate("Ehrenfest "*L"$(n_\mathrm{traj}=500)$",(0.7,0.85),xycoords="axes fraction",fontsize=fs)
 ax2.set_ylabel("Population")
 ax2.set_xticklabels([])
-
+ax2.annotate("(b)",(annx,anny),xycoords="axes fraction",fontsize=fs)
 for i in 2:2:8
         ax3.plot(datEd[2:end,1]*fac_t,datEd[2:end,i],linewidth=lw,color=col[Int(i/2)],label="site $(i-1)")
 end
 
-ax3.annotate("Ehrenfest with damping "*L"$\gamma = 0.002$",(0.5,0.85),xycoords="axes fraction",fontsize=fs)
+ax3.annotate("Ehrenfest "*L"$(n_{\mathrm{traj}}=500)$"*" with damping "*L"$\gamma = 0.002$",(0.4,0.85),xycoords="axes fraction",fontsize=fs)
 ax3.set_ylabel("Population")
 ax3.set_xlabel(L"$t\,[\mathrm{fs}]$")
+ax3.annotate("(c)",(annx,anny),xycoords="axes fraction",fontsize=fs)
 
 
 plt.savefig("Peierls_L1x4_MCTDH_v_Ehrenfest.pdf")

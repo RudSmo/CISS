@@ -12,7 +12,7 @@ using DelimitedFiles
 
 # Hamiltonian Parameters
 num_laps = 1
-num_ions = 4
+num_ions = 3
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
 Hop = 0.04
@@ -29,7 +29,6 @@ tPh = 0.1*T0*ones(2)
 tsoPh = 0.0 * 0.1*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
-ws = ws/2
 # Simulation Parameters
 dt = 0.0002
 tend = 8
@@ -72,16 +71,15 @@ end
 popElIn = zeros(2*N)
 popElIn[1] = 1.0
 popPhIn = zeros(N)
-#xnIn,pnIn = [0.76,-3.61,-5.24,2.4],[-7.40,-4.33,1.59,-0.3]
 xnIn,pnIn = zeros(N), zeros(N)
 ## Leads
-P = 0.5
-tl = 0.0 * T0/4
-tL = tl * (ones(2) .+ P * [1,-1])  
-tR = tl * ones(2)
+P = 0.0
+tl = T0/4
+tL = tl * [1,0]#(ones(2) .+ P * [1,-1])  
+tR = tl * [1,0]#ones(2)
 
 V = 75 * 0.2 * T0
-nPoles = 1
+nPoles = 15
 beta = ws[1]/0.025 
 
 HamPar = HamiltonianParams( num_laps,
@@ -105,13 +103,13 @@ HamPar = HamiltonianParams( num_laps,
 
 
 version = 0
-path = "L$(num_laps)x$(num_ions)_Peierls_4MCTDH_comparison"
+path = "L$(num_laps)x$(num_ions)_Peierls_4MCTDH_comparison_V$(V)"
 if !isdir(path)
 	mkpath(path)
 end
 
 
-num_avg = 10000
+num_avg = 500
 for ka in 1:num_avg
     
     if modelStr == "Fransson"

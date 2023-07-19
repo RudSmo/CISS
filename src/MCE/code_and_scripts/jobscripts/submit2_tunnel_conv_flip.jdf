@@ -1,0 +1,18 @@
+Executable   = /opt/rh/rh-python36/root/usr/bin/python3
+
+Error        = runs/job.$(Cluster).$(Process).err
+Log          = runs/job.$(Cluster).$(Process).log
+Output       = runs/job.$(Cluster).$(Process).out
+request_memory = 1024MB
+request_disk=500MB
+request_cpus = 2
+
+#t0 omega gamma Lx Ly num_configs
+#dt t_max initial_state[bare, dressed] psi_initial[local, eigen, CDW]
+#calc_BO_electron_density[True, False] BO_nel_save_dist
+#psi_state[2 ints y, x (local) or 1(eigen) or 0(CDW) inst]
+#[name_of_subfolder, default=0])
+queue 19 arguments from (
+"mce_simulate.py 0.5 1 2 2 1 200 0.1 320 dressed local False 10 0 0 $(PROCESS)_flip"
+)
+

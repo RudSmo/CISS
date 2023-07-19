@@ -35,9 +35,10 @@
 	top=15mm,
 }
 \begin{document}
-\title{Report 15: Dynamics in the isolated molecule: Comparison between Ehrenfest and ML-MCTDH}
+\title{Report 15}
 \author{Rudolf Smorka}
 \maketitle
+\section{Dynamics in the Peierls model: MCTDH vs Ehrenfest}
 We compare the dynamics in the isolated spinless Peierls model, which is described by the following Hamiltonian
 \begin{equation*}
 	H_\mathrm{Peierls}/\hbar\omega = \sum_i E_i^\pdagger c_i^\dagger c_i^\pdagger + \sum_\alpha a_\alpha^\dagger a_\alpha^\pdagger -T_0\sum_i (c_i^\dagger c_{i+1}^\pdagger + \mathrm{h.c.}) + T_1\sum_{i}(c_i^\dagger c_{i+1}^\pdagger + \mathrm{h.c.})(a_{i+\frac{1}{2}}^\dagger + a_{i+\frac{1}{2}}^\pdagger)
@@ -58,11 +59,22 @@ The electronic system is initialized in the following state
 \begin{equation*}
 	\vert \psi_0\rangle = \vert 1,0,\dots,0\rangle,
 \end{equation*}
-corresponding to a single-electron excitation localized on the first site of the lattice. The initial state for the vibrations is a thermal state. To obtain the thermal state, in both Ehrenfest and MCTDH calculations a statistical sampling of the initial wave function is performed. Since in the Ehrenfest method the vibrations are treated as classical particles, their position and momentum is sampled from the thermal Wigner distribution in phase space of the thermal state of the uncoupled one-dimensional harmonic oscillator. In MCTDH, the statistical sampling of the vibrational wave function is performed as developed in \cite{manthe2001partition}. 
+corresponding to a single-electron excitation localized on the first site of the lattice. The initial state for the vibrations is a thermal state. To obtain the thermal state, in both Ehrenfest and MCTDH calculations a statistical sampling of the initial wave function is performed. Since in the Ehrenfest method the vibrations are treated as classical particles, their position and momentum is sampled from the thermal Wigner distribution in phase space of the thermal state of the uncoupled one-dimensional harmonic oscillator. In MCTDH, the statistical sampling of the vibrational wave function is performed as developed in \cite{manthe2001partition}. \Cref{fig:Comp_MCTDH_Ehr} shows the population dynamics using ML-MCTDH (top panel), averaged over 100 initial configurations and using 100 primitive basis functions. In the middle panel is shown the population dynamics using the Ehrenfest approach, averaged over 500 initial nuclear phase space points. 
+
+From the comparison shown here it is clear that the Ehrenfest approach can describe only the short-time dynamics accurately. However, for long times, Ehrenfest fails to capture population relaxation due to the interaction with the vibrational modes. This failure is innately related to Ehrenfest being a method, which does not describe decoherence in the quantum (electronic) subspace due to coupling to the vibrations. It has been shown that this is linked to Ehrenfest dynamics not being purity-preserving \cite{alonso2012ehrenfest}, which is a necessary ingredient for decoherence. Although it is proposed in Ref.~\cite{alonso2012ehrenfest} that averaging over initial conditions, decoherence can be partially taken into account, in the model considered here, the main effect leading to decay of populations to a stationary value seems not to be taken into account by this averaging procedure. There are several possibilities why this is the case. One example might be wave packet bifurcations on multiple surfaces.
+
+One possibility to include this population relaxation in the Ehrenfest approach is by adding damping term in the classical equation of motion
+\begin{equation}
+	\dot{P} = -\left\langle \partial_X H\right\rangle - \gamma X. 
+\end{equation} 
+The results for $\gamma=0.002$ is shown in the lowest panel in \cref{fig:Comp_MCTDH_Ehr}. This parameters has been chosen to qualitatively reproduce the relaxation time of the full quantum calculation. In \cref{fig:Comp_MCTDH_Ehr} (c) the population dynamics obtained within the Ehrenfest approach with damping is shown. Here, each vibrational mode is damped with the same damping factor $\gamma$. While the population is damped on a similar time scale as the one obtained within ML-MCTDH, one can observe strong temporal oscillations even for long times.  
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf}
+	\includegraphics[width=1.0\textwidth]{figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf}
+	\caption{Population dynamics in the isolated Peierls model with $N=4$ electronic states and 3 vibrational modes: ML-MCTDH (a), Ehrenfest (b) and Ehrenfest with damping (c). }\label{fig:Comp_MCTDH_Ehr}
 \end{figure}
+\section{Charge transport in the Peierls model: TT-HEOM vs Ehrenfest}
 \printbibliography
 \end{document}
+
 
