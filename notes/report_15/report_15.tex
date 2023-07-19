@@ -11,6 +11,7 @@
 \usepackage{booktabs}
 \usepackage{siunitx}
 \usepackage{xcolor}
+\usepackage{pdfpages}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \newtheorem{definition}{Definition}
@@ -39,10 +40,13 @@
 \author{Rudolf Smorka}
 \maketitle
 \section{Ehrenfest: Increased number of trajectories}
-Here we show Ehrenfest results for the Fransson model coupled to two leads with the parameters as used in the previous report. We focus on the problematic system with $L=2\times 2$ sites. In the previous report, we show that even for very long times no steady-state is reached. Here we show in how far the shown long-time dynamics stems from an insufficient number of trajectories.
-{\color{red} Put here plots with more stats for $L=2x2$}
-\section{Potential energy surfaces: $L=2x2$}
+On page 2 we show Ehrenfest results for the Fransson model coupled to two leads with the parameters as used in the previous report. We focus on the problematic system with $L=2\times 2$ sites. In the previous report, we show that even for very long times no steady-state is reached. Here we show in how far the shown long-time dynamics stems from an insufficient number of trajectories.
+\section{Potential energy surfaces: $L=2\times 2$}
 An alternative perspective on the dynamics in the here considered model can be gained by investigating the Born-Oppenheimer potential energy surfaces.
+Potential energy curves of the Fransson model with $L=2\times 2$ for selected vibrational displacements is shown on the third page.
+As can be seen, the PES have regions of multiple (avoided) crossings. Since the model here is with spinfull electrons, there each state is almost degenerate, since the spin-orbit coupling and the vibrationally assisted spin-orbit coupling are very small.
+\includepdf[pages=1]{figs/L2x2_currents_MR_allV_longer.pdf}
+\includepdf[pages=1]{figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf}
 \section{Dynamics in the Peierls model: MCTDH vs Ehrenfest}
 We compare the dynamics in the isolated spinless Peierls model, which is described by the following Hamiltonian
 \begin{equation*}
@@ -64,21 +68,20 @@ The electronic system is initialized in the following state
 \begin{equation*}
 	\vert \psi_0\rangle = \vert 1,0,\dots,0\rangle,
 \end{equation*}
-corresponding to a single-electron excitation localized on the first site of the lattice. The initial state for the vibrations is a thermal state. To obtain the thermal state, in both Ehrenfest and MCTDH calculations a statistical sampling of the initial wave function is performed. Since in the Ehrenfest method the vibrations are treated as classical particles, their position and momentum is sampled from the thermal Wigner distribution in phase space of the thermal state of the uncoupled one-dimensional harmonic oscillator. In MCTDH, the statistical sampling of the vibrational wave function is performed as developed in \cite{manthe2001partition}. \Cref{fig:Comp_MCTDH_Ehr} shows the population dynamics using ML-MCTDH (top panel), averaged over 100 initial configurations and using 100 primitive basis functions. In the middle panel is shown the population dynamics using the Ehrenfest approach, averaged over 500 initial nuclear phase space points. 
+corresponding to a single-electron excitation localized on the first site of the lattice. The initial state for the vibrations is a thermal state. To obtain the thermal state, in both Ehrenfest and MCTDH calculations a statistical sampling of the initial wave function is performed. Since in the Ehrenfest method the vibrations are treated as classical particles, their position and momentum is sampled from the thermal Wigner distribution in phase space of the thermal state of the uncoupled one-dimensional harmonic oscillator. In MCTDH, the statistical sampling of the vibrational wave function is performed as developed in \cite{manthe2001partition}. \Cref{fig:Comp_MCTDH_Ehr} shows the population dynamics using ML-MCTDH (a), averaged over 100 initial configurations and using 100 primitive basis functions. In panel (b) is shown the population dynamics using the Ehrenfest approach, averaged over 500 initial nuclear phase space points. 
 
-From the comparison shown here it is clear that the Ehrenfest approach can describe only the short-time dynamics accurately. However, for long times, Ehrenfest fails to capture population relaxation due to the interaction with the vibrational modes. This failure is innately related to Ehrenfest being a method, which does not describe decoherence in the quantum (electronic) subspace due to coupling to the vibrations. It has been shown that this is linked to Ehrenfest dynamics not being purity-preserving \cite{alonso2012ehrenfest}, which is a necessary ingredient for decoherence. Although it is proposed in Ref.~\cite{alonso2012ehrenfest} that averaging over initial conditions, decoherence can be partially taken into account, in the model considered here, the main effect leading to decay of populations to a stationary value seems not to be taken into account by this averaging procedure. There are several possibilities why this is the case. One example might be wave packet bifurcations on multiple surfaces.
+From the comparison shown here it is clear that the Ehrenfest approach can describe only the short-time dynamics accurately. However, for long times, Ehrenfest fails to capture population relaxation due to the interaction with the vibrational modes. This failure is innately related to Ehrenfest being a method, which does not describe decoherence in the quantum (electronic) subspace due to coupling to the vibrations. It has been shown that this is linked to Ehrenfest dynamics not being purity-preserving \cite{alonso2012ehrenfest}, which is a necessary ingredient for decoherence. Although it is proposed in Ref.~\cite{alonso2012ehrenfest} that averaging over initial conditions, decoherence can be partially taken into account, in the model considered here, the main effect leading to decay of populations to a stationary value seems not to be taken into account by this averaging procedure. There are several possibilities why this is the case. One example might be wave packet bifurcations on multiple surfaces. Depending on the displacements of the vibrational modes, there might be multiple PES (avoided) crossings as shown on the previous page, and thus the vibrational wave packet in the full quantum problem might evolve on many different surfaces at very different parts of the PES.
 
-One possibility to include this population relaxation in the Ehrenfest approach is by adding damping term in the classical equation of motion
+One possibility to include this population relaxation in the Ehrenfest approach is by adding a phenomenological damping term in the classical equation of motion
 \begin{equation}
 	\dot{P} = -\left\langle \partial_X H\right\rangle - \gamma X. 
 \end{equation} 
-The results for $\gamma=0.002$ is shown in the lowest panel in \cref{fig:Comp_MCTDH_Ehr}. This parameters has been chosen to qualitatively reproduce the relaxation time of the full quantum calculation. In \cref{fig:Comp_MCTDH_Ehr} (c) the population dynamics obtained within the Ehrenfest approach with damping is shown. Here, each vibrational mode is damped with the same damping factor $\gamma$. While the population is damped on a similar time scale as the one obtained within ML-MCTDH, one can observe strong temporal oscillations even for long times.  
+The results for $\gamma=0.002$ are shown in \cref{fig:Comp_MCTDH_Ehr} (c). This parameters has been chosen to qualitatively reproduce the relaxation time of the full quantum calculation. Here, each vibrational mode is damped with the same damping factor $\gamma$. While the population is damped on a similar time scale as the one obtained within ML-MCTDH, one can observe strong temporal oscillations even for long times. One possible cause of these oscillations might be that they are influenced by strongly oscillating coherences, which are not damped effectively within this damped-Ehrenfest approach.  
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1.0\textwidth]{figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf}
 	\caption{Population dynamics in the isolated Peierls model with $N=4$ electronic states and 3 vibrational modes: ML-MCTDH (a), Ehrenfest (b) and Ehrenfest with damping (c). }\label{fig:Comp_MCTDH_Ehr}
-\end{figure}
-\section{Charge transport in the Peierls model: TT-HEOM vs Ehrenfest}
+\end{figure}\\
 \printbibliography
 \end{document}
 
