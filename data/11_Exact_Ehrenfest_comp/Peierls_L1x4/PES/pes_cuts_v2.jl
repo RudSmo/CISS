@@ -51,7 +51,7 @@ function PhononHamiltonian(HamPar)
 end
 
 
-fig = plt.figure(figsize=(10,13))
+fig = plt.figure(figsize=(10,14.142))
 
 px = 0.09
 py = 0.845
