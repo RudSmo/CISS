@@ -1,0 +1,100 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=15mm,
+	right=15mm,
+	top=15mm,
+}
+\begin{document}
+\title{Report 16: }
+\author{Rudolf Smorka}
+\maketitle
+\section{Ehrenfest: Variation of vib.-assisted SOC}
+\section{Charge current dynamics: TT-HEOM vs Ehrenfest}
+\section{Solving the steady state in Ehrenfest-HEOM directly}
+\section{Solving the vibrational relaxation problems using a classical vib. bath}
+{\color{blue} Does a classical vibrational Ohmic bath lead to decoherence in the quantum subsystem?}
+
+We consider a variation of the model considered before. The Hamiltonian of the molecule is now extended by including $m$ vibrational modes $X_{(k)}$ that couple to the $j$th bond vibration. The Hamiltonian reads
+\begin{align*}
+	H_\mathrm{sys} = H_\mathrm{el} + H_\mathrm{el-vib} + H_\mathrm{vib} + \sum_{j=1}^{N-1}\sum_{k=1}^m \left[ g_{k} X_j X_{(k)} + \frac{\omega_{(k)}}{2\hbar \omega} \left(X_{(k)}^2 + P_{(k)}^2 + \frac{1}{2}\right) \right]
+\end{align*}
+where $H_\mathrm{el},H_\mathrm{el-vib}$ and $H_\mathrm{vib}$ are as in the original Fransson model and the last term describes the coupling and the harmonic term of the additional harmonic modes. The molecule is coupled to two noninteracting fermionic leads in the same way as used in the previous reports.
+We will call these additional degrees of freedom as "bath" degrees of freedom. Note that in this formulation used here, each system vibrational mode is coupled a common bath. This bath is characterized by its spectral density, 
+\begin{equation*}
+	J(\omega) = \pi\sum_j g_j^2 \delta(\hbar \omega-\hbar \omega_j) 
+\end{equation*}
+is assumed to be characterized by an Ohmic spectral density
+\begin{equation*}
+	J(\omega) = \frac{\pi\hbar}{2}\eta\omega \exP{-\frac{\omega}{\omega_c}}
+\end{equation*}
+
+Following Weiss (p. 19ff): 
+\begin{align*}
+	H &= H_S + H_R + H_I\\
+	H_S &= \frac{p^2}{2M} + \frac{m\omega^2 q^2}{2} \\
+	H_R &= \sum_\alpha \left(\frac{1}{2} \frac{p_\alpha^2}{m_\alpha} + \frac{1}{2}m_\alpha \omega_\alpha^2 x_\alpha^2 \right)\\
+	H_I &= \sum_\alpha \left(-c_\alpha q x_\alpha + \frac{c_\alpha^2 q^2}{2m_\alpha \omega_\alpha^2} \right)
+\end{align*}
+and the classical equilibrium density of the unperturbed reservoir is 
+\begin{equation*}
+	\rho_R=Z^{-1} \exp\left\{-\beta \sum_\alpha \left(\frac{p_\alpha^2}{2m_\alpha} + \frac{m_\alpha \omega_\alpha^2}{2}x_\alpha^2\right)\right\}.
+\end{equation*}
+Transforming the coordinates and momenta according to 
+\begin{equation}
+	\hat{X}_j = \sqrt{\frac{m_j\omega_j}{\hbar}} \hat{x}_j, \qquad \hat{P}_j = \frac{\hat{p}_j}{\sqrt{\hbar m_j\omega_j}}
+\end{equation}
+one finds the Hamiltonian to be 
+\begin{align*}
+	H_S &= \frac{\hbar \omega}{2}\left(X^2 + P^2 + \frac{1}{2}\right) \\
+	H_R &= \sum_\alpha \frac{\hbar \omega_\alpha}{2} \left(X_\alpha^2  + P_\alpha^2 + \frac{1}{2}\right)\\
+	H_I &= \sum_\alpha \left(-\frac{\hbar}{\sqrt{m_\alpha \omega_\alpha m\omega}}c_\alpha X X_\alpha + \frac{\hbar}{m \omega}\frac{c_\alpha^2 X^2}{2m_\alpha \omega_\alpha^2} \right)
+\end{align*}
+For example, in this paper \cite{kab2004statistical}, the Hamiltonian reads
+\begin{align*}
+	H_S &= \frac{\hbar \omega}{2}\left(X^2 + P^2 + \frac{1}{2}\right) \\
+	H_R &= \sum_\alpha \frac{\hbar \omega_\alpha}{2} \left(X_\alpha^2  + P_\alpha^2 + \frac{1}{2}\right)\\
+	H_I &= \sum_\alpha \left(-\frac{\hbar}{\sqrt{m_\alpha \omega_\alpha m\omega}}c_\alpha X X_\alpha + \frac{\hbar}{m \omega}\frac{c_\alpha^2 X^2}{2m_\alpha \omega_\alpha^2} \right)
+\end{align*}
+The Ehrenfest equations of motion for the vibrational degrees of freedom are
+\begin{align*}
+	\dot{X}_j &= P_j \\
+	\dot{P}_j &= -\tr{\rho(t)\partial_{X_j} H}  \\
+	\dot{X}_{(k)} &= P_{(k)} \\
+	\dot{P}_{(k)} &= \sum_j \frac{1}{\sqrt{m_{(k)}\omega_{(k)} m\omega^3}}c_{(k)} X_j 
+\end{align*}
+
+\printbibliography
+\end{document}
+
+

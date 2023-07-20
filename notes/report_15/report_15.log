@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  19 JUL 2023 18:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  20 JUL 2023 11:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -775,23 +775,23 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: figs/L2x2_currents_MR_allV_longer.pdf Graphic file (type pdf)
 <use figs/L2x2_currents_MR_allV_longer.pdf>
 Package pdftex.def Info: figs/L2x2_currents_MR_allV_longer.pdf  used on input l
-ine 48.
+ine 50.
 (pdftex.def)             Requested size: 722.69823pt x 1022.03986pt.
 File: figs/L2x2_currents_MR_allV_longer.pdf Graphic file (type pdf)
 <use figs/L2x2_currents_MR_allV_longer.pdf>
 Package pdftex.def Info: figs/L2x2_currents_MR_allV_longer.pdf  used on input l
-ine 48.
+ine 50.
 (pdftex.def)             Requested size: 722.69823pt x 1022.03986pt.
 <figs/L2x2_currents_MR_allV_longer.pdf, id=4, page=1, 722.7pt x 1022.04234pt>
 File: figs/L2x2_currents_MR_allV_longer.pdf Graphic file (type pdf)
 <use figs/L2x2_currents_MR_allV_longer.pdf, page 1>
 Package pdftex.def Info: figs/L2x2_currents_MR_allV_longer.pdf , page1 used on 
-input line 48.
+input line 50.
 (pdftex.def)             Requested size: 722.69823pt x 1022.03986pt.
 File: figs/L2x2_currents_MR_allV_longer.pdf Graphic file (type pdf)
 <use figs/L2x2_currents_MR_allV_longer.pdf, page 1>
 Package pdftex.def Info: figs/L2x2_currents_MR_allV_longer.pdf , page1 used on 
-input line 48.
+input line 50.
 (pdftex.def)             Requested size: 597.55815pt x 845.06676pt.
  [1
 
@@ -799,90 +799,130 @@ input line 48.
 File: figs/L2x2_currents_MR_allV_longer.pdf Graphic file (type pdf)
 <use figs/L2x2_currents_MR_allV_longer.pdf, page 1>
 Package pdftex.def Info: figs/L2x2_currents_MR_allV_longer.pdf , page1 used on 
-input line 48.
+input line 50.
 (pdftex.def)             Requested size: 597.55815pt x 845.06676pt.
 File: figs/L2x2_currents_MR_allV_longer.pdf Graphic file (type pdf)
 <use figs/L2x2_currents_MR_allV_longer.pdf, page 1>
 Package pdftex.def Info: figs/L2x2_currents_MR_allV_longer.pdf , page1 used on 
-input line 48.
+input line 50.
 (pdftex.def)             Requested size: 597.55815pt x 845.06676pt.
 File: figs/L2x2_currents_MR_allV_longer.pdf Graphic file (type pdf)
 <use figs/L2x2_currents_MR_allV_longer.pdf, page 1>
 Package pdftex.def Info: figs/L2x2_currents_MR_allV_longer.pdf , page1 used on 
-input line 48.
+input line 50.
 (pdftex.def)             Requested size: 597.55815pt x 845.06676pt.
  [2 <./figs/L2x2_currents_MR_allV_longer.pdf>]
-<figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf, id=60, 722.7pt x 
-939.51pt>
+<figs/L2x4_currents_MR_allV_lambda1.pdf, id=61, 722.7pt x 1022.04234pt>
+File: figs/L2x4_currents_MR_allV_lambda1.pdf Graphic file (type pdf)
+<use figs/L2x4_currents_MR_allV_lambda1.pdf>
+Package pdftex.def Info: figs/L2x4_currents_MR_allV_lambda1.pdf  used on input 
+line 51.
+(pdftex.def)             Requested size: 722.69823pt x 1022.03986pt.
+File: figs/L2x4_currents_MR_allV_lambda1.pdf Graphic file (type pdf)
+<use figs/L2x4_currents_MR_allV_lambda1.pdf>
+Package pdftex.def Info: figs/L2x4_currents_MR_allV_lambda1.pdf  used on input 
+line 51.
+(pdftex.def)             Requested size: 722.69823pt x 1022.03986pt.
+<figs/L2x4_currents_MR_allV_lambda1.pdf, id=64, page=1, 722.7pt x 1022.04234pt>
+
+File: figs/L2x4_currents_MR_allV_lambda1.pdf Graphic file (type pdf)
+<use figs/L2x4_currents_MR_allV_lambda1.pdf, page 1>
+Package pdftex.def Info: figs/L2x4_currents_MR_allV_lambda1.pdf , page1 used on
+ input line 51.
+(pdftex.def)             Requested size: 722.69823pt x 1022.03986pt.
+File: figs/L2x4_currents_MR_allV_lambda1.pdf Graphic file (type pdf)
+<use figs/L2x4_currents_MR_allV_lambda1.pdf, page 1>
+Package pdftex.def Info: figs/L2x4_currents_MR_allV_lambda1.pdf , page1 used on
+ input line 51.
+(pdftex.def)             Requested size: 597.55815pt x 845.06676pt.
+File: figs/L2x4_currents_MR_allV_lambda1.pdf Graphic file (type pdf)
+<use figs/L2x4_currents_MR_allV_lambda1.pdf, page 1>
+Package pdftex.def Info: figs/L2x4_currents_MR_allV_lambda1.pdf , page1 used on
+ input line 51.
+(pdftex.def)             Requested size: 597.55815pt x 845.06676pt.
+File: figs/L2x4_currents_MR_allV_lambda1.pdf Graphic file (type pdf)
+<use figs/L2x4_currents_MR_allV_lambda1.pdf, page 1>
+Package pdftex.def Info: figs/L2x4_currents_MR_allV_lambda1.pdf , page1 used on
+ input line 51.
+(pdftex.def)             Requested size: 597.55815pt x 845.06676pt.
+File: figs/L2x4_currents_MR_allV_lambda1.pdf Graphic file (type pdf)
+<use figs/L2x4_currents_MR_allV_lambda1.pdf, page 1>
+Package pdftex.def Info: figs/L2x4_currents_MR_allV_lambda1.pdf , page1 used on
+ input line 51.
+(pdftex.def)             Requested size: 597.55815pt x 845.06676pt.
+ [3 <./figs/L2x4_currents_MR_allV_lambda1.pdf>]
+<figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf, id=109, 722.7pt x
+ 939.51pt>
 File: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf Graphic file 
 (type pdf)
 <use figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf>
 Package pdftex.def Info: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v
-2.pdf  used on input line 49.
+2.pdf  used on input line 52.
 (pdftex.def)             Requested size: 722.69823pt x 939.5077pt.
 File: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf Graphic file 
 (type pdf)
 <use figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf>
 Package pdftex.def Info: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v
-2.pdf  used on input line 49.
+2.pdf  used on input line 52.
 (pdftex.def)             Requested size: 722.69823pt x 939.5077pt.
-<figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf, id=63, page=1, 72
-2.7pt x 939.51pt>
+<figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf, id=112, page=1, 7
+22.7pt x 939.51pt>
 File: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf Graphic file 
 (type pdf)
 <use figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf, page 1>
 Package pdftex.def Info: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v
-2.pdf , page1 used on input line 49.
+2.pdf , page1 used on input line 52.
 (pdftex.def)             Requested size: 722.69823pt x 939.5077pt.
 File: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf Graphic file 
 (type pdf)
 <use figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf, page 1>
 Package pdftex.def Info: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v
-2.pdf , page1 used on input line 49.
+2.pdf , page1 used on input line 52.
 (pdftex.def)             Requested size: 598.07645pt x 777.49939pt.
 File: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf Graphic file 
 (type pdf)
 <use figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf, page 1>
 Package pdftex.def Info: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v
-2.pdf , page1 used on input line 49.
+2.pdf , page1 used on input line 52.
 (pdftex.def)             Requested size: 598.07645pt x 777.49939pt.
 File: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf Graphic file 
 (type pdf)
 <use figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf, page 1>
 Package pdftex.def Info: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v
-2.pdf , page1 used on input line 49.
+2.pdf , page1 used on input line 52.
 (pdftex.def)             Requested size: 598.07645pt x 777.49939pt.
 File: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf Graphic file 
 (type pdf)
 <use figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf, page 1>
 Package pdftex.def Info: figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v
-2.pdf , page1 used on input line 49.
+2.pdf , page1 used on input line 52.
 (pdftex.def)             Requested size: 598.07645pt x 777.49939pt.
- [3 <./figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf>]
-<figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf, id=97, 650.43pt x 650.43pt>
+
+[4 <./figs/PES_2x2_SOC0.5_tPh2.0_SOCPh0.05_multiState_cuts_v2.pdf>]
+<figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf, id=146, 650.43pt x 650.43pt>
 File: figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf Graphic file (type pdf)
 <use figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf>
 Package pdftex.def Info: figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf  used on input
- line 82.
+ line 85.
 (pdftex.def)             Requested size: 512.14963pt x 512.18655pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--86
+Underfull \hbox (badness 10000) in paragraph at lines 81--88
 
  []
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[4] [5 <./figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf>] (./report_15.aux)
+[5] [6 <./figs/Peierls_L1x4_MCTDH_v_Ehrenfest.pdf>] (./report_15.aux)
 Package logreq Info: Writing requests to 'report_15.run.xml'.
 \openout1 = `report_15.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17054 strings out of 478994
- 332058 string characters out of 5858184
+ 17065 strings out of 478994
+ 332565 string characters out of 5858184
  849086 words of memory out of 5000000
- 34311 multiletter control sequences out of 15000+600000
+ 34320 multiletter control sequences out of 15000+600000
  421707 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,17n,77p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -903,10 +943,10 @@ e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
 021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texli
 ve/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/te
 xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report_15.pdf (5 pages, 1146584 bytes).
+Output written on report_15.pdf (6 pages, 1955017 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
- 110 compressed objects within 2 object streams
+ 225 PDF objects out of 1000 (max. 8388607)
+ 122 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 
