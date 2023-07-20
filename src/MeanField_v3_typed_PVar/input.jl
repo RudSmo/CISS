@@ -11,8 +11,8 @@ using DelimitedFiles
 
 
 # Hamiltonian Parameters
-num_laps = 1
-num_ions = 3
+num_laps = 2
+num_ions = 4
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
 Hop = 0.04
@@ -24,14 +24,14 @@ E   = [eu,ed]
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = 0.0 * T0/40
+tso = T0/40
 tPh = 0.1*T0*ones(2)
-tsoPh = 0.0 * 0.1*tso
+tsoPh = 10*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 # Simulation Parameters
 dt = 0.0002
-tend = 8
+tend = 50
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -109,7 +109,7 @@ if !isdir(path)
 end
 
 
-num_avg = 500
+num_avg = 5
 for ka in 1:num_avg
     
     if modelStr == "Fransson"
@@ -135,5 +135,5 @@ for ka in 1:num_avg
 #    HamPar.P = pnIn
      
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,elIntegrator,clIntegrator,popElIn)
-    Average(ka,dataname1,num_avg)
+#    Average(ka,dataname1,num_avg)
 end
