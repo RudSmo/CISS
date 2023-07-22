@@ -11,8 +11,8 @@ using DelimitedFiles
 
 
 # Hamiltonian Parameters
-num_laps = 2
-num_ions = 4
+num_laps = 1
+num_ions = 3
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
 Hop = 0.04
@@ -24,14 +24,14 @@ E   = [eu,ed]
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = T0/40
+tso = 0.0 * T0/40
 tPh = 0.1*T0*ones(2)
-tsoPh = 10*tso
+tsoPh = 0.0*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 # Simulation Parameters
 dt = 0.0002
-tend = 50
+tend = 3
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -69,7 +69,7 @@ else
     pathIn = "Holstein_L2/noEps/L2_gPhU0.004_gPhD0.004_V0.0_w00.002_X0_0.0_dt0.05_1_final_Quantities"
 end
 popElIn = zeros(2*N)
-popElIn[1] = 1.0
+popElIn[1] = 0.0
 popPhIn = zeros(N)
 xnIn,pnIn = zeros(N), zeros(N)
 ## Leads
@@ -78,7 +78,8 @@ tl = T0/4
 tL = tl * [1,0]#(ones(2) .+ P * [1,-1])  
 tR = tl * [1,0]#ones(2)
 
-V = 75 * 0.2 * T0
+v = 85
+V = v * 0.2 * T0
 nPoles = 15
 beta = ws[1]/0.025 
 
@@ -103,13 +104,13 @@ HamPar = HamiltonianParams( num_laps,
 
 
 version = 0
-path = "L$(num_laps)x$(num_ions)_Peierls_4MCTDH_comparison_V$(V)"
+path = "L$(num_laps)x$(num_ions)_Peierls_V$(V)" # "noPh_L$(num_laps)x$(num_ions)/V$(v)" # "L$(num_laps)x$(num_ions)_Peierls_4MCTDH_comparison_V$(V)"
 if !isdir(path)
 	mkpath(path)
 end
 
 
-num_avg = 5
+num_avg = 10
 for ka in 1:num_avg
     
     if modelStr == "Fransson"
@@ -135,5 +136,5 @@ for ka in 1:num_avg
 #    HamPar.P = pnIn
      
     @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,elIntegrator,clIntegrator,popElIn)
-#    Average(ka,dataname1,num_avg)
+    Average(ka,dataname1,num_avg)
 end

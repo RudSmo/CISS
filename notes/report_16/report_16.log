@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  20 JUL 2023 15:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  22 JUL 2023 11:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -770,22 +770,48 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+)
+<figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf, id=1, 722.7pt x 1022.05214pt>
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] (./
-report_16.aux)
+File: figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf Graphic file (type pdf)
+<use figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf>
+Package pdftex.def Info: figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf  used 
+on input line 49.
+(pdftex.def)             Requested size: 460.93153pt x 651.84984pt.
+<figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf, id=2, 722.7pt x 50
+5.89pt>
+File: figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf Graphic file (
+type pdf)
+<use figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf>
+Package pdftex.def Info: figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2
+.pdf  used on input line 54.
+(pdftex.def)             Requested size: 512.14963pt x 358.50511pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[1
+
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2 <./figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf>] [3 <./figs/PES_1x3_SOC0
+.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf>] [4
+
+] [5] (./report_16.aux)
 Package logreq Info: Writing requests to 'report_16.run.xml'.
 \openout1 = `report_16.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17002 strings out of 478994
- 330113 string characters out of 5858184
- 848977 words of memory out of 5000000
- 34265 multiletter control sequences out of 15000+600000
+ 17021 strings out of 478994
+ 330934 string characters out of 5858184
+ 855014 words of memory out of 5000000
+ 34281 multiletter control sequences out of 15000+600000
  419371 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,10n,75p,1845b,1638s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,10n,75p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
@@ -799,11 +825,13 @@ texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
 live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
 ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texliv
 e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
-/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report_16.pdf (2 pages, 144680 bytes).
+/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/tex
+live/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/
+texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report_16.pdf (5 pages, 396215 bytes).
 PDF statistics:
- 67 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 130 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

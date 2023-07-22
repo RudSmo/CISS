@@ -24,23 +24,30 @@ E   = [eu,ed]
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = T0/40
+tso = 0.0 * T0/40
 tPh = 0.1*T0*ones(2)
-tsoPh = 0.1*tso
+tsoPh = 0.0*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 ws = ws/2
+
 # Auxiliary oscillators
-maux = 100 # number of aux oscillators
-eta = 10.0
+maux = 50 # number of aux oscillators
+eta = 0.05
 wc = ws[1] # central frequency
-w_rng = 0.0002:0.0005:0.1
-ws_aux = [w for w in w_rng[1]:(w_rng[end]-w_rng[1])/(maux-1):w_rng[end]]
-gaux = [sqrt(pi * eta * w * exp(-w/wc)/2) for w in ws_aux]  # Ohmic spectral density
+
+
+w_rng = 1e-7:1e-5:0.015
+ws_aux1 = w_rng[1]:(wc/2-w_rng[1])/(maux/4):wc/2
+ws_aux2 = (wc/2):(3*wc/2)/(maux/2-1):2*wc
+ws_aux3 = (2*wc):(w_rng[end]-3*wc/2)/(maux/4-1):w_rng[end]
+ws_aux  = collect(Iterators.flatten([Array(ws_aux1),Array(ws_aux2),Array(ws_aux3)]))
+gaux    = [sqrt(pi * eta * w * exp(-w/wc)/2) for w in ws_aux]  # Ohmic spectral density
+
 
 # Simulation Parameters
-dt = 0.0002
-tend = 12
+dt = 0.0001
+tend = 20
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 

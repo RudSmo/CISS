@@ -31,14 +31,16 @@ annx = 0.85
 anny = 0.05
 
 Vs = [22,50,60,75,85,105]
-yl = [[-0.1,0.1],[0.2,0.5],[0.4,0.8],[0.6,1.2],[0.8,1.4],[0.8,1.4]]
+yl = [[-0.05,0.05],[0.25,0.4],[0.45,0.7],[0.8,1.12],[0.9,1.3],[1.0,1.35]]
 for (i,V) in enumerate(Vs)
 	ax = plt.axes([px,py-(i-1)*(sy+dy),sx,sy])
 	datE = readdlm("Ehrenfest/V$(V)/$(fnfilter(readdir("Ehrenfest/V$(V)"),"*currents*")[1])")
 	datT = readdlm("TTHEOM/V$(V)/$(fnfilter(readdir("TTHEOM/V$(V)"),"*current*")[1])") 	
+	datN = readdlm("noPh/V$(V)/$(fnfilter(readdir("noPh/V$(V)"),"*currents*")[1])")
 	
-	ax.plot(datE[2:end,1]*fac_t_E, (datE[2:end,2]-datE[2:end,3])*fac_c_E, color="k",linewidth=lw,label="Ehrenfest")
-	ax.plot(datT[2:end,1]*fac_t_T, (datT[2:end,2]-datT[2:end,3])*fac_c_T, color="red",linewidth=lw,label="TT-HEOM")	
+	ax.plot(datE[2:end,1]*fac_t_E, (datE[2:end,2]-datE[2:end,3])*fac_c_E, color="blue",linewidth=lw,label="Ehrenfest")
+	ax.plot(datT[2:end,1]*fac_t_T, (datT[2:end,2]-datT[2:end,3])*fac_c_T, color="green",linewidth=lw,label="TT-HEOM")	
+	ax.plot(datN[2:end,1]*fac_t_E, (datN[2:end,2]-datN[2:end,3])*fac_c_E, color="red", linewidth=lw,label="Exact "*L"$t_1=0\,\mathrm{meV}$",linestyle="dashed")
 	if i == 1
 		ax.legend()
 	end
@@ -51,7 +53,7 @@ for (i,V) in enumerate(Vs)
 	ax.set_ylabel(L"I\,[\mu \mathrm{A}]")
 	ax.set_ylim(yl[i][1],yl[i][2])
 end
-plt.savefig("Peierls_dyn_TTHEOM_Ehrenfest_VVar.pdf")
+plt.savefig("Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf")
 
 
 	
