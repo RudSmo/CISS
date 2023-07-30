@@ -17,6 +17,51 @@
 \endgroup
 
 \datalist[entry]{none/global//global/global}
+  \entry{sakkinen2015many}{article}{}
+    \name{author}{4}{}{%
+      {{hash=SN}{%
+         family={S{\"a}kkinen},
+         familyi={S\bibinitperiod},
+         given={Niko},
+         giveni={N\bibinitperiod},
+      }}%
+      {{hash=PY}{%
+         family={Peng},
+         familyi={P\bibinitperiod},
+         given={Yang},
+         giveni={Y\bibinitperiod},
+      }}%
+      {{hash=AH}{%
+         family={Appel},
+         familyi={A\bibinitperiod},
+         given={Heiko},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=vLR}{%
+         prefix={van},
+         prefixi={v\bibinitperiod},
+         family={Leeuwen},
+         familyi={L\bibinitperiod},
+         given={Robert},
+         giveni={R\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {AIP Publishing}%
+    }
+    \strng{namehash}{SN+1}
+    \strng{fullhash}{SNPYAHvLR1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{23}
+    \field{title}{Many-body Green’s function theory for electron-phonon
+  interactions: The Kadanoff-Baym approach to spectral properties of the
+  Holstein dimer}
+    \field{volume}{143}
+    \field{journaltitle}{The Journal of chemical physics}
+    \field{year}{2015}
+  \endentry
+
   \entry{kab2004statistical}{article}{}
     \name{author}{1}{}{%
       {{hash=KG}{%

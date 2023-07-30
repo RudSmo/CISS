@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=15mm,
+	right=15mm,
+	top=15mm,
+}
+\begin{document}
+\title{Notes}
+\author{Rudolf Smorka}
+\maketitle
+\section{Relation between my model to the Dicke model}
+\begin{itemize}
+	\item Dicke model: One cavity mode interacts collectively with $N$ two-level systems
+	\begin{equation*}
+		H = \hbar \omega a^\dagger a + \hbar \omega_0 J_z + \frac{2\gamma}{\sqrt{N}}J_x(a^\dagger + a)
+	\end{equation*}
+	$J_{x,y,z} = \frac{1}{2}\sum_{k=1}^N \sigma_{x,y,z}^k$.
+	\item Hamiltonian commutes with the parity operator $\Pi = \exP{i\pi\Lambda}$ with $\Lambda = a^\dagger a + J_z + j\mathds{1}$
+	\item When $\gamma$ reaches the critical value $\gamma_c=\sqrt{\omega \omega_0}/2$, then there is a 2nd order phase transition from a normal phase $\gamma<\gamma_c$ with no photons in the ground state, to the superradiant phase $\gamma>\gamma_c$ where the ground state has a finite amount of photons and excited atoms.
+	\item I observed something similar when computing the exact eigenstates of the Fransson model. Maybe it is related to the Dicke model, and maybe there is also a superradiant phase transition.
+	\item However, there are important differences: Dicke model has one bosonic mode -  Franssons has $N-1$, the electron-boson couplings are very different, the electrons can hop in Franssons model
+\end{itemize}
+\section{Quantum scarring as a possible reason for not finding a steady state}
+\begin{itemize}
+	\item For dynamical systems in the chaotic regime, periodic orbits (=orbits that repeat themselves in time) are unstable
+	\item Presence of unstable orbits is due to quantum scarring
+	\item Quantum scarring: Restricts the degree of delocalization and leads to revivals in the dynamics
+	\item 
+\end{itemize}
+\printbibliography
+\end{document}
+
+

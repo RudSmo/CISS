@@ -54,6 +54,9 @@ The currents through Fransson's model with $L=2\times 4$ sites and $\lambda_1=\S
 \section{Charge current dynamics: TT-HEOM vs Ehrenfest}
 \Cref{fig:Comp_TTHEOM_Ehrenfest_t1_4meV} shows the current dynamics obtained from TT-HEOM (blue lines) and from HEOM-Ehrenfest (green lines) and the exact, noninteracting case (red dashed lines) in the Peierls model with three sites. The electron-vibrational coupling is $t_1=\SI{4}{\milli\electronvolt}$ and all other parameters are as in the original problem (except for the SOC, which is set to zero here).
 The initial state is an empty molecule in the electronic subspace and the vibrations are in the zero-temperature ground state. For some voltages, the currents obtained from both approaches agree almost quantitatively. However, there are significant differences: For short times, the Ehrenfest approach overestimates charge current oscillations in the off-resonant voltage regime, as can be seen for example for $V=\SI{0.18}{\volt}$ and $V=\SI{0.4}{\volt}$. There, the amplitude of oscillations in the Ehrenfest approach is almost the same as in the noninteracting case. In the TT-HEOM the amplitude of these oscillations is smaller. Therefore, a plausible explanation for this difference is the interaction with the vibrational modes and the different ways it is treated in both approaches. Apart from differences already for short times, there are also differences for long times: While the charge current in the TT-HEOM approaches a steady state already after $\sim \SI{200}{\femto\second}$ (note the time scales of the problem $t_\mathrm{vib}= \omega_0^{-1} \sim \SI{345}{\femto\second}$ and $t_1^{-1}\sim\SI{380}{\femto\second}$). The Ehrenfest approach, however, predicts long-lived charge current oscillations on a much longer time scale than shown in the plot here. These oscillations lead to a deviation from the TT-HEOM result, and for some voltages, e.g., $V=\SI{0.6}{\volt}$, the noninteracting currents agrees with the TT-HEOM one better than the Ehrenfest result. 
+
+{\color{red} Compare Ehrenfest vs TTHEOM for $t_1=\SI{8}{\milli\electronvolt}$.}
+
 \Cref{fig:PES_L1x3} shows the potential energy curve for selected $X_2$ positions. 
 \begin{figure}[!h]
 	\centering
@@ -65,6 +68,128 @@ The initial state is an empty molecule in the electronic subspace and the vibrat
 	\includegraphics[width=1\textwidth]{figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf}
 	\caption{Potential energy curves for the model investigated in \cref{fig:Comp_TTHEOM_Ehrenfest_t1_4meV}.}\label{fig:PES_L1x3}
 \end{figure}
+\clearpage
+\section{Fixed point analysis of the classical Peierls model}
+{\color{red} Do the same analysis as in \cite{sakkinen2015many} for the two-site one mode and three-sites two-modes Peierls model. Try to do this also for the open system using HEOM.}
+\subsection{Two-site, one mode model}
+The two-site Peierls model within the Ehrenfest approximation consists of the quantum Hamiltonian
+\begin{equation}
+	H_q(t) = H_\mathrm{el} + H_\mathrm{el-vib}(t) =  \left(-t_0+t_1 X(t)\right)(c_1^\dagger c_2^\pdagger+ \mathrm{h.c.}) 
+\end{equation}
+and the classical Hamiltonian
+\begin{equation}
+	H_c(t) = \frac{1}{2}\left(X^2 + P^2\right) + \tr{\rho(t)H_\mathrm{el-vib}}.
+\end{equation}
+\subsubsection{Isolated system}
+The Ehrenfest equations of motion read 
+\begin{align}
+	\dot{\rho} &= -i[H_q,\rho] = 
+	-i(-t_0+t_1X)\begin{pmatrix}
+		c^*-c & 1-2n\\
+		2n-1 & c-c^*
+	\end{pmatrix}
+	\label{eq:QEOM_P2}\\
+	\dot{X} &= P \label{eq:HEOM_P2_1}\\
+	\dot{P} &= -X - \tr{\rho\partial_X H_\mathrm{el-vib}} = -(X+t_1(c+c^*)) \label{eq:HEOM_P2_2}
+\end{align}
+where we $c$ is the off-diagonal element in $\rho$ and $n$ is the occupation of first site. The occupation of the second site can be obtained from $n_2 = 1-n$.
+Solving for the equilibrium fixed point, one obtains the following set of conditions
+\begin{eqnarray}
+	\mathrm{(i)} &  i(t_0-t_1X) \begin{pmatrix}
+		c^*-c & 1-2n\\
+		2n-1 & c-c^*
+	\end{pmatrix} & = 0\\
+	\mathrm{(ii)} & P &= 0\\
+	\mathrm{(iii)} & X + t_1(c+c^*) &= 0\\
+	\overset{\mathrm{(iii)}}{\Rightarrow} &X&= -t_1(c+c^*)\\ \overset{\mathrm{(i)}}{\Rightarrow} &  X &= \frac{t_0}{t_1} \qquad \mathrm{(a)} \\
+	& \vee  \begin{pmatrix}
+		c^*-c & 1-2n\\
+		2n-1 & c-c^*
+	\end{pmatrix} & = 0 \Rightarrow n=\frac{1}{2}, c^*=c \qquad \mathrm{(b)}.
+\end{eqnarray}
+For $X=\frac{t_0}{t_1}$ there exist a family of fixed points given by
+\begin{equation}
+	\xi_1 = \left(n=\frac{1-m}{2}, c = -\frac{1}{2}\left(\frac{t_0}{t_1^2}+k\right), X=\frac{t_0}{t_1}, P = 0 \right),\qquad k\in\mathds{C}, 0<m\leq 1,
+\end{equation}
+determined by two parameters $k$ and $m$, which are fixed by the initial condition.
+In the other case there exists also a family of fixed points
+\begin{equation}
+	\xi_2 = (n = \frac{1}{2}, c=c, X=-2t_1c , P=0), \qquad c\in\mathds{R},
+\end{equation}
+which is, however, determined by a single parameter $c$. Below we will give conditions on these free parameters following from energy conservation.
+Note that the coherence has to be real in the case (b) because we assume that the displacement of the classical mode is real as well.
+Both fixed points are subject to the constraint that the total energy is conserved, which is in the Ehrenfest approach the sum of the energies of both subsystems
+\begin{align}
+	E &= E_q + E_c  \\
+	 &= \langle H_q\rangle + H_c\\
+	 &= (-t_0+t_1 X)(c+c^*) + \frac{1}{2}(X^2+P^2).\\
+\end{align}
+At both fixed points $P=0$, and hence this part can be neglected in the energy.
+The first fixed point leads to the following total energy
+\begin{equation}
+	E_1 = \frac{1}{2}\left(\frac{t_0}{t_1}\right) \Rightarrow X = \pm\sqrt{2E_1} , c=-\frac{1}{2}\left(\frac{\pm\sqrt{2E_1}}{t_1}+k\right).  
+\end{equation}
+The first fixed point consists of infinitely many fixed point, defined by all possible initial conditions, and thus $k$. 
+For the second fixed point one obtains the following energy
+\begin{equation}
+	E_2 = -2t_0c - 2t_1^2 c^2,
+\end{equation}
+which determines $c$ 
+\begin{align}
+	c_{2\pm} &= -\frac{t_0}{2t_1} \pm\sqrt{\left(\frac{t_0}{2t_1}\right)^2 - \frac{E_2}{2t_1}}.
+\end{align}
+Thus, the second fixed point consists only of two fixed points, namely depending on whether the coherence is the $+$ or $-$ solution given above. 
+The next step is to analyze the stability of these fixed points. This is achieved by analyzing the eigenvalues of the Jacobian of the system 
+\begin{align}
+	\mathds{J} = \begin{pmatrix}
+		\partial_n f & \partial_c f & \partial_X f & \partial_P f\\
+		\partial_n g & \partial_c g & \partial_X g & \partial_P g
+	\end{pmatrix}
+\end{align}  
+where $f$ and $g$ are the right-hand-sides of the quantum and classical equations of motion, respectively, given in \cref{eq:QEOM_P2,eq:HEOM_P2_1,eq:HEOM_P2_2} (for the quantum equations of motion we only consider the parts corresponding to $\dot{n}$ and $\dot{c}$).
+The Jacobian is 
+\begin{equation}
+	\mathds{J} =\begin{pmatrix}
+		\begin{pmatrix}
+			0 \\ -2i(t_0-t_1X)
+		\end{pmatrix} & 
+		\begin{pmatrix}
+			-i(t_0-t_1X) \\ 0
+		\end{pmatrix} &
+		\begin{pmatrix}
+			-it_1 (c^*-c) \\ -it_1(1-2n)
+		\end{pmatrix} &
+		\begin{pmatrix}
+			0 \\ 0
+		\end{pmatrix}
+\\
+\begin{pmatrix}
+	0 \\ 0
+\end{pmatrix} & \begin{pmatrix}
+0 \\ -t_1
+\end{pmatrix}
+& \begin{pmatrix}
+	0 \\ -1
+\end{pmatrix}
+& \begin{pmatrix}
+	1 \\ 0
+\end{pmatrix}
+	\end{pmatrix}.
+\end{equation}
+At the first family of fixed points, the Jacobian is
+\begin{equation}
+	\mathds{J}_1 =\begin{pmatrix}
+		0 & 0 & -it_1\mathrm{Im}(k) & 0\\
+		0 & 0 & -it_1 m & 0\\
+		0 & 0 & 0 & 1 \\
+		0 & -t_1 & -1 & 0
+	\end{pmatrix}.
+\end{equation}
+has a pitchfork-bifurcation for varying $m$ and $t_1$. The bifurcation point is shifted to smaller $t_1$ as $m$ increases. Below is shown 
+
+\subsubsection{Open system}
+
+
 \section{Solving the steady state in Ehrenfest-HEOM directly}
 \clearpage
 \section{Solving the vibrational relaxation problems using a classical vib. bath}
