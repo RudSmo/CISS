@@ -36,7 +36,7 @@ for (i,V) in enumerate(Vs)
 	ax = plt.axes([px,py-(i-1)*(sy+dy),sx,sy])
 	datE = readdlm("Ehrenfest/V$(V)/$(fnfilter(readdir("Ehrenfest/V$(V)"),"*currents*")[1])")
 	datT = readdlm("TTHEOM/V$(V)/$(fnfilter(readdir("TTHEOM/V$(V)"),"*current*")[1])") 	
-	datN = readdlm("../t1_4/noPh/V$(V)/$(fnfilter(readdir("noPh/V$(V)"),"*currents*")[1])")
+	datN = readdlm("../t1_4/noPh/V$(V)/$(fnfilter(readdir("../t1_4/noPh/V$(V)"),"*currents*")[1])")
 	
 	ax.plot(datE[2:end,1]*fac_t_E, (datE[2:end,2]-datE[2:end,3])*fac_c_E, color="blue",linewidth=lw,label="Ehrenfest")
 	ax.plot(datT[2:end,1]*fac_t_T, (datT[2:end,2]-datT[2:end,3])*fac_c_T, color="green",linewidth=lw,label="TT-HEOM")	
