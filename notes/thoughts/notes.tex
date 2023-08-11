@@ -58,6 +58,37 @@
 	\item Quantum scarring: Restricts the degree of delocalization and leads to revivals in the dynamics
 	\item 
 \end{itemize}
+\section{Ideas for annual convent talk}
+\begin{itemize}
+	\item Present model with sketches
+	\item Show how Fransson's SOC potential looks like in real-space
+	\item Show PES for the smaller molecules
+\end{itemize}
+\section{Model for CISS? How to reconcile transmission spectroscopy models with transport models}
+\begin{itemize}
+	\item Check out literature on photoelectron spectroscopy (theory): What are the common models used there?
+	\item How do these models differ from the ones I use?
+	\item Role of triplet states?
+	\item Initial idea: Hamiltonian is of the form with three electronic states and two modes
+	\begin{align*}
+		H &= H_\mathrm{mol} + H_\mathrm{electrode} + H_\mathrm{mol-electrode} + H_\mathrm{vib} + H_\mathrm{el-vib}\\
+		H_\mathrm{mol} &= \sum_{s=\{S_0,S_1,T\}} \varepsilon_s \vert s\rangle \langle s\vert + \lambda_0 (\vert S_1\rangle \langle T\vert +\vert T\rangle \langle S_1\vert) \\
+		H_\mathrm{electrode} &= \sum_{k\in\{L,R\}} \varepsilon_k c_k^\dagger c_k^\pdagger \\
+		H_\mathrm{mol-electrode} &= \sum_{k\in\{L,R\}} (V_k \vert k\rangle \langle S_1\vert + \mathrm{h.c.})\\
+		H_\mathrm{vib} &= \sum_\alpha \omega_\alpha b_\alpha^\dagger b_\alpha^\pdagger\\
+		H_\mathrm{el-vib} &=g (b_1^\dagger+ b_1^\pdagger)(\vert S_0\rangle\langle T\vert + \mathrm{h.c.})+  \lambda_1 (b_2^\dagger+ b_2^\pdagger)(\vert S_1\rangle\langle T\vert + \mathrm{h.c.})
+	\end{align*}
+	\item Strong light-matter coupling can enhance singlet fission ("Not dark yet for strong light-matter coupling to accelerate singlet fission dynamics") $\rightarrow$ similarly possible for CISS?
+	\item Relationship between intersystem crossing and CISS?
+\end{itemize}
+\section{Stability of fixed points}
+\begin{itemize}
+	\item $L=2$ Peierls model
+	\begin{itemize}
+		\item Isolated
+		\item Open
+	\end{itemize}
+\end{itemize}
 \printbibliography
 \end{document}
 

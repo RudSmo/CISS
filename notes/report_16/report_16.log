@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  30 JUL 2023 18:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  8 AUG 2023 15:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -775,14 +775,22 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 File: figs/L2x4_currents_MR_allV_tsoPh5.pdf Graphic file (type pdf)
 <use figs/L2x4_currents_MR_allV_tsoPh5.pdf>
 Package pdftex.def Info: figs/L2x4_currents_MR_allV_tsoPh5.pdf  used on input l
-ine 46.
+ine 47.
 (pdftex.def)             Requested size: 460.93153pt x 651.84358pt.
 <figs/L2x4_currents_MR_allV_tsoPh10.pdf, id=2, 722.7pt x 1022.04234pt>
 File: figs/L2x4_currents_MR_allV_tsoPh10.pdf Graphic file (type pdf)
 <use figs/L2x4_currents_MR_allV_tsoPh10.pdf>
 Package pdftex.def Info: figs/L2x4_currents_MR_allV_tsoPh10.pdf  used on input 
-line 51.
+line 52.
 (pdftex.def)             Requested size: 460.93153pt x 651.84358pt.
+<figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf, id=3, 867.24pt x 578.16pt>
+
+File: figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf Graphic file (type pdf
+)
+<use figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf>
+Package pdftex.def Info: figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf  us
+ed on input line 57.
+(pdftex.def)             Requested size: 460.93153pt x 307.28789pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -790,20 +798,32 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf, id=3, 722.7pt x 1022.05214pt>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf Graphic file (type pdf
+)
+<use figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf>
+Package pdftex.def Info: figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf  us
+ed on input line 63.
+(pdftex.def)             Requested size: 460.93153pt x 307.28789pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf, id=4, 722.7pt x 1022.05214pt>
 
 File: figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf Graphic file (type pdf)
 <use figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf>
 Package pdftex.def Info: figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf  used 
-on input line 63.
+on input line 75.
 (pdftex.def)             Requested size: 460.93153pt x 651.84984pt.
-<figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf, id=4, 722.7pt x 50
+<figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf, id=5, 722.7pt x 50
 5.89pt>
 File: figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf Graphic file (
 type pdf)
 <use figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf>
 Package pdftex.def Info: figs/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2
-.pdf  used on input line 68.
+.pdf  used on input line 80.
 (pdftex.def)             Requested size: 512.14963pt x 358.50511pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -815,32 +835,98 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2 <./figs/L2x4_currents_MR_allV_tsoPh5.pdf>] [3 <./figs/L2x4_currents_MR_allV_
-tsoPh10.pdf>] [4 <./figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf>] [5 <./fig
-s/PES_1x3_SOC0.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf>]
+tsoPh10.pdf>] [4 <./figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf>]
+[5 <./figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf>] [6 <./figs/PES_1x3_SOC0
+.0_tPh2.0_SOCPh0.0_multiState_cuts_v2.pdf>]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 1
-12.
+24.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [6
+) [7
 
 ]
-[7] [8
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 2
+01.
 
-] [9] (./report_16.aux)
+(/usr/local/texlive/2021/texmf-dist/tex/latex/bbold/Ubbold.fd)
+<figs/J1_eigenvalues_mVar_t1_0.004_c1_0.0.pdf, id=200, 578.16pt x 433.62pt>
+File: figs/J1_eigenvalues_mVar_t1_0.004_c1_0.0.pdf Graphic file (type pdf)
+<use figs/J1_eigenvalues_mVar_t1_0.004_c1_0.0.pdf>
+Package pdftex.def Info: figs/J1_eigenvalues_mVar_t1_0.004_c1_0.0.pdf  used on 
+input line 208.
+(pdftex.def)             Requested size: 358.50317pt x 268.8747pt.
+<figs/J1_eigenvalues_mVar_t1_0.004_c1_0.1004987562112089.pdf, id=201, 578.16pt 
+x 433.62pt>
+File: figs/J1_eigenvalues_mVar_t1_0.004_c1_0.1004987562112089.pdf Graphic file 
+(type pdf)
+<use figs/J1_eigenvalues_mVar_t1_0.004_c1_0.1004987562112089.pdf>
+Package pdftex.def Info: figs/J1_eigenvalues_mVar_t1_0.004_c1_0.100498756211208
+9.pdf  used on input line 213.
+(pdftex.def)             Requested size: 358.50317pt x 268.8747pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/J1_eigenvalues_cVar_t1_0.004_m0.0.pdf, id=202, 578.16pt x 433.62pt>
+File: figs/J1_eigenvalues_cVar_t1_0.004_m0.0.pdf Graphic file (type pdf)
+<use figs/J1_eigenvalues_cVar_t1_0.004_m0.0.pdf>
+Package pdftex.def Info: figs/J1_eigenvalues_cVar_t1_0.004_m0.0.pdf  used on in
+put line 219.
+(pdftex.def)             Requested size: 358.50317pt x 268.8747pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/J1_eigenvalues_cVar_t1_0.004_m0.5.pdf, id=203, 578.16pt x 433.62pt>
+File: figs/J1_eigenvalues_cVar_t1_0.004_m0.5.pdf Graphic file (type pdf)
+<use figs/J1_eigenvalues_cVar_t1_0.004_m0.5.pdf>
+Package pdftex.def Info: figs/J1_eigenvalues_cVar_t1_0.004_m0.5.pdf  used on in
+put line 225.
+(pdftex.def)             Requested size: 358.50317pt x 268.8747pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[8] [9 <./figs/J1_eigenvalues_mVar_t1_0.004_c1_0.0.pdf> <./figs/J1_eigenvalues_
+mVar_t1_0.004_c1_0.1004987562112089.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/J1_eigenvalues_mVar_t
+1_0.004_c1_0.1004987562112089.pdf): PDF inclusion: multiple pdfs with page grou
+p included in a single page
+>] [10 <./figs/J1_eigenvalues_cVar_t1_0.004_m0.0.pdf> <./figs/J1_eigenvalues_cV
+ar_t1_0.004_m0.5.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/J1_eigenvalues_cVar_t
+1_0.004_m0.5.pdf): PDF inclusion: multiple pdfs with page group included in a s
+ingle page
+>]
+<figs/J2_eigenvalues_cVar_t1_0.004.pdf, id=276, 578.16pt x 433.62pt>
+File: figs/J2_eigenvalues_cVar_t1_0.004.pdf Graphic file (type pdf)
+<use figs/J2_eigenvalues_cVar_t1_0.004.pdf>
+Package pdftex.def Info: figs/J2_eigenvalues_cVar_t1_0.004.pdf  used on input l
+ine 241.
+(pdftex.def)             Requested size: 358.50317pt x 268.8747pt.
+ [11
+
+ <./figs/J2_eigenvalues_cVar_t1_0.004.pdf>] [12
+
+] [13] (./report_16.aux)
 Package logreq Info: Writing requests to 'report_16.run.xml'.
 \openout1 = `report_16.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 17062 strings out of 478994
- 332082 string characters out of 5858184
- 856306 words of memory out of 5000000
- 34314 multiletter control sequences out of 15000+600000
- 419659 words of font info for 90 fonts, out of 8000000 for 9000
+ 17126 strings out of 478994
+ 334554 string characters out of 5858184
+ 856580 words of memory out of 5000000
+ 34365 multiletter control sequences out of 15000+600000
+ 420220 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,13n,75p,1845b,1642s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
+b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
 /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
@@ -856,12 +942,13 @@ e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/20
 21/texmf-dist/fonts/type1/public/doublestroke/dsrom10.pfb></usr/local/texlive/2
 021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/te
-xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report_16.pdf (9 pages, 1084647 bytes).
+ve/2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report_16.pdf (13 pages, 3723168 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 137 compressed objects within 2 object streams
+ 361 PDF objects out of 1000 (max. 8388607)
+ 239 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

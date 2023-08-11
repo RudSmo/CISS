@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  30 JUL 2023 17:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  5 AUG 2023 23:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -771,6 +771,9 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 38.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+
+LaTeX Warning: No \author given.
+
 <figs/SF_comparison_single_traj_S0S1.pdf, id=1, 462.52798pt x 346.89601pt>
 File: figs/SF_comparison_single_traj_S0S1.pdf Graphic file (type pdf)
 <use figs/SF_comparison_single_traj_S0S1.pdf>
@@ -783,7 +786,6 @@ File: figs/SF_comparison_single_traj_T1T1.pdf Graphic file (type pdf)
 Package pdftex.def Info: figs/SF_comparison_single_traj_T1T1.pdf  used on input
  line 71.
 (pdftex.def)             Requested size: 307.2929pt x 230.4818pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -821,13 +823,13 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/SF_comparison_multi_v
 v_traj_T1T1.pdf): PDF inclusion: multiple pdfs with page group included in a si
 ngle page
 >]
-<figs/SF_comparison_multi_S0S1.pdf, id=187, 462.52798pt x 346.89601pt>
+<figs/SF_comparison_multi_S0S1.pdf, id=186, 462.52798pt x 346.89601pt>
 File: figs/SF_comparison_multi_S0S1.pdf Graphic file (type pdf)
 <use figs/SF_comparison_multi_S0S1.pdf>
 Package pdftex.def Info: figs/SF_comparison_multi_S0S1.pdf  used on input line 
 97.
 (pdftex.def)             Requested size: 307.2929pt x 230.4818pt.
-<figs/SF_comparison_multi_T1T1.pdf, id=188, 462.52798pt x 346.89601pt>
+<figs/SF_comparison_multi_T1T1.pdf, id=187, 462.52798pt x 346.89601pt>
 File: figs/SF_comparison_multi_T1T1.pdf Graphic file (type pdf)
 <use figs/SF_comparison_multi_T1T1.pdf>
 Package pdftex.def Info: figs/SF_comparison_multi_T1T1.pdf  used on input line 
@@ -867,9 +869,9 @@ ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
 /2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
 2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/20
 21/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report_SF_1.pdf (5 pages, 356555 bytes).
+Output written on report_SF_1.pdf (5 pages, 326135 bytes).
 PDF statistics:
- 344 PDF objects out of 1000 (max. 8388607)
+ 342 PDF objects out of 1000 (max. 8388607)
  111 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)

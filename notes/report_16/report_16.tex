@@ -41,15 +41,27 @@
 \maketitle
 \section{Ehrenfest: Variation of vib.-assisted SOC}
 The currents through Fransson's model with $L=2\times 4$ sites and $\lambda_1=\SI{5}{\milli\electronvolt}$ are shown in \cref{fig:L2x4_tsoPh5} and for $\lambda_1=\SI{10}{\milli\electronvolt}$ in \cref{fig:L2x4_tsoPh10}. Since there is a significant change of the current even for $\SI{10}{\pico\second}$, calculations for later times are currently running on the cluster.
+{\color{red} Plot time-dependent spectrum for these tsoPh}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/L2x4_currents_MR_allV_tsoPh5.pdf}
-	\caption{Charge currents and current polarization for $\lambda_1=\SI{5}{\milli\electronvolt}$.}\label{fig:L2x4_tsoPh5}
+	\caption{Charge currents and current polarization for $\lambda_1=\SI{5}{\milli\electronvolt}$. Data consists of different number of trajectories for different time segments: 13300 for $\SI{0}{\pico\second}\leq t\leq \SI{12}{\pico\second}$, 8200 for $\SI{12}{\pico\second}< t\leq \SI{24}{\pico\second}$ and 4100 for $\SI{24}{\pico\second}< t\leq \SI{48}{\pico\second}$.}\label{fig:L2x4_tsoPh5}
 \end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/L2x4_currents_MR_allV_tsoPh10.pdf}
-	\caption{Charge currents and current polarization for $\lambda_1=\SI{10}{\milli\electronvolt}$.}\label{fig:L2x4_tsoPh10}
+	\caption{Charge currents and current polarization for $\lambda_1=\SI{10}{\milli\electronvolt}$. Data consists of different number of trajectories for different time segments: 21300 for $\SI{0}{\pico\second}\leq t\leq \SI{12}{\pico\second}$, 16200 for $\SI{12}{\pico\second}< t\leq \SI{24}{\pico\second}$ and 8100 for $\SI{24}{\pico\second}< t\leq \SI{48}{\pico\second}$.}\label{fig:L2x4_tsoPh10}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf}
+	\caption{Time dependent spectrum under the trajectory-averaged dynamics of the bond displacement for various voltages. Blue area indicates bias window. Same colored lines indicate spectrum, different colored ones the vibrational bond displacement dynamics. SOC-assisted electron-vibrational coupling is $\lambda_1 =\SI{0.5}{\milli\electronvolt}$.}\label{fig:SpecTD_tsoPh5}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf}
+	\caption{Same as in \cref{fig:SpecTD_tsoPh5} for $\lambda_1 =\SI{1}{\milli\electronvolt}$.}\label{fig:SpecTD_tsoPh10}
 \end{figure}
 \section{Charge current dynamics: TT-HEOM vs Ehrenfest}
 \Cref{fig:Comp_TTHEOM_Ehrenfest_t1_4meV} shows the current dynamics obtained from TT-HEOM (blue lines) and from HEOM-Ehrenfest (green lines) and the exact, noninteracting case (red dashed lines) in the Peierls model with three sites. The electron-vibrational coupling is $t_1=\SI{4}{\milli\electronvolt}$ and all other parameters are as in the original problem (except for the SOC, which is set to zero here).
@@ -179,13 +191,58 @@ The Jacobian is
 At the first family of fixed points, the Jacobian is
 \begin{equation}
 	\mathds{J}_1 =\begin{pmatrix}
-		0 & 0 & -it_1\mathrm{Im}(k) & 0\\
+		0 & 0 & it_1k & 0\\
 		0 & 0 & -it_1 m & 0\\
 		0 & 0 & 0 & 1 \\
 		0 & -t_1 & -1 & 0
-	\end{pmatrix}.
+	\end{pmatrix}
 \end{equation}
-has a pitchfork-bifurcation for varying $m$ and $t_1$. The bifurcation point is shifted to smaller $t_1$ as $m$ increases. Below is shown 
+with $k=2\mathrm{Im}(c)$. Has a pitchfork-bifurcation for varying filling $n$ at $t_1=\frac{\SI{4}{\milli\electronvolt}}{\hbar \omega}$. 
+\Cref{fig:J1_mVar_c1_0.0,fig:J1_mVar_c1_0.1,fig:J1_cVar_m0,fig:J1_cVar_m0.5} show the real and imaginary parts of the eigenvalues of the Jacobian $\mathbb{J}_1$ for varying fillings and coherences.  
+The spectrum of $\mathbb{J}_1$ contains local bifurcations, that is changes in the character of the equilibrium points, both in real and imaginary eigenvalues as the filling $n$ is changed. 
+The real part of the eigenvalues of $\mathbb{J}_1$ has a pitchfork bifurcation of the fixed points at $n=\frac{1}{2}\pm \frac{19}{400}$. The imaginary part has three bifurcation points for varying $n$. One at $n=\frac{1}{2}$ and another two at $n=\frac{1}{2}\pm \frac{1}{20}$.
+The latter two points mark the fillings at which the spectrum of $\mathbb{J}_1$ is the complex conjugate one of the spectrum at fillings mirrored at half-filling. For all fillings except $n=\frac{1}{2}$ at which the equilibrium point is a unstable saddle point, the eigenvalues are complex with unequal signs and some have a positive real part. Hence, the equilibrium point $\xi_1$ is not asymptotically stable. It rather resembles the structure of a strange attractor. 
+The coherence does not affect the spectrum much, as can be seen in comparing \cref{fig:J1_mVar_c1_0.0} with   \cref{fig:J1_mVar_c1_0.1} which shows the spectrum for $c=0$ and $c=0.1+0.01i$, respectively, or in \cref{fig:J1_cVar_m0,fig:J1_cVar_m0.5}.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/J1_eigenvalues_mVar_t1_0.004_c1_0.0.pdf}
+	\caption{Variation of real and imaginary part of eigenvalues of $\mathbb{J}_1$ for varying filling $n$ for $c=0$.}\label{fig:J1_mVar_c1_0.0}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/J1_eigenvalues_mVar_t1_0.004_c1_0.1004987562112089.pdf}
+	\caption{Variation of real and imaginary part of eigenvalues of $\mathbb{J}_1$ for varying filling $n$ for $c=0.1+0.01i$.}\label{fig:J1_mVar_c1_0.1}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/J1_eigenvalues_cVar_t1_0.004_m0.0.pdf}
+	\caption{Variation of real and imaginary part of eigenvalues of $\mathbb{J}_1$ for varying imaginary part of coherence $2\mathrm{Im}(c)$ for $n=\frac{1}{2}$.}\label{fig:J1_cVar_m0}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/J1_eigenvalues_cVar_t1_0.004_m0.5.pdf}
+	\caption{Variation of real and imaginary part of eigenvalues of $\mathbb{J}_1$ for varying imaginary part of coherence $2\mathrm{Im}(c)$ for $n=\frac{1}{4}$.}\label{fig:J1_cVar_m0.5}
+\end{figure}
+\clearpage
+The Jacobian for the second family of fixed points $\xi_2$ reads
+\begin{equation}
+	\mathds{J}_2 =\begin{pmatrix}
+		0 & -i(t_0+2t_1^2 c) & 0 & 0\\
+		-2i(t_0+2t_1^2 c) & 0 & 0 & 0\\
+		0 & 0 & 0 & 1 \\
+		0 & -t_1 & -1 & 0
+	\end{pmatrix}
+\end{equation}
+with $c$. Since at this fixed point the filling is fixed, the only free parameter is the coherence $c$, which is real. \Cref{fig:J2_cVar_m0.5} shows the real and imaginary parts of the spectrum of $\mathbb{J}_2$ as a function of coherence $c$. 
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.7\textwidth]{figs/J2_eigenvalues_cVar_t1_0.004.pdf}
+	\caption{Variation of real and imaginary part of eigenvalues of $\mathbb{J}_2$ for varying imaginary part of coherence $2\mathrm{Im}(c)$ for $n=\frac{1}{2}$.}\label{fig:J2_cVar_m0.5}
+\end{figure}
+
+
 
 \subsubsection{Open system}
 
