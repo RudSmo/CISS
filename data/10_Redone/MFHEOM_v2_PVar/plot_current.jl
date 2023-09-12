@@ -24,7 +24,7 @@ sy = 0.85
 dy = 0.05
 dx = 0.01
 
-fig = plt.figure(figsize=(9,4.5))
+fig = plt.figure(figsize=(7,5))
 ax = plt.axes([px,py,sx,sy])
 P = 0.5
 # OLD DATA
@@ -37,11 +37,11 @@ ppath = "../../9_Fransson_IV/MFHEOM/w0_2_t1_4_tso_1_tsoPh_0.1/P0.5/"
 fac_c = fac_c/0.002
 for (v,vn,col) in zip(V,Vn,colors)
 
-        dats = ["$(ppath)L4x4/V$(v)/currents_time_avg_nS101",
-                "$(ppath)L3x4/V$(v)/currents_time_avg_nS201",
-                "$(ppath)L2x4/V$(v)/currents_time_avg_nS101",
-                "$(ppath)L2x2/V$(v)/currents_time_avg_nS1417",
-                "$(ppath)L1x3/V$(v)/currents_time_avg_nS301"]
+#        dats = ["$(ppath)L4x4/V$(v)/currents_time_avg_nS101",
+#                "$(ppath)L3x4/V$(v)/currents_time_avg_nS201",
+#                "$(ppath)L2x4/V$(v)/currents_time_avg_nS101",
+#                "$(ppath)L2x2/V$(v)/currents_time_avg_nS1417",
+#                "$(ppath)L1x3/V$(v)/currents_time_avg_nS301"]
 
 
         dats_n = ["$(ppath)L4x4/V$(v)/noPh/L16_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
@@ -54,12 +54,12 @@ for (v,vn,col) in zip(V,Vn,colors)
         sIT = []
 
         ITn = []
-        for dat in dats[end:-1:1]
-                data = readdlm(dat*"_std.dat")
-                push!(IT,(data[1,1]-data[1,2])*fac_c)
-                serr = sqrt((data[2,1]*fac_c)^2 + (data[2,2]*fac_c)^2)
-                push!(sIT,serr)
-        end
+#        for dat in dats[end:-1:1]
+#                data = readdlm(dat*"_std.dat")
+#                push!(IT,(data[1,1]-data[1,2])*fac_c)
+#                serr = sqrt((data[2,1]*fac_c)^2 + (data[2,2]*fac_c)^2)
+#                push!(sIT,serr)
+#        end
 
         for dat in dats_n[end:-1:1]
                 data = readdlm(dat)
@@ -69,7 +69,7 @@ for (v,vn,col) in zip(V,Vn,colors)
 
         if v == V[1]
 
-                ax.errorbar(size,IT,yerr=sIT,marker="o",linewidth=2,color=col,label=L"$0.348\,\mathrm{V}$"*" (prev. code)",markersize=ms)
+#                ax.errorbar(size,IT,yerr=sIT,marker="o",linewidth=2,color=col,label=L"$0.348\,\mathrm{V}$"*" (prev. code)",markersize=ms)
                 ax.plot(size,ITn,marker="d",linewidth=2,color="orange",label=L"$0.348\,\mathrm{V},\ t_1=\lambda_1 = 0\,\mathrm{meV}$",markersize=ms)
         else
                 ax.errorbar(size,IT,yerr=sIT,marker="o",linewidth=1,color=col,markersize=ms)
@@ -85,12 +85,13 @@ fac_c = 0.002* 1e3 * 0.2433946
 V = [50,60,75]
 Vn = [L"$0.4\,\mathrm{V}$",L"$0.48\,\mathrm{V}$",L"$0.6\,\mathrm{V}$"]
 
-Ns =[[11,11,21,21,72,10,71],
-     [11,11,19,21,71,10,61],
-     [11,11,20,11,72,10,61]]
+Ns =[[11,11,21,21,72,61,71],
+     [11,11,19,21,71,31,61],
+     [11,11,20,11,72,30,61]]
 colors = ["k","red","blue"]
 size = [3,4,6,8,9,10,12]
 ms = 5
+ppath = "../../9_Fransson_IV/MFHEOM/w0_2_t1_4_tso_1_tsoPh_0.1/P0.5/"
 for (i,v,vn,col) in zip(1:length(V),V,Vn,colors)
 
 	dats = ["L3x4/V$(v)/currents_time_avg_nS$(Ns[i][1])_P",
@@ -107,6 +108,12 @@ for (i,v,vn,col) in zip(1:length(V),V,Vn,colors)
 #	   	  "L2x4/V$(v)/noPh/L8_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
 #	   	  "L2x2/V$(v)/noPh/L4_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
 #	   	  "L1x3/V$(v)/noPh/L3_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat"]
+#	dats_n = ["$(ppath)L4x4/V$(v)/noPh/L16_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
+#                  "$(ppath)L3x4/V$(v)/noPh/L12_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
+#                  "$(ppath)L2x4/V$(v)/noPh/L8_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
+#                  "$(ppath)L2x2/V$(v)/noPh/L4_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat",
+#                  "$(ppath)L1x3/V$(v)/noPh/L3_tPh_0.0_thPd_0.0_SOC0.001_SOCPh0.0_V$(vn)_w00.002_P0.5_noEps_dt0.05_1_currents.dat"]
+
 
 	IT = []
 	sIT = []
@@ -126,6 +133,8 @@ for (i,v,vn,col) in zip(1:length(V),V,Vn,colors)
 
 
 	ax.errorbar(size,IT,yerr=sIT,marker="o",linewidth=2,color=col,label=vn,markersize=ms)
+	
+#	ax.plot(size,ITn,marker="d",linewidth=0,color="orange",label=L"$0.348\,\mathrm{V},\ t_1=\lambda_1 = 0\,\mathrm{meV}$",markersize=ms)
 
 end
 
@@ -133,7 +142,7 @@ end
 
 ax.set_xlabel("system size "*L"$N$")
 ax.set_ylabel(L"$I\,[\mu\mathrm{A}]$")
-ax.set_xlim(1,17)
+ax.set_xlim(2,13)
 ax.legend(loc="upper right")
 #plt.savefig("Currents_sizeVar_P$(P)_VVar.png",dpi=200)
-plt.savefig("Currents_sizeVar_P$(P)_VVar.pdf")
+plt.savefig("Currents_sizeVar_P$(P)_VVar_new_only.pdf")

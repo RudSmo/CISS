@@ -1,7 +1,7 @@
 using DelimitedFiles
 
 Vs = [50,60,75]
-Ns = [10,10,10]
+Ns = [61,31,30]
 tA = 25000 
 for (v,nS) in zip(Vs,Ns)
 	for sp in ["P","M"]

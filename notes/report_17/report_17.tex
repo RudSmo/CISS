@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=15mm,
+	right=15mm,
+	top=15mm,
+}
+\begin{document}
+\title{Report 17: Ehrenfest: Variation of vib.-assisted SOC}
+\author{Rudolf Smorka}
+\maketitle
+\section{$L=2\times 4$, $\lambda_0=\SI{1}{\milli\electronvolt}$, $\lambda_1=\SI{0.1}{\milli\electronvolt}$}
+{\color{red} Analyze eigenstates: Spin polarization? Analyze $\Gamma(\varepsilon;t)$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tsoPh0.1/L2x4_currents_MR_allV_tsoPh0.1.pdf}
+\end{figure}
+\clearpage
+\section{$L=2\times 4$, $\lambda_0=\SI{1}{\milli\electronvolt}$, $\lambda_1=\SI{0.1}{\milli\electronvolt}$, $\varepsilon_0=\SI{0}{\milli\electronvolt}$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tsoPh10_eps0/L2x4_currents_MR_allV_tsoPh10_eps0.pdf}
+\end{figure}
+\clearpage
+\section{$L=2\times 4$, $\lambda_0=\SI{10}{\milli\electronvolt}$, $\lambda_1=\SI{0.1}{\milli\electronvolt}$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tso10_tsoPh0.1/L2x4_currents_MR_allV_tso10_tsoPh0.1.pdf}
+\end{figure}
+\clearpage
+\section{$L=2\times 4$, $\lambda_0=\SI{1}{\milli\electronvolt}$, $\lambda_1=\SI{5}{\milli\electronvolt}$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tsoPh5/L2x4_currents_MR_allV_tsoPh5.pdf}
+\end{figure}
+\clearpage
+\section{$L=2\times 4$, $\lambda_0=\SI{1}{\milli\electronvolt}$, $\lambda_1=\SI{10}{\milli\electronvolt}$}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tsoPh10/L2x4_currents_MR_allV_tsoPh10.pdf}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tsoPh10/L2x4_electrons_allV_tsoPh10.pdf}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tsoPh10/L2x4_electrons_es_allV_tsoPh10.pdf}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tsoPh10/L2x4_spectrumTD_PhAvg_tsoPh10.pdf}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tsoPh10/L2x4_phonons_1_allV_tsoPh10.pdf}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/tsoPh10/L2x4_phonons_4_allV_tsoPh10.pdf}
+\end{figure}
+\clearpage
+\section{$L=3\times 4$, $\lambda_0=\SI{1}{\milli\electronvolt}$, $\lambda_1=\SI{0.1}{\milli\electronvolt}$}
+
+\clearpage
+%\printbibliography
+\end{document}
+
+

@@ -24,7 +24,7 @@ sy = 0.85
 dy = 0.05
 dx = 0.01
 
-fig = plt.figure(figsize=(10,6))
+fig = plt.figure(figsize=(5,5))
 ax = plt.axes([px,py,sx,sy])
 ax2 = plt.axes([px+0.1,py+0.4,sx-0.45,sy-0.48])
 
@@ -57,4 +57,4 @@ ax.legend()
 ax2.set_xlim(82,84)
 ax2.set_ylim(0.4,0.8)
 ax.annotate(L"$L=2\times 3,\ V=0.48\, \mathrm{V}$",(0.7,0.55),xycoords="axes fraction",fontsize=fs)
-plt.savefig("L$(num_laps)x$(num_sites)_P$(P)_SampleVar_current.pdf")
+plt.savefig("L$(num_laps)x$(num_sites)_P$(P)_SampleVar_current_slides.pdf")

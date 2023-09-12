@@ -36,40 +36,80 @@
 	top=15mm,
 }
 \begin{document}
-\title{Report 16: }
+\title{Report 16: Ehrenfest: Variation of vib.-assisted SOC}
 \author{Rudolf Smorka}
 \maketitle
-\section{Ehrenfest: Variation of vib.-assisted SOC}
+%\section{Ehrenfest: Variation of vib.-assisted SOC}
 The currents through Fransson's model with $L=2\times 4$ sites and $\lambda_1=\SI{5}{\milli\electronvolt}$ are shown in \cref{fig:L2x4_tsoPh5} and for $\lambda_1=\SI{10}{\milli\electronvolt}$ in \cref{fig:L2x4_tsoPh10}. Since there is a significant change of the current even for $\SI{10}{\pico\second}$, calculations for later times are currently running on the cluster.
-{\color{red} Plot time-dependent spectrum for these tsoPh}
+The spin polarization are compared for varying $\lambda_1$ in \cref{fig:L2x4_tsoPhVar_1,fig:L2x4_tsoPhVar_2}. Note that the sign of $S$ for a certain time period is negative. This is related to the system size/number of sites per turn, as can be seen in \cref{fig:tsoPh0.1_LVar_1,fig:tsoPh0.1_LVar_2}
+The time-dependent spectra for the larger $\lambda_1$ are shown in \cref{fig:SpecTD_tsoPh5,fig:SpecTD_tsoPh10}. These plots show also the bias window for comparison of energy scales.
+
+{\color{red} Results for $\varepsilon_0=0$ currently running. Suspecting that the asymmetric voltage bias, as is induced by having a shift by $\varepsilon_0$, leads to the observed spin polarization. This hypothesis is correct. The spin polarization is very small when $\varepsilon_0=0$. Currently running longer times.}
+
+{\color{blue} The main point of the comparison for different $\varepsilon_0$ and different $\lambda_1$ is, that while increasing $\lambda_1$ somewhat increases $S$, but not as much as choosing a proper $\varepsilon_0$. Even with large $\lambda_1$ but $\varepsilon=0$, the $S$ is smaller than with a very weak $\lambda_1$ but non-zero $\varepsilon_0$. I need to understand why this is. Asymmetry of voltage drop? Role of vibrations?}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/SpinPolarizations_L2x4_tsoPh_var_V60.pdf}
+	\includegraphics[width=0.45\textwidth]{figs/SpinPolarizations_L2x4_tsoPh_var_V65.pdf}
+	\caption{Comparison of spin polarization for varying $\lambda_1$ and $V=\SI{0.48}{\volt}$ (left) and $V=\SI{0.52}{\volt}$ (right). Number of trajectories are 525 ($\lambda_1=\SI{0.1}{\milli\electronvolt}$), up to 20300 ($\lambda_1=\SI{5}{\milli\electronvolt}$) and up to 26300 ($\lambda_1=\SI{10}{\milli\electronvolt}$).}\label{fig:L2x4_tsoPhVar_1}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/SpinPolarizations_L2x4_tsoPh_var_V75.pdf}
+	\includegraphics[width=0.45\textwidth]{figs/SpinPolarizations_L2x4_tsoPh_var_V85.pdf}
+	\caption{Comparison of spin polarization for varying $\lambda_1$ and $V=\SI{0.6}{\volt}$ (left) and $V=\SI{0.68}{\volt}$ (right).}\label{fig:L2x4_tsoPhVar_2}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/SpinPolarizations_tsoPh_0.1_N_var_V60.pdf}
+	\includegraphics[width=0.45\textwidth]{figs/SpinPolarizations_tsoPh_0.1_N_var_V65.pdf}
+	\caption{Comparison of spin polarization for $\lambda_1=\SI{0.1}{\milli\electronvolt}$ and varying system size and $V=\SI{0.48}{\volt}$ (left) and $V=\SI{0.52}{\volt}$ (right). Number of trajectories are 2500 ($L=2\times 2$), 3100 ($L=3\times 4$). }\label{fig:tsoPh0.1_LVar_1}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.45\textwidth]{figs/SpinPolarizations_tsoPh_0.1_N_var_V75.pdf}
+	\includegraphics[width=0.45\textwidth]{figs/SpinPolarizations_tsoPh_0.1_N_var_V85.pdf}
+	\caption{Comparison of spin polarization for $\lambda_1=\SI{0.1}{\milli\electronvolt}$ and varying system size and $V=\SI{0.6}{\volt}$ (left) and $V=\SI{0.68}{\volt}$ (right).}\label{fig:tsoPh0.1_LVar_2}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L2x4_currents_MR_allV_tsoPh0.1.pdf}
+	\caption{Charge currents and current polarization for $\lambda_1=\SI{0.1}{\milli\electronvolt}$. Number of trajectories is given in the plot.}\label{fig:L2x4_tsoPh0.1}
+\end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/L2x4_currents_MR_allV_tsoPh5.pdf}
-	\caption{Charge currents and current polarization for $\lambda_1=\SI{5}{\milli\electronvolt}$. Data consists of different number of trajectories for different time segments: 13300 for $\SI{0}{\pico\second}\leq t\leq \SI{12}{\pico\second}$, 8200 for $\SI{12}{\pico\second}< t\leq \SI{24}{\pico\second}$ and 4100 for $\SI{24}{\pico\second}< t\leq \SI{48}{\pico\second}$.}\label{fig:L2x4_tsoPh5}
+	\caption{Charge currents and current polarization for $\lambda_1=\SI{5}{\milli\electronvolt}$. Data consists of different number of trajectories for different time segments: 20300 for $\SI{0}{\pico\second}\leq t\leq \SI{12}{\pico\second}$, 15200 for $\SI{12}{\pico\second}< t\leq \SI{24}{\pico\second}$ and 11100 for $\SI{24}{\pico\second}< t\leq \SI{48}{\pico\second}$ and 3000 for $t\geq \SI{48}{\pico\second}$ .}\label{fig:L2x4_tsoPh5}
 \end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/L2x4_currents_MR_allV_tsoPh10.pdf}
-	\caption{Charge currents and current polarization for $\lambda_1=\SI{10}{\milli\electronvolt}$. Data consists of different number of trajectories for different time segments: 21300 for $\SI{0}{\pico\second}\leq t\leq \SI{12}{\pico\second}$, 16200 for $\SI{12}{\pico\second}< t\leq \SI{24}{\pico\second}$ and 8100 for $\SI{24}{\pico\second}< t\leq \SI{48}{\pico\second}$.}\label{fig:L2x4_tsoPh10}
+	\caption{Charge currents and current polarization for $\lambda_1=\SI{10}{\milli\electronvolt}$. Data consists of different number of trajectories for different time segments: 26300 for $\SI{0}{\pico\second}\leq t\leq \SI{12}{\pico\second}$, 21200 for $\SI{12}{\pico\second}< t\leq \SI{24}{\pico\second}$ and 13100 for $\SI{24}{\pico\second}< t\leq \SI{48}{\pico\second}$ and 5000 for $t\geq \SI{48}{\pico\second}$ .}\label{fig:L2x4_tsoPh10}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.9\textwidth]{figs/L2x4_currents_MR_allV_tsoPh10_eps0.pdf}
+	\caption{Charge currents and current polarization for $\lambda_1=\SI{10}{\milli\electronvolt}$ and $\varepsilon_0=\SI{0}{\milli\electronvolt}$. Number of trajectories is given in the plot.}\label{fig:L2x4_tsoPh10_eps0}
 \end{figure}
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf}
-	\caption{Time dependent spectrum under the trajectory-averaged dynamics of the bond displacement for various voltages. Blue area indicates bias window. Same colored lines indicate spectrum, different colored ones the vibrational bond displacement dynamics. SOC-assisted electron-vibrational coupling is $\lambda_1 =\SI{0.5}{\milli\electronvolt}$.}\label{fig:SpecTD_tsoPh5}
+	\caption{Time dependent spectrum under the trajectory-averaged dynamics of the bond displacement for various voltages. Blue area indicates bias window. Same colored lines indicate spectrum, different colored ones the vibrational bond displacement dynamics. SOC-assisted electron-vibrational coupling is $\lambda_1 =\SI{5}{\milli\electronvolt}$.}\label{fig:SpecTD_tsoPh5}
 \end{figure}
 
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/Fransson_L2x4_tsoPh5.0_spectrum_td_Ph_avg.pdf}
-	\caption{Same as in \cref{fig:SpecTD_tsoPh5} for $\lambda_1 =\SI{1}{\milli\electronvolt}$.}\label{fig:SpecTD_tsoPh10}
+	\caption{Same as in \cref{fig:SpecTD_tsoPh5} for $\lambda_1 =\SI{10}{\milli\electronvolt}$.}\label{fig:SpecTD_tsoPh10}
 \end{figure}
 \section{Charge current dynamics: TT-HEOM vs Ehrenfest}
 \Cref{fig:Comp_TTHEOM_Ehrenfest_t1_4meV} shows the current dynamics obtained from TT-HEOM (blue lines) and from HEOM-Ehrenfest (green lines) and the exact, noninteracting case (red dashed lines) in the Peierls model with three sites. The electron-vibrational coupling is $t_1=\SI{4}{\milli\electronvolt}$ and all other parameters are as in the original problem (except for the SOC, which is set to zero here).
 The initial state is an empty molecule in the electronic subspace and the vibrations are in the zero-temperature ground state. For some voltages, the currents obtained from both approaches agree almost quantitatively. However, there are significant differences: For short times, the Ehrenfest approach overestimates charge current oscillations in the off-resonant voltage regime, as can be seen for example for $V=\SI{0.18}{\volt}$ and $V=\SI{0.4}{\volt}$. There, the amplitude of oscillations in the Ehrenfest approach is almost the same as in the noninteracting case. In the TT-HEOM the amplitude of these oscillations is smaller. Therefore, a plausible explanation for this difference is the interaction with the vibrational modes and the different ways it is treated in both approaches. Apart from differences already for short times, there are also differences for long times: While the charge current in the TT-HEOM approaches a steady state already after $\sim \SI{200}{\femto\second}$ (note the time scales of the problem $t_\mathrm{vib}= \omega_0^{-1} \sim \SI{345}{\femto\second}$ and $t_1^{-1}\sim\SI{380}{\femto\second}$). The Ehrenfest approach, however, predicts long-lived charge current oscillations on a much longer time scale than shown in the plot here. These oscillations lead to a deviation from the TT-HEOM result, and for some voltages, e.g., $V=\SI{0.6}{\volt}$, the noninteracting currents agrees with the TT-HEOM one better than the Ehrenfest result. 
 
-{\color{red} Compare Ehrenfest vs TTHEOM for $t_1=\SI{8}{\milli\electronvolt}$.}
+{\color{red} Compare Ehrenfest vs TTHEOM for $t_1=\SI{8}{\milli\electronvolt}$. Currently doing convergence checks for TTHEOM.}
 
-\Cref{fig:PES_L1x3} shows the potential energy curve for selected $X_2$ positions. 
+\Cref{fig:PES_L1x3} shows the potential energy curve for selected $X_2$ positions. One can see for certain vibrational positions nearly crossing potential energy surfaces. The interesting thing is that for very large displacement, the potential energy surface corresponding to the lowest state is near flat. Therefore, the mean potential energy will also not be bounded if only the lowest electronic state is populated.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.9\textwidth]{figs/Peierls_dyn_TTHEOM_Ehrenfest_noPh_VVar.pdf}

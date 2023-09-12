@@ -72,8 +72,8 @@ for (v,vn,col) in zip(V,Vn,colors)
 	end
 end
 
-ax.set_xlabel("system size "*L"$N$")
-ax.set_ylabel(L"$M_R\,[\%]$")
+ax.set_xlabel("system size "*L"$L$")
+ax.set_ylabel(L"$S\,[\%]$")
 ax.set_xlim(2,13)
 ax.legend(loc="upper left")
 #plt.savefig("Magnetocurrents_sizeVar_VVar.png",dpi=200)

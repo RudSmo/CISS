@@ -24,7 +24,7 @@ sy = 0.85
 dy = 0.05
 dx = 0.01
 
-fig = plt.figure(figsize=(9,4.5))
+fig = plt.figure(figsize=(7,5))
 ax = plt.axes([px,py,sx,sy])
 P = 0.5
 # OLD DATA
@@ -84,9 +84,9 @@ fac_c = fac_c/0.002
 fac_c = 0.002* 1e3 * 0.2433946
 V = [50,60,75]
 Vn = [L"$0.4\,\mathrm{V}$",L"$0.48\,\mathrm{V}$",L"$0.6\,\mathrm{V}$"]
-Ns =[[11,11,21,21,72,10,71],
-     [11,11,19,21,71,10,61],
-     [11,11,20,11,72,10,61]]
+Ns =[[11,11,21,21,72,61,71],
+     [11,11,19,21,71,31,61],
+     [11,11,20,11,72,30,61]]
 colors = ["k","red","blue"]
 size = [3,4,6,8,9,10,12]
 ms = 8
@@ -140,8 +140,8 @@ ax.plot(size,IT,marker="o",linewidth=2,markersize=ms,label=L"$0.48\,\mathrm{V},\
 
 
 ax.set_xlabel("system size "*L"$N$")
-ax.set_ylabel(L"$\sqrt{N}I\,[\mu\mathrm{A}]$")
+ax.set_ylabel(L"$\sqrt{N}I \,[\mu\mathrm{A}]$")
 ax.set_xlim(2,13)
-ax.legend(loc="best",bbox_to_anchor=(0.55, 0.4, 0.5, 0.5))
+ax.legend(loc="best",bbox_to_anchor=(0.4, 0.4, 0.5, 0.5))
 #plt.savefig("Currents_sizeVar_P$(P)_VVar.png",dpi=200)
-plt.savefig("Currents_sizeVar_P$(P)_VVar_sqrtN.pdf")
+plt.savefig("Currents_sizeVar_P$(P)_VVar_sqrtN_slides.pdf")
