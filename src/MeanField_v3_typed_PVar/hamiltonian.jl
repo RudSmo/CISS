@@ -74,8 +74,8 @@ function Holstein(N,gPh,ws,xs)
     H = zeros(2*N,2*N)
     for k in 1:N
     	i = 2*k-1    
-	H[i,i] = gPh[1] * sqrt(2) * xs[k]
-        H[i+1,i+1] = gPh[2] * sqrt(2) * xs[k] 
+	H[i,i] = gPh[1] *  xs[k]/sqrt(2)
+        H[i+1,i+1] = gPh[2] * xs[k]/sqrt(2)
     end
     return H
 end
@@ -169,8 +169,14 @@ function HolsteinHopping(HamPar)
     Ho = Onsite_A(HamPar.N,HamPar.OnsiteEnergies)
     Hh = Hopping_A_nn(HamPar.N,HamPar.Hopping)
     Hph = Holstein(HamPar.N,HamPar.gPh,HamPar.ws,HamPar.X)
-    Htph = Peierls_Old(HamPar.N,HamPar.HoppingPh,HamPar.ws,HamPar.X)
-    return Ho .+ Hh .+ Hph .+ Htph
+    return Ho .+ Hh .+ Hph
+end
+
+function Holstein_Mode_v2(HamPar::Any,k::Int64)::Array
+    Xn = zeros(length(HamPar.X))
+    Xn[k] = 1.0
+    Heph = Holstein(HamPar.N,HamPar.gPh,HamPar.ws,Xn)
+    return Heph
 end
 
 function SpinHopping(HamPar,t0)

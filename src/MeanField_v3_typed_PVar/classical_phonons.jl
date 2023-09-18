@@ -48,7 +48,11 @@ function HigherOrderSymplecticStep(HamPar::Any,rho::Array{ComplexF64},dt::Float6
 	Pn = similar(HamPar.P)
         Xn = similar(HamPar.X)
         for i in 1:HamPar.N
-            H_red = FranssonHamiltonian_Mode_v2(HamPar,i)
+	    if HamPar.HamiltonStr == "Fransson"
+	            H_red = FranssonHamiltonian_Mode_v2(HamPar,i)
+	    elseif HamPar.HamiltonStr == "Holstein"
+		    H_red = Holstein_Mode_v2(HamPar,i)
+            end
             derv  = tr(@views rho*H_red)
 	    Xn_c = HamPar.X[i]
 	    Pn_c = HamPar.P[i]

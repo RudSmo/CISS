@@ -29,7 +29,7 @@ function Propagate(
 	X_l 	    	= zeros(HamPar.N,LengthData)
 	P_l 	    	= zeros(HamPar.N,LengthData)
 
-	hcen_i      	= HamPar.Hamiltonian(HamPar)
+	hcen_i      	= HamPar.Hamiltonian(HamPar)*(1+0.0*1im)
 	Gamma1,Gamma2 	= GammaMatrices1d(HamPar.N,tL,tR)
 	GammaT		= Gamma1+Gamma2
 	tim	   	= zeros(LengthData)
@@ -84,7 +84,7 @@ function Propagate(
 				
 		HamPar.X,HamPar.P = clIntegrator(HamPar,rho_i,dt)
 		cur1_i,cur2_i = elIntegrator(shx,shy,nPoles,beta,hcen_i,Gamma1,Gamma2,GammaT,kappa,chi1,chi2,curp1_i,curp2_i,cur_i,rho_i,dt)
-		hcen_i  = HamPar.Hamiltonian(HamPar)	
+		hcen_i  = HamPar.Hamiltonian(HamPar)*(1+0.0*1im)	
 		conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,loc_cur_l,vind = SaveOutput(HamPar,cur1_i,cur2_i,conv_l,pop_l,pop_es_l,rho_i,hcen_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,X_l,P_l,mom_el,path,vind)
 		if i == numstep 
 			fil = h5open("$(path)_final_Quantities","w")
