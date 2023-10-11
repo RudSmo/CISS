@@ -31,16 +31,9 @@ P = 0.5
 colors = ["k","red","blue"]
 symbols = ["x","o","d"]
 
-#syssizes = [["L1x3","L2x3","L3x3"],
-#	    ["L2x4","L3x4"],
-# 	    ["L2x2","L2x5","L2x6"]]
-#
-#sizes = [[3,6,9],
-#	 [8,12],
-#	 [4,10,12]]
 
-syssizes = [["L1x3","L2x2","L2x3","L2x4","L3x3","L2x5","L3x4"]]
-sizes = [[3,4,6,8,9,10,12]]
+syssizes = [["L1x3","L2x2","L2x3","L2x4","L3x3","L2x5","L3x4","L4x4"]]
+sizes = [[3,4,6,8,9,10,12,16]]
 
 ms = 9
 V = [1,2,3]
@@ -72,9 +65,9 @@ for (v,vn,col) in zip(V,Vn,colors)
 	end
 end
 
-ax.set_xlabel("system size "*L"$L$")
+ax.set_xlabel("system size "*L"$N$")
 ax.set_ylabel(L"$S\,[\%]$")
-ax.set_xlim(2,13)
+ax.set_xlim(2,17)
 ax.legend(loc="upper left")
 #plt.savefig("Magnetocurrents_sizeVar_VVar.png",dpi=200)
-plt.savefig("Magnetocurrents_sizeVar_VVar_stderr.pdf")
+plt.savefig("Spin_selectivity_sizeVar_VVar_stderr.pdf")
