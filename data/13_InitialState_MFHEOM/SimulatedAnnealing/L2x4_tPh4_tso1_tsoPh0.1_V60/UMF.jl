@@ -21,7 +21,7 @@ E   = [eu,ed]
 gPh = zeros(2)
 a   = 1.0
 c   = 1.0
-tso = 5*T0/40
+tso = T0/40
 tPh = 0.1*T0*ones(2)
 tsoPh = 5*tso
 model = FranssonHamiltonian
@@ -45,7 +45,7 @@ tl = T0/4
 tL = tl * [1,0]#(ones(2) .+ P * [1,-1])
 tR = tl * [1,0]#ones(2)
 
-v = 85
+v = 75
 V = v * 0.2 * T0
 nPoles = 15
 beta = ws[1]/0.025
@@ -89,7 +89,7 @@ function MFPotential(rho,HamPar)
 	return UMF	
 end
 
-rho = read(h5open("second_cycle/L2x4_noPh_V240.0/L8_tPh_2.0_thPd_2.0_SOC0.5_SOCPh0.05_V240.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_2_dt0.0002_1_final_Quantities")["Rho"])
+rho = read(h5open("initial_prop_V85/L2x4_noPh_V340.0/L8_tPh_0.0_thPd_0.0_SOC0.5_SOCPh0.0_V340.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_2_dt0.0002_1_final_Quantities")["Rho"])
 X_rng = -5:0.1:5
 
 for site in 1:N
