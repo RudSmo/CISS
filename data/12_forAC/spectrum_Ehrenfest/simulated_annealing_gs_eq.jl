@@ -7,7 +7,7 @@ using LinearAlgebra
 
 # Hamiltonian Parameters
 num_laps = 2
-num_ions = 3
+num_ions = 4
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
 Hop = 0.04

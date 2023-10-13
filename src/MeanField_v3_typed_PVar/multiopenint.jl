@@ -44,6 +44,7 @@ function Propagate(
 	elseif rhoIn == "closedEquilibrium"
 		rho0    = DensityFEx(HamPar.N,1,hcen_i,HamPar.N,0)
 	elseif rhoIn == "fromFile"
+		fid 	= h5open(pathIn)
 		rho0    = read(fid["Rho"])
 	end
 	
@@ -52,15 +53,18 @@ function Propagate(
 	pop_es_l = zeros(2*HamPar.N,LengthData)
 	rho_i	 = rho0
     
+	shx,shy = size(hcen_i)
+	curp1_i = Array{ComplexF64}(undef,shx,shy,nPoles)
+	curp2_i = Array{ComplexF64}(undef,shx,shy,nPoles)
 	
 	if rhoIn == "fromFile"
-		curp1_i = [read(fid["Curp1$(j)"]) for j in 1:nPoles]
-		curp2_i = [read(fid["Curp2$(j)"]) for j in 1:nPoles]
+		fid     = h5open(pathIn)
+		for i in 1:nPoles	
+			curp1_i[:,:,i] .= read(fid["Curp1$(i)"]) 
+			curp2_i[:,:,i] .= read(fid["Curp2$(i)"]) 
+		end
 		close(fid)
 	else
-		shx,shy = size(hcen_i)
-		curp1_i = Array{ComplexF64}(undef,shx,shy,nPoles)
-		curp2_i = Array{ComplexF64}(undef,shx,shy,nPoles)
 		for i in 1:nPoles
 			curp1_i[:,:,i] = CurrentInit_PFree(hcen_i,GammaT,chi1[i],kappa[i],beta,Gamma1)
 			curp2_i[:,:,i] = CurrentInit_PFree(hcen_i,GammaT,chi2[i],kappa[i],beta,Gamma2)

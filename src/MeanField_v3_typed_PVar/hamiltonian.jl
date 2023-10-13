@@ -142,6 +142,13 @@ function FranssonHamiltonian_Mode_v2(HamPar::Any,k::Int64)::Array
         Hsoph = Peierls_SOC(HamPar.N,HamPar.SOCPh,HamPar.a_hel,HamPar.c_hel,HamPar.num_laps,HamPar.ws,Xn)
         return Heph .+ Hsoph
 end
+function FranssonHamiltonian_Mode_v3(HamPar::Any,k::Int64,X::Float64)::Array
+        Xn = zeros(length(HamPar.X))
+        Xn[k] = X
+        Heph = Peierls(HamPar.N,HamPar.HoppingPh,HamPar.ws,Xn)
+        Hsoph = Peierls_SOC(HamPar.N,HamPar.SOCPh,HamPar.a_hel,HamPar.c_hel,HamPar.num_laps,HamPar.ws,Xn)
+        return Heph .+ Hsoph
+end
 	
 function FranssonHamiltonian_H0(HamPar)
         Ho = Onsite_A(HamPar.N,HamPar.OnsiteEnergies)
