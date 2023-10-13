@@ -89,7 +89,7 @@ function MFPotential(rho,HamPar)
 	return UMF	
 end
 
-rho = read(h5open("initial_prop_V85/L2x4_noPh_V340.0/L8_tPh_0.0_thPd_0.0_SOC0.5_SOCPh0.0_V340.0_w00.002_P0.5_SymplecticRuth4Step_RK4_VNL!_2_dt0.0002_1_final_Quantities")["Rho"])
+rho = read(h5open("initial_prop_V85/L2x4_noPh_V340.0/L8_tPh_0.0_thPd_0.0_SOC0.5_SOCPh0.0_V340.0_w00.002_P-0.5_SymplecticRuth4Step_RK4_VNL!_2_dt0.0002_1_final_Quantities")["Rho"])
 X_rng = -5:0.1:5
 
 for site in 1:N

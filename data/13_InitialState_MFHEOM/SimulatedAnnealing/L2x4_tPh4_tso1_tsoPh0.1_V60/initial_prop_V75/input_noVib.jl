@@ -73,7 +73,7 @@ popElIn[1] = 0.0
 popPhIn = zeros(N)
 xnIn,pnIn = zeros(N), zeros(N)
 ## Leads
-P = 0.5
+P = -0.5
 tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
