@@ -6,7 +6,7 @@ using .Hamiltonian
 using .Observables
 using .CustomStructs
 
-t0 = 1.0
+t0 = 0.04
 eu = -6*t0
 ed = -6*t0
 E = [eu,ed]
@@ -18,13 +18,13 @@ ions = 4
 N = Int(num_laps * ions)
 tph = 0.0
 tsoph = 0.0
-ws = ones(N)*1.4*t0
+ws = ones(N)*0.002
 qs = zeros(N)
 
 HS = Hamiltonian.FranssonHamiltonian(N,E,t0,tso,a,c,num_laps,tph,tsoph,ws,qs)
 
 
-En = Array(-12.0:0.01:12.0)
+En = Array(-0.34:0.01:-0.15)
 sys_par = SystemParams(N,HS,En)
 
 P = -0.5

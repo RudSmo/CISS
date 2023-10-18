@@ -25,13 +25,13 @@ gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
-tPh = 0.0*T0*ones(2)
-tsoPh = 0.0*tso
+tPh = 0.1*T0*ones(2)
+tsoPh = 0.1*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 # Simulation Parameters
 dt = 0.0002
-tend = 40
+tend = 50
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -78,7 +78,7 @@ tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
 
-v = 60
+v = 0.0
 V = v * 0.2 * T0
 nPoles = 15
 beta = ws[1]/0.025 
@@ -104,7 +104,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 version = 0
-path = "L$(num_laps)x$(num_ions)_noPh_V$(V)" # "noPh_L$(num_laps)x$(num_ions)/V$(v)" # "L$(num_laps)x$(num_ions)_Peierls_4MCTDH_comparison_V$(V)"
+path = "L$(num_laps)x$(num_ions)_V$(V)" # "noPh_L$(num_laps)x$(num_ions)/V$(v)" # "L$(num_laps)x$(num_ions)_Peierls_4MCTDH_comparison_V$(V)"
 if !isdir(path)
 	mkpath(path)
 end
