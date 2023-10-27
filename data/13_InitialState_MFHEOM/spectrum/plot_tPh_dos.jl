@@ -1,0 +1,35 @@
+using PyPlot
+using LinearAlgebra
+using DelimitedFiles
+
+plt.style.use("classic")
+rc("text", usetex=true)
+rc("font",family="serif",serif="Times")
+fs = 15
+lw = 3
+fac_t = 1/(4.135668)
+
+rc("axes",labelsize=fs)
+rc("xtick",labelsize=fs-2)
+rc("ytick",labelsize=fs-2)
+
+px = 0.11
+py = 0.12
+sx = 0.87
+sy = 0.85
+dy = 0.05
+dx = 0.01
+
+fig = plt.figure(figsize=(7,5))
+ax = plt.axes([px,py,sx,sy])
+
+dat = readdlm("L4x4_tsoPh_0.0_tPh_var_avg_dos.dat")
+ax.plot(dat[:,1],dat[:,2] .+ 800,label=L"$\lambda_1 = 0, t_1=0\, \mathrm{meV}$",linewidth=lw,color="k")
+ax.plot(dat[:,1],dat[:,11] .+ 500,label=L"$t_1=4\, \mathrm{meV}$",linewidth=lw,color="blue")
+ax.plot(dat[:,1],dat[:,21],label=L"$t_1=8\, \mathrm{meV}$",linewidth=lw,color="red")
+ax.legend(fontsize=fs-2,loc="lower left",framealpha=0.5)
+ax.set_ylim(0,1300)
+ax.set_xlabel(L"$E\,[\mathrm{meV}]$")
+ax.set_ylabel("DOS")
+plt.savefig("L4x4_tsoPh_0.0_tPhVar_dos.pdf")
+

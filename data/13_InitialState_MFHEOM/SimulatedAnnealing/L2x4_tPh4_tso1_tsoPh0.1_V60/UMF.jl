@@ -45,7 +45,7 @@ tl = T0/4
 tL = tl * [1,0]#(ones(2) .+ P * [1,-1])
 tR = tl * [1,0]#ones(2)
 
-v = 75
+v = 60
 V = v * 0.2 * T0
 nPoles = 15
 beta = ws[1]/0.025
@@ -89,10 +89,10 @@ function MFPotential(rho,HamPar)
 	return UMF	
 end
 
-rho = read(h5open("initial_prop_V85/L2x4_noPh_V340.0/L8_tPh_0.0_thPd_0.0_SOC0.5_SOCPh0.0_V340.0_w00.002_P-0.5_SymplecticRuth4Step_RK4_VNL!_2_dt0.0002_1_final_Quantities")["Rho"])
+rho = read(h5open("initial_prop/L2x4_noPh_V240.0/L8_tPh_0.0_thPd_0.0_SOC0.5_SOCPh0.0_V240.0_w00.002_P-0.5_SymplecticRuth4Step_RK4_VNL!_2_dt0.0002_1_final_Quantities")["Rho"])
 X_rng = -5:0.1:5
 
-for site in 1:N
+for site in 1:N-1
 	UMF = []
 	for X in X_rng
 		HamPar.X[site] = X
