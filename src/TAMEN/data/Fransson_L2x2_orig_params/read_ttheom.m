@@ -1,0 +1,21 @@
+function [xop,rho] = read_ttheom(d,file1,file2)
+%UNTITLED5 Summary of this function goes here
+%   Detailed explanation goes here
+x = load(file1);
+x = struct2cell(x);
+r = load(file2);
+r = struct2cell(r);
+i=1;
+xop=tt_tensor(x{i},1e-14,size(x{i},2),size(x{i},1),size(x{i},3));
+for i=2:d
+    h=tt_tensor(x{i},1e-14,size(x{i},2),size(x{i},1),size(x{i},3));
+    xop = tkron(xop,h);
+end
+xop = tt_matrix(xop);
+i=1;
+rho=tt_tensor(r{i},1e-14,size(r{i},2),size(r{i},1),size(r{i},3));
+for i=2:d
+    h=tt_tensor(r{i},1e-14,size(r{i},2),size(r{i},1),size(r{i},3));
+    rho = tkron(rho,h);
+end
+end

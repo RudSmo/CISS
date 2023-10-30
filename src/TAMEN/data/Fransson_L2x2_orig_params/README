@@ -1,0 +1,2 @@
+screen -S matlab -dm /usr/local/MATLAB/R2022a/bin/matlab -nosplash -nodisplay -nodesktop -sd "$PWD" -batch "tamen_heom" 
+
