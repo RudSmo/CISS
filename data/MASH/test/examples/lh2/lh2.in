@@ -1,0 +1,18 @@
+# Spin-boson benchmark model with Debye bath
+# System
+-model lh2
+-basis site
+-beta 1052.58
+-units cmm1
+-init 16
+-directdia
+-nucsamp cl
+-obstyp pop
+#
+# Convergence
+-ntraj 10000
+-nt    4000
+-tol 0.003
+-dt    21
+-nf 10
+-npar 16

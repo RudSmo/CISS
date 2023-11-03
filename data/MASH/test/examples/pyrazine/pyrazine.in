@@ -1,0 +1,14 @@
+# Pyrazine
+# System
+-model pyrazine
+-directdia
+-init 1
+-nucsamp GS
+#
+# Convergence
+-ntraj 10000
+-nt    600
+-dt    0.25
+-units fs
+-npar 8
+-tol 0.0001

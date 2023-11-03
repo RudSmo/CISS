@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=15mm,
+	right=15mm,
+	top=15mm,
+}
+\usepackage{url}
+\begin{document}
+\title{Literature}
+\maketitle
+\begin{abstract}
+	This is a collection of interesting references, statements, and ideas which I would like to have in my thesis.
+\end{abstract}
+\section{Ehrenfest}
+\subsection{What is missing in Ehrenfest?}
+\begin{itemize}
+	\item \url{https://pubs.acs.org/doi/full/10.1021/acs.jpclett.3c02690}
+	\item Branching is important. 
+	\item Decoherence needs to be taken into account properly
+	\item Idea: In my approach, I'm not only imposing Ehrenfest, but also single-particle states. Justification (dynamics evolves in a sector with fixed electron number, conservation, but open system??)? 
+\end{itemize}
+\section{MPS}
+\subsection{MPS and bosonic systems}
+\begin{itemize}
+	\item \url{https://journals.aps.org/pra/abstract/10.1103/PhysRevA.108.042422}
+	\item Entanglement area law of ground state holds true even for systems with infinite-dimensional local Hilbert space
+	\item Justifies using MPS to describe bosonic systems rigorously
+	\item Idea: This is only true for the ground state. But in our transport scenarios, we are not operating in the ground state at all. So the question is still, if MPS are good for far from equilibrium/ground states.
+\end{itemize}
+\end{document}
+
+
