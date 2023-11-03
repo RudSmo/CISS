@@ -1,1 +1,0 @@
-/var/spool/slurmd/job7053389/slurm_script: Zeile 10: 1985978 Bus-Zugriffsfehler      (Speicherabzug geschrieben) $HOME/PhD/code/julia-1.6.1/bin/julia input.jl
