@@ -1,8 +1,0 @@
-condor_submit jobscripts/submit101_center_conv1500.jdf
-condor_submit jobscripts/submit11_center_conv1000.jdf
-condor_submit jobscripts/submit11_center_conv1500.jdf
-condor_submit jobscripts/submit3_center_BO.jdf
-condor_submit jobscripts/submit3_edge_BO.jdf
-condor_submit jobscripts/submit51_center_conv1000.jdf
-condor_submit jobscripts/submit51_center_conv1500.jdf
-
