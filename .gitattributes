@@ -1,0 +1,2 @@
+data/TTHEOM_TAMEN filter=lfs diff=lfs merge=lfs -text
+data/TTHEOM_TAMEN/holstein_sam_riley filter=lfs diff=lfs merge=lfs -text
