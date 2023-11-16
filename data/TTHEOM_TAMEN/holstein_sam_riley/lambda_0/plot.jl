@@ -36,19 +36,15 @@ for i in 1:length(Vs)
 	k = i-1
 	ax = plt.axes([px,py-k*(sy+dy),sx,sy])
 	TTHEOM = readdlm("V$(Vs[i])/TTHEOM/"*fnfilter(readdir("V$(Vs[i])/TTHEOM/"),"current*")[1])
-	TAMEN00= readdlm("V$(Vs[i])/TAMEN/curr00.txt")
-	TAMEN01= readdlm("V$(Vs[i])/TAMEN/curr01.txt")
-	TAMEN  = zeros(length(TAMEN00[:,1]),2)
-	TAMEN[:,1] = TAMEN00[:,1]
-	TAMEN[:,2] = TAMEN00[:,2] - TAMEN01[:,2]
+	TAMEN = readdlm("V$(Vs[i])/TAMEN/tol_1e-3/curr.txt")
 	EHREN  = readdlm("V$(Vs[i])/Ehrenfest/data0/L1_gPhU0.0_gPhD0.0_V1.0_w00.2_dt0.02_currents_avg.dat")
 
-	ax.plot(TAMEN[:,1],TAMEN[:,2]*I_E,color="blue",label="TAMEN",linewidth=lw)
-	ax.plot(TTHEOM[2:end,1]*t_E,(TTHEOM[2:end,2]-TTHEOM[2:end,3])*I_E,color="red",label="TTHEOM",linewidth=lw)
+	ax.plot(TAMEN[:,1],(TAMEN[:,2]-TAMEN[:,3])*I_E,color="orange",label="TAMEN",linewidth=lw)
+	ax.plot(TTHEOM[2:end,1]*t_E,(TTHEOM[2:end,2]-TTHEOM[2:end,3])*I_E,color="green",label="TTHEOM",linewidth=lw,linestyle="dashed")
 	ax.plot(EHREN[2:end,1]*t_E,(EHREN[2:end,2]-EHREN[2:end,3])*I_E*2,color="k",label="Ehrenfest",linewidth=lw)
 	ax.annotate(L"$V=$"*"$(Vs[i]) V",(0.75,0.05),xycoords="axes fraction",fontsize=fs)
 	ax.set_xlim(0,5)
-	ax.set_ylim(2.2,2.8)
+	ax.set_ylim(2.,2.8)
 #	ax.set_ylim(ylim[i][1],ylim[i][2])
 	if i == 1
 		ax.legend()

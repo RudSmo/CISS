@@ -25,14 +25,14 @@ gPh = zeros(2)
 a   = 1.0
 c   = 1.0
 tso = T0/40
-tPh = 0.0*T0*ones(2)
-tsoPh = 0.5*tso
+tPh = 0.1*T0*ones(2)
+tsoPh = 0.1*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 
 # Simulation Parameters
-dt = 0.0002
-tend = 15
+dt = 0.0003
+tend = 1000
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -104,7 +104,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 version = 0
-path = "L$(num_laps)x$(num_ions)_tsoPh_sign"
+path = "L$(num_laps)x$(num_ions)_dt_test"
 if !isdir(path)
 	mkpath(path)
 end
