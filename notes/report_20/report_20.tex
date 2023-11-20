@@ -65,14 +65,43 @@ which is assumed to be constant (wide-band limit).
 The parameters of the model above are listed as follows
 \begin{align*}
 	\varepsilon_0 &= -\SI{240}{\milli\electronvolt}\\
-	\omega_0 &= \SI{2}{\milli\electronvolt}\\
+	\hbar \omega_0 &= \SI{2}{\milli\electronvolt}\\
 	t_0 &= \SI{40}{\milli\electronvolt}\\
 	t_1 &=\SI{4}{\milli\electronvolt}\\ 
 	\Gamma_\ell &= \SI{10}{\milli\electronvolt}\\
 	k_B T_\ell &= \SI{0.026}{\electronvolt}\\ 
 	W&=\mathrm{WBL}.
 \end{align*}
+\clearpage
+
 \section{Results}
+\subsection{Currents}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_LVar_V60.pdf}
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_LVar_V60_short.pdf}
+\end{figure}
+\clearpage
+
+\subsection{Norm and rank}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_LVar_V60_tamen_norm.pdf}
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_LVar_V60_tamen_rank.pdf}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_LVar_V60_tamen_rank_dist.pdf}
+	\caption{Time-dependent rank distribution across the MPS within the tAMEn calculations.}
+\end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_rank_ttheom.png}
+	\caption{Rank distribution across the MPS within the TTHEOM calculations.}
+\end{figure}
+
+
 \clearpage
 
 
