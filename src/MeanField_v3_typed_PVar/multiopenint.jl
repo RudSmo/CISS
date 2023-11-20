@@ -78,8 +78,8 @@ function Propagate(
  	cur2_l		= zeros(LengthData)
 	scur1_l 	= zeros(3,LengthData)
 	scur2_l 	= zeros(3,LengthData)
-	mom_el      	= zeros(2*(HamPar.N-1),LengthData)
-	loc_cur_l   	= zeros(HamPar.N-1,LengthData)
+#	mom_el      	= zeros(2*(HamPar.N-1),LengthData)
+#	loc_cur_l   	= zeros(HamPar.N-1,LengthData)
 
 	chi1		= V/2 .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
 	chi2		= -V/2 .+ 1im .* xi ./beta
@@ -89,7 +89,8 @@ function Propagate(
 		HamPar.X,HamPar.P = clIntegrator(HamPar,rho_i,dt)
 		cur1_i,cur2_i = elIntegrator(shx,shy,nPoles,beta,hcen_i,Gamma1,Gamma2,GammaT,kappa,chi1,chi2,curp1_i,curp2_i,cur_i,rho_i,dt)
 		hcen_i  = HamPar.Hamiltonian(HamPar)*(1+0.0*1im)	
-		conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,loc_cur_l,vind = SaveOutput(HamPar,cur1_i,cur2_i,conv_l,pop_l,pop_es_l,rho_i,hcen_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,X_l,P_l,mom_el,path,vind)
+#		conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,loc_cur_l,vind = SaveOutput(HamPar,cur1_i,cur2_i,conv_l,pop_l,pop_es_l,rho_i,hcen_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,X_l,P_l,mom_el,path,vind)
+		conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,vind = SaveOutput(HamPar,cur1_i,cur2_i,conv_l,pop_l,pop_es_l,rho_i,hcen_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,path,vind)
 		if i == numstep 
 			fil = h5open("$(path)_final_Quantities","w")
 			fil["Rho"] = rho_i

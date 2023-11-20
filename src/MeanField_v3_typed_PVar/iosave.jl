@@ -31,12 +31,12 @@ function SaveOutput(HamPar::Any,
 		    cur2_l::Array{Float64},
 		    scur1_l::Array{Float64},
 		    scur2_l::Array{Float64},
-		    loc_cur_l::Array{Float64},
+		  #  loc_cur_l::Array{Float64},
 		    q_l::Array{Float64},
 		    p_l::Array{Float64},
-		    mom_el::Array{Float64},
+		  #  mom_el::Array{Float64},
 		    path::String,
-		    vind::Int64)::Tuple{Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Int64}
+		    vind::Int64)::Tuple{Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Int64}
 
 	if i == 1
 		convfile= open("$(path)_convergence_info.dat","w")
@@ -44,8 +44,8 @@ function SaveOutput(HamPar::Any,
 		popfile = open("$(path)_electrons.dat","w")
 		popesfile = open("$(path)_electrons_es.dat","w")
 		phfile  = open("$(path)_phonons.dat","w")
-		momentumf= open("$(path)_momentum_el.dat","w")
-		loccurf = open("$(path)_loc_cur.dat","w")
+		#momentumf= open("$(path)_momentum_el.dat","w")
+		#loccurf = open("$(path)_loc_cur.dat","w")
 		
 		write(convfile,"#(1)t (2)trace (3)sys_energy (4)dif\n")
 		write(curfile,"#(1)t (2)IL (3)IR (4)sILx (5)sILy (6)sILz (7)sIRx (8)sIRy (9)sIRz\n")	
@@ -68,27 +68,27 @@ function SaveOutput(HamPar::Any,
 		end
 		write(phfile,"\n")
 
-		write(momentumf,"#(1)t ")
-		k = 2
-		for i in 1:HamPar.N-1
-			write(momentumf,"($(k))p$(i)u ($(k+1))p$(i)d ")
-			k += 2
-		end	
-		write(momentumf,"\n")
+	#	write(momentumf,"#(1)t ")
+	#	k = 2
+	#	for i in 1:HamPar.N-1
+	#		write(momentumf,"($(k))p$(i)u ($(k+1))p$(i)d ")
+	#		k += 2
+	#	end	
+	#	write(momentumf,"\n")
 
-		write(loccurf,"#(1)t")
-		for i in 1:HamPar.N-1
-			write(loccurf,"($(i+1))cur($(i),$(i+1)) ")
-		end
-		write(loccurf,"\n")
+	#	write(loccurf,"#(1)t")
+	#	for i in 1:HamPar.N-1
+	#		write(loccurf,"($(i+1))cur($(i),$(i+1)) ")
+	#	end
+	#	write(loccurf,"\n")
 
 		close(convfile)
 		close(curfile)
 		close(popfile)
 		close(popesfile)
 		close(phfile)
-		close(momentumf)
-		close(loccurf)
+	#	close(momentumf)
+	#	close(loccurf)
 	end
 	
 	if i % AppendData == 0
@@ -102,8 +102,8 @@ function SaveOutput(HamPar::Any,
 		scur2_l[:,vind] = SpinCurrent(cur2_c)
 		q_l[:,vind] = HamPar.X
 		p_l[:,vind] = HamPar.P
-		mom_el[:,vind] = MomentumElectrons(rho_i)
-		loc_cur_l[:,vind] = LocalCurrent(rho_i,hcen_i)
+	#	mom_el[:,vind] = MomentumElectrons(rho_i)
+	#	loc_cur_l[:,vind] = LocalCurrent(rho_i,hcen_i)
 		tim[vind] = abs(i*dt)
 		vind += 1
 	end
@@ -114,16 +114,16 @@ function SaveOutput(HamPar::Any,
 		popfile = open("$(path)_electrons.dat","a")
 		popesfile = open("$(path)_electrons_es.dat","a")
 		phfile  = open("$(path)_phonons.dat","a")
-		momfile = open("$(path)_momentum_el.dat","a")
-		loccurf = open("$(path)_loc_cur.dat","a")
+	#	momfile = open("$(path)_momentum_el.dat","a")
+	#	loccurf = open("$(path)_loc_cur.dat","a")
 		for j in 1:length(tim)
 			write(convfile,"$(tim[j]) $(real(conv_l[1,j])) $(real(conv_l[2,j])) $(real(conv_l[3,j])) \n")
 			write(popfile,"$(tim[j]) ")
 			write(popesfile,"$(tim[j]) ")
 			write(curfile,"$(tim[j]) $(cur1_l[j]) $(cur2_l[j]) $(scur1_l[1,j]) $(scur1_l[2,j]) $(scur1_l[3,j]) $(scur2_l[1,j]) $(scur2_l[2,j]) $(scur2_l[3,j]) \n")
 			write(phfile, "$(tim[j]) ")
-			write(momfile, "$(tim[j]) ")
-			write(loccurf, "$(tim[j]) ")
+	#		write(momfile, "$(tim[j]) ")
+	#		write(loccurf, "$(tim[j]) ")
 
 				
 			for k in 1:length(pop_l[:,j])
@@ -133,35 +133,37 @@ function SaveOutput(HamPar::Any,
 			for k in 1:length(q_l[:,j])
 				write(phfile, "$(q_l[k,j]) $(p_l[k,j]) ")
 			end
-			for k in 1:length(mom_el[:,j])
-				write(momfile, "$(mom_el[k,j]) ")
-			end
-			for k in 1:length(loc_cur_l[:,j])
-				write(loccurf, "$(loc_cur_l[k,j]) ")
-			end
+	#		for k in 1:length(mom_el[:,j])
+	#			write(momfile, "$(mom_el[k,j]) ")
+	#		end
+	#		for k in 1:length(loc_cur_l[:,j])
+	#			write(loccurf, "$(loc_cur_l[k,j]) ")
+	#		end
 
 			write(popfile, "\n")
 			write(popesfile, "\n")
 			write(phfile, "\n")
-			write(momfile, "\n")
-			write(loccurf, "\n")
+	#		write(momfile, "\n")
+	#		write(loccurf, "\n")
 		end
 		close(convfile)
 		close(curfile)
 		close(popfile)		
 		close(popesfile)	
 		close(phfile)
-		close(momfile)
-		close(loccurf)
+	#	close(momfile)
+	#	close(loccurf)
 		vind = 1
 	end
 
-	return conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,mom_el,loc_cur_l,vind
+#	return conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,mom_el,loc_cur_l,vind
+	return conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,vind
 end
 
 function Average(ind,path,num_avg)
 	pathr = "$(path)_$(ind)"
-	observables = ["currents","electrons","electrons_es","phonons","momentum_el","loc_cur","convergence_info"]
+#	observables = ["currents","electrons","electrons_es","phonons","momentum_el","loc_cur","convergence_info"]
+	observables = ["currents","electrons","electrons_es","phonons","convergence_info"]
 	rm("$(pathr)_final_Quantities")
 	if ind == 1
 		for obs in observables
