@@ -67,7 +67,15 @@ The parameters of the model above are listed as follows
 	V &= 0,0.5,\SI{1}{\volt}\\
 	W&=\mathrm{WBL}.
 \end{align*}
+\clearpage
 \section{Results}
+\subsection{Convergence of TAMEN}
+From the below plot it is clear that a relative tensor truncation error of $10^{-3}$ is sufficient to converge the results. This relative error is therefore used throughout the comparisons shown in the following section.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Holstein_lambda_0.4_V10_conv.pdf}
+\end{figure}
+\subsection{Comparisons }
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/Holstein_lambda_0.0_VVar.pdf}
@@ -78,16 +86,27 @@ The parameters of the model above are listed as follows
 \end{figure}
 \begin{figure}[!h]
 	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Holstein_lambda_0.2_Nvib_VVar.pdf}
+\end{figure}
+
+\begin{figure}[!h]
+	\centering
 	\includegraphics[width=0.8\textwidth]{figs/Holstein_lambda_0.3_VVar.pdf}
 \end{figure}
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Holstein_lambda_0.3_Nvib_VVar.pdf}
+\end{figure}
+
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{figs/Holstein_lambda_0.4_VVar.pdf}
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figs/Holstein_lambda_0.4_V10_conv.pdf}
+	\includegraphics[width=0.8\textwidth]{figs/Holstein_lambda_0.4_Nvib_VVar.pdf}
 \end{figure}
+
 
 
 \end{document}

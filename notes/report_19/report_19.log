@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  1 NOV 2023 11:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  13 NOV 2023 12:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -774,75 +774,112 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: No \author given.
 
-<figs/Holstein_lambda_0.0_VVar.pdf, id=1, 505.89pt x 289.08pt>
-File: figs/Holstein_lambda_0.0_VVar.pdf Graphic file (type pdf)
-<use figs/Holstein_lambda_0.0_VVar.pdf>
-Package pdftex.def Info: figs/Holstein_lambda_0.0_VVar.pdf  used on input line 
-73.
-(pdftex.def)             Requested size: 409.72125pt x 234.13145pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Holstein_lambda_0.2_VVar.pdf, id=2, 505.89pt x 433.62pt>
-File: figs/Holstein_lambda_0.2_VVar.pdf Graphic file (type pdf)
-<use figs/Holstein_lambda_0.2_VVar.pdf>
-Package pdftex.def Info: figs/Holstein_lambda_0.2_VVar.pdf  used on input line 
-77.
-(pdftex.def)             Requested size: 409.72125pt x 351.19719pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Holstein_lambda_0.3_VVar.pdf, id=3, 505.89pt x 433.62pt>
-File: figs/Holstein_lambda_0.3_VVar.pdf Graphic file (type pdf)
-<use figs/Holstein_lambda_0.3_VVar.pdf>
-Package pdftex.def Info: figs/Holstein_lambda_0.3_VVar.pdf  used on input line 
-81.
-(pdftex.def)             Requested size: 409.72125pt x 351.19719pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Holstein_lambda_0.4_VVar.pdf, id=4, 505.89pt x 433.62pt>
-File: figs/Holstein_lambda_0.4_VVar.pdf Graphic file (type pdf)
-<use figs/Holstein_lambda_0.4_VVar.pdf>
-Package pdftex.def Info: figs/Holstein_lambda_0.4_VVar.pdf  used on input line 
-85.
-(pdftex.def)             Requested size: 409.72125pt x 351.19719pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<figs/Holstein_lambda_0.4_V10_conv.pdf, id=5, 505.89pt x 289.08pt>
-File: figs/Holstein_lambda_0.4_V10_conv.pdf Graphic file (type pdf)
-<use figs/Holstein_lambda_0.4_V10_conv.pdf>
-Package pdftex.def Info: figs/Holstein_lambda_0.4_V10_conv.pdf  used on input l
-ine 89.
-(pdftex.def)             Requested size: 409.72125pt x 234.13145pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
 [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2 <./figs/Holstein_lambda_0.0_VVar.pdf> <./figs/Holstein_lambda_0.2_VVar.pdf
+<figs/Holstein_lambda_0.4_V10_conv.pdf, id=16, 505.89pt x 289.08pt>
+File: figs/Holstein_lambda_0.4_V10_conv.pdf Graphic file (type pdf)
+<use figs/Holstein_lambda_0.4_V10_conv.pdf>
+Package pdftex.def Info: figs/Holstein_lambda_0.4_V10_conv.pdf  used on input l
+ine 76.
+(pdftex.def)             Requested size: 409.72125pt x 234.13145pt.
+<figs/Holstein_lambda_0.0_VVar.pdf, id=17, 505.89pt x 289.08pt>
+File: figs/Holstein_lambda_0.0_VVar.pdf Graphic file (type pdf)
+<use figs/Holstein_lambda_0.0_VVar.pdf>
+Package pdftex.def Info: figs/Holstein_lambda_0.0_VVar.pdf  used on input line 
+81.
+(pdftex.def)             Requested size: 409.72125pt x 234.13145pt.
+<figs/Holstein_lambda_0.2_VVar.pdf, id=18, 505.89pt x 433.62pt>
+File: figs/Holstein_lambda_0.2_VVar.pdf Graphic file (type pdf)
+<use figs/Holstein_lambda_0.2_VVar.pdf>
+Package pdftex.def Info: figs/Holstein_lambda_0.2_VVar.pdf  used on input line 
+85.
+(pdftex.def)             Requested size: 409.72125pt x 351.19719pt.
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Holstein_lambda_0.2_V
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Holstein_lambda_0.2_Nvib_VVar.pdf, id=19, 505.89pt x 433.62pt>
+File: figs/Holstein_lambda_0.2_Nvib_VVar.pdf Graphic file (type pdf)
+<use figs/Holstein_lambda_0.2_Nvib_VVar.pdf>
+Package pdftex.def Info: figs/Holstein_lambda_0.2_Nvib_VVar.pdf  used on input 
+line 89.
+(pdftex.def)             Requested size: 409.72125pt x 351.19719pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Holstein_lambda_0.3_VVar.pdf, id=20, 505.89pt x 433.62pt>
+File: figs/Holstein_lambda_0.3_VVar.pdf Graphic file (type pdf)
+<use figs/Holstein_lambda_0.3_VVar.pdf>
+Package pdftex.def Info: figs/Holstein_lambda_0.3_VVar.pdf  used on input line 
+94.
+(pdftex.def)             Requested size: 409.72125pt x 351.19719pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Holstein_lambda_0.3_Nvib_VVar.pdf, id=21, 505.89pt x 433.62pt>
+File: figs/Holstein_lambda_0.3_Nvib_VVar.pdf Graphic file (type pdf)
+<use figs/Holstein_lambda_0.3_Nvib_VVar.pdf>
+Package pdftex.def Info: figs/Holstein_lambda_0.3_Nvib_VVar.pdf  used on input 
+line 98.
+(pdftex.def)             Requested size: 409.72125pt x 351.19719pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Holstein_lambda_0.4_VVar.pdf, id=22, 505.89pt x 433.62pt>
+File: figs/Holstein_lambda_0.4_VVar.pdf Graphic file (type pdf)
+<use figs/Holstein_lambda_0.4_VVar.pdf>
+Package pdftex.def Info: figs/Holstein_lambda_0.4_VVar.pdf  used on input line 
+103.
+(pdftex.def)             Requested size: 409.72125pt x 351.19719pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Holstein_lambda_0.4_Nvib_VVar.pdf, id=23, 505.89pt x 433.62pt>
+File: figs/Holstein_lambda_0.4_Nvib_VVar.pdf Graphic file (type pdf)
+<use figs/Holstein_lambda_0.4_Nvib_VVar.pdf>
+Package pdftex.def Info: figs/Holstein_lambda_0.4_Nvib_VVar.pdf  used on input 
+line 107.
+(pdftex.def)             Requested size: 409.72125pt x 351.19719pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2
+
+ <./figs/Holstein_lambda_0.4_V10_conv.pdf> <./figs/Holstein_lambda_0.0_VVar.pdf
+
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Holstein_lambda_0.0_V
 Var.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
 e
->] [3 <./figs/Holstein_lambda_0.3_VVar.pdf> <./figs/Holstein_lambda_0.4_VVar.pd
-f
+>] [3 <./figs/Holstein_lambda_0.2_VVar.pdf> <./figs/Holstein_lambda_0.2_Nvib_VV
+ar.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Holstein_lambda_0.4_V
-Var.pdf): PDF inclusion: multiple pdfs with page group included in a single pag
-e
->] [4 <./figs/Holstein_lambda_0.4_V10_conv.pdf>] (./report_19.aux)
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Holstein_lambda_0.2_N
+vib_VVar.pdf): PDF inclusion: multiple pdfs with page group included in a singl
+e page
+>] [4 <./figs/Holstein_lambda_0.3_VVar.pdf> <./figs/Holstein_lambda_0.3_Nvib_VV
+ar.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Holstein_lambda_0.3_N
+vib_VVar.pdf): PDF inclusion: multiple pdfs with page group included in a singl
+e page
+>] [5 <./figs/Holstein_lambda_0.4_VVar.pdf> <./figs/Holstein_lambda_0.4_Nvib_VV
+ar.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Holstein_lambda_0.4_N
+vib_VVar.pdf): PDF inclusion: multiple pdfs with page group included in a singl
+e page
+>] (./report_19.aux)
 Package logreq Info: Writing requests to 'report_19.run.xml'.
 \openout1 = `report_19.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16838 strings out of 478994
- 327337 string characters out of 5858184
- 843905 words of memory out of 5000000
- 34096 multiletter control sequences out of 15000+600000
+ 16856 strings out of 478994
+ 328135 string characters out of 5858184
+ 842905 words of memory out of 5000000
+ 34111 multiletter control sequences out of 15000+600000
  419025 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,13n,75p,1845b,1638s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -858,10 +895,10 @@ texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/t
 exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
 live/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/
 texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report_19.pdf (4 pages, 505835 bytes).
+Output written on report_19.pdf (5 pages, 775959 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
+ 240 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
