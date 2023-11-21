@@ -22,8 +22,8 @@ function Propagate(
 		  elIntegrator 	::Function,
 		  clIntegrator  ::Function,
 		  popIn 	= zeros(1),
-		  pathIn    	= "")
-
+		  pathIn    	= "",
+		  propStp	= 0)
 
 
 	X_l 	    	= zeros(HamPar.N,LengthData)
@@ -63,12 +63,16 @@ function Propagate(
 			curp1_i[:,:,i] .= read(fid["Curp1$(i)"]) 
 			curp2_i[:,:,i] .= read(fid["Curp2$(i)"]) 
 		end
+		tInit = propStp*numstep + 1
+		tEnd  = (tInit-1) + numstep
 		close(fid)
 	else
 		for i in 1:nPoles
 			curp1_i[:,:,i] = CurrentInit_PFree(hcen_i,GammaT,chi1[i],kappa[i],beta,Gamma1)
 			curp2_i[:,:,i] = CurrentInit_PFree(hcen_i,GammaT,chi2[i],kappa[i],beta,Gamma2)
 		end
+		tInit = 1
+		tEnd  = numstep
 	end
 
 	cur1_i		= CurrentMatrix(rho0,Gamma1,curp1_i)
@@ -84,14 +88,15 @@ function Propagate(
 	chi1		= V/2 .+ 1im .* xi ./beta 						# Overwrite previous chis by the new one WITH voltage drop
 	chi2		= -V/2 .+ 1im .* xi ./beta
 	vind 		= 1	
-	for i in 1:numstep
+	
+	for i in tInit:tEnd
 				
 		HamPar.X,HamPar.P = clIntegrator(HamPar,rho_i,dt)
 		cur1_i,cur2_i = elIntegrator(shx,shy,nPoles,beta,hcen_i,Gamma1,Gamma2,GammaT,kappa,chi1,chi2,curp1_i,curp2_i,cur_i,rho_i,dt)
 		hcen_i  = HamPar.Hamiltonian(HamPar)*(1+0.0*1im)	
 #		conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,loc_cur_l,vind = SaveOutput(HamPar,cur1_i,cur2_i,conv_l,pop_l,pop_es_l,rho_i,hcen_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,X_l,P_l,mom_el,path,vind)
 		conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,vind = SaveOutput(HamPar,cur1_i,cur2_i,conv_l,pop_l,pop_es_l,rho_i,hcen_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,path,vind)
-		if i == numstep 
+		if i == tEnd 
 			fil = h5open("$(path)_final_Quantities","w")
 			fil["Rho"] = rho_i
 			for j in 1:nPoles
