@@ -1,4 +1,4 @@
-# Parameters of run on 2023-11-28T16:56:05.464 
+# Parameters of run on 2023-12-04T14:14:59.432 
 # The purpose of this run is the following: Test of Guo model.
 # --------------------PARAMS----------------------------
 dt = 0.00125
