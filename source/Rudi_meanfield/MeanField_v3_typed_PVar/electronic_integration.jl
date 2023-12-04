@@ -22,8 +22,8 @@ function RK4_VNL!(shx	::Int64,
 	idt::ComplexF64 = -1im*dt		
 
 	id  	= Matrix(I,size(rho_i))
-	rhoA	= 1/4 .* (id .- 2 .* rho_i)
-	vnl_b   = cur_i .+ conj(transpose(cur_i))		
+	rhoA	= 1/4 .* (id .- 2 .* rho_i)# vorfaktor alpha...? 
+	vnl_b   = cur_i .+ conj(transpose(cur_i)) #cur_i = strommatix  = Pi_i		
 
 	# SLOWEST and MOST MEMORY USAGE	
 #	vn1	= dt .* VNeumannL_v2(rho_i,hcen_i,vnl_b)
@@ -32,7 +32,9 @@ function RK4_VNL!(shx	::Int64,
 #	vn4     = dt .* VNeumannL_v2(rho_i .+ vn1 .- vn2 .+ vn3,hcen_i,vnl_b)
 
 	# FASTEST AND SMALLEST MEMORY USAGE
-	vn1	= dt .* (-1im .* (hcen_i * rho_i .- rho_i * hcen_i) .+ vnl_b)
+	
+	#butcher tableau verfahren ??? mit 4 steps--> rho_i
+	vn1	= dt .* (-1im .* (hcen_i * rho_i .- rho_i * hcen_i) .+ vnl_b) # droh
 	hv1	= hcen_i * vn1 .- vn1 * hcen_i
 	vn2	= vn1 .+ idt/3 .* hv1
 	hv2 	= hcen_i * vn2 .- vn2 * hcen_i    
@@ -76,9 +78,9 @@ function RK4_VNL!(shx	::Int64,
                 curpBcu2= curpB * cu2
                 cu3     = cu1 .- 1/3*idt .* curpBcu1 .+ idt .* curpBcu2
                 cu4     = cu1 .+ idt .* curpBcu1 .- idt .* curpBcu2 .+ idt .* curpB * cu3
-		
+		"equilibrium"
 		@views curp2_i[:,:,j] = curp0 .+ 1/8 .* (cu1 .+ 3 .* cu2 .+ 3 .* cu3 .+ cu4)
-		curp2_c_sum .+= curp2_i[:,:,j]
+		curp2_c_sum .+= curp2_i[:,:,j] #  ist diese Variable und curp1_c_sum nicht identisch?
 	end
 	
         @views cur1_c   = rhoA*Gamma1 .+ curp1_c_sum

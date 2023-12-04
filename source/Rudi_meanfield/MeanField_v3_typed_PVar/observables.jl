@@ -21,7 +21,7 @@ function DensityFEx(lx  ::Int,
 end
 
 # Observables
-function ConvergenceInfo(HamPar::Any,
+function ConvergenceInfo(HamPar::Any,# prüft Energieerhaltung
 			rho::Array,
 			H::Array)::Array{Float64}
 	system_energy::ComplexF64 = tr(rho*H)
@@ -47,25 +47,15 @@ end
 
 
 function Populations(rho::Array)::Array
-	return [real(rho[i,i]) for i in 1:size(rho)[1]]
+	return [real(rho[i,i]) for i in 1:size(rho)[1]] # diagonaleintrage realteil
 end
 
-function PopulationsES(rho::Array,H::Array)::Array
+function PopulationsES(rho::Array,H::Array)::Array # populatiobns im energieeigenraum
 	ev = eigvecs(H)
-	@views rho_t = ev' * rho * ev
+	@views rho_t = ev' * rho * ev # transformiere dichtematrix mit unitärer Energieeigenraum matrix
         return [real(rho_t[i,i]) for i in 1:size(rho_t)[1]]
 end
-
-function MomentumElectrons(rho::Array)::Array
-	Q = zeros(size(rho))*(1+0*1im)
-	N = size(rho)[1]
-	for i in 1:N-2
-		for j in 1:N
-			Q[i,j] = -1im * (rho[i+2,j] - rho[i,j])
-		end
-	end
-	return [real(abs(Q[k,k])) for k in 1:N-2] 
-end
+# mom_el löschen
 
 function LocalCurrent(rho::Array,H::Array)::Array
 	N = Int(size(rho)[1]/2)
@@ -92,7 +82,7 @@ function VNeumannL_v2(rho::Array,H::Array,B::Array)::Array
 	return -1im .* ( H*rho .- rho*H) .+ B
 end
 
-# Pade decomposition
+# Pade decomposition of  Fermi function
 
 function B(m::Int64)::Float64
         return 2.0*m-1

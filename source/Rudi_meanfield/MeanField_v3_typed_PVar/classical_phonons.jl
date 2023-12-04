@@ -47,25 +47,32 @@ end
 function HigherOrderSymplecticStep(HamPar::Any,rho::Array{ComplexF64},dt::Float64,coeffs::Array)::Tuple{Array{Float64}, Array{Float64}}
 	Pn = similar(HamPar.P)
         Xn = similar(HamPar.X)
-        for i in 1:HamPar.N
-	    if HamPar.HamiltonStr == "Fransson"
-	            H_red = FranssonHamiltonian_Mode_v2(HamPar,i)
+        for i in 1:HamPar.N 
+        # i ist die jeweils betrachtete Schwingungsmode nach der für den entsprechenden Impuls Pn abgeleitet wird
+	   #= if HamPar.HamiltonStr == "Fransson"
+ # p^{.}_i = -del H/del x_i = -del(H_vib + H_elvib)/ del x_i= - X_i - g_coupling/sqrt(2)*  c_i^degga c_j
+	            H_red = FranssonHamiltonian_Mode_v2(HamPar,i) # H:_red steht für Ableitung 
 	    elseif HamPar.HamiltonStr == "Holstein"
 		    H_red = Holstein_Mode_v2(HamPar,i)
-            end
+	    elseif HamPar.HamiltonStr == "Guo"
+	   	    H_red = Guo_Mode_v2(HamPar, i)=#
+           # end
+            H_red = Guo_Mode_v2(HamPar, i)
             derv  = tr(@views rho*H_red)
 	    Xn_c = HamPar.X[i]
 	    Pn_c = HamPar.P[i]
             for j in 1:length(coeffs[1])
+            		# dp = - dt * < dH/dx> = - dt * derv(H_elvib) + X
                     Pn_c += real(-coeffs[2][j]*dt*(derv + Xn_c))
+                    # dx =  dt * < dH/dp> =  dt * P
                     Xn_c += real(coeffs[1][j]*dt*Pn_c)
             end
 	    Pn[i] = Pn_c
 	    Xn[i] = Xn_c
         end
-	return Xn,Pn
+	return Xn,Pn # gibt die displacements X und P aus, welche im elvib Hamiltonian vorkommen.
 end
-
+# folgende Funktionen führen alle die "HigherORderSymplecticStep" aus mit verschieden langer Taylorentwicklung der Koeffizienten.
 function SymplecticEulerStep(HamPar::Any,rho::Array,dt::Float64)
         coeffs = [[1.0],[1.0]]
         HigherOrderSymplecticStep(HamPar,rho,dt,coeffs)
@@ -98,7 +105,7 @@ end
 function X_RHS_RK(P::Number)::Number
 	return P
 end
-function RK4_intertwined(HamPar,rho,dt)	
+function RK4_intertwined(HamPar,rho,dt)	# ?????????die Funktion wird nicht benutzt oder ? sonst ändern
 	Pn = []
 	Xn = []
 	for i in 1:HamPar.N
@@ -119,7 +126,7 @@ function RK4_intertwined(HamPar,rho,dt)
 	end
 	return Xn,Pn		
 end
-function RK4_sequential(HamPar::Any,rho::Array,dt::Float64)::Tuple
+function RK4_sequential(HamPar::Any,rho::Array,dt::Float64)::Tuple # ?????????????same here
         Pn = []
         Xn = []
         for i in 1:HamPar.N
