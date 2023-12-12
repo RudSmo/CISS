@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  8 NOV 2023 15:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.7.29)  24 NOV 2023 16:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -777,16 +777,114 @@ LaTeX Warning: No \author given.
 [1
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-(./report_20.aux)
+<figs/Peierls_LVar_V60.pdf, id=18, 505.89pt x 361.35pt>
+File: figs/Peierls_LVar_V60.pdf Graphic file (type pdf)
+<use figs/Peierls_LVar_V60.pdf>
+Package pdftex.def Info: figs/Peierls_LVar_V60.pdf  used on input line 85.
+(pdftex.def)             Requested size: 409.72125pt x 292.66432pt.
+<figs/Peierls_LVar_V60_short.pdf, id=19, 505.89pt x 361.35pt>
+File: figs/Peierls_LVar_V60_short.pdf Graphic file (type pdf)
+<use figs/Peierls_LVar_V60_short.pdf>
+Package pdftex.def Info: figs/Peierls_LVar_V60_short.pdf  used on input line 86
+.
+(pdftex.def)             Requested size: 409.72125pt x 292.66432pt.
+
+[2
+
+ <./figs/Peierls_LVar_V60.pdf> <./figs/Peierls_LVar_V60_short.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_LVar_V60_shor
+t.pdf): PDF inclusion: multiple pdfs with page group included in a single page
+>]
+<figs/Peierls_LVar_V60_tamen_norm.pdf, id=66, 505.89pt x 361.35pt>
+File: figs/Peierls_LVar_V60_tamen_norm.pdf Graphic file (type pdf)
+<use figs/Peierls_LVar_V60_tamen_norm.pdf>
+Package pdftex.def Info: figs/Peierls_LVar_V60_tamen_norm.pdf  used on input li
+ne 93.
+(pdftex.def)             Requested size: 409.72125pt x 292.66432pt.
+<figs/Peierls_LVar_V60_tamen_rank.pdf, id=67, 505.89pt x 361.35pt>
+File: figs/Peierls_LVar_V60_tamen_rank.pdf Graphic file (type pdf)
+<use figs/Peierls_LVar_V60_tamen_rank.pdf>
+Package pdftex.def Info: figs/Peierls_LVar_V60_tamen_rank.pdf  used on input li
+ne 94.
+(pdftex.def)             Requested size: 409.72125pt x 292.66432pt.
+<figs/Peierls_LVar_V60_tamen_rank_dist.pdf, id=68, 505.89pt x 361.35pt>
+File: figs/Peierls_LVar_V60_tamen_rank_dist.pdf Graphic file (type pdf)
+<use figs/Peierls_LVar_V60_tamen_rank_dist.pdf>
+Package pdftex.def Info: figs/Peierls_LVar_V60_tamen_rank_dist.pdf  used on inp
+ut line 99.
+(pdftex.def)             Requested size: 409.72125pt x 292.66432pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/Peierls_rank_ttheom_tamen_N2.png, id=69, 462.528pt x 346.896pt>
+File: figs/Peierls_rank_ttheom_tamen_N2.png Graphic file (type png)
+<use figs/Peierls_rank_ttheom_tamen_N2.png>
+Package pdftex.def Info: figs/Peierls_rank_ttheom_tamen_N2.png  used on input l
+ine 104.
+(pdftex.def)             Requested size: 409.72125pt x 307.3073pt.
+<figs/Peierls_rank_ttheom_tamen_N3.png, id=71, 462.528pt x 346.896pt>
+File: figs/Peierls_rank_ttheom_tamen_N3.png Graphic file (type png)
+<use figs/Peierls_rank_ttheom_tamen_N3.png>
+Package pdftex.def Info: figs/Peierls_rank_ttheom_tamen_N3.png  used on input l
+ine 105.
+(pdftex.def)             Requested size: 409.72125pt x 307.3073pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[3
+
+ <./figs/Peierls_LVar_V60_tamen_norm.pdf> <./figs/Peierls_LVar_V60_tamen_rank.p
+df
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figs/Peierls_LVar_V60_tame
+n_rank.pdf): PDF inclusion: multiple pdfs with page group included in a single 
+page
+>] [4 <./figs/Peierls_LVar_V60_tamen_rank_dist.pdf>] [5 <./figs/Peierls_rank_tt
+heom_tamen_N2.png> <./figs/Peierls_rank_ttheom_tamen_N3.png>]
+<figs/Spinfull_Peierls_short.png, id=132, 624.3325pt x 473.77pt>
+File: figs/Spinfull_Peierls_short.png Graphic file (type png)
+<use figs/Spinfull_Peierls_short.png>
+Package pdftex.def Info: figs/Spinfull_Peierls_short.png  used on input line 11
+9.
+(pdftex.def)             Requested size: 307.2929pt x 233.19032pt.
+<figs/Spinfull_Peierls_long.png, id=133, 624.3325pt x 473.77pt>
+File: figs/Spinfull_Peierls_long.png Graphic file (type png)
+<use figs/Spinfull_Peierls_long.png>
+Package pdftex.def Info: figs/Spinfull_Peierls_long.png  used on input line 120
+.
+(pdftex.def)             Requested size: 307.2929pt x 233.19032pt.
+<figs/Spinfull_Peierls_current_comp.png, id=134, 629.35126pt x 473.77pt>
+File: figs/Spinfull_Peierls_current_comp.png Graphic file (type png)
+<use figs/Spinfull_Peierls_current_comp.png>
+Package pdftex.def Info: figs/Spinfull_Peierls_current_comp.png  used on input 
+line 126.
+(pdftex.def)             Requested size: 409.72125pt x 308.4312pt.
+<figs/Spinfull_Peierls_bonddim_comp.png, id=135, 629.35126pt x 473.77pt>
+File: figs/Spinfull_Peierls_bonddim_comp.png Graphic file (type png)
+<use figs/Spinfull_Peierls_bonddim_comp.png>
+Package pdftex.def Info: figs/Spinfull_Peierls_bonddim_comp.png  used on input 
+line 127.
+(pdftex.def)             Requested size: 409.72125pt x 308.4312pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[6
+
+ <./figs/Spinfull_Peierls_short.png> <./figs/Spinfull_Peierls_long.png>]
+[7 <./figs/Spinfull_Peierls_current_comp.png> <./figs/Spinfull_Peierls_bonddim_
+comp.png>] (./report_20.aux)
 Package logreq Info: Writing requests to 'report_20.run.xml'.
 \openout1 = `report_20.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 16807 strings out of 478994
- 326128 string characters out of 5858184
- 844905 words of memory out of 5000000
- 34071 multiletter control sequences out of 15000+600000
+ 16876 strings out of 478994
+ 328709 string characters out of 5858184
+ 845905 words of memory out of 5000000
+ 34127 multiletter control sequences out of 15000+600000
  419025 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  71i,13n,75p,1845b,1638s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -798,13 +896,17 @@ sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr
 /local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
 ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/loc
 al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/tex
-live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on report_20.pdf (1 page, 108769 bytes).
+/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
+ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/
+2021/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report_20.pdf (7 pages, 862628 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 37 compressed objects within 1 object stream
+ 190 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

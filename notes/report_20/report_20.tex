@@ -36,7 +36,7 @@
 	top=15mm,
 }
 \begin{document}
-\title{TTHEOM in the Peierls model: Comparisons}
+\title{Transport through spinless Peierls model with tAMEn algorithm}
 \maketitle
 
 \section{Model}
@@ -44,7 +44,7 @@ The model is a junction, split into system, bath and interaction terms
 \begin{equation}
 	H = H_S + H_B + H_I
 \end{equation}  
-The system consists of a chain of electronic levels with bare energy $\varepsilon_0$ and nearest-neighbor electronic hopping $t_0$ and Peierls-type electron-vibrational coupling $\lambda$ to harmonic oscillator modes with frequency $\omega_0$
+The system consists of a chain of electronic levels with bare energy $\varepsilon_0$ and nearest-neighbor electronic hopping $t_0$ and Peierls-type electron-vibrational coupling $t_1$ to harmonic oscillator modes with frequency $\omega_0$
 \begin{equation}
 	H_S = \varepsilon_0 \sum_j  d^\dagger_j d_j^\pdagger + \omega_0 \sum_j a_j^\dagger a_j^\pdagger + \sum_{j} (d_j^\dagger d_{j+1} + \mathrm{h.c.})( -t_0 + t_1(a_j^\dagger + a_j)).
 \end{equation}
@@ -60,7 +60,7 @@ where $N$ is the number of electronic sites. The molecule-lead coupling is chara
 \begin{equation}
 	\Gamma_\ell(\varepsilon) = 2\pi\sum_{k_\ell} V_{k_\ell}V_{k_\ell}^* \delta(\varepsilon-\varepsilon_{k_\ell}) \equiv \mathrm{const},
 \end{equation}
-which is assumed to be constant (wide-band limit).
+which is assumed to be constant (wide-band limit). Electrons are assumed spin-less in this model.
 \section{Parameters}
 The parameters of the model above are listed as follows
 \begin{align*}
@@ -72,6 +72,10 @@ The parameters of the model above are listed as follows
 	k_B T_\ell &= \SI{0.026}{\electronvolt}\\ 
 	W&=\mathrm{WBL}.
 \end{align*}
+In Yalings code for $N=2$ sites, I added two dummy indices at each side of the MPS and the maximal rank is $140$. For the same parameters and without adding dummy indices at the ends of the MPS, the results are much worse, so therefore they are not shown here. 
+For $N=3$, the maximum rank is $120$. 
+The number of vibrational basis states is $20$ for both system sizes. 
+Using the tAMEn algorithm for the system with $N=3$, the runtime was approximately two days for propagating 20000 time steps.
 \clearpage
 
 \section{Results}
@@ -97,9 +101,31 @@ The parameters of the model above are listed as follows
 \end{figure}
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figs/Peierls_rank_ttheom.png}
-	\caption{Rank distribution across the MPS within the TTHEOM calculations.}
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_rank_ttheom_tamen_N2.png}
+	\includegraphics[width=0.8\textwidth]{figs/Peierls_rank_ttheom_tamen_N3.png}
+	\caption{Rank distribution across the MPS within the TTHEOM and for tAMEn (at $t=\SI{1000}{\femto\second}$.) calculations. }
 \end{figure}
+\clearpage
+\section{Spinfull models}
+\subsection{Model}
+The system consists of a chain of electronic levels with bare energy $\varepsilon_0$ and nearest-neighbor electronic hopping $t_0$ and Peierls-type electron-vibrational coupling $\lambda$ to harmonic oscillator modes with frequency $\omega_0$
+\begin{equation}
+	H_S = \varepsilon_0 \sum_{j\sigma}  d^\dagger_{j\sigma} d_{j\sigma}^\pdagger + \omega_0 \sum_j a_j^\dagger a_j^\pdagger + \sum_{j\sigma} (d_{j\sigma}^\dagger d_{j+1,\sigma} + \mathrm{h.c.})( -t_0 + t_1(a_j^\dagger + a_j)).
+\end{equation}
+\subsection{Results}
+We consider the same parameters as in the spin-less model investigated in the previous section. The system size is $N=2$.  
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figs/Spinfull_Peierls_short.png}
+	\includegraphics[width=0.6\textwidth]{figs/Spinfull_Peierls_long.png}
+	\caption{Current (purple) and mean rank (green) in the spinfull Peierls model with $N=2$ sites.}
+\end{figure}
+As suggested by Raffaele, if the rank increases quickly, a smaller error tolerance $\mathrm{tol}_\mathrm{loc}=\frac{\mathrm{tol}}{\sqrt{n_\mathrm{swp} }\mathrm{res\_damp}}$ for the iterative solution (BiCGSTAB is used) of the local equations have to be used. There, $\mathrm{tol}=10^{-3}$ is the error tolerance, $n_\mathrm{swp}=20$ is the number of tAMEn sweeps (from left to right, and then back is one full sweep, similar to DMRG),  and $\mathrm{res\_damp}=10$. Below are shown comparisons with $\mathrm{res\_damp}=100$. It seems to help to converge the results in the problematic time range around $\sim \SI{100}{\femto\second}$.
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\textwidth]{figs/Spinfull_Peierls_current_comp.png}	
+	\includegraphics[width=0.8\textwidth]{figs/Spinfull_Peierls_bonddim_comp.png}
+\end{figure}   
 
 
 \clearpage

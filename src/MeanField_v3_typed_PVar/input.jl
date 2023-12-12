@@ -11,15 +11,15 @@ using DelimitedFiles
 
 
 # Hamiltonian Parameters
-num_laps = 2
-num_ions = 4
+num_laps = 1
+num_ions = 2
 N = num_laps * num_ions
 ws  = 0.002*ones(N)
 Hop = 0.04
 T0  = Hop/ws[1]  # in eV
 t0  = -T0
-eu  = -6*T0
-ed  = -6*T0
+eu  = 0.0
+ed  = 0.0
 E   = [eu,ed]
 gPh = zeros(2)
 a   = 1.0
@@ -31,7 +31,7 @@ model = FranssonHamiltonian
 modelStr = "Fransson"
 # Simulation Parameters
 dt = 0.0002
-tend = 50
+tend = 10
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -78,7 +78,7 @@ tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])  
 tR = tl * ones(2)
 
-v = 0.0
+v = 75
 V = v * 0.2 * T0
 nPoles = 15
 beta = ws[1]/0.025 
