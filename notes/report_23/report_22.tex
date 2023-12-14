@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=15mm,
+	right=15mm,
+	top=15mm,
+}
+\begin{document}
+\title{Quantum classical correlated electron-ion dynamics}
+\maketitle
+
+\section{Truncated classical second-order moment expansion}
+Consider a system of electrons and vibrations described by the Hamiltonian
+\begin{equation}
+	\hat{H} = \hat{H}_\mathrm{el} + \hat{H}_\mathrm{vib}(\hat{X}) + \sum_\nu \hat{F}_\nu \hat{X}_\nu \equiv \hat{H}_\mathrm{el} + \hat{H}(\hat{X}).
+\end{equation} 
+One starts with the perturbative expansion of the position and momentum of the nuclear wavepacket around its means 
+\begin{equation}
+	\hat{X} = \hat{\bar{X}} + \Delta \hat{X}, \qquad \hat{P} = \hat{\bar{P}} + \Delta \hat{P},
+\end{equation}
+also known as the small amplitude expansion in the literature \cite{horsfield2004beyond}. This expansion gives the Hamiltonian
+\begin{align}
+	\hat{H}(\hat{X}) &= \hat{H}(\hat{\bar{X}}) + \sum_\nu \partial_{\hat{\bar{X}}_\nu} \hat{H}(\hat{\bar{X}}) \Delta \hat{X}_\nu + \frac{1}{2} \sum_{\nu,\nu'} \partial^2_{\hat{\bar{X}}_{\nu} \hat{\bar{X}}_{\nu'}} \hat{H}(\hat{\bar{X}}) \Delta \hat{X}_\nu \Delta \hat{X}_{\nu'} + \frac{1}{3!} \sum_{\nu,\nu',\nu''} \partial^3_{\hat{\bar{X}}_{\nu}\hat{\bar{X}}_{\nu'}\hat{\bar{X}}_{\nu''}} \hat{H}(\hat{\bar{X}}) \Delta \hat{X}_\nu \Delta \hat{X}_{\nu'}\Delta \hat{X}_{\nu''}+ \dots \\
+	&\equiv \hat{H}(\hat{\bar{X}}) + \hat{H}(\Delta \hat{X})
+\end{align}
+To make the solution tractable, we truncate the expansion at the second order, as has been discussed in Ref.~\cite{horsfield2004beyond}. 
+The equation of motion is given by the Ehrenfest theorem for the many-body Hamiltonian $\hat{H}$ and many-body density matrix $\hat{\rho}$.
+To reduce the complexity of the problem to a one-body electronic problem, the idea is to treat zero, first, and second-order moments of the nuclear wavepacket classically, i.e., by mapping the $n$th moment operators  
+$\hat{\mu}^{(n)}$ to their corresponding classical quantities $\langle \hat{\mu}^{(n)}\rangle =  \mu^{(n)}$ for all three moments. Within this approximation, correlations of the second order moment are neglected, i.e.,
+\begin{equation}
+	\langle \Delta \hat{X}_\alpha \Delta \hat{X}_\beta \rangle = \langle \Delta \hat{X}_\alpha\rangle \langle \Delta \hat{X}_\beta\rangle= \Delta X_\alpha\Delta X_\beta.
+\end{equation} 
+Second order moments are treated as independent (classical) quantities.
+The second-order expansion combined with the Ehrenfest approximation of the higher order moments yields the following system of nonlinear equations of motion
+\begin{align*}
+	\frac{\dif \rho }{\dif t} &= -i[\hat{H}(X),\rho]\\
+	\frac{\dif \bar{X}_\alpha }{\dif t} &= \left\langle\frac{\partial \hat{H}(\bar{X})}{\partial \bar{P}_\alpha} \right\rangle \\
+	\frac{\dif \bar{P}_\alpha }{\dif t} &= -\left\langle\frac{\partial \hat{H}(\bar{X})}{\partial \bar{X}_\alpha} \right\rangle \\
+	\frac{\dif \Delta X_\alpha }{\dif t} &= \left\langle\frac{\partial \hat{H}(\Delta X)}{\partial \Delta P_\alpha} \right\rangle \\
+	\frac{\dif \Delta P_\alpha }{\dif t} &= -\left\langle\frac{\partial \hat{H}(\Delta X)}{\partial \Delta X_\alpha} \right\rangle \\	
+	\frac{\dif \Delta X_\alpha \Delta X_\beta}{\dif t} &=  \frac{\dif \Delta X_\alpha}{\dif t}\Delta X_\beta + \Delta X_\alpha\frac{\dif \Delta X_\beta}{\dif t}\\
+	\frac{\dif \Delta X_\alpha \Delta P_\beta}{\dif t} &=  \frac{\dif \Delta X_\alpha}{\dif t}\Delta P_\beta + \Delta X_\alpha\frac{\dif \Delta P_\beta}{\dif t}\\
+	\frac{\dif \Delta P_\alpha \Delta X_\beta}{\dif t} &=  \frac{\dif \Delta P_\alpha}{\dif t}\Delta X_\beta + \Delta P_\alpha\frac{\dif \Delta X_\beta}{\dif t}\\
+	\frac{\dif \Delta P_\alpha \Delta P_\beta}{\dif t} &=  \frac{\dif \Delta P_\alpha}{\dif t}\Delta P_\beta + \Delta P_\alpha\frac{\dif \Delta P_\beta}{\dif t}.
+\end{align*}
+Here, $\rho$ is the one-body electronic density matrix, $\hat{H}(X)$ is the one-body Hamiltonian within the second-order moment expansion in Ehrenfest approximation. $X$ stands for the three moments, $\bar{X}, \Delta X,$ $\Delta X_\alpha \Delta X_\beta$. The equations of motion for the zeroth and first moment are given by their corresponding Ehrenfest equation, whereas in the equation of motion for the second order moments the mean-field approximation is used. 
+\end{document}
+
+

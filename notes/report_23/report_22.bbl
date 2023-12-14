@@ -1,0 +1,69 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{horsfield2004beyond}{article}{}
+    \name{author}{5}{}{%
+      {{hash=HAP}{%
+         family={Horsfield},
+         familyi={H\bibinitperiod},
+         given={Andrew\bibnamedelima P},
+         giveni={A\bibinitperiod\bibinitdelim P\bibinitperiod},
+      }}%
+      {{hash=BD}{%
+         family={Bowler},
+         familyi={B\bibinitperiod},
+         given={DR},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=FA}{%
+         family={Fisher},
+         familyi={F\bibinitperiod},
+         given={AJ},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=TTN}{%
+         family={Todorov},
+         familyi={T\bibinitperiod},
+         given={Tchavdar\bibnamedelima N},
+         giveni={T\bibinitperiod\bibinitdelim N\bibinitperiod},
+      }}%
+      {{hash=SCG}{%
+         family={S{\'a}nchez},
+         familyi={S\bibinitperiod},
+         given={Cristi{\'a}n\bibnamedelima G},
+         giveni={C\bibinitperiod\bibinitdelim G\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {IOP Publishing}%
+    }
+    \strng{namehash}{HAP+1}
+    \strng{fullhash}{HAPBDFATTNSCG1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{46}
+    \field{pages}{8251}
+    \field{title}{Beyond Ehrenfest: correlated non-adiabatic molecular
+  dynamics}
+    \field{volume}{16}
+    \field{journaltitle}{Journal of Physics: Condensed Matter}
+    \field{year}{2004}
+  \endentry
+\enddatalist
+\endinput
