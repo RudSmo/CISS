@@ -40,7 +40,7 @@ function Propagate(
 		pop_l    = zeros(2*HamPar.N,LengthData)
 		pop_es_l = zeros(2*HamPar.N,LengthData)
  #hampar.hamiltonian how does it choose the correct one. 
-		hcen_i      	= HamPar.Hamiltonian(HamPar)*(1. +0.0*1im)
+		hcen_i      	= HamPar.Hamiltonian(HamPar)*(1 +0.0*1im)
 		Gamma1,Gamma2 	= GammaMatrices1d(HamPar.N,tL,tR)
 		GammaT		= Gamma1+Gamma2
 		tim	   	= zeros(LengthData)

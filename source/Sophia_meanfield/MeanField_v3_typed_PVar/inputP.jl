@@ -14,10 +14,10 @@ using DelimitedFiles
 
 # Rudis Hamiltonian Parameters
 num_laps = 1
-num_ions =2
+num_ions =1
 N =2* num_laps * num_ions # total number of sites in both chains --> * 2
 ws  = 0.02*ones(N)
-Hop = 0.0
+Hop = 0.1
 T0  = Hop/ws[1]  # in eV
 t0  = -T0
 eu  = 0*T0
@@ -45,8 +45,8 @@ model = H_total_hampar
 modelStr = "Guo"
 
 # Simulation Parameters
-dt = 0.001/T0
-tend = 20/T0 # tend davor war 18 /T0 und hat 31 sec gebraucht
+dt = 0.0001/T0
+tend = 40/T0 # tend davor war 18 /T0 und hat 31 sec gebraucht
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -85,7 +85,7 @@ tl = 0#T0*10
 tL = tl * (ones(2) .+ P * [1,-1])
 tR = tl * ones(2)
 V= 0.
-nPoles = 1
+nPoles = 2
 beta = ws[1]/0.025 
 # hampar habe ich auch hier angepasst
 HamPar = HamiltonianParams(
@@ -145,10 +145,10 @@ for ka in 1:num_avg # num_avg ist Anzahl propagationen für gleiche Zeit zum ave
         if initProp
                 Lauf = 0
 
-            rhoIn = "pure"
+                rhoIn = "pure"
              #   rhoIn = "equilibrium"
-            phIn = "TDSCF"
-        #        phIn = "Wigner"
+                phIn = "TDSCF"
+        #	phIn = "Wigner"
                 pathIn = ""
         else
                 Lauf = 1

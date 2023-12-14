@@ -1,7 +1,7 @@
 mutable struct HamiltonianParams
 
 
-	onsight_e::Array{Float64}
+    onsight_e::Array{Float64}
     thopping::Array{Float64}
     lambda::Float64
     t_so::Float64
