@@ -54,7 +54,7 @@ function HigherOrderSymplecticStep(HamPar::Any,rho::Array{ComplexF64},dt::Float6
     Xn_c = HamPar.X[i]
 	    Pn_c = HamPar.P[i]
              for j in 1:length(coeffs[1])
-            		# dp = - dt * < dH/dx> = - dt * derv(H_elvib) + X
+            		#this line shows what is implemented below: dp = - dt * < dh/dx> = - dt * derv(h_elvib) + x
                     Pn_c += real(-coeffs[2][j]*dt*(derv + Xn_c))
                     # dx =  dt * < dH/dp> =  dt * P
                     Xn_c += real(coeffs[1][j]*dt*Pn_c)

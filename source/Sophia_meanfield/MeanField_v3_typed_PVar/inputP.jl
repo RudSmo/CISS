@@ -46,7 +46,7 @@ modelStr = "Guo"
 
 # Simulation Parameters
 dt = 0.0001/T0
-tend = 40/T0 # tend davor war 18 /T0 und hat 31 sec gebraucht
+tend = 3*dt#40/T0 # tend davor war 18 /T0 und hat 31 sec gebraucht
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -118,7 +118,7 @@ HamPar = HamiltonianParams(
 
 
 version = 0
-path = "data$(version)M" # sd347@tcmp02:~/Bachelorarbeit/code/CISS/data
+path = "data$(version)M_test_g" # sd347@tcmp02:~/Bachelorarbeit/code/CISS/data
 if !isdir(path)
         mkpath(path)
 end
