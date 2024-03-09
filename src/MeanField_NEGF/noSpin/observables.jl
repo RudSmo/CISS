@@ -4,7 +4,7 @@ include("auxiliary.jl")
 using .NEGF
 using .Auxiliary
 using LinearAlgebra
-export SampleWigner,DOS, LB_CurrentV, LB_TransmissionE, LB_LocalCurrent, LB_LocalCurrentV
+export SampleWigner,DOS,LB_Current, LB_CurrentV, LB_TransmissionE, LB_LocalCurrent, LB_LocalCurrentV
 
 function SampleWigner(beta,w,version)
     """
