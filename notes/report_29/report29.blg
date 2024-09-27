@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: report29.aux
+The style file: biblatex.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: report29-blx.bib
+Database file #2: bib.bib
+Biblatex version: 3.16
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 2 entries,
+            6393 wiz_defined-function locations,
+            1207 strings with 9117 characters,
+and the built_in function-call counts, 3704 in all, are:
+= -- 183
+> -- 87
+< -- 26
++ -- 66
+- -- 28
+* -- 117
+:= -- 424
+add.period$ -- 0
+call.type$ -- 2
+change.case$ -- 20
+chr.to.int$ -- 42
+cite$ -- 2
+duplicate$ -- 282
+empty$ -- 404
+format.name$ -- 1
+if$ -- 839
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 0
+newline$ -- 33
+num.names$ -- 19
+pop$ -- 360
+preamble$ -- 1
+purify$ -- 20
+quote$ -- 0
+skip$ -- 189
+stack$ -- 0
+substring$ -- 270
+swap$ -- 101
+text.length$ -- 29
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 56
+warning$ -- 0
+while$ -- 68
+width$ -- 0
+write$ -- 32

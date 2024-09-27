@@ -32,7 +32,7 @@ modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.0003
-tend = 1000
+tend = 100
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -135,6 +135,7 @@ for ka in 1:num_avg
 #    HamPar.X = xnIn
 #    HamPar.P = pnIn
      
-    @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,elIntegrator,clIntegrator,popElIn)
+#    @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,rhoIn,elIntegrator,clIntegrator,popElIn)
+    @timev Propagate(HamPar,dt,numstep,tL,tR,beta,nPoles,V,dataname2,elIntegrator,clIntegrator,initProp,rhoIn,popElIn,pathIn,propStp)
     Average(ka,dataname1,num_avg)
 end

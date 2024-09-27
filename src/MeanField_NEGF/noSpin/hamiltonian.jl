@@ -48,8 +48,8 @@ end
 function Hopping_A_nn(N,t)
     Hh = zeros(2*N,2*N)
     for i in 1:2*N-2
-        Hh[i,i+2] = -t
-        Hh[i+2,i] = -t
+        Hh[i,i+2] = t
+        Hh[i+2,i] = t
     end
     return Hh
 end
@@ -82,8 +82,8 @@ function Holstein_NN(N,tph,ws,qs)
     H = zeros(2*N,2*N)
     k = 1
     for i in 1:2*N-2
-        H[i,i+2] = -tph * sqrt(2*ws[k])*qs[k]  
-        H[i+2,i] = -tph * sqrt(2*ws[k])*qs[k]  
+        H[i,i+2] = tph * qs[k]/sqrt(2)  
+        H[i+2,i] = tph * qs[k]/sqrt(2)  
         if i % 2 == 0
             k += 1
         end
@@ -106,7 +106,7 @@ function Holstein_SOC(N,tsoph,a,c,num_laps,ws,qs)
         dj2 = rjrj2/absv(rjrj2)
         
         vj = cross(dj1,dj2) 
-        Vj = 1im*tsoph*VDot(vj) * sqrt(2*ws[n]) * qs[n]
+        Vj = 1im*tsoph*VDot(vj) * qs[n]/sqrt(2)
 
         Hs[j,j+4] = Vj[1,1]
         Hs[j+1,j+4] = Vj[2,1]
