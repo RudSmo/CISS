@@ -1,0 +1,14 @@
+# Parameters of run on 2024-06-13T16:14:01.233 
+# The purpose of this run is the following: Test of Fransson model.
+# --------------------PARAMS----------------------------
+dt = 5.0e-5
+Nstep = 40000000
+N = 1
+ws = [0.0004, 0.0004, 0.0004, 0.0004, 0.0004, 0.0004]
+gPh = [0.0, 0.0]
+tL = [37.5, 12.5]
+tR = [25.0, 25.0]
+V = 1200.0
+nPoles = 15
+beta = 0.016
+# ----------------THIS IS THE END.----------------------

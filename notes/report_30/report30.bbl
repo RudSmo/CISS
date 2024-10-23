@@ -1,0 +1,131 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\datalist[entry]{none/global//global/global}
+  \entry{teh2022spin}{article}{}
+    \name{author}{3}{}{%
+      {{hash=THH}{%
+         family={Teh},
+         familyi={T\bibinitperiod},
+         given={Hung-Hsuan},
+         giveni={H\bibinithyphendelim H\bibinitperiod},
+      }}%
+      {{hash=DW}{%
+         family={Dou},
+         familyi={D\bibinitperiod},
+         given={Wenjie},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=SJE}{%
+         family={Subotnik},
+         familyi={S\bibinitperiod},
+         given={Joseph\bibnamedelima E},
+         giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {APS}%
+    }
+    \strng{namehash}{THH+1}
+    \strng{fullhash}{THHDWSJE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{18}
+    \field{pages}{184302}
+    \field{title}{Spin polarization through a molecular junction based on
+  nuclear Berry curvature effects}
+    \field{volume}{106}
+    \field{journaltitle}{Physical Review B}
+    \field{year}{2022}
+  \endentry
+
+  \entry{teh2021antisymmetric}{article}{}
+    \name{author}{3}{}{%
+      {{hash=THH}{%
+         family={Teh},
+         familyi={T\bibinitperiod},
+         given={Hung-Hsuan},
+         giveni={H\bibinithyphendelim H\bibinitperiod},
+      }}%
+      {{hash=DW}{%
+         family={Dou},
+         familyi={D\bibinitperiod},
+         given={Wenjie},
+         giveni={W\bibinitperiod},
+      }}%
+      {{hash=SJE}{%
+         family={Subotnik},
+         familyi={S\bibinitperiod},
+         given={Joseph\bibnamedelima E},
+         giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {APS}%
+    }
+    \strng{namehash}{THH+1}
+    \strng{fullhash}{THHDWSJE1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{20}
+    \field{pages}{L201409}
+    \field{title}{Antisymmetric Berry frictional force at equilibrium in the
+  presence of spin-orbit coupling}
+    \field{volume}{104}
+    \field{journaltitle}{Physical Review B}
+    \field{year}{2021}
+  \endentry
+
+  \entry{kato2022chirality}{article}{}
+    \name{author}{3}{}{%
+      {{hash=KA}{%
+         family={Kato},
+         familyi={K\bibinitperiod},
+         given={Akihito},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=YHM}{%
+         family={Yamamoto},
+         familyi={Y\bibinitperiod},
+         given={Hiroshi\bibnamedelima M},
+         giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod},
+      }}%
+      {{hash=KJi}{%
+         family={Kishine},
+         familyi={K\bibinitperiod},
+         given={Jun-ichiro},
+         giveni={J\bibinithyphendelim i\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {APS}%
+    }
+    \strng{namehash}{KA+1}
+    \strng{fullhash}{KAYHMKJi1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{number}{19}
+    \field{pages}{195117}
+    \field{title}{Chirality-induced spin filtering in pseudo Jahn-Teller
+  molecules}
+    \field{volume}{105}
+    \field{journaltitle}{Physical Review B}
+    \field{year}{2022}
+  \endentry
+\enddatalist
+\endinput

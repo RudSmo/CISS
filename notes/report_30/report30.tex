@@ -1,0 +1,178 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{bbold}
+\usepackage{dsfont}
+\usepackage{graphicx}
+\usepackage{cleveref}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{pdfpages}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newcommand{\exP}[1]{\mathrm{e}^{#1}}
+\newcommand{\dif}{\mathrm{d}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\pdagger}{{\phantom{\dagger}}}
+\newcommand{\state}[1]{\vert #1\rangle}
+\newcommand{\cstate}[1]{\langle #1\vert}
+\newcommand{\outerp}[2]{\vert #1\rangle\!\langle #2 \vert}
+\newcommand{\tr}[1]{\mathrm{tr}\left\{#1\right\}}
+\newcommand{\trs}[2]{\, \mathrm{tr}_{#1}\{#2\}}
+\newcommand{\expc}[3]{\langle #1\vert #2 \vert #3\rangle}
+\usepackage[doi=false,url=false,isbn=false,backend=bibtex,style=nature,natbib=true,sorting=none]{biblatex}
+\bibliography{bib.bib}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=15mm,
+	right=15mm,
+	top=15mm,
+}
+\usepackage{kbordermatrix}
+\begin{document}
+\title{Report 30: Connection between Subotniks and Katos models for CISS}
+\maketitle
+\section{Subotniks model}
+Two electronic orbitals, $\{1,2\}\otimes \{\uparrow,\downarrow\}$, coupled to two nuclear modes, $x$ and $y$, and two leads \cite{teh2022spin,teh2021antisymmetric}:
+\begin{align}
+	H &= \frac{P^2}{2M} + H_s + H_b + H_c\\
+	H_s &= \sum_{pq} h_{pq}^s(\vec{R}) b_q^\dagger b_p^\pdagger + U(\vec{R})\\
+	H_b &= \sum_{k,\alpha=\{L,R\}} \varepsilon_{k\alpha}^\pdagger c_{k\alpha}^\dagger c_{k\alpha}^\pdagger\\
+	H_c&= \sum_{p,k\alpha}V_{p,k\alpha}b_p^\dagger c_{k\alpha}+\mathrm{h.c.}\\
+	h^{s\uparrow}&=\begin{pmatrix}
+		x+\Delta & Ax-iBy\\
+		Ax+iBy & -x-\Delta
+	\end{pmatrix}\\
+	h^{s\downarrow} &= (h^{s\uparrow})^*\\
+	h_\mathrm{soc} &= \begin{pmatrix}
+		0 & \mathrm{A}\\
+		\mathrm{A}^\dagger & 0
+	\end{pmatrix} \\
+	\mathrm{A} &= \frac{\xi \hbar}{2}\begin{pmatrix}
+		L_{12}^z & L^-_{12}\\
+		L_{12}^+ & -L^z_{12}
+	\end{pmatrix}\\
+	L^\pm &= L_x \pm i L_y\\
+	U(\vec{R})&= \frac{1}{2}x^2 + \kappa_x x + \frac{1}{2}\chi y^2 + \kappa_y y
+\end{align}
+\section{Katos model}
+Model of chiral molecule with point group C$_3$ proposed in \cite{kato2022chirality}: Translational state $\state{\phi_z}$, which transforms as $z$ under time reversal, $\state{\overline{\phi}_z}\equiv \Theta \state{\phi_z}$, and two rotational states, $\state{\phi_\pm}$, which transform as 
+\begin{align}
+	C_3 \state{\phi_\pm}&= \exP{\mp i2\pi/3} \state{\phi_\pm}\\
+	\Theta \state{\phi_\pm}&= \state{\phi_\mp}.
+\end{align}
+Coupling of translational and rotational states of an electron are mediated by nuclear modes, $Q_\pm=\rho \exP{\pm i\phi}$, which transform as
+\begin{align}
+	C_3 Q_\pm &= \exP{\pm i2\pi/3}Q_\pm\\
+	\Theta Q_\pm &= Q_\mp.
+\end{align}  
+Spin transforms as
+\begin{align}
+	C_3 \state{\uparrow/\downarrow}&= \exP{\mp i\pi/3} \state{\uparrow/\downarrow}\\
+	\Theta \state{\uparrow/\downarrow}&= \pm\state{\downarrow/\uparrow}.
+\end{align}
+The Hamiltonian reads:
+\begin{align}
+	H&= H_e+ H_n + H_\mathrm{en}+H_\mathrm{soc}\\
+	H_e &= \epsilon_\mathrm{tr}(\outerp{\phi_z}{\phi_z}+\outerp{\overline{\phi}_z}{\overline{\phi}_z})+\epsilon_\mathrm{rot}(\outerp{\phi_+}{\phi_+}+\outerp{\phi_-}{\phi_-})\\
+	H_n &= -\frac{\hbar^2}{2M}\left(\frac{1}{\rho}\frac{\partial}{\partial\rho}\rho\frac{\partial}{\partial \rho} + \frac{1}{\rho^2}\frac{\partial^2}{\partial \phi^2}\right)+\frac{M\omega^2}{2}\rho^2\\
+	H_\mathrm{en}&= V_+Q_- \outerp{\phi_z}{\phi_+} + V_-Q_+ \outerp{\phi_z}{\phi_-} + V_-^*Q_- \outerp{\overline{\phi}_z}{\phi_+}+ V_+^*Q_+ \outerp{\overline{\phi}_z}{\phi_-} +V_0Q_- \outerp{\phi_+}{\phi_-} +\mathrm{h.c.} \\
+	H_\mathrm{soc}&= \lambda (\outerp{\phi_+}{\phi_+} + \outerp{\phi_-}{\phi_-})\otimes \sigma^z.
+\end{align}
+\subsection{Hamiltonian in second quantization}
+\begin{align}
+	H&= H_\mathrm{e}+ H_\mathrm{n} + H_\mathrm{en}+H_\mathrm{soc}\\
+	H_\mathrm{e} &= \sum_\sigma \left[ \epsilon_\mathrm{tr}(d_{z\sigma}^\dagger d_{z\sigma}^\pdagger+d_{\bar{z}\sigma}^\dagger d_{\bar{z}\sigma}^\pdagger)+\epsilon_\mathrm{rot}(d_{+\sigma}^\dagger d_{+\sigma}^\pdagger+d_{-\sigma}^\dagger d_{-\sigma}^\pdagger)\right]\\
+	H_\mathrm{n} &= \hbar \omega\left( a_x^\dagger a_x^\pdagger + a_y^\dagger a_y^\pdagger\right)\\
+	H_\mathrm{en}&= V_+Q_- d_z^\dagger d_+^\pdagger + V_-Q_+ d_z^\dagger d_-^\pdagger + V_-^*Q_- d_{\overline{z}}^\dagger d_+^\pdagger+ V_+^*Q_+ d_{\overline{z}}^\dagger d_-^\pdagger +V_0Q_- d_+^\dagger d_-^\pdagger +\mathrm{h.c.} \\
+	H_\mathrm{soc}&= \sum_\sigma \lambda (-1)^{p} (d_{+\sigma}^\dagger d_{+\sigma}^\pdagger - d_{-\sigma}^\dagger d_{-\sigma}^\pdagger),\\
+	Q_\pm &= \sqrt{\frac{\hbar}{2M\omega}} (a_x^\dagger +a_x^\pdagger\pm i(a_y^\dagger+a_y^\pdagger))
+\end{align}
+where $p=0$ for $\sigma=\uparrow$ and $p=1$ for $\sigma=\downarrow$.
+\section{Similarities and differences between Subotniks and Katos models}
+\begin{itemize}
+	\item Hilbert space:
+	\begin{itemize}
+		\item Subotniks model is spanned by states $\vert n,\sigma, m_x,m_y\rangle$ with $n=\{1,2\}$, $\sigma=\{\uparrow,\downarrow\}$ and $m_x,m_y = \{0,...,N_\mathrm{vib}\}$
+		\item Katos model is spanned by states $\vert n,\sigma, m_x,m_y\rangle$, $n=\{z,\bar{z},+,-\}$, $\sigma=\{\uparrow,\downarrow\}$ and $m_x,m_y = \{0,...,N_\mathrm{vib}\}$. Since the spaces are having different dimension, there is no exact isomorphism between the two models.  
+		\item The full Kato model has two electronic states more than the full Subotnik model. However, in Katos paper, they neglect spin-dependent couplings altogether, the problem can be reduced to a four-level problem, which is of same dimension as Subotniks full electronic model. In Subotniks paper, the SOC part is diagonalized. In this new basis, the full Hamiltonian separates into two independent parts for the new spins, resulting in the reduced space spanned by states $\state{n',m_x,m_y}$ with $n'=\{1,2\}$ for a fixed $\sigma$, with the coupling between different $\sigma$ being zero in this new basis.   
+	\end{itemize}
+	\item Electronic part:
+	\begin{itemize}
+		\item Both models are diagonal in the electronic subspace. The only off-diagonal contribution is from the electron-vibrational coupling. 
+		\item In Subotniks model, there is an electronic coupling between different spin states of the same orbital. Coupling between different spin states is not present in Katos model. In the Appendix, the authors provide, however, the first-order $Q$-dependent contribution to SOC:
+		\begin{align*}
+			H_\mathrm{soc}=&\sum_\sigma \lambda(d_{+\sigma}^\dagger d_{+\sigma}^\pdagger + d_{-\sigma}^\dagger d_{-\sigma}^\pdagger)\\
+			& +\left\{Q_+ \left[\nu (d_{+\uparrow}^\dagger d_{+\downarrow}^\pdagger - d_{-\uparrow}^\dagger d_{-\downarrow}^\pdagger) + \mu (d_{z\uparrow}^\dagger d_{z \downarrow}^\pdagger - d_{\overline{z}\uparrow}^\dagger d_{\overline{z}\downarrow}^\pdagger)\right] + \mathrm{h.c.}\right\},
+		\end{align*}  
+		which they neglect in the main analysis.
+	\end{itemize}
+	\item Vibrational and electron-vibrational part:
+	\begin{itemize}
+		\item Both models have two vibrational modes. However, the potential energy in Subotniks model is shifted. In principle, this shift can be transformed away,
+		\begin{align*}
+			\tilde{x} &= x+\frac{\kappa_x}{2}, \ \tilde{y}=y+\frac{\kappa_y}{2}\\
+			\Rightarrow U(\tilde{\vec{R}}) &= \frac{\tilde{x}^2}{2}+\frac{\tilde{y}^2}{2}-\left(\frac{\kappa_{x}}{2}\right)^2 - \left(\frac{\kappa_{y}}{2}\right)^2,
+		\end{align*}
+		which leads to the modification of the electronic part
+		\begin{align*}
+			h^{s\uparrow}(\tilde{\vec{R}}) &=\begin{pmatrix}
+				\tilde{x}+\tilde{\Delta} & A\tilde{x}-iB\tilde{y}+C\\
+				A\tilde{x}+iB\tilde{y}+C^* & -\tilde{x}-\tilde{\Delta}
+			\end{pmatrix},\\
+			\tilde{\Delta} &= \Delta-\frac{\kappa_x}{2},\\
+			C &= -\frac{1}{2}(\kappa_x - i\kappa_y)
+		\end{align*}
+	\end{itemize}
+\end{itemize}
+\section{Transformation between the models}
+Subotniks full model in block-diagonal form after transforming the SOC part reads
+\begin{equation}
+	H_\mathrm{Subotnik} = \kbordermatrix{
+		& 1,\uparrow & & 2,\uparrow & 1, \downarrow & &  2,\downarrow\\
+		1,\uparrow &\Delta + x & & Ax -iBy &  & & \\ 
+		& & & & & 0 &\\
+		2,\uparrow & Ax +iBy & & -\Delta - x &  & & \\ 
+		1,\downarrow & & & & & & \\ 
+		&  & 0 & & &* &\\
+		2,\downarrow & & & & & &
+	}
+\end{equation}
+
+Within the approximation used in Katos main text, the Hamiltonian can be reduced to a single $\sigma=\uparrow$ (the Hamiltonian for $\sigma=\downarrow$ is the same except for $H_\mathrm{soc}$, which is $H_\mathrm{soc}^\downarrow=-H_\mathrm{soc}^\uparrow$):
+\begin{align}
+	H&= H_\mathrm{e}+ H_\mathrm{n} + H_\mathrm{en}+H_\mathrm{soc}\\
+	H_e &=  \epsilon_\mathrm{tr}(d_{z}^\dagger d_{z}^\pdagger+d_{\bar{z}}^\dagger d_{\bar{z}}^\pdagger)+\epsilon_\mathrm{rot}(d_{+}^\dagger d_{+}^\pdagger+d_{-}^\dagger d_{-}^\pdagger)\\
+	H_n &= \hbar \omega\left( a_x^\dagger a_x^\pdagger + a_y^\dagger a_y^\pdagger\right)\\
+	H_\mathrm{en}&= V_+Q_- d_z^\dagger d_+^\pdagger + V_-Q_+ d_z^\dagger d_-^\pdagger + V_-^*Q_- d_{\overline{z}}^\dagger d_+^\pdagger+ V_+^*Q_+ d_{\overline{z}}^\dagger d_-^\pdagger +V_0Q_- d_+^\dagger d_-^\pdagger +\mathrm{h.c.} \\
+	H_\mathrm{soc}&=  \lambda (d_{+}^\dagger d_{+}^\pdagger - d_{-}^\dagger d_{-}^\pdagger),\\
+	Q_\pm &= \sqrt{\frac{\hbar}{2M\omega}} (a_x^\dagger +a_x^\pdagger\pm i(a_y^\dagger+a_y^\pdagger))
+\end{align}
+or in matrix form
+\begin{equation}
+	H_\mathrm{Kato}^\uparrow=H_\mathrm{e}^\uparrow + H_\mathrm{en}^\uparrow+ H_\mathrm{soc}^\uparrow = 
+	\kbordermatrix{
+	& z& \overline{z} & + & - \\
+	z &\epsilon_\mathrm{tr} & 0 & V_+Q_- + \lambda & V_-Q_+\\
+	\overline{z}&0 & \epsilon_\mathrm{tr} & V_-^* Q_- & V_+^* Q_+ -\lambda\\
+	+& & & \epsilon_\mathrm{rot}& V_0Q_-\\
+	-& & \mathrm{c.c.} & &\epsilon_\mathrm{rot}	
+	}\equiv \begin{pmatrix}
+	A & B\\
+	B^* & C
+\end{pmatrix}.
+\end{equation}
+Next, block-diagonalizing the terms mixing $z,\overline{z}$ with $+,-$, leads to the Hamiltonian
+
+\printbibliography
+\end{document}
+
+

@@ -104,7 +104,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 version = 0
-path = "L$(num_laps)x$(num_ions)_V$(V)" # "noPh_L$(num_laps)x$(num_ions)/V$(v)" # "L$(num_laps)x$(num_ions)_Peierls_4MCTDH_comparison_V$(V)"
+path = "L$(num_laps)x$(num_ions)_V$(V)_hdf5_test" # "noPh_L$(num_laps)x$(num_ions)/V$(v)" # "L$(num_laps)x$(num_ions)_Peierls_4MCTDH_comparison_V$(V)"
 if !isdir(path)
 	mkpath(path)
 end
