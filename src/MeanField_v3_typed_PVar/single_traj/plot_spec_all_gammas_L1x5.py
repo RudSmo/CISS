@@ -1,0 +1,198 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+from matplotlib.collections import LineCollection
+from matplotlib.colors import BoundaryNorm, ListedColormap
+
+plt.style.use("classic")
+plt.rc("text", usetex=True)
+plt.rc("font",family="serif",serif="Times")
+fs = 21
+lw = 3
+fac_c = 0.002*0.2*1e3 * 0.2433946
+fac_c_SS = 1e6
+fac_t = 1/(0.002*0.2*4.135668*1e3)
+fac_e = 0.002*0.2
+
+plt.rc("axes",labelsize=fs)
+plt.rc("xtick",labelsize=fs-2)
+plt.rc("ytick",labelsize=fs-2)
+
+px = 0.14
+py = 0.823
+sx1 = 0.85
+sx2 = 0.68
+sy = 0.17
+dy = 0.02
+dx = 0.01
+
+fig = plt.figure(figsize=(8,14))
+ax1 = plt.axes([px,py,sx1,sy])
+ax2 = plt.axes([px,py-sy-dy,sx1,sy])
+ax3 = plt.axes([px,py-2*(sy+dy),sx1,sy])
+ax4 = plt.axes([px,py-3*(sy+dy),sx1,sy])
+ax5 = plt.axes([px,py-4*(sy+dy),sx2,sy])
+
+
+
+sufIP="_tPh_10.0_thPd_10.0_SOC2.5_SOCPh0.25_V1200.0_w00.0004_P0.5_SymplecticRuth4Step_RK4_VNL!_dt5.0e-5_1_currents.dat"
+sufIM="_tPh_10.0_thPd_10.0_SOC2.5_SOCPh0.25_V1200.0_w00.0004_P-0.5_SymplecticRuth4Step_RK4_VNL!_dt5.0e-5_1_currents.dat"
+pre = ["L1x5/L5"]
+col = ["k"]
+for p,c in zip(pre,col):
+
+	datP = np.genfromtxt(f"{p}{sufIP}")[1::,:]
+	datM = np.genfromtxt(f"{p}{sufIM}")[1::,:]
+	lP = len(datP[:,0])
+	lM = len(datM[:,0])
+	lD = min(lP,lM)
+	ti = datP[0:lD,0]*fac_t
+	IP = (datP[0:lD,1]-datP[0:lD,2])*fac_c/2
+	IM = (datM[0:lD,1]-datM[0:lD,2])*fac_c/2
+	ax5.plot(ti,IP,color="red",linewidth=lw-1)
+	ax5.plot(ti,IM,color="blue",linewidth=lw-1)
+
+
+
+sp = "P"
+dat_sp = np.genfromtxt("spec_P_L1x5.dat")
+dat_el = np.genfromtxt("gammaL_P_L1x5.dat")
+
+dat_gamma = dat_el #copy(dat_el)
+# assign proper gammas 
+#dat_gamma = np.zeros(np.shape(dat_el))
+#dat_gamma[0,:] = dat_el[0,:]
+#for i in range(1,len(dat_el[:,0])):
+#	dat_gamma[i,0] = dat_el[i,0]
+#	for j in range(1,len(dat_el[0,:]),2):
+#		new_1 = dat_el[i,j]
+#		old = dat_gamma[i-0,j]
+#		for k in range(2,len(dat_el[0,:]),2):
+#			new_2 = dat_el[i,j+1]
+#			if np.abs(new_1 - old) < 1e-3:
+#				dat_gamma[i,j] = new_1
+#				dat_gamma[i,j+1] = new_2
+#			else:
+#				dat_gamma[i,j] = new_2
+#				dat_gamma[i,j+1] = new_1
+
+N = len(dat_sp[0,1::])
+x = dat_sp[0::10,0]*fac_t
+mn = dat_el[:,1::].min()*0.4
+mx = dat_el[:,1::].max()*0.2
+norm = plt.Normalize(mn, mx)
+for i in range(0,N,2):
+        y = dat_sp[0::10,i+1]*fac_e
+        c = dat_gamma[0::10,i+1]*0.4
+        points = np.array([x, y]).T.reshape(-1, 1, 2)
+        segments = np.concatenate([points[:-1], points[1:]], axis=1)
+        lc = LineCollection(segments, cmap='viridis', norm=norm)
+        # Set the values used for colormapping
+        lc.set_array(c)
+        lc.set_linewidth(2)
+        line = ax1.add_collection(lc)
+
+
+cbar = fig.colorbar(line, ax=ax1)
+cbar.set_label(r"$\Gamma_L^\uparrow(t) \, [\mathrm{meV}]$",labelpad=10)
+cbar.ax.tick_params(labelsize=fs-2)
+ax1.set_xlim(segments[:,:,0].min(), segments[:,:,0].max())
+ax1.set_ylim(-0.5,0.0)
+ax1.set_ylabel("energy "+r"$E\,[\mathrm{eV}]$")
+ax1.set_xticklabels([])
+ax1.annotate(r"$A=+\frac{1}{2}$",(0.05,0.9),xycoords="axes fraction",fontsize=fs)
+
+sp = "P"
+dat_sp = np.genfromtxt("spec_P_L1x5.dat")
+N = len(dat_sp[0,1::])
+x = dat_sp[0::10,0]*fac_t
+mn = dat_el[:,1::].min()*0.4
+mx = dat_el[:,1::].max()*0.2
+norm = plt.Normalize(mn, mx)
+for i in range(1,N,2):
+        y = dat_sp[0::10,i+1]*fac_e
+        c = dat_gamma[0::10,i+1]*0.4
+        points = np.array([x, y]).T.reshape(-1, 1, 2)
+        segments = np.concatenate([points[:-1], points[1:]], axis=1)
+        lc = LineCollection(segments, cmap='viridis', norm=norm)
+        # Set the values used for colormapping
+        lc.set_array(c)
+        lc.set_linewidth(2)
+        line = ax2.add_collection(lc)
+
+
+cbar = fig.colorbar(line, ax=ax2)
+cbar.set_label(r"$\Gamma_L^\downarrow(t) \, [\mathrm{meV}]$",labelpad=10)
+cbar.ax.tick_params(labelsize=fs-2)
+ax2.set_xlim(segments[:,:,0].min(), segments[:,:,0].max())
+ax2.set_ylim(-0.5,0.0)
+ax2.set_ylabel("energy "+r"$E\,[\mathrm{eV}]$")
+ax2.set_xticklabels([])
+
+
+sp = "P"
+dat_sp = np.genfromtxt("spec_P_L1x5.dat")
+dat_el = np.genfromtxt("gammaR_P_L1x5.dat")
+N = len(dat_sp[0,1::])
+x = dat_sp[0::10,0]*fac_t
+mn = dat_el[:,1::].min()*0.4
+mx = dat_el[:,1::].max()*0.2
+norm = plt.Normalize(mn, mx)
+for i in range(N):
+        y = dat_sp[0::10,i+1]*fac_e
+        c = dat_el[0::10,i+1]*0.4
+        points = np.array([x, y]).T.reshape(-1, 1, 2)
+        segments = np.concatenate([points[:-1], points[1:]], axis=1)
+        lc = LineCollection(segments, cmap='viridis', norm=norm)
+        # Set the values used for colormapping
+        lc.set_array(c)
+        lc.set_linewidth(2)
+        line = ax3.add_collection(lc)
+
+
+cbar = fig.colorbar(line, ax=ax3)
+cbar.set_label(r"$\Gamma_R(t) \, [\mathrm{meV}]$",labelpad=10)
+cbar.ax.tick_params(labelsize=fs-2)
+ax3.set_xlim(segments[:,:,0].min(), segments[:,:,0].max())
+ax3.set_ylim(-0.5,0.0)
+ax3.set_ylabel("energy "+r"$E\,[\mathrm{eV}]$")
+ax3.set_xticklabels([])
+
+sp = "P"
+dat_sp = np.genfromtxt("spec_P_L1x5.dat")
+dat_el = np.genfromtxt("gammaR_P_L1x5.dat")
+N = len(dat_sp[0,1::])
+x = dat_sp[0::10,0]*fac_t
+mn = dat_el[:,1::].min()*0.4
+mx = dat_el[:,1::].max()*0.2
+norm = plt.Normalize(mn, mx)
+for i in range(N):
+        y = dat_sp[0::10,i+1]*fac_e
+        c = dat_el[0::10,i+1]*0.4
+        points = np.array([x, y]).T.reshape(-1, 1, 2)
+        segments = np.concatenate([points[:-1], points[1:]], axis=1)
+        lc = LineCollection(segments, cmap='viridis', norm=norm)
+        # Set the values used for colormapping
+        lc.set_array(c)
+        lc.set_linewidth(2)
+        line = ax4.add_collection(lc)
+
+
+cbar = fig.colorbar(line, ax=ax4)
+cbar.set_label(r"$\Gamma_L(t)+\Gamma_R(t) \, [\mathrm{meV}]$",labelpad=10)
+cbar.ax.tick_params(labelsize=fs-2)
+ax4.set_xlim(segments[:,:,0].min(), segments[:,:,0].max())
+ax4.set_ylim(-0.5,0.0)
+ax4.set_ylabel("energy "+r"$E\,[\mathrm{eV}]$")
+ax4.set_xticklabels([])
+ax4.set_xlim(0,50)
+
+ax1.set_xticklabels([])
+ax2.set_xticklabels([])
+ax3.set_xticklabels([])
+ax4.set_xticklabels([])
+ax5.set_ylabel(r"$I(t)\, [\mu\mathrm{A}]$")
+ax5.set_xlim(0,50)
+ax5.set_xlabel("time "+r"$t\, [\mathrm{ps}]$")
+
+plt.savefig(f"L1x5_elec_es_spec_all_gamma_td_cur_{sp}_singleTraj.pdf")

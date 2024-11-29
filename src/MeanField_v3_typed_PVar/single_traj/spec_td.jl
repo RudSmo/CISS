@@ -68,8 +68,8 @@ HamPar = HamiltonianParams( num_laps,
 P = "P"
 fil = open("spec_$(P)_L3x7.dat","w")
 datPh = readdlm("L3x6/L18_tPh_10.0_thPd_10.0_SOC2.5_SOCPh0.25_V1200.0_w00.0004_P0.5_SymplecticRuth4Step_RK4_VNL!_dt5.0e-5_1_phonons.dat")
-X = datPh[2:2:end,2:2:end]
-t = datPh[2:2:end,1]
+X = datPh[2:end,2:2:end]
+t = datPh[2:end,1]
 for i in 1:length(X[:,1])
 	hp = HamiltonianParams( num_laps,
 			    num_ions,

@@ -10,8 +10,8 @@ using DelimitedFiles
 # -------------- Parameters --------------------------
 
 # Hamiltonian Parameters
-num_laps = 3
-num_ions = 6
+num_laps = 1
+num_ions = 5
 N = num_laps * num_ions
 ws  = 0.2*0.002*ones(N)
 T0  = 0.04/ws[1]  # in eV
@@ -24,13 +24,13 @@ a   = 1.0
 c   = 1.0
 tso = T0/40
 tPh = 0.1*T0*ones(2)
-tsoPh = 0.0*tso
+tsoPh = 0.1*tso
 model = FranssonHamiltonian
 modelStr = "Fransson"
 
 # Simulation Parameters
 dt = 0.00005
-tend = 90
+tend = 120
 numstep = Int(round(tend/abs(dt)))
 writeMode = "minimal"
 
@@ -58,10 +58,10 @@ initProp  = true
 
 popElIn = zeros(2*N)
 popPhIn = zeros(N)
-xnIn,pnIn = [0.7691068624482689,-3.61069243320506,-5.245657309206734],[-7.401418656594664,-4.3318963287495675,1.5952234947490966]
+#xnIn,pnIn = [0.7691068624482689,-3.61069243320506,-5.245657309206734,],[-7.401418656594664,-4.3318963287495675,1.5952234947490966]
 xnIn,pnIn = zeros(N), zeros(N)
 ## Leads
-P = -0.5
+P = 0.5
 tl = T0/4
 tL = tl * (ones(2) .+ P * [1,-1])
 tR = tl * ones(2)
@@ -92,7 +92,7 @@ HamPar = HamiltonianParams( num_laps,
 
 
 version = 0
-path = "single_traj/L$(num_laps)x$(num_ions)"
+path = "single_traj/L$(num_laps)x$(num_ions)_init_random"
 if !isdir(path)
         mkpath(path)
 end
@@ -112,7 +112,7 @@ for ka in 1:num_avg
         rhoIn = "pure"
     #    rhoIn = "equilibrium"
         phIn = "TDSCF"
-    #    phIn = "Wigner"
+        phIn = "Wigner"
         pathIn = ""
         propStp = 0
     else
