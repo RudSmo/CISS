@@ -3,7 +3,7 @@ include("global_constants.jl")
 using LinearAlgebra
 using Dates
 using DelimitedFiles
-using HDF5
+#using HDF5
 
 function SaveParams(params,path,purpose)
 	file = open("$(path)","w")
@@ -158,69 +158,69 @@ function SaveOutput(HamPar::Any,
 	return conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,vind
 end
 
-function SaveOutputHDF5(HamPar::Any,
-                    cur1_c::Array{ComplexF64},
-                    cur2_c::Array{ComplexF64},
-                    conv_l::Array{Float64},
-                    pop_l::Array{Float64},
-                    pop_es_l::Array{Float64},
-                    rho_i::Array{ComplexF64},
-                    hcen_i::Array{ComplexF64},
-                    tim::Array{Float64},
-                    i::Int64,
-                    dt::Float64,
-                    cur1_l::Array{Float64},
-                    cur2_l::Array{Float64},
-                    scur1_l::Array{Float64},
-                    scur2_l::Array{Float64},
-                    q_l::Array{Float64},
-                    p_l::Array{Float64},
-                    path::String,
-                    vind::Int64)::Tuple{Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Int64}
-
-        if i == 1
-                outfile = h5open("$(path)_data","w")
-		close(outfile)
-        end
-
-        if i % AppendData == 0
-		
-                conv_l[:,vind] = ConvergenceInfo(HamPar,rho_i,hcen_i)
-                pop_l[:,vind] = Populations(rho_i)
-                pop_es_l[:,vind]= PopulationsES(rho_i,hcen_i)
-                cur1_l[vind] = Current(cur1_c)
-                cur2_l[vind] = Current(cur2_c)
-                scur1_l[:,vind] = SpinCurrent(cur1_c)
-                scur2_l[:,vind] = SpinCurrent(cur2_c)
-                q_l[:,vind] = HamPar.X
-                p_l[:,vind] = HamPar.P
-                tim[vind] = abs(i*dt)
-                vind += 1
-        end
-
-        if i % SaveData == 0
-		outfile = h5open("$(path)_data","r+")
-		outfile["time"] = tim
-		outfile["IL"] = cur1_l
-		outfile["IR"] = cur2_l
-		outfile["X"] = q_l
-		outfile["P"] = p_l
-		outfile["pop"] = pop_l
-		outfile["pop_es"] = pop_es_l
-		outfile["Esys"] = conv_l[2,:]	
-	
-		close(outfile)
-                vind = 1
-        end
-
-        return conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,vind
-end
+#function SaveOutputHDF5(HamPar::Any,
+#                    cur1_c::Array{ComplexF64},
+#                    cur2_c::Array{ComplexF64},
+#                    conv_l::Array{Float64},
+#                    pop_l::Array{Float64},
+#                    pop_es_l::Array{Float64},
+#                    rho_i::Array{ComplexF64},
+#                    hcen_i::Array{ComplexF64},
+#                    tim::Array{Float64},
+#                    i::Int64,
+#                    dt::Float64,
+#                    cur1_l::Array{Float64},
+#                    cur2_l::Array{Float64},
+#                    scur1_l::Array{Float64},
+#                    scur2_l::Array{Float64},
+#                    q_l::Array{Float64},
+#                    p_l::Array{Float64},
+#                    path::String,
+#                    vind::Int64)::Tuple{Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Array{Float64},Int64}
+#
+#        if i == 1
+##                outfile = h5open("$(path)_data","w")
+##		close(outfile)
+#        end
+#
+#        if i % AppendData == 0
+#		
+#                conv_l[:,vind] = ConvergenceInfo(HamPar,rho_i,hcen_i)
+#                pop_l[:,vind] = Populations(rho_i)
+#                pop_es_l[:,vind]= PopulationsES(rho_i,hcen_i)
+#                cur1_l[vind] = Current(cur1_c)
+#                cur2_l[vind] = Current(cur2_c)
+#                scur1_l[:,vind] = SpinCurrent(cur1_c)
+#                scur2_l[:,vind] = SpinCurrent(cur2_c)
+#                q_l[:,vind] = HamPar.X
+#                p_l[:,vind] = HamPar.P
+#                tim[vind] = abs(i*dt)
+#                vind += 1
+#        end
+#
+#        if i % SaveData == 0
+#		outfile = h5open("$(path)_data","r+")
+#		outfile["time"] = tim
+#		outfile["IL"] = cur1_l
+#		outfile["IR"] = cur2_l
+#		outfile["X"] = q_l
+#		outfile["P"] = p_l
+#		outfile["pop"] = pop_l
+#		outfile["pop_es"] = pop_es_l
+#		outfile["Esys"] = conv_l[2,:]	
+#	
+#		close(outfile)
+#                vind = 1
+#        end
+#
+#        return conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,q_l,p_l,vind
+#end
 
 function Average(ind,path,num_avg)
 	pathr = "$(path)_$(ind)"
 #	observables = ["currents","electrons","electrons_es","phonons","momentum_el","loc_cur","convergence_info"]
 	observables = ["currents","electrons","electrons_es","phonons","convergence_info"]
-	rm("$(pathr)_final_Quantities")
+#	rm("$(pathr)_final_Quantities")
 	if ind == 1
 		for obs in observables
 			file_avg = readdlm("$(pathr)_$(obs).dat")

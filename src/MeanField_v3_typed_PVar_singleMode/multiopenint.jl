@@ -6,7 +6,7 @@ include("electronic_integration.jl")
 include("classical_phonons.jl")
 include("structures.jl")
 using LinearAlgebra
-using HDF5
+#using HDF5
 
 function Propagate(
 		  HamPar 	::Any,  
@@ -43,8 +43,8 @@ function Propagate(
 		elseif rhoIn == "closedEquilibrium"
 			rho0    = DensityFEx(HamPar.N,1,hcen_i,HamPar.N,0)
 		elseif rhoIn == "fromFile"
-			fid 	= h5open(pathIn)
-			rho0    = read(fid["Rho"])
+#			fid 	= h5open(pathIn)
+#			rho0    = read(fid["Rho"])
 		end
 	
 		conv_l   = zeros(3,LengthData)
@@ -57,7 +57,7 @@ function Propagate(
 		Gamma1,Gamma2 	= GammaMatrices1d(HamPar.N,tL,tR)
 		GammaT		= Gamma1+Gamma2
 		if rhoIn == "fromFile"
-			fid     = h5open(pathIn)
+#			fid     = h5open(pathIn)
 			for i in 1:nPoles	
 				curp1_i[:,:,i] .= read(fid["Curp1$(i)"]) 
 				curp2_i[:,:,i] .= read(fid["Curp2$(i)"]) 
@@ -84,7 +84,7 @@ function Propagate(
 		vind 		= 1
 	else
 		kappa,xi        = PadeFermi(nPoles)	
-		fid     = h5open(pathIn)
+#		fid     = h5open(pathIn)
 		HamPar.X = read(fid["X"])
 		HamPar.P = read(fid["P"])
 		hcen_i = HamPar.Hamiltonian(HamPar)*(1+0.0*1im)	
@@ -133,28 +133,28 @@ function Propagate(
 #		conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,mom_el,loc_cur_l,vind = SaveOutput(HamPar,cur1_i,cur2_i,conv_l,pop_l,pop_es_l,rho_i,hcen_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,loc_cur_l,X_l,P_l,mom_el,path,vind)
 		conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,vind = SaveOutput(HamPar,cur1_i,cur2_i,conv_l,pop_l,pop_es_l,rho_i,hcen_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,path,vind)
 		#conv_l,pop_l,pop_es_l,tim,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,vind = SaveOutputHDF5(HamPar,cur1_i,cur2_i,conv_l,pop_l,pop_es_l,rho_i,hcen_i,tim,i,dt,cur1_l,cur2_l,scur1_l,scur2_l,X_l,P_l,path,vind)
-		if i == tEnd 
-			fil = h5open("$(path)_final_Quantities","w")
-			fil["Rho"] = rho_i
-			for j in 1:nPoles
-				fil["Curp1$(j)"] = curp1_i[j]
-				fil["Curp2$(j)"] = curp2_i[j]
-			end
-			fil["X"] = float.(HamPar.X)
-			fil["P"] = float.(HamPar.P)
-			fil["X_l"] = X_l
-                        fil["P_l"] = P_l
-			fil["tim"] = tim
-			fil["conv_l"] = conv_l
-			fil["pop_l"] = pop_l
-			fil["pop_es_l"] = pop_es_l
-			fil["cur1_l"] = cur1_l
-			fil["cur2_l"] = cur2_l
-			fil["scur1_l"] = scur1_l
-                        fil["scur2_l"] = scur2_l
-			fil["vind"] = vind
-			close(fil)	 
-		end
+#		if i == tEnd 
+#			fil = h5open("$(path)_final_Quantities","w")
+#			fil["Rho"] = rho_i
+#			for j in 1:nPoles
+#				fil["Curp1$(j)"] = curp1_i[j]
+#				fil["Curp2$(j)"] = curp2_i[j]
+#			end
+#			fil["X"] = float.(HamPar.X)
+#			fil["P"] = float.(HamPar.P)
+#			fil["X_l"] = X_l
+#                        fil["P_l"] = P_l
+#			fil["tim"] = tim
+#			fil["conv_l"] = conv_l
+#			fil["pop_l"] = pop_l
+#			fil["pop_es_l"] = pop_es_l
+#			fil["cur1_l"] = cur1_l
+#			fil["cur2_l"] = cur2_l
+#			fil["scur1_l"] = scur1_l
+#                        fil["scur2_l"] = scur2_l
+#			fil["vind"] = vind
+#			close(fil)	 
+#		end
 	end
 end
 

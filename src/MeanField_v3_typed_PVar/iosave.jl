@@ -3,7 +3,7 @@ include("global_constants.jl")
 using LinearAlgebra
 using Dates
 using DelimitedFiles
-using HDF5
+#using HDF5
 
 function SaveParams(params,path,purpose)
 	file = open("$(path)","w")
